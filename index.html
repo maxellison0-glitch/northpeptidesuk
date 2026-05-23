@@ -10,483 +10,57 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     html, body { max-width: 100%; overflow-x: hidden; }
-
-    /* ======================== */
-    /* NAV                      */
-    /* ======================== */
     nav { flex-wrap: nowrap; position: static; }
     .basket-btn { white-space: nowrap; flex-shrink: 0; }
     @media (max-width: 768px) { .nav-links, .nav-cta { display: none; } }
 
-    /* ======================== */
-    /* HERO TICKER              */
-    /* ======================== */
-    .hero-ticker {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-    .hero-ticker-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .ticker-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--border);
-      flex-shrink: 0;
-    }
-    .hero-ticker-est {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
+    .hero-ticker { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+    .hero-ticker-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    .hero-ticker-est { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
     .hero-ticker-stars { color: var(--accent); font-size: 0.75rem; }
 
-    /* ======================== */
-    /* QUICK CONTACT            */
-    /* ======================== */
-    .quick-contact {
-      background: rgba(0,229,160,0.06);
-      border: 1px solid rgba(0,229,160,0.2);
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-    .quick-contact-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .quick-contact { background: rgba(0,229,160,0.06); border: 1px solid rgba(0,229,160,0.2); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+    .quick-contact-text { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
     .quick-contact-text strong { color: var(--white); }
-    .quick-contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: var(--black);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: opacity 0.2s;
-    }
+    .quick-contact-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--accent); color: var(--black); font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: opacity 0.2s; }
     .quick-contact-btn:hover { opacity: 0.85; }
 
-    /* ======================== */
-    /* TRUST STRIP              */
-    /* ======================== */
-    .trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      background: var(--grey);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      margin-top: 24px;
-    }
-    .trust-strip-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-right: 1px solid var(--border);
-      flex: 1;
-      min-width: 150px;
-    }
+    .trust-strip { display: flex; flex-wrap: wrap; background: var(--grey); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-top: 24px; }
+    .trust-strip-item { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-right: 1px solid var(--border); flex: 1; min-width: 150px; }
     .trust-strip-item:last-child { border-right: none; }
     .trust-strip-icon { font-size: 1.1rem; flex-shrink: 0; }
-    .trust-strip-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
+    .trust-strip-text { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.05em; color: var(--text-muted); line-height: 1.4; }
+
+    .reviews-section { padding: 56px 40px; background: var(--grey); border-bottom: 1px solid var(--border); }
+    .reviews-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+    .reviews-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .reviews-rating { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text-muted); }
+    .reviews-rating-stars { color: var(--accent); letter-spacing: 2px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .review-card { background: var(--black); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .review-stars { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; }
+    .review-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; font-style: italic; flex: 1; }
+    .review-author { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+
+    /* STICKY BASKET */
+    .sticky-basket { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: #1a1a1a; border-top: 2px solid #00A67E; padding: 14px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.2); }
+    .sticky-basket.visible { display: flex; }
+    .sticky-basket-info { display: flex; flex-direction: column; gap: 2px; }
+    .sticky-basket-count { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
+    .sticky-basket-total { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: #ffffff; }
+    .sticky-basket-btn { display: flex; align-items: center; gap: 10px; padding: 14px 28px; background: #00A67E; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s; border-radius: 4px; flex-shrink: 0; }
+    .sticky-basket-btn:hover { opacity: 0.9; }
+
     @media (max-width: 768px) {
       .trust-strip { flex-direction: column; }
       .trust-strip-item { border-right: none; border-bottom: 1px solid var(--border); }
       .trust-strip-item:last-child { border-bottom: none; }
       .quick-contact { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ======================== */
-    /* REVIEWS                  */
-    /* ======================== */
-    .reviews-section {
-      padding: 56px 40px;
-      background: var(--grey);
-      border-bottom: 1px solid var(--border);
-    }
-    .reviews-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
-    .reviews-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .reviews-rating {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-    .reviews-rating-stars { color: var(--accent); letter-spacing: 2px; }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-    .review-card {
-      background: var(--black);
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .review-stars { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; }
-    .review-text {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-style: italic;
-      flex: 1;
-    }
-    .review-author {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    @media (max-width: 768px) {
       .reviews-section { padding: 40px 20px; }
       .reviews-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.4rem !important; }
     }
-
-    /* ======================== */
-    /* PRODUCTS — NEW LAYOUT    */
-    /* ======================== */
-    .products-section { padding: 56px 40px; }
-    .products-section .section-tag { margin-bottom: 8px; }
-    .products-section .section-title { margin-bottom: 40px; }
-
-    .category-heading {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 20px;
-      margin-top: 48px;
-    }
-    .category-heading:first-of-type { margin-top: 0; }
-
-    .product-grid-new {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .product-card-new {
-      background: var(--grey);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
-    }
-    .product-card-new:hover {
-      border-color: rgba(0,229,160,0.3);
-      transform: translateY(-2px);
-    }
-
-    .product-img-wrap {
-      background: #0F1218;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-img-wrap img {
-      width: 70%;
-      height: 70%;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
-    }
-
-    .product-img-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      opacity: 0.25;
-    }
-    .product-img-placeholder svg { width: 48px; height: 48px; }
-    .product-img-placeholder span {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .product-stock-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.55rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 2px;
-    }
-    .badge-low { background: rgba(245,158,11,0.2); color: var(--warning); border: 1px solid rgba(245,158,11,0.3); }
-    .badge-out { background: rgba(107,114,128,0.15); color: var(--text-muted); border: 1px solid rgba(107,114,128,0.2); }
-
-    .product-info {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .product-name-new {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--white);
-    }
-
-    .product-variant-select {
-      width: 100%;
-      background: var(--black);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 8px 12px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300E5A0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 32px;
-    }
-    .product-variant-select:focus { outline: none; border-color: var(--accent-mid); }
-
-    .product-price-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: auto;
-    }
-
-    .product-price-new {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .product-stock-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      color: var(--warning);
-      letter-spacing: 0.06em;
-      padding-bottom: 2px;
-    }
-
-    .btn-add-new {
-      width: 100%;
-      padding: 12px;
-      background: var(--accent);
-      color: var(--black);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      margin-top: 4px;
-    }
-    .btn-add-new:hover { opacity: 0.85; }
-
-    .btn-waitlist-new {
-      width: 100%;
-      padding: 12px;
-      background: transparent;
-      color: var(--text-muted);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-      margin-top: 4px;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-    }
-    .btn-waitlist-new:hover { border-color: var(--accent-mid); color: var(--accent); }
-
-    @media (max-width: 768px) {
-      .products-section { padding: 40px 20px; }
-      .product-grid-new { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .product-name-new { font-size: 0.9rem; }
-      .product-price-new { font-size: 1.1rem; }
-    }
-    @media (max-width: 380px) {
-      .product-grid-new { grid-template-columns: 1fr; }
-    }
-
-    /* ======================== */
-    /* STICKY BASKET BAR        */
-    /* ======================== */
-    .sticky-basket {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 90;
-      background: var(--grey);
-      border-top: 1px solid var(--border);
-      padding: 12px 20px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
-    }
-    .sticky-basket.visible { display: flex; }
-    .sticky-basket-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .sticky-basket-count {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .sticky-basket-total {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--white);
-    }
-    .sticky-basket-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      background: var(--accent);
-      color: var(--black);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      flex-shrink: 0;
-    }
-    .sticky-basket-btn:hover { opacity: 0.85; }
-
-    /* ======================== */
-    /* HELP SECTION             */
-    /* ======================== */
-    .help-section {
-      background: var(--grey);
-      border-top: 1px solid var(--border);
-      padding: 60px 40px;
-    }
-    .help-inner { max-width: 600px; }
-    .help-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-    .help-title em { font-style: normal; color: var(--accent); }
-    .help-body {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-    .help-payment-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      border-left: 2px solid var(--border);
-      padding-left: 14px;
-      line-height: 1.6;
-      margin-bottom: 28px;
-      max-width: 460px;
-    }
-    .help-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: var(--accent);
-      color: var(--black);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .help-btn:hover { opacity: 0.85; }
-    @media (max-width: 768px) { .help-section { padding: 48px 20px; } }
   </style>
 </head>
 <body>
@@ -514,15 +88,13 @@
     </div>
   </div>
 
-  <!-- STICKY BASKET BAR -->
+  <!-- STICKY BASKET -->
   <div class="sticky-basket" id="sticky-basket">
     <div class="sticky-basket-info">
       <span class="sticky-basket-count" id="sticky-count">0 items</span>
       <span class="sticky-basket-total" id="sticky-total">£0</span>
     </div>
-    <button class="sticky-basket-btn" onclick="goToCheckout()">
-      Checkout →
-    </button>
+    <button class="sticky-basket-btn" onclick="goToCheckout()">View Basket & Checkout →</button>
   </div>
 
   <!-- NAV -->
@@ -535,14 +107,12 @@
       <li><a href="#disclaimer">Research Info</a></li>
     </ul>
     <div style="display:flex;gap:12px;align-items:center;flex-shrink:0;">
-      <button class="basket-btn" onclick="showBasket()">
-        🛒 Basket <span class="basket-count" id="basket-count">0</span>
-      </button>
+      <button class="basket-btn" onclick="showBasket()">🛒 Basket <span class="basket-count" id="basket-count">0</span></button>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="nav-cta">Contact →</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO — DARK -->
   <section class="hero">
     <div class="hero-ticker">
       <span class="hero-ticker-tag">// UK Research Peptides</span>
@@ -552,54 +122,34 @@
       <span class="hero-ticker-stars">★★★★★</span>
       <span class="hero-ticker-est">Trusted by UK Researchers</span>
     </div>
-
     <h1>Research<br>Peptides.<br><em>UK Stocked.</em></h1>
     <p class="hero-sub">High-purity compounds including GLP-1 agonists, recovery peptides, growth hormone secretagogues and longevity stacks. Dispatched from the UK.</p>
-
     <div class="quick-contact">
       <span class="quick-contact-text">
         <strong>First time ordering?</strong> Message me directly — happy to help with any questions. <strong>Struggling with crypto?</strong> Alternative payment options available on request.
       </span>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="quick-contact-btn">✈ Message Me</a>
     </div>
-
     <div class="trust-strip">
-      <div class="trust-strip-item">
-        <span class="trust-strip-icon">🧊</span>
-        <span class="trust-strip-text">Always kept frozen until dispatch</span>
-      </div>
-      <div class="trust-strip-item">
-        <span class="trust-strip-icon">✅</span>
-        <span class="trust-strip-text">99%+ purity on all compounds</span>
-      </div>
-      <div class="trust-strip-item">
-        <span class="trust-strip-icon">🇬🇧</span>
-        <span class="trust-strip-text">UK based — same or next day dispatch</span>
-      </div>
-      <div class="trust-strip-item">
-        <span class="trust-strip-icon">₿</span>
-        <span class="trust-strip-text">BTC · ETH · LTC · USDT accepted</span>
-      </div>
+      <div class="trust-strip-item"><span class="trust-strip-icon">🧊</span><span class="trust-strip-text">Always kept frozen until dispatch</span></div>
+      <div class="trust-strip-item"><span class="trust-strip-icon">✅</span><span class="trust-strip-text">99%+ purity on all compounds</span></div>
+      <div class="trust-strip-item"><span class="trust-strip-icon">🇬🇧</span><span class="trust-strip-text">UK based — same or next day dispatch</span></div>
+      <div class="trust-strip-item"><span class="trust-strip-icon">₿</span><span class="trust-strip-text">BTC · ETH · LTC · USDT accepted</span></div>
     </div>
-
     <div class="hero-actions" style="margin-top:32px;">
       <a href="#products" class="btn-primary">Shop Now →</a>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-secondary">Contact on Telegram</a>
     </div>
-
     <div class="hero-disclaimer">
       <p>⚠ All products are strictly for laboratory research purposes only. Not for human consumption. By browsing you confirm you are a qualified researcher.</p>
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- REVIEWS — DARK -->
   <div class="reviews-section">
     <div class="reviews-header">
       <span class="reviews-tag">// What Researchers Say</span>
-      <div class="reviews-rating">
-        <span class="reviews-rating-stars">★★★★★</span>
-        <span>5.0 — Verified UK Researchers</span>
-      </div>
+      <div class="reviews-rating"><span class="reviews-rating-stars">★★★★★</span><span>5.0 — Verified UK Researchers</span></div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
@@ -620,340 +170,229 @@
     </div>
   </div>
 
-  <!-- PRODUCTS -->
-  <section class="products-section" id="products">
-    <p class="section-tag">// Research Compounds</p>
-    <h2 class="section-title">Our Products</h2>
+  <!-- PRODUCTS — LIGHT -->
+  <section style="background:#F8F9FA;padding:56px 40px;" id="products">
+    <p class="section-tag" style="color:#00A67E;">// Research Compounds</p>
+    <h2 class="section-title" style="color:#1a1a1a;margin-bottom:40px;">Our Products</h2>
 
     <!-- GLP-1 -->
-    <p class="category-heading">GLP-1 / Metabolic Research</p>
-    <div class="product-grid-new">
+    <p class="category-heading-light">GLP-1 / Metabolic Research</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
-      <!-- Retatrutide -->
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/>
-              <rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/>
-              <line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/>
-              <line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/>
-            </svg>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light">
+          <div class="product-img-placeholder-light">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg>
             <span>Image coming soon</span>
           </div>
-          <span class="product-stock-badge badge-low">⚠ Low Stock</span>
+          <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
         </div>
-        <div class="product-info">
-          <span class="product-name-new">Retatrutide</span>
-          <select class="product-variant-select" id="reta-sel" onchange="updateCardPrice('reta-sel','reta-p','reta-s')">
+        <div class="product-info-light">
+          <span class="product-name-light">Retatrutide</span>
+          <select class="product-variant-light" id="reta-sel" onchange="updateCardPrice('reta-sel','reta-p','reta-s')">
             <option value="45|14 Remaining|10mg">10mg — £45</option>
             <option value="80|6 Remaining|20mg">20mg — £80</option>
           </select>
-          <div class="product-price-row">
-            <span class="product-price-new" id="reta-p">£45</span>
-            <span class="product-stock-text" id="reta-s">14 Remaining</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
+            <span class="product-price-light" id="reta-p">£45</span>
+            <span class="product-stock-light" id="reta-s">14 Remaining</span>
           </div>
-          <button class="btn-add-new" onclick="addToBasketVariant('reta-sel','Retatrutide')">Add to Basket</button>
+          <button class="btn-add-light" onclick="addToBasketVariant('reta-sel','Retatrutide')">Add to Basket</button>
         </div>
       </div>
 
-      <!-- Tirzepatide -->
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light">
+          <div class="product-img-placeholder-light">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg>
             <span>Image coming soon</span>
           </div>
-          <span class="product-stock-badge badge-low">⚠ Low Stock</span>
+          <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
         </div>
-        <div class="product-info">
-          <span class="product-name-new">Tirzepatide</span>
-          <select class="product-variant-select" id="tirz-sel" onchange="updateCardPrice('tirz-sel','tirz-p','tirz-s')">
+        <div class="product-info-light">
+          <span class="product-name-light">Tirzepatide</span>
+          <select class="product-variant-light" id="tirz-sel" onchange="updateCardPrice('tirz-sel','tirz-p','tirz-s')">
             <option value="39|12 Remaining|10mg">10mg — £39</option>
             <option value="69|7 Remaining|20mg">20mg — £69</option>
           </select>
-          <div class="product-price-row">
-            <span class="product-price-new" id="tirz-p">£39</span>
-            <span class="product-stock-text" id="tirz-s">12 Remaining</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
+            <span class="product-price-light" id="tirz-p">£39</span>
+            <span class="product-stock-light" id="tirz-s">12 Remaining</span>
           </div>
-          <button class="btn-add-new" onclick="addToBasketVariant('tirz-sel','Tirzepatide')">Add to Basket</button>
+          <button class="btn-add-light" onclick="addToBasketVariant('tirz-sel','Tirzepatide')">Add to Basket</button>
         </div>
       </div>
 
-      <!-- CagriSema -->
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light">
+          <div class="product-img-placeholder-light">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg>
             <span>Image coming soon</span>
           </div>
-          <span class="product-stock-badge badge-out">Out of Stock</span>
+          <span class="stock-badge-light badge-out-light">Out of Stock</span>
         </div>
-        <div class="product-info">
-          <span class="product-name-new">CagriSema</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-muted);">Cagrilintide 5mg + Semaglutide 5mg</span>
-          <div class="product-price-row">
-            <span class="product-price-new" style="color:var(--text-muted);font-size:1rem;">From £60</span>
+        <div class="product-info-light">
+          <span class="product-name-light">CagriSema</span>
+          <span class="product-dose-light">Cagrilintide 5mg + Semaglutide 5mg</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
+            <span class="product-price-light" style="color:#6B7280;font-size:1rem;">From £60</span>
           </div>
-          <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-waitlist-new">Join Waitlist →</a>
+          <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-waitlist-light">Join Waitlist →</a>
         </div>
       </div>
 
     </div>
 
     <!-- Pigmentation -->
-    <p class="category-heading">Pigmentation Research</p>
-    <div class="product-grid-new">
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 22 Remaining</span>
+    <p class="category-heading-light">Pigmentation Research</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
+      <div class="product-card-light">
+        <div class="product-img-wrap-light">
+          <div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div>
+          <span class="stock-badge-light badge-low-light">⚠ 22 Remaining</span>
         </div>
-        <div class="product-info">
-          <span class="product-name-new">Melanotan II (MT-2)</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">10mg / vial</span>
-          <div class="product-price-row">
-            <span class="product-price-new">£19</span>
-          </div>
-          <button class="btn-add-new" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
+        <div class="product-info-light">
+          <span class="product-name-light">Melanotan II (MT-2)</span>
+          <span class="product-dose-light">10mg / vial</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div>
+          <button class="btn-add-light" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
         </div>
       </div>
     </div>
 
     <!-- Recovery -->
-    <p class="category-heading">Recovery & Tissue Research</p>
-    <div class="product-grid-new">
+    <p class="category-heading-light">Recovery & Tissue Research</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 9 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">BPC-157</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">10mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£19</span></div>
-          <button class="btn-add-new" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">BPC-157</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button></div>
       </div>
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 7 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">TB-500</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">10mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£49</span></div>
-          <button class="btn-add-new" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">TB-500</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£49</span></div><button class="btn-add-light" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button></div>
       </div>
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 9 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">GHK-Cu</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">50mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£17</span></div>
-          <button class="btn-add-new" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">GHK-Cu</span><span class="product-dose-light">50mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£17</span></div><button class="btn-add-light" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button></div>
       </div>
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 6 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">KPV</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">10mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£22</span></div>
-          <button class="btn-add-new" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">KPV</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£22</span></div><button class="btn-add-light" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button></div>
       </div>
 
     </div>
 
     <!-- GH -->
-    <p class="category-heading">Growth Hormone Secretagogues</p>
-    <div class="product-grid-new">
+    <p class="category-heading-light">Growth Hormone Secretagogues</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 7 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">Ipamorelin</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">5mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£19</span></div>
-          <button class="btn-add-new" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">Ipamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button></div>
       </div>
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 6 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">Tesamorelin</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">5mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£55</span></div>
-          <button class="btn-add-new" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">Tesamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£55</span></div><button class="btn-add-light" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button></div>
       </div>
 
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 8 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">CJC-1295 (No DAC)</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">5mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£32</span></div>
-          <button class="btn-add-new" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button>
-        </div>
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 8 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">CJC-1295 (No DAC)</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£32</span></div><button class="btn-add-light" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button></div>
       </div>
 
     </div>
 
     <!-- Longevity -->
-    <p class="category-heading">Longevity Research</p>
-    <div class="product-grid-new">
-
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 4 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">MOTS-c</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);">10mg / vial</span>
-          <div class="product-price-row"><span class="product-price-new">£29</span></div>
-          <button class="btn-add-new" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button>
-        </div>
+    <p class="category-heading-light">Longevity Research</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 4 Remaining</span></div>
+        <div class="product-info-light"><span class="product-name-light">MOTS-c</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£29</span></div><button class="btn-add-light" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button></div>
       </div>
-
     </div>
 
     <!-- Stacks -->
-    <p class="category-heading">Research Stacks</p>
-    <div class="product-grid-new">
-
-      <div class="product-card-new">
-        <div class="product-img-wrap">
-          <div class="product-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="white" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="white" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="white" stroke-width="1"/></svg>
-            <span>Image coming soon</span>
-          </div>
-          <span class="product-stock-badge badge-low">⚠ 17 Remaining</span>
-        </div>
-        <div class="product-info">
-          <span class="product-name-new">KLOW Stack</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--text-muted);line-height:1.4;">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg</span>
-          <div class="product-price-row"><span class="product-price-new">£60</span></div>
-          <button class="btn-add-new" onclick="addToBasket('KLOW Stack', 60, '80mg')">Add to Basket</button>
+    <p class="category-heading-light">Research Stacks</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+      <div class="product-card-light">
+        <div class="product-img-wrap-light"><div class="product-img-placeholder-light"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="4" width="16" height="40" rx="4" stroke="#1a1a1a" stroke-width="1.5"/><rect x="18" y="2" width="12" height="4" rx="1" stroke="#1a1a1a" stroke-width="1.5"/><line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a1a" stroke-width="1"/><line x1="16" y1="34" x2="32" y2="34" stroke="#1a1a1a" stroke-width="1"/></svg><span>Image coming soon</span></div><span class="stock-badge-light badge-low-light">⚠ 17 Remaining</span></div>
+        <div class="product-info-light">
+          <span class="product-name-light">KLOW Stack</span>
+          <span class="product-dose-light" style="color:#6B7280;font-size:0.6rem;line-height:1.4;">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£60</span></div>
+          <button class="btn-add-light" onclick="addToBasket('KLOW Stack', 60, '80mg')">Add to Basket</button>
         </div>
       </div>
-
     </div>
 
   </section>
 
-  <!-- HELP -->
-  <section class="help-section">
+  <!-- HELP — LIGHT -->
+  <section class="help-section-light">
     <div class="help-inner">
-      <p class="section-tag">// Not Sure Yet?</p>
-      <h2 class="help-title">Got questions?<br><em>Just message me directly.</em></h2>
-      <p class="help-body">I know buying research compounds online for the first time can feel daunting. I am genuinely happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
-      <p class="help-body">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
-      <p class="help-payment-note">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options. I am flexible and always happy to find a solution that works for you.</p>
-      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-btn">Message Me on Telegram →</a>
+      <p class="section-tag" style="color:#00A67E;">// Not Sure Yet?</p>
+      <h2 class="help-title-light">Got questions?<br><em>Just message me directly.</em></h2>
+      <p class="help-body-light">I know buying research compounds online for the first time can feel daunting. I am genuinely happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
+      <p class="help-body-light">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
+      <p class="help-payment-light">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options. I am flexible and always happy to find a solution that works for you.</p>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-btn-light">Message Me on Telegram →</a>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <p class="section-tag">// Who We Are</p>
+  <!-- ABOUT — LIGHT -->
+  <section class="about-section-light" id="about">
+    <p class="section-tag" style="color:#00A67E;">// Who We Are</p>
     <div class="about-grid">
       <div class="about-text">
-        <h2 class="section-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
-        <p>I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
-        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
-        <p>North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
-        <p>I am not a lab. I am not a pharmaceutical company. I am just someone based in the north of England who has spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
-        <p>Everything I list is something I have personally researched. If I would not use it myself, it will not be on this site. All stock is kept frozen at optimal temperature right up until the moment it is dispatched to you.</p>
+        <h2 class="section-title" style="color:#1a1a1a;">Not a company.<br>Just someone<br><em style="color:#00A67E;font-style:normal;">who actually uses this stuff.</em></h2>
+        <p style="color:#4B5563;">I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
+        <p style="color:#4B5563;">Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
+        <p style="color:#4B5563;">North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
+        <p style="color:#4B5563;">I am not a lab. I am not a pharmaceutical company. I am just someone based in the north of England who has spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
+        <p style="color:#4B5563;">Everything I list is something I have personally researched. All stock is kept frozen at optimal temperature right up until the moment it is dispatched to you.</p>
         <div class="about-sig">
-          <span class="about-sig-name">— North Peptides UK</span>
-          <span class="about-sig-tag">// Est. 2025 · Northern England</span>
+          <span class="about-sig-name" style="color:#1a1a1a;">— North Peptides UK</span>
+          <span class="about-sig-tag" style="color:#00A67E;">// Est. 2025 · Northern England</span>
         </div>
       </div>
-      <div class="about-stats">
-        <div class="about-stat"><span class="about-stat-number">10+</span><span class="about-stat-label">Years researching peptides personally</span></div>
-        <div class="about-stat"><span class="about-stat-number">UK</span><span class="about-stat-label">Based, ordered and dispatched locally</span></div>
-        <div class="about-stat"><span class="about-stat-number">5</span><span class="about-stat-label">Years working with trusted suppliers</span></div>
-        <div class="about-stat"><span class="about-stat-number">🧊</span><span class="about-stat-label">All stock stored frozen at optimal temp until dispatch</span></div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:#E5E7EB;">
+        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">10+</span><span class="about-stat-label" style="color:#6B7280;">Years researching peptides personally</span></div>
+        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">UK</span><span class="about-stat-label" style="color:#6B7280;">Based, ordered and dispatched locally</span></div>
+        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">5</span><span class="about-stat-label" style="color:#6B7280;">Years working with trusted suppliers</span></div>
+        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">🧊</span><span class="about-stat-label" style="color:#6B7280;">All stock stored frozen at optimal temp until dispatch</span></div>
       </div>
     </div>
   </section>
 
-  <!-- HOW TO ORDER -->
-  <section class="how-section" id="how-to-order">
-    <p class="section-tag">// Simple Process</p>
-    <h2 class="section-title">How to Order</h2>
+  <!-- HOW TO ORDER — LIGHT -->
+  <section class="how-section-light" id="how-to-order">
+    <p class="section-tag" style="color:#00A67E;">// Simple Process</p>
+    <h2 class="section-title" style="color:#1a1a1a;margin-bottom:48px;">How to Order</h2>
     <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>Add to Basket</h3>
-        <p>Browse our products, select your size and add to basket.</p>
+      <div class="step-light">
+        <div class="step-number" style="color:rgba(0,166,126,0.2);">01</div>
+        <h3 style="color:#1a1a1a;">Add to Basket</h3>
+        <p style="color:#6B7280;">Browse our products, select your size and add to basket.</p>
       </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Place Your Order</h3>
-        <p>Enter your name, email and UK delivery address at checkout. No payment needed yet.</p>
+      <div class="step-light">
+        <div class="step-number" style="color:rgba(0,166,126,0.2);">02</div>
+        <h3 style="color:#1a1a1a;">Place Your Order</h3>
+        <p style="color:#6B7280;">Enter your name, email and UK delivery address at checkout. No payment needed yet.</p>
       </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <h3>We Email You</h3>
-        <p>We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
+      <div class="step-light">
+        <div class="step-number" style="color:rgba(0,166,126,0.2);">03</div>
+        <h3 style="color:#1a1a1a;">We Email You</h3>
+        <p style="color:#6B7280;">We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
       </div>
-      <div class="step">
-        <div class="step-number">04</div>
-        <h3>Dispatched</h3>
-        <p>Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p>
+      <div class="step-light">
+        <div class="step-number" style="color:rgba(0,166,126,0.2);">04</div>
+        <h3 style="color:#1a1a1a;">Dispatched</h3>
+        <p style="color:#6B7280;">Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p>
       </div>
     </div>
   </section>
@@ -967,7 +406,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER — DARK -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1010,7 +449,6 @@
       document.getElementById(stockId).textContent = parts[1];
     }
 
-    // Sticky basket bar
     function updateStickyBar() {
       const bar = document.getElementById('sticky-basket');
       const count = basket.reduce((s, i) => s + i.qty, 0);
@@ -1024,7 +462,6 @@
       }
     }
 
-    // Hook into basket updates
     const _origUpdate = window.updateBasketUI;
     window.updateBasketUI = function() {
       if (typeof _origUpdate === 'function') _origUpdate();
