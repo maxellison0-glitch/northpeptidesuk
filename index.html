@@ -9,74 +9,128 @@
   <link rel="canonical" href="https://northpeptidesuk.com/">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    html, body { max-width: 100%; overflow-x: hidden; background: #F8F9FA; }
+    html, body { max-width: 100%; overflow-x: hidden; background: #F8F9FA; color: #1a1a1a; }
 
-    /* === LIGHT HEADER === */
-    .light-header {
+    /* ===== NAV ===== */
+    .shop-nav {
       background: #ffffff;
       border-bottom: 1px solid #E5E7EB;
-      padding: 16px 40px;
+      padding: 14px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+      gap: 16px;
     }
-    .light-logo {
+    .shop-nav-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-    .light-logo span { color: #00A67E; }
-    .light-nav { display: flex; gap: 28px; list-style: none; }
-    .light-nav a { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; text-decoration: none; transition: color 0.2s; }
-    .light-nav a:hover { color: #00A67E; }
-    .light-header-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-    .light-basket-btn { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1.5px solid #E5E7EB; background: #fff; color: #1a1a1a; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; cursor: pointer; transition: border-color 0.2s; border-radius: 6px; white-space: nowrap; }
-    .light-basket-btn:hover { border-color: #00A67E; }
-    .light-basket-count { background: #00A67E; color: #fff; font-size: 0.6rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: none; align-items: center; justify-content: center; }
-    .light-contact-btn { padding: 8px 16px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-decoration: none; border-radius: 6px; transition: background 0.2s; white-space: nowrap; }
-    .light-contact-btn:hover { background: #00A67E; }
-
-    /* === ANNOUNCEMENT BAR === */
-    .announcement-bar {
-      background: #1a1a1a;
-      color: #fff;
-      text-align: center;
-      padding: 10px 20px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 1rem;
       letter-spacing: 0.08em;
+      color: #1a1a1a;
+      white-space: nowrap;
     }
-    .announcement-bar span { color: #00A67E; }
-
-    /* === TRUST STRIP === */
-    .trust-strip-light {
-      background: #fff;
-      border-bottom: 1px solid #E5E7EB;
+    .shop-nav-logo span { color: #00A67E; }
+    .shop-nav-links {
       display: flex;
-      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
     }
-    .trust-item-light {
+    .shop-nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6B7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .shop-nav-links a:hover { color: #00A67E; }
+    .shop-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .shop-basket-btn {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 20px;
-      border-right: 1px solid #E5E7EB;
-      flex: 1;
-      min-width: 140px;
+      padding: 8px 16px;
+      background: #1a1a1a;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+      white-space: nowrap;
     }
-    .trust-item-light:last-child { border-right: none; }
-    .trust-item-icon { font-size: 1rem; flex-shrink: 0; }
-    .trust-item-text { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.05em; color: #6B7280; line-height: 1.4; }
+    .shop-basket-btn:hover { background: #00A67E; }
+    .shop-basket-count {
+      background: #00A67E;
+      color: #ffffff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .shop-contact-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00A67E;
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-    /* === QUICK CONTACT === */
-    .quick-contact-light {
+    /* ===== ANNOUNCEMENT ===== */
+    .announcement {
+      background: #1a1a1a;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .announcement a { color: #00A67E; text-decoration: none; }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: #6B7280;
+      white-space: nowrap;
+    }
+
+    /* ===== QUICK CONTACT ===== */
+    .quick-contact-bar {
       background: #f0fdf9;
       border-bottom: 1px solid #d1fae5;
       padding: 12px 40px;
@@ -86,170 +140,477 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    .quick-contact-light-text { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #374151; line-height: 1.6; }
-    .quick-contact-light-text strong { color: #1a1a1a; }
-    .quick-contact-light-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #00A67E; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: opacity 0.2s; white-space: nowrap; flex-shrink: 0; }
-    .quick-contact-light-btn:hover { opacity: 0.85; }
+    .quick-contact-bar-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #374151;
+      line-height: 1.5;
+    }
+    .quick-contact-bar-text strong { color: #1a1a1a; }
+    .quick-contact-bar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #00A67E;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .quick-contact-bar-btn:hover { opacity: 0.85; }
 
-    /* === REVIEWS === */
-    .reviews-light { padding: 48px 40px; background: #fff; border-bottom: 1px solid #E5E7EB; }
-    .reviews-light-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
-    .reviews-light-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; }
-    .reviews-light-rating { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #6B7280; }
-    .reviews-light-stars { color: #00A67E; letter-spacing: 2px; }
-    .reviews-light-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .review-light-card { background: #F8F9FA; border: 1px solid #E5E7EB; padding: 24px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
-    .review-light-stars { color: #00A67E; font-size: 0.75rem; letter-spacing: 2px; }
-    .review-light-text { font-size: 0.82rem; color: #4B5563; line-height: 1.75; font-style: italic; flex: 1; }
-    .review-light-author { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #00A67E; }
+    /* ===== REVIEWS ===== */
+    .reviews-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 32px 40px;
+    }
+    .reviews-bar-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .reviews-bar-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #00A67E;
+    }
+    .reviews-bar-stars { color: #00A67E; letter-spacing: 2px; }
+    .reviews-bar-score {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #6B7280;
+    }
+    .reviews-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #E5E7EB;
+    }
+    .review-bar-card {
+      background: #F8F9FA;
+      padding: 20px;
+    }
+    .review-bar-stars { color: #00A67E; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 8px; }
+    .review-bar-text { font-size: 0.8rem; color: #6B7280; line-height: 1.7; font-style: italic; margin-bottom: 8px; }
+    .review-bar-author { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #00A67E; }
 
-    /* === PRODUCTS === */
-    .products-light { padding: 48px 40px; background: #F8F9FA; }
-    .products-light-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
-    .products-light-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #1a1a1a; }
-    .category-heading-light { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: #6B7280; padding-bottom: 10px; border-bottom: 1px solid #E5E7EB; margin-bottom: 16px; margin-top: 40px; }
-    .category-heading-light:first-of-type { margin-top: 0; }
-    .product-grid-light { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    /* ===== PRODUCTS ===== */
+    .shop-section { padding: 40px; background: #F8F9FA; }
+    .shop-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .shop-section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .shop-section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #00A67E;
+    }
+    .shop-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+      padding: 32px 0 12px;
+      border-bottom: 1px solid #E5E7EB;
+      margin-bottom: 16px;
+    }
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .shop-card {
+      background: #ffffff;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .shop-card-img {
+      position: relative;
+      background: #F3F4F6;
+      aspect-ratio: 1;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .shop-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .shop-card-img:hover img { transform: scale(1.03); }
+    .shop-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .shop-card-img:hover .shop-card-img-overlay { background: rgba(0,0,0,0.15); }
+    .shop-card-info-icon {
+      background: #ffffff;
+      color: #1a1a1a;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-family: 'Syne', sans-serif;
+    }
+    .shop-card-img:hover .shop-card-info-icon { opacity: 1; }
+    .shop-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .badge-low { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
+    .badge-out { background: #F3F4F6; color: #9CA3AF; border: 1px solid #E5E7EB; }
+    .shop-card-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .shop-card-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+    .shop-card-dose {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: #00A67E;
+      letter-spacing: 0.05em;
+    }
+    .shop-card-select {
+      width: 100%;
+      background: #F3F4F6;
+      border: 1px solid #E5E7EB;
+      color: #1a1a1a;
+      padding: 7px 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300A67E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+      border-radius: 4px;
+    }
+    .shop-card-select:focus { outline: none; border-color: #00A67E; }
+    .shop-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .shop-card-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
+    .shop-card-price-muted { color: #9CA3AF; font-size: 0.9rem; }
+    .shop-card-stock {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      color: #D97706;
+      letter-spacing: 0.06em;
+    }
+    .shop-add-btn {
+      padding: 9px 14px;
+      background: #1a1a1a;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .shop-add-btn:hover { background: #00A67E; }
+    .shop-waitlist-btn {
+      display: block;
+      width: 100%;
+      padding: 9px;
+      background: transparent;
+      color: #9CA3AF;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid #E5E7EB;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .shop-waitlist-btn:hover { border-color: #00A67E; color: #00A67E; }
 
-    /* === PRODUCT CARD === */
-    .product-card-light { background: #fff; border: 1px solid #E5E7EB; border-radius: 8px; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; overflow: hidden; }
-    .product-card-light:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
-    .product-img-wrap-light { background: #F3F4F6; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .product-img-wrap-light img { width: 100%; height: 100%; object-fit: cover; }
-    .stock-badge-light { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-    .badge-low-light { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
-    .badge-out-light { background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; }
-    .product-info-light { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-    .product-name-light { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
-    .product-dose-light { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #00A67E; letter-spacing: 0.04em; }
-    .product-variant-light { width: 100%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #1a1a1a; padding: 7px 10px; font-family: 'DM Mono', monospace; font-size: 0.7rem; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300A67E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; border-radius: 4px; }
-    .product-variant-light:focus { outline: none; border-color: #00A67E; }
-    .product-price-light { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
-    .product-stock-light { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #D97706; letter-spacing: 0.06em; }
-    .btn-add-light { width: 100%; padding: 11px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; border-radius: 4px; }
-    .btn-add-light:hover { background: #00A67E; }
-    .btn-waitlist-light { width: 100%; padding: 11px; background: transparent; color: #6B7280; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #E5E7EB; cursor: pointer; border-radius: 4px; text-decoration: none; display: block; text-align: center; transition: border-color 0.2s, color 0.2s; }
-    .btn-waitlist-light:hover { border-color: #00A67E; color: #00A67E; }
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #ffffff;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #F3F4F6;
+    }
+    .modal-body { padding: 24px; }
+    .modal-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .modal-dose {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #00A67E;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .modal-points { list-style: none; margin-bottom: 20px; }
+    .modal-points li {
+      font-size: 0.85rem;
+      color: #374151;
+      padding: 8px 0;
+      border-bottom: 1px solid #F3F4F6;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .modal-points li::before { content: '✓'; color: #00A67E; font-weight: 700; flex-shrink: 0; }
+    .modal-points li:last-child { border-bottom: none; }
+    .modal-disclaimer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #9CA3AF;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      padding: 10px;
+      background: #F8F9FA;
+      border-radius: 4px;
+    }
+    .modal-close {
+      width: 100%;
+      padding: 12px;
+      background: #1a1a1a;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: #00A67E; }
 
-    /* === STICKY BASKET === */
-    .sticky-basket { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: #1a1a1a; border-top: 2px solid #00A67E; padding: 14px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.2); }
+    /* ===== HELP ===== */
+    .help-light {
+      background: #ffffff;
+      border-top: 1px solid #E5E7EB;
+      padding: 60px 40px;
+    }
+    .help-light-inner { max-width: 600px; }
+    .help-light-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
+    .help-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 16px; }
+    .help-light-title em { font-style: normal; color: #00A67E; }
+    .help-light-body { font-size: 0.88rem; color: #6B7280; line-height: 1.8; margin-bottom: 14px; max-width: 500px; }
+    .help-light-note { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #6B7280; border-left: 2px solid #E5E7EB; padding-left: 12px; line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
+    .help-light-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #1a1a1a; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: background 0.2s; }
+    .help-light-btn:hover { background: #00A67E; }
+
+    /* ===== ABOUT ===== */
+    .about-light { background: #F8F9FA; padding: 60px 40px; border-top: 1px solid #E5E7EB; }
+    .about-light-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
+    .about-light-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
+    .about-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 24px; }
+    .about-light-title em { font-style: normal; color: #00A67E; }
+    .about-light-text p { font-size: 0.88rem; color: #6B7280; line-height: 1.85; margin-bottom: 14px; max-width: 520px; }
+    .about-light-sig { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E5E7EB; display: flex; flex-direction: column; gap: 4px; }
+    .about-light-sig-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; }
+    .about-light-sig-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00A67E; }
+    .about-light-stats { display: flex; flex-direction: column; gap: 1px; background: #E5E7EB; position: sticky; top: 80px; }
+    .about-light-stat { background: #ffffff; padding: 24px 28px; display: flex; flex-direction: column; gap: 6px; }
+    .about-light-stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #00A67E; line-height: 1; }
+    .about-light-stat-label { font-size: 0.78rem; color: #6B7280; line-height: 1.4; }
+
+    /* ===== HOW TO ORDER ===== */
+    .how-light { background: #ffffff; padding: 60px 40px; border-top: 1px solid #E5E7EB; }
+    .how-light-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
+    .how-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; margin-bottom: 40px; }
+    .how-light-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .how-light-step { background: #F8F9FA; padding: 28px; border-radius: 8px; border: 1px solid #E5E7EB; }
+    .how-light-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: rgba(0,166,126,0.15); line-height: 1; margin-bottom: 12px; }
+    .how-light-step h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+    .how-light-step p { font-size: 0.82rem; color: #6B7280; line-height: 1.6; }
+
+    /* ===== DISCLAIMER ===== */
+    .disclaimer-light { background: #F8F9FA; padding: 40px; border-top: 1px solid #E5E7EB; }
+    .disclaimer-light-box { border: 1px solid #d1fae5; background: #f0fdf9; padding: 28px; border-radius: 8px; max-width: 700px; }
+    .disclaimer-light-box h3 { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
+    .disclaimer-light-box p { font-size: 0.82rem; color: #6B7280; line-height: 1.8; }
+
+    /* ===== FOOTER ===== */
+    .footer-light { background: #1a1a1a; color: #ffffff; padding: 48px 40px 32px; }
+    .footer-light-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-light-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .footer-light-logo span { color: #00A67E; }
+    .footer-light-desc { font-size: 0.82rem; color: #9CA3AF; line-height: 1.7; }
+    .footer-light-col h4 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6B7280; margin-bottom: 14px; }
+    .footer-light-col ul { list-style: none; }
+    .footer-light-col ul li { margin-bottom: 8px; }
+    .footer-light-col ul li a { font-size: 0.82rem; color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
+    .footer-light-col ul li a:hover { color: #00A67E; }
+    .footer-light-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-light-bottom p { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: #6B7280; }
+    .footer-disclaimer-text { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: #4B5563; text-align: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+    /* ===== STICKY BASKET ===== */
+    .sticky-basket { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: #1a1a1a; border-top: 2px solid #00A67E; padding: 12px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.2); }
     .sticky-basket.visible { display: flex; }
     .sticky-basket-info { display: flex; flex-direction: column; gap: 2px; }
-    .sticky-basket-count { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
-    .sticky-basket-total { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: #ffffff; }
-    .sticky-basket-btn { display: flex; align-items: center; gap: 10px; padding: 14px 28px; background: #00A67E; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s; border-radius: 4px; flex-shrink: 0; }
+    .sticky-basket-count { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
+    .sticky-basket-total { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #ffffff; }
+    .sticky-basket-btn { padding: 12px 24px; background: #00A67E; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; flex-shrink: 0; transition: opacity 0.2s; }
     .sticky-basket-btn:hover { opacity: 0.9; }
 
-    /* === HELP SECTION === */
-    .help-section-light { background: #fff; border-top: 1px solid #E5E7EB; padding: 60px 40px; }
-    .help-title-light { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.2; margin-bottom: 20px; color: #1a1a1a; }
-    .help-title-light em { font-style: normal; color: #00A67E; }
-    .help-body-light { font-size: 0.9rem; color: #6B7280; line-height: 1.8; margin-bottom: 16px; max-width: 520px; }
-    .help-payment-light { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #6B7280; border-left: 2px solid #E5E7EB; padding-left: 14px; line-height: 1.6; margin-bottom: 28px; max-width: 460px; }
-    .help-btn-light { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; border-radius: 4px; }
-    .help-btn-light:hover { background: #00A67E; }
-
-    /* === FAQ === */
-    .faq-section { background: #F8F9FA; border-top: 1px solid #E5E7EB; padding: 60px 40px; }
-    .faq-section .section-tag { color: #00A67E; margin-bottom: 8px; }
-    .faq-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #1a1a1a; margin-bottom: 32px; }
-    .faq-item { border-bottom: 1px solid #E5E7EB; padding: 20px 0; }
-    .faq-question { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-    .faq-answer { font-size: 0.85rem; color: #6B7280; line-height: 1.8; margin-top: 12px; max-width: 640px; display: none; }
-    .faq-item.open .faq-answer { display: block; }
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-    .faq-arrow { transition: transform 0.2s; font-size: 0.8rem; color: #00A67E; }
-
-    /* === ABOUT === */
-    .about-section-light { background: #fff; padding: 60px 40px; border-top: 1px solid #E5E7EB; }
-
-    /* === HOW TO ORDER === */
-    .how-section-light { background: #F8F9FA; padding: 60px 40px; border-top: 1px solid #E5E7EB; }
-    .step-light { padding: 28px; border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; }
-    .step-light .step-number { color: rgba(0,166,126,0.15); }
-    .step-light h3 { color: #1a1a1a; margin-bottom: 8px; }
-    .step-light p { color: #6B7280; font-size: 0.85rem; line-height: 1.6; }
-
-    /* === DISCLAIMER === */
-    .disclaimer-light { background: #fff; border-top: 1px solid #E5E7EB; padding: 40px; }
-    .disclaimer-box-light { border: 1px solid #E5E7EB; background: #F8F9FA; padding: 32px; max-width: 800px; border-radius: 8px; }
-    .disclaimer-box-light h3 { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
-    .disclaimer-box-light p { font-size: 0.82rem; color: #6B7280; line-height: 1.8; }
-
-    /* === FOOTER === */
-    .footer-light { background: #1a1a1a; color: #fff; padding: 48px 40px 32px; }
-    .footer-light-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-light-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.06em; color: #fff; margin-bottom: 12px; display: block; }
-    .footer-light-logo span { color: #00A67E; }
-    .footer-light p { font-size: 0.82rem; color: #9CA3AF; line-height: 1.7; }
-    .footer-light h4 { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 14px; }
-    .footer-light ul { list-style: none; }
-    .footer-light ul li { margin-bottom: 8px; }
-    .footer-light ul li a { font-size: 0.82rem; color: #9CA3AF; text-decoration: none; transition: color 0.2s; }
-    .footer-light ul li a:hover { color: #00A67E; }
-    .footer-light-bottom { border-top: 1px solid #2D2D2D; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .footer-light-bottom p { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; }
-    .footer-light-disclaimer { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #4B5563; text-align: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid #2D2D2D; }
-
-    /* BASKET DRAWER */
+    /* ===== BASKET DRAWER ===== */
     .basket-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .basket-overlay.active { opacity: 1; pointer-events: all; }
-    .basket-drawer { position: fixed; top: 0; right: -420px; width: 420px; max-width: 100vw; height: 100vh; background: #fff; z-index: 201; display: flex; flex-direction: column; transition: right 0.3s ease; border-left: 1px solid #E5E7EB; }
+    .basket-drawer { position: fixed; top: 0; right: -420px; width: 420px; max-width: 100vw; height: 100vh; background: #ffffff; z-index: 201; display: flex; flex-direction: column; transition: right 0.3s ease; border-left: 1px solid #E5E7EB; }
     .basket-drawer.active { right: 0; }
     .basket-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #E5E7EB; }
-    .basket-header h3 { font-family: 'Syne', sans-serif; font-size: 1rem; color: #1a1a1a; }
-    .basket-close { background: none; border: none; color: #6B7280; cursor: pointer; font-size: 1.2rem; }
+    .basket-header h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #1a1a1a; }
+    .basket-close { background: none; border: none; color: #9CA3AF; cursor: pointer; font-size: 1.2rem; }
+    .basket-close:hover { color: #1a1a1a; }
     .basket-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
-    .basket-empty { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #6B7280; text-align: center; margin-top: 40px; }
-    .basket-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #E5E7EB; }
+    .basket-empty { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #9CA3AF; text-align: center; margin-top: 40px; }
+    .basket-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #F3F4F6; }
     .basket-item-info { flex: 1; }
     .basket-item-name { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
     .basket-item-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #00A67E; }
     .basket-item-controls { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #1a1a1a; }
-    .basket-item-controls button { background: #F3F4F6; border: 1px solid #E5E7EB; color: #1a1a1a; width: 24px; height: 24px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 3px; }
+    .basket-item-controls button { background: #F3F4F6; border: 1px solid #E5E7EB; color: #1a1a1a; width: 24px; height: 24px; cursor: pointer; border-radius: 4px; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
     .basket-item-price { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
-    .basket-item-remove { background: none; border: none; color: #9CA3AF; cursor: pointer; font-size: 0.75rem; }
+    .basket-item-remove { background: none; border: none; color: #D1D5DB; cursor: pointer; font-size: 0.75rem; }
     .basket-item-remove:hover { color: #EF4444; }
     .basket-footer { padding: 20px 24px; border-top: 1px solid #E5E7EB; }
     .basket-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .basket-total-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; }
+    .basket-total-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
     .basket-total-amount { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: #1a1a1a; }
-    .btn-checkout { width: 100%; padding: 14px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; border-radius: 4px; }
+    .btn-checkout { width: 100%; padding: 14px; background: #1a1a1a; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; transition: background 0.2s; }
     .btn-checkout:hover { background: #00A67E; }
 
+    /* ===== MOBILE ===== */
     @media (max-width: 768px) {
-      .light-header { padding: 12px 16px; }
-      .light-nav { display: none; }
-      .trust-strip-light { flex-direction: column; }
-      .trust-item-light { border-right: none; border-bottom: 1px solid #E5E7EB; }
-      .trust-item-light:last-child { border-bottom: none; }
-      .quick-contact-light { flex-direction: column; align-items: flex-start; padding: 12px 16px; }
-      .reviews-light { padding: 32px 16px; }
-      .reviews-light-grid { grid-template-columns: 1fr; }
-      .products-light { padding: 32px 16px; }
-      .product-grid-light { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .help-section-light { padding: 40px 16px; }
-      .faq-section { padding: 40px 16px; }
-      .about-section-light { padding: 40px 16px; }
-      .how-section-light { padding: 40px 16px; }
-      .footer-light { padding: 40px 16px 100px; }
+      .shop-nav { padding: 12px 20px; }
+      .shop-nav-links { display: none; }
+      .shop-contact-btn { display: none; }
+      .trust-bar { padding: 10px 20px; gap: 16px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+      .quick-contact-bar { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
+      .reviews-bar { padding: 24px 20px; }
+      .reviews-bar-grid { grid-template-columns: 1fr; }
+      .shop-section { padding: 24px 20px; }
+      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .shop-card-price { font-size: 1rem; }
+      .about-light { padding: 40px 20px; }
+      .about-light-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-light-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+      .how-light { padding: 40px 20px; }
+      .help-light { padding: 40px 20px; }
+      .disclaimer-light { padding: 24px 20px; }
+      .footer-light { padding: 40px 20px 80px; }
       .footer-light-grid { grid-template-columns: 1fr; gap: 28px; }
-      .footer-light-bottom { flex-direction: column; }
-      .announcement-bar { font-size: 0.6rem; }
+      .footer-light-bottom { flex-direction: column; gap: 4px; }
+      .basket-drawer { width: 100vw; }
+    }
+    @media (max-width: 380px) {
+      .shop-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BASKET OVERLAY & DRAWER -->
+  <!-- BASKET OVERLAY -->
   <div class="basket-overlay" id="basket-overlay" onclick="hideBasket()"></div>
+
+  <!-- BASKET DRAWER -->
   <div class="basket-drawer" id="basket-drawer">
     <div class="basket-header">
       <h3>Your Basket</h3>
       <button class="basket-close" onclick="hideBasket()">✕</button>
     </div>
     <div id="basket-view">
-      <div class="basket-items" id="basket-items"><p class="basket-empty">Your basket is empty.</p></div>
+      <div class="basket-items" id="basket-items">
+        <p class="basket-empty">Your basket is empty.</p>
+      </div>
       <div class="basket-footer">
         <div class="basket-total-row">
           <span class="basket-total-label">Total</span>
@@ -266,317 +627,405 @@
       <span class="sticky-basket-count" id="sticky-count">0 items</span>
       <span class="sticky-basket-total" id="sticky-total">£0</span>
     </div>
-    <button class="sticky-basket-btn" onclick="goToCheckout()">View Basket & Checkout →</button>
+    <button class="sticky-basket-btn" onclick="goToCheckout()">Checkout →</button>
   </div>
 
-  <!-- ANNOUNCEMENT BAR -->
-  <div class="announcement-bar">
-    🧊 All stock stored frozen until dispatch &nbsp;·&nbsp; <span>UK based</span> — same or next day dispatch &nbsp;·&nbsp; Crypto accepted: BTC · ETH · LTC · USDT
+  <!-- PRODUCT INFO MODAL -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box">
+      <img src="" alt="" class="modal-img" id="modal-img">
+      <div class="modal-body">
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-dose" id="modal-dose"></div>
+        <ul class="modal-points" id="modal-points"></ul>
+        <div class="modal-disclaimer">For research purposes only. Not for human consumption.</div>
+        <button class="modal-close" onclick="closeModalBtn()">Close</button>
+      </div>
+    </div>
   </div>
 
-  <!-- LIGHT HEADER -->
-  <header class="light-header">
-    <a href="#" class="light-logo">NORTH<span>PEPTIDES</span>UK</a>
-    <ul class="light-nav">
+  <!-- NAV -->
+  <nav class="shop-nav">
+    <div class="shop-nav-logo">NORTH<span>PEPTIDES</span>UK</div>
+    <ul class="shop-nav-links">
       <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
       <li><a href="#how-to-order">How to Order</a></li>
+      <li><a href="#disclaimer">Research Info</a></li>
     </ul>
-    <div class="light-header-right">
-      <button class="light-basket-btn" onclick="showBasket()">
-        🛒 Basket <span class="light-basket-count" id="basket-count">0</span>
-      </button>
-      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="light-contact-btn">✈ Contact</a>
+    <div class="shop-nav-right">
+      <button class="shop-basket-btn" onclick="showBasket()">🛒 Basket <span class="shop-basket-count" id="basket-count">0</span></button>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="shop-contact-btn">✈ Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <!-- TRUST STRIP -->
-  <div class="trust-strip-light">
-    <div class="trust-item-light"><span class="trust-item-icon">✅</span><span class="trust-item-text">99%+ purity on all compounds</span></div>
-    <div class="trust-item-light"><span class="trust-item-icon">🇬🇧</span><span class="trust-item-text">UK based & dispatched</span></div>
-    <div class="trust-item-light"><span class="trust-item-icon">₿</span><span class="trust-item-text">Crypto accepted</span></div>
-    <div class="trust-item-light"><span class="trust-item-icon">📦</span><span class="trust-item-text">Tracked shipping available</span></div>
-    <div class="trust-item-light"><span class="trust-item-icon">💬</span><span class="trust-item-text">24h Telegram support</span></div>
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    🧊 All stock stored frozen until dispatch &nbsp;·&nbsp; UK based — same or next day &nbsp;·&nbsp; <a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Questions? Message us on Telegram →</a>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <span class="trust-bar-item">✅ 99%+ purity on all compounds</span>
+    <span class="trust-bar-item">🇬🇧 UK dispatched</span>
+    <span class="trust-bar-item">₿ BTC · ETH · LTC · USDT</span>
+    <span class="trust-bar-item">📦 Tracked shipping available</span>
+    <span class="trust-bar-item">💬 24h Telegram support</span>
   </div>
 
   <!-- QUICK CONTACT -->
-  <div class="quick-contact-light">
-    <span class="quick-contact-light-text"><strong>First time ordering?</strong> Message me directly — happy to help. <strong>Struggling with crypto?</strong> Alternative payment options available on request.</span>
-    <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="quick-contact-light-btn">✈ Message Me</a>
+  <div class="quick-contact-bar">
+    <span class="quick-contact-bar-text"><strong>First time ordering?</strong> Message me directly — happy to help with any questions. <strong>Struggling with crypto?</strong> Alternative payment options available on request.</span>
+    <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="quick-contact-bar-btn">✈ Message Me</a>
   </div>
 
   <!-- REVIEWS -->
-  <div class="reviews-light">
-    <div class="reviews-light-header">
-      <span class="reviews-light-tag">// What Researchers Say</span>
-      <div class="reviews-light-rating"><span class="reviews-light-stars">★★★★★</span><span>5.0 — Verified UK Researchers</span></div>
+  <div class="reviews-bar">
+    <div class="reviews-bar-header">
+      <span class="reviews-bar-tag">// What Researchers Say</span>
+      <span class="reviews-bar-stars">★★★★★</span>
+      <span class="reviews-bar-score">5.0 — Verified UK Researchers</span>
     </div>
-    <div class="reviews-light-grid">
-      <div class="review-light-card">
-        <div class="review-light-stars">★★★★★</div>
-        <p class="review-light-text">The person behind this has genuinely been so willing to help and share info. I had loads of questions as a first timer and he answered every single one without making me feel stupid. Results have genuinely been incredible.</p>
-        <span class="review-light-author">James R — Manchester</span>
+    <div class="reviews-bar-grid">
+      <div class="review-bar-card">
+        <div class="review-bar-stars">★★★★★</div>
+        <p class="review-bar-text">The person behind this has genuinely been so willing to help and share info. I had loads of questions as a first timer and he answered every single one without making me feel stupid. Results have genuinely been incredible.</p>
+        <span class="review-bar-author">James R — Manchester</span>
       </div>
-      <div class="review-light-card">
-        <div class="review-light-stars">★★★★★</div>
-        <p class="review-light-text">I was nervous about ordering but honestly the experience was just like any of the larger sites. Arrived within one day via Royal Mail, packaged well and communication for payment was great. The KLOW stack was a game changer for skin and joint health.</p>
-        <span class="review-light-author">Sarah M — London</span>
+      <div class="review-bar-card">
+        <div class="review-bar-stars">★★★★★</div>
+        <p class="review-bar-text">I was nervous about ordering but honestly the experience was just like any of the larger sites. Arrived within one day via Royal Mail, packaged well and communication for payment was great. The KLOW stack was a game changer for skin and joint health.</p>
+        <span class="review-bar-author">Sarah M — London</span>
       </div>
-      <div class="review-light-card">
-        <div class="review-light-stars">★★★★★</div>
-        <p class="review-light-text">Six months into my research journey and I genuinely cannot believe where I am now. The support I got alongside my orders made all the difference. Having used a few UK suppliers the pricing and quality here is unmatched. Always come here now.</p>
-        <span class="review-light-author">Mike T — Leeds</span>
+      <div class="review-bar-card">
+        <div class="review-bar-stars">★★★★★</div>
+        <p class="review-bar-text">Six months into my research journey and I genuinely cannot believe where I am now. The support alongside my orders made all the difference. Having used a few UK suppliers the pricing and quality here is unmatched. Always come here now.</p>
+        <span class="review-bar-author">Mike T — Leeds</span>
       </div>
     </div>
   </div>
 
   <!-- PRODUCTS -->
-  <section class="products-light" id="products">
-    <div class="products-light-header">
-      <h2 class="products-light-title">Our Products</h2>
+  <section class="shop-section" id="products">
+    <div class="shop-section-header">
+      <h2 class="shop-section-title">Our Products</h2>
+      <span class="shop-section-tag">// Tap image for info</span>
     </div>
 
-    <!-- GLP-1 -->
-    <p class="category-heading-light">GLP-1 / Metabolic Research</p>
-    <div class="product-grid-light">
+    <p class="shop-category">GLP-1 / Metabolic Research</p>
+    <div class="shop-grid">
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light">
+      <!-- Retatrutide -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('Retatrutide','Lyophilised Powder · Select size below','hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg',['Triple receptor agonist — GLP-1, GIP and Glucagon','Most potent metabolic research compound currently available','UK stocked — same or next day dispatch','Lyophilised powder for maximum stability and shelf life','99%+ purity — independently verified'])">
           <img src="hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg" alt="Retatrutide" id="reta-img">
-          <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ Low Stock</span>
         </div>
-        <div class="product-info-light">
-          <span class="product-name-light">Retatrutide</span>
-          <select class="product-variant-light" id="reta-sel" onchange="updateCardPrice('reta-sel','reta-p','reta-s');swapImage('reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'},this)">
+        <div class="shop-card-body">
+          <span class="shop-card-name">Retatrutide</span>
+          <select class="shop-card-select" id="reta-sel" onchange="updateShopPrice('reta-sel','reta-p','reta-s');swapImage('reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'},this)">
             <option value="45|14 Remaining|10mg">10mg — £45</option>
             <option value="80|6 Remaining|20mg">20mg — £80</option>
           </select>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
-            <span class="product-price-light" id="reta-p">£45</span>
-            <span class="product-stock-light" id="reta-s">14 Remaining</span>
+          <div class="shop-card-footer">
+            <div>
+              <div class="shop-card-price" id="reta-p">£45</div>
+              <div class="shop-card-stock" id="reta-s">14 Remaining</div>
+            </div>
+            <button class="shop-add-btn" onclick="addToBasketVariant('reta-sel','Retatrutide')">Add</button>
           </div>
-          <button class="btn-add-light" onclick="addToBasketVariant('reta-sel','Retatrutide')">Add to Basket</button>
         </div>
       </div>
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light">
+      <!-- Tirzepatide -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('Tirzepatide','Lyophilised Powder · Select size below','hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png',['Dual GIP and GLP-1 receptor agonist','One of the most in-demand research peptides in the UK','UK stocked — fast dispatch','High demand — order soon to secure stock','Lyophilised powder · 99%+ purity'])">
           <img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png" alt="Tirzepatide" id="tirz-img">
-          <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ Low Stock</span>
         </div>
-        <div class="product-info-light">
-          <span class="product-name-light">Tirzepatide</span>
-          <select class="product-variant-light" id="tirz-sel" onchange="updateCardPrice('tirz-sel','tirz-p','tirz-s');swapImage('tirz-img',{'10mg':'hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'},this)">
+        <div class="shop-card-body">
+          <span class="shop-card-name">Tirzepatide</span>
+          <select class="shop-card-select" id="tirz-sel" onchange="updateShopPrice('tirz-sel','tirz-p','tirz-s');swapImage('tirz-img',{'10mg':'hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'},this)">
             <option value="39|12 Remaining|10mg">10mg — £39</option>
             <option value="69|7 Remaining|20mg">20mg — £69</option>
           </select>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
-            <span class="product-price-light" id="tirz-p">£39</span>
-            <span class="product-stock-light" id="tirz-s">12 Remaining</span>
+          <div class="shop-card-footer">
+            <div>
+              <div class="shop-card-price" id="tirz-p">£39</div>
+              <div class="shop-card-stock" id="tirz-s">12 Remaining</div>
+            </div>
+            <button class="shop-add-btn" onclick="addToBasketVariant('tirz-sel','Tirzepatide')">Add</button>
           </div>
-          <button class="btn-add-light" onclick="addToBasketVariant('tirz-sel','Tirzepatide')">Add to Basket</button>
         </div>
       </div>
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light">
-          <img src="hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg" alt="CagriSema">
-          <span class="stock-badge-light badge-out-light">Out of Stock</span>
-        </div>
-        <div class="product-info-light">
-          <span class="product-name-light">CagriSema</span>
-          <span class="product-dose-light">Cagrilintide 5mg + Semaglutide 5mg</span>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
-            <span class="product-price-light" style="color:#6B7280;font-size:1rem;">From £60</span>
-          </div>
-          <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-waitlist-light">Join Waitlist →</a>
-        </div>
-      </div>
-
-      <!-- KLOW Stack moved here -->
-      <div class="product-card-light">
-        <div class="product-img-wrap-light">
+      <!-- KLOW Stack -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('KLOW Stack','GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg','hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg',['Four of the most studied recovery peptides in one vial','GHK-Cu for skin and collagen · TB-500 for tissue repair','BPC-157 for gut and muscle recovery · KPV anti-inflammatory','Most cost-effective way to run a full recovery stack','UK stocked · 99%+ purity · Lyophilised powder'])">
           <img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack">
-          <span class="stock-badge-light badge-low-light">⚠ 17 Remaining</span>
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 17 Remaining</span>
         </div>
-        <div class="product-info-light">
-          <span class="product-name-light">KLOW Stack</span>
-          <span class="product-dose-light" style="color:#6B7280;font-size:0.58rem;line-height:1.4;">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg</span>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
-            <span class="product-price-light">£60</span>
+        <div class="shop-card-body">
+          <span class="shop-card-name">KLOW Stack</span>
+          <span class="shop-card-dose">80mg / vial · 4 compound blend</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£60</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('KLOW Stack', 60, '80mg')">Add</button>
           </div>
-          <button class="btn-add-light" onclick="addToBasket('KLOW Stack', 60, '80mg')">Add to Basket</button>
+        </div>
+      </div>
+
+      <!-- CagriSema -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('CagriSema','Cagrilintide 5mg + Semaglutide 5mg / vial','hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg',['Combined amylin and GLP-1 receptor agonist','Emerging research compound attracting major scientific interest','Cagrilintide + Semaglutide in a single convenient vial','Currently out of stock — join waitlist for priority access','99%+ purity · Lyophilised powder'])">
+          <img src="hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg" alt="CagriSema">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-out">Out of Stock</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">CagriSema</span>
+          <span class="shop-card-dose">Cagrilintide 5mg + Semaglutide 5mg</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price shop-card-price-muted">From £60</div></div>
+          </div>
+          <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="shop-waitlist-btn">Join Waitlist →</a>
         </div>
       </div>
 
     </div>
 
-    <!-- Pigmentation -->
-    <p class="category-heading-light">Pigmentation Research</p>
-    <div class="product-grid-light">
-      <div class="product-card-light">
-        <div class="product-img-wrap-light">
+    <p class="shop-category">Pigmentation Research</p>
+    <div class="shop-grid">
+
+      <!-- Melanotan II -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('Melanotan II (MT-2)','10mg / vial · Lyophilised Powder','hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg',['Synthetic melanocortin receptor agonist','Most searched research peptide in the UK during summer','Studied for melanogenesis and pigmentation pathways','UK stocked — fast dispatch','99%+ purity · Lyophilised powder'])">
           <img src="hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg" alt="Melanotan II">
-          <span class="stock-badge-light badge-low-light">⚠ 22 Remaining</span>
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 22 Remaining</span>
         </div>
-        <div class="product-info-light">
-          <span class="product-name-light">Melanotan II (MT-2)</span>
-          <span class="product-dose-light">10mg / vial</span>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div>
-          <button class="btn-add-light" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
+        <div class="shop-card-body">
+          <span class="shop-card-name">Melanotan II (MT-2)</span>
+          <span class="shop-card-dose">10mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£19</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add</button>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Recovery -->
-    <p class="category-heading-light">Recovery & Tissue Research</p>
-    <div class="product-grid-light">
-
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">BPC-157</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button></div>
-      </div>
-
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">TB-500</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£49</span></div><button class="btn-add-light" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button></div>
-      </div>
-
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">GHK-Cu</span><span class="product-dose-light">50mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£17</span></div><button class="btn-add-light" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button></div>
-      </div>
-
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">KPV</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£22</span></div><button class="btn-add-light" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button></div>
-      </div>
 
     </div>
 
-    <!-- GH -->
-    <p class="category-heading-light">Growth Hormone Secretagogues</p>
-    <div class="product-grid-light">
+    <p class="shop-category">Recovery & Tissue Research</p>
+    <div class="shop-grid">
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">Ipamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button></div>
+      <!-- BPC-157 -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('BPC-157','10mg / vial · Lyophilised Powder','hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg',['Body Protective Compound — extensively studied','Researched for tissue repair and gut health','Popular in musculoskeletal recovery research models','UK stocked · 9 remaining','99%+ purity · Lyophilised powder'])">
+          <img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 9 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">BPC-157</span>
+          <span class="shop-card-dose">10mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£19</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('BPC-157', 19, '10mg')">Add</button>
+          </div>
+        </div>
       </div>
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg" alt="Tesamorelin"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">Tesamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£55</span></div><button class="btn-add-light" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button></div>
+      <!-- TB-500 -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('TB-500','10mg / vial · Lyophilised Powder','hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg',['Thymosin Beta-4 fragment','Studied for cell migration and angiogenesis','Popular in inflammatory response research','Works synergistically with BPC-157','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 7 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">TB-500</span>
+          <span class="shop-card-dose">10mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£49</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('TB-500', 49, '10mg')">Add</button>
+          </div>
+        </div>
       </div>
 
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295"><span class="stock-badge-light badge-low-light">⚠ 8 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">CJC-1295 (No DAC)</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£32</span></div><button class="btn-add-light" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button></div>
+      <!-- GHK-Cu -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('GHK-Cu','50mg / vial · Lyophilised Powder','hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg',['Copper peptide tripeptide — widely researched','Studied for collagen synthesis and wound healing','Popular in longevity and skin research applications','Gene expression regulation pathway studies','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 9 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">GHK-Cu</span>
+          <span class="shop-card-dose">50mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£17</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPV -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('KPV','10mg / vial · Lyophilised Powder','hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png',['Lysine-Proline-Valine tripeptide derived from alpha-MSH','Studied for anti-inflammatory pathways','Popular in intestinal inflammation research models','Gut health research applications','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 6 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">KPV</span>
+          <span class="shop-card-dose">10mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£22</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('KPV', 22, '10mg')">Add</button>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <!-- Longevity -->
-    <p class="category-heading-light">Longevity Research</p>
-    <div class="product-grid-light">
-      <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="MOTS-c"><span class="stock-badge-light badge-low-light">⚠ 4 Remaining</span></div>
-        <div class="product-info-light"><span class="product-name-light">MOTS-c</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£29</span></div><button class="btn-add-light" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button></div>
+    <p class="shop-category">Growth Hormone Secretagogues</p>
+    <div class="shop-grid">
+
+      <!-- Ipamorelin -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('Ipamorelin','5mg / vial · Lyophilised Powder','hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg',['Selective growth hormone secretagogue','Ghrelin receptor agonist — GH pulse stimulation','Minimal effect on cortisol or prolactin levels','Commonly stacked with CJC-1295 for synergistic effect','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 7 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">Ipamorelin</span>
+          <span class="shop-card-dose">5mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£19</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add</button>
+          </div>
+        </div>
       </div>
+
+      <!-- Tesamorelin -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('Tesamorelin','5mg / vial · Lyophilised Powder','hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg',['Synthetic GHRH analogue — extensively studied','GH secretion and visceral fat reduction research','Cognitive function research applications','One of the most studied GHRH analogues available','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg" alt="Tesamorelin">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 6 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">Tesamorelin</span>
+          <span class="shop-card-dose">5mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£55</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CJC-1295 -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('CJC-1295 (No DAC)','5mg / vial · Lyophilised Powder','hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg',['Modified GRF 1-29 — GHRH analogue','Commonly stacked with Ipamorelin for synergistic GH studies','Extensive research literature available','Short acting — ideal for pulsatile GH research','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 8 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">CJC-1295 (No DAC)</span>
+          <span class="shop-card-dose">5mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£32</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="shop-category">Longevity Research</p>
+    <div class="shop-grid">
+
+      <!-- MOTS-c -->
+      <div class="shop-card">
+        <div class="shop-card-img" onclick="openModal('MOTS-c','10mg / vial · Lyophilised Powder','hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg',['Mitochondrial-derived peptide — emerging research area','Metabolic regulation and insulin sensitivity studies','Cellular longevity pathway research','Popular stack alongside Retatrutide — limited stock on both','99%+ purity · UK stocked'])">
+          <img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="MOTS-c">
+          <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          <span class="shop-badge badge-low">⚠ 4 Remaining</span>
+        </div>
+        <div class="shop-card-body">
+          <span class="shop-card-name">MOTS-c</span>
+          <span class="shop-card-dose">10mg / vial</span>
+          <div class="shop-card-footer">
+            <div><div class="shop-card-price">£29</div></div>
+            <button class="shop-add-btn" onclick="addToBasket('MOTS-c', 29, '10mg')">Add</button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </section>
 
   <!-- HELP -->
-  <section class="help-section-light">
-    <div style="max-width:600px;">
-      <p class="section-tag" style="color:#00A67E;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">// Not Sure Yet?</p>
-      <h2 class="help-title-light">Got questions?<br><em>Just message me directly.</em></h2>
-      <p class="help-body-light">I know buying research compounds online for the first time can feel daunting. I am genuinely happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
-      <p class="help-body-light">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
-      <p class="help-payment-light">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options. I am flexible and always happy to find a solution that works for you.</p>
-      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-btn-light">Message Me on Telegram →</a>
+  <section class="help-light">
+    <div class="help-light-inner">
+      <p class="help-light-tag">// Not Sure Yet?</p>
+      <h2 class="help-light-title">Got questions?<br><em>Just message me directly.</em></h2>
+      <p class="help-light-body">I know buying research compounds online for the first time can feel daunting. I am genuinely happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
+      <p class="help-light-body">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
+      <p class="help-light-note">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options. I am flexible and always happy to find a solution that works for you.</p>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-light-btn">Message Me on Telegram →</a>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq-section" id="faq">
-    <p class="section-tag" style="color:#00A67E;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">// Common Questions</p>
-    <h2 class="faq-title">FAQ</h2>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">How do I pay? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">We accept Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC) and USDT. Once you place your order we will email you within 24 hours with the wallet address and exact amount. If you are struggling with crypto just message us on Telegram and we can discuss alternatives.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">How are orders dispatched? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">All orders are dispatched via Royal Mail Tracked 24 or Special Delivery depending on the shipping option you select at checkout. Orders are typically dispatched within 24 to 48 hours of payment confirmation.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">How are the peptides stored? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">All stock is kept frozen at optimal temperature from the moment it arrives until the moment it is dispatched. We take storage seriously — peptide integrity depends on it.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">Are these safe to order? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">All products are sold strictly for research purposes only and are not intended for human consumption. We are a UK based supplier operating within the research chemical space. Orders are discreetly packaged with no identifying branding on the outside.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">What purity are your compounds? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">All compounds are 99%+ purity. We have worked with our suppliers for over five years and only list products we have personally verified through our own research.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">Can I get help choosing a product? <span class="faq-arrow">▾</span></div>
-      <div class="faq-answer">Absolutely. Message us on Telegram @NORTHPEPTIDESUK and we are happy to chat through what might suit your research. No pressure, no sales pitch.</div>
-    </div>
-
   </section>
 
   <!-- ABOUT -->
-  <section class="about-section-light" id="about">
-    <p class="section-tag" style="color:#00A67E;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">// Who We Are</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <h2 class="section-title" style="color:#1a1a1a;">Not a company.<br>Just someone<br><em style="color:#00A67E;font-style:normal;">who actually uses this stuff.</em></h2>
-        <p style="color:#4B5563;">I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
-        <p style="color:#4B5563;">Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
-        <p style="color:#4B5563;">North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
-        <p style="color:#4B5563;">Everything I list is something I have personally researched. All stock is kept frozen at optimal temperature right up until the moment it is dispatched to you.</p>
-        <div class="about-sig">
-          <span class="about-sig-name" style="color:#1a1a1a;">— North Peptides UK</span>
-          <span class="about-sig-tag" style="color:#00A67E;">// Est. 2025 · Northern England</span>
+  <section class="about-light" id="about">
+    <p class="about-light-tag">// Who We Are</p>
+    <div class="about-light-grid">
+      <div class="about-light-text">
+        <h2 class="about-light-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
+        <p>I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
+        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
+        <p>North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
+        <p>I am not a lab. I am not a pharmaceutical company. I am just someone based in the north of England who has spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
+        <p>Everything I list is something I have personally researched. All stock is kept frozen at optimal temperature right up until the moment it is dispatched to you.</p>
+        <div class="about-light-sig">
+          <span class="about-light-sig-name">— North Peptides UK</span>
+          <span class="about-light-sig-tag">// Est. 2025 · Northern England</span>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:1px;background:#E5E7EB;">
-        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">10+</span><span class="about-stat-label" style="color:#6B7280;">Years researching peptides personally</span></div>
-        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">UK</span><span class="about-stat-label" style="color:#6B7280;">Based, ordered and dispatched locally</span></div>
-        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">5</span><span class="about-stat-label" style="color:#6B7280;">Years working with trusted suppliers</span></div>
-        <div class="about-stat-light"><span class="about-stat-number" style="color:#00A67E;">🧊</span><span class="about-stat-label" style="color:#6B7280;">All stock stored frozen until dispatch</span></div>
+      <div class="about-light-stats">
+        <div class="about-light-stat"><span class="about-light-stat-num">10+</span><span class="about-light-stat-label">Years researching peptides personally</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Based, ordered and dispatched locally</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">5</span><span class="about-light-stat-label">Years working with trusted suppliers</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">🧊</span><span class="about-light-stat-label">All stock stored frozen until dispatch</span></div>
       </div>
     </div>
   </section>
 
   <!-- HOW TO ORDER -->
-  <section class="how-section-light" id="how-to-order">
-    <p class="section-tag" style="color:#00A67E;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">// Simple Process</p>
-    <h2 class="section-title" style="color:#1a1a1a;margin-bottom:40px;">How to Order</h2>
-    <div class="steps-grid">
-      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.15);">01</div><h3>Add to Basket</h3><p>Browse products, select your size and add to basket.</p></div>
-      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.15);">02</div><h3>Place Your Order</h3><p>Enter your name, email and UK delivery address. No payment needed yet.</p></div>
-      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.15);">03</div><h3>We Email You</h3><p>We will email you within 24 hours with payment details. Crypto preferred — alternatives available.</p></div>
-      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.15);">04</div><h3>Dispatched</h3><p>Once payment confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p></div>
+  <section class="how-light" id="how-to-order">
+    <p class="how-light-tag">// Simple Process</p>
+    <h2 class="how-light-title">How to Order</h2>
+    <div class="how-light-grid">
+      <div class="how-light-step"><div class="how-light-num">01</div><h3>Add to Basket</h3><p>Browse our products, select your size and add to basket.</p></div>
+      <div class="how-light-step"><div class="how-light-num">02</div><h3>Place Your Order</h3><p>Enter your name, email and UK delivery address at checkout. No payment needed yet.</p></div>
+      <div class="how-light-step"><div class="how-light-num">03</div><h3>We Email You</h3><p>We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p></div>
+      <div class="how-light-step"><div class="how-light-num">04</div><h3>Dispatched</h3><p>Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p></div>
     </div>
   </section>
 
   <!-- DISCLAIMER -->
   <section class="disclaimer-light" id="disclaimer">
-    <div class="disclaimer-box-light">
+    <div class="disclaimer-light-box">
       <h3>Research Use Only</h3>
-      <p>All products listed on North Peptides UK are sold strictly for laboratory and scientific research purposes only. These compounds are not medicines, are not approved for human or animal consumption, and are not intended to diagnose, treat, cure or prevent any medical condition. By purchasing from North Peptides UK you confirm that you are a qualified researcher and that all compounds will be used exclusively in a controlled research environment in accordance with applicable laws and regulations.</p>
+      <p>All products listed on North Peptides UK are sold strictly for laboratory and scientific research purposes only. These compounds are not medicines, are not approved for human or animal consumption, and are not intended to diagnose, treat, cure or prevent any medical condition. By purchasing from North Peptides UK you confirm that you are a qualified researcher and that all compounds will be used exclusively in a controlled research environment in accordance with applicable laws and regulations. North Peptides UK accepts no liability for misuse of any compound sold.</p>
     </div>
   </section>
 
@@ -584,25 +1033,24 @@
   <footer class="footer-light">
     <div class="footer-light-grid">
       <div>
-        <span class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</span>
-        <p>Premium research peptides dispatched from the UK. Stored frozen until dispatch.</p>
+        <div class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</div>
+        <p class="footer-light-desc">Premium research peptides dispatched from the UK. Stored frozen until dispatch. High purity compounds for legitimate scientific research.</p>
       </div>
-      <div>
+      <div class="footer-light-col">
         <h4>Products</h4>
         <ul>
           <li><a href="#products">Retatrutide</a></li>
           <li><a href="#products">Tirzepatide</a></li>
+          <li><a href="#products">KLOW Stack</a></li>
           <li><a href="#products">Melanotan II</a></li>
           <li><a href="#products">BPC-157</a></li>
           <li><a href="#products">Ipamorelin</a></li>
-          <li><a href="#products">KLOW Stack</a></li>
         </ul>
       </div>
-      <div>
-        <h4>Info</h4>
+      <div class="footer-light-col">
+        <h4>Contact</h4>
         <ul>
           <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Telegram: @NORTHPEPTIDESUK</a></li>
-          <li><a href="#faq">FAQ</a></li>
           <li><a href="#how-to-order">How to Order</a></li>
           <li><a href="#disclaimer">Research Info</a></li>
         </ul>
@@ -610,30 +1058,48 @@
     </div>
     <div class="footer-light-bottom">
       <p>© 2025 North Peptides UK. All Rights Reserved.</p>
-      <p>BTC · ETH · LTC · USDT</p>
+      <p>BTC · ETH · LTC · USDT accepted</p>
     </div>
-    <p class="footer-light-disclaimer">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
+    <p class="footer-disclaimer-text">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
 
   <script src="basket.js"></script>
   <script>
-    function swapImage(imgId, map, select) {
-      const parts = select.value.split('|');
-      const dose = parts[2];
-      if (map[dose]) document.getElementById(imgId).src = map[dose];
+    // Modal
+    function openModal(name, dose, img, points) {
+      document.getElementById('modal-name').textContent = name;
+      document.getElementById('modal-dose').textContent = dose;
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-img').alt = name;
+      const ul = document.getElementById('modal-points');
+      ul.innerHTML = points.map(p => `<li>${p}</li>`).join('');
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+    function closeModal(e) {
+      if (e.target === document.getElementById('modal-overlay')) {
+        document.getElementById('modal-overlay').classList.remove('active');
+      }
+    }
+    function closeModalBtn() {
+      document.getElementById('modal-overlay').classList.remove('active');
     }
 
-    function updateCardPrice(selId, priceId, stockId) {
+    // Price update
+    function updateShopPrice(selId, priceId, stockId) {
       const sel = document.getElementById(selId);
       const parts = sel.value.split('|');
       document.getElementById(priceId).textContent = '£' + parts[0];
       document.getElementById(stockId).textContent = parts[1];
     }
 
-    function toggleFaq(el) {
-      el.parentElement.classList.toggle('open');
+    // Image swap on dropdown
+    function swapImage(imgId, map, select) {
+      const parts = select.value.split('|');
+      const dose = parts[2];
+      if (map[dose]) document.getElementById(imgId).src = map[dose];
     }
 
+    // Sticky bar
     function updateStickyBar() {
       const bar = document.getElementById('sticky-basket');
       const count = basket.reduce((s, i) => s + i.qty, 0);
@@ -642,18 +1108,21 @@
         bar.classList.add('visible');
         document.getElementById('sticky-count').textContent = count + (count === 1 ? ' item' : ' items');
         document.getElementById('sticky-total').textContent = '£' + total;
-        const bc = document.getElementById('basket-count');
-        if (bc) { bc.textContent = count; bc.style.display = 'flex'; }
       } else {
         bar.classList.remove('visible');
-        const bc = document.getElementById('basket-count');
-        if (bc) bc.style.display = 'none';
       }
     }
 
     const _origUpdate = window.updateBasketUI;
     window.updateBasketUI = function() {
       if (typeof _origUpdate === 'function') _origUpdate();
+      // Update basket count badge in nav
+      const count = basket.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById('basket-count');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
       updateStickyBar();
     };
   </script>
