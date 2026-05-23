@@ -43,7 +43,6 @@
     .review-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; font-style: italic; flex: 1; }
     .review-author { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 
-    /* STICKY BASKET */
     .sticky-basket { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: #1a1a1a; border-top: 2px solid #00A67E; padding: 14px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.2); }
     .sticky-basket.visible { display: flex; }
     .sticky-basket-info { display: flex; flex-direction: column; gap: 2px; }
@@ -65,10 +64,8 @@
 </head>
 <body>
 
-  <!-- BASKET OVERLAY -->
   <div class="basket-overlay" id="basket-overlay" onclick="hideBasket()"></div>
 
-  <!-- BASKET DRAWER -->
   <div class="basket-drawer" id="basket-drawer">
     <div class="basket-header">
       <h3>Your Basket</h3>
@@ -88,7 +85,6 @@
     </div>
   </div>
 
-  <!-- STICKY BASKET -->
   <div class="sticky-basket" id="sticky-basket">
     <div class="sticky-basket-info">
       <span class="sticky-basket-count" id="sticky-count">0 items</span>
@@ -97,7 +93,6 @@
     <button class="sticky-basket-btn" onclick="goToCheckout()">View Basket & Checkout →</button>
   </div>
 
-  <!-- NAV -->
   <nav>
     <div class="nav-logo">NORTH<span>PEPTIDES</span>UK</div>
     <ul class="nav-links">
@@ -112,7 +107,6 @@
     </div>
   </nav>
 
-  <!-- HERO — DARK -->
   <section class="hero">
     <div class="hero-ticker">
       <span class="hero-ticker-tag">// UK Research Peptides</span>
@@ -145,7 +139,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS — DARK -->
   <div class="reviews-section">
     <div class="reviews-header">
       <span class="reviews-tag">// What Researchers Say</span>
@@ -170,18 +163,17 @@
     </div>
   </div>
 
-  <!-- PRODUCTS — LIGHT -->
   <section style="background:#F8F9FA;padding:56px 40px;" id="products">
     <p class="section-tag" style="color:#00A67E;">// Research Compounds</p>
     <h2 class="section-title" style="color:#1a1a1a;margin-bottom:40px;">Our Products</h2>
 
-    <!-- GLP-1 -->
     <p class="category-heading-light">GLP-1 / Metabolic Research</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
+      <!-- Retatrutide — correct image -->
       <div class="product-card-light">
         <div class="product-img-wrap-light">
-          <img src="hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png" alt="Retatrutide North Peptides UK" style="width:100%;height:100%;object-fit:cover;">
+          <img src="hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png" alt="Retatrutide" style="width:100%;height:100%;object-fit:cover;">
           <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
         </div>
         <div class="product-info-light">
@@ -198,9 +190,10 @@
         </div>
       </div>
 
+      <!-- Tirzepatide — was showing MOTS-c (171928), correct is Tirzepatide (171735) -->
       <div class="product-card-light">
         <div class="product-img-wrap-light">
-          <img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="MOTS-c North Peptides UK" style="width:100%;height:100%;object-fit:cover;">
+          <img src="hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg" alt="Tirzepatide" style="width:100%;height:100%;object-fit:cover;">
           <span class="stock-badge-light badge-low-light">⚠ Low Stock</span>
         </div>
         <div class="product-info-light">
@@ -217,9 +210,10 @@
         </div>
       </div>
 
+      <!-- CagriSema — was showing KLOW (171756), use Tirzepatide 10mg as placeholder -->
       <div class="product-card-light">
         <div class="product-img-wrap-light">
-          <img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png" alt="KLOW Stack North Peptides UK" style="width:100%;height:100%;object-fit:cover;">
+          <img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png" alt="CagriSema" style="width:100%;height:100%;object-fit:cover;">
           <span class="stock-badge-light badge-out-light">Out of Stock</span>
         </div>
         <div class="product-info-light">
@@ -234,12 +228,12 @@
 
     </div>
 
-    <!-- Pigmentation -->
     <p class="category-heading-light">Pigmentation Research</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
+      <!-- Melanotan II — was showing Tirzepatide (171735), correct is Melanotan (171744) -->
       <div class="product-card-light">
         <div class="product-img-wrap-light">
-          <img src="hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg" alt="Tirzepatide North Peptides UK" style="width:100%;height:100%;object-fit:cover;">
+          <img src="hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg" alt="Melanotan II" style="width:100%;height:100%;object-fit:cover;">
           <span class="stock-badge-light badge-low-light">⚠ 22 Remaining</span>
         </div>
         <div class="product-info-light">
@@ -251,67 +245,72 @@
       </div>
     </div>
 
-    <!-- Recovery -->
     <p class="category-heading-light">Recovery & Tissue Research</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
+      <!-- BPC-157 — was showing CagriSema placeholder, correct is BPC-157 (171828) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png" alt="CagriSema North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">BPC-157</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button></div>
       </div>
 
+      <!-- TB-500 — was showing Melanotan (171744), correct is TB-500 (171838) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg" alt="Melanotan II North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">TB-500</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£49</span></div><button class="btn-add-light" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button></div>
       </div>
 
+      <!-- GHK-Cu — was showing BPC-157 (171828), correct is GHK-Cu (171846) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157 North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 9 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">GHK-Cu</span><span class="product-dose-light">50mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£17</span></div><button class="btn-add-light" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button></div>
       </div>
 
+      <!-- KPV — was showing TB-500 (171838), correct is KPV (171852) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500 North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">KPV</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£22</span></div><button class="btn-add-light" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button></div>
       </div>
 
     </div>
 
-    <!-- GH -->
     <p class="category-heading-light">Growth Hormone Secretagogues</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
 
+      <!-- Ipamorelin — was showing GHK-Cu (171846), correct is Ipamorelin (171904) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 7 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">Ipamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£19</span></div><button class="btn-add-light" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button></div>
       </div>
 
+      <!-- Tesamorelin — was showing KPV (171852), correct is CJC as placeholder (171921) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="Tesamorelin" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 6 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">Tesamorelin</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£55</span></div><button class="btn-add-light" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button></div>
       </div>
 
+      <!-- CJC-1295 — was showing Ipamorelin (171904), correct is CJC (171921) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 8 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 8 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">CJC-1295 (No DAC)</span><span class="product-dose-light">5mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£32</span></div><button class="btn-add-light" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button></div>
       </div>
 
     </div>
 
-    <!-- Longevity -->
     <p class="category-heading-light">Longevity Research</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:8px;">
+      <!-- MOTS-c — was showing CJC (171921), correct is MOTS-c (171928) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="Tesamorelin North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 4 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="MOTS-c" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 4 Remaining</span></div>
         <div class="product-info-light"><span class="product-name-light">MOTS-c</span><span class="product-dose-light">10mg / vial</span><div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;"><span class="product-price-light">£29</span></div><button class="btn-add-light" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button></div>
       </div>
     </div>
 
-    <!-- Stacks -->
     <p class="category-heading-light">Research Stacks</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+      <!-- KLOW Stack — was showing CJC (171921), correct is KLOW (171756) -->
       <div class="product-card-light">
-        <div class="product-img-wrap-light"><img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295 North Peptides UK" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 17 Remaining</span></div>
+        <div class="product-img-wrap-light"><img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack" style="width:100%;height:100%;object-fit:cover;"><span class="stock-badge-light badge-low-light">⚠ 17 Remaining</span></div>
         <div class="product-info-light">
           <span class="product-name-light">KLOW Stack</span>
           <span class="product-dose-light" style="color:#6B7280;font-size:0.6rem;line-height:1.4;">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg</span>
@@ -323,7 +322,6 @@
 
   </section>
 
-  <!-- HELP — LIGHT -->
   <section class="help-section-light">
     <div class="help-inner">
       <p class="section-tag" style="color:#00A67E;">// Not Sure Yet?</p>
@@ -335,7 +333,6 @@
     </div>
   </section>
 
-  <!-- ABOUT — LIGHT -->
   <section class="about-section-light" id="about">
     <p class="section-tag" style="color:#00A67E;">// Who We Are</p>
     <div class="about-grid">
@@ -360,35 +357,17 @@
     </div>
   </section>
 
-  <!-- HOW TO ORDER — LIGHT -->
   <section class="how-section-light" id="how-to-order">
     <p class="section-tag" style="color:#00A67E;">// Simple Process</p>
     <h2 class="section-title" style="color:#1a1a1a;margin-bottom:48px;">How to Order</h2>
     <div class="steps-grid">
-      <div class="step-light">
-        <div class="step-number" style="color:rgba(0,166,126,0.2);">01</div>
-        <h3 style="color:#1a1a1a;">Add to Basket</h3>
-        <p style="color:#6B7280;">Browse our products, select your size and add to basket.</p>
-      </div>
-      <div class="step-light">
-        <div class="step-number" style="color:rgba(0,166,126,0.2);">02</div>
-        <h3 style="color:#1a1a1a;">Place Your Order</h3>
-        <p style="color:#6B7280;">Enter your name, email and UK delivery address at checkout. No payment needed yet.</p>
-      </div>
-      <div class="step-light">
-        <div class="step-number" style="color:rgba(0,166,126,0.2);">03</div>
-        <h3 style="color:#1a1a1a;">We Email You</h3>
-        <p style="color:#6B7280;">We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
-      </div>
-      <div class="step-light">
-        <div class="step-number" style="color:rgba(0,166,126,0.2);">04</div>
-        <h3 style="color:#1a1a1a;">Dispatched</h3>
-        <p style="color:#6B7280;">Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p>
-      </div>
+      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.2);">01</div><h3 style="color:#1a1a1a;">Add to Basket</h3><p style="color:#6B7280;">Browse our products, select your size and add to basket.</p></div>
+      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.2);">02</div><h3 style="color:#1a1a1a;">Place Your Order</h3><p style="color:#6B7280;">Enter your name, email and UK delivery address at checkout. No payment needed yet.</p></div>
+      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.2);">03</div><h3 style="color:#1a1a1a;">We Email You</h3><p style="color:#6B7280;">We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p></div>
+      <div class="step-light"><div class="step-number" style="color:rgba(0,166,126,0.2);">04</div><h3 style="color:#1a1a1a;">Dispatched</h3><p style="color:#6B7280;">Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p></div>
     </div>
   </section>
 
-  <!-- DISCLAIMER -->
   <section class="disclaimer-section" id="disclaimer">
     <p class="section-tag">// Important Notice</p>
     <div class="disclaimer-box">
@@ -397,7 +376,6 @@
     </div>
   </section>
 
-  <!-- FOOTER — DARK -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
