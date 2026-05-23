@@ -11,6 +11,68 @@
 </head>
 <body>
 
+  <!-- BASKET OVERLAY -->
+  <div class="basket-overlay" id="basket-overlay" onclick="hideBasket()"></div>
+
+  <!-- BASKET DRAWER -->
+  <div class="basket-drawer" id="basket-drawer">
+    <div class="basket-header">
+      <h3>Your Basket</h3>
+      <button class="basket-close" onclick="hideBasket()">✕</button>
+    </div>
+
+    <!-- BASKET VIEW -->
+    <div id="basket-view">
+      <div class="basket-items" id="basket-items">
+        <p class="basket-empty">Your basket is empty.</p>
+      </div>
+      <div class="basket-footer">
+        <div class="basket-total-row">
+          <span class="basket-total-label">Total</span>
+          <span class="basket-total-amount" id="basket-total">£0</span>
+        </div>
+        <button class="btn-checkout" onclick="showCheckout()">Proceed to Checkout →</button>
+      </div>
+    </div>
+
+    <!-- CHECKOUT VIEW -->
+    <div id="checkout-view" class="checkout-view">
+      <div class="basket-items">
+        <button class="checkout-back" onclick="backToBasket()">← Back to Basket</button>
+        <div class="checkout-summary" id="checkout-summary"></div>
+        <p class="form-note">⚠ We will contact you via email with your crypto payment details. All orders are for research purposes only.</p>
+        <form id="checkout-form" action="https://formspree.io/f/mnjrzpvl" method="POST">
+          <input type="hidden" name="order" id="order-details">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Delivery Address</label>
+            <textarea name="address" required placeholder="Full delivery address including postcode"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Notes (optional)</label>
+            <textarea name="notes" placeholder="Any additional notes"></textarea>
+          </div>
+          <button type="submit" class="btn-checkout" id="submit-btn">Place Order →</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SUCCESS VIEW -->
+    <div id="success-view" class="success-view">
+      <div class="success-icon">✓</div>
+      <h3>Order Received</h3>
+      <p>Thanks — we'll email you within 24 hours with your crypto payment details to complete the order.</p>
+      <p style="margin-top:12px;">Questions? Message us on Telegram: <strong>@NORTHPEPTIDESUK</strong></p>
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav>
     <div class="nav-logo">NORTH<span>PEPTIDES</span>UK</div>
@@ -20,7 +82,12 @@
       <li><a href="#how-to-order">How to Order</a></li>
       <li><a href="#disclaimer">Research Info</a></li>
     </ul>
-    <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="nav-cta">Contact →</a>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <button class="basket-btn" onclick="showBasket()">
+        🛒 Basket <span class="basket-count" id="basket-count">0</span>
+      </button>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="nav-cta">Contact →</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -39,22 +106,10 @@
 
   <!-- STATS BAR -->
   <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-number">99%+</span>
-      <span class="stat-label">Purity Standard</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">UK</span>
-      <span class="stat-label">Based & Dispatched</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">₿</span>
-      <span class="stat-label">Crypto Accepted</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">24h</span>
-      <span class="stat-label">Telegram Response</span>
-    </div>
+    <div class="stat-item"><span class="stat-number">99%+</span><span class="stat-label">Purity Standard</span></div>
+    <div class="stat-item"><span class="stat-number">UK</span><span class="stat-label">Based & Dispatched</span></div>
+    <div class="stat-item"><span class="stat-number">₿</span><span class="stat-label">Crypto Accepted</span></div>
+    <div class="stat-item"><span class="stat-number">24h</span><span class="stat-label">Response Time</span></div>
   </div>
 
   <!-- PRODUCTS -->
@@ -63,11 +118,10 @@
       <p class="section-tag">// Research Compounds</p>
       <h2 class="section-title">Our Products</h2>
 
-      <!-- GLP-1 CATEGORY -->
+      <!-- GLP-1 -->
       <p class="category-label">GLP-1 / Metabolic Research</p>
       <div class="product-grid">
 
-        <!-- Retatrutide -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Triple Agonist</span>
@@ -75,23 +129,22 @@
           </div>
           <h3 class="product-name">Retatrutide</h3>
           <p class="product-dose">Lyophilised Powder — Select Size Below</p>
-          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. One of the most studied metabolic research compounds available. <strong style="color:var(--accent)">60% of customers stack with MOTS-c.</strong></p>
+          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. <strong style="color:var(--accent)">60% of customers stack with MOTS-c.</strong></p>
           <div class="variant-select-wrap">
             <select class="variant-select" id="reta-select" onchange="updatePrice('reta-select','reta-price','reta-stock')">
-              <option value="45|5 Remaining">10mg — £45</option>
-              <option value="84|3 Remaining">20mg — £84</option>
+              <option value="48|5 Remaining|10mg">10mg — £48</option>
+              <option value="92|3 Remaining|20mg">20mg — £92</option>
             </select>
           </div>
           <div class="product-footer">
             <div>
-              <span class="product-price" id="reta-price">£45</span>
+              <span class="product-price" id="reta-price">£48</span>
               <span class="stock-note" id="reta-stock">5 Remaining</span>
             </div>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasketVariant('reta-select','Retatrutide')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- Tirzepatide -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Dual Agonist</span>
@@ -99,23 +152,22 @@
           </div>
           <h3 class="product-name">Tirzepatide</h3>
           <p class="product-dose">Lyophilised Powder — Select Size Below</p>
-          <p class="product-desc">Dual GIP and GLP-1 receptor agonist. Extensively studied for metabolic and glucose regulation research. One of the most in-demand research peptides in the UK.</p>
+          <p class="product-desc">Dual GIP and GLP-1 receptor agonist. One of the most in-demand research peptides in the UK.</p>
           <div class="variant-select-wrap">
             <select class="variant-select" id="tirz-select" onchange="updatePrice('tirz-select','tirz-price','tirz-stock')">
-              <option value="38|6 Remaining">10mg — £38</option>
-              <option value="66|7 Remaining">20mg — £66</option>
+              <option value="42|6 Remaining|10mg">10mg — £42</option>
+              <option value="72|7 Remaining|20mg">20mg — £72</option>
             </select>
           </div>
           <div class="product-footer">
             <div>
-              <span class="product-price" id="tirz-price">£38</span>
+              <span class="product-price" id="tirz-price">£42</span>
               <span class="stock-note" id="tirz-stock">6 Remaining</span>
             </div>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasketVariant('tirz-select','Tirzepatide')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- CagriSema -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Combination</span>
@@ -123,7 +175,7 @@
           </div>
           <h3 class="product-name">CagriSema</h3>
           <p class="product-dose">Cagrilintide 5mg + Semaglutide 5mg / vial</p>
-          <p class="product-desc">Combined amylin and GLP-1 receptor agonist blend. Emerging research compound attracting significant scientific interest. Join our waitlist to be first notified.</p>
+          <p class="product-desc">Combined amylin and GLP-1 receptor agonist blend. Join our waitlist to be first notified.</p>
           <div class="product-footer">
             <span class="product-price muted">From £66</span>
             <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-waitlist">Join Waitlist →</a>
@@ -132,11 +184,10 @@
 
       </div>
 
-      <!-- PIGMENTATION CATEGORY -->
+      <!-- PIGMENTATION -->
       <p class="category-label" style="margin-top:48px;">Pigmentation Research</p>
       <div class="product-grid">
 
-        <!-- Melanotan II -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Melanocortin Agonist</span>
@@ -144,20 +195,19 @@
           </div>
           <h3 class="product-name">Melanotan II (MT-2)</h3>
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Synthetic melanocortin receptor agonist studied for its role in melanogenesis and pigmentation pathways. One of the most searched research peptides in the UK during summer months. High demand — order soon.</p>
+          <p class="product-desc">Synthetic melanocortin receptor agonist studied for melanogenesis and pigmentation pathways. Most searched research peptide in the UK during summer months.</p>
           <div class="product-footer">
-            <span class="product-price">£32</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <span class="product-price">£22</span>
+            <button class="btn-add-basket" onclick="addToBasket('Melanotan II (MT-2)', 22, '10mg')">Add to Basket</button>
           </div>
         </div>
 
       </div>
 
-      <!-- RECOVERY CATEGORY -->
+      <!-- RECOVERY -->
       <p class="category-label" style="margin-top:48px;">Recovery & Tissue Research</p>
       <div class="product-grid">
 
-        <!-- BPC-157 -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Recovery</span>
@@ -165,14 +215,13 @@
           </div>
           <h3 class="product-name">BPC-157</h3>
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Body Protective Compound. Extensively studied pentadecapeptide researched for its role in tissue repair, gut health and musculoskeletal recovery pathways.</p>
+          <p class="product-desc">Body Protective Compound. Studied for tissue repair, gut health and musculoskeletal recovery pathways.</p>
           <div class="product-footer">
-            <span class="product-price">£19</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <span class="product-price">£22</span>
+            <button class="btn-add-basket" onclick="addToBasket('BPC-157', 22, '10mg')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- TB-500 -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Recovery</span>
@@ -180,14 +229,13 @@
           </div>
           <h3 class="product-name">TB-500</h3>
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Thymosin Beta-4 fragment. Studied for its role in cell migration, angiogenesis and inflammatory response in tissue repair research models.</p>
+          <p class="product-desc">Thymosin Beta-4 fragment. Studied for cell migration, angiogenesis and inflammatory response in tissue repair models.</p>
           <div class="product-footer">
-            <span class="product-price">£38</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <span class="product-price">£52</span>
+            <button class="btn-add-basket" onclick="addToBasket('TB-500', 52, '10mg')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- GHK-Cu -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Cosmetic / Longevity</span>
@@ -195,14 +243,13 @@
           </div>
           <h3 class="product-name">GHK-Cu</h3>
           <p class="product-dose">50mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Copper peptide tripeptide studied for collagen synthesis, wound healing and gene expression regulation. Popular in longevity and skin research applications.</p>
+          <p class="product-desc">Copper peptide studied for collagen synthesis, wound healing and gene expression regulation.</p>
           <div class="product-footer">
             <span class="product-price">£19</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('GHK-Cu', 19, '50mg')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- KPV -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Anti-Inflammatory</span>
@@ -210,10 +257,10 @@
           </div>
           <h3 class="product-name">KPV</h3>
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Lysine-Proline-Valine tripeptide derived from alpha-MSH. Studied for anti-inflammatory and gut health research, particularly in intestinal inflammation models.</p>
+          <p class="product-desc">Lysine-Proline-Valine tripeptide studied for anti-inflammatory and gut health research.</p>
           <div class="product-footer">
             <span class="product-price">£24</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('KPV', 24, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -223,7 +270,6 @@
       <p class="category-label" style="margin-top:48px;">Growth Hormone Secretagogues</p>
       <div class="product-grid">
 
-        <!-- Ipamorelin -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">GH Secretagogue</span>
@@ -231,14 +277,13 @@
           </div>
           <h3 class="product-name">Ipamorelin</h3>
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Selective growth hormone secretagogue and ghrelin receptor agonist. Studied for its role in GH pulse stimulation with minimal effect on cortisol or prolactin levels.</p>
+          <p class="product-desc">Selective GH secretagogue studied for GH pulse stimulation with minimal effect on cortisol or prolactin.</p>
           <div class="product-footer">
             <span class="product-price">£22</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('Ipamorelin', 22, '5mg')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- Tesamorelin -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">GH Secretagogue</span>
@@ -246,14 +291,13 @@
           </div>
           <h3 class="product-name">Tesamorelin</h3>
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Synthetic analogue of growth hormone releasing hormone (GHRH). Studied extensively for its role in GH secretion, visceral fat reduction and cognitive function research models.</p>
+          <p class="product-desc">Synthetic GHRH analogue studied for GH secretion, visceral fat reduction and cognitive function research.</p>
           <div class="product-footer">
-            <span class="product-price">£45</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <span class="product-price">£58</span>
+            <button class="btn-add-basket" onclick="addToBasket('Tesamorelin', 58, '5mg')">Add to Basket</button>
           </div>
         </div>
 
-        <!-- CJC-1295 -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">GH Secretagogue</span>
@@ -261,20 +305,19 @@
           </div>
           <h3 class="product-name">CJC-1295 (No DAC)</h3>
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Modified GRF 1-29. Growth hormone releasing hormone analogue studied for its ability to stimulate GH secretion. Commonly researched alongside Ipamorelin for synergistic GH pathway studies.</p>
+          <p class="product-desc">Modified GRF 1-29. Commonly researched alongside Ipamorelin for synergistic GH pathway studies.</p>
           <div class="product-footer">
             <span class="product-price">£35</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('CJC-1295 No DAC', 35, '5mg')">Add to Basket</button>
           </div>
         </div>
 
       </div>
 
-      <!-- LONGEVITY CATEGORY -->
+      <!-- LONGEVITY -->
       <p class="category-label" style="margin-top:48px;">Longevity Research</p>
       <div class="product-grid">
 
-        <!-- MOTS-c -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Longevity</span>
@@ -282,20 +325,19 @@
           </div>
           <h3 class="product-name">MOTS-c</h3>
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Mitochondrial-derived peptide studied for metabolic regulation, insulin sensitivity and cellular longevity pathways. <strong style="color:var(--accent)">Popular stack with Retatrutide — low stock on both.</strong></p>
+          <p class="product-desc">Mitochondrial-derived peptide studied for metabolic regulation and cellular longevity. <strong style="color:var(--accent)">Popular stack with Retatrutide.</strong></p>
           <div class="product-footer">
             <span class="product-price">£31</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('MOTS-c', 31, '10mg')">Add to Basket</button>
           </div>
         </div>
 
       </div>
 
-      <!-- STACKS CATEGORY -->
+      <!-- STACKS -->
       <p class="category-label" style="margin-top:48px;">Research Stacks</p>
       <div class="product-grid">
 
-        <!-- KLOW Stack -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Blend Stack</span>
@@ -303,10 +345,10 @@
           </div>
           <h3 class="product-name">KLOW Stack</h3>
           <p class="product-dose">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg / vial</p>
-          <p class="product-desc">Our comprehensive recovery and longevity research blend. Combines four of the most studied tissue repair and anti-inflammatory peptides into a single convenient vial.</p>
+          <p class="product-desc">Comprehensive recovery and longevity research blend. Four of the most studied tissue repair peptides in one vial.</p>
           <div class="product-footer">
             <span class="product-price">£66</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+            <button class="btn-add-basket" onclick="addToBasket('KLOW Stack', 66, '80mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -321,9 +363,9 @@
       <div class="about-text">
         <h2 class="section-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
         <p>I've been researching peptides for over a decade. Started out of curiosity, kept going because the results — in my own personal research — were hard to ignore.</p>
-        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to — but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described. I know what good looks like now, and I know what bad looks like too.</p>
+        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to — but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
         <p>North Peptides UK started because I kept getting asked by people I knew — where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
-        <p>I'm not a lab. I'm not a pharmaceutical company. I'm just someone based in the north of England who's spent a long time in this space, knows the products well, and wants to make good quality research compounds accessible at a fair price.</p>
+        <p>I'm not a lab. I'm not a pharmaceutical company. I'm just someone based in the north of England who's spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
         <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site.</p>
         <div class="about-sig">
           <span class="about-sig-name">— North Peptides UK</span>
@@ -331,22 +373,10 @@
         </div>
       </div>
       <div class="about-stats">
-        <div class="about-stat">
-          <span class="about-stat-number">10+</span>
-          <span class="about-stat-label">Years researching peptides personally</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-number">UK</span>
-          <span class="about-stat-label">Based, ordered and dispatched locally</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-number">5</span>
-          <span class="about-stat-label">Years working with our trusted suppliers</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-number">100%</span>
-          <span class="about-stat-label">Products personally researched before listing</span>
-        </div>
+        <div class="about-stat"><span class="about-stat-number">10+</span><span class="about-stat-label">Years researching peptides personally</span></div>
+        <div class="about-stat"><span class="about-stat-number">UK</span><span class="about-stat-label">Based, ordered and dispatched locally</span></div>
+        <div class="about-stat"><span class="about-stat-number">5</span><span class="about-stat-label">Years working with trusted suppliers</span></div>
+        <div class="about-stat"><span class="about-stat-number">100%</span><span class="about-stat-label">Products personally researched before listing</span></div>
       </div>
     </div>
   </section>
@@ -358,23 +388,23 @@
     <div class="steps-grid">
       <div class="step">
         <div class="step-number">01</div>
-        <h3>Message Us on Telegram</h3>
-        <p>Contact <strong>@NORTHPEPTIDESUK</strong> on Telegram with the product name, size, quantity and your delivery address.</p>
+        <h3>Add to Basket</h3>
+        <p>Browse our products, select your size and quantity, and add to basket.</p>
       </div>
       <div class="step">
         <div class="step-number">02</div>
-        <h3>Receive Invoice</h3>
-        <p>We'll confirm availability, send you a total including postage, and provide crypto wallet details for payment.</p>
+        <h3>Place Your Order</h3>
+        <p>Enter your name, email and delivery address at checkout. No payment needed yet.</p>
       </div>
       <div class="step">
         <div class="step-number">03</div>
-        <h3>Pay via Crypto</h3>
-        <p>We accept Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC) and USDT. Payment confirmed within 1–2 hours typically.</p>
+        <h3>We Email You</h3>
+        <p>We'll email you within 24 hours with your total and crypto wallet details — BTC, ETH, LTC or USDT.</p>
       </div>
       <div class="step">
         <div class="step-number">04</div>
         <h3>Dispatched</h3>
-        <p>Orders dispatched within 24–48 hours of payment confirmation. Tracked shipping available on request.</p>
+        <p>Once payment is confirmed, your order is dispatched within 24–48 hours. Tracked shipping available.</p>
       </div>
     </div>
   </section>
@@ -422,17 +452,23 @@
     <p class="footer-disclaimer">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
 
-  <!-- TELEGRAM FLOAT — desktop only -->
-  <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="tg-float">
-    ✈ Order on Telegram
-  </a>
+  <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="tg-float">✈ Order on Telegram</a>
 
+  <script src="basket.js"></script>
   <script>
     function updatePrice(selectId, priceId, stockId) {
       const select = document.getElementById(selectId);
       const parts = select.value.split('|');
       document.getElementById(priceId).textContent = '£' + parts[0];
       document.getElementById(stockId).textContent = parts[1];
+    }
+
+    function addToBasketVariant(selectId, name) {
+      const select = document.getElementById(selectId);
+      const parts = select.value.split('|');
+      const price = parseInt(parts[0]);
+      const dose = parts[2];
+      addToBasket(name, price, dose);
     }
   </script>
 
