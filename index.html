@@ -2,12 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>North Peptides UK — Buy Research Peptides UK | Retatrutide, Tirzepatide, Melanotan & More</title>
   <meta name="description" content="North Peptides UK — premium research peptides including Retatrutide, Tirzepatide, Melanotan II, BPC-157, TB-500, Ipamorelin, Tesamorelin and CJC-1295. UK-stocked. Fast dispatch. Crypto accepted.">
   <meta name="keywords" content="buy retatrutide UK, buy tirzepatide UK, buy melanotan UK, melanotan 2 UK, MT-2 UK, research peptides UK, BPC-157 UK, TB-500 UK, ipamorelin UK, tesamorelin UK, CJC-1295 UK, GHK-Cu UK, KLOW stack UK, peptides UK, MOTS-c UK">
   <link rel="canonical" href="https://northpeptidesuk.com/">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-top: 40px;
+      background: var(--grey);
+    }
+
+    .trust-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-right: 1px solid var(--border);
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .trust-strip-item:last-child { border-right: none; }
+
+    .trust-strip-icon { font-size: 1rem; flex-shrink: 0; }
+
+    .trust-strip-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* HESITANT BUYER SECTION */
+    .help-section {
+      background: var(--grey);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px;
+    }
+
+    .help-inner {
+      max-width: 600px;
+    }
+
+    .help-section .section-tag { margin-bottom: 16px; }
+
+    .help-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .help-title em { font-style: normal; color: var(--accent); }
+
+    .help-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    .help-payment-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--border);
+      padding-left: 14px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 460px;
+    }
+
+    .help-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--black);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .help-btn:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .trust-strip { flex-direction: column; }
+      .trust-strip-item { border-right: none; border-bottom: 1px solid var(--border); min-width: unset; }
+      .trust-strip-item:last-child { border-bottom: none; }
+      .help-section { padding: 48px 20px; }
+      .hero h1 { font-size: 2.4rem !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,8 +124,6 @@
       <h3>Your Basket</h3>
       <button class="basket-close" onclick="hideBasket()">✕</button>
     </div>
-
-    <!-- BASKET VIEW -->
     <div id="basket-view">
       <div class="basket-items" id="basket-items">
         <p class="basket-empty">Your basket is empty.</p>
@@ -33,59 +135,6 @@
         </div>
         <button class="btn-checkout" onclick="goToCheckout()">Proceed to Checkout →</button>
       </div>
-    </div>
-
-    <!-- CHECKOUT VIEW -->
-    <div id="checkout-view" class="checkout-view">
-      <div class="basket-items">
-        <button class="checkout-back" onclick="backToBasket()">← Back to Basket</button>
-        <div class="checkout-summary" id="checkout-summary"></div>
-        <p class="form-note">⚠ We will contact you via email with your crypto payment details within 24 hours. Research use only.</p>
-        <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
-          <input type="hidden" name="order" id="order-details">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" name="name" required placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" required placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label>Address Line 1</label>
-            <input type="text" name="address1" required placeholder="House number and street name">
-          </div>
-          <div class="form-group">
-            <label>Address Line 2 <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <input type="text" name="address2" placeholder="Apartment, flat, unit etc.">
-          </div>
-          <div class="form-group">
-            <label>Town / City</label>
-            <input type="text" name="city" required placeholder="Town or city">
-          </div>
-          <div class="form-group">
-            <label>County <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <input type="text" name="county" placeholder="County">
-          </div>
-          <div class="form-group">
-            <label>Postcode</label>
-            <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
-          </div>
-          <div class="form-group">
-            <label>Notes <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <textarea name="notes" placeholder="Any additional notes"></textarea>
-          </div>
-          <button type="submit" class="btn-checkout" id="submit-btn">Place Order →</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- SUCCESS VIEW -->
-    <div id="success-view" class="success-view">
-      <div class="success-icon">✓</div>
-      <h3>Order Received</h3>
-      <p>Thanks — we'll email you within 24 hours with your crypto payment details to complete the order.</p>
-      <p style="margin-top:12px;">Questions? Message us: <strong>@NORTHPEPTIDESUK</strong></p>
     </div>
   </div>
 
@@ -111,7 +160,28 @@
     <p class="hero-tag">// UK Research Peptides — Fast Dispatch</p>
     <h1>Research<br>Peptides.<br><em>UK Stocked.</em></h1>
     <p class="hero-sub">High-purity research compounds including GLP-1 agonists, recovery peptides, growth hormone secretagogues and longevity stacks. Dispatched from the UK. Crypto accepted.</p>
-    <div class="hero-actions">
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-strip-item">
+        <span class="trust-strip-icon">🧊</span>
+        <span class="trust-strip-text">Stored frozen at optimal temperature until dispatch</span>
+      </div>
+      <div class="trust-strip-item">
+        <span class="trust-strip-icon">✅</span>
+        <span class="trust-strip-text">99%+ purity standard on all compounds</span>
+      </div>
+      <div class="trust-strip-item">
+        <span class="trust-strip-icon">🇬🇧</span>
+        <span class="trust-strip-text">UK based and dispatched same or next day</span>
+      </div>
+      <div class="trust-strip-item">
+        <span class="trust-strip-icon">₿</span>
+        <span class="trust-strip-text">Crypto accepted — BTC, ETH, LTC, USDT</span>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="margin-top:32px;">
       <a href="#products" class="btn-primary">Browse Products →</a>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-secondary">Contact on Telegram</a>
     </div>
@@ -134,7 +204,6 @@
       <p class="section-tag">// Research Compounds</p>
       <h2 class="section-title">Our Products</h2>
 
-      <!-- GLP-1 -->
       <p class="category-label">GLP-1 / Metabolic Research</p>
       <div class="product-grid">
 
@@ -200,7 +269,6 @@
 
       </div>
 
-      <!-- PIGMENTATION -->
       <p class="category-label" style="margin-top:48px;">Pigmentation Research</p>
       <div class="product-grid">
 
@@ -220,7 +288,6 @@
 
       </div>
 
-      <!-- RECOVERY -->
       <p class="category-label" style="margin-top:48px;">Recovery & Tissue Research</p>
       <div class="product-grid">
 
@@ -282,7 +349,6 @@
 
       </div>
 
-      <!-- GH SECRETAGOGUES -->
       <p class="category-label" style="margin-top:48px;">Growth Hormone Secretagogues</p>
       <div class="product-grid">
 
@@ -330,7 +396,6 @@
 
       </div>
 
-      <!-- LONGEVITY -->
       <p class="category-label" style="margin-top:48px;">Longevity Research</p>
       <div class="product-grid">
 
@@ -350,7 +415,6 @@
 
       </div>
 
-      <!-- STACKS -->
       <p class="category-label" style="margin-top:48px;">Research Stacks</p>
       <div class="product-grid">
 
@@ -372,17 +436,29 @@
     </div>
   </section>
 
+  <!-- HESITANT BUYER -->
+  <section class="help-section">
+    <div class="help-inner">
+      <p class="section-tag">// Not Sure Yet?</p>
+      <h2 class="help-title">Got questions?<br><em>Just message me directly.</em></h2>
+      <p class="help-body">I know buying research compounds online for the first time can feel daunting. I've been in this space for over a decade and I'm genuinely happy to help — whether that's answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
+      <p class="help-body">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
+      <p class="help-payment-note">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options — I'm flexible and always happy to find a solution that works for you.</p>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-btn">Message Me on Telegram →</a>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="about-section" id="about">
     <p class="section-tag">// Who We Are</p>
     <div class="about-grid">
       <div class="about-text">
         <h2 class="section-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
-        <p>I've been researching peptides for over a decade. Started out of curiosity, kept going because the results — in my own personal research — were hard to ignore.</p>
-        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to — but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
-        <p>North Peptides UK started because I kept getting asked by people I knew — where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
+        <p>I've been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
+        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
+        <p>North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
         <p>I'm not a lab. I'm not a pharmaceutical company. I'm just someone based in the north of England who's spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
-        <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site.</p>
+        <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site. All stock is kept frozen at optimal temperature right up until the moment it's dispatched to you.</p>
         <div class="about-sig">
           <span class="about-sig-name">— North Peptides UK</span>
           <span class="about-sig-tag">// Est. 2025 · Northern England</span>
@@ -392,7 +468,7 @@
         <div class="about-stat"><span class="about-stat-number">10+</span><span class="about-stat-label">Years researching peptides personally</span></div>
         <div class="about-stat"><span class="about-stat-number">UK</span><span class="about-stat-label">Based, ordered and dispatched locally</span></div>
         <div class="about-stat"><span class="about-stat-number">5</span><span class="about-stat-label">Years working with trusted suppliers</span></div>
-        <div class="about-stat"><span class="about-stat-number">100%</span><span class="about-stat-label">Products personally researched before listing</span></div>
+        <div class="about-stat"><span class="about-stat-number">🧊</span><span class="about-stat-label">All stock stored frozen at optimal temp until dispatch</span></div>
       </div>
     </div>
   </section>
@@ -415,12 +491,12 @@
       <div class="step">
         <div class="step-number">03</div>
         <h3>We Email You</h3>
-        <p>We'll email you within 24 hours with your total and crypto wallet details — BTC, ETH, LTC or USDT.</p>
+        <p>We'll email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
       </div>
       <div class="step">
         <div class="step-number">04</div>
         <h3>Dispatched</h3>
-        <p>Once payment is confirmed your order is dispatched within 24–48 hours. Tracked shipping available.</p>
+        <p>Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p>
       </div>
     </div>
   </section>
@@ -439,7 +515,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">NORTH<span style="color:var(--accent)">PEPTIDES</span>UK</div>
-        <p>Premium research peptides dispatched from the UK. High purity compounds for legitimate scientific research.</p>
+        <p>Premium research peptides dispatched from the UK. Stored frozen until dispatch. High purity compounds for legitimate scientific research.</p>
       </div>
       <div class="footer-col">
         <h4>Products</h4>
