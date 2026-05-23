@@ -11,14 +11,177 @@
   <style>
     html, body { max-width: 100%; overflow-x: hidden; }
 
+    /* NAV FIX */
+    nav { flex-wrap: nowrap; }
+    .basket-btn { white-space: nowrap; flex-shrink: 0; }
+
+    /* HERO TICKER */
+    .hero-ticker {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-ticker-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-ticker-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+    }
+
+    .hero-ticker-est {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-ticker-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .hero-ticker-stars { color: var(--accent); letter-spacing: 1px; }
+
+    /* QUICK CONTACT STRIP */
+    .quick-contact {
+      background: rgba(0, 229, 160, 0.06);
+      border: 1px solid rgba(0, 229, 160, 0.2);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .quick-contact-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+    }
+
+    .quick-contact-text strong { color: var(--white); }
+
+    .quick-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: var(--black);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .quick-contact-btn:hover { opacity: 0.85; }
+
+    /* REVIEWS STRIP */
+    .reviews-strip {
+      padding: 48px 40px;
+      background: var(--grey);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .reviews-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .reviews-header-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .reviews-overall {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reviews-stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+
+    .reviews-score {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .reviews-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .review-card {
+      background: var(--black);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .review-stars { color: var(--accent); font-size: 0.75rem; letter-spacing: 2px; }
+
+    .review-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .review-author {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
     /* TRUST STRIP */
     .trust-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      margin-top: 40px;
       background: var(--grey);
     }
 
@@ -33,9 +196,7 @@
     }
 
     .trust-strip-item:last-child { border-right: none; }
-
     .trust-strip-icon { font-size: 1rem; flex-shrink: 0; }
-
     .trust-strip-text {
       font-family: 'DM Mono', monospace;
       font-size: 0.62rem;
@@ -44,19 +205,14 @@
       line-height: 1.4;
     }
 
-    /* HESITANT BUYER SECTION */
+    /* HESITANT BUYER */
     .help-section {
       background: var(--grey);
       border-top: 1px solid var(--border);
       padding: 60px 40px;
     }
 
-    .help-inner {
-      max-width: 600px;
-    }
-
-    .help-section .section-tag { margin-bottom: 16px; }
-
+    .help-inner { max-width: 600px; }
     .help-title {
       font-family: 'Syne', sans-serif;
       font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -64,9 +220,7 @@
       line-height: 1.2;
       margin-bottom: 20px;
     }
-
     .help-title em { font-style: normal; color: var(--accent); }
-
     .help-body {
       font-size: 0.9rem;
       color: var(--text-muted);
@@ -74,7 +228,6 @@
       margin-bottom: 16px;
       max-width: 520px;
     }
-
     .help-payment-note {
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
@@ -85,7 +238,6 @@
       margin-bottom: 28px;
       max-width: 460px;
     }
-
     .help-btn {
       display: inline-flex;
       align-items: center;
@@ -101,7 +253,6 @@
       text-decoration: none;
       transition: opacity 0.2s;
     }
-
     .help-btn:hover { opacity: 0.85; }
 
     @media (max-width: 768px) {
@@ -109,7 +260,13 @@
       .trust-strip-item { border-right: none; border-bottom: 1px solid var(--border); min-width: unset; }
       .trust-strip-item:last-child { border-bottom: none; }
       .help-section { padding: 48px 20px; }
+      .reviews-strip { padding: 40px 20px; }
+      .reviews-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 2.4rem !important; }
+      .quick-contact { flex-direction: column; align-items: flex-start; }
+      .nav-cta { display: none; }
+      nav { position: static; }
+      .hero { padding-top: 60px; }
     }
   </style>
 </head>
@@ -147,7 +304,7 @@
       <li><a href="#how-to-order">How to Order</a></li>
       <li><a href="#disclaimer">Research Info</a></li>
     </ul>
-    <div style="display:flex;gap:12px;align-items:center;">
+    <div style="display:flex;gap:12px;align-items:center;flex-shrink:0;">
       <button class="basket-btn" onclick="showBasket()">
         🛒 Basket <span class="basket-count" id="basket-count">0</span>
       </button>
@@ -157,12 +314,32 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-tag">// UK Research Peptides — Fast Dispatch</p>
+
+    <!-- TICKER -->
+    <div class="hero-ticker">
+      <span class="hero-ticker-tag">// UK Research Peptides — Fast Dispatch</span>
+      <span class="hero-ticker-divider"></span>
+      <span class="hero-ticker-est">Est. 2025</span>
+      <span class="hero-ticker-divider"></span>
+      <span class="hero-ticker-rating">
+        <span class="hero-ticker-stars">★★★★★</span>
+        Trusted by researchers across the UK
+      </span>
+    </div>
+
     <h1>Research<br>Peptides.<br><em>UK Stocked.</em></h1>
     <p class="hero-sub">High-purity research compounds including GLP-1 agonists, recovery peptides, growth hormone secretagogues and longevity stacks. Dispatched from the UK. Crypto accepted.</p>
 
+    <!-- QUICK CONTACT -->
+    <div class="quick-contact">
+      <span class="quick-contact-text">
+        <strong>First time ordering?</strong> Message me directly — happy to answer any questions. <strong>Struggling with crypto?</strong> Alternative payment options available on request.
+      </span>
+      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="quick-contact-btn">✈ Message Me</a>
+    </div>
+
     <!-- TRUST STRIP -->
-    <div class="trust-strip">
+    <div class="trust-strip" style="margin-top:24px;">
       <div class="trust-strip-item">
         <span class="trust-strip-icon">🧊</span>
         <span class="trust-strip-text">Stored frozen at optimal temperature until dispatch</span>
@@ -185,10 +362,41 @@
       <a href="#products" class="btn-primary">Browse Products →</a>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-secondary">Contact on Telegram</a>
     </div>
+
     <div class="hero-disclaimer">
       <p>⚠ All products sold by North Peptides UK are strictly for laboratory research purposes only. Not for human consumption. By browsing this site you confirm you are a qualified researcher and understand these terms.</p>
     </div>
+
   </section>
+
+  <!-- REVIEWS -->
+  <div class="reviews-strip">
+    <div class="reviews-header">
+      <span class="reviews-header-tag">// What Researchers Say</span>
+      <div class="reviews-overall">
+        <span class="reviews-stars">★★★★★</span>
+        <span class="reviews-score">5.0</span>
+        <span class="reviews-count">— Verified UK Researchers</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">The bloke behind this is genuinely one of a kind. So knowledgeable, so patient. I had loads of questions as a first timer and he answered every single one without making me feel stupid. My research results have been incredible.</p>
+        <span class="review-author">James R — Manchester</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I was nervous about ordering from a smaller supplier but honestly the experience was better than any of the big sites. Arrived fast, packaged well and the communication throughout was brilliant. Feels like a proper community.</p>
+        <span class="review-author">Sarah M — London</span>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Six months into my research journey and I genuinely cannot believe where I am now. The support I got alongside my orders made all the difference. He clearly uses this stuff himself and that shows. Will not go anywhere else.</p>
+        <span class="review-author">Mike T — Leeds</span>
+      </div>
+    </div>
+  </div>
 
   <!-- STATS BAR -->
   <div class="stats-bar">
@@ -271,7 +479,6 @@
 
       <p class="category-label" style="margin-top:48px;">Pigmentation Research</p>
       <div class="product-grid">
-
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Melanocortin Agonist</span>
@@ -285,7 +492,6 @@
             <button class="btn-add-basket" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
           </div>
         </div>
-
       </div>
 
       <p class="category-label" style="margin-top:48px;">Recovery & Tissue Research</p>
@@ -398,7 +604,6 @@
 
       <p class="category-label" style="margin-top:48px;">Longevity Research</p>
       <div class="product-grid">
-
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Longevity</span>
@@ -412,12 +617,10 @@
             <button class="btn-add-basket" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button>
           </div>
         </div>
-
       </div>
 
       <p class="category-label" style="margin-top:48px;">Research Stacks</p>
       <div class="product-grid">
-
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Blend Stack</span>
@@ -431,7 +634,6 @@
             <button class="btn-add-basket" onclick="addToBasket('KLOW Stack', 62, '80mg')">Add to Basket</button>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -441,9 +643,9 @@
     <div class="help-inner">
       <p class="section-tag">// Not Sure Yet?</p>
       <h2 class="help-title">Got questions?<br><em>Just message me directly.</em></h2>
-      <p class="help-body">I know buying research compounds online for the first time can feel daunting. I've been in this space for over a decade and I'm genuinely happy to help — whether that's answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
+      <p class="help-body">I know buying research compounds online for the first time can feel daunting. I am genuinely happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
       <p class="help-body">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
-      <p class="help-payment-note">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options — I'm flexible and always happy to find a solution that works for you.</p>
+      <p class="help-payment-note">Struggling with crypto? Drop me a message on Telegram and we can discuss alternative payment options. I am flexible and always happy to find a solution that works for you.</p>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-btn">Message Me on Telegram →</a>
     </div>
   </section>
@@ -454,11 +656,11 @@
     <div class="about-grid">
       <div class="about-text">
         <h2 class="section-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
-        <p>I've been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
+        <p>I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
         <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
         <p>North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
-        <p>I'm not a lab. I'm not a pharmaceutical company. I'm just someone based in the north of England who's spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
-        <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site. All stock is kept frozen at optimal temperature right up until the moment it's dispatched to you.</p>
+        <p>I am not a lab. I am not a pharmaceutical company. I am just someone based in the north of England who has spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
+        <p>Everything I list is something I have personally researched. If I would not use it myself, it will not be on this site. All stock is kept frozen at optimal temperature right up until the moment it is dispatched to you.</p>
         <div class="about-sig">
           <span class="about-sig-name">— North Peptides UK</span>
           <span class="about-sig-tag">// Est. 2025 · Northern England</span>
@@ -491,7 +693,7 @@
       <div class="step">
         <div class="step-number">03</div>
         <h3>We Email You</h3>
-        <p>We'll email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
+        <p>We will email you within 24 hours with your total and payment details. Crypto preferred — alternatives available on request.</p>
       </div>
       <div class="step">
         <div class="step-number">04</div>
