@@ -568,28 +568,65 @@
     .btn-checkout { width: 100%; padding: 14px; background: #1a1a1a; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; transition: background 0.2s; }
     .btn-checkout:hover { background: #00A67E; }
 
+    /* ===== SLIM TRUST BAR ===== */
+    .slim-trust {
+      background: #1a1a1a;
+      color: #9CA3AF;
+      padding: 8px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .slim-trust a { color: #00A67E; text-decoration: none; }
+    .slim-trust a:hover { text-decoration: underline; }
+    .trust-divider { color: #374151; }
+
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
-      .shop-nav { padding: 12px 20px; }
+      /* Nav */
+      .shop-nav { padding: 14px 16px; }
       .shop-nav-links { display: none; }
       .shop-contact-btn { display: none; }
-      .trust-bar { padding: 10px 20px; gap: 16px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-      .quick-contact-bar { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
-      .reviews-bar { padding: 24px 20px; }
+      .shop-basket-btn { padding: 10px 12px; }
+      /* Trust */
+      .slim-trust { padding: 8px 16px; gap: 8px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; }
+      .trust-divider { display: none; }
+      /* Reviews */
+      .reviews-bar { padding: 20px 16px; }
       .reviews-bar-grid { grid-template-columns: 1fr; }
-      .shop-section { padding: 24px 20px; }
-      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .shop-card-price { font-size: 1rem; }
-      .about-light { padding: 40px 20px; }
-      .about-light-grid { grid-template-columns: 1fr; gap: 32px; }
+      .reviews-bar-header { flex-wrap: wrap; gap: 6px; }
+      /* Products */
+      .shop-section { padding: 20px 16px; }
+      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .shop-card-name { font-size: 0.85rem; }
+      .shop-card-price { font-size: 0.95rem; }
+      .shop-add-btn { padding: 8px 10px; font-size: 0.6rem; }
+      .shop-category { padding: 20px 0 10px; }
+      /* About */
+      .about-light { padding: 32px 16px; }
+      .about-light-grid { grid-template-columns: 1fr; gap: 24px; }
       .about-light-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
-      .how-light { padding: 40px 20px; }
-      .help-light { padding: 40px 20px; }
-      .disclaimer-light { padding: 24px 20px; }
-      .footer-light { padding: 40px 20px 80px; }
-      .footer-light-grid { grid-template-columns: 1fr; gap: 28px; }
+      /* How */
+      .how-light { padding: 32px 16px; }
+      /* Help */
+      .help-light { padding: 32px 16px; }
+      /* Disclaimer */
+      .disclaimer-light { padding: 20px 16px; }
+      /* Footer */
+      .footer-light { padding: 32px 16px 80px; }
+      .footer-light-grid { grid-template-columns: 1fr; gap: 24px; }
       .footer-light-bottom { flex-direction: column; gap: 4px; }
+      /* Basket */
       .basket-drawer { width: 100vw; }
+      /* Modal */
+      .modal-box { margin: 0; border-radius: 12px 12px 0 0; position: fixed; bottom: 0; left: 0; right: 0; max-width: 100%; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
     }
     @media (max-width: 380px) {
       .shop-grid { grid-template-columns: 1fr; }
@@ -654,29 +691,25 @@
       <li><a href="#disclaimer">Research Info</a></li>
     </ul>
     <div class="shop-nav-right">
-      <button class="shop-basket-btn" onclick="showBasket()">🛒 Basket <span class="shop-basket-count" id="basket-count">0</span></button>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="shop-contact-btn">✈ Contact</a>
+      <button class="shop-basket-btn" onclick="showBasket()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="shop-basket-count" id="basket-count" style="display:none;">0</span>
+      </button>
     </div>
   </nav>
 
-  <!-- ANNOUNCEMENT -->
-  <div class="announcement">
-    🧊 All stock stored frozen until dispatch &nbsp;·&nbsp; UK based — same or next day &nbsp;·&nbsp; <a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Questions? Message us on Telegram →</a>
-  </div>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <span class="trust-bar-item">✅ 99%+ purity on all compounds</span>
-    <span class="trust-bar-item">🇬🇧 UK dispatched</span>
-    <span class="trust-bar-item">₿ BTC · ETH · LTC · USDT</span>
-    <span class="trust-bar-item">📦 Tracked shipping available</span>
-    <span class="trust-bar-item">💬 24h Telegram support</span>
-  </div>
-
-  <!-- QUICK CONTACT -->
-  <div class="quick-contact-bar">
-    <span class="quick-contact-bar-text"><strong>First time ordering?</strong> Message me directly — happy to help with any questions. <strong>Struggling with crypto?</strong> Alternative payment options available on request.</span>
-    <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="quick-contact-bar-btn">✈ Message Me</a>
+  <!-- SLIM TRUST BAR -->
+  <div class="slim-trust">
+    <span>🧊 Frozen until dispatch</span>
+    <span class="trust-divider">·</span>
+    <span>✅ 99%+ purity</span>
+    <span class="trust-divider">·</span>
+    <span>🇬🇧 UK dispatched</span>
+    <span class="trust-divider">·</span>
+    <span>₿ Crypto accepted</span>
+    <span class="trust-divider">·</span>
+    <a href="https://t.me/NORTHPEPTIDESUK" target="_blank">✈ Questions? Message me</a>
   </div>
 
   <!-- REVIEWS -->
@@ -741,13 +774,13 @@
       <!-- Tirzepatide -->
       <div class="shop-card">
         <div class="shop-card-img" onclick="openModal('Tirzepatide','Lyophilised Powder · Select size below','hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png',['Dual GIP and GLP-1 receptor agonist','One of the most in-demand research peptides in the UK','UK stocked — fast dispatch','High demand — order soon to secure stock','Lyophilised powder · 99%+ purity'])">
-          <img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png" alt="Tirzepatide" id="tirz-img">
+          <img src="hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg" alt="Tirzepatide" id="tirz-img">
           <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
           <span class="shop-badge badge-low">⚠ Low Stock</span>
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Tirzepatide</span>
-          <select class="shop-card-select" id="tirz-sel" onchange="updateShopPrice('tirz-sel','tirz-p','tirz-s');swapImage('tirz-img',{'10mg':'hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13__1_.png','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'},this)">
+          <select class="shop-card-select" id="tirz-sel" onchange="updateShopPrice('tirz-sel','tirz-p','tirz-s');swapImage('tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'},this)">
             <option value="39|12 Remaining|10mg">10mg — £39</option>
             <option value="69|7 Remaining|20mg">20mg — £69</option>
           </select>
