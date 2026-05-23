@@ -858,4 +858,10 @@ footer {
   .nav-cta {
     display: none;
   }
+  nav {
+    position: static;
+  }
+  .hero {
+    padding-top: 60px;
+  }
 }
