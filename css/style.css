@@ -855,4 +855,7 @@ footer {
   .tg-float {
     display: none;
   }
+  .nav-cta {
+    display: none;
+  }
 }
