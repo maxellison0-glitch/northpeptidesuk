@@ -3,482 +3,632 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>North Peptides UK — Buy Research Peptides UK | Retatrutide, Tirzepatide, Melanotan & More</title>
-  <meta name="description" content="North Peptides UK — premium research peptides including Retatrutide, Tirzepatide, Melanotan II, BPC-157, TB-500, Ipamorelin, Tesamorelin and CJC-1295. UK-stocked. Fast dispatch. Crypto accepted.">
-  <meta name="keywords" content="buy retatrutide UK, buy tirzepatide UK, buy melanotan UK, melanotan 2 UK, MT-2 UK, research peptides UK, BPC-157 UK, TB-500 UK, ipamorelin UK, tesamorelin UK, CJC-1295 UK, GHK-Cu UK, KLOW stack UK, peptides UK, MOTS-c UK">
-  <link rel="canonical" href="https://northpeptidesuk.com/">
+  <title>Checkout — North Peptides UK</title>
+  <meta name="robots" content="noindex">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: var(--black); }
+
+    .checkout-page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    .checkout-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 24px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .checkout-logo span { color: var(--accent); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+
+    .trust-item {
+      background: var(--grey);
+      padding: 14px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-icon { font-size: 1.2rem; }
+
+    .trust-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    /* ORDER SUMMARY */
+    .section-heading {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .order-summary {
+      background: var(--grey);
+      margin-bottom: 24px;
+    }
+
+    .order-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order-line:last-child { border-bottom: none; }
+
+    .order-line-name {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .order-line-dose {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .order-line-qty {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin: 0 16px;
+    }
+
+    .order-line-price {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .order-empty {
+      padding: 24px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .order-subtotal {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--grey-mid);
+    }
+
+    .order-subtotal span:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .order-subtotal span:last-child {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* DELIVERY OPTIONS */
+    .delivery-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 24px;
+    }
+
+    .delivery-option {
+      background: var(--grey);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .delivery-option:hover { background: var(--grey-mid); }
+    .delivery-option.selected { background: var(--grey-mid); border-left: 2px solid var(--accent); }
+
+    .delivery-option input[type="radio"] {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .delivery-option-info { flex: 1; }
+
+    .delivery-option-name {
+      font-size: 0.85rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .delivery-option-desc {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .delivery-option-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ORDER TOTAL */
+    .order-total-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: var(--grey);
+      border-left: 2px solid var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .order-total-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .order-total-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    /* FORM */
+    .checkout-form-section {
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--grey);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-mid);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .optional-label {
+      color: var(--text-muted);
+      font-size: 0.55rem;
+      margin-left: 4px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      margin-bottom: 32px;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .testimonial {
+      background: var(--grey);
+      padding: 20px 16px;
+    }
+
+    .testimonial-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .stars {
+      color: var(--accent);
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* PLACE ORDER BTN */
+    .btn-place-order {
+      width: 100%;
+      padding: 18px;
+      background: var(--accent);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .btn-place-order:hover { opacity: 0.9; }
+    .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .order-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* SUCCESS */
+    .success-page {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .success-check {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 24px;
+    }
+
+    .success-page h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .success-page p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 340px;
+      margin: 0 auto 8px;
+    }
+
+    @media (max-width: 480px) {
+      .trust-label { font-size: 0.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- BASKET OVERLAY -->
-  <div class="basket-overlay" id="basket-overlay" onclick="hideBasket()"></div>
+<div class="checkout-page" id="main-checkout">
 
-  <!-- BASKET DRAWER -->
-  <div class="basket-drawer" id="basket-drawer">
-    <div class="basket-header">
-      <h3>Your Basket</h3>
-      <button class="basket-close" onclick="hideBasket()">✕</button>
+  <!-- LOGO -->
+  <a href="index.html" class="checkout-logo">NORTH<span>PEPTIDES</span>UK</a>
+  <a href="index.html" class="back-link">← Continue Shopping</a>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <span class="trust-icon">🔒</span>
+      <span class="trust-label">Secure Order</span>
     </div>
-
-    <!-- BASKET VIEW -->
-    <div id="basket-view">
-      <div class="basket-items" id="basket-items">
-        <p class="basket-empty">Your basket is empty.</p>
-      </div>
-      <div class="basket-footer">
-        <div class="basket-total-row">
-          <span class="basket-total-label">Total</span>
-          <span class="basket-total-amount" id="basket-total">£0</span>
-        </div>
-        <button class="btn-checkout" onclick="showCheckout()">Proceed to Checkout →</button>
-      </div>
+    <div class="trust-item">
+      <span class="trust-icon">🇬🇧</span>
+      <span class="trust-label">UK Dispatched</span>
     </div>
-
-    <!-- CHECKOUT VIEW -->
-    <div id="checkout-view" class="checkout-view">
-      <div class="basket-items">
-        <button class="checkout-back" onclick="backToBasket()">← Back to Basket</button>
-        <div class="checkout-summary" id="checkout-summary"></div>
-        <p class="form-note">⚠ We will contact you via email with your crypto payment details within 24 hours. Research use only.</p>
-        <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
-          <input type="hidden" name="order" id="order-details">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" name="name" required placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" required placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label>Address Line 1</label>
-            <input type="text" name="address1" required placeholder="House number and street name">
-          </div>
-          <div class="form-group">
-            <label>Address Line 2 <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <input type="text" name="address2" placeholder="Apartment, flat, unit etc.">
-          </div>
-          <div class="form-group">
-            <label>Town / City</label>
-            <input type="text" name="city" required placeholder="Town or city">
-          </div>
-          <div class="form-group">
-            <label>County <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <input type="text" name="county" placeholder="County">
-          </div>
-          <div class="form-group">
-            <label>Postcode</label>
-            <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
-          </div>
-          <div class="form-group">
-            <label>Notes <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
-            <textarea name="notes" placeholder="Any additional notes"></textarea>
-          </div>
-          <button type="submit" class="btn-checkout" id="submit-btn">Place Order →</button>
-        </form>
-      </div>
+    <div class="trust-item">
+      <span class="trust-icon">₿</span>
+      <span class="trust-label">Crypto Accepted</span>
     </div>
-
-    <!-- SUCCESS VIEW -->
-    <div id="success-view" class="success-view">
-      <div class="success-icon">✓</div>
-      <h3>Order Received</h3>
-      <p>Thanks — we'll email you within 24 hours with your crypto payment details to complete the order.</p>
-      <p style="margin-top:12px;">Questions? Message us: <strong>@NORTHPEPTIDESUK</strong></p>
+    <div class="trust-item">
+      <span class="trust-icon">📦</span>
+      <span class="trust-label">Tracked Shipping</span>
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">NORTH<span>PEPTIDES</span>UK</div>
-    <ul class="nav-links">
-      <li><a href="#products">Products</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#how-to-order">How to Order</a></li>
-      <li><a href="#disclaimer">Research Info</a></li>
-    </ul>
-    <div style="display:flex;gap:12px;align-items:center;">
-      <button class="basket-btn" onclick="showBasket()">
-        🛒 Basket <span class="basket-count" id="basket-count">0</span>
-      </button>
-      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="nav-cta">Contact →</a>
+  <!-- ORDER SUMMARY -->
+  <p class="section-heading">// Your Order</p>
+  <div class="order-summary">
+    <div id="checkout-lines">
+      <p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <p class="hero-tag">// UK Research Peptides — Fast Dispatch</p>
-    <h1>Research<br>Peptides.<br><em>UK Stocked.</em></h1>
-    <p class="hero-sub">High-purity research compounds including GLP-1 agonists, recovery peptides, growth hormone secretagogues and longevity stacks. Dispatched from the UK. Crypto accepted.</p>
-    <div class="hero-actions">
-      <a href="#products" class="btn-primary">Browse Products →</a>
-      <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-secondary">Contact on Telegram</a>
+    <div class="order-subtotal">
+      <span>Subtotal</span>
+      <span id="subtotal">£0</span>
     </div>
-    <div class="hero-disclaimer">
-      <p>⚠ All products sold by North Peptides UK are strictly for laboratory research purposes only. Not for human consumption. By browsing this site you confirm you are a qualified researcher and understand these terms.</p>
-    </div>
-  </section>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item"><span class="stat-number">99%+</span><span class="stat-label">Purity Standard</span></div>
-    <div class="stat-item"><span class="stat-number">UK</span><span class="stat-label">Based & Dispatched</span></div>
-    <div class="stat-item"><span class="stat-number">₿</span><span class="stat-label">Crypto Accepted</span></div>
-    <div class="stat-item"><span class="stat-number">24h</span><span class="stat-label">Response Time</span></div>
   </div>
 
-  <!-- PRODUCTS -->
-  <section class="products-section" id="products">
-    <div>
-      <p class="section-tag">// Research Compounds</p>
-      <h2 class="section-title">Our Products</h2>
-
-      <!-- GLP-1 -->
-      <p class="category-label">GLP-1 / Metabolic Research</p>
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Triple Agonist</span>
-            <span class="stock-badge stock-low">⚠ Low Stock</span>
-          </div>
-          <h3 class="product-name">Retatrutide</h3>
-          <p class="product-dose">Lyophilised Powder — Select Size Below</p>
-          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. <strong style="color:var(--accent)">60% of customers stack with MOTS-c.</strong></p>
-          <div class="variant-select-wrap">
-            <select class="variant-select" id="reta-select" onchange="updatePrice('reta-select','reta-price','reta-stock')">
-              <option value="45|5 Remaining|10mg">10mg — £45</option>
-              <option value="89|3 Remaining|20mg">20mg — £89</option>
-            </select>
-          </div>
-          <div class="product-footer">
-            <div>
-              <span class="product-price" id="reta-price">£45</span>
-              <span class="stock-note" id="reta-stock">5 Remaining</span>
-            </div>
-            <button class="btn-add-basket" onclick="addToBasketVariant('reta-select','Retatrutide')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Dual Agonist</span>
-            <span class="stock-badge stock-low">⚠ Low Stock</span>
-          </div>
-          <h3 class="product-name">Tirzepatide</h3>
-          <p class="product-dose">Lyophilised Powder — Select Size Below</p>
-          <p class="product-desc">Dual GIP and GLP-1 receptor agonist. One of the most in-demand research peptides in the UK.</p>
-          <div class="variant-select-wrap">
-            <select class="variant-select" id="tirz-select" onchange="updatePrice('tirz-select','tirz-price','tirz-stock')">
-              <option value="39|6 Remaining|10mg">10mg — £39</option>
-              <option value="69|7 Remaining|20mg">20mg — £69</option>
-            </select>
-          </div>
-          <div class="product-footer">
-            <div>
-              <span class="product-price" id="tirz-price">£39</span>
-              <span class="stock-note" id="tirz-stock">6 Remaining</span>
-            </div>
-            <button class="btn-add-basket" onclick="addToBasketVariant('tirz-select','Tirzepatide')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Combination</span>
-            <span class="stock-badge stock-soon">Out of Stock</span>
-          </div>
-          <h3 class="product-name">CagriSema</h3>
-          <p class="product-dose">Cagrilintide 5mg + Semaglutide 5mg / vial</p>
-          <p class="product-desc">Combined amylin and GLP-1 receptor agonist blend. Join our waitlist to be first notified.</p>
-          <div class="product-footer">
-            <span class="product-price muted">From £66</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-waitlist">Join Waitlist →</a>
-          </div>
-        </div>
-
+  <!-- DELIVERY -->
+  <p class="section-heading">// Delivery</p>
+  <div class="delivery-options">
+    <label class="delivery-option selected" id="label-standard">
+      <input type="radio" name="delivery" value="standard" data-price="4.95" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
+      <div class="delivery-option-info">
+        <div class="delivery-option-name">Royal Mail Tracked 24</div>
+        <div class="delivery-option-desc">Estimated 1 to 2 working days</div>
       </div>
-
-      <!-- PIGMENTATION -->
-      <p class="category-label" style="margin-top:48px;">Pigmentation Research</p>
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Melanocortin Agonist</span>
-            <span class="stock-badge stock-low">⚠ 8 Remaining</span>
-          </div>
-          <h3 class="product-name">Melanotan II (MT-2)</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Synthetic melanocortin receptor agonist studied for melanogenesis and pigmentation pathways. Most searched research peptide in the UK during summer months.</p>
-          <div class="product-footer">
-            <span class="product-price">£19</span>
-            <button class="btn-add-basket" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
-          </div>
-        </div>
-
+      <div class="delivery-option-price">£4.95</div>
+    </label>
+    <label class="delivery-option" id="label-express">
+      <input type="radio" name="delivery" value="express" data-price="9.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
+      <div class="delivery-option-info">
+        <div class="delivery-option-name">Royal Mail Special Delivery</div>
+        <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
       </div>
+      <div class="delivery-option-price">£9.95</div>
+    </label>
+  </div>
 
-      <!-- RECOVERY -->
-      <p class="category-label" style="margin-top:48px;">Recovery & Tissue Research</p>
-      <div class="product-grid">
+  <!-- TOTAL -->
+  <div class="order-total-box">
+    <span class="order-total-label">Total inc. delivery</span>
+    <span class="order-total-amount" id="grand-total">£0</span>
+  </div>
 
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Recovery</span>
-            <span class="stock-badge stock-low">⚠ 8 Remaining</span>
-          </div>
-          <h3 class="product-name">BPC-157</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Body Protective Compound. Studied for tissue repair, gut health and musculoskeletal recovery pathways.</p>
-          <div class="product-footer">
-            <span class="product-price">£19</span>
-            <button class="btn-add-basket" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button>
-          </div>
-        </div>
+  <!-- CONTACT FORM -->
+  <p class="section-heading">// Your Details</p>
+  <div class="checkout-form-section">
+    <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
+      <input type="hidden" name="order_summary" id="order-summary-hidden">
+      <input type="hidden" name="delivery_method" id="delivery-method-hidden">
+      <input type="hidden" name="total" id="total-hidden">
 
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Recovery</span>
-            <span class="stock-badge stock-low">⚠ 7 Remaining</span>
-          </div>
-          <h3 class="product-name">TB-500</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Thymosin Beta-4 fragment. Studied for cell migration, angiogenesis and inflammatory response in tissue repair models.</p>
-          <div class="product-footer">
-            <span class="product-price">£49</span>
-            <button class="btn-add-basket" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Cosmetic / Longevity</span>
-            <span class="stock-badge stock-low">⚠ 9 Remaining</span>
-          </div>
-          <h3 class="product-name">GHK-Cu</h3>
-          <p class="product-dose">50mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Copper peptide studied for collagen synthesis, wound healing and gene expression regulation.</p>
-          <div class="product-footer">
-            <span class="product-price">£17</span>
-            <button class="btn-add-basket" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Anti-Inflammatory</span>
-            <span class="stock-badge stock-low">⚠ 6 Remaining</span>
-          </div>
-          <h3 class="product-name">KPV</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Lysine-Proline-Valine tripeptide studied for anti-inflammatory and gut health research.</p>
-          <div class="product-footer">
-            <span class="product-price">£22</span>
-            <button class="btn-add-basket" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button>
-          </div>
-        </div>
-
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" required placeholder="Your full name">
       </div>
-
-      <!-- GH SECRETAGOGUES -->
-      <p class="category-label" style="margin-top:48px;">Growth Hormone Secretagogues</p>
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">GH Secretagogue</span>
-            <span class="stock-badge stock-low">⚠ 7 Remaining</span>
-          </div>
-          <h3 class="product-name">Ipamorelin</h3>
-          <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Selective GH secretagogue studied for GH pulse stimulation with minimal effect on cortisol or prolactin.</p>
-          <div class="product-footer">
-            <span class="product-price">£19</span>
-            <button class="btn-add-basket" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">GH Secretagogue</span>
-            <span class="stock-badge stock-low">⚠ 6 Remaining</span>
-          </div>
-          <h3 class="product-name">Tesamorelin</h3>
-          <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Synthetic GHRH analogue studied for GH secretion, visceral fat reduction and cognitive function research.</p>
-          <div class="product-footer">
-            <span class="product-price">£55</span>
-            <button class="btn-add-basket" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">GH Secretagogue</span>
-            <span class="stock-badge stock-low">⚠ 8 Remaining</span>
-          </div>
-          <h3 class="product-name">CJC-1295 (No DAC)</h3>
-          <p class="product-dose">5mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Modified GRF 1-29. Commonly researched alongside Ipamorelin for synergistic GH pathway studies.</p>
-          <div class="product-footer">
-            <span class="product-price">£32</span>
-            <button class="btn-add-basket" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button>
-          </div>
-        </div>
-
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" required placeholder="your@email.com">
       </div>
-
-      <!-- LONGEVITY -->
-      <p class="category-label" style="margin-top:48px;">Longevity Research</p>
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Longevity</span>
-            <span class="stock-badge stock-low">⚠ 4 Remaining</span>
-          </div>
-          <h3 class="product-name">MOTS-c</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Mitochondrial-derived peptide studied for metabolic regulation and cellular longevity. <strong style="color:var(--accent)">Popular stack with Retatrutide.</strong></p>
-          <div class="product-footer">
-            <span class="product-price">£29</span>
-            <button class="btn-add-basket" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button>
-          </div>
-        </div>
-
+      <div class="form-group">
+        <label>Address Line 1</label>
+        <input type="text" name="address1" required placeholder="House number and street">
       </div>
-
-      <!-- STACKS -->
-      <p class="category-label" style="margin-top:48px;">Research Stacks</p>
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Blend Stack</span>
-            <span class="stock-badge stock-low">⚠ 5 Remaining</span>
-          </div>
-          <h3 class="product-name">KLOW Stack</h3>
-          <p class="product-dose">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg / vial</p>
-          <p class="product-desc">Comprehensive recovery and longevity research blend. Four of the most studied tissue repair peptides in one vial.</p>
-          <div class="product-footer">
-            <span class="product-price">£62</span>
-            <button class="btn-add-basket" onclick="addToBasket('KLOW Stack', 62, '80mg')">Add to Basket</button>
-          </div>
-        </div>
-
+      <div class="form-group">
+        <label>Address Line 2 <span class="optional-label">(optional)</span></label>
+        <input type="text" name="address2" placeholder="Flat, apartment, unit">
       </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <p class="section-tag">// Who We Are</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <h2 class="section-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
-        <p>I've been researching peptides for over a decade. Started out of curiosity, kept going because the results — in my own personal research — were hard to ignore.</p>
-        <p>Over the years I built relationships with manufacturers in China I genuinely trust. Not because I had to — but because after trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
-        <p>North Peptides UK started because I kept getting asked by people I knew — where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds for the same compounds.</p>
-        <p>I'm not a lab. I'm not a pharmaceutical company. I'm just someone based in the north of England who's spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
-        <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site.</p>
-        <div class="about-sig">
-          <span class="about-sig-name">— North Peptides UK</span>
-          <span class="about-sig-tag">// Est. 2025 · Northern England</span>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Town / City</label>
+          <input type="text" name="city" required placeholder="Town or city">
+        </div>
+        <div class="form-group">
+          <label>Postcode</label>
+          <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
         </div>
       </div>
-      <div class="about-stats">
-        <div class="about-stat"><span class="about-stat-number">10+</span><span class="about-stat-label">Years researching peptides personally</span></div>
-        <div class="about-stat"><span class="about-stat-number">UK</span><span class="about-stat-label">Based, ordered and dispatched locally</span></div>
-        <div class="about-stat"><span class="about-stat-number">5</span><span class="about-stat-label">Years working with trusted suppliers</span></div>
-        <div class="about-stat"><span class="about-stat-number">100%</span><span class="about-stat-label">Products personally researched before listing</span></div>
+      <div class="form-group">
+        <label>County <span class="optional-label">(optional)</span></label>
+        <input type="text" name="county" placeholder="County">
       </div>
-    </div>
-  </section>
+      <div class="form-group">
+        <label>Notes <span class="optional-label">(optional)</span></label>
+        <textarea name="notes" placeholder="Any notes for your order"></textarea>
+      </div>
 
-  <!-- HOW TO ORDER -->
-  <section class="how-section" id="how-to-order">
-    <p class="section-tag">// Simple Process</p>
-    <h2 class="section-title">How to Order</h2>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>Add to Basket</h3>
-        <p>Browse our products, select your size and add to basket.</p>
+      <!-- TESTIMONIALS -->
+      <div class="testimonials" style="margin-top:32px;">
+        <p class="section-heading">// What Researchers Say</p>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">The bloke behind this is genuinely one of a kind. So knowledgeable, so patient. I had loads of questions as a first timer and he answered every single one without making me feel stupid. My research results have been incredible. Cannot recommend enough.</p>
+            <span class="testimonial-author">James R — Manchester</span>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">I was nervous about ordering from a smaller supplier but honestly the experience was better than any of the big sites. Arrived fast, packaged well and the communication throughout was brilliant. Feels like a proper community not just a shop.</p>
+            <span class="testimonial-author">Sarah M — London</span>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">Six months into my research journey and I genuinely cannot believe where I am now. The support I got from this guy alongside my orders made all the difference. He clearly uses this stuff himself and that shows. Will not go anywhere else.</p>
+            <span class="testimonial-author">Mike T — Leeds</span>
+          </div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Place Your Order</h3>
-        <p>Enter your name, email and UK delivery address at checkout. No payment needed yet.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <h3>We Email You</h3>
-        <p>We'll email you within 24 hours with your total and crypto wallet details — BTC, ETH, LTC or USDT.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">04</div>
-        <h3>Dispatched</h3>
-        <p>Once payment is confirmed your order is dispatched within 24–48 hours. Tracked shipping available.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- DISCLAIMER -->
-  <section class="disclaimer-section" id="disclaimer">
-    <p class="section-tag">// Important Notice</p>
-    <div class="disclaimer-box">
-      <h3>Research Use Only</h3>
-      <p>All products listed on North Peptides UK are sold strictly for laboratory and scientific research purposes only. These compounds are not medicines, are not approved for human or animal consumption, and are not intended to diagnose, treat, cure or prevent any medical condition. By purchasing from North Peptides UK you confirm that you are a qualified researcher and that all compounds will be used exclusively in a controlled research environment in accordance with applicable laws and regulations. North Peptides UK accepts no liability for misuse of any compound sold.</p>
-    </div>
-  </section>
+      <button type="submit" class="btn-place-order" id="submit-btn">Place Order →</button>
+      <p class="order-note">No payment required now. We will email you within 24 hours with crypto payment details to complete your order. BTC · ETH · LTC · USDT accepted.</p>
+    </form>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="nav-logo">NORTH<span style="color:var(--accent)">PEPTIDES</span>UK</div>
-        <p>Premium research peptides dispatched from the UK. High purity compounds for legitimate scientific research.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Products</h4>
-        <ul>
-          <li><a href="#products">Retatrutide</a></li>
-          <li><a href="#products">Tirzepatide</a></li>
-          <li><a href="#products">Melanotan II</a></li>
-          <li><a href="#products">BPC-157</a></li>
-          <li><a href="#products">Ipamorelin</a></li>
-          <li><a href="#products">KLOW Stack</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Telegram: @NORTHPEPTIDESUK</a></li>
-          <li><a href="#how-to-order">How to Order</a></li>
-          <li><a href="#disclaimer">Research Info</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 North Peptides UK. All Rights Reserved.</p>
-      <p>Crypto Accepted: BTC · ETH · LTC · USDT</p>
-    </div>
-    <p class="footer-disclaimer">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
-  </footer>
+<!-- SUCCESS -->
+<div class="checkout-page success-page" id="success-page">
+  <div class="success-check">✓</div>
+  <h2>Order Received</h2>
+  <p>We will email you within 24 hours with your crypto payment details to complete the order.</p>
+  <p style="margin-top:8px;">Any questions — message us on Telegram: <strong style="color:var(--accent)">@NORTHPEPTIDESUK</strong></p>
+  <a href="index.html" style="display:inline-block;margin-top:32px;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
+</div>
 
-  <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="tg-float">✈ Order on Telegram</a>
+<script>
+  let basketData = [];
+  let deliveryPrice = 4.95;
+  let deliveryLabel = 'Royal Mail Tracked 24';
 
-  <script src="basket.js"></script>
-  <script>
-    function updatePrice(selectId, priceId, stockId) {
-      const select = document.getElementById(selectId);
-      const parts = select.value.split('|');
-      document.getElementById(priceId).textContent = '£' + parts[0];
-      document.getElementById(stockId).textContent = parts[1];
+  function getSubtotal() {
+    return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  }
+
+  function updateTotals() {
+    const subtotal = getSubtotal();
+    const grand = subtotal + deliveryPrice;
+    document.getElementById('subtotal').textContent = '£' + subtotal;
+    document.getElementById('grand-total').textContent = '£' + grand.toFixed(2).replace('.00', '');
+    document.getElementById('total-hidden').value = '£' + grand.toFixed(2);
+  }
+
+  function updateDelivery(radio) {
+    deliveryPrice = parseFloat(radio.dataset.price);
+    deliveryLabel = radio.dataset.label;
+    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+
+    document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
+    radio.closest('.delivery-option').classList.add('selected');
+    updateTotals();
+  }
+
+  function renderOrder() {
+    const container = document.getElementById('checkout-lines');
+    if (basketData.length === 0) {
+      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>';
+      return;
     }
-  </script>
+
+    container.innerHTML = basketData.map(item => `
+      <div class="order-line">
+        <div>
+          <div class="order-line-name">${item.name}</div>
+          <div class="order-line-dose">${item.dose}</div>
+        </div>
+        <span class="order-line-qty">x${item.qty}</span>
+        <span class="order-line-price">£${item.price * item.qty}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('order-summary-hidden').value = basketData.map(item =>
+      `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
+    ).join('\n');
+
+    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+    updateTotals();
+  }
+
+  // Load basket from sessionStorage
+  window.addEventListener('load', () => {
+    const saved = sessionStorage.getItem('npuk_basket');
+    if (saved) basketData = JSON.parse(saved);
+    renderOrder();
+  });
+
+  // Form submit
+  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(e.target.action, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('main-checkout').style.display = 'none';
+        document.getElementById('success-page').style.display = 'block';
+        sessionStorage.removeItem('npuk_basket');
+      } else {
+        btn.textContent = 'Error — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — please try again';
+      btn.disabled = false;
+    }
+  });
+</script>
 
 </body>
 </html>
