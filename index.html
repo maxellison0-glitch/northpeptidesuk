@@ -40,23 +40,39 @@
       <div class="basket-items">
         <button class="checkout-back" onclick="backToBasket()">← Back to Basket</button>
         <div class="checkout-summary" id="checkout-summary"></div>
-        <p class="form-note">⚠ We will contact you via email with your crypto payment details. All orders are for research purposes only.</p>
-        <form id="checkout-form" action="https://formspree.io/f/mnjrzpvl" method="POST">
+        <p class="form-note">⚠ We will contact you via email with your crypto payment details within 24 hours. Research use only.</p>
+        <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
           <input type="hidden" name="order" id="order-details">
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" name="name" required placeholder="Your name">
+            <input type="text" name="name" required placeholder="Your full name">
           </div>
           <div class="form-group">
             <label>Email Address</label>
             <input type="email" name="email" required placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label>Delivery Address</label>
-            <textarea name="address" required placeholder="Full delivery address including postcode"></textarea>
+            <label>Address Line 1</label>
+            <input type="text" name="address1" required placeholder="House number and street name">
           </div>
           <div class="form-group">
-            <label>Notes (optional)</label>
+            <label>Address Line 2 <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
+            <input type="text" name="address2" placeholder="Apartment, flat, unit etc.">
+          </div>
+          <div class="form-group">
+            <label>Town / City</label>
+            <input type="text" name="city" required placeholder="Town or city">
+          </div>
+          <div class="form-group">
+            <label>County <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
+            <input type="text" name="county" placeholder="County">
+          </div>
+          <div class="form-group">
+            <label>Postcode</label>
+            <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
+          </div>
+          <div class="form-group">
+            <label>Notes <span style="color:var(--text-muted);font-size:0.6rem;">(optional)</span></label>
             <textarea name="notes" placeholder="Any additional notes"></textarea>
           </div>
           <button type="submit" class="btn-checkout" id="submit-btn">Place Order →</button>
@@ -69,7 +85,7 @@
       <div class="success-icon">✓</div>
       <h3>Order Received</h3>
       <p>Thanks — we'll email you within 24 hours with your crypto payment details to complete the order.</p>
-      <p style="margin-top:12px;">Questions? Message us on Telegram: <strong>@NORTHPEPTIDESUK</strong></p>
+      <p style="margin-top:12px;">Questions? Message us: <strong>@NORTHPEPTIDESUK</strong></p>
     </div>
   </div>
 
@@ -132,13 +148,13 @@
           <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. <strong style="color:var(--accent)">60% of customers stack with MOTS-c.</strong></p>
           <div class="variant-select-wrap">
             <select class="variant-select" id="reta-select" onchange="updatePrice('reta-select','reta-price','reta-stock')">
-              <option value="48|5 Remaining|10mg">10mg — £48</option>
-              <option value="92|3 Remaining|20mg">20mg — £92</option>
+              <option value="45|5 Remaining|10mg">10mg — £45</option>
+              <option value="89|3 Remaining|20mg">20mg — £89</option>
             </select>
           </div>
           <div class="product-footer">
             <div>
-              <span class="product-price" id="reta-price">£48</span>
+              <span class="product-price" id="reta-price">£45</span>
               <span class="stock-note" id="reta-stock">5 Remaining</span>
             </div>
             <button class="btn-add-basket" onclick="addToBasketVariant('reta-select','Retatrutide')">Add to Basket</button>
@@ -155,13 +171,13 @@
           <p class="product-desc">Dual GIP and GLP-1 receptor agonist. One of the most in-demand research peptides in the UK.</p>
           <div class="variant-select-wrap">
             <select class="variant-select" id="tirz-select" onchange="updatePrice('tirz-select','tirz-price','tirz-stock')">
-              <option value="42|6 Remaining|10mg">10mg — £42</option>
-              <option value="72|7 Remaining|20mg">20mg — £72</option>
+              <option value="39|6 Remaining|10mg">10mg — £39</option>
+              <option value="69|7 Remaining|20mg">20mg — £69</option>
             </select>
           </div>
           <div class="product-footer">
             <div>
-              <span class="product-price" id="tirz-price">£42</span>
+              <span class="product-price" id="tirz-price">£39</span>
               <span class="stock-note" id="tirz-stock">6 Remaining</span>
             </div>
             <button class="btn-add-basket" onclick="addToBasketVariant('tirz-select','Tirzepatide')">Add to Basket</button>
@@ -197,8 +213,8 @@
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Synthetic melanocortin receptor agonist studied for melanogenesis and pigmentation pathways. Most searched research peptide in the UK during summer months.</p>
           <div class="product-footer">
-            <span class="product-price">£22</span>
-            <button class="btn-add-basket" onclick="addToBasket('Melanotan II (MT-2)', 22, '10mg')">Add to Basket</button>
+            <span class="product-price">£19</span>
+            <button class="btn-add-basket" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -217,8 +233,8 @@
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Body Protective Compound. Studied for tissue repair, gut health and musculoskeletal recovery pathways.</p>
           <div class="product-footer">
-            <span class="product-price">£22</span>
-            <button class="btn-add-basket" onclick="addToBasket('BPC-157', 22, '10mg')">Add to Basket</button>
+            <span class="product-price">£19</span>
+            <button class="btn-add-basket" onclick="addToBasket('BPC-157', 19, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -231,8 +247,8 @@
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Thymosin Beta-4 fragment. Studied for cell migration, angiogenesis and inflammatory response in tissue repair models.</p>
           <div class="product-footer">
-            <span class="product-price">£52</span>
-            <button class="btn-add-basket" onclick="addToBasket('TB-500', 52, '10mg')">Add to Basket</button>
+            <span class="product-price">£49</span>
+            <button class="btn-add-basket" onclick="addToBasket('TB-500', 49, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -245,8 +261,8 @@
           <p class="product-dose">50mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Copper peptide studied for collagen synthesis, wound healing and gene expression regulation.</p>
           <div class="product-footer">
-            <span class="product-price">£19</span>
-            <button class="btn-add-basket" onclick="addToBasket('GHK-Cu', 19, '50mg')">Add to Basket</button>
+            <span class="product-price">£17</span>
+            <button class="btn-add-basket" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -259,8 +275,8 @@
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Lysine-Proline-Valine tripeptide studied for anti-inflammatory and gut health research.</p>
           <div class="product-footer">
-            <span class="product-price">£24</span>
-            <button class="btn-add-basket" onclick="addToBasket('KPV', 24, '10mg')">Add to Basket</button>
+            <span class="product-price">£22</span>
+            <button class="btn-add-basket" onclick="addToBasket('KPV', 22, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -279,8 +295,8 @@
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Selective GH secretagogue studied for GH pulse stimulation with minimal effect on cortisol or prolactin.</p>
           <div class="product-footer">
-            <span class="product-price">£22</span>
-            <button class="btn-add-basket" onclick="addToBasket('Ipamorelin', 22, '5mg')">Add to Basket</button>
+            <span class="product-price">£19</span>
+            <button class="btn-add-basket" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -293,8 +309,8 @@
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Synthetic GHRH analogue studied for GH secretion, visceral fat reduction and cognitive function research.</p>
           <div class="product-footer">
-            <span class="product-price">£58</span>
-            <button class="btn-add-basket" onclick="addToBasket('Tesamorelin', 58, '5mg')">Add to Basket</button>
+            <span class="product-price">£55</span>
+            <button class="btn-add-basket" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -307,8 +323,8 @@
           <p class="product-dose">5mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Modified GRF 1-29. Commonly researched alongside Ipamorelin for synergistic GH pathway studies.</p>
           <div class="product-footer">
-            <span class="product-price">£35</span>
-            <button class="btn-add-basket" onclick="addToBasket('CJC-1295 No DAC', 35, '5mg')">Add to Basket</button>
+            <span class="product-price">£32</span>
+            <button class="btn-add-basket" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -327,8 +343,8 @@
           <p class="product-dose">10mg / vial — Lyophilised Powder</p>
           <p class="product-desc">Mitochondrial-derived peptide studied for metabolic regulation and cellular longevity. <strong style="color:var(--accent)">Popular stack with Retatrutide.</strong></p>
           <div class="product-footer">
-            <span class="product-price">£31</span>
-            <button class="btn-add-basket" onclick="addToBasket('MOTS-c', 31, '10mg')">Add to Basket</button>
+            <span class="product-price">£29</span>
+            <button class="btn-add-basket" onclick="addToBasket('MOTS-c', 29, '10mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -347,8 +363,8 @@
           <p class="product-dose">GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg / vial</p>
           <p class="product-desc">Comprehensive recovery and longevity research blend. Four of the most studied tissue repair peptides in one vial.</p>
           <div class="product-footer">
-            <span class="product-price">£66</span>
-            <button class="btn-add-basket" onclick="addToBasket('KLOW Stack', 66, '80mg')">Add to Basket</button>
+            <span class="product-price">£62</span>
+            <button class="btn-add-basket" onclick="addToBasket('KLOW Stack', 62, '80mg')">Add to Basket</button>
           </div>
         </div>
 
@@ -389,12 +405,12 @@
       <div class="step">
         <div class="step-number">01</div>
         <h3>Add to Basket</h3>
-        <p>Browse our products, select your size and quantity, and add to basket.</p>
+        <p>Browse our products, select your size and add to basket.</p>
       </div>
       <div class="step">
         <div class="step-number">02</div>
         <h3>Place Your Order</h3>
-        <p>Enter your name, email and delivery address at checkout. No payment needed yet.</p>
+        <p>Enter your name, email and UK delivery address at checkout. No payment needed yet.</p>
       </div>
       <div class="step">
         <div class="step-number">03</div>
@@ -404,7 +420,7 @@
       <div class="step">
         <div class="step-number">04</div>
         <h3>Dispatched</h3>
-        <p>Once payment is confirmed, your order is dispatched within 24–48 hours. Tracked shipping available.</p>
+        <p>Once payment is confirmed your order is dispatched within 24–48 hours. Tracked shipping available.</p>
       </div>
     </div>
   </section>
@@ -461,14 +477,6 @@
       const parts = select.value.split('|');
       document.getElementById(priceId).textContent = '£' + parts[0];
       document.getElementById(stockId).textContent = parts[1];
-    }
-
-    function addToBasketVariant(selectId, name) {
-      const select = document.getElementById(selectId);
-      const parts = select.value.split('|');
-      const price = parseInt(parts[0]);
-      const dose = parts[2];
-      addToBasket(name, price, dose);
     }
   </script>
 

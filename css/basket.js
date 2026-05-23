@@ -60,12 +60,12 @@ function renderBasketItems() {
         <span>${item.qty}</span>
         <button onclick="changeQty(${i}, 1)">+</button>
       </div>
-      <div class="basket-item-price">£${(item.price * item.qty).toFixed(0)}</div>
+      <div class="basket-item-price">£${(item.price * item.qty)}</div>
       <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
     </div>
   `).join('');
 
-  if (totalEl) totalEl.textContent = '£' + getTotal().toFixed(0);
+  if (totalEl) totalEl.textContent = '£' + getTotal();
 }
 
 function showBasket() {
@@ -84,16 +84,14 @@ function showCheckout() {
   document.getElementById('basket-view').style.display = 'none';
   document.getElementById('checkout-view').style.display = 'block';
 
-  // Build order summary for checkout
   const summary = document.getElementById('checkout-summary');
   summary.innerHTML = basket.map(item =>
-    `<div class="checkout-line"><span>${item.name} ${item.dose} x${item.qty}</span><span>£${(item.price * item.qty).toFixed(0)}</span></div>`
-  ).join('') + `<div class="checkout-line checkout-total-line"><span>Total</span><span>£${getTotal().toFixed(0)}</span></div>`;
+    `<div class="checkout-line"><span>${item.name} ${item.dose} x${item.qty}</span><span>£${item.price * item.qty}</span></div>`
+  ).join('') + `<div class="checkout-line checkout-total-line"><span>Total</span><span>£${getTotal()}</span></div>`;
 
-  // Set hidden order field
   document.getElementById('order-details').value = basket.map(item =>
-    `${item.name} ${item.dose} x${item.qty} = £${(item.price * item.qty).toFixed(0)}`
-  ).join('\n') + `\n\nTOTAL: £${getTotal().toFixed(0)}`;
+    `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
+  ).join('\n') + `\n\nTOTAL: £${getTotal()}`;
 }
 
 function backToBasket() {
@@ -101,17 +99,17 @@ function backToBasket() {
   document.getElementById('checkout-view').style.display = 'none';
 }
 
-function getSelectedVariant(selectId) {
-  const sel = document.getElementById(selectId);
-  if (!sel) return null;
-  const parts = sel.value.split('|');
-  return { price: parseInt(parts[0]), stock: parts[1], dose: sel.options[sel.selectedIndex].text.split('—')[0].trim() };
+function addToBasketVariant(selectId, name) {
+  const select = document.getElementById(selectId);
+  const parts = select.value.split('|');
+  const price = parseInt(parts[0]);
+  const dose = parts[2];
+  addToBasket(name, price, dose);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   updateBasketUI();
 
-  // Handle checkout form submission
   const form = document.getElementById('checkout-form');
   if (form) {
     form.addEventListener('submit', async (e) => {

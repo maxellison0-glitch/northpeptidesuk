@@ -1210,3 +1210,14 @@ footer {
 @media (max-width: 768px) {
   .basket-drawer { width: 100vw; }
 }
+
+/* BASKET PRICE SIZE FIX */
+.basket-item-price {
+  font-family: 'DM Mono', monospace !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+}
+
+.basket-total-amount {
+  font-size: 1.2rem !important;
+}
