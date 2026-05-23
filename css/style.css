@@ -813,3 +813,46 @@ footer {
 
   .about-stat-number { font-size: 2rem; }
 }
+
+/* VARIANT DROPDOWN */
+.variant-select-wrap {
+  margin: 4px 0;
+}
+
+.variant-select {
+  width: 100%;
+  background: var(--grey-mid);
+  color: var(--white);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300E5A0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.variant-select:focus {
+  outline: none;
+  border-color: var(--accent-mid);
+}
+
+.stock-note {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--warning);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* REMOVE FLOAT BUTTON ON MOBILE */
+@media (max-width: 768px) {
+  .tg-float {
+    display: none;
+  }
+}

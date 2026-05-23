@@ -67,62 +67,50 @@
       <p class="category-label">GLP-1 / Metabolic Research</p>
       <div class="product-grid">
 
-        <!-- Retatrutide 20mg -->
+        <!-- Retatrutide -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Triple Agonist</span>
-            <span class="stock-badge stock-low">⚠ 3 Remaining</span>
+            <span class="stock-badge stock-low">⚠ Low Stock</span>
           </div>
           <h3 class="product-name">Retatrutide</h3>
-          <p class="product-dose">20mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. One of the most studied metabolic research compounds available. <strong style="color:var(--accent)">60% of customers stack with MOTS-c — limited stock on both.</strong></p>
+          <p class="product-dose">Lyophilised Powder — Select Size Below</p>
+          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. One of the most studied metabolic research compounds available. <strong style="color:var(--accent)">60% of customers stack with MOTS-c.</strong></p>
+          <div class="variant-select-wrap">
+            <select class="variant-select" id="reta-select" onchange="updatePrice('reta-select','reta-price','reta-stock')">
+              <option value="45|5 Remaining">10mg — £45</option>
+              <option value="84|3 Remaining">20mg — £84</option>
+            </select>
+          </div>
           <div class="product-footer">
-            <span class="product-price">£84</span>
+            <div>
+              <span class="product-price" id="reta-price">£45</span>
+              <span class="stock-note" id="reta-stock">5 Remaining</span>
+            </div>
             <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
           </div>
         </div>
 
-        <!-- Retatrutide 10mg -->
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Triple Agonist</span>
-            <span class="stock-badge stock-low">⚠ 5 Remaining</span>
-          </div>
-          <h3 class="product-name">Retatrutide</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Triple receptor agonist targeting GLP-1, GIP and glucagon receptors. Starter dose vial for research protocols requiring lower concentrations.</p>
-          <div class="product-footer">
-            <span class="product-price">£45</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
-          </div>
-        </div>
-
-        <!-- Tirzepatide 20mg -->
+        <!-- Tirzepatide -->
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Dual Agonist</span>
-            <span class="stock-badge stock-low">⚠ 7 Remaining</span>
+            <span class="stock-badge stock-low">⚠ Low Stock</span>
           </div>
           <h3 class="product-name">Tirzepatide</h3>
-          <p class="product-dose">20mg / vial — Lyophilised Powder</p>
+          <p class="product-dose">Lyophilised Powder — Select Size Below</p>
           <p class="product-desc">Dual GIP and GLP-1 receptor agonist. Extensively studied for metabolic and glucose regulation research. One of the most in-demand research peptides in the UK.</p>
-          <div class="product-footer">
-            <span class="product-price">£66</span>
-            <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
+          <div class="variant-select-wrap">
+            <select class="variant-select" id="tirz-select" onchange="updatePrice('tirz-select','tirz-price','tirz-stock')">
+              <option value="38|6 Remaining">10mg — £38</option>
+              <option value="66|7 Remaining">20mg — £66</option>
+            </select>
           </div>
-        </div>
-
-        <!-- Tirzepatide 10mg -->
-        <div class="product-card">
-          <div class="product-card-top">
-            <span class="product-category">Dual Agonist</span>
-            <span class="stock-badge stock-low">⚠ 6 Remaining</span>
-          </div>
-          <h3 class="product-name">Tirzepatide</h3>
-          <p class="product-dose">10mg / vial — Lyophilised Powder</p>
-          <p class="product-desc">Dual GIP and GLP-1 receptor agonist. Lower dose vial suitable for staged research protocols. Fast moving stock — order soon.</p>
           <div class="product-footer">
-            <span class="product-price">£38</span>
+            <div>
+              <span class="product-price" id="tirz-price">£38</span>
+              <span class="stock-note" id="tirz-stock">6 Remaining</span>
+            </div>
             <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="btn-order">Order →</a>
           </div>
         </div>
@@ -131,7 +119,7 @@
         <div class="product-card">
           <div class="product-card-top">
             <span class="product-category">Combination</span>
-            <span class="stock-badge stock-soon">Arriving Soon</span>
+            <span class="stock-badge stock-soon">Out of Stock</span>
           </div>
           <h3 class="product-name">CagriSema</h3>
           <p class="product-dose">Cagrilintide 5mg + Semaglutide 5mg / vial</p>
@@ -267,7 +255,7 @@
         <p>Everything I list is something I've personally researched. If I wouldn't use it myself, it won't be on this site.</p>
         <div class="about-sig">
           <span class="about-sig-name">— North Peptides UK</span>
-          <span class="about-sig-tag">// Est. 2026 · Blackpool, England</span>
+          <span class="about-sig-tag">// Est. 2025 · Northern England</span>
         </div>
       </div>
       <div class="about-stats">
@@ -299,7 +287,7 @@
       <div class="step">
         <div class="step-number">01</div>
         <h3>Message Us on Telegram</h3>
-        <p>Contact <strong>@NORTHPEPTIDESUK</strong> on Telegram with the product name, quantity and your delivery address.</p>
+        <p>Contact <strong>@NORTHPEPTIDESUK</strong> on Telegram with the product name, size, quantity and your delivery address.</p>
       </div>
       <div class="step">
         <div class="step-number">02</div>
@@ -355,16 +343,20 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 North Peptides UK. All Rights Reserved.</p>
+      <p>© 2025 North Peptides UK. All Rights Reserved.</p>
       <p>Crypto Accepted: BTC · ETH · LTC · USDT</p>
     </div>
     <p class="footer-disclaimer">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
 
-  <!-- TELEGRAM FLOAT BUTTON -->
-  <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="tg-float">
-    ✈ Order on Telegram
-  </a>
+  <script>
+    function updatePrice(selectId, priceId, stockId) {
+      const select = document.getElementById(selectId);
+      const parts = select.value.split('|');
+      document.getElementById(priceId).textContent = '£' + parts[0];
+      document.getElementById(stockId).textContent = parts[1];
+    }
+  </script>
 
 </body>
 </html>
