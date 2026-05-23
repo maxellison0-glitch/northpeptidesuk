@@ -1,6 +1,15 @@
-// NORTH PEPTIDES UK — Basket System
-
 let basket = [];
+
+// Load from session on page load
+window.addEventListener('load', () => {
+  const saved = sessionStorage.getItem('npuk_basket');
+  if (saved) basket = JSON.parse(saved);
+  updateBasketUI();
+});
+
+function saveBasket() {
+  sessionStorage.setItem('npuk_basket', JSON.stringify(basket));
+}
 
 function addToBasket(name, price, dose) {
   const existing = basket.find(i => i.name === name && i.dose === dose);
@@ -9,18 +18,29 @@ function addToBasket(name, price, dose) {
   } else {
     basket.push({ name, price, dose, qty: 1 });
   }
+  saveBasket();
   updateBasketUI();
   showBasket();
 }
 
+function addToBasketVariant(selectId, name) {
+  const select = document.getElementById(selectId);
+  const parts = select.value.split('|');
+  const price = parseInt(parts[0]);
+  const dose = parts[2];
+  addToBasket(name, price, dose);
+}
+
 function removeFromBasket(index) {
   basket.splice(index, 1);
+  saveBasket();
   updateBasketUI();
 }
 
 function changeQty(index, delta) {
   basket[index].qty += delta;
   if (basket[index].qty <= 0) basket.splice(index, 1);
+  saveBasket();
   updateBasketUI();
 }
 
@@ -60,7 +80,7 @@ function renderBasketItems() {
         <span>${item.qty}</span>
         <button onclick="changeQty(${i}, 1)">+</button>
       </div>
-      <div class="basket-item-price">£${(item.price * item.qty)}</div>
+      <div class="basket-item-price">£${item.price * item.qty}</div>
       <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
     </div>
   `).join('');
@@ -69,77 +89,29 @@ function renderBasketItems() {
 }
 
 function showBasket() {
-  document.getElementById('basket-overlay').classList.add('active');
-  document.getElementById('basket-drawer').classList.add('active');
+  const overlay = document.getElementById('basket-overlay');
+  const drawer = document.getElementById('basket-drawer');
+  if (overlay) overlay.classList.add('active');
+  if (drawer) drawer.classList.add('active');
   renderBasketItems();
 }
 
 function hideBasket() {
-  document.getElementById('basket-overlay').classList.remove('active');
-  document.getElementById('basket-drawer').classList.remove('active');
+  const overlay = document.getElementById('basket-overlay');
+  const drawer = document.getElementById('basket-drawer');
+  if (overlay) overlay.classList.remove('active');
+  if (drawer) drawer.classList.remove('active');
 }
 
-function showCheckout() {
+function goToCheckout() {
   if (basket.length === 0) return;
-  document.getElementById('basket-view').style.display = 'none';
-  document.getElementById('checkout-view').style.display = 'block';
-
-  const summary = document.getElementById('checkout-summary');
-  summary.innerHTML = basket.map(item =>
-    `<div class="checkout-line"><span>${item.name} ${item.dose} x${item.qty}</span><span>£${item.price * item.qty}</span></div>`
-  ).join('') + `<div class="checkout-line checkout-total-line"><span>Total</span><span>£${getTotal()}</span></div>`;
-
-  document.getElementById('order-details').value = basket.map(item =>
-    `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
-  ).join('\n') + `\n\nTOTAL: £${getTotal()}`;
+  saveBasket();
+  window.location.href = 'checkout.html';
 }
 
-function backToBasket() {
-  document.getElementById('basket-view').style.display = 'block';
-  document.getElementById('checkout-view').style.display = 'none';
-}
-
-function addToBasketVariant(selectId, name) {
+function updatePrice(selectId, priceId, stockId) {
   const select = document.getElementById(selectId);
   const parts = select.value.split('|');
-  const price = parseInt(parts[0]);
-  const dose = parts[2];
-  addToBasket(name, price, dose);
+  document.getElementById(priceId).textContent = '£' + parts[0];
+  document.getElementById(stockId).textContent = parts[1];
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateBasketUI();
-
-  const form = document.getElementById('checkout-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      const data = new FormData(form);
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          document.getElementById('checkout-view').style.display = 'none';
-          document.getElementById('success-view').style.display = 'block';
-          basket = [];
-          updateBasketUI();
-        } else {
-          btn.textContent = 'Error — try again';
-          btn.disabled = false;
-        }
-      } catch {
-        btn.textContent = 'Error — try again';
-        btn.disabled = false;
-      }
-    });
-  }
-});
