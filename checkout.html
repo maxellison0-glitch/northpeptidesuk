@@ -1,1 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — North Peptides UK</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: var(--black); }
 
+    .checkout-page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    .checkout-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 24px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .checkout-logo span { color: var(--accent); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+
+    .trust-item {
+      background: var(--grey);
+      padding: 14px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-icon { font-size: 1.2rem; }
+
+    .trust-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    /* ORDER SUMMARY */
+    .section-heading {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .order-summary {
+      background: var(--grey);
+      margin-bottom: 24px;
+    }
+
+    .order-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order-line:last-child { border-bottom: none; }
+
+    .order-line-name {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .order-line-dose {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .order-line-qty {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin: 0 16px;
+    }
+
+    .order-line-price {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .order-empty {
+      padding: 24px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .order-subtotal {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--grey-mid);
+    }
+
+    .order-subtotal span:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .order-subtotal span:last-child {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* DELIVERY OPTIONS */
+    .delivery-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 24px;
+    }
+
+    .delivery-option {
+      background: var(--grey);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .delivery-option:hover { background: var(--grey-mid); }
+    .delivery-option.selected { background: var(--grey-mid); border-left: 2px solid var(--accent); }
+
+    .delivery-option input[type="radio"] {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .delivery-option-info { flex: 1; }
+
+    .delivery-option-name {
+      font-size: 0.85rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .delivery-option-desc {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .delivery-option-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ORDER TOTAL */
+    .order-total-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: var(--grey);
+      border-left: 2px solid var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .order-total-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .order-total-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    /* FORM */
+    .checkout-form-section {
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--grey);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-mid);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .optional-label {
+      color: var(--text-muted);
+      font-size: 0.55rem;
+      margin-left: 4px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      margin-bottom: 32px;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .testimonial {
+      background: var(--grey);
+      padding: 20px 16px;
+    }
+
+    .testimonial-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .stars {
+      color: var(--accent);
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* PLACE ORDER BTN */
+    .btn-place-order {
+      width: 100%;
+      padding: 18px;
+      background: var(--accent);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .btn-place-order:hover { opacity: 0.9; }
+    .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .order-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* SUCCESS */
+    .success-page {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .success-check {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 24px;
+    }
+
+    .success-page h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .success-page p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 340px;
+      margin: 0 auto 8px;
+    }
+
+    @media (max-width: 480px) {
+      .trust-label { font-size: 0.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="checkout-page" id="main-checkout">
+
+  <!-- LOGO -->
+  <a href="index.html" class="checkout-logo">NORTH<span>PEPTIDES</span>UK</a>
+  <a href="index.html" class="back-link">← Continue Shopping</a>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <span class="trust-icon">🔒</span>
+      <span class="trust-label">Secure Order</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🇬🇧</span>
+      <span class="trust-label">UK Dispatched</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">₿</span>
+      <span class="trust-label">Crypto Accepted</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">📦</span>
+      <span class="trust-label">Tracked Shipping</span>
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <p class="section-heading">// Your Order</p>
+  <div class="order-summary">
+    <div id="checkout-lines">
+      <p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>
+    </div>
+    <div class="order-subtotal">
+      <span>Subtotal</span>
+      <span id="subtotal">£0</span>
+    </div>
+  </div>
+
+  <!-- DELIVERY -->
+  <p class="section-heading">// Delivery</p>
+  <div class="delivery-options">
+    <label class="delivery-option selected" id="label-standard">
+      <input type="radio" name="delivery" value="standard" data-price="4.95" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
+      <div class="delivery-option-info">
+        <div class="delivery-option-name">Royal Mail Tracked 24</div>
+        <div class="delivery-option-desc">Estimated 1 to 2 working days</div>
+      </div>
+      <div class="delivery-option-price">£4.95</div>
+    </label>
+    <label class="delivery-option" id="label-express">
+      <input type="radio" name="delivery" value="express" data-price="9.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
+      <div class="delivery-option-info">
+        <div class="delivery-option-name">Royal Mail Special Delivery</div>
+        <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
+      </div>
+      <div class="delivery-option-price">£9.95</div>
+    </label>
+  </div>
+
+  <!-- TOTAL -->
+  <div class="order-total-box">
+    <span class="order-total-label">Total inc. delivery</span>
+    <span class="order-total-amount" id="grand-total">£0</span>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <p class="section-heading">// Your Details</p>
+  <div class="checkout-form-section">
+    <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
+      <input type="hidden" name="order_summary" id="order-summary-hidden">
+      <input type="hidden" name="delivery_method" id="delivery-method-hidden">
+      <input type="hidden" name="total" id="total-hidden">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" required placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" required placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Address Line 1</label>
+        <input type="text" name="address1" required placeholder="House number and street">
+      </div>
+      <div class="form-group">
+        <label>Address Line 2 <span class="optional-label">(optional)</span></label>
+        <input type="text" name="address2" placeholder="Flat, apartment, unit">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Town / City</label>
+          <input type="text" name="city" required placeholder="Town or city">
+        </div>
+        <div class="form-group">
+          <label>Postcode</label>
+          <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>County <span class="optional-label">(optional)</span></label>
+        <input type="text" name="county" placeholder="County">
+      </div>
+      <div class="form-group">
+        <label>Notes <span class="optional-label">(optional)</span></label>
+        <textarea name="notes" placeholder="Any notes for your order"></textarea>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="testimonials" style="margin-top:32px;">
+        <p class="section-heading">// What Researchers Say</p>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">The bloke behind this is genuinely one of a kind. So knowledgeable, so patient. I had loads of questions as a first timer and he answered every single one without making me feel stupid. My research results have been incredible. Cannot recommend enough.</p>
+            <span class="testimonial-author">James R — Manchester</span>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">I was nervous about ordering from a smaller supplier but honestly the experience was better than any of the big sites. Arrived fast, packaged well and the communication throughout was brilliant. Feels like a proper community not just a shop.</p>
+            <span class="testimonial-author">Sarah M — London</span>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">Six months into my research journey and I genuinely cannot believe where I am now. The support I got from this guy alongside my orders made all the difference. He clearly uses this stuff himself and that shows. Will not go anywhere else.</p>
+            <span class="testimonial-author">Mike T — Leeds</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-place-order" id="submit-btn">Place Order →</button>
+      <p class="order-note">No payment required now. We will email you within 24 hours with crypto payment details to complete your order. BTC · ETH · LTC · USDT accepted.</p>
+    </form>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="checkout-page success-page" id="success-page">
+  <div class="success-check">✓</div>
+  <h2>Order Received</h2>
+  <p>We will email you within 24 hours with your crypto payment details to complete the order.</p>
+  <p style="margin-top:8px;">Any questions — message us on Telegram: <strong style="color:var(--accent)">@NORTHPEPTIDESUK</strong></p>
+  <a href="index.html" style="display:inline-block;margin-top:32px;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
+</div>
+
+<script>
+  let basketData = [];
+  let deliveryPrice = 4.95;
+  let deliveryLabel = 'Royal Mail Tracked 24';
+
+  function getSubtotal() {
+    return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  }
+
+  function updateTotals() {
+    const subtotal = getSubtotal();
+    const grand = subtotal + deliveryPrice;
+    document.getElementById('subtotal').textContent = '£' + subtotal;
+    document.getElementById('grand-total').textContent = '£' + grand.toFixed(2).replace('.00', '');
+    document.getElementById('total-hidden').value = '£' + grand.toFixed(2);
+  }
+
+  function updateDelivery(radio) {
+    deliveryPrice = parseFloat(radio.dataset.price);
+    deliveryLabel = radio.dataset.label;
+    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+
+    document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
+    radio.closest('.delivery-option').classList.add('selected');
+    updateTotals();
+  }
+
+  function renderOrder() {
+    const container = document.getElementById('checkout-lines');
+    if (basketData.length === 0) {
+      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>';
+      return;
+    }
+
+    container.innerHTML = basketData.map(item => `
+      <div class="order-line">
+        <div>
+          <div class="order-line-name">${item.name}</div>
+          <div class="order-line-dose">${item.dose}</div>
+        </div>
+        <span class="order-line-qty">x${item.qty}</span>
+        <span class="order-line-price">£${item.price * item.qty}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('order-summary-hidden').value = basketData.map(item =>
+      `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
+    ).join('\n');
+
+    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+    updateTotals();
+  }
+
+  // Load basket from sessionStorage
+  window.addEventListener('load', () => {
+    const saved = sessionStorage.getItem('npuk_basket');
+    if (saved) basketData = JSON.parse(saved);
+    renderOrder();
+  });
+
+  // Form submit
+  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(e.target.action, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('main-checkout').style.display = 'none';
+        document.getElementById('success-page').style.display = 'block';
+        sessionStorage.removeItem('npuk_basket');
+      } else {
+        btn.textContent = 'Error — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — please try again';
+      btn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
