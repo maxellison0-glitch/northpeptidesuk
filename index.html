@@ -713,6 +713,215 @@
     .slim-trust a:hover { text-decoration: underline; }
     .trust-divider { color: #374151; }
 
+    /* ===== HERO ===== */
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+    }
+
+    .hero-aurora {
+      position: absolute;
+      inset: -20px;
+      background: 
+        repeating-linear-gradient(
+          100deg,
+          rgba(0,166,126,0.15) 0%,
+          rgba(0,166,126,0.05) 8%,
+          transparent 12%,
+          transparent 14%,
+          rgba(0,200,150,0.1) 18%
+        ),
+        repeating-linear-gradient(
+          100deg,
+          rgba(0,80,60,0.3) 0%,
+          rgba(0,166,126,0.2) 10%,
+          rgba(0,40,30,0.1) 20%,
+          rgba(0,166,126,0.15) 30%,
+          rgba(0,100,80,0.2) 40%
+        );
+      background-size: 300% 300%, 200% 200%;
+      animation: aurora 12s linear infinite;
+      filter: blur(12px);
+      opacity: 0.8;
+    }
+
+    .hero-aurora::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(
+          100deg,
+          rgba(0,166,126,0.1) 0%,
+          rgba(0,230,160,0.08) 10%,
+          transparent 15%,
+          transparent 18%,
+          rgba(0,166,126,0.12) 22%
+        );
+      background-size: 200% 100%;
+      animation: aurora 8s linear infinite reverse;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes aurora {
+      from { background-position: 50% 50%, 50% 50%; }
+      to { background-position: 350% 50%, 350% 50%; }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, transparent 40%, #0a0a0a 80%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #00A67E;
+      border: 1px solid rgba(0,166,126,0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      background: rgba(0,166,126,0.08);
+    }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: #00A67E;
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #00A67E;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .hero-cta-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .hero-cta-secondary:hover { border-color: rgba(0,166,126,0.5); color: #00A67E; }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hero-disclaimer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 12px 40px;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-disclaimer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
+
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
       /* Nav */
@@ -720,6 +929,11 @@
       .shop-nav-links { display: none; }
       .shop-contact-btn { display: none; }
       .shop-basket-btn { padding: 10px 12px; }
+      .hero-banner { padding: 60px 20px; min-height: 360px; }
+      .hero-stats { gap: 20px; }
+      .hero-disclaimer { padding: 10px 16px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-cta-primary, .hero-cta-secondary { text-align: center; justify-content: center; }
       /* Trust */
       .slim-trust { padding: 8px 16px; gap: 8px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; }
       .trust-divider { display: none; }
@@ -967,6 +1181,46 @@
     <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="payment-strip-link">Payment questions? Message me →</a>
   </div>
 
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="hero-aurora"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">// UK Research Peptides · Est. 2025</span>
+      <h1 class="hero-title">
+        Optimise.<br>
+        Recover.<br>
+        <em>Research Better.</em>
+      </h1>
+      <p class="hero-sub">Premium lyophilised peptides, UK stocked and dispatched. GLP-1 agonists, recovery compounds, longevity stacks — 99%+ purity on every vial.</p>
+      <div class="hero-actions">
+        <a href="#products" class="hero-cta-primary">Shop Now →</a>
+        <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="hero-cta-secondary">✈ Message Me</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">99%+</span>
+          <span class="hero-stat-label">Purity</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">UK</span>
+          <span class="hero-stat-label">Stocked</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">24h</span>
+          <span class="hero-stat-label">Dispatch</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label">Years Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-disclaimer">
+    <p>⚠ All products for laboratory research use only · Not for human consumption · UK based</p>
+  </div>
+
   <!-- REVIEWS -->
   <div class="reviews-bar">
     <div class="reviews-bar-header">
@@ -991,17 +1245,6 @@
         <span class="review-bar-author">Mike T — Leeds</span>
       </div>
     </div>
-  </div>
-
-  <!-- PAYMENT STRIP -->
-  <div class="payment-strip">
-    <span class="payment-strip-label">All payments welcome</span>
-    <span class="payment-badge payment-badge-highlight">🏦 Bank Transfer</span>
-    <span class="payment-badge payment-badge-highlight">💳 PayPal</span>
-    <span class="payment-badge">₿ Bitcoin</span>
-    <span class="payment-badge">Ξ Ethereum</span>
-    <span class="payment-badge">◎ Litecoin</span>
-    <span class="payment-badge">₮ USDT</span>
   </div>
 
   <!-- PRODUCTS -->
