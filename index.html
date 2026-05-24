@@ -1162,8 +1162,6 @@
     <span class="trust-divider">·</span>
     <span>🇬🇧 UK dispatched</span>
     <span class="trust-divider">·</span>
-    <span>₿ Crypto accepted</span>
-    <span class="trust-divider">·</span>
     <a href="https://t.me/NORTHPEPTIDESUK" target="_blank">✈ Questions? Message me</a>
   </div>
 
@@ -1211,8 +1209,8 @@
           <span class="hero-stat-label">Dispatch</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">10+</span>
-          <span class="hero-stat-label">Years Research</span>
+          <span class="hero-stat-num" style="font-size:0.9rem;letter-spacing:0.03em;">Bank · PayPal · Crypto</span>
+          <span class="hero-stat-label">All Payments Welcome</span>
         </div>
       </div>
     </div>
@@ -1266,16 +1264,19 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Retatrutide</span>
-          <select class="shop-card-select" id="reta-sel" onchange="updateShopPrice('reta-sel','reta-p','reta-s');swapImage('reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'},this)">
-            <option value="45|14 Remaining|10mg">10mg — £45</option>
-            <option value="80|6 Remaining|20mg">20mg — £80</option>
+          <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
+            <option value="45|10mg">1x 10mg — £45</option>
+            <option value="80|20mg">1x 20mg — £80</option>
+            <option value="81|2x 10mg">2x 10mg — £81</option>
+            <option value="144|2x 20mg">2x 20mg — £144</option>
+            <option value="108|3x 10mg">3x 10mg — £108</option>
+            <option value="192|3x 20mg">3x 20mg — £192</option>
           </select>
           <div class="shop-card-footer">
             <div>
               <div class="shop-card-price" id="reta-p">£45</div>
-              <div class="shop-card-stock" id="reta-s">14 Remaining</div>
             </div>
-            <button class="shop-add-btn" onclick="addToBasketVariant('reta-sel','Retatrutide')">Add</button>
+            <button class="shop-add-btn" onclick="addBundleToBasket('reta-sel','Retatrutide')">Add</button>
           </div>
         </div>
       </div>
@@ -1289,16 +1290,19 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Tirzepatide</span>
-          <select class="shop-card-select" id="tirz-sel" onchange="updateShopPrice('tirz-sel','tirz-p','tirz-s');swapImage('tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'},this)">
-            <option value="39|12 Remaining|10mg">10mg — £39</option>
-            <option value="69|7 Remaining|20mg">20mg — £69</option>
+          <select class="shop-card-select" id="tirz-sel" onchange="updateRetaTirz('tirz-sel','tirz-p','tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
+            <option value="39|10mg">1x 10mg — £39</option>
+            <option value="69|20mg">1x 20mg — £69</option>
+            <option value="70|2x 10mg">2x 10mg — £70</option>
+            <option value="124|2x 20mg">2x 20mg — £124</option>
+            <option value="94|3x 10mg">3x 10mg — £94</option>
+            <option value="166|3x 20mg">3x 20mg — £166</option>
           </select>
           <div class="shop-card-footer">
             <div>
               <div class="shop-card-price" id="tirz-p">£39</div>
-              <div class="shop-card-stock" id="tirz-s">12 Remaining</div>
             </div>
-            <button class="shop-add-btn" onclick="addToBasketVariant('tirz-sel','Tirzepatide')">Add</button>
+            <button class="shop-add-btn" onclick="addBundleToBasket('tirz-sel','Tirzepatide')">Add</button>
           </div>
         </div>
       </div>
@@ -1312,10 +1316,15 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">KLOW Stack</span>
-          <span class="shop-card-dose">80mg / vial · 4 compound blend</span>
+          <span class="shop-card-dose">4 compound blend</span>
+          <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
+            <option value="60|80mg">1x 80mg — £60</option>
+            <option value="108|2x 80mg">2x 80mg — £108</option>
+            <option value="144|3x 80mg">3x 80mg — £144</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£60</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('KLOW Stack', 60, '80mg')">Add</button>
+            <div><div class="shop-card-price" id="klow-p">£60</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add</button>
           </div>
         </div>
       </div>
@@ -1351,10 +1360,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Melanotan II (MT-2)</span>
-          <span class="shop-card-dose">10mg / vial</span>
+          <select class="shop-card-select" id="mt2-sel" onchange="updateBundlePrice('mt2-sel','mt2-p')">
+            <option value="19|10mg">1x 10mg — £19</option>
+            <option value="34|2x 10mg">2x 10mg — £34</option>
+            <option value="46|3x 10mg">3x 10mg — £46</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£19</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('Melanotan II (MT-2)', 19, '10mg')">Add</button>
+            <div><div class="shop-card-price" id="mt2-p">£19</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('mt2-sel','Melanotan II (MT-2)')">Add</button>
           </div>
         </div>
       </div>
@@ -1373,10 +1386,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">BPC-157</span>
-          <span class="shop-card-dose">10mg / vial</span>
+          <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
+            <option value="19|10mg">1x 10mg — £19</option>
+            <option value="34|2x 10mg">2x 10mg — £34</option>
+            <option value="46|3x 10mg">3x 10mg — £46</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£19</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('BPC-157', 19, '10mg')">Add</button>
+            <div><div class="shop-card-price" id="bpc-p">£19</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add</button>
           </div>
         </div>
       </div>
@@ -1390,10 +1407,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">TB-500</span>
-          <span class="shop-card-dose">10mg / vial</span>
+          <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
+            <option value="49|10mg">1x 10mg — £49</option>
+            <option value="88|2x 10mg">2x 10mg — £88</option>
+            <option value="118|3x 10mg">3x 10mg — £118</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£49</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('TB-500', 49, '10mg')">Add</button>
+            <div><div class="shop-card-price" id="tb-p">£49</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('tb-sel','TB-500')">Add</button>
           </div>
         </div>
       </div>
@@ -1407,10 +1428,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">GHK-Cu</span>
-          <span class="shop-card-dose">50mg / vial</span>
+          <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
+            <option value="17|50mg">1x 50mg — £17</option>
+            <option value="31|2x 50mg">2x 50mg — £31</option>
+            <option value="41|3x 50mg">3x 50mg — £41</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£17</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('GHK-Cu', 17, '50mg')">Add</button>
+            <div><div class="shop-card-price" id="ghk-p">£17</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add</button>
           </div>
         </div>
       </div>
@@ -1424,10 +1449,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">KPV</span>
-          <span class="shop-card-dose">10mg / vial</span>
+          <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
+            <option value="22|10mg">1x 10mg — £22</option>
+            <option value="40|2x 10mg">2x 10mg — £40</option>
+            <option value="53|3x 10mg">3x 10mg — £53</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£22</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('KPV', 22, '10mg')">Add</button>
+            <div><div class="shop-card-price" id="kpv-p">£22</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('kpv-sel','KPV')">Add</button>
           </div>
         </div>
       </div>
@@ -1446,10 +1475,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Ipamorelin</span>
-          <span class="shop-card-dose">5mg / vial</span>
+          <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
+            <option value="19|5mg">1x 5mg — £19</option>
+            <option value="34|2x 5mg">2x 5mg — £34</option>
+            <option value="46|3x 5mg">3x 5mg — £46</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£19</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('Ipamorelin', 19, '5mg')">Add</button>
+            <div><div class="shop-card-price" id="ipa-p">£19</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add</button>
           </div>
         </div>
       </div>
@@ -1463,10 +1496,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">Tesamorelin</span>
-          <span class="shop-card-dose">5mg / vial</span>
+          <select class="shop-card-select" id="tes-sel" onchange="updateBundlePrice('tes-sel','tes-p')">
+            <option value="55|5mg">1x 5mg — £55</option>
+            <option value="99|2x 5mg">2x 5mg — £99</option>
+            <option value="132|3x 5mg">3x 5mg — £132</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£55</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('Tesamorelin', 55, '5mg')">Add</button>
+            <div><div class="shop-card-price" id="tes-p">£55</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('tes-sel','Tesamorelin')">Add</button>
           </div>
         </div>
       </div>
@@ -1480,10 +1517,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">CJC-1295 (No DAC)</span>
-          <span class="shop-card-dose">5mg / vial</span>
+          <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
+            <option value="32|5mg">1x 5mg — £32</option>
+            <option value="58|2x 5mg">2x 5mg — £58</option>
+            <option value="77|3x 5mg">3x 5mg — £77</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£32</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('CJC-1295 No DAC', 32, '5mg')">Add</button>
+            <div><div class="shop-card-price" id="cjc-p">£32</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add</button>
           </div>
         </div>
       </div>
@@ -1502,10 +1543,14 @@
         </div>
         <div class="shop-card-body">
           <span class="shop-card-name">MOTS-c</span>
-          <span class="shop-card-dose">10mg / vial</span>
+          <select class="shop-card-select" id="mots-sel" onchange="updateBundlePrice('mots-sel','mots-p')">
+            <option value="29|10mg">1x 10mg — £29</option>
+            <option value="52|2x 10mg">2x 10mg — £52</option>
+            <option value="70|3x 10mg">3x 10mg — £70</option>
+          </select>
           <div class="shop-card-footer">
-            <div><div class="shop-card-price">£29</div></div>
-            <button class="shop-add-btn" onclick="addToBasket('MOTS-c', 29, '10mg')">Add</button>
+            <div><div class="shop-card-price" id="mots-p">£29</div></div>
+            <button class="shop-add-btn" onclick="addBundleToBasket('mots-sel','MOTS-c')">Add</button>
           </div>
         </div>
       </div>
@@ -1661,6 +1706,34 @@
       } else {
         bar.classList.remove('visible');
       }
+    }
+
+    // Bundle price update
+    function updateBundlePrice(selId, priceId) {
+      const sel = document.getElementById(selId);
+      const parts = sel.value.split('|');
+      document.getElementById(priceId).textContent = '£' + parts[0];
+    }
+
+    // Reta/Tirz with image swap
+    function updateRetaTirz(selId, priceId, imgId, imgMap) {
+      const sel = document.getElementById(selId);
+      const parts = sel.value.split('|');
+      document.getElementById(priceId).textContent = '£' + parts[0];
+      const dose = parts[1]; // e.g. "10mg" or "2x 10mg"
+      const baseKey = dose.includes('10mg') ? '10mg' : '20mg';
+      if (imgMap[baseKey] && document.getElementById(imgId)) {
+        document.getElementById(imgId).src = imgMap[baseKey];
+      }
+    }
+
+    // Add bundle to basket
+    function addBundleToBasket(selId, productName) {
+      const sel = document.getElementById(selId);
+      const parts = sel.value.split('|');
+      const price = parseFloat(parts[0]);
+      const dose = parts[1];
+      addToBasket(productName, price, dose);
     }
 
     const _origUpdate = window.updateBasketUI;
