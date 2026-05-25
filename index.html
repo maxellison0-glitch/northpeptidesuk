@@ -11,7 +11,65 @@
   <meta property="og:url" content="https://northpeptidesuk.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"North Peptides UK","url":"https://northpeptidesuk.com","description":"Premium research peptides UK.","areaServed":["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],"currenciesAccepted":"GBP","paymentAccepted":"Cryptocurrency, Bank Transfer, PayPal"}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "North Peptides UK",
+    "url": "https://northpeptidesuk.com",
+    "description": "Premium research peptides UK. Retatrutide, Tirzepatide, Melanotan II, BPC-157, TB-500 and more. UK stocked, fast dispatch.",
+    "areaServed": ["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],
+    "currenciesAccepted": "GBP",
+    "paymentAccepted": "Cryptocurrency, Bank Transfer",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "3",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "author": {"@type": "Person", "name": "James R"},
+        "reviewBody": "The person behind this has been so willing to help and share info. Results have been incredible."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "author": {"@type": "Person", "name": "Verified UK Researcher"},
+        "reviewBody": "Second time ordering and both times next day. That kind of service you just do not get anywhere else."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "author": {"@type": "Person", "name": "Mike T"},
+        "reviewBody": "Six months in and I truly cannot believe where I am now. Pricing and quality here is unmatched."
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Research Peptides",
+      "itemListElement": [
+        {"@type":"Offer","priceCurrency":"GBP","price":"45","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 10mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"80","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 20mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"39","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 10mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"69","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 20mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"19","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Melanotan II 10mg","description":"Melanocortin receptor agonist. MT-2. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"19","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"BPC-157 10mg","description":"Body Protective Compound. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"49","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"TB-500 10mg","description":"Thymosin Beta-4 fragment. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"60","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KLOW Stack 80mg","description":"GHK-Cu, TB-500, BPC-157, KPV blend. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"19","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Ipamorelin 5mg","description":"Selective GH secretagogue. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"55","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tesamorelin 5mg","description":"Synthetic GHRH analogue. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"32","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"CJC-1295 No DAC 5mg","description":"Modified GRF 1-29. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"29","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"MOTS-c 10mg","description":"Mitochondrial-derived peptide. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"17","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"GHK-Cu 50mg","description":"Copper peptide. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"22","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KPV 10mg","description":"Anti-inflammatory tripeptide. 99%+ purity. UK stocked."}}
+      ]
+    }
+  }
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <style>
@@ -820,6 +878,34 @@
       transition: color 0.2s;
     }
     .discount-popup-dismiss:hover { color: rgba(255,255,255,0.5); }
+
+    /* SALE PRICING */
+    .price-was {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: #9CA3AF;
+      text-decoration: line-through;
+      letter-spacing: 0.04em;
+    }
+    .price-sale {
+      color: #00A67E;
+    }
+    .sale-badge {
+      display: inline-block;
+      background: #00A67E;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .featured-price-wrap { display: flex; flex-direction: column; gap: 2px; }
+    .featured-price-was { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #9CA3AF; text-decoration: line-through; }
+
   </style>
 </head>
 <body>
@@ -832,16 +918,11 @@
       <div class="discount-popup-aurora"></div>
       <button class="discount-popup-close" onclick="closeDiscountPopup()">✕</button>
       <div class="discount-popup-inner">
-        <div class="discount-popup-tag">// Welcome Offer</div>
-        <div class="discount-popup-title">10% Off<br><span>Your First Order</span></div>
-        <p class="discount-popup-sub">Use the code below at checkout for 10% off your entire order. UK stocked, fast dispatch.</p>
-        <div class="discount-popup-code-wrap" onclick="copyCode(this)">
-          <div class="discount-popup-code-label">Your discount code</div>
-          <div class="discount-popup-code">SUMMER10</div>
-          <div class="discount-popup-copy-hint">Tap to copy</div>
-        </div>
-        <button class="discount-popup-btn" onclick="closeDiscountPopup()">Shop Now →</button>
-        <button class="discount-popup-dismiss" onclick="closeDiscountPopup()">No thanks</button>
+        <div class="discount-popup-tag">// Limited Time</div>
+        <div class="discount-popup-title">🌞 Summer Sale<br><span>10% Off Everything</span></div>
+        <p class="discount-popup-sub">All products reduced for summer. UK stocked, 24h dispatch. No code needed — discount applied automatically.</p>
+        <button class="discount-popup-btn" onclick="closeDiscountPopup()">Shop the Sale →</button>
+        <button class="discount-popup-dismiss" onclick="closeDiscountPopup()">Maybe later</button>
       </div>
     </div>
   </div>
@@ -922,7 +1003,7 @@
     <div class="hero-aurora"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-tag">North Peptides UK</span>
+      <span class="hero-tag">🌞 Summer Sale — 10% Off Everything</span>
       <h1 class="hero-title">
         Optimise.<br>
         Recover.<br>
@@ -995,15 +1076,15 @@
           <span class="featured-name">Retatrutide</span>
           <span class="featured-desc">Triple receptor GLP-1/GIP/Glucagon agonist. The most advanced metabolic research compound available.</span>
           <select class="featured-select" id="feat-reta-sel" onchange="updateFeaturedRetaTirz('feat-reta-sel','feat-reta-p','feat-reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
-            <option value="45|10mg">1x 10mg — £45</option>
-            <option value="80|20mg">1x 20mg — £80</option>
-            <option value="81|2x 10mg">2x 10mg — £81</option>
-            <option value="144|2x 20mg">2x 20mg — £144</option>
-            <option value="108|3x 10mg">3x 10mg — £108</option>
-            <option value="192|3x 20mg">3x 20mg — £192</option>
+            <option value="41|10mg">1x 10mg — £41 (was £45)</option>
+            <option value="72|20mg">1x 20mg — £72 (was £80)</option>
+            <option value="73|2x 10mg">2x 10mg — £73 (was £81)</option>
+            <option value="130|2x 20mg">2x 20mg — £130 (was £144)</option>
+            <option value="97|3x 10mg">3x 10mg — £97 (was £108)</option>
+            <option value="173|3x 20mg">3x 20mg — £173 (was £192)</option>
           </select>
           <div class="featured-footer">
-            <span class="featured-price" id="feat-reta-p">£45</span>
+            <div class="featured-price-wrap"><span class="featured-price-was">£45</span><span class="featured-price price-sale" id="feat-reta-p">£41</span></div>
             <button class="featured-add-btn" onclick="addFeaturedToBasket('feat-reta-sel','Retatrutide')">Add to Basket</button>
           </div>
         </div>
@@ -1020,15 +1101,15 @@
           <span class="featured-name">Tirzepatide</span>
           <span class="featured-desc">Dual GIP and GLP-1 receptor agonist. The most searched research peptide in the UK right now.</span>
           <select class="featured-select" id="feat-tirz-sel" onchange="updateFeaturedRetaTirz('feat-tirz-sel','feat-tirz-p','feat-tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
-            <option value="39|10mg">1x 10mg — £39</option>
-            <option value="69|20mg">1x 20mg — £69</option>
-            <option value="70|2x 10mg">2x 10mg — £70</option>
-            <option value="124|2x 20mg">2x 20mg — £124</option>
-            <option value="94|3x 10mg">3x 10mg — £94</option>
-            <option value="166|3x 20mg">3x 20mg — £166</option>
+            <option value="35|10mg">1x 10mg — £35 (was £39)</option>
+            <option value="62|20mg">1x 20mg — £62 (was £69)</option>
+            <option value="63|2x 10mg">2x 10mg — £63 (was £70)</option>
+            <option value="112|2x 20mg">2x 20mg — £112 (was £124)</option>
+            <option value="85|3x 10mg">3x 10mg — £85 (was £94)</option>
+            <option value="149|3x 20mg">3x 20mg — £149 (was £166)</option>
           </select>
           <div class="featured-footer">
-            <span class="featured-price" id="feat-tirz-p">£39</span>
+            <div class="featured-price-wrap"><span class="featured-price-was">£39</span><span class="featured-price price-sale" id="feat-tirz-p">£35</span></div>
             <button class="featured-add-btn" onclick="addFeaturedToBasket('feat-tirz-sel','Tirzepatide')">Add to Basket</button>
           </div>
         </div>
@@ -1045,12 +1126,12 @@
           <span class="featured-name">KLOW Stack</span>
           <span class="featured-desc">Four compounds, one vial. The complete recovery and wellness stack.</span>
           <select class="featured-select" id="feat-klow-sel" onchange="updateFeaturedPrice('feat-klow-sel','feat-klow-p')">
-            <option value="60|80mg">1x 80mg — £60</option>
-            <option value="108|2x 80mg">2x 80mg — £108</option>
-            <option value="144|3x 80mg">3x 80mg — £144</option>
+            <option value="54|80mg">1x 80mg — £54 (was £60)</option>
+            <option value="97|2x 80mg">2x 80mg — £97 (was £108)</option>
+            <option value="130|3x 80mg">3x 80mg — £130 (was £144)</option>
           </select>
           <div class="featured-footer">
-            <span class="featured-price" id="feat-klow-p">£60</span>
+            <div class="featured-price-wrap"><span class="featured-price-was">£60</span><span class="featured-price price-sale" id="feat-klow-p">£54</span></div>
             <button class="featured-add-btn" onclick="addFeaturedToBasket('feat-klow-sel','KLOW Stack')">Add to Basket</button>
           </div>
         </div>
@@ -1093,15 +1174,15 @@
           <div class="shop-card-body">
             <span class="shop-card-name">Retatrutide</span>
             <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
-              <option value="45|10mg">1x 10mg — £45</option>
-              <option value="80|20mg">1x 20mg — £80</option>
-              <option value="81|2x 10mg">2x 10mg — £81</option>
-              <option value="144|2x 20mg">2x 20mg — £144</option>
-              <option value="108|3x 10mg">3x 10mg — £108</option>
-              <option value="192|3x 20mg">3x 20mg — £192</option>
+              <option value="41|10mg">1x 10mg — £41 (was £45)</option>
+              <option value="72|20mg">1x 20mg — £72 (was £80)</option>
+              <option value="73|2x 10mg">2x 10mg — £73 (was £81)</option>
+              <option value="130|2x 20mg">2x 20mg — £130 (was £144)</option>
+              <option value="97|3x 10mg">3x 10mg — £97 (was £108)</option>
+              <option value="173|3x 20mg">3x 20mg — £173 (was £192)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="reta-p">£45</div></div>
+              <div><div><span class="price-was">£45</span> <span class="shop-card-price price-sale" id="reta-p">£41</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('reta-sel','Retatrutide')">Add</button>
             </div>
           </div>
@@ -1116,15 +1197,15 @@
           <div class="shop-card-body">
             <span class="shop-card-name">Tirzepatide</span>
             <select class="shop-card-select" id="tirz-sel" onchange="updateRetaTirz('tirz-sel','tirz-p','tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
-              <option value="39|10mg">1x 10mg — £39</option>
-              <option value="69|20mg">1x 20mg — £69</option>
-              <option value="70|2x 10mg">2x 10mg — £70</option>
-              <option value="124|2x 20mg">2x 20mg — £124</option>
-              <option value="94|3x 10mg">3x 10mg — £94</option>
-              <option value="166|3x 20mg">3x 20mg — £166</option>
+              <option value="35|10mg">1x 10mg — £35 (was £39)</option>
+              <option value="62|20mg">1x 20mg — £62 (was £69)</option>
+              <option value="63|2x 10mg">2x 10mg — £63 (was £70)</option>
+              <option value="112|2x 20mg">2x 20mg — £112 (was £124)</option>
+              <option value="85|3x 10mg">3x 10mg — £85 (was £94)</option>
+              <option value="149|3x 20mg">3x 20mg — £149 (was £166)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="tirz-p">£39</div></div>
+              <div><div><span class="price-was">£39</span> <span class="shop-card-price price-sale" id="tirz-p">£35</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('tirz-sel','Tirzepatide')">Add</button>
             </div>
           </div>
@@ -1139,12 +1220,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">Melanotan II</span>
             <select class="shop-card-select" id="mt2-sel" onchange="updateBundlePrice('mt2-sel','mt2-p')">
-              <option value="19|10mg">1x 10mg — £19</option>
-              <option value="34|2x 10mg">2x 10mg — £34</option>
-              <option value="46|3x 10mg">3x 10mg — £46</option>
+              <option value="17|10mg">1x 10mg — £17 (was £19)</option>
+              <option value="31|2x 10mg">2x 10mg — £31 (was £34)</option>
+              <option value="41|3x 10mg">3x 10mg — £41 (was £46)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="mt2-p">£19</div></div>
+              <div><div><span class="price-was">£19</span> <span class="shop-card-price price-sale" id="mt2-p">£17</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('mt2-sel','Melanotan II (MT-2)')">Add</button>
             </div>
           </div>
@@ -1184,12 +1265,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">BPC-157</span>
             <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
-              <option value="19|10mg">1x 10mg — £19</option>
-              <option value="34|2x 10mg">2x 10mg — £34</option>
-              <option value="46|3x 10mg">3x 10mg — £46</option>
+              <option value="17|10mg">1x 10mg — £17 (was £19)</option>
+              <option value="31|2x 10mg">2x 10mg — £31 (was £34)</option>
+              <option value="41|3x 10mg">3x 10mg — £41 (was £46)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="bpc-p">£19</div></div>
+              <div><div><span class="price-was">£19</span> <span class="shop-card-price price-sale" id="bpc-p">£17</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add</button>
             </div>
           </div>
@@ -1204,12 +1285,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">TB-500</span>
             <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
-              <option value="49|10mg">1x 10mg — £49</option>
-              <option value="88|2x 10mg">2x 10mg — £88</option>
-              <option value="118|3x 10mg">3x 10mg — £118</option>
+              <option value="44|10mg">1x 10mg — £44 (was £49)</option>
+              <option value="79|2x 10mg">2x 10mg — £79 (was £88)</option>
+              <option value="106|3x 10mg">3x 10mg — £106 (was £118)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="tb-p">£49</div></div>
+              <div><div><span class="price-was">£49</span> <span class="shop-card-price price-sale" id="tb-p">£44</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('tb-sel','TB-500')">Add</button>
             </div>
           </div>
@@ -1224,12 +1305,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">GHK-Cu</span>
             <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
-              <option value="17|50mg">1x 50mg — £17</option>
-              <option value="31|2x 50mg">2x 50mg — £31</option>
-              <option value="41|3x 50mg">3x 50mg — £41</option>
+              <option value="15|50mg">1x 50mg — £15 (was £17)</option>
+              <option value="28|2x 50mg">2x 50mg — £28 (was £31)</option>
+              <option value="37|3x 50mg">3x 50mg — £37 (was £41)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="ghk-p">£17</div></div>
+              <div><div><span class="price-was">£17</span> <span class="shop-card-price price-sale" id="ghk-p">£15</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add</button>
             </div>
           </div>
@@ -1244,12 +1325,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">KPV</span>
             <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
-              <option value="22|10mg">1x 10mg — £22</option>
-              <option value="40|2x 10mg">2x 10mg — £40</option>
-              <option value="53|3x 10mg">3x 10mg — £53</option>
+              <option value="20|10mg">1x 10mg — £20 (was £22)</option>
+              <option value="36|2x 10mg">2x 10mg — £36 (was £40)</option>
+              <option value="48|3x 10mg">3x 10mg — £48 (was £53)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="kpv-p">£22</div></div>
+              <div><div><span class="price-was">£22</span> <span class="shop-card-price price-sale" id="kpv-p">£20</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('kpv-sel','KPV')">Add</button>
             </div>
           </div>
@@ -1265,12 +1346,12 @@
             <span class="shop-card-name">KLOW Stack</span>
             <span class="shop-card-dose">4 compound blend</span>
             <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
-              <option value="60|80mg">1x 80mg — £60</option>
-              <option value="108|2x 80mg">2x 80mg — £108</option>
-              <option value="144|3x 80mg">3x 80mg — £144</option>
+              <option value="54|80mg">1x 80mg — £54 (was £60)</option>
+              <option value="97|2x 80mg">2x 80mg — £97 (was £108)</option>
+              <option value="130|3x 80mg">3x 80mg — £130 (was £144)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="klow-p">£60</div></div>
+              <div><div><span class="price-was">£60</span> <span class="shop-card-price price-sale" id="klow-p">£54</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add</button>
             </div>
           </div>
@@ -1296,12 +1377,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">MOTS-c</span>
             <select class="shop-card-select" id="mots-sel" onchange="updateBundlePrice('mots-sel','mots-p')">
-              <option value="29|10mg">1x 10mg — £29</option>
-              <option value="52|2x 10mg">2x 10mg — £52</option>
-              <option value="70|3x 10mg">3x 10mg — £70</option>
+              <option value="26|10mg">1x 10mg — £26 (was £29)</option>
+              <option value="47|2x 10mg">2x 10mg — £47 (was £52)</option>
+              <option value="63|3x 10mg">3x 10mg — £63 (was £70)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="mots-p">£29</div></div>
+              <div><div><span class="price-was">£29</span> <span class="shop-card-price price-sale" id="mots-p">£26</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('mots-sel','MOTS-c')">Add</button>
             </div>
           </div>
@@ -1316,12 +1397,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">Ipamorelin</span>
             <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
-              <option value="19|5mg">1x 5mg — £19</option>
-              <option value="34|2x 5mg">2x 5mg — £34</option>
-              <option value="46|3x 5mg">3x 5mg — £46</option>
+              <option value="17|5mg">1x 5mg — £17 (was £19)</option>
+              <option value="31|2x 5mg">2x 5mg — £31 (was £34)</option>
+              <option value="41|3x 5mg">3x 5mg — £41 (was £46)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="ipa-p">£19</div></div>
+              <div><div><span class="price-was">£19</span> <span class="shop-card-price price-sale" id="ipa-p">£17</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add</button>
             </div>
           </div>
@@ -1336,12 +1417,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">Tesamorelin</span>
             <select class="shop-card-select" id="tes-sel" onchange="updateBundlePrice('tes-sel','tes-p')">
-              <option value="55|5mg">1x 5mg — £55</option>
-              <option value="99|2x 5mg">2x 5mg — £99</option>
-              <option value="132|3x 5mg">3x 5mg — £132</option>
+              <option value="50|5mg">1x 5mg — £50 (was £55)</option>
+              <option value="89|2x 5mg">2x 5mg — £89 (was £99)</option>
+              <option value="119|3x 5mg">3x 5mg — £119 (was £132)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="tes-p">£55</div></div>
+              <div><div><span class="price-was">£55</span> <span class="shop-card-price price-sale" id="tes-p">£50</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('tes-sel','Tesamorelin')">Add</button>
             </div>
           </div>
@@ -1356,12 +1437,12 @@
           <div class="shop-card-body">
             <span class="shop-card-name">CJC-1295 (No DAC)</span>
             <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
-              <option value="32|5mg">1x 5mg — £32</option>
-              <option value="58|2x 5mg">2x 5mg — £58</option>
-              <option value="77|3x 5mg">3x 5mg — £77</option>
+              <option value="29|5mg">1x 5mg — £29 (was £32)</option>
+              <option value="52|2x 5mg">2x 5mg — £52 (was £58)</option>
+              <option value="69|3x 5mg">3x 5mg — £69 (was £77)</option>
             </select>
             <div class="shop-card-footer">
-              <div><div class="shop-card-price" id="cjc-p">£32</div></div>
+              <div><div><span class="price-was">£32</span> <span class="shop-card-price price-sale" id="cjc-p">£29</span></div></div>
               <button class="shop-add-btn" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add</button>
             </div>
           </div>
@@ -1394,7 +1475,7 @@
         <div class="acc-grid">
           <div class="shop-card">
             <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&q=80" alt="Bacteriostatic Water" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
+              <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&q=80" alt="Bacteriostatic Water" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="shop-card-body">
               <span class="shop-card-name">Bacteriostatic Water</span>
@@ -1404,7 +1485,7 @@
           </div>
           <div class="shop-card">
             <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" alt="Insulin Needle Kit" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
+              <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&q=80" alt="Insulin Needle Kit" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="shop-card-body">
               <span class="shop-card-name">Insulin Needle Kit</span>
@@ -1414,7 +1495,7 @@
           </div>
           <div class="shop-card">
             <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=400&q=80" alt="Alcohol Wipes" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
+              <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&q=80" alt="Alcohol Wipes" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="shop-card-body">
               <span class="shop-card-name">Alcohol Wipes</span>
