@@ -872,6 +872,23 @@
     }
     .discount-popup-btn:hover { opacity: 0.9; }
     .discount-popup-btn:active { transform: scale(0.98); }
+
+    .discount-popup-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #ffffff;
+      padding: 12px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .discount-popup-input::placeholder { color: rgba(255,255,255,0.25); }
+    .discount-popup-input:focus { border-color: rgba(0,166,126,0.5); }
+    .discount-popup-form { display: flex; flex-direction: column; gap: 0; margin-bottom: 12px; }
     .discount-popup-dismiss {
       font-family: 'DM Mono', monospace; font-size: 0.58rem; color: rgba(255,255,255,0.25);
       cursor: pointer; text-decoration: underline; background: none; border: none;
@@ -918,11 +935,19 @@
       <div class="discount-popup-aurora"></div>
       <button class="discount-popup-close" onclick="closeDiscountPopup()">✕</button>
       <div class="discount-popup-inner">
-        <div class="discount-popup-tag">// Limited Time</div>
-        <div class="discount-popup-title">🌞 Summer Sale<br><span>10% Off Everything</span></div>
-        <p class="discount-popup-sub">All products reduced for summer. UK stocked, 24h dispatch. No code needed — discount applied automatically.</p>
-        <button class="discount-popup-btn" onclick="closeDiscountPopup()">Shop the Sale →</button>
-        <button class="discount-popup-dismiss" onclick="closeDiscountPopup()">Maybe later</button>
+        <div class="discount-popup-tag">// Summer Sale</div>
+        <div class="discount-popup-title">Get <span>10% Off</span><br>Your First Order</div>
+        <p class="discount-popup-sub">Enter your email and we'll send your discount code instantly. Plus be first to hear about restocks and new compounds.</p>
+        <div class="discount-popup-form" id="popup-form">
+          <input type="email" id="popup-email" placeholder="your@email.com" class="discount-popup-input" autocomplete="email">
+          <button class="discount-popup-btn" onclick="submitPopupEmail()">Send My 10% Code →</button>
+        </div>
+        <div id="popup-success" style="display:none;text-align:center;padding:16px 0;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:#00A67E;margin-bottom:8px;">✓ CODE SENT</div>
+          <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#ffffff;letter-spacing:0.1em;">SUMMER10</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.4);margin-top:6px;">Use at checkout for 10% off</div>
+        </div>
+        <button class="discount-popup-dismiss" onclick="closeDiscountPopup()">No thanks</button>
       </div>
     </div>
   </div>
@@ -1629,6 +1654,26 @@
   <script>
 
     // DISCOUNT POPUP
+    function submitPopupEmail() {
+      const email = document.getElementById('popup-email').value;
+      if (!email || !email.includes('@')) {
+        document.getElementById('popup-email').style.borderColor = 'rgba(239,68,68,0.5)';
+        return;
+      }
+      // Send to Formspree
+      fetch('https://formspree.io/f/mnjrzpvl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, _subject: 'New Email Signup — Summer Sale', message: 'New signup from popup: ' + email })
+      });
+      // Show code
+      document.getElementById('popup-form').style.display = 'none';
+      document.getElementById('popup-success').style.display = 'block';
+      sessionStorage.setItem('popupSeen', '1');
+      // Auto close after 4s
+      setTimeout(() => closeDiscountPopup(), 4000);
+    }
+
     function closeDiscountPopup() {
       document.getElementById('discount-popup').style.display = 'none';
       sessionStorage.setItem('popupSeen', '1');
