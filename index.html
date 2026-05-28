@@ -74,6 +74,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <style>
     html, body { max-width: 100%; overflow-x: hidden; background: #F8F9FA; color: #1a1a1a; margin: 0; padding: 0; }
+    :root { --soft-neutral: #b0af9b; --soft-neutral-light: #f3f2ed; }
 
     /* ===== NAV ===== */
     .shop-nav {
@@ -108,7 +109,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .shop-nav-logo span { color: #00A67E; }
+    .shop-nav-logo span { color: var(--soft-neutral); }
     .shop-nav-cats {
       display: flex;
       gap: 4px;
@@ -232,10 +233,10 @@
       margin-bottom: 18px;
       letter-spacing: -0.02em;
     }
-    .hero-title em { font-style: normal; color: #00A67E; }
+    .hero-title em { font-style: normal; color: var(--soft-neutral); }
     .hero-sub {
       font-size: clamp(0.85rem, 2vw, 1rem);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.72);
       line-height: 1.7;
       margin-bottom: 32px;
       max-width: 460px;
@@ -255,7 +256,7 @@
       align-items: center;
       gap: 8px;
       padding: 13px 28px;
-      background: #00A67E;
+      background: var(--soft-neutral);
       color: #ffffff;
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
@@ -576,28 +577,29 @@
     .acc-section.closed .acc-body { max-height: 0; opacity: 0; }
     .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; padding: 14px 0; }
 
-    .shop-card { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
-    .shop-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.09); transform: translateY(-2px); }
-    .shop-card-img { position: relative; background: #F3F4F6; aspect-ratio: 1; cursor: pointer; overflow: hidden; }
+    .shop-card { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+    .shop-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.08); transform: translateY(-1px); }
+    .shop-card-img { position: relative; background: #F3F4F6; aspect-ratio: 4 / 3; cursor: pointer; overflow: hidden; }
     .shop-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
     .shop-card-img:hover img { transform: scale(1.03); }
     .shop-card-img-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
     .shop-card-img:hover .shop-card-img-overlay { background: rgba(0,0,0,0.12); }
     .shop-card-info-icon { background: #fff; color: #1a1a1a; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; opacity: 0; transition: opacity 0.2s; font-family: 'Syne', sans-serif; }
     .shop-card-img:hover .shop-card-info-icon { opacity: 1; }
-    .shop-badge { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; border-radius: 2px; }
-    .badge-low { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
+    .shop-badge { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; }
+    .badge-low { background: var(--soft-neutral-light); color: #565548; border: 1px solid #deddd2; }
     .badge-out { background: #F3F4F6; color: #9CA3AF; border: 1px solid #E5E7EB; }
-    .shop-card-body { padding: 12px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
-    .shop-card-name { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
-    .shop-card-dose { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #00A67E; letter-spacing: 0.05em; }
-    .shop-card-select { width: 100%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #1a1a1a; padding: 6px 26px 6px 8px; font-family: 'DM Mono', monospace; font-size: 0.67rem; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300A67E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; border-radius: 4px; }
-    .shop-card-select:focus { outline: none; border-color: #00A67E; }
+    .shop-card-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .shop-card-name { font-family: 'Syne', sans-serif; font-size: 0.98rem; font-weight: 800; color: #1a1a1a; line-height: 1.2; }
+    .shop-card-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; letter-spacing: 0.05em; }
+    .shop-card-select { width: 100%; background: #F8F9FA; border: 1px solid #DADDE2; color: #1a1a1a; padding: 9px 30px 9px 10px; font-family: 'DM Mono', monospace; font-size: 0.7rem; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23565548' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; border-radius: 6px; }
+    .shop-card-select:focus { outline: none; border-color: var(--soft-neutral); }
     .shop-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: auto; }
     .shop-card-price { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #1a1a1a; }
     .shop-card-price-muted { color: #9CA3AF; font-size: 0.85rem; }
     .shop-add-btn { padding: 8px 12px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; transition: background 0.2s; white-space: nowrap; }
-    .shop-add-btn:hover { background: #00A67E; }
+    .shop-add-btn:hover { background: #6f6e5f; }
+    .hero-cats a[href="#cat-extras"], .shop-nav-cats a[href="#cat-extras"], .cat-pill-nav[href="#cat-extras"], #cat-extras { display: none !important; }
     .shop-waitlist-btn { display: block; width: 100%; padding: 8px; background: transparent; color: #9CA3AF; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #E5E7EB; cursor: pointer; border-radius: 4px; text-align: center; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .shop-waitlist-btn:hover { border-color: #00A67E; color: #00A67E; }
 
@@ -1540,28 +1542,27 @@
 
   </section>
 
-  <!-- REVIEWS (moved below products) -->
+  <!-- TRUST BANNER -->
   <section class="reviews-section">
     <div class="reviews-header">
-      <span class="reviews-tag">// What Researchers Say</span>
-      <span class="reviews-stars">★★★★★</span>
-      <span class="reviews-score">5.0 — Verified UK Researchers</span>
+      <span class="reviews-tag">// Order With Clarity</span>
+      <span class="reviews-score">UK stocked · Clear payment steps · Direct support</span>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">The person behind this has been so willing to help and share info. I had loads of questions as a first timer and he answered every single one without making me feel stupid. Results have been incredible.</p>
-        <span class="review-author">James R — Manchester</span>
+        <div class="review-stars">01</div>
+        <p class="review-text">Products are listed with sizes and bundle options up front so you can choose quickly without digging around.</p>
+        <span class="review-author">Simple product selection</span>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Second time ordering and both times next day. Ordered something out of stock and he called me straight away and sent two for the inconvenience without me even asking. That kind of service you just do not get anywhere else.</p>
-        <span class="review-author">Verified UK Researcher</span>
+        <div class="review-stars">02</div>
+        <p class="review-text">Need bac water, insulin needles or alcohol wipes? Add them at checkout as a bundle or separately.</p>
+        <span class="review-author">Essentials at checkout</span>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Six months in and I truly cannot believe where I am now. The support alongside my orders made all the difference. Having used a few UK suppliers the pricing and quality here is unmatched. Always come here now.</p>
-        <span class="review-author">Mike T — Leeds</span>
+        <div class="review-stars">03</div>
+        <p class="review-text">No payment is taken on the website. Place the order, then payment options are sent clearly by email.</p>
+        <span class="review-author">No surprise checkout</span>
       </div>
     </div>
   </section>
@@ -1569,11 +1570,11 @@
   <!-- HELP -->
   <section class="help-light">
     <div class="help-light-inner">
-      <p class="help-light-tag">// Not Sure Yet?</p>
-      <h2 class="help-light-title">Got questions?<br><em>Just message me directly.</em></h2>
-      <p class="help-light-body">I know buying research compounds online for the first time can feel daunting. I am happy to help whether that is answering questions about a specific compound, helping you understand what might suit your research, or just having a chat before you commit to anything.</p>
-      <p class="help-light-body">No pressure. No sales pitch. Just honest advice from someone who actually uses this stuff.</p>
-      <p class="help-light-note">Struggling with payments? Drop me a message on Telegram. Bank transfer and crypto all accepted.</p>
+      <p class="help-light-tag">// New Here?</p>
+      <h2 class="help-light-title">Start simple.<br><em>Ask before you order.</em></h2>
+      <p class="help-light-body">If you are comparing products or unsure what the checkout process looks like, message first. I will keep it clear and straightforward.</p>
+      <p class="help-light-body">No pressure, no hard sell, and no payment taken on the site. You can place an order first and review the payment details afterwards.</p>
+      <p class="help-light-note">Need practical extras? Bacteriostatic water, insulin needles and alcohol wipes can now be added during checkout.</p>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-light-btn">Message Me on Telegram →</a>
     </div>
   </section>
