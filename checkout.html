@@ -211,10 +211,9 @@
     .addon-symbol.wipes { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 5px; background: rgba(176,175,155,0.15); transform: rotate(-4deg); }
     .addon-symbol.wipes::before { content: ""; position: absolute; left: 5px; right: 5px; top: 6px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(176,175,155,0.5); }
     .addon-symbol.wipes::after { content: ""; position: absolute; right: -4px; top: 3px; width: 9px; height: 9px; border-radius: 2px; background: #ffffff; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(8deg); }
-    .addon-visual.bundle .addon-symbol { position: absolute; animation: addon-float 3.6s ease-in-out infinite; }
-    .addon-visual.bundle .vial { left: 9px; bottom: 9px; transform: scale(0.78); }
-    .addon-visual.bundle .syringe { right: 4px; top: 13px; transform: rotate(-24deg) scale(0.72); animation-delay: 0.25s; }
-    .addon-visual.bundle .wipes { right: 8px; bottom: 7px; transform: rotate(5deg) scale(0.7); animation-delay: 0.5s; }
+    .addon-symbol.kit { width: 30px; height: 23px; border: 2px solid currentColor; border-radius: 7px; background: rgba(176,175,155,0.15); animation: addon-float 3.6s ease-in-out infinite; }
+    .addon-symbol.kit::before { content: ""; position: absolute; left: 6px; right: 6px; top: -7px; height: 7px; border: 2px solid currentColor; border-bottom: 0; border-radius: 6px 6px 0 0; opacity: 0.75; }
+    .addon-symbol.kit::after { content: ""; position: absolute; left: 7px; right: 7px; top: 9px; height: 2px; background: currentColor; box-shadow: 0 -5px 0 rgba(176,175,155,0.5), 0 5px 0 rgba(176,175,155,0.5); }
     @keyframes addon-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -3px; } }
     .addon-name { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
     .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
@@ -428,13 +427,11 @@
       <div class="addon-row featured">
         <div class="addon-info">
           <div class="addon-visual bundle" aria-hidden="true">
-            <span class="addon-symbol vial"></span>
-            <span class="addon-symbol syringe"></span>
-            <span class="addon-symbol wipes"></span>
+            <span class="addon-symbol kit"></span>
           </div>
           <div>
           <div class="addon-name">Essentials Bundle</div>
-          <div class="addon-desc">Bacteriostatic water + syringe kit + alcohol wipes</div>
+          <div class="addon-desc">10ml bac water + syringe kit + alcohol wipes</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£18</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',18,'Bac water + syringe kit + wipes')">Add</button></div>
