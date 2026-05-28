@@ -190,10 +190,23 @@
     .addon-intro strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 3px; }
     .addon-intro span { display: block; font-size: 0.76rem; color: #6B7280; line-height: 1.5; }
     .addon-list { display: flex; flex-direction: column; }
-    .addon-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #F3F4F6; }
+    .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #F3F4F6; transition: background 0.2s, transform 0.2s; }
+    .addon-row:hover { background: #FBFCFC; transform: translateX(2px); }
+    .addon-row.featured { position: relative; background: linear-gradient(100deg, #ffffff 0%, #f8f8f4 50%, #ffffff 100%); }
+    .addon-row.featured::before { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 0%, rgba(176,175,155,0.16) 45%, transparent 70%); transform: translateX(-100%); animation: addon-sheen 4s ease-in-out infinite; pointer-events: none; }
+    @keyframes addon-sheen { 0%, 58% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     .addon-row:last-child { border-bottom: none; }
+    .addon-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .addon-info > div:last-child { min-width: 0; }
+    .addon-thumb { width: 46px; height: 46px; border-radius: 7px; object-fit: cover; border: 1px solid #E5E7EB; background: #F8F9FA; flex-shrink: 0; }
+    .addon-thumb-stack { width: 64px; height: 48px; position: relative; flex-shrink: 0; }
+    .addon-thumb-stack img { position: absolute; width: 38px; height: 38px; border-radius: 7px; object-fit: cover; border: 2px solid #ffffff; box-shadow: 0 6px 16px rgba(17,24,39,0.12); animation: addon-float 3.6s ease-in-out infinite; }
+    .addon-thumb-stack img:nth-child(1) { left: 0; bottom: 2px; z-index: 3; }
+    .addon-thumb-stack img:nth-child(2) { left: 17px; top: 0; z-index: 2; animation-delay: 0.25s; }
+    .addon-thumb-stack img:nth-child(3) { right: 0; bottom: 1px; z-index: 1; animation-delay: 0.5s; }
+    @keyframes addon-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
     .addon-name { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
-    .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; }
+    .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
     .addon-action { display: flex; align-items: center; gap: 10px; }
     .addon-price { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1a1a1a; white-space: nowrap; }
     .addon-btn { min-width: 84px; padding: 9px 12px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -342,11 +355,29 @@
     .success-page p { font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px; margin: 0 auto 8px; }
 
     @media (max-width: 480px) {
-      .trust-row { grid-template-columns: repeat(4,1fr); gap: 6px; }
-      .trust-chip-label { font-size: 0.48rem; }
+      body { overflow-x: hidden; }
+      .checkout-wrap { width: 100%; max-width: 100%; padding: 22px 14px 90px; overflow: hidden; }
+      .checkout-nav { gap: 6px; align-items: flex-start; flex-direction: column; }
+      .checkout-logo { font-size: 0.82rem; letter-spacing: 0.05em; line-height: 1.3; }
+      .back-link { font-size: 0.56rem; letter-spacing: 0.04em; white-space: nowrap; padding-top: 2px; }
+      .trust-row { grid-template-columns: repeat(2,1fr); gap: 8px; }
+      .trust-chip { padding: 9px 6px; }
+      .trust-chip-label { font-size: 0.5rem; }
       .form-row { grid-template-columns: 1fr; }
-      .addon-row { grid-template-columns: 1fr; }
-      .addon-action { justify-content: space-between; }
+      .addon-box { border-radius: 10px; }
+      .addon-intro { padding: 13px 14px; }
+      .addon-row { grid-template-columns: 1fr; gap: 10px; padding: 13px 14px; transform: none; }
+      .addon-row:hover { transform: none; }
+      .addon-info { gap: 10px; align-items: flex-start; }
+      .addon-action { justify-content: flex-start; width: 100%; padding-left: 52px; gap: 18px; }
+      .addon-price { font-size: 1.08rem; }
+      .addon-btn { min-width: 92px; min-height: 38px; }
+      .addon-thumb { width: 42px; height: 42px; }
+      .addon-thumb-stack { width: 42px; height: 42px; }
+      .addon-thumb-stack img { width: 30px; height: 30px; }
+      .addon-thumb-stack img:nth-child(1) { left: 0; bottom: 0; }
+      .addon-thumb-stack img:nth-child(2) { left: 10px; top: 0; }
+      .addon-thumb-stack img:nth-child(3) { right: 0; bottom: 0; }
     }
   </style>
 </head>
@@ -357,7 +388,7 @@
   <!-- NAV -->
   <div class="checkout-nav">
     <a href="index.html" class="checkout-logo">NORTH<span>PEPTIDES</span>UK</a>
-    <a href="index.html" class="back-link">← Continue Shopping</a>
+    <a href="index.html" class="back-link">← Shop</a>
   </div>
 
   <!-- TRUST -->
@@ -387,31 +418,47 @@
       <span>Choose the bundle or add items separately.</span>
     </div>
     <div class="addon-list">
-      <div class="addon-row">
-        <div>
+      <div class="addon-row featured">
+        <div class="addon-info">
+          <div class="addon-thumb-stack" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=120&q=75" alt="">
+            <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=120&q=75" alt="">
+            <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=120&q=75" alt="">
+          </div>
+          <div>
           <div class="addon-name">Essentials Bundle</div>
           <div class="addon-desc">Bacteriostatic water + syringe kit + alcohol wipes</div>
+          </div>
         </div>
         <div class="addon-action"><span class="addon-price">£18</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',18,'Bac water + syringe kit + wipes')">Add</button></div>
       </div>
       <div class="addon-row">
-        <div>
+        <div class="addon-info">
+          <img class="addon-thumb" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=120&q=75" alt="Bacteriostatic water">
+          <div>
           <div class="addon-name">Bacteriostatic Water</div>
           <div class="addon-desc">10ml vial</div>
+          </div>
         </div>
         <div class="addon-action"><span class="addon-price">£7</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',7,'10ml vial')">Add</button></div>
       </div>
       <div class="addon-row">
-        <div>
+        <div class="addon-info">
+          <img class="addon-thumb" src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=120&q=75" alt="Syringe kit">
+          <div>
           <div class="addon-name">Syringe Kit</div>
           <div class="addon-desc">10 pack, 1ml syringes</div>
+          </div>
         </div>
         <div class="addon-action"><span class="addon-price">£9</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Syringe Kit',9,'10 pack, 1ml')">Add</button></div>
       </div>
       <div class="addon-row">
-        <div>
+        <div class="addon-info">
+          <img class="addon-thumb" src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=120&q=75" alt="Alcohol wipes">
+          <div>
           <div class="addon-name">Alcohol Wipes</div>
           <div class="addon-desc">50 pack, sterile</div>
+          </div>
         </div>
         <div class="addon-action"><span class="addon-price">£5</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',5,'50 pack')">Add</button></div>
       </div>
