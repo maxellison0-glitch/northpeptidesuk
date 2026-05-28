@@ -198,13 +198,24 @@
     .addon-row:last-child { border-bottom: none; }
     .addon-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .addon-info > div:last-child { min-width: 0; }
-    .addon-thumb { width: 46px; height: 46px; border-radius: 7px; object-fit: cover; border: 1px solid #E5E7EB; background: #F8F9FA; flex-shrink: 0; }
-    .addon-thumb-stack { width: 64px; height: 48px; position: relative; flex-shrink: 0; }
-    .addon-thumb-stack img { position: absolute; width: 38px; height: 38px; border-radius: 7px; object-fit: cover; border: 2px solid #ffffff; box-shadow: 0 6px 16px rgba(17,24,39,0.12); animation: addon-float 3.6s ease-in-out infinite; }
-    .addon-thumb-stack img:nth-child(1) { left: 0; bottom: 2px; z-index: 3; }
-    .addon-thumb-stack img:nth-child(2) { left: 17px; top: 0; z-index: 2; animation-delay: 0.25s; }
-    .addon-thumb-stack img:nth-child(3) { right: 0; bottom: 1px; z-index: 1; animation-delay: 0.5s; }
-    @keyframes addon-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    .addon-visual { width: 46px; height: 46px; border-radius: 10px; border: 1px solid #E5E7EB; background: linear-gradient(135deg, #ffffff 0%, var(--soft-neutral-light) 100%); flex-shrink: 0; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
+    .addon-visual::after { content: ""; position: absolute; inset: -40% auto auto -45%; width: 42px; height: 120px; background: rgba(176,175,155,0.18); transform: rotate(28deg); animation: icon-sweep 4.2s ease-in-out infinite; }
+    @keyframes icon-sweep { 0%, 55% { transform: translateX(-26px) rotate(28deg); } 100% { transform: translateX(78px) rotate(28deg); } }
+    .addon-symbol { position: relative; z-index: 1; display: block; color: var(--soft-neutral); }
+    .addon-symbol.vial { width: 16px; height: 25px; border: 2px solid currentColor; border-radius: 4px 4px 7px 7px; background: rgba(176,175,155,0.18); }
+    .addon-symbol.vial::before { content: ""; position: absolute; left: 3px; right: 3px; top: -7px; height: 6px; border-radius: 3px 3px 1px 1px; background: #1a1a1a; opacity: 0.85; }
+    .addon-symbol.vial::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: 5px; height: 5px; border-radius: 8px; background: currentColor; opacity: 0.35; }
+    .addon-symbol.syringe { width: 30px; height: 12px; border: 2px solid currentColor; border-radius: 5px; transform: rotate(-24deg); background: rgba(255,255,255,0.65); }
+    .addon-symbol.syringe::before { content: ""; position: absolute; left: -8px; top: 3px; width: 8px; height: 2px; background: currentColor; box-shadow: -5px 0 0 #1a1a1a; }
+    .addon-symbol.syringe::after { content: ""; position: absolute; right: -11px; top: 4px; width: 12px; height: 2px; background: #1a1a1a; }
+    .addon-symbol.wipes { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 5px; background: rgba(176,175,155,0.15); transform: rotate(-4deg); }
+    .addon-symbol.wipes::before { content: ""; position: absolute; left: 5px; right: 5px; top: 6px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(176,175,155,0.5); }
+    .addon-symbol.wipes::after { content: ""; position: absolute; right: -4px; top: 3px; width: 9px; height: 9px; border-radius: 2px; background: #ffffff; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(8deg); }
+    .addon-visual.bundle .addon-symbol { position: absolute; animation: addon-float 3.6s ease-in-out infinite; }
+    .addon-visual.bundle .vial { left: 9px; bottom: 9px; transform: scale(0.78); }
+    .addon-visual.bundle .syringe { right: 4px; top: 13px; transform: rotate(-24deg) scale(0.72); animation-delay: 0.25s; }
+    .addon-visual.bundle .wipes { right: 8px; bottom: 7px; transform: rotate(5deg) scale(0.7); animation-delay: 0.5s; }
+    @keyframes addon-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -3px; } }
     .addon-name { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
     .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
     .addon-action { display: flex; align-items: center; gap: 10px; }
@@ -372,12 +383,8 @@
       .addon-action { justify-content: flex-start; width: 100%; padding-left: 52px; gap: 18px; }
       .addon-price { font-size: 1.08rem; }
       .addon-btn { min-width: 92px; min-height: 38px; }
-      .addon-thumb { width: 42px; height: 42px; }
-      .addon-thumb-stack { width: 42px; height: 42px; }
-      .addon-thumb-stack img { width: 30px; height: 30px; }
-      .addon-thumb-stack img:nth-child(1) { left: 0; bottom: 0; }
-      .addon-thumb-stack img:nth-child(2) { left: 10px; top: 0; }
-      .addon-thumb-stack img:nth-child(3) { right: 0; bottom: 0; }
+      .addon-visual { width: 42px; height: 42px; border-radius: 9px; }
+      .addon-symbol.syringe { width: 27px; }
     }
   </style>
 </head>
@@ -420,10 +427,10 @@
     <div class="addon-list">
       <div class="addon-row featured">
         <div class="addon-info">
-          <div class="addon-thumb-stack" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=120&q=75" alt="">
-            <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=120&q=75" alt="">
-            <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=120&q=75" alt="">
+          <div class="addon-visual bundle" aria-hidden="true">
+            <span class="addon-symbol vial"></span>
+            <span class="addon-symbol syringe"></span>
+            <span class="addon-symbol wipes"></span>
           </div>
           <div>
           <div class="addon-name">Essentials Bundle</div>
@@ -434,7 +441,7 @@
       </div>
       <div class="addon-row">
         <div class="addon-info">
-          <img class="addon-thumb" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=120&q=75" alt="Bacteriostatic water">
+          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol vial"></span></div>
           <div>
           <div class="addon-name">Bacteriostatic Water</div>
           <div class="addon-desc">10ml vial</div>
@@ -444,7 +451,7 @@
       </div>
       <div class="addon-row">
         <div class="addon-info">
-          <img class="addon-thumb" src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=120&q=75" alt="Syringe kit">
+          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
           <div>
           <div class="addon-name">Syringe Kit</div>
           <div class="addon-desc">10 pack, 1ml syringes</div>
@@ -454,7 +461,7 @@
       </div>
       <div class="addon-row">
         <div class="addon-info">
-          <img class="addon-thumb" src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=120&q=75" alt="Alcohol wipes">
+          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol wipes"></span></div>
           <div>
           <div class="addon-name">Alcohol Wipes</div>
           <div class="addon-desc">50 pack, sterile</div>
