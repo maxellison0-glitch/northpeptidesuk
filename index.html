@@ -688,6 +688,20 @@
     .help-light-note { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: #6B7280; border-left: 2px solid #E5E7EB; padding-left: 12px; line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
     .help-light-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #1a1a1a; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: background 0.2s; }
     .help-light-btn:hover { background: #00A67E; }
+    .faq-light { background: #ffffff; border-top: 1px solid #E5E7EB; padding: 56px 40px; }
+    .faq-light-inner { max-width: 760px; }
+    .faq-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft-neutral); margin-bottom: 12px; }
+    .faq-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 22px; }
+    .faq-light-list { border: 1px solid #E5E7EB; border-radius: 8px; overflow: hidden; background: #ffffff; }
+    .faq-item { border-bottom: 1px solid #F3F4F6; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary { list-style: none; cursor: pointer; padding: 18px 20px; font-size: 0.9rem; font-weight: 650; color: #1a1a1a; display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-family: 'DM Mono', monospace; color: var(--soft-neutral); font-size: 1rem; transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding: 0 20px 18px; font-size: 0.82rem; color: #6B7280; line-height: 1.75; max-width: 640px; }
+    .faq-item a { color: #1a1a1a; font-weight: 700; text-decoration: underline; text-decoration-color: var(--soft-neutral); text-underline-offset: 3px; }
+    .faq-route { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft-neutral); }
     .about-light { background: #F8F9FA; padding: 60px 40px; border-top: 1px solid #E5E7EB; }
     .about-light-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
     .about-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; margin-bottom: 12px; }
@@ -749,6 +763,9 @@
       .essentials-bundle-card { flex-direction: column; align-items: flex-start; }
       .essentials-bundle-right { flex-direction: row; align-items: center; gap: 16px; }
       .help-light { padding: 32px 16px; }
+      .faq-light { padding: 32px 16px; }
+      .faq-item summary { padding: 16px; font-size: 0.84rem; }
+      .faq-item p { padding: 0 16px 16px; font-size: 0.78rem; }
       .about-light { padding: 32px 16px; }
       .about-light-grid { grid-template-columns: 1fr; gap: 24px; }
       .about-light-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
@@ -1418,6 +1435,36 @@
       <p class="help-light-body">No pressure, no hard sell, and no payment taken on the site. You can place an order first and review the payment details afterwards.</p>
       <p class="help-light-note">Need practical extras? Bacteriostatic water, syringe kits and alcohol wipes can now be added during checkout.</p>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-light-btn">Message Me on Telegram →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-light" id="faq">
+    <div class="faq-light-inner">
+      <p class="faq-light-tag">// Quick Answers</p>
+      <h2 class="faq-light-title">Not sure where to start?</h2>
+      <div class="faq-light-list">
+        <details class="faq-item" open>
+          <summary>What are the main stocked options?</summary>
+          <p>The main stocked choices are <a href="#products">Retatrutide</a>, <a href="#products">Tirzepatide</a> and <a href="#products">KLOW Stack</a>. Retatrutide and Tirzepatide sit in the metabolic research category, while KLOW Stack is a combined blend option for researchers who want GHK-Cu, TB-500, BPC-157 and KPV in one vial.<br><span class="faq-route">Start with the featured products above</span></p>
+        </details>
+        <details class="faq-item">
+          <summary>Which product should I look at first?</summary>
+          <p>If you are comparing the metabolic research options, start by looking at <a href="#products">Retatrutide</a> and <a href="#products">Tirzepatide</a> side by side. If you want a combined vial rather than separate repair-focused products, look at <a href="#products">KLOW Stack</a>.<br><span class="faq-route">Compare Retatrutide, Tirzepatide and KLOW</span></p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need the checkout basics?</summary>
+          <p>The checkout basics are optional. They are there so you can add 10ml bac water, a syringe kit and alcohol wipes in the same order if needed. They pair most naturally with vial orders such as <a href="#products">Retatrutide</a>, <a href="#products">Tirzepatide</a> or <a href="#products">KLOW Stack</a>.<br><span class="faq-route">Add basics at checkout only if useful</span></p>
+        </details>
+        <details class="faq-item">
+          <summary>How does payment and dispatch work?</summary>
+          <p>Add your chosen product, place the order and no payment is taken on the website. Payment details are emailed afterwards, then your order is packed for UK dispatch once payment is confirmed. The most common routes are simple: choose <a href="#products">Retatrutide</a>, <a href="#products">Tirzepatide</a> or <a href="#products">KLOW Stack</a>, then checkout.<br><span class="faq-route">Order first, payment details after</span></p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I ask before ordering?</summary>
+          <p>Yes. If you are unsure which stocked option fits your research order, message first and keep it simple. You can ask about available sizes for <a href="#products">Retatrutide</a>, <a href="#products">Tirzepatide</a> or <a href="#products">KLOW Stack</a> before placing anything in the basket.<br><span class="faq-route">Message before checkout if unsure</span></p>
+        </details>
+      </div>
     </div>
   </section>
 
