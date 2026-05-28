@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,33 +21,6 @@
     "areaServed": ["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],
     "currenciesAccepted": "GBP",
     "paymentAccepted": "Cryptocurrency, Bank Transfer",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "3",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "author": {"@type": "Person", "name": "James R"},
-        "reviewBody": "The person behind this has been so willing to help and share info. Results have been incredible."
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "author": {"@type": "Person", "name": "Verified UK Researcher"},
-        "reviewBody": "Second time ordering and both times next day. That kind of service you just do not get anywhere else."
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "author": {"@type": "Person", "name": "Mike T"},
-        "reviewBody": "Six months in and I truly cannot believe where I am now. Pricing and quality here is unmatched."
-      }
-    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Research Peptides",
@@ -790,114 +763,6 @@
       .toast { bottom: 76px; right: 12px; left: 12px; max-width: none; }
     }
     @media (max-width: 380px) { .acc-grid { grid-template-columns: 1fr; } }
-
-    /* ===== DISCOUNT POPUP ===== */
-    .discount-popup-overlay {
-      position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,0.6);
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px;
-      animation: fadeInOverlay 0.4s ease;
-    }
-    @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
-    .discount-popup {
-      background: #0a0a0a;
-      border: 1px solid rgba(0,166,126,0.3);
-      border-radius: 16px;
-      max-width: 420px;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      animation: slideUpPopup 0.4s cubic-bezier(0.34,1.56,0.64,1);
-      box-shadow: 0 0 60px rgba(0,166,126,0.15), 0 24px 64px rgba(0,0,0,0.5);
-    }
-    @keyframes slideUpPopup { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-    .discount-popup-aurora {
-      position: absolute; inset: -10px;
-      background: repeating-linear-gradient(100deg,rgba(0,166,126,0.12) 0%,rgba(0,166,126,0.04) 8%,transparent 12%,transparent 14%,rgba(0,200,150,0.08) 18%);
-      background-size: 300% 300%;
-      animation: aurora 10s linear infinite;
-      filter: blur(10px);
-      z-index: 0;
-    }
-    .discount-popup-inner {
-      position: relative; z-index: 1;
-      padding: 36px 32px 28px;
-      text-align: center;
-    }
-    .discount-popup-close {
-      position: absolute; top: 14px; right: 14px;
-      background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.5);
-      width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
-      font-size: 0.8rem; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; z-index: 2;
-    }
-    .discount-popup-close:hover { background: rgba(255,255,255,0.15); color: #ffffff; }
-    .discount-popup-tag {
-      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: #00A67E; margin-bottom: 14px;
-    }
-    .discount-popup-title {
-      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
-      color: #ffffff; line-height: 1.1; margin-bottom: 8px;
-    }
-    .discount-popup-title span { color: #00A67E; }
-    .discount-popup-sub {
-      font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px;
-    }
-    .discount-popup-code-wrap {
-      background: rgba(0,166,126,0.08);
-      border: 1px dashed rgba(0,166,126,0.4);
-      border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;
-      cursor: pointer; transition: background 0.2s;
-      position: relative;
-    }
-    .discount-popup-code-wrap:hover { background: rgba(0,166,126,0.14); }
-    .discount-popup-code-label {
-      font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px;
-    }
-    .discount-popup-code {
-      font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800;
-      color: #00A67E; letter-spacing: 0.1em;
-    }
-    .discount-popup-copy-hint {
-      font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.3);
-      margin-top: 6px; transition: color 0.2s;
-    }
-    .discount-popup-code-wrap.copied .discount-popup-copy-hint { color: #00A67E; }
-    .discount-popup-btn {
-      width: 100%; padding: 13px; background: #00A67E; color: #ffffff;
-      font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer;
-      border-radius: 8px; transition: opacity 0.2s, transform 0.1s; margin-bottom: 12px;
-    }
-    .discount-popup-btn:hover { opacity: 0.9; }
-    .discount-popup-btn:active { transform: scale(0.98); }
-
-    .discount-popup-input {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #ffffff;
-      padding: 12px 14px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .discount-popup-input::placeholder { color: rgba(255,255,255,0.25); }
-    .discount-popup-input:focus { border-color: rgba(0,166,126,0.5); }
-    .discount-popup-form { display: flex; flex-direction: column; gap: 0; margin-bottom: 12px; }
-    .discount-popup-dismiss {
-      font-family: 'DM Mono', monospace; font-size: 0.58rem; color: rgba(255,255,255,0.25);
-      cursor: pointer; text-decoration: underline; background: none; border: none;
-      transition: color 0.2s;
-    }
-    .discount-popup-dismiss:hover { color: rgba(255,255,255,0.5); }
-
     /* SALE PRICING */
     .price-was {
       font-family: 'DM Mono', monospace;
@@ -930,29 +795,6 @@
 <body>
 
   <!-- TOAST -->
-  
-  <!-- DISCOUNT POPUP -->
-  <div class="discount-popup-overlay" id="discount-popup" style="display:none;">
-    <div class="discount-popup">
-      <div class="discount-popup-aurora"></div>
-      <button class="discount-popup-close" onclick="closeDiscountPopup()">✕</button>
-      <div class="discount-popup-inner">
-        <div class="discount-popup-tag">// Summer Sale</div>
-        <div class="discount-popup-title">Welcome.<br><span>10% Off Your First Order.</span></div>
-        <p class="discount-popup-sub">Enter your email and we'll send your discount code instantly. Plus be first to hear about restocks and new compounds.</p>
-        <div class="discount-popup-form" id="popup-form">
-          <input type="email" id="popup-email" placeholder="your@email.com" class="discount-popup-input" autocomplete="email">
-          <button class="discount-popup-btn" onclick="submitPopupEmail()">Send My 10% Code →</button>
-        </div>
-        <div id="popup-success" style="display:none;text-align:center;padding:16px 0;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:#00A67E;margin-bottom:10px;">✓ You're in</div>
-          <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#ffffff;line-height:1.3;">Your 10% code is on its way.<br>Check your inbox.</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.3);margin-top:10px;">We'll also keep you posted on restocks.</div>
-        </div>
-        <button class="discount-popup-dismiss" onclick="closeDiscountPopup()">No thanks</button>
-      </div>
-    </div>
-  </div>
 
   <div class="toast" id="toast">Added: <span class="toast-name" id="toast-name"></span></div>
 
@@ -1010,8 +852,8 @@
   <nav class="shop-nav">
     <div class="shop-nav-logo">NORTH<span>PEPTIDES</span>UK</div>
     <ul class="shop-nav-cats">
-      <li><a href="#cat-weight-loss">Weight Loss</a></li>
-      <li><a href="#cat-recovery">Recovery</a></li>
+      <li><a href="#cat-weight-loss">Metabolic</a></li>
+      <li><a href="#cat-recovery">Repair</a></li>
       <li><a href="#cat-longevity">Longevity</a></li>
       <li><a href="#cat-extras">Extras</a></li>
     </ul>
@@ -1032,11 +874,11 @@
     <div class="hero-content">
       <span class="hero-tag">North Peptides UK</span>
       <h1 class="hero-title">
-        Optimise.<br>
-        Recover.<br>
-        <em>Research Better.</em>
+        UK Stocked.<br>
+        Clear Ordering.<br>
+        <em>Research Use Only.</em>
       </h1>
-      <p class="hero-sub">Premium lyophilised peptides, UK stocked and dispatched. GLP-1 agonists, recovery compounds, longevity stacks. 99%+ purity on every vial.</p>
+      <p class="hero-sub">Lyophilised research peptides stocked in the UK, with clear product sizes, simple checkout and direct support before dispatch.</p>
       <div class="hero-cta-row">
         <a href="#products" class="hero-cta-primary">Shop Now →</a>
         <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="hero-cta-secondary">✈ Message Me</a>
@@ -1045,10 +887,10 @@
       <div class="hero-cats">
         <span class="hero-cats-label">Jump to</span>
         <a href="#cat-weight-loss" class="glass-pill" onclick="scrollToSection('cat-weight-loss')">
-          <span class="glass-pill-icon">⚡</span> Weight Loss
+          <span class="glass-pill-icon">⚡</span> Metabolic
         </a>
         <a href="#cat-recovery" class="glass-pill" onclick="scrollToSection('cat-recovery')">
-          <span class="glass-pill-icon">🔬</span> Recovery
+          <span class="glass-pill-icon">🔬</span> Repair
         </a>
         <a href="#cat-longevity" class="glass-pill" onclick="scrollToSection('cat-longevity')">
           <span class="glass-pill-icon">✦</span> Longevity
@@ -1064,7 +906,7 @@
         <div class="hero-stat"><span class="hero-stat-num">24h</span><span class="hero-stat-label">Dispatch</span></div>
         <div class="hero-stat">
           <span class="hero-stat-num" style="font-size:0.85rem;letter-spacing:0.02em;">Bank Transfer · Crypto</span>
-          <span class="hero-stat-label">All Payments Welcome</span>
+          <span class="hero-stat-label">Payment After Order</span>
         </div>
       </div>
     </div>
@@ -1075,13 +917,13 @@
   <div class="trust-strip">
     <div class="trust-item"><span class="trust-item-icon">🧊</span> Frozen until dispatch</div>
     <span class="trust-divider">·</span>
-    <div class="trust-item"><span class="trust-item-icon">✅</span> 99%+ purity verified</div>
+    <div class="trust-item"><span class="trust-item-icon">✅</span> Purity stated clearly</div>
     <span class="trust-divider">·</span>
     <div class="trust-item"><span class="trust-item-icon">🇬🇧</span> UK dispatched</div>
     <span class="trust-divider">·</span>
     <div class="trust-item"><span class="trust-item-icon">📦</span> Discrete packaging</div>
     <span class="trust-divider">·</span>
-    <div class="trust-item"><span class="trust-item-icon">✈</span> <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" style="color:#00A67E;text-decoration:none;">Questions? Message me</a></div>
+    <div class="trust-item"><span class="trust-item-icon">✈</span> <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" style="color:#00A67E;text-decoration:none;">Questions before ordering?</a></div>
   </div>
 
   <!-- FEATURED -->
@@ -1093,7 +935,7 @@
     <div class="featured-grid">
 
       <div class="featured-card">
-        <div class="featured-card-img" onclick="openModal('Retatrutide','10mg / 15mg / 20mg — select below','hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg',['Triple receptor agonist: GLP-1, GIP and Glucagon','Most potent metabolic research compound available','UK stocked, same or next day dispatch','Lyophilised powder for maximum stability','99%+ purity independently verified'],45,'10mg')">
+        <div class="featured-card-img" onclick="openModal('Retatrutide','10mg / 15mg / 20mg — select below','hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg',['GLP-1, GIP and glucagon receptor research compound','Multiple vial sizes available','UK stocked, same or next day dispatch','Lyophilised powder for stability','Purity information stated clearly'],45,'10mg')">
           <img src="hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg" alt="Retatrutide" id="feat-reta-img">
           <div class="featured-card-img-overlay"><div class="feat-info-icon">i</div></div>
           <span class="feat-badge">● Most Popular</span>
@@ -1101,7 +943,7 @@
         </div>
         <div class="featured-body">
           <span class="featured-name">Retatrutide</span>
-          <span class="featured-desc">Triple receptor GLP-1/GIP/Glucagon agonist. The most advanced metabolic research compound available.</span>
+          <span class="featured-desc">GLP-1, GIP and glucagon receptor research compound. Multiple vial sizes available.</span>
           <select class="featured-select" id="feat-reta-sel" onchange="updateFeaturedRetaTirz('feat-reta-sel','feat-reta-p','feat-reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
             <option value="40|10mg">1x 10mg — £40 (was £45)</option>
             <option value="58|15mg">1x 15mg — £58 (was £65)</option>
@@ -1146,7 +988,7 @@
       </div>
 
       <div class="featured-card">
-        <div class="featured-card-img" onclick="openModal('KLOW Stack','GHK-Cu + TB-500 + BPC-157 + KPV','hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg',['Four recovery peptides in one vial','GHK-Cu for skin and collagen, TB-500 for tissue repair','BPC-157 for gut, KPV anti-inflammatory','Most cost-effective recovery stack available','99%+ purity, UK stocked'],60,'80mg')">
+        <div class="featured-card-img" onclick="openModal('KLOW Stack','GHK-Cu + TB-500 + BPC-157 + KPV','hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg',['Four-compound research blend in one vial','GHK-Cu, TB-500, BPC-157 and KPV','Designed for researchers who want a combined vial','UK stocked','Purity information stated clearly'],60,'80mg')">
           <img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack">
           <div class="featured-card-img-overlay"><div class="feat-info-icon">i</div></div>
           <span class="feat-badge">⚡ Best Value</span>
@@ -1154,7 +996,7 @@
         </div>
         <div class="featured-body">
           <span class="featured-name">KLOW Stack</span>
-          <span class="featured-desc">Four compounds, one vial. The complete recovery and wellness stack.</span>
+          <span class="featured-desc">Four-compound research blend in one vial: GHK-Cu, TB-500, BPC-157 and KPV.</span>
           <select class="featured-select" id="feat-klow-sel" onchange="updateFeaturedPrice('feat-klow-sel','feat-klow-p')">
             <option value="54|80mg">1x 80mg — £54 (was £60)</option>
             <option value="97|2x 80mg">2x 80mg — £97 (was £108)</option>
@@ -1173,8 +1015,8 @@
   <!-- CATEGORY NAV PILLS -->
   <div class="cat-nav">
     <div class="cat-nav-inner">
-      <a class="cat-pill-nav active" href="#cat-weight-loss" onclick="setActivePill(this)">Weight Loss</a>
-      <a class="cat-pill-nav" href="#cat-recovery" onclick="setActivePill(this)">Recovery</a>
+      <a class="cat-pill-nav active" href="#cat-weight-loss" onclick="setActivePill(this)">Metabolic</a>
+      <a class="cat-pill-nav" href="#cat-recovery" onclick="setActivePill(this)">Repair</a>
       <a class="cat-pill-nav" href="#cat-longevity" onclick="setActivePill(this)">Longevity</a>
       <a class="cat-pill-nav" href="#cat-extras" onclick="setActivePill(this)">Extras</a>
     </div>
@@ -1187,16 +1029,16 @@
 
     </div>
 
-    <!-- WEIGHT LOSS -->
+    <!-- METABOLIC -->
     <div class="acc-section open" id="cat-weight-loss">
       <div class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-title">Weight Loss</span>
+        <span class="acc-title">Metabolic</span>
         <div style="display:flex;align-items:center;gap:10px;"><span class="acc-count">4 products</span><span class="acc-chevron">▾</span></div>
       </div>
       <div class="acc-body"><div class="acc-grid">
 
         <div class="shop-card">
-          <div class="shop-card-img" onclick="openModal('Retatrutide','10mg / 15mg / 20mg — select below','hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg',['Triple receptor agonist: GLP-1, GIP and Glucagon','Most potent metabolic research compound available','UK stocked, same or next day dispatch','99%+ purity independently verified'],45,'10mg')">
+          <div class="shop-card-img" onclick="openModal('Retatrutide','10mg / 15mg / 20mg — select below','hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg',['GLP-1, GIP and glucagon receptor research compound','Multiple vial sizes available','UK stocked, same or next day dispatch','Purity information stated clearly'],45,'10mg')">
             <img src="hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg" alt="Retatrutide" id="reta-img">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
             <span class="shop-badge badge-low">⚠ Low Stock</span>
@@ -1281,16 +1123,16 @@
       </div></div>
     </div>
 
-    <!-- RECOVERY -->
+    <!-- REPAIR -->
     <div class="acc-section open" id="cat-recovery">
       <div class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-title">Recovery</span>
+        <span class="acc-title">Repair</span>
         <div style="display:flex;align-items:center;gap:10px;"><span class="acc-count">5 products</span><span class="acc-chevron">▾</span></div>
       </div>
       <div class="acc-body"><div class="acc-grid">
 
         <div class="shop-card">
-          <div class="shop-card-img" onclick="openModal('BPC-157','10mg / vial','hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg',['Body Protective Compound, extensively studied','Researched for tissue repair and gut health','Popular in musculoskeletal recovery research','99%+ purity, UK stocked'],19,'10mg')">
+          <div class="shop-card-img" onclick="openModal('BPC-157','10mg / vial','hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg',['Body Protective Compound research peptide','Commonly studied in laboratory research settings','10mg lyophilised vial','UK stocked'],19,'10mg')">
             <img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
             <span class="shop-badge badge-low">⚠ 9 Remaining</span>
@@ -1370,7 +1212,7 @@
         </div>
 
         <div class="shop-card">
-          <div class="shop-card-img" onclick="openModal('KLOW Stack','GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg','hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg',['Four recovery peptides in one vial','GHK-Cu for skin, TB-500 for tissue, BPC-157 for gut, KPV anti-inflammatory','Most cost-effective recovery stack','99%+ purity, UK stocked'],60,'80mg')">
+          <div class="shop-card-img" onclick="openModal('KLOW Stack','GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg','hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg',['Four-compound research blend in one vial','GHK-Cu, TB-500, BPC-157 and KPV','Combined vial for research convenience','UK stocked'],60,'80mg')">
             <img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
             <span class="shop-badge badge-low">⚠ 17 Remaining</span>
@@ -1402,7 +1244,7 @@
       <div class="acc-body"><div class="acc-grid">
 
         <div class="shop-card">
-          <div class="shop-card-img" onclick="openModal('MOTS-c','10mg / vial','hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg',['Mitochondrial-derived peptide','Metabolic regulation and insulin sensitivity','Cellular longevity pathway research','99%+ purity, UK stocked'],29,'10mg')">
+          <div class="shop-card-img" onclick="openModal('MOTS-c','10mg / vial','hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg',['Mitochondrial-derived peptide','Cellular pathway research compound','10mg lyophilised vial','UK stocked'],29,'10mg')">
             <img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="MOTS-c">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
             <span class="shop-badge badge-low">⚠ 4 Remaining</span>
@@ -1495,7 +1337,7 @@
           <div class="essentials-bundle-info">
             <div class="essentials-bundle-tag">// Best Value Bundle</div>
             <div class="essentials-bundle-name">Essentials Bundle</div>
-            <div class="essentials-bundle-desc">Bacteriostatic Water + Insulin Needle Kit + Alcohol Wipes. Everything you need to get started.</div>
+            <div class="essentials-bundle-desc">Bacteriostatic Water + Syringe Kit + Alcohol Wipes.</div>
           </div>
           <div class="essentials-bundle-right">
             <div>
@@ -1518,12 +1360,12 @@
           </div>
           <div class="shop-card">
             <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&q=80" alt="Insulin Needle Kit" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
+              <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&q=80" alt="Syringe Kit" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="shop-card-body">
-              <span class="shop-card-name">Insulin Needle Kit</span>
+              <span class="shop-card-name">Syringe Kit</span>
               <span class="shop-card-dose">10 pack, 1ml syringes</span>
-              <div class="shop-card-footer"><div><div class="shop-card-price">£9</div></div><button class="shop-add-btn" onclick="addToBasket('Insulin Needle Kit', 9, '10 pack')">Add</button></div>
+              <div class="shop-card-footer"><div><div class="shop-card-price">£9</div></div><button class="shop-add-btn" onclick="addToBasket('Syringe Kit', 9, '10 pack')">Add</button></div>
             </div>
           </div>
           <div class="shop-card">
@@ -1556,7 +1398,7 @@
       </div>
       <div class="review-card">
         <div class="review-stars">02</div>
-        <p class="review-text">Need bac water, insulin needles or alcohol wipes? Add them at checkout as a bundle or separately.</p>
+        <p class="review-text">Need bac water, syringe kits or alcohol wipes? Add them at checkout as a bundle or separately.</p>
         <span class="review-author">Essentials at checkout</span>
       </div>
       <div class="review-card">
@@ -1574,7 +1416,7 @@
       <h2 class="help-light-title">Start simple.<br><em>Ask before you order.</em></h2>
       <p class="help-light-body">If you are comparing products or unsure what the checkout process looks like, message first. I will keep it clear and straightforward.</p>
       <p class="help-light-body">No pressure, no hard sell, and no payment taken on the site. You can place an order first and review the payment details afterwards.</p>
-      <p class="help-light-note">Need practical extras? Bacteriostatic water, insulin needles and alcohol wipes can now be added during checkout.</p>
+      <p class="help-light-note">Need practical extras? Bacteriostatic water, syringe kits and alcohol wipes can now be added during checkout.</p>
       <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="help-light-btn">Message Me on Telegram →</a>
     </div>
   </section>
@@ -1584,20 +1426,20 @@
     <p class="about-light-tag">// Who We Are</p>
     <div class="about-light-grid">
       <div class="about-light-text">
-        <h2 class="about-light-title">Not a company.<br>Just someone<br><em>who actually uses this stuff.</em></h2>
-        <p>I have been researching peptides for over a decade. Started out of curiosity, kept going because the results in my own personal research were hard to ignore.</p>
-        <p>Over the years I built relationships with manufacturers in China I genuinely trust. After trying supplier after supplier, these are the ones whose compounds actually test clean and arrive as described.</p>
-        <p>North Peptides UK started because I kept getting asked by people I knew where do you get yours? I figured if I was ordering anyway, I might as well make it available to other UK researchers who are tired of waiting weeks for international shipping or paying over the odds.</p>
-        <p>I am not a lab. I am not a pharmaceutical company. I am just someone based in the north of England who has spent a long time in this space and wants to make good quality research compounds accessible at a fair price.</p>
+        <h2 class="about-light-title">Small UK supplier.<br>Clear stock.<br><em>Simple ordering.</em></h2>
+        <p>North Peptides UK is built around a straightforward idea: make research compounds easier to order, with clear vial sizes, UK dispatch and direct communication.</p>
+        <p>Stock is sourced from established manufacturers and handled with care, with products stored frozen until dispatch wherever appropriate.</p>
+        <p>The site is intentionally simple. Choose your product, add any practical checkout extras, submit your details and receive payment instructions by email.</p>
+        <p>All products are supplied strictly for laboratory research use only. They are not medicines and are not for human or animal consumption.</p>
         <div class="about-light-sig">
           <span class="about-light-sig-name">— North Peptides UK</span>
           <span class="about-light-sig-tag">// Est. 2025 · Northern England</span>
         </div>
       </div>
       <div class="about-light-stats">
-        <div class="about-light-stat"><span class="about-light-stat-num">10+</span><span class="about-light-stat-label">Years researching peptides personally</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Based, ordered and dispatched locally</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">5</span><span class="about-light-stat-label">Years working with trusted suppliers</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Stock held and dispatched from the UK</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">Clear</span><span class="about-light-stat-label">Vial sizes and pricing listed up front</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">Direct</span><span class="about-light-stat-label">Questions answered before ordering</span></div>
         <div class="about-light-stat"><span class="about-light-stat-num">🧊</span><span class="about-light-stat-label">All stock stored frozen until dispatch</span></div>
       </div>
     </div>
@@ -1659,38 +1501,6 @@
 
   <script src="basket.js"></script>
   <script>
-
-    // DISCOUNT POPUP
-    function submitPopupEmail() {
-      const email = document.getElementById('popup-email').value;
-      if (!email || !email.includes('@')) {
-        document.getElementById('popup-email').style.borderColor = 'rgba(239,68,68,0.5)';
-        return;
-      }
-      // Send to Formspree
-      fetch('https://formspree.io/f/mnjrzpvl', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, _subject: 'New Email Signup — Summer Sale', message: 'New signup from popup: ' + email })
-      });
-      // Show code
-      document.getElementById('popup-form').style.display = 'none';
-      document.getElementById('popup-success').style.display = 'block';
-      sessionStorage.setItem('popupSeen', '1');
-      // Auto close after 4s
-      setTimeout(() => closeDiscountPopup(), 4000);
-    }
-
-    function closeDiscountPopup() {
-      document.getElementById('discount-popup').style.display = 'none';
-      sessionStorage.setItem('popupSeen', '1');
-    }
-    // Show after 2.5s if not seen this session
-    if (!sessionStorage.getItem('popupSeen')) {
-      setTimeout(() => {
-        document.getElementById('discount-popup').style.display = 'flex';
-      }, 2500);
-    }
 
     // NAV scroll behaviour
     const nav = document.querySelector('.shop-nav');
@@ -1817,3 +1627,5 @@
 
 </body>
 </html>
+
+
