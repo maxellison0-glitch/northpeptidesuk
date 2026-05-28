@@ -384,7 +384,7 @@
   <div class="addon-box">
     <div class="addon-intro">
       <strong>Need the basics too?</strong>
-      <span>Add the essentials here so the product page stays clean. Choose the bundle or add items separately.</span>
+      <span>Choose the bundle or add items separately.</span>
     </div>
     <div class="addon-list">
       <div class="addon-row">
@@ -421,7 +421,7 @@
   <!-- DISCOUNT CODE -->
   <p class="sec-head">// Discount Code</p>
   <div class="discount-row">
-    <input type="text" class="discount-input" id="discount-input" placeholder="Enter code e.g. WELCOME10">
+    <input type="text" class="discount-input" id="discount-input" placeholder="Enter discount code">
     <button class="discount-btn" onclick="applyDiscount()">Apply</button>
   </div>
   <div class="discount-msg" id="discount-msg"></div>
@@ -451,7 +451,7 @@
   <div class="total-box">
     <div class="total-box-left">
       <span class="total-label">Total inc. delivery</span>
-      <span class="discount-applied-line" id="discount-applied-line">🎉 WELCOME10 — 10% off applied</span>
+      <span class="discount-applied-line" id="discount-applied-line">Discount applied</span>
     </div>
     <span class="total-amount" id="grand-total">£0</span>
   </div>
@@ -462,10 +462,7 @@
     <div class="payment-badges">
       <span class="pay-badge pay-badge-green">🏦 Bank Transfer</span>
       <span class="pay-badge pay-badge-green">💳 PayPal</span>
-      <span class="pay-badge">₿ Bitcoin</span>
-      <span class="pay-badge">Ξ Ethereum</span>
-      <span class="pay-badge">◎ Litecoin</span>
-      <span class="pay-badge">₮ USDT</span>
+      <span class="pay-badge">Crypto: BTC · ETH · LTC · USDT</span>
     </div>
     <p class="payment-note">No payment is taken now. Place your order and we will email you with clear payment options within 24 hours.</p>
   </div>
@@ -570,12 +567,12 @@
     if (code === DISCOUNT_CODE) {
       discountApplied = true;
       document.getElementById('discount-code-hidden').value = code + ' (10% off)';
-      msg.textContent = '🎉 WELCOME10 applied — 10% off your order!';
+      msg.textContent = 'Discount applied.';
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
       discountApplied = false;
-      msg.textContent = 'Invalid code. Try WELCOME10 for 10% off.';
+      msg.textContent = 'Invalid code. Please check it and try again.';
       msg.className = 'discount-msg error';
       updateTotals();
     }
