@@ -1,12 +1,7 @@
-const netlifyCheckout = require("../netlify/functions/create-checkout-session.js");
+const { createCheckoutSession } = require("../server/stripe-checkout.js");
 
 module.exports = async function handler(req, res) {
-  const event = {
-    httpMethod: req.method,
-    body: typeof req.body === "string" ? req.body : JSON.stringify(req.body || {})
-  };
-
-  const result = await netlifyCheckout.handler(event);
+  const result = await createCheckoutSession(req.body || {});
 
   Object.entries(result.headers || {}).forEach(([key, value]) => {
     res.setHeader(key, value);
