@@ -5,10 +5,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg",
     summary: "GLP-1, GIP and glucagon receptor research compound supplied as lyophilised powder.",
     details: [
-      "Multiple vial sizes available",
-      "UK stocked for fast dispatch",
-      "Stored frozen until dispatch where appropriate",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 10mg", dose: "10mg", price: 40 },
@@ -29,10 +29,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg",
     summary: "Dual GIP and GLP-1 receptor agonist research compound supplied as lyophilised powder.",
     details: [
-      "15mg and 30mg vial options",
-      "UK stocked for fast dispatch",
-      "Stored frozen until dispatch where appropriate",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 15mg", dose: "15mg", price: 58 },
@@ -50,10 +50,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg",
     summary: "Research peptide supplied as a 10mg lyophilised vial.",
     details: [
-      "10mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 10mg", dose: "10mg", price: 17 },
@@ -68,10 +68,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg",
     summary: "Thymosin Beta-4 fragment research compound supplied as a 10mg lyophilised vial.",
     details: [
-      "10mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 10mg", dose: "10mg", price: 44 },
@@ -86,10 +86,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg",
     summary: "Copper peptide research compound supplied as a 50mg lyophilised vial.",
     details: [
-      "50mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 50mg", dose: "50mg", price: 15 },
@@ -104,10 +104,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
     summary: "KPV research peptide supplied as a 10mg lyophilised vial.",
     details: [
-      "10mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 10mg", dose: "10mg", price: 20 },
@@ -122,10 +122,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg",
     summary: "Four-compound research blend containing GHK-Cu, TB-500, BPC-157 and KPV.",
     details: [
-      "80mg blend vial",
-      "Combined vial for research convenience",
-      "UK stocked for fast dispatch",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 80mg", dose: "80mg", price: 54 },
@@ -140,10 +140,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg",
     summary: "Research peptide supplied as a 5mg lyophilised vial.",
     details: [
-      "5mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 5mg", dose: "5mg", price: 17 },
@@ -158,10 +158,10 @@ const PRODUCT_DATA = {
     image: "hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg",
     summary: "Modified GRF 1-29 research compound supplied as a 5mg lyophilised vial.",
     details: [
-      "5mg vial format",
-      "UK stocked for fast dispatch",
-      "Clear size and bundle options",
-      "Batch and purity documentation available on request where supplied"
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
     ],
     variants: [
       { label: "1x 5mg", dose: "5mg", price: 29 },
