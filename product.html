@@ -17,6 +17,8 @@
     .nav-links { display: flex; align-items: center; gap: 18px; font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; }
     .nav-links a:hover { color: #fff; }
+    .nav-basket { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; }
+    .nav-basket-count { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: #00E5A0; color: #06120f; font-size: 0.58rem; font-weight: 800; }
     .wrap { max-width: 1180px; margin: 0 auto; padding: 42px 40px 70px; }
     .back { display: inline-block; margin-bottom: 24px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,244,240,0.58); text-decoration: none; }
     .back:hover { color: #00E5A0; }
@@ -54,11 +56,14 @@
     .addon-price { display: block; margin-top: 3px; color: rgba(244,244,240,0.58); font-family: "DM Mono", monospace; font-size: 0.68rem; }
     .addon-btn { min-height: 34px; padding: 0 12px; border-radius: 5px; background: rgba(0,229,160,0.14); color: #00E5A0; border: 1px solid rgba(0,229,160,0.28); font-size: 0.62rem; flex-shrink: 0; }
     .addon-btn:hover { background: #00E5A0; color: #06120f; }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 50; max-width: 300px; padding: 13px 16px; border-left: 3px solid #00E5A0; border-radius: 8px; background: #121820; color: #F4F4F0; box-shadow: 0 16px 42px rgba(0,0,0,0.35); font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.04em; transform: translateX(130%); transition: transform 0.28s ease; }
+    .toast.show { transform: translateX(0); }
     .missing { max-width: 680px; margin: 80px auto; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 34px; }
     .missing h1 { font-size: 2rem; }
     @media (max-width: 760px) {
       .nav { padding: 0 18px; }
       .nav-links { gap: 10px; font-size: 0.56rem; }
+      .nav-links a:not(.nav-basket) { display: none; }
       .wrap { padding: 28px 16px 52px; }
       .grid { grid-template-columns: 1fr; gap: 18px; }
       .info-panel { padding: 20px; }
@@ -70,13 +75,16 @@
   <nav class="nav">
     <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
     <div class="nav-links">
-      <a href="index.html#products">Shop</a>
-      <a href="checkout.html">Checkout</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#how-to-order">Order</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="mailto:support@northpeptidesuk.com">Support</a>
+      <a href="checkout.html" class="nav-basket">Basket <span class="nav-basket-count" id="nav-basket-count">0</span></a>
     </div>
   </nav>
 
   <main class="wrap" id="app"></main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -98,6 +106,24 @@
 
     function saveBasket(basket) {
       sessionStorage.setItem("npuk_basket", JSON.stringify(basket));
+    }
+
+    function basketCount() {
+      return getBasket().reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function updateBasketCount() {
+      const count = document.getElementById("nav-basket-count");
+      if (count) count.textContent = basketCount();
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
     }
 
     function selectedVariant() {
@@ -129,6 +155,7 @@
         basket.push({ name, price, dose, qty: 1 });
       }
       saveBasket(basket);
+      updateBasketCount();
     }
 
     function addDetailToBasket(goCheckout = false) {
@@ -141,6 +168,7 @@
       const button = document.getElementById("add-button");
       const followup = document.getElementById("checkout-followup");
       button.textContent = "Added";
+      showToast(`${product.name} added to your basket`);
       if (followup) followup.classList.add("visible");
       setTimeout(() => { button.textContent = "Add to Basket"; }, 1200);
     }
@@ -148,6 +176,7 @@
     function addAddonToBasket(button, name, price) {
       addItemToBasket(name, price, "Accessory");
       button.textContent = "Added";
+      showToast(`${name} added to your basket`);
       setTimeout(() => { button.textContent = "Add"; }, 1200);
     }
 
@@ -222,6 +251,7 @@
       renderMissing();
     } else {
       renderProduct();
+      updateBasketCount();
     }
   </script>
 </body>

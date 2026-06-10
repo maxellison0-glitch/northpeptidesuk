@@ -20,7 +20,7 @@
     "description": "Premium research peptides UK. Retatrutide, Tirzepatide, BPC-157, TB-500 and more. UK stocked, fast dispatch.",
     "areaServed": ["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],
     "currenciesAccepted": "GBP",
-    "paymentAccepted": "Order review, Bank Transfer, Cryptocurrency",
+    "paymentAccepted": "Stripe Checkout, Card, Apple Pay, Google Pay",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Research Peptides",
@@ -396,7 +396,7 @@
     .trust-strip {
       background: #ffffff;
       border-bottom: 1px solid #E5E7EB;
-      padding: 14px 40px;
+      padding: 10px 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -559,7 +559,7 @@
     .cat-pill-nav.active { background: #00A67E; color: #ffffff; border-color: #00A67E; }
 
     /* ===== PRODUCTS ===== */
-    .shop-section { padding: 36px 40px; background: #F8F9FA; }
+    .shop-section { padding: 24px 40px 36px; background: #F8F9FA; }
     .shop-section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
     .shop-section-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a1a1a; }
     .shop-section-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: #00A67E; }
@@ -1154,6 +1154,18 @@
 
   </section>
 
+  <!-- HOW TO ORDER -->
+  <section class="how-light" id="how-to-order">
+    <p class="how-light-tag">// Simple Process</p>
+    <h2 class="how-light-title">How to Order</h2>
+    <div class="how-light-grid">
+      <div class="how-light-step"><div class="how-light-num">01</div><h3>Add to Basket</h3><p>Browse products, select your size and add to basket.</p></div>
+      <div class="how-light-step"><div class="how-light-num">02</div><h3>Review Checkout</h3><p>Enter your delivery address, confirm your basket and choose tracked shipping.</p></div>
+      <div class="how-light-step"><div class="how-light-num">03</div><h3>Pay Securely</h3><p>Continue to Stripe for card checkout, with Apple Pay or Google Pay shown where available.</p></div>
+      <div class="how-light-step"><div class="how-light-num">04</div><h3>Dispatched</h3><p>Once payment is confirmed your order is dispatched within 24 to 48 hours.</p></div>
+    </div>
+  </section>
+
   <!-- TRUST BANNER -->
   <section class="reviews-section">
     <div class="reviews-header">
@@ -1228,9 +1240,9 @@
       <div class="about-light-text">
         <h2 class="about-light-title">Small UK supplier.<br>Clear stock.<br><em>Simple ordering.</em></h2>
         <p>North Peptides UK is built around a straightforward idea: make research compounds easier to order, with clear vial sizes, UK dispatch and direct communication.</p>
-        <p>Stock is sourced from established manufacturers and handled with care, with products stored frozen until dispatch wherever appropriate.</p>
-        <p>Batch details and purity documentation are available on request where supplied by the manufacturer.</p>
-        <p>The site is intentionally simple. Choose your product, add any practical checkout extras, submit your details and receive payment instructions by email.</p>
+        <p>Stock is sourced from established manufacturers and handled with care, with products stored frozen until dispatch.</p>
+        <p>Batch details and purity documentation are available on request.</p>
+        <p>The site is intentionally simple. Choose your product, add any practical checkout extras, then complete payment securely through Stripe.</p>
         <div class="about-light-sig">
           <span class="about-light-sig-name">— North Peptides UK</span>
           <span class="about-light-sig-tag">// Est. 2025 · Northern England</span>
@@ -1242,18 +1254,6 @@
         <div class="about-light-stat"><span class="about-light-stat-num">Direct</span><span class="about-light-stat-label">Questions answered before ordering</span></div>
         <div class="about-light-stat"><span class="about-light-stat-num">🧊</span><span class="about-light-stat-label">All stock stored frozen until dispatch</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- HOW TO ORDER -->
-  <section class="how-light" id="how-to-order">
-    <p class="how-light-tag">// Simple Process</p>
-    <h2 class="how-light-title">How to Order</h2>
-    <div class="how-light-grid">
-      <div class="how-light-step"><div class="how-light-num">01</div><h3>Add to Basket</h3><p>Browse products, select your size and add to basket.</p></div>
-      <div class="how-light-step"><div class="how-light-num">02</div><h3>Review Checkout</h3><p>Enter your name, email and UK delivery address, then confirm your basket.</p></div>
-      <div class="how-light-step"><div class="how-light-num">03</div><h3>Pay Securely</h3><p>Continue to Stripe for card checkout, with Apple Pay or Google Pay shown where available.</p></div>
-      <div class="how-light-step"><div class="how-light-num">04</div><h3>Dispatched</h3><p>Once payment is confirmed your order is dispatched within 24 to 48 hours. Tracked shipping available.</p></div>
     </div>
   </section>
 
@@ -1290,16 +1290,16 @@
       <div class="footer-light-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Telegram: @NORTHPEPTIDESUK</a></li>
           <li><a href="mailto:support@northpeptidesuk.com">support@northpeptidesuk.com</a></li>
+          <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Telegram support</a></li>
           <li><a href="#how-to-order">How to Order</a></li>
           <li><a href="#disclaimer">Research Info</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-light-bottom">
-      <p>© 2025 North Peptides UK. All Rights Reserved.</p>
-      <p>Card Checkout In Progress · Bank Transfer · Crypto</p>
+      <p>© 2026 North Peptides UK. All Rights Reserved.</p>
+      <p>Secure Stripe Checkout · Card · Apple Pay · Google Pay</p>
     </div>
     <p class="footer-disclaimer-text">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
