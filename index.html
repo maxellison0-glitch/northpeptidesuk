@@ -225,17 +225,19 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 28px;
-      background: var(--soft-neutral);
-      color: #ffffff;
+      padding: 15px 32px;
+      background: #00E5A0;
+      color: #06120f;
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
-      font-weight: 500;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 8px;
-      transition: opacity 0.2s, transform 0.2s;
+      border: 1px solid rgba(0,229,160,0.72);
+      box-shadow: 0 16px 34px rgba(0,229,160,0.28), inset 0 -2px 0 rgba(0,0,0,0.12);
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
       position: relative;
       overflow: hidden;
     }
@@ -251,22 +253,26 @@
       transition: opacity 0.3s;
     }
     .hero-cta-primary:hover::before { opacity: 1; }
-    .hero-cta-primary:hover { opacity: 0.95; transform: translateY(-1px); }
+    .hero-cta-primary:hover {
+      background: #25f2b2;
+      box-shadow: 0 20px 42px rgba(0,229,160,0.36), inset 0 -2px 0 rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
     @keyframes spin-glow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .hero-cta-secondary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 22px;
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.75);
+      padding: 13px 20px;
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.64);
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 8px;
       backdrop-filter: blur(8px);
       transition: all 0.2s;
