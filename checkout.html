@@ -8,11 +8,26 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #F8F9FA; color: #1a1a1a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    :root { --soft-neutral: #b0af9b; --soft-neutral-light: #f3f2ed; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0f1915 0, #17241f 230px, #F4F5EF 231px, #F4F5EF 100%);
+      color: #16201b;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    :root {
+      --brand-ink: #0f1915;
+      --brand-green: #007a5c;
+      --brand-green-soft: #e8f3ee;
+      --paper: #fffdf8;
+      --page: #F4F5EF;
+      --line: #DEE3DA;
+      --muted: #66736b;
+      --soft-neutral: #8ba093;
+      --soft-neutral-light: #eef3ee;
+    }
 
     .checkout-wrap {
-      max-width: 560px;
+      max-width: 660px;
       margin: 0 auto;
       padding: 24px 20px 100px;
     }
@@ -22,26 +37,62 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      background: rgba(9,17,14,0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
     }
     .checkout-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       letter-spacing: 0.08em;
-      color: #1a1a1a;
+      color: #ffffff;
       text-decoration: none;
     }
-    .checkout-logo span { color: var(--soft-neutral); }
+    .checkout-logo span { color: #91c8b7; }
     .back-link {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.08em;
-      color: #6B7280;
+      color: rgba(255,255,255,0.72);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .back-link:hover { color: #1a1a1a; }
+    .back-link:hover { color: #ffffff; }
+
+    .checkout-intro {
+      margin: 0 0 22px;
+      padding: 20px 22px;
+      border-radius: 14px;
+      background: rgba(255,253,248,0.98);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 18px 46px rgba(10,20,16,0.16);
+    }
+    .checkout-intro-tag {
+      display: block;
+      margin-bottom: 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--brand-green);
+    }
+    .checkout-intro h1 {
+      margin-bottom: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.45rem, 5vw, 2.1rem);
+      line-height: 1.08;
+      color: #16201b;
+    }
+    .checkout-intro p {
+      max-width: 520px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
 
     /* TRUST BAR */
     .trust-row {
@@ -51,9 +102,9 @@
       margin-bottom: 28px;
     }
     .trust-chip {
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
-      border-radius: 8px;
+      background: rgba(255,253,248,0.94);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       padding: 10px 6px;
       text-align: center;
       display: flex;
@@ -61,13 +112,13 @@
       align-items: center;
       gap: 4px;
     }
-    .trust-chip-icon { font-size: 1.1rem; }
+    .trust-chip-icon { display: none; }
     .trust-chip-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.52rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #6B7280;
+      color: var(--muted);
       line-height: 1.3;
       text-align: center;
     }
@@ -78,15 +129,15 @@
       font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--soft-neutral);
+      color: var(--brand-green);
       margin-bottom: 10px;
     }
 
     /* ORDER SUMMARY */
     .order-box {
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
-      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       overflow: hidden;
       margin-bottom: 20px;
     }
@@ -107,8 +158,8 @@
       display: flex;
       justify-content: space-between;
       padding: 12px 16px;
-      background: #F8F9FA;
-      border-top: 1px solid #E5E7EB;
+      background: #F0F4EF;
+      border-top: 1px solid var(--line);
     }
     .order-subtotal-row span:first-child { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
     .order-subtotal-row span:last-child { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #1a1a1a; }
@@ -121,8 +172,8 @@
     }
     .discount-input {
       flex: 1;
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
+      background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: 6px;
       padding: 11px 14px;
       font-family: 'DM Mono', monospace;
@@ -132,10 +183,10 @@
       text-transform: uppercase;
     }
     .discount-input::placeholder { text-transform: none; color: #9CA3AF; }
-    .discount-input:focus { outline: none; border-color: var(--soft-neutral); }
+    .discount-input:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0,122,92,0.08); }
     .discount-btn {
       padding: 11px 18px;
-      background: #1a1a1a;
+      background: var(--brand-ink);
       color: #ffffff;
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
@@ -147,7 +198,7 @@
       transition: background 0.2s;
       white-space: nowrap;
     }
-    .discount-btn:hover { background: #6f6e5f; }
+    .discount-btn:hover { background: var(--brand-green); }
     .discount-msg {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
@@ -167,9 +218,9 @@
       margin-bottom: 20px;
     }
     .delivery-option {
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
-      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       padding: 14px 16px;
       display: flex;
       align-items: center;
@@ -177,22 +228,22 @@
       cursor: pointer;
       transition: border-color 0.2s;
     }
-    .delivery-option.selected { border-color: var(--soft-neutral); background: var(--soft-neutral-light); }
-    .delivery-option input[type="radio"] { accent-color: var(--soft-neutral); width: 16px; height: 16px; flex-shrink: 0; }
+    .delivery-option.selected { border-color: var(--brand-green); background: var(--brand-green-soft); }
+    .delivery-option input[type="radio"] { accent-color: var(--brand-green); width: 16px; height: 16px; flex-shrink: 0; }
     .delivery-option-info { flex: 1; }
     .delivery-option-name { font-size: 0.88rem; color: #1a1a1a; font-weight: 500; margin-bottom: 2px; }
     .delivery-option-desc { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; }
     .delivery-option-price { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; }
 
     /* CHECKOUT ADD-ONS */
-    .addon-box { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
-    .addon-intro { padding: 14px 16px; background: var(--soft-neutral-light); border-bottom: 1px solid #E5E7EB; }
+    .addon-box { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+    .addon-intro { padding: 14px 16px; background: var(--brand-green-soft); border-bottom: 1px solid var(--line); }
     .addon-intro strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 3px; }
     .addon-intro span { display: block; font-size: 0.76rem; color: #6B7280; line-height: 1.5; }
     .addon-list { display: flex; flex-direction: column; }
     .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #F3F4F6; transition: background 0.2s, transform 0.2s; }
-    .addon-row:hover { background: #FBFCFC; transform: translateX(2px); }
-    .addon-row.featured { position: relative; background: linear-gradient(100deg, #ffffff 0%, #f8f8f4 50%, #ffffff 100%); }
+    .addon-row:hover { background: #F9FBF7; transform: translateX(2px); }
+    .addon-row.featured { position: relative; background: linear-gradient(100deg, #fffdf8 0%, #eef7f2 50%, #fffdf8 100%); }
     .addon-row.featured::before { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 0%, rgba(176,175,155,0.16) 45%, transparent 70%); transform: translateX(-100%); animation: addon-sheen 4s ease-in-out infinite; pointer-events: none; }
     @keyframes addon-sheen { 0%, 58% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     .addon-row:last-child { border-bottom: none; }
@@ -219,14 +270,14 @@
     .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
     .addon-action { display: flex; align-items: center; gap: 10px; }
     .addon-price { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1a1a1a; white-space: nowrap; }
-    .addon-btn { min-width: 84px; padding: 9px 12px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .addon-btn:hover { background: #6f6e5f; }
+    .addon-btn { min-width: 84px; padding: 9px 12px; background: var(--brand-ink); color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .addon-btn:hover { background: var(--brand-green); }
     .addon-btn.added { background: var(--soft-neutral); color: #1a1a1a; }
 
     /* TOTAL */
     .total-box {
-      background: #1a1a1a;
-      border-radius: 8px;
+      background: var(--brand-ink);
+      border-radius: 14px;
       padding: 16px 20px;
       display: flex;
       justify-content: space-between;
@@ -240,9 +291,9 @@
 
     /* PAYMENT METHODS */
     .payment-methods {
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
-      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       padding: 14px 16px;
       margin-bottom: 28px;
     }
@@ -295,8 +346,8 @@
     .form-group input,
     .form-group textarea {
       width: 100%;
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
+      background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: 6px;
       color: #1a1a1a;
       padding: 12px 14px;
@@ -305,13 +356,13 @@
       transition: border-color 0.2s;
     }
     .form-group input:focus,
-    .form-group textarea:focus { outline: none; border-color: var(--soft-neutral); }
+    .form-group textarea:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0,122,92,0.08); }
     .form-group textarea { resize: vertical; min-height: 70px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .optional-label { color: #9CA3AF; font-size: 0.55rem; margin-left: 4px; }
 
     /* TRUST NOTE */
-    .checkout-trust-note { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; margin: 28px 0; }
+    .checkout-trust-note { background: var(--brand-green-soft); border: 1px solid #cfe0d7; border-radius: 12px; padding: 16px; margin: 28px 0; }
     .checkout-trust-note strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 6px; }
     .checkout-trust-note p { font-size: 0.8rem; color: #6B7280; line-height: 1.7; }
     .checkout-fine-print { margin: -4px 0 24px; font-size: 0.7rem; color: #9CA3AF; line-height: 1.6; }
@@ -320,7 +371,7 @@
     .btn-place-order {
       width: 100%;
       padding: 18px;
-      background: #1a1a1a;
+      background: var(--brand-ink);
       color: #ffffff;
       font-family: 'Syne', sans-serif;
       font-size: 1rem;
@@ -332,7 +383,7 @@
       transition: background 0.2s;
       margin-bottom: 12px;
     }
-    .btn-place-order:hover { background: #6f6e5f; }
+    .btn-place-order:hover { background: var(--brand-green); }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
     .order-note {
       font-family: 'DM Mono', monospace;
@@ -395,6 +446,12 @@
   <div class="checkout-nav">
     <a href="index.html" class="checkout-logo">NORTH<span>PEPTIDES</span>UK</a>
     <a href="index.html" class="back-link">← Shop</a>
+  </div>
+
+  <div class="checkout-intro">
+    <span class="checkout-intro-tag">// Secure order review</span>
+    <h1>Review your order</h1>
+    <p>No payment is taken on this page. Check your basket, confirm delivery details, and we will email clear payment instructions before dispatch.</p>
   </div>
 
   <!-- TRUST -->
@@ -509,12 +566,12 @@
 
   <!-- PAYMENT METHODS -->
   <div class="payment-methods">
-    <div class="payment-methods-label">We accept all of the following</div>
+    <div class="payment-methods-label">Payment after review</div>
     <div class="payment-badges">
-      <span class="pay-badge pay-badge-green">🏦 Bank Transfer</span>
-      <span class="pay-badge">Crypto: BTC · ETH · LTC · USDT</span>
+      <span class="pay-badge pay-badge-green">Card checkout in progress</span>
+      <span class="pay-badge">Alternative payment options by email</span>
     </div>
-    <p class="payment-note">No payment is taken now. Place your order and we will email you with clear payment options within 24 hours.</p>
+    <p class="payment-note">No payment is taken now. Place your order and we will email you clear next steps within 24 hours.</p>
   </div>
 
   <!-- FORM -->
@@ -567,7 +624,7 @@
     </div>
 
     <button type="submit" class="btn-place-order" id="submit-btn">Place Order →</button>
-    <p class="order-note">No payment required now. We will email you within 24 hours with payment details.<br>BTC · ETH · LTC · USDT · Bank Transfer accepted.</p>
+    <p class="order-note">No payment required now. We will email you within 24 hours with payment details.</p>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
@@ -579,7 +636,7 @@
     <div class="success-check">✓</div>
     <h2>Order Received</h2>
     <p style="margin-top:12px;">We will email you within 24 hours with payment details to complete your order.</p>
-    <p style="margin-top:8px;">Any questions — message us on Telegram: <strong style="color:#00A67E;">@NORTHPEPTIDESUK</strong></p>
+    <p style="margin-top:8px;">Any questions? Email <strong style="color:#00A67E;">support@northpeptidesuk.com</strong></p>
     <a href="index.html" style="display:inline-block;margin-top:32px;color:#00A67E;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
   </div>
 </div>
