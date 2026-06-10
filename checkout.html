@@ -10,20 +10,20 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
-      background: linear-gradient(180deg, #0f1915 0, #17241f 230px, #F4F5EF 231px, #F4F5EF 100%);
+      background: linear-gradient(180deg, #E3F0E8 0, #F5F8F5 260px, #F5F8F5 100%);
       color: #16201b;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     :root {
-      --brand-ink: #0f1915;
-      --brand-green: #007a5c;
+      --brand-ink: #123128;
+      --brand-green: #00795F;
       --brand-green-soft: #e8f3ee;
-      --paper: #fffdf8;
-      --page: #F4F5EF;
-      --line: #DEE3DA;
+      --paper: #ffffff;
+      --page: #F5F8F5;
+      --line: #E0E8E1;
       --muted: #66736b;
-      --soft-neutral: #8ba093;
-      --soft-neutral-light: #eef3ee;
+      --soft-neutral: #7C9C8E;
+      --soft-neutral-light: #EDF4EF;
     }
 
     .checkout-wrap {
@@ -38,38 +38,38 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 22px;
-      background: rgba(9,17,14,0.92);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: #ffffff;
+      border: 1px solid #E4ECE6;
       border-radius: 14px;
       padding: 14px 16px;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 28px rgba(18,46,35,0.08);
     }
     .checkout-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       letter-spacing: 0.08em;
-      color: #ffffff;
+      color: #16241E;
       text-decoration: none;
     }
-    .checkout-logo span { color: #91c8b7; }
+    .checkout-logo span { color: #00795F; }
     .back-link {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.72);
+      color: #5C6B63;
       text-decoration: none;
       transition: color 0.2s;
     }
-    .back-link:hover { color: #ffffff; }
+    .back-link:hover { color: #00795F; }
 
     .checkout-intro {
       margin: 0 0 22px;
       padding: 20px 22px;
       border-radius: 14px;
-      background: rgba(255,253,248,0.98);
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 18px 46px rgba(10,20,16,0.16);
+      background: #ffffff;
+      border: 1px solid #E4ECE6;
+      box-shadow: 0 10px 28px rgba(18,46,35,0.06);
     }
     .checkout-intro-tag {
       display: block;
@@ -102,7 +102,7 @@
       margin-bottom: 28px;
     }
     .trust-chip {
-      background: rgba(255,253,248,0.94);
+      background: #ffffff;
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 10px 6px;
@@ -146,7 +146,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 16px;
-      border-bottom: 1px solid #F3F4F6;
+      border-bottom: 1px solid #EEF4EF;
     }
     .order-line:last-child { border-bottom: none; }
     .order-line-name { font-size: 0.88rem; color: #1a1a1a; font-weight: 500; }
@@ -186,19 +186,19 @@
     .discount-input:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0,122,92,0.08); }
     .discount-btn {
       padding: 11px 18px;
-      background: var(--brand-ink);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1px solid #BFD8CC;
+      color: #00795F;
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: none;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
     }
-    .discount-btn:hover { background: var(--brand-green); }
+    .discount-btn:hover { background: #E9F5EE; }
     .discount-msg {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
@@ -207,7 +207,7 @@
       border-radius: 4px;
       display: none;
     }
-    .discount-msg.success { background: var(--soft-neutral-light); color: #565548; border: 1px solid #deddd2; display: block; }
+    .discount-msg.success { background: #E9F5EE; color: #1C6A50; border: 1px solid #C9E2D5; display: block; }
     .discount-msg.error { background: #FEF2F2; color: #EF4444; border: 1px solid #FECACA; display: block; }
 
     /* DELIVERY */
@@ -241,17 +241,15 @@
     .addon-intro strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 3px; }
     .addon-intro span { display: block; font-size: 0.76rem; color: #6B7280; line-height: 1.5; }
     .addon-list { display: flex; flex-direction: column; }
-    .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #F3F4F6; transition: background 0.2s, transform 0.2s; }
+    .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF4EF; transition: background 0.2s, transform 0.2s; }
     .addon-row:hover { background: #F9FBF7; transform: translateX(2px); }
-    .addon-row.featured { position: relative; background: linear-gradient(100deg, #fffdf8 0%, #eef7f2 50%, #fffdf8 100%); }
-    .addon-row.featured::before { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 0%, rgba(176,175,155,0.16) 45%, transparent 70%); transform: translateX(-100%); animation: addon-sheen 4s ease-in-out infinite; pointer-events: none; }
-    @keyframes addon-sheen { 0%, 58% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .addon-row.featured { position: relative; background: #F3F9F5; }
+    .addon-row.featured::before { content: none; }
     .addon-row:last-child { border-bottom: none; }
     .addon-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .addon-info > div:last-child { min-width: 0; }
     .addon-visual { width: 46px; height: 46px; border-radius: 10px; border: 1px solid #E5E7EB; background: linear-gradient(135deg, #ffffff 0%, var(--soft-neutral-light) 100%); flex-shrink: 0; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
-    .addon-visual::after { content: ""; position: absolute; inset: -40% auto auto -45%; width: 42px; height: 120px; background: rgba(176,175,155,0.18); transform: rotate(28deg); animation: icon-sweep 4.2s ease-in-out infinite; }
-    @keyframes icon-sweep { 0%, 55% { transform: translateX(-26px) rotate(28deg); } 100% { transform: translateX(78px) rotate(28deg); } }
+    .addon-visual::after { content: none; }
     .addon-symbol { position: relative; z-index: 1; display: block; color: var(--soft-neutral); }
     .addon-symbol.vial { width: 16px; height: 25px; border: 2px solid currentColor; border-radius: 4px 4px 7px 7px; background: rgba(176,175,155,0.18); }
     .addon-symbol.vial::before { content: ""; position: absolute; left: 3px; right: 3px; top: -7px; height: 6px; border-radius: 3px 3px 1px 1px; background: #1a1a1a; opacity: 0.85; }
@@ -270,9 +268,9 @@
     .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
     .addon-action { display: flex; align-items: center; gap: 10px; }
     .addon-price { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1a1a1a; white-space: nowrap; }
-    .addon-btn { min-width: 84px; padding: 9px 12px; background: var(--brand-ink); color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .addon-btn:hover { background: var(--brand-green); }
-    .addon-btn.added { background: var(--soft-neutral); color: #1a1a1a; }
+    .addon-btn { min-width: 84px; padding: 9px 12px; background: var(--brand-green); color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .addon-btn:hover { background: #00614C; }
+    .addon-btn.added { background: var(--soft-neutral); color: #ffffff; }
 
     /* TOTAL */
     .total-box {
@@ -285,7 +283,7 @@
       margin-bottom: 28px;
     }
     .total-box-left { display: flex; flex-direction: column; gap: 2px; }
-    .total-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #9CA3AF; }
+    .total-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #9DB7AA; }
     .discount-applied-line { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--soft-neutral); display: none; }
     .total-amount { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #ffffff; }
 
@@ -323,7 +321,7 @@
       color: #6B7280;
       background: #F8F9FA;
     }
-    .pay-badge-green { border-color: #deddd2; background: var(--soft-neutral-light); color: #565548; }
+    .pay-badge-green { border-color: #C9E2D5; background: #E9F5EE; color: #1C6A50; }
     .payment-note {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
@@ -371,7 +369,8 @@
     .btn-place-order {
       width: 100%;
       padding: 18px;
-      background: var(--brand-ink);
+      background: var(--brand-green);
+      box-shadow: 0 12px 26px rgba(0,121,95,0.2);
       color: #ffffff;
       font-family: 'Syne', sans-serif;
       font-size: 1rem;
@@ -383,7 +382,7 @@
       transition: background 0.2s;
       margin-bottom: 12px;
     }
-    .btn-place-order:hover { background: var(--brand-green); }
+    .btn-place-order:hover { background: #00614C; }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
     .order-note {
       font-family: 'DM Mono', monospace;
@@ -410,7 +409,7 @@
       justify-content: center;
       font-size: 1.5rem;
       margin: 0 auto 24px;
-      color: #565548;
+      color: #1C6A50;
     }
     .success-page h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px; }
     .success-page p { font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px; margin: 0 auto 8px; }
@@ -449,7 +448,7 @@
   </div>
 
   <div class="checkout-intro">
-    <span class="checkout-intro-tag">// Secure order review</span>
+    <span class="checkout-intro-tag">Secure order review</span>
     <h1>Review your order</h1>
     <p>Check your basket, confirm delivery details, then continue to Stripe for secure card, Apple Pay or Google Pay checkout where available.</p>
   </div>
@@ -462,10 +461,10 @@
     <div class="trust-chip"><span class="trust-chip-icon">💬</span><span class="trust-chip-label">Direct Support</span></div>
   </div>
   <!-- ORDER SUMMARY -->
-  <p class="sec-head">// Your Order</p>
+  <p class="sec-head">Your Order</p>
   <div class="order-box">
     <div id="checkout-lines">
-      <p class="order-empty">No items in basket. <a href="index.html" style="color:#00A67E;">Go back to shop →</a></p>
+      <p class="order-empty">No items in basket. <a href="index.html" style="color:#00795F;">Go back to shop →</a></p>
     </div>
     <div class="order-subtotal-row">
       <span>Subtotal</span>
@@ -474,7 +473,7 @@
   </div>
 
   <!-- CHECKOUT ADD-ONS -->
-  <p class="sec-head">// Useful Checkout Add-ons</p>
+  <p class="sec-head">Useful Checkout Add-ons</p>
   <div class="addon-box">
     <div class="addon-intro">
       <strong>Need the basics too?</strong>
@@ -527,7 +526,7 @@
   </div>
 
   <!-- DISCOUNT CODE -->
-  <p class="sec-head">// Discount Code</p>
+  <p class="sec-head">Discount Code</p>
   <div class="discount-row">
     <input type="text" class="discount-input" id="discount-input" placeholder="Enter discount code">
     <button class="discount-btn" onclick="applyDiscount()">Apply</button>
@@ -535,7 +534,7 @@
   <div class="discount-msg" id="discount-msg"></div>
 
   <!-- DELIVERY -->
-  <p class="sec-head">// Delivery</p>
+  <p class="sec-head">Delivery</p>
   <div class="delivery-options">
     <label class="delivery-option selected" id="label-standard">
       <input type="radio" name="delivery" value="standard" data-price="4.95" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
@@ -576,7 +575,7 @@
   </div>
 
   <!-- FORM -->
-  <p class="sec-head">// Your Details</p>
+  <p class="sec-head">Your Details</p>
   <form id="checkout-form">
     <input type="hidden" name="order_summary" id="order-summary-hidden">
     <input type="hidden" name="delivery_method" id="delivery-method-hidden">
@@ -637,8 +636,8 @@
     <div class="success-check">✓</div>
     <h2>Payment Complete</h2>
     <p style="margin-top:12px;">Your Stripe checkout has completed. We will prepare your order for dispatch review.</p>
-    <p style="margin-top:8px;">Any questions? Email <strong style="color:#00A67E;">support@northpeptidesuk.com</strong></p>
-    <a href="index.html" style="display:inline-block;margin-top:32px;color:#00A67E;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
+    <p style="margin-top:8px;">Any questions? Email <strong style="color:#00795F;">support@northpeptidesuk.com</strong></p>
+    <a href="index.html" style="display:inline-block;margin-top:32px;color:#00795F;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
   </div>
 </div>
 
@@ -720,7 +719,7 @@
   function renderOrder() {
     const container = document.getElementById('checkout-lines');
     if (basketData.length === 0) {
-      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:#00A67E;">Go back to shop →</a></p>';
+      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:#00795F;">Go back to shop →</a></p>';
       return;
     }
     container.innerHTML = basketData.map(item => `
@@ -826,30 +825,6 @@
     }
   }, true);
 
-  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    try {
-      const res = await fetch(e.target.action, {
-        method: 'POST',
-        body: new FormData(e.target),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        document.getElementById('main-checkout').style.display = 'none';
-        document.getElementById('success-page').style.display = 'block';
-        sessionStorage.removeItem('npuk_basket');
-      } else {
-        btn.textContent = 'Error — please try again';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Error — please try again';
-      btn.disabled = false;
-    }
-  });
 </script>
 
 </body>
