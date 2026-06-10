@@ -451,7 +451,7 @@
   <div class="checkout-intro">
     <span class="checkout-intro-tag">// Secure order review</span>
     <h1>Review your order</h1>
-    <p>No payment is taken on this page. Check your basket, confirm delivery details, and we will email clear payment instructions before dispatch.</p>
+    <p>Check your basket, confirm delivery details, then continue to Stripe for secure card, Apple Pay or Google Pay checkout where available.</p>
   </div>
 
   <!-- TRUST -->
@@ -566,17 +566,18 @@
 
   <!-- PAYMENT METHODS -->
   <div class="payment-methods">
-    <div class="payment-methods-label">Payment after review</div>
+    <div class="payment-methods-label">Secure Stripe checkout</div>
     <div class="payment-badges">
-      <span class="pay-badge pay-badge-green">Card checkout in progress</span>
-      <span class="pay-badge">Alternative payment options by email</span>
+      <span class="pay-badge pay-badge-green">Card</span>
+      <span class="pay-badge">Apple Pay</span>
+      <span class="pay-badge">Google Pay</span>
     </div>
-    <p class="payment-note">No payment is taken now. Place your order and we will email you clear next steps within 24 hours.</p>
+    <p class="payment-note">Payments are processed securely by Stripe. Apple Pay appears automatically on eligible devices once your Stripe domain is verified.</p>
   </div>
 
   <!-- FORM -->
   <p class="sec-head">// Your Details</p>
-  <form id="checkout-form" action="https://formspree.io/f/mnjrzpvl" method="POST">
+  <form id="checkout-form">
     <input type="hidden" name="order_summary" id="order-summary-hidden">
     <input type="hidden" name="delivery_method" id="delivery-method-hidden">
     <input type="hidden" name="total" id="total-hidden">
@@ -620,11 +621,11 @@
     <!-- TRUST NOTE -->
     <div class="checkout-trust-note">
       <strong>Clear, simple ordering.</strong>
-      <p>No payment is taken on this page. Submit your order, then we email you with payment options and any details you need before dispatch.</p>
+      <p>Your payment details are handled by Stripe. We receive the order details needed to prepare dispatch after checkout is completed.</p>
     </div>
 
-    <button type="submit" class="btn-place-order" id="submit-btn">Place Order →</button>
-    <p class="order-note">No payment required now. We will email you within 24 hours with payment details.</p>
+    <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
+    <p class="order-note">Stripe checkout supports card payments and wallet options such as Apple Pay where available.</p>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
@@ -634,8 +635,8 @@
 <div class="checkout-wrap success-page" id="success-page">
   <div style="text-align:center;padding:60px 0;">
     <div class="success-check">✓</div>
-    <h2>Order Received</h2>
-    <p style="margin-top:12px;">We will email you within 24 hours with payment details to complete your order.</p>
+    <h2>Payment Complete</h2>
+    <p style="margin-top:12px;">Your Stripe checkout has completed. We will prepare your order for dispatch review.</p>
     <p style="margin-top:8px;">Any questions? Email <strong style="color:#00A67E;">support@northpeptidesuk.com</strong></p>
     <a href="index.html" style="display:inline-block;margin-top:32px;color:#00A67E;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
   </div>
@@ -739,11 +740,91 @@
     updateTotals();
   }
 
+  function getCustomerPayload(form) {
+    const data = new FormData(form);
+    const address = [
+      data.get('address1'),
+      data.get('address2'),
+      data.get('city'),
+      data.get('county'),
+      data.get('postcode')
+    ].filter(Boolean).join(', ');
+
+    return {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      address,
+      notes: String(data.get('notes') || '').trim()
+    };
+  }
+
+  function selectedDeliveryMethod() {
+    const selected = document.querySelector('input[name="delivery"]:checked');
+    return selected ? selected.value : 'standard';
+  }
+
+  function showStripeSuccess() {
+    document.getElementById('main-checkout').style.display = 'none';
+    document.getElementById('success-page').style.display = 'block';
+    sessionStorage.removeItem('npuk_basket');
+  }
+
+  function showStripeCancel() {
+    const msg = document.getElementById('discount-msg');
+    msg.textContent = 'Stripe checkout was cancelled. Your basket is still here.';
+    msg.className = 'discount-msg error';
+  }
+
   window.addEventListener('load', () => {
+    const paymentStatus = new URLSearchParams(window.location.search).get('payment');
+    if (paymentStatus === 'success') {
+      showStripeSuccess();
+      return;
+    }
+    if (paymentStatus === 'cancelled') showStripeCancel();
     const saved = sessionStorage.getItem('npuk_basket');
     if (saved) basketData = JSON.parse(saved);
     renderOrder();
   });
+
+  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const btn = document.getElementById('submit-btn');
+    if (basketData.length === 0) {
+      const msg = document.getElementById('discount-msg');
+      msg.textContent = 'Add at least one item before checkout.';
+      msg.className = 'discount-msg error';
+      return;
+    }
+
+    btn.textContent = 'Opening Stripe...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: basketData,
+          deliveryMethod: selectedDeliveryMethod(),
+          discountCode: discountApplied ? DISCOUNT_CODE : '',
+          customer: getCustomerPayload(e.target),
+          origin: window.location.origin
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || 'Stripe checkout failed.');
+      }
+      window.location.href = data.url;
+    } catch (error) {
+      const msg = document.getElementById('discount-msg');
+      msg.textContent = error.message || 'Stripe checkout is not available yet.';
+      msg.className = 'discount-msg error';
+      btn.textContent = 'Continue to Secure Payment ->';
+      btn.disabled = false;
+    }
+  }, true);
 
   document.getElementById('checkout-form').addEventListener('submit', async (e) => {
     e.preventDefault();
