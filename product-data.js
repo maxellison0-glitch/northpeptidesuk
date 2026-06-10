@@ -169,5 +169,21 @@ const PRODUCT_DATA = {
       { label: "3x 5mg", dose: "3x 5mg", price: 69 }
     ],
     stripePaymentLink: ""
+  },
+  "essentials-bundle": {
+    name: "Essentials Bundle",
+    category: "Lab essentials",
+    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=900&q=80",
+    summary: "A simple checkout bundle for common lab handling essentials.",
+    details: [
+      "Includes bacteriostatic water, syringe kit and alcohol wipes",
+      "Useful as a single add-on alongside vial orders",
+      "Listed as one bundle to keep checkout simple",
+      "Supplied for appropriate laboratory handling only"
+    ],
+    variants: [
+      { label: "1x bundle", dose: "Bac water + syringe kit + wipes", price: 18 }
+    ],
+    stripePaymentLink: ""
   }
 };

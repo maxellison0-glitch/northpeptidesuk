@@ -29,18 +29,18 @@
     .trust-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .trust-chip { border: 1px solid #DADDE2; background: #F8F9FA; border-radius: 999px; padding: 7px 11px; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: #565548; }
     .details { margin: 0 0 24px; padding-left: 18px; color: #4B5563; line-height: 1.8; font-size: 0.9rem; }
-    .buy-box { border-top: 1px solid #E5E7EB; padding-top: 22px; }
+    .buy-box { border: 1px solid #DADDE2; border-radius: 10px; padding: 22px; background: #F8F9FA; }
     label { display: block; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7280; margin-bottom: 8px; }
     select { width: 100%; min-height: 46px; border: 1px solid #DADDE2; border-radius: 7px; background: #F8F9FA; color: #1a1a1a; padding: 0 13px; font: 500 0.85rem "DM Mono", monospace; margin-bottom: 18px; }
     .price-row { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 18px; }
     .price-label { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #9CA3AF; }
     .price { font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; }
-    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    button, .button { border: 0; border-radius: 7px; min-height: 48px; padding: 0 16px; cursor: pointer; font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+    .actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    button, .button { border: 0; border-radius: 7px; min-height: 54px; padding: 0 16px; cursor: pointer; font-family: "DM Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
     .primary { background: #1a1a1a; color: #fff; }
     .primary:hover { background: #00A67E; }
-    .stripe { background: #635BFF; color: #fff; }
-    .stripe.disabled { background: #E5E7EB; color: #6B7280; cursor: default; pointer-events: none; }
+    .checkout-followup { display: none; background: #00A67E; color: #fff; }
+    .checkout-followup.visible { display: inline-flex; }
     .note { margin-top: 12px; font-size: 0.76rem; color: #6B7280; line-height: 1.6; }
     .research-box { margin-top: 24px; border: 1px solid #DADDE2; border-radius: 8px; padding: 15px; background: #fff; color: #4B5563; font-size: 0.78rem; line-height: 1.7; }
     .missing { max-width: 680px; margin: 80px auto; text-align: center; background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; padding: 34px; }
@@ -51,7 +51,6 @@
       .wrap { padding: 28px 16px 52px; }
       .grid { grid-template-columns: 1fr; gap: 18px; }
       .info-panel { padding: 20px; }
-      .actions { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -113,7 +112,9 @@
         return;
       }
       const button = document.getElementById("add-button");
+      const followup = document.getElementById("checkout-followup");
       button.textContent = "Added";
+      if (followup) followup.classList.add("visible");
       setTimeout(() => { button.textContent = "Add to Basket"; }, 1200);
     }
 
@@ -133,10 +134,6 @@
         `<option value="${index}">${variant.label} - ${money(variant.price)}</option>`
       )).join("");
       const detailItems = product.details.map(item => `<li>${item}</li>`).join("");
-      const stripeButton = product.stripePaymentLink
-        ? `<a class="button stripe" id="stripe-link" href="${product.stripePaymentLink}" rel="noopener" target="_blank">Pay by Card</a>`
-        : `<span class="button stripe disabled">Stripe Link Soon</span>`;
-
       app.innerHTML = `
         <a class="back" href="index.html#products">← Back to products</a>
         <section class="grid">
@@ -164,10 +161,9 @@
               </div>
               <div class="actions">
                 <button class="primary" id="add-button" onclick="addDetailToBasket(false)">Add to Basket</button>
-                <button class="primary" onclick="addDetailToBasket(true)">Add & Checkout</button>
-                ${stripeButton}
+                <a class="button checkout-followup" id="checkout-followup" href="checkout.html">Continue to Checkout</a>
               </div>
-              <p class="note">Stripe Payment Links can be added per product in <code>product-data.js</code>. Until then, orders continue through basket and checkout review.</p>
+              <p class="note">Add the selected size to your basket first. The checkout button appears after the item is added.</p>
             </div>
             <div class="research-box">
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.

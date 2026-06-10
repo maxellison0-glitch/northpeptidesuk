@@ -570,9 +570,9 @@
     .acc-section.open .acc-chevron { transform: rotate(180deg); }
     .acc-body { overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; max-height: 2000px; opacity: 1; }
     .acc-section.closed .acc-body { max-height: 0; opacity: 0; }
-    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; padding: 14px 0; }
+    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; padding: 18px 0; }
 
-    .shop-card { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 366px; transition: box-shadow 0.2s, transform 0.2s; }
+    .shop-card { background: #ffffff; border: 1px solid #E5E7EB; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 398px; transition: box-shadow 0.2s, transform 0.2s; }
     .shop-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.08); transform: translateY(-1px); }
     .shop-card-img { position: relative; background: #F3F4F6; aspect-ratio: 4 / 3; cursor: pointer; overflow: hidden; }
     .shop-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
@@ -595,7 +595,6 @@
     .shop-card-price-muted { color: #9CA3AF; font-size: 0.85rem; }
     .shop-add-btn { padding: 8px 12px; background: #1a1a1a; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; transition: background 0.2s; white-space: nowrap; }
     .shop-add-btn:hover { background: #6f6e5f; }
-    .hero-cats a[href="#cat-extras"], .shop-nav-cats a[href="#cat-extras"], .cat-pill-nav[href="#cat-extras"], #cat-extras { display: none !important; }
     .shop-waitlist-btn { display: block; width: 100%; padding: 8px; background: transparent; color: #9CA3AF; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #E5E7EB; cursor: pointer; border-radius: 4px; text-align: center; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .shop-waitlist-btn:hover { border-color: #00A67E; color: #00A67E; }
 
@@ -1306,13 +1305,13 @@
     <div class="acc-section open" id="cat-extras">
       <div class="acc-header" onclick="toggleAcc(this)">
         <span class="acc-title">Extras</span>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="acc-count">4 products</span><span class="acc-chevron">▾</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><span class="acc-count">1 product</span><span class="acc-chevron">▾</span></div>
       </div>
       <div class="acc-body">
         <div class="essentials-bundle-card">
           <div class="essentials-bundle-info">
             <div class="essentials-bundle-tag">// Best Value Bundle</div>
-            <div class="essentials-bundle-name">Essentials Bundle</div>
+            <a class="essentials-bundle-name" href="product.html?product=essentials-bundle" style="display:inline-block;text-decoration:none;">Essentials Bundle</a>
             <div class="essentials-bundle-desc">Bacteriostatic Water + Syringe Kit + Alcohol Wipes.</div>
           </div>
           <div class="essentials-bundle-right">
@@ -1321,38 +1320,6 @@
               <div class="essentials-bundle-saving">Save £3 vs separately</div>
             </div>
             <button class="essentials-bundle-btn" onclick="addToBasket('Essentials Bundle', 18, 'Bac Water + Needles + Wipes')">Add Bundle</button>
-          </div>
-        </div>
-        <div class="acc-grid">
-          <div class="shop-card">
-            <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&q=80" alt="Bacteriostatic Water" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-name">Bacteriostatic Water</span>
-              <span class="shop-card-dose">10ml / vial</span>
-              <div class="shop-card-footer"><div><div class="shop-card-price">£7</div></div><button class="shop-add-btn" onclick="addToBasket('Bacteriostatic Water', 7, '10ml')">Add</button></div>
-            </div>
-          </div>
-          <div class="shop-card">
-            <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&q=80" alt="Syringe Kit" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-name">Syringe Kit</span>
-              <span class="shop-card-dose">10 pack, 1ml syringes</span>
-              <div class="shop-card-footer"><div><div class="shop-card-price">£9</div></div><button class="shop-add-btn" onclick="addToBasket('Syringe Kit', 9, '10 pack')">Add</button></div>
-            </div>
-          </div>
-          <div class="shop-card">
-            <div class="shop-card-img" style="cursor:default;overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&q=80" alt="Alcohol Wipes" loading="lazy" style="width:100%;height:100%;object-fit:cover;background:#f0fdf9;" style="width:100%;height:100%;object-fit:cover;">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-name">Alcohol Wipes</span>
-              <span class="shop-card-dose">50 pack, sterile</span>
-              <div class="shop-card-footer"><div><div class="shop-card-price">£5</div></div><button class="shop-add-btn" onclick="addToBasket('Alcohol Wipes', 5, '50 pack')">Add</button></div>
-            </div>
           </div>
         </div>
       </div>
