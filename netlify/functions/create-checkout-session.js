@@ -119,7 +119,7 @@ exports.handler = async (event) => {
   params.append("mode", "payment");
   params.append("success_url", `${siteUrl}/checkout.html?payment=success&session_id={CHECKOUT_SESSION_ID}`);
   params.append("cancel_url", `${siteUrl}/checkout.html?payment=cancelled`);
-  params.append("automatic_payment_methods[enabled]", "true");
+  params.append("payment_method_types[]", "card");
   params.append("billing_address_collection", "required");
   params.append("phone_number_collection[enabled]", "true");
   const customerEmail = compactText(payload.customer?.email, 160);
