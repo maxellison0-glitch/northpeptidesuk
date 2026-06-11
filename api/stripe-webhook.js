@@ -1,9 +1,11 @@
 const crypto = require("node:crypto");
+const SITE_URL = "https://northpeptidesuk.com";
 
 const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Stripe-Signature",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Origin": "*"
+  "Access-Control-Allow-Origin": SITE_URL,
+  "Vary": "Origin"
 };
 
 function json(res, statusCode, body) {
@@ -67,12 +69,21 @@ function formatMoney(amount, currency) {
   }).format((amount || 0) / 100);
 }
 
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function buildEmailHtml(session, lineItems) {
   const metadata = session.metadata || {};
   const rows = (lineItems.data || []).map(item => `
     <tr>
-      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">${item.description || item.price?.product || "Item"}</td>
-      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:center;">${item.quantity || 1}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.description || item.price?.product || "Item")}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:center;">${escapeHtml(item.quantity || 1)}</td>
       <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:right;">${formatMoney(item.amount_total, session.currency)}</td>
     </tr>
   `).join("");
@@ -81,13 +92,13 @@ function buildEmailHtml(session, lineItems) {
     <div style="font-family:Arial,sans-serif;color:#111827;line-height:1.5;">
       <h2>Paid order received</h2>
       <p><strong>Total:</strong> ${formatMoney(session.amount_total, session.currency)}</p>
-      <p><strong>Stripe session:</strong> ${session.id}</p>
-      <p><strong>Customer:</strong> ${metadata.name || session.customer_details?.name || "Not supplied"}</p>
-      <p><strong>Email:</strong> ${metadata.email || session.customer_details?.email || "Not supplied"}</p>
-      <p><strong>Phone:</strong> ${session.customer_details?.phone || "Not supplied"}</p>
-      <p><strong>Delivery:</strong> ${metadata.delivery || "Not supplied"}</p>
-      <p><strong>Address:</strong><br>${metadata.address || "Check Stripe customer details"}</p>
-      ${metadata.notes ? `<p><strong>Notes:</strong><br>${metadata.notes}</p>` : ""}
+      <p><strong>Stripe session:</strong> ${escapeHtml(session.id)}</p>
+      <p><strong>Customer:</strong> ${escapeHtml(metadata.name || session.customer_details?.name || "Not supplied")}</p>
+      <p><strong>Email:</strong> ${escapeHtml(metadata.email || session.customer_details?.email || "Not supplied")}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(session.customer_details?.phone || "Not supplied")}</p>
+      <p><strong>Delivery:</strong> ${escapeHtml(metadata.delivery || "Not supplied")}</p>
+      <p><strong>Address:</strong><br>${escapeHtml(metadata.address || "Check Stripe customer details")}</p>
+      ${metadata.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(metadata.notes)}</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
         <thead>
@@ -143,7 +154,12 @@ module.exports = async function handler(req, res) {
     return json(res, 400, { error: "Invalid Stripe signature." });
   }
 
-  const event = JSON.parse(rawBody.toString("utf8"));
+  let event;
+  try {
+    event = JSON.parse(rawBody.toString("utf8"));
+  } catch {
+    return json(res, 400, { error: "Invalid JSON payload." });
+  }
   if (event.type !== "checkout.session.completed") {
     return json(res, 200, { received: true, ignored: event.type });
   }

@@ -52,16 +52,30 @@ const DELIVERY = {
   express: { label: "Royal Mail Special Delivery", price: 9.95 }
 };
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS"
-};
+const SITE_URL = "https://northpeptidesuk.com";
+const ALLOWED_ORIGINS = new Set([
+  SITE_URL,
+  "https://www.northpeptidesuk.com",
+  "https://northpeptidesuk.vercel.app"
+]);
 
-function json(statusCode, body) {
+function isAllowedOrigin(origin) {
+  return ALLOWED_ORIGINS.has(String(origin || "").replace(/\/$/, ""));
+}
+
+function corsHeaders(origin) {
+  return {
+    "Access-Control-Allow-Origin": isAllowedOrigin(origin) ? String(origin).replace(/\/$/, "") : SITE_URL,
+    "Vary": "Origin",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS"
+  };
+}
+
+function json(statusCode, body, origin) {
   return {
     statusCode,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
     body: JSON.stringify(body)
   };
 }
@@ -70,11 +84,11 @@ function compactText(value, maxLength = 480) {
   return String(value || "").trim().slice(0, maxLength);
 }
 
-async function createCheckoutSession(payload = {}) {
-  if (!process.env.STRIPE_SECRET_KEY) return json(500, { error: "Stripe is not configured yet." });
+async function createCheckoutSession(payload = {}, requestOrigin) {
+  if (!process.env.STRIPE_SECRET_KEY) return json(500, { error: "Stripe is not configured yet." }, requestOrigin);
 
   const items = Array.isArray(payload.items) ? payload.items : [];
-  if (!items.length) return json(400, { error: "Your basket is empty." });
+  if (!items.length) return json(400, { error: "Your basket is empty." }, requestOrigin);
   const discountCode = String(payload.discountCode || "").trim().toUpperCase();
   const hasWelcomeDiscount = discountCode === "WELCOME10";
 
@@ -86,7 +100,7 @@ async function createCheckoutSession(payload = {}) {
     const price = CATALOG[key];
     const quantity = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
 
-    if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` });
+    if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` }, requestOrigin);
 
     const discountedPrice = hasWelcomeDiscount ? price * 0.9 : price;
     lineItems.push({
@@ -106,7 +120,7 @@ async function createCheckoutSession(payload = {}) {
     quantity: 1
   });
 
-  const siteUrl = (process.env.URL || payload.origin || "https://northpeptidesuk.vercel.app").replace(/\/$/, "");
+  const siteUrl = SITE_URL;
   const params = new URLSearchParams();
   params.append("mode", "payment");
   params.append("success_url", `${siteUrl}/checkout.html?payment=success&session_id={CHECKOUT_SESSION_ID}`);
@@ -140,14 +154,15 @@ async function createCheckoutSession(payload = {}) {
       body: params
     });
     const data = await response.json();
-    if (!response.ok) return json(response.status, { error: data.error?.message || "Stripe checkout failed." });
-    return json(200, { url: data.url });
+    if (!response.ok) return json(response.status, { error: data.error?.message || "Stripe checkout failed." }, requestOrigin);
+    return json(200, { url: data.url }, requestOrigin);
   } catch {
-    return json(500, { error: "Could not connect to Stripe." });
+    return json(500, { error: "Could not connect to Stripe." }, requestOrigin);
   }
 }
 
 module.exports = {
   corsHeaders,
+  isAllowedOrigin,
   createCheckoutSession
 };

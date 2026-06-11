@@ -9,6 +9,9 @@ const checkout = read("checkout.html");
 const basket = read("basket.js");
 const serverCheckout = read(path.join("server", "stripe-checkout.js"));
 const index = read("index.html");
+const webhook = read(path.join("api", "stripe-webhook.js"));
+const apiCheckout = read(path.join("api", "create-checkout-session.js"));
+const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("vercel.json") : "";
 
 const expectedAccessoryPrices = [
   ["Essentials Bundle", "Bac water + syringe kit + wipes", "14.99"],
@@ -51,4 +54,30 @@ assert(
     basket.includes("function formatMoney(value)") &&
     basket.includes("formatMoney(item.price * item.qty)"),
   "basket and checkout rows should format decimal prices consistently"
+);
+
+assert(
+  serverCheckout.includes("const SITE_URL = \"https://northpeptidesuk.com\"") &&
+    serverCheckout.includes("function isAllowedOrigin(origin)") &&
+    !serverCheckout.includes("payload.origin ||"),
+  "checkout session return URLs should not trust arbitrary browser origins"
+);
+assert(
+  !serverCheckout.includes('"Access-Control-Allow-Origin": "*"') &&
+    apiCheckout.includes("req.headers.origin") &&
+    apiCheckout.includes('req.method !== "POST"'),
+  "checkout API should restrict CORS and methods"
+);
+assert(
+  webhook.includes("function escapeHtml(value)") &&
+    webhook.includes("escapeHtml(metadata.notes)") &&
+    !webhook.includes('"Access-Control-Allow-Origin": "*"'),
+  "webhook emails should escape customer content and avoid wildcard CORS"
+);
+assert(
+  vercelConfig.includes("Strict-Transport-Security") &&
+    vercelConfig.includes("X-Content-Type-Options") &&
+    vercelConfig.includes("Referrer-Policy") &&
+    vercelConfig.includes("Permissions-Policy"),
+  "Vercel should send baseline security headers"
 );
