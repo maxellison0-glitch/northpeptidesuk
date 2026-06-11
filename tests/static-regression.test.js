@@ -9,6 +9,8 @@ const checkout = read("checkout.html");
 const basket = read("basket.js");
 const serverCheckout = read(path.join("server", "stripe-checkout.js"));
 const index = read("index.html");
+const product = read("product.html");
+const productData = read("product-data.js");
 const webhook = read(path.join("api", "stripe-webhook.js"));
 const apiCheckout = read(path.join("api", "create-checkout-session.js"));
 const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("vercel.json") : "";
@@ -80,4 +82,24 @@ assert(
     vercelConfig.includes("Referrer-Policy") &&
     vercelConfig.includes("Permissions-Policy"),
   "Vercel should send baseline security headers"
+);
+
+for (const staleLabel of ["1x 10mg", "2x 10mg", "3x 10mg", "2x 15mg", "3x 15mg"]) {
+  assert(!index.includes(`>${staleLabel} —`), `homepage dropdown should not show spaced/bundled label ${staleLabel}`);
+}
+for (const compactLabel of ["1x10mg", "1x15mg", "1x20mg", "1x30mg", "1x50mg", "1x80mg", "1x5mg"]) {
+  assert(index.includes(`>${compactLabel} —`), `homepage dropdown should show compact single-size label ${compactLabel}`);
+  assert(productData.includes(`label: "${compactLabel}"`), `product detail data should show compact label ${compactLabel}`);
+}
+assert(
+  index.includes("function productQty(qtyId)") &&
+    index.includes("function adjustProductQty(qtyId, delta)") &&
+    index.includes("addBundleToBasket('reta-sel','Retatrutide','reta-qty')"),
+  "homepage product cards should have quantity adders wired to add-to-basket"
+);
+assert(
+  product.includes("function selectedQuantity()") &&
+    product.includes("function adjustDetailQty(delta)") &&
+    product.includes("addItemToBasket(product.name, variant.price, variant.dose, selectedQuantity())"),
+  "product detail page should add selected quantity"
 );

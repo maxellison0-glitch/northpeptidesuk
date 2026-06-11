@@ -11,12 +11,13 @@ function saveBasket() {
   sessionStorage.setItem('npuk_basket', JSON.stringify(basket));
 }
 
-function addToBasket(name, price, dose) {
+function addToBasket(name, price, dose, qty = 1) {
+  const quantity = Math.max(1, Math.min(Number.parseInt(qty, 10) || 1, 12));
   const existing = basket.find(i => i.name === name && i.dose === dose);
   if (existing) {
-    existing.qty++;
+    existing.qty += quantity;
   } else {
-    basket.push({ name, price, dose, qty: 1 });
+    basket.push({ name, price, dose, qty: quantity });
   }
   saveBasket();
   updateBasketUI();

@@ -42,6 +42,10 @@
     .price-was { color: #9CA89F; text-decoration: line-through; font: 600 1rem "DM Sans", sans-serif; }
     .price-now { color: #12211A; font-family: Syne, sans-serif; font-size: 2.35rem; font-weight: 800; line-height: 1; }
     .price-save { border-radius: 999px; background: rgba(0,121,95,0.1); color: #00795F; padding: 6px 10px; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .qty-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+    .qty-control { display: inline-flex; align-items: center; height: 46px; border: 1px solid #D5E0D8; border-radius: 7px; overflow: hidden; background: #ffffff; }
+    .qty-btn { width: 42px; height: 44px; border: 0; background: #F4F8F5; color: #00795F; font-family: "DM Mono", monospace; font-size: 1rem; cursor: pointer; }
+    .qty-value { width: 44px; text-align: center; font-family: "DM Mono", monospace; font-size: 0.8rem; color: #1A2620; }
     .actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
     button, .button { border: 0; border-radius: 7px; min-height: 54px; padding: 0 16px; cursor: pointer; font-family: "DM Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
     .primary { background: #00795F; color: #ffffff; font-weight: 800; box-shadow: 0 10px 22px rgba(0,121,95,0.18); }
@@ -149,21 +153,31 @@
       document.getElementById("price-save").textContent = `Save ${money(discountFor(variant))}`;
     }
 
-    function addItemToBasket(name, price, dose) {
+    function addItemToBasket(name, price, dose, qty = 1) {
+      const quantity = Math.max(1, Math.min(Number.parseInt(qty, 10) || 1, 12));
       const basket = getBasket();
       const existing = basket.find(item => item.name === name && item.dose === dose);
       if (existing) {
-        existing.qty += 1;
+        existing.qty += quantity;
       } else {
-        basket.push({ name, price, dose, qty: 1 });
+        basket.push({ name, price, dose, qty: quantity });
       }
       saveBasket(basket);
       updateBasketCount();
     }
+    function selectedQuantity() {
+      const el = document.getElementById("detail-qty");
+      return Math.max(1, Math.min(Number.parseInt(el?.textContent, 10) || 1, 12));
+    }
+    function adjustDetailQty(delta) {
+      const el = document.getElementById("detail-qty");
+      if (!el) return;
+      el.textContent = Math.max(1, Math.min(selectedQuantity() + delta, 12));
+    }
 
     function addDetailToBasket(goCheckout = false) {
       const variant = selectedVariant();
-      addItemToBasket(product.name, variant.price, variant.dose);
+      addItemToBasket(product.name, variant.price, variant.dose, selectedQuantity());
       if (goCheckout) {
         window.location.href = "checkout.html";
         return;
@@ -223,6 +237,14 @@
                 <span class="price-was" id="price-was">${money(wasPriceFor(firstVariant))}</span>
                 <span class="price-now" id="price-now">${money(firstVariant.price)}</span>
                 <span class="price-save" id="price-save">Save ${money(discountFor(firstVariant))}</span>
+              </div>
+              <div class="qty-row">
+                <label>Quantity</label>
+                <div class="qty-control">
+                  <button class="qty-btn" type="button" onclick="adjustDetailQty(-1)">−</button>
+                  <span class="qty-value" id="detail-qty">1</span>
+                  <button class="qty-btn" type="button" onclick="adjustDetailQty(1)">+</button>
+                </div>
               </div>
               <div class="actions">
                 <button class="primary" id="add-button" onclick="addDetailToBasket(false)">Add to Basket</button>
