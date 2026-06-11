@@ -490,7 +490,7 @@
           <div class="addon-desc">10ml bac water + syringe kit + alcohol wipes</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£18</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',18,'Bac water + syringe kit + wipes')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£14.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',14.99,'Bac water + syringe kit + wipes')">Add</button></div>
       </div>
       <div class="addon-row">
         <div class="addon-info">
@@ -500,17 +500,17 @@
           <div class="addon-desc">10ml vial</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£7</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',7,'10ml vial')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',6.99,'10ml vial')">Add</button></div>
       </div>
       <div class="addon-row">
         <div class="addon-info">
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
           <div>
           <div class="addon-name">Syringe Kit</div>
-          <div class="addon-desc">10 pack, 1ml syringes</div>
+          <div class="addon-desc">1ml syringes + larger gauge for reconstitution</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£9</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Syringe Kit',9,'10 pack, 1ml')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Syringe Kit',6.99,'10 pack, 1ml + larger gauge for reconstitution')">Add</button></div>
       </div>
       <div class="addon-row">
         <div class="addon-info">
@@ -520,7 +520,7 @@
           <div class="addon-desc">50 pack, sterile</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£5</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',5,'50 pack')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£2.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',2.99,'50 pack')">Add</button></div>
       </div>
     </div>
   </div>
@@ -653,6 +653,10 @@
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
   }
 
+  function formatMoney(value) {
+    return Number(value).toFixed(2).replace('.00','');
+  }
+
   function getDiscountedSubtotal() {
     const sub = getSubtotal();
     return discountApplied ? sub * (1 - DISCOUNT_PCT) : sub;
@@ -662,8 +666,8 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     const grand = discSub + deliveryPrice;
-    document.getElementById('subtotal').textContent = '£' + sub.toFixed(2).replace('.00','');
-    document.getElementById('grand-total').textContent = '£' + grand.toFixed(2).replace('.00','');
+    document.getElementById('subtotal').textContent = '£' + formatMoney(sub);
+    document.getElementById('grand-total').textContent = '£' + formatMoney(grand);
     document.getElementById('total-hidden').value = '£' + grand.toFixed(2);
     const discLine = document.getElementById('discount-applied-line');
     discLine.style.display = discountApplied ? 'block' : 'none';
@@ -729,11 +733,11 @@
           <div class="order-line-dose">${item.dose}</div>
         </div>
         <span class="order-line-qty">x${item.qty}</span>
-        <span class="order-line-price">£${item.price * item.qty}</span>
+        <span class="order-line-price">£${formatMoney(item.price * item.qty)}</span>
       </div>
     `).join('');
     document.getElementById('order-summary-hidden').value = basketData.map(item =>
-      `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
+      `${item.name} ${item.dose} x${item.qty} = £${formatMoney(item.price * item.qty)}`
     ).join('\n');
     document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateTotals();

@@ -48,6 +48,10 @@ function getTotal() {
   return basket.reduce((sum, item) => sum + (item.price * item.qty), 0);
 }
 
+function formatMoney(value) {
+  return Number(value).toFixed(2).replace('.00', '');
+}
+
 function updateBasketUI() {
   const count = basket.reduce((sum, item) => sum + item.qty, 0);
   const countEl = document.getElementById('basket-count');
@@ -80,12 +84,12 @@ function renderBasketItems() {
         <span>${item.qty}</span>
         <button onclick="changeQty(${i}, 1)">+</button>
       </div>
-      <div class="basket-item-price">£${item.price * item.qty}</div>
+      <div class="basket-item-price">£${formatMoney(item.price * item.qty)}</div>
       <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
     </div>
   `).join('');
 
-  if (totalEl) totalEl.textContent = '£' + getTotal();
+  if (totalEl) totalEl.textContent = '£' + formatMoney(getTotal());
 }
 
 function showBasket() {

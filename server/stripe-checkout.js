@@ -38,12 +38,13 @@ const CATALOG = {
   "CJC-1295 No DAC|5mg": 29,
   "CJC-1295 No DAC|2x 5mg": 52,
   "CJC-1295 No DAC|3x 5mg": 69,
-  "Essentials Bundle|Bac water + syringe kit + wipes": 18,
-  "Bacteriostatic Water|10ml vial": 7,
-  "Bacteriostatic Water|Accessory": 7,
-  "Syringe Kit|10 pack, 1ml": 9,
-  "Syringe Kit|Accessory": 9,
-  "Alcohol Wipes|50 pack": 5
+  "Essentials Bundle|Bac water + syringe kit + wipes": 14.99,
+  "Bacteriostatic Water|10ml vial": 6.99,
+  "Bacteriostatic Water|Accessory": 6.99,
+  "Syringe Kit|10 pack, 1ml": 6.99,
+  "Syringe Kit|10 pack, 1ml + larger gauge for reconstitution": 6.99,
+  "Syringe Kit|Accessory": 6.99,
+  "Alcohol Wipes|50 pack": 2.99
 };
 
 const DELIVERY = {

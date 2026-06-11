@@ -739,8 +739,20 @@
       .featured-section { padding: 24px 16px 20px; }
       .featured-grid { grid-template-columns: 1fr; gap: 12px; }
       .cat-nav { padding: 8px 16px; top: 53px; }
-      .shop-section { padding: 18px 16px; }
-      .acc-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .shop-section { padding: 16px 14px 24px; }
+      .shop-section-header { margin-bottom: 12px; gap: 8px; flex-wrap: wrap; }
+      .acc-header { padding: 13px 0 10px; }
+      .acc-grid { grid-template-columns: 1fr; gap: 10px; padding: 10px 0; }
+      .shop-card { display: grid; grid-template-columns: 116px minmax(0, 1fr); min-height: auto; border-radius: 10px; }
+      .shop-card-img { aspect-ratio: auto; min-height: 136px; height: 100%; }
+      .shop-card-img img { object-fit: cover; }
+      .shop-card-body { min-width: 0; padding: 10px; gap: 6px; }
+      .shop-card-name { font-size: 0.92rem; line-height: 1.15; }
+      .shop-card-dose { font-size: 0.56rem; }
+      .shop-card-select { padding: 8px 28px 8px 9px; font-size: 0.64rem; min-height: 38px; }
+      .shop-card-footer { align-items: flex-end; gap: 8px; }
+      .shop-card-price { font-size: 0.98rem; }
+      .shop-add-btn { min-height: 42px; padding: 8px 10px; font-size: 0.56rem; }
       .reviews-section { padding: 32px 16px; }
       .reviews-grid { grid-template-columns: 1fr; }
       .help-light { padding: 32px 16px; }
@@ -760,7 +772,13 @@
       .modal-overlay { align-items: flex-end; padding: 0; }
       .toast { bottom: 76px; right: 12px; left: 12px; max-width: none; }
     }
-    @media (max-width: 380px) { .acc-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 380px) {
+      .acc-grid { grid-template-columns: 1fr; }
+      .shop-card { grid-template-columns: 96px minmax(0, 1fr); }
+      .shop-card-img { min-height: 128px; }
+      .shop-card-footer { flex-wrap: wrap; }
+      .shop-add-btn { width: 100%; }
+    }
     /* SALE PRICING */
     .price-was {
       font-family: 'DM Mono', monospace;
