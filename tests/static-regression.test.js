@@ -14,6 +14,8 @@ const productData = read("product-data.js");
 const webhook = read(path.join("api", "stripe-webhook.js"));
 const apiCheckout = read(path.join("api", "create-checkout-session.js"));
 const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("vercel.json") : "";
+const whyUs = read("why-us.html");
+const labReports = read("lab-reports.html");
 
 const expectedAccessoryPrices = [
   ["Essentials Bundle", "Bac water + syringe kit + wipes", "14.99"],
@@ -102,4 +104,53 @@ assert(
     product.includes("function adjustDetailQty(delta)") &&
     product.includes("addItemToBasket(product.name, variant.price, variant.dose, selectedQuantity())"),
   "product detail page should add selected quantity"
+);
+
+assert(
+  index.includes("Batch Tested.") &&
+    index.includes("UK Stocked.") &&
+    index.includes("Research Grade.") &&
+    index.includes("verified to ≥99% purity, batch-tested and cold-chain protected") &&
+    index.includes('href="why-us.html" class="hero-cta-secondary">Lab Standards →</a>'),
+  "homepage hero should use authority messaging and Lab Standards CTA"
+);
+assert(
+  index.includes("≥99% HPLC Verified") &&
+    index.includes("Batch COA Available") &&
+    index.includes("Cold-Chain Protected") &&
+    index.includes("Lab Reports Available") &&
+    !index.includes("<!-- TRUST STRIP (subtle, between hero and featured) -->"),
+  "homepage trust strip should be the dark authority bar"
+);
+assert(
+  index.includes("Quality Standards") &&
+    index.includes("Verified Purity") &&
+    index.includes("Cold-Chain Integrity") &&
+    index.includes("Traceable UK Stock"),
+  "homepage quality section should focus on quality standards"
+);
+assert(
+  index.includes("Verified purity.<br>UK stocked.<br><em>Research standard.</em>") &&
+    index.includes("≥99%</span><span class=\"about-light-stat-label\">Purity verified by HPLC") &&
+    index.includes("COA</span><span class=\"about-light-stat-label\">Certificate of Analysis"),
+  "homepage about section should use research standard messaging"
+);
+assert(
+  index.includes("batch-tested and cold-chain protected") &&
+    index.includes("COA available on every product") &&
+    index.includes("Lab Reports &amp; COA") &&
+    index.includes("Why North Peptides"),
+  "homepage footer should include authority links and COA language"
+);
+assert(
+  whyUs.includes("Why researchers choose") &&
+    whyUs.includes("≥99% HPLC Purity") &&
+    whyUs.includes(".stat-bar-inner { grid-template-columns: 1fr 1fr;"),
+  "why-us page should be present and responsive"
+);
+assert(
+  labReports.includes("Lab Reports &amp;") &&
+    labReports.includes("reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));") &&
+    labReports.includes("COA Available"),
+  "lab reports page should be present with responsive COA grid"
 );

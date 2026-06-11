@@ -32,6 +32,18 @@
     .summary { color: #51625A; line-height: 1.7; max-width: 620px; margin-bottom: 22px; }
     .trust-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .trust-chip { border: 1px solid #DCE5DE; background: #F4F8F5; border-radius: 999px; padding: 7px 11px; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: #51625A; }
+    /* TRUST PANEL */
+    .trust-panel { margin-bottom: 22px; }
+    .tp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E2EAE4; border: 1px solid #E2EAE4; border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
+    .tp-item { background: #F7FAF8; padding: 11px 13px; display: flex; flex-direction: column; gap: 3px; }
+    .tp-label { font-family: "DM Mono", monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8AA094; }
+    .tp-value { font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 600; color: #1A2620; letter-spacing: 0.04em; }
+    .tp-v-purity { color: #00795F; }
+    .tp-v-research { color: #92700A; }
+    .tp-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tp-chip { border: 1px solid #DCE5DE; background: #F4F8F5; border-radius: 999px; padding: 6px 11px; font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: #51625A; }
+    .tp-chip-purity { border-color: #B8E8D0; background: #ECFAF4; color: #00663F; font-weight: 600; }
+    @media (max-width: 760px) { .tp-grid { grid-template-columns: repeat(2, 1fr); } }
     .details { margin: 0 0 24px; padding-left: 18px; color: #3D4F46; line-height: 1.8; font-size: 0.9rem; }
     .details li::marker { color: #00795F; }
     .buy-box { border: 1px solid #E2EAE4; border-radius: 10px; padding: 22px; background: #FAFCFA; }
@@ -84,7 +96,8 @@
     <div class="nav-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#how-to-order">Order</a>
-      <a href="index.html#faq">FAQ</a>
+      <a href="lab-reports.html">Lab Reports</a>
+      <a href="why-us.html">Why Us</a>
       <a href="mailto:support@northpeptidesuk.com">Support</a>
       <a href="checkout.html" class="nav-basket">Basket <span class="nav-basket-count" id="nav-basket-count">0</span></a>
     </div>
@@ -224,10 +237,21 @@
             <div class="tag">${product.category}</div>
             <h1>${product.name}</h1>
             <p class="summary">${product.summary}</p>
-            <div class="trust-row">
-              <span class="trust-chip">UK stocked</span>
-              <span class="trust-chip">Batch details on request</span>
-              <span class="trust-chip">Research use only</span>
+            <div class="trust-panel">
+              <div class="tp-grid">
+                <div class="tp-item"><span class="tp-label">Purity</span><span class="tp-value tp-v-purity">&ge;99% HPLC</span></div>
+                <div class="tp-item"><span class="tp-label">Form</span><span class="tp-value">Lyophilised</span></div>
+                <div class="tp-item"><span class="tp-label">Storage</span><span class="tp-value">&minus;20&deg;C Frozen</span></div>
+                <div class="tp-item"><span class="tp-label">Dispatch</span><span class="tp-value">Within 24h</span></div>
+                <div class="tp-item"><span class="tp-label">Testing</span><span class="tp-value">COA Available</span></div>
+                <div class="tp-item"><span class="tp-label">Use</span><span class="tp-value tp-v-research">Research Only</span></div>
+              </div>
+              <div class="tp-chips">
+                <span class="tp-chip tp-chip-purity">&ge;99% Purity</span>
+                <span class="tp-chip">UK Stocked</span>
+                <span class="tp-chip">Cold-Chain</span>
+                <span class="tp-chip">Batch COA</span>
+              </div>
             </div>
             <ul class="details">${detailItems}</ul>
             <div class="buy-box">
