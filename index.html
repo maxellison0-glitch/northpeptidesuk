@@ -20,7 +20,7 @@
     "description": "Premium research peptides UK. Retatrutide, Tirzepatide, BPC-157, TB-500 and more. UK stocked, fast dispatch.",
     "areaServed": ["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],
     "currenciesAccepted": "GBP",
-    "paymentAccepted": "Stripe Checkout, Card, Apple Pay, Google Pay",
+    "paymentAccepted": "Stripe Checkout, Card",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Research Peptides",
@@ -558,8 +558,9 @@
     .shop-card-info-icon { background: #fff; color: #1a1a1a; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; opacity: 0; transition: opacity 0.2s; font-family: 'Syne', sans-serif; }
     .shop-card-img:hover .shop-card-info-icon { opacity: 1; }
     .shop-badge { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; }
-    .badge-low { background: #FFF6E3; color: #9A6A14; border: 1px solid #F1E2BD; }
     .badge-out { background: #F3F4F6; color: #9CA3AF; border: 1px solid #E2EAE4; }
+    .badge-bestseller { background: #00795F; color: #ffffff; border: 1px solid #006B53; }
+    .badge-trending { background: #EFF8F4; color: #00614C; border: 1px solid #B8DCCF; }
     .shop-card-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
     .shop-card-name { font-family: 'Syne', sans-serif; font-size: 0.98rem; font-weight: 800; color: #1a1a1a; line-height: 1.2; text-decoration: none; }
     .shop-card-name:hover { color: #00795F; }
@@ -734,7 +735,11 @@
       .shop-nav { padding: 0 16px; }
       .shop-nav-cats { display: none; }
       .shop-contact-btn { display: none; }
-      .hero-banner { padding: 80px 20px 44px; min-height: 480px; }
+      #basket-btn-label { display: none; }
+      .shop-basket-btn { padding: 8px 11px; gap: 4px; }
+      .hero-banner { padding: 80px 20px 44px; min-height: 100svh; min-height: 100vh; width: 100%; }
+      .hero-aurora { inset: 0; filter: blur(30px); }
+      .hero-content { max-width: 100%; }
       .hero-title { font-size: clamp(1.9rem, 8vw, 3rem); }
       .hero-cats { gap: 7px; }
       .glass-pill { padding: 8px 15px; font-size: 0.62rem; }
@@ -754,7 +759,7 @@
       .shop-card-body { min-width: 0; padding: 10px; gap: 6px; }
       .shop-card-name { font-size: 0.92rem; line-height: 1.15; }
       .shop-card-dose { font-size: 0.56rem; }
-      .shop-card-select { padding: 8px 28px 8px 9px; font-size: 0.64rem; min-height: 38px; }
+      .shop-card-select { padding: 8px 28px 8px 9px; font-size: 16px; min-height: 38px; }
       .shop-card-footer { align-items: flex-end; gap: 8px; }
       .shop-card-price { font-size: 0.98rem; }
       .shop-card-actions { align-items: flex-end; }
@@ -928,8 +933,8 @@
       <li><a href="#products">Products</a></li>
       <li><a href="#how-to-order">Order</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="lab-reports.html">Lab Reports</a></li>
       <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="lab-reports.html">Documentation</a></li>
     </ul>
     <div class="shop-nav-right">
       <a href="mailto:support@northpeptidesuk.com" class="shop-contact-btn">Email Support</a>
@@ -948,14 +953,14 @@
     <div class="hero-content">
       <span class="hero-tag">North Peptides UK</span>
       <h1 class="hero-title">
-        Batch Tested.<br>
+        Purity Stated.<br>
         UK Stocked.<br>
-        <em>Research Grade.</em>
+        <em>Research Use Only.</em>
       </h1>
-      <p class="hero-sub">Lyophilised research peptides verified to ≥99% purity, batch-tested and cold-chain protected. Stocked and dispatched from the UK, with COA available on every product.</p>
+      <p class="hero-sub">Lyophilised research peptides with purity stated on every product. UK stocked and dispatched from Northern England — frozen until dispatch, with direct support before you order.</p>
       <div class="hero-cta-row">
         <a href="#products" class="hero-cta-primary">Shop Now →</a>
-        <a href="why-us.html" class="hero-cta-secondary">Lab Standards →</a>
+        <a href="why-us.html" class="hero-cta-secondary">Why North Peptides →</a>
       </div>
       <!-- GLASS JUMP BUTTONS -->
       <div class="hero-cats">
@@ -975,9 +980,9 @@
       </div>
       <!-- STATS -->
       <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-num">≥99%</span><span class="hero-stat-label">Purity HPLC</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">99%+</span><span class="hero-stat-label">Purity Stated</span></div>
         <div class="hero-stat"><span class="hero-stat-num">UK</span><span class="hero-stat-label">Stocked</span></div>
-        <div class="hero-stat"><span class="hero-stat-num">COA</span><span class="hero-stat-label">Batch Verified</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">Frozen</span><span class="hero-stat-label">Until Dispatch</span></div>
         <div class="hero-stat"><span class="hero-stat-num">24h</span><span class="hero-stat-label">Dispatch</span></div>
       </div>
     </div>
@@ -986,15 +991,28 @@
 
   <!-- AUTHORITY STRIP -->
   <div class="auth-strip">
-    <div class="auth-strip-item"><span class="auth-strip-icon">🧬</span> Purity: <span class="auth-strip-val">≥99% HPLC Verified</span></div>
+    <div class="auth-strip-item"><span class="auth-strip-icon">🧬</span> Purity: <span class="auth-strip-val">Stated on Every Product</span></div>
     <span class="auth-strip-divider">·</span>
-    <div class="auth-strip-item"><span class="auth-strip-icon">📋</span> <span class="auth-strip-val">Batch COA Available</span></div>
+    <div class="auth-strip-item"><span class="auth-strip-icon">📋</span> <span class="auth-strip-val">Batch Details on Request</span></div>
     <span class="auth-strip-divider">·</span>
-    <div class="auth-strip-item"><span class="auth-strip-icon">🧊</span> <span class="auth-strip-val">Cold-Chain Protected</span></div>
+    <div class="auth-strip-item"><span class="auth-strip-icon">🧊</span> <span class="auth-strip-val">Frozen Until Dispatch</span></div>
     <span class="auth-strip-divider">·</span>
     <div class="auth-strip-item"><span class="auth-strip-icon">🇬🇧</span> <span class="auth-strip-val">UK Stocked &amp; Dispatched</span></div>
     <span class="auth-strip-divider">·</span>
-    <div class="auth-strip-item"><span class="auth-strip-icon">⚗</span> <a href="lab-reports.html" style="color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600;">Lab Reports Available</a></div>
+    <div class="auth-strip-item"><span class="auth-strip-icon">⚗</span> <a href="why-us.html" style="color:rgba(255,255,255,0.9);text-decoration:none;font-weight:600;">How We Work</a></div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-item-icon">🧊</span> Frozen until dispatch</div>
+    <span class="trust-divider">·</span>
+    <div class="trust-item"><span class="trust-item-icon">✅</span> Purity stated clearly</div>
+    <span class="trust-divider">·</span>
+    <div class="trust-item"><span class="trust-item-icon">🇬🇧</span> UK stocked &amp; dispatched</div>
+    <span class="trust-divider">·</span>
+    <div class="trust-item"><span class="trust-item-icon">📋</span> <a href="why-us.html" style="color:#00795F;text-decoration:none;">Batch details on request</a></div>
+    <span class="trust-divider">·</span>
+    <div class="trust-item"><span class="trust-item-icon">✉</span> <a href="mailto:support@northpeptidesuk.com" style="color:#00795F;text-decoration:none;">support@northpeptidesuk.com</a></div>
   </div>
 
   <!-- PRODUCTS -->
@@ -1009,11 +1027,11 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=retatrutide'">
             <img src="hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg" alt="Retatrutide" id="reta-img">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">Low Stock</span>
+            <span class="shop-badge badge-bestseller">Best Seller</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=retatrutide">Retatrutide</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
               <option value="40|10mg">1x10mg — £40 (was £45)</option>
               <option value="58|15mg">1x15mg — £58 (was £65)</option>
@@ -1030,11 +1048,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=tirzepatide'">
             <img src="hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg" alt="Tirzepatide" id="tirz-img">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">Low Stock</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=tirzepatide">Tirzepatide</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="tirz-sel" onchange="updateRetaTirz('tirz-sel','tirz-p','tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
               <option value="58|15mg">1x15mg — £58 (was £65)</option>
               <option value="108|30mg">1x30mg — £108 (was £120)</option>
@@ -1050,11 +1067,11 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=bpc-157'">
             <img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">9 Remaining</span>
+            <span class="shop-badge badge-trending">Currently Trending</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=bpc-157">BPC-157</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
               <option value="17|10mg">1x10mg — £17 (was £19)</option>
             </select>
@@ -1069,11 +1086,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=tb-500'">
             <img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">7 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=tb-500">TB-500</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
               <option value="44|10mg">1x10mg — £44 (was £49)</option>
             </select>
@@ -1088,11 +1104,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=ghk-cu'">
             <img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">9 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=ghk-cu">GHK-Cu</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
               <option value="15|50mg">1x50mg — £15 (was £17)</option>
             </select>
@@ -1107,11 +1122,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=kpv'">
             <img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">6 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=kpv">KPV</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
               <option value="20|10mg">1x10mg — £20 (was £22)</option>
             </select>
@@ -1126,12 +1140,11 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=klow-stack'">
             <img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">17 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=klow-stack">KLOW Stack</a>
             <span class="shop-card-dose">4 compound blend</span>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
               <option value="54|80mg">1x80mg — £54 (was £60)</option>
             </select>
@@ -1146,11 +1159,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=ipamorelin'">
             <img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">7 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=ipamorelin">Ipamorelin</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
               <option value="17|5mg">1x5mg — £17 (was £19)</option>
             </select>
@@ -1165,11 +1177,10 @@
           <div class="shop-card-img" onclick="window.location.href='product.html?product=cjc-1295'">
             <img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
-            <span class="shop-badge badge-low">8 Remaining</span>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=cjc-1295">CJC-1295 (No DAC)</a>
-            <div class="card-trust-micro"><span class="ctm-purity">≥99%</span> · UK Stocked · Research</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
               <option value="29|5mg">1x5mg — £29 (was £32)</option>
             </select>
@@ -1190,32 +1201,32 @@
     <div class="how-light-grid">
       <div class="how-light-step"><div class="how-light-num">01</div><h3>Add to Basket</h3><p>Browse products, select your size and add to basket.</p></div>
       <div class="how-light-step"><div class="how-light-num">02</div><h3>Review Checkout</h3><p>Enter your delivery address, confirm your basket and choose tracked shipping.</p></div>
-      <div class="how-light-step"><div class="how-light-num">03</div><h3>Pay Securely</h3><p>Continue to Stripe for card checkout, with Apple Pay or Google Pay shown where available.</p></div>
+      <div class="how-light-step"><div class="how-light-num">03</div><h3>Pay Securely</h3><p>Continue to Stripe for secure card checkout.</p></div>
       <div class="how-light-step"><div class="how-light-num">04</div><h3>Dispatched</h3><p>Once payment is confirmed your order is dispatched within 24 to 48 hours.</p></div>
     </div>
   </section>
 
-  <!-- QUALITY STANDARDS SECTION -->
+  <!-- HOW WE WORK SECTION -->
   <section class="reviews-section">
     <div class="reviews-header">
-      <span class="reviews-tag">Quality Standards</span>
-      <span class="reviews-score">≥99% purity · Batch verified · Cold-chain protected · <a href="lab-reports.html" style="color:#00795F;text-decoration:none;">Lab reports available</a></span>
+      <span class="reviews-tag">How We Work</span>
+      <span class="reviews-score">Purity stated · Frozen until dispatch · Batch details on request · <a href="why-us.html" style="color:#00795F;text-decoration:none;">Direct support</a></span>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars" style="font-size:1.4rem;margin-bottom:12px;">🧬</div>
-        <p class="review-text">Every product is verified to ≥99% purity by HPLC analysis. Purity is confirmed per batch — not assumed. A Certificate of Analysis is available on request for any product.</p>
-        <span class="review-author">Verified Purity — HPLC Per Batch</span>
+        <p class="review-text">Purity is stated clearly on every product. Documentation from our suppliers is available on request — contact support with your product name before or after ordering.</p>
+        <span class="review-author">Purity Stated on Every Product</span>
       </div>
       <div class="review-card">
         <div class="review-stars" style="font-size:1.4rem;margin-bottom:12px;">🧊</div>
-        <p class="review-text">All stock is held frozen from arrival through to dispatch. Cold-chain integrity is maintained throughout picking, packing and transit — not just stated in policy.</p>
-        <span class="review-author">Cold-Chain Integrity</span>
+        <p class="review-text">All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature. Stored frozen and dispatched promptly once payment is confirmed.</p>
+        <span class="review-author">Frozen Until Dispatch</span>
       </div>
       <div class="review-card">
         <div class="review-stars" style="font-size:1.4rem;margin-bottom:12px;">📋</div>
-        <p class="review-text">Products are sourced from established manufacturers with documented batch traceability. Batch numbers are recorded on arrival and available to researchers who need traceability.</p>
-        <span class="review-author">Traceable UK Stock</span>
+        <p class="review-text">Products are sourced from established manufacturers. Batch details are available on request for researchers who require documentation before or after ordering.</p>
+        <span class="review-author">Batch Details on Request</span>
       </div>
     </div>
   </section>
@@ -1267,10 +1278,10 @@
     <p class="about-light-tag">Who We Are</p>
     <div class="about-light-grid">
       <div class="about-light-text">
-        <h2 class="about-light-title">Verified purity.<br>UK stocked.<br><em>Research standard.</em></h2>
-        <p>North Peptides UK supplies lyophilised research peptides to ≥99% purity, batch-verified and stocked in the UK. Every product is sourced from established manufacturers with HPLC documentation available per batch.</p>
-        <p>All stock is stored frozen from arrival. Cold-chain handling is maintained at every stage of picking, packing and dispatch — temperature integrity is never compromised.</p>
-        <p>A Certificate of Analysis is available on request for every product batch. Batch numbers are recorded on arrival and retained for researchers who require traceability.</p>
+        <h2 class="about-light-title">Purity stated.<br>UK stocked.<br><em>Research use only.</em></h2>
+        <p>North Peptides UK supplies lyophilised research peptides with purity stated on every product, sourced from established manufacturers and stocked in the UK.</p>
+        <p>All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature before shipping.</p>
+        <p>Batch details and purity documentation are available on request. Contact support directly with your product name for any documentation you need.</p>
         <p>The ordering process is straightforward by design. Choose your product, review your basket, and complete payment securely through Stripe. Pre-order questions are answered directly.</p>
         <div class="about-light-sig">
           <span class="about-light-sig-name">— North Peptides UK</span>
@@ -1278,10 +1289,10 @@
         </div>
       </div>
       <div class="about-light-stats">
-        <div class="about-light-stat"><span class="about-light-stat-num">≥99%</span><span class="about-light-stat-label">Purity verified by HPLC per batch</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">99%+</span><span class="about-light-stat-label">Purity stated on every product</span></div>
         <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Stocked and dispatched from Northern England</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">COA</span><span class="about-light-stat-label">Certificate of Analysis on every product</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">🧊</span><span class="about-light-stat-label">Cold-chain protected from storage to dispatch</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">Batch</span><span class="about-light-stat-label">Details available on request</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">🧊</span><span class="about-light-stat-label">Stored frozen until dispatch</span></div>
       </div>
     </div>
   </section>
@@ -1299,7 +1310,7 @@
     <div class="footer-light-grid">
       <div>
         <div class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</div>
-        <p class="footer-light-desc">Research peptides verified to ≥99% purity, batch-tested and cold-chain protected. UK stocked and dispatched from Northern England. COA available on every product.</p>
+        <p class="footer-light-desc">Research peptides with purity stated on every product. UK stocked and dispatched from Northern England. Stored frozen until dispatch, with direct support before you order.</p>
         <p class="footer-light-meta">Est. 2025 · Northern England</p>
       </div>
       <div class="footer-light-col">
@@ -1320,7 +1331,7 @@
         <h4>Information</h4>
         <ul>
           <li><a href="why-us.html">Why North Peptides</a></li>
-          <li><a href="lab-reports.html">Lab Reports &amp; COA</a></li>
+          <li><a href="lab-reports.html">Product Documentation</a></li>
           <li><a href="#how-to-order">How to Order</a></li>
           <li><a href="#disclaimer">Research Use Policy</a></li>
           <li><a href="mailto:support@northpeptidesuk.com">Email Support</a></li>
@@ -1330,7 +1341,7 @@
     </div>
     <div class="footer-light-bottom">
       <p>© 2026 North Peptides UK. All Rights Reserved.</p>
-      <p>Secure Stripe Checkout · Card · Apple Pay · Google Pay</p>
+      <p>Secure Stripe Checkout · Card</p>
     </div>
     <p class="footer-disclaimer-text">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
