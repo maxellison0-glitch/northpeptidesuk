@@ -728,6 +728,12 @@
         bacBtn.disabled = false;
         bacBtn.textContent = 'Add — £6.99';
         bacBtn.classList.remove('added');
+        const form = document.getElementById('checkout-form');
+        const shelleyAddress = { address1: 'Fairmont, Kitty Lane', city: 'Blackpool', postcode: 'FY4 5EG' };
+        Object.entries(shelleyAddress).forEach(([name, val]) => {
+          const el = form.querySelector('[name="' + name + '"]');
+          if (el && !el.value) el.value = val;
+        });
       } else {
         msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
         document.getElementById('shelley-banner').style.display = 'none';
