@@ -44,7 +44,7 @@ const CATALOG = {
   "Syringe Kit|10 pack, 1ml": 6.99,
   "Syringe Kit|10 pack, 1ml + larger gauge for reconstitution": 6.99,
   "Syringe Kit|Accessory": 6.99,
-  "Alcohol Wipes|50 pack": 2.99
+  "Alcohol Wipes|10 pack": 2.99
 };
 
 const DISCOUNT_CODES = {
