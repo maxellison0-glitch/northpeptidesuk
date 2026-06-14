@@ -638,10 +638,18 @@
     discLine.style.display = discountApplied ? 'block' : 'none';
   }
 
+  function setStandardDeliveryPrice(price) {
+    const radio = document.querySelector('input[name="delivery"][value="standard"]');
+    radio.dataset.price = String(price);
+    document.querySelector('#label-standard .delivery-option-price').textContent = price === 0 ? 'FREE' : '£4.95';
+    if (radio.checked) { deliveryPrice = price; }
+  }
+
   function applyDiscount() {
     const code = document.getElementById('discount-input').value.trim().toUpperCase();
     const msg = document.getElementById('discount-msg');
     const pct = DISCOUNT_CODES[code];
+    setStandardDeliveryPrice(4.95);
     if (pct !== undefined) {
       discountApplied = true;
       appliedDiscountPct = pct;
@@ -649,6 +657,7 @@
       document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
       msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
       msg.className = 'discount-msg success';
+      if (code === 'AJ') setStandardDeliveryPrice(0);
       updateTotals();
     } else {
       discountApplied = false;

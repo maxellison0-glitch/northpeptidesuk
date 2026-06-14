@@ -120,12 +120,15 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   }
 
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
-  lineItems.push({
-    "price_data][currency": "gbp",
-    "price_data][product_data][name": delivery.label,
-    "price_data][unit_amount": Math.round(delivery.price * 100),
-    quantity: 1
-  });
+  const freeDelivery = discountCode === 'AJ' && payload.deliveryMethod !== 'express';
+  if (!freeDelivery) {
+    lineItems.push({
+      "price_data][currency": "gbp",
+      "price_data][product_data][name": delivery.label,
+      "price_data][unit_amount": Math.round(delivery.price * 100),
+      quantity: 1
+    });
+  }
 
   const siteUrl = SITE_URL;
   const params = new URLSearchParams();
