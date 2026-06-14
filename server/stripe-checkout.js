@@ -49,7 +49,8 @@ const CATALOG = {
 
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
-  "ADMININVALID": 0.90
+  "ADMININVALID": 0.90,
+  "AJ":           0.10
 };
 
 const DELIVERY = {
