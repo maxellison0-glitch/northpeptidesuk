@@ -499,20 +499,20 @@
   <p class="sec-head">Delivery</p>
   <div class="delivery-options">
     <label class="delivery-option selected" id="label-standard">
-      <input type="radio" name="delivery" value="standard" data-price="4.95" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="standard" data-price="0" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
         <div class="delivery-option-desc">Estimated 1–2 working days</div>
       </div>
-      <div class="delivery-option-price">£4.95</div>
+      <div class="delivery-option-price">FREE</div>
     </label>
     <label class="delivery-option" id="label-express">
-      <input type="radio" name="delivery" value="express" data-price="9.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="express" data-price="8.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Special Delivery</div>
         <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
       </div>
-      <div class="delivery-option-price">£9.95</div>
+      <div class="delivery-option-price">£8.95</div>
     </label>
   </div>
 
@@ -603,7 +603,7 @@
 
 <script>
   let basketData = [];
-  let deliveryPrice = 4.95;
+  let deliveryPrice = 0;
   let deliveryLabel = 'Royal Mail Tracked 24';
   let discountApplied = false;
   let appliedDiscountPct = 0;
@@ -641,7 +641,7 @@
   function setStandardDeliveryPrice(price) {
     const radio = document.querySelector('input[name="delivery"][value="standard"]');
     radio.dataset.price = String(price);
-    document.querySelector('#label-standard .delivery-option-price').textContent = price === 0 ? 'FREE' : '£4.95';
+    document.querySelector('#label-standard .delivery-option-price').textContent = 'FREE';
     if (radio.checked) { deliveryPrice = price; }
   }
 

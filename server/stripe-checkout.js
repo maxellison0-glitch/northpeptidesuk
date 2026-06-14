@@ -54,8 +54,8 @@ const DISCOUNT_CODES = {
 };
 
 const DELIVERY = {
-  standard: { label: "Royal Mail Tracked 24", price: 4.95 },
-  express: { label: "Royal Mail Special Delivery", price: 9.95 }
+  standard: { label: "Royal Mail Tracked 24", price: 0 },
+  express: { label: "Royal Mail Special Delivery", price: 8.95 }
 };
 
 const SITE_URL = "https://northpeptidesuk.com";
