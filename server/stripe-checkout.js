@@ -108,6 +108,8 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
     const price = CATALOG[key];
     const quantity = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
 
+    if (discountCode === 'SHELLEY' && name === 'Syringe Kit') continue;
+
     if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` }, requestOrigin);
 
     const discountedPrice = hasDiscount ? price * (1 - discountPct) : price;
@@ -150,6 +152,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
   params.append("metadata[delivery]", delivery.label);
   if (hasDiscount) params.append("metadata[discount]", discountCode);
+  if (discountCode === 'SHELLEY') params.append("metadata[gift]", "Free Syringe Kit included");
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");
 
   lineItems.forEach((lineItem, index) => {

@@ -423,7 +423,24 @@
       font-size: 0.7rem;
       color: rgba(255,255,255,0.82);
       line-height: 1.6;
+      margin-bottom: 14px;
     }
+    .shelley-bac-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .shelley-bac-text { flex: 1; min-width: 0; }
+    .shelley-bac-title { font-size: 0.85rem; color: #ffffff; font-weight: 600; margin-bottom: 3px; }
+    .shelley-bac-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.72); }
+    .shelley-bac-btn { white-space: nowrap; padding: 9px 14px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .shelley-bac-btn:hover { background: rgba(255,255,255,0.32); }
+    .shelley-bac-btn:disabled { opacity: 0.55; cursor: default; }
     .confetti-piece {
       position: fixed;
       top: -12px;
@@ -523,7 +540,14 @@
   <div class="discount-msg" id="discount-msg"></div>
   <div class="shelley-banner" id="shelley-banner">
     <div class="shelley-banner-hi">Hi Shelley!</div>
-    <div class="shelley-banner-msg">50% off + free delivery — your exclusive access.</div>
+    <div class="shelley-banner-msg">50% off + free delivery + free needles — your exclusive access.</div>
+    <div class="shelley-bac-prompt">
+      <div class="shelley-bac-text">
+        <div class="shelley-bac-title">Would you like bacteriostatic water?</div>
+        <div class="shelley-bac-sub">You probably do. Max says you do.</div>
+      </div>
+      <button class="shelley-bac-btn" id="shelley-bac-btn" onclick="addBacForShelley()">Add — £6.99</button>
+    </div>
   </div>
 
   <!-- DELIVERY -->
@@ -692,9 +716,18 @@
       appliedDiscountCode = code;
       document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
       if (code === 'SHELLEY') {
-        msg.textContent = '50% off + free delivery applied.';
+        msg.textContent = '50% off + free delivery + free needles applied.';
         document.getElementById('shelley-banner').style.display = 'block';
         launchConfetti();
+        if (!basketData.some(item => item.shelleyGift)) {
+          basketData.push({ name: 'Syringe Kit', price: 0, dose: '10 pack, 1ml + larger gauge for reconstitution', qty: 1, shelleyGift: true });
+          saveCheckoutBasket();
+          renderOrder();
+        }
+        const bacBtn = document.getElementById('shelley-bac-btn');
+        bacBtn.disabled = false;
+        bacBtn.textContent = 'Add — £6.99';
+        bacBtn.classList.remove('added');
       } else {
         msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
         document.getElementById('shelley-banner').style.display = 'none';
@@ -710,6 +743,22 @@
       document.getElementById('shelley-banner').style.display = 'none';
       updateTotals();
     }
+  }
+
+  function addBacForShelley() {
+    const btn = document.getElementById('shelley-bac-btn');
+    if (btn.disabled) return;
+    btn.disabled = true;
+    btn.textContent = 'Added!';
+    btn.classList.add('added');
+    const existing = basketData.find(item => item.name === 'Bacteriostatic Water' && item.dose === '10ml vial');
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      basketData.push({ name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial', qty: 1 });
+    }
+    saveCheckoutBasket();
+    renderOrder();
   }
 
   function launchConfetti() {
@@ -778,7 +827,7 @@
           <div class="order-line-dose">${item.dose}</div>
         </div>
         <span class="order-line-qty">x${item.qty}</span>
-        <span class="order-line-price">£${formatMoney(item.price * item.qty)}</span>
+        <span class="order-line-price">${item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)}</span>
       </div>
     `).join('');
     document.getElementById('order-summary-hidden').value = basketData.map(item =>
