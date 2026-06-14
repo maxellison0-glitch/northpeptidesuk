@@ -50,7 +50,8 @@ const CATALOG = {
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
   "ADMININVALID": 0.90,
-  "AJ":           0.10
+  "AJ":           0.10,
+  "SHELLEY":      0.50
 };
 
 const DELIVERY = {
@@ -122,7 +123,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || productSubtotal >= 30);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SHELLEY' || productSubtotal >= 30);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({

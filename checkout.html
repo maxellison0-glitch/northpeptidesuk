@@ -404,6 +404,33 @@
       .addon-visual { width: 42px; height: 42px; border-radius: 9px; }
       .addon-symbol.syringe { width: 27px; }
     }
+    .shelley-banner {
+      background: linear-gradient(135deg, #00795F 0%, #004d3b 100%);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .shelley-banner-hi {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+    .shelley-banner-msg {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+    }
+    .confetti-piece {
+      position: fixed;
+      top: -12px;
+      pointer-events: none;
+      border-radius: 2px;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -494,6 +521,10 @@
     <button class="discount-btn" onclick="applyDiscount()">Apply</button>
   </div>
   <div class="discount-msg" id="discount-msg"></div>
+  <div class="shelley-banner" id="shelley-banner">
+    <div class="shelley-banner-hi">Hi Shelley!</div>
+    <div class="shelley-banner-msg">50% off + free delivery — your exclusive access.</div>
+  </div>
 
   <!-- DELIVERY -->
   <p class="sec-head">Delivery</p>
@@ -611,7 +642,8 @@
   const DISCOUNT_CODES = {
     'WELCOME10':    0.10,
     'ADMININVALID': 0.90,
-    'AJ':           0.10
+    'AJ':           0.10,
+    'SHELLEY':      0.50
   };
 
   function getSubtotal() {
@@ -631,7 +663,7 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = appliedDiscountCode === 'AJ' || discSub >= 30;
+      const freeDelivery = appliedDiscountCode === 'AJ' || appliedDiscountCode === 'SHELLEY' || discSub >= 30;
       deliveryPrice = freeDelivery ? 0 : 3;
       document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
       const nudge = document.getElementById('delivery-nudge');
@@ -659,7 +691,14 @@
       appliedDiscountPct = pct;
       appliedDiscountCode = code;
       document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
-      msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
+      if (code === 'SHELLEY') {
+        msg.textContent = '50% off + free delivery applied.';
+        document.getElementById('shelley-banner').style.display = 'block';
+        launchConfetti();
+      } else {
+        msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
+        document.getElementById('shelley-banner').style.display = 'none';
+      }
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
@@ -668,7 +707,31 @@
       appliedDiscountCode = '';
       msg.textContent = 'Invalid code. Please check it and try again.';
       msg.className = 'discount-msg error';
+      document.getElementById('shelley-banner').style.display = 'none';
       updateTotals();
+    }
+  }
+
+  function launchConfetti() {
+    const colors = ['#00795F','#4CAF50','#86C88A','#d4edda','#ffffff','#FFD700','#FFA07A'];
+    for (let i = 0; i < 80; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      const size = 5 + Math.random() * 8;
+      el.style.left = (Math.random() * 100) + 'vw';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(el);
+      const delay = Math.random() * 700;
+      const duration = 1800 + Math.random() * 1400;
+      const drift = (Math.random() - 0.5) * 140;
+      const rot = Math.random() * 720;
+      el.animate([
+        { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: 1 },
+        { transform: 'translateY(100vh) translateX(' + drift + 'px) rotate(' + rot + 'deg)', opacity: 0 }
+      ], { delay, duration, easing: 'cubic-bezier(0.25,0.46,0.45,0.94)', fill: 'forwards' });
+      setTimeout(() => el.remove(), delay + duration + 100);
     }
   }
 
