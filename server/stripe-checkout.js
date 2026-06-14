@@ -54,7 +54,7 @@ const DISCOUNT_CODES = {
 };
 
 const DELIVERY = {
-  standard: { label: "Royal Mail Tracked 24", price: 0 },
+  standard: { label: "Royal Mail Tracked 24", price: 3 },
   express: { label: "Royal Mail Special Delivery", price: 8.95 }
 };
 
@@ -120,12 +120,15 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   }
 
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
-  const freeDelivery = discountCode === 'AJ' && payload.deliveryMethod !== 'express';
-  if (!freeDelivery) {
+  const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
+  const isExpress = payload.deliveryMethod === 'express';
+  const freeStandard = !isExpress && (discountCode === 'AJ' || productSubtotal >= 30);
+  const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
+  if (deliveryCharge > 0) {
     lineItems.push({
       "price_data][currency": "gbp",
       "price_data][product_data][name": delivery.label,
-      "price_data][unit_amount": Math.round(delivery.price * 100),
+      "price_data][unit_amount": Math.round(deliveryCharge * 100),
       quantity: 1
     });
   }

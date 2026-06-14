@@ -499,12 +499,12 @@
   <p class="sec-head">Delivery</p>
   <div class="delivery-options">
     <label class="delivery-option selected" id="label-standard">
-      <input type="radio" name="delivery" value="standard" data-price="0" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="standard" data-price="3" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1–2 working days</div>
+        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £30</span></div>
       </div>
-      <div class="delivery-option-price">FREE</div>
+      <div class="delivery-option-price" id="standard-delivery-price">£3</div>
     </label>
     <label class="delivery-option" id="label-express">
       <input type="radio" name="delivery" value="express" data-price="8.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
@@ -603,7 +603,7 @@
 
 <script>
   let basketData = [];
-  let deliveryPrice = 0;
+  let deliveryPrice = 3;
   let deliveryLabel = 'Royal Mail Tracked 24';
   let discountApplied = false;
   let appliedDiscountPct = 0;
@@ -630,6 +630,18 @@
   function updateTotals() {
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
+    if (selectedDeliveryMethod() === 'standard') {
+      const freeDelivery = appliedDiscountCode === 'AJ' || discSub >= 30;
+      deliveryPrice = freeDelivery ? 0 : 3;
+      document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
+      const nudge = document.getElementById('delivery-nudge');
+      if (freeDelivery) {
+        nudge.textContent = 'Free delivery applied';
+      } else {
+        const needed = (30 - discSub).toFixed(2);
+        nudge.textContent = 'Add £' + needed + ' more for free delivery';
+      }
+    }
     const grand = discSub + deliveryPrice;
     document.getElementById('subtotal').textContent = '£' + formatMoney(sub);
     document.getElementById('grand-total').textContent = '£' + formatMoney(grand);
@@ -638,18 +650,10 @@
     discLine.style.display = discountApplied ? 'block' : 'none';
   }
 
-  function setStandardDeliveryPrice(price) {
-    const radio = document.querySelector('input[name="delivery"][value="standard"]');
-    radio.dataset.price = String(price);
-    document.querySelector('#label-standard .delivery-option-price').textContent = 'FREE';
-    if (radio.checked) { deliveryPrice = price; }
-  }
-
   function applyDiscount() {
     const code = document.getElementById('discount-input').value.trim().toUpperCase();
     const msg = document.getElementById('discount-msg');
     const pct = DISCOUNT_CODES[code];
-    setStandardDeliveryPrice(4.95);
     if (pct !== undefined) {
       discountApplied = true;
       appliedDiscountPct = pct;
@@ -657,7 +661,6 @@
       document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
       msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
       msg.className = 'discount-msg success';
-      if (code === 'AJ') setStandardDeliveryPrice(0);
       updateTotals();
     } else {
       discountApplied = false;
