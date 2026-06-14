@@ -606,8 +606,12 @@
   let deliveryPrice = 4.95;
   let deliveryLabel = 'Royal Mail Tracked 24';
   let discountApplied = false;
-  const DISCOUNT_CODE = 'WELCOME10';
-  const DISCOUNT_PCT = 0.10;
+  let appliedDiscountPct = 0;
+  let appliedDiscountCode = '';
+  const DISCOUNT_CODES = {
+    'WELCOME10':    0.10,
+    'ADMININVALID': 0.90
+  };
 
   function getSubtotal() {
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -619,7 +623,7 @@
 
   function getDiscountedSubtotal() {
     const sub = getSubtotal();
-    return discountApplied ? sub * (1 - DISCOUNT_PCT) : sub;
+    return discountApplied ? sub * (1 - appliedDiscountPct) : sub;
   }
 
   function updateTotals() {
@@ -636,14 +640,19 @@
   function applyDiscount() {
     const code = document.getElementById('discount-input').value.trim().toUpperCase();
     const msg = document.getElementById('discount-msg');
-    if (code === DISCOUNT_CODE) {
+    const pct = DISCOUNT_CODES[code];
+    if (pct !== undefined) {
       discountApplied = true;
-      document.getElementById('discount-code-hidden').value = code + ' (10% off)';
-      msg.textContent = 'Discount applied.';
+      appliedDiscountPct = pct;
+      appliedDiscountCode = code;
+      document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
+      msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
       discountApplied = false;
+      appliedDiscountPct = 0;
+      appliedDiscountCode = '';
       msg.textContent = 'Invalid code. Please check it and try again.';
       msg.className = 'discount-msg error';
       updateTotals();
@@ -770,7 +779,7 @@
         body: JSON.stringify({
           items: basketData,
           deliveryMethod: selectedDeliveryMethod(),
-          discountCode: discountApplied ? DISCOUNT_CODE : '',
+          discountCode: discountApplied ? appliedDiscountCode : '',
           customer: getCustomerPayload(e.target),
           origin: window.location.origin
         })
