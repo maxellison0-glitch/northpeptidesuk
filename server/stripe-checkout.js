@@ -1,43 +1,43 @@
 const CATALOG = {
-  "Retatrutide|10mg": 40,
-  "Retatrutide|15mg": 58,
-  "Retatrutide|20mg": 76,
-  "Retatrutide|2x 10mg": 73,
-  "Retatrutide|2x 15mg": 105,
-  "Retatrutide|2x 20mg": 138,
-  "Retatrutide|3x 10mg": 97,
-  "Retatrutide|3x 15mg": 140,
-  "Retatrutide|3x 20mg": 184,
-  "Tirzepatide|15mg": 58,
-  "Tirzepatide|30mg": 108,
-  "Tirzepatide|2x 15mg": 105,
-  "Tirzepatide|2x 30mg": 194,
-  "Tirzepatide|3x 15mg": 140,
-  "Tirzepatide|3x 30mg": 259,
-  "BPC-157|10mg": 17,
-  "BPC-157|2x 10mg": 31,
-  "BPC-157|3x 10mg": 41,
-  "TB-500|10mg": 44,
-  "TB-500|2x 10mg": 79,
-  "TB-500|3x 10mg": 106,
-  "GHK-Cu|50mg": 15,
-  "GHK-Cu|2x 50mg": 28,
-  "GHK-Cu|3x 50mg": 37,
-  "KPV|10mg": 20,
-  "KPV|2x 10mg": 36,
-  "KPV|3x 10mg": 48,
-  "KLOW Stack|80mg": 54,
-  "KLOW Stack|2x 80mg": 97,
-  "KLOW Stack|3x 80mg": 130,
-  "Ipamorelin|5mg": 17,
-  "Ipamorelin|2x 5mg": 31,
-  "Ipamorelin|3x 5mg": 41,
-  "CJC-1295 (No DAC)|5mg": 29,
-  "CJC-1295 (No DAC)|2x 5mg": 52,
-  "CJC-1295 (No DAC)|3x 5mg": 69,
-  "CJC-1295 No DAC|5mg": 29,
-  "CJC-1295 No DAC|2x 5mg": 52,
-  "CJC-1295 No DAC|3x 5mg": 69,
+  "Retatrutide|10mg": 45,
+  "Retatrutide|15mg": 65,
+  "Retatrutide|20mg": 85,
+  "Retatrutide|2x 10mg": 82,
+  "Retatrutide|2x 15mg": 118,
+  "Retatrutide|2x 20mg": 154,
+  "Retatrutide|3x 10mg": 109,
+  "Retatrutide|3x 15mg": 157,
+  "Retatrutide|3x 20mg": 206,
+  "Tirzepatide|15mg": 65,
+  "Tirzepatide|30mg": 120,
+  "Tirzepatide|2x 15mg": 118,
+  "Tirzepatide|2x 30mg": 218,
+  "Tirzepatide|3x 15mg": 157,
+  "Tirzepatide|3x 30mg": 291,
+  "BPC-157|10mg": 19,
+  "BPC-157|2x 10mg": 35,
+  "BPC-157|3x 10mg": 46,
+  "TB-500|10mg": 49,
+  "TB-500|2x 10mg": 89,
+  "TB-500|3x 10mg": 119,
+  "GHK-Cu|50mg": 17,
+  "GHK-Cu|2x 50mg": 31,
+  "GHK-Cu|3x 50mg": 41,
+  "KPV|10mg": 22,
+  "KPV|2x 10mg": 40,
+  "KPV|3x 10mg": 53,
+  "KLOW Stack|80mg": 60,
+  "KLOW Stack|2x 80mg": 109,
+  "KLOW Stack|3x 80mg": 145,
+  "Ipamorelin|5mg": 19,
+  "Ipamorelin|2x 5mg": 35,
+  "Ipamorelin|3x 5mg": 46,
+  "CJC-1295 (No DAC)|5mg": 32,
+  "CJC-1295 (No DAC)|2x 5mg": 58,
+  "CJC-1295 (No DAC)|3x 5mg": 77,
+  "CJC-1295 No DAC|5mg": 32,
+  "CJC-1295 No DAC|2x 5mg": 58,
+  "CJC-1295 No DAC|3x 5mg": 77,
   "Essentials Bundle|Bac water + syringe kit + wipes": 14.99,
   "Bacteriostatic Water|10ml vial": 6.99,
   "Bacteriostatic Water|Accessory": 6.99,
@@ -45,6 +45,11 @@ const CATALOG = {
   "Syringe Kit|10 pack, 1ml + larger gauge for reconstitution": 6.99,
   "Syringe Kit|Accessory": 6.99,
   "Alcohol Wipes|50 pack": 2.99
+};
+
+const DISCOUNT_CODES = {
+  "WELCOME10":    0.10,
+  "ADMININVALID": 0.90
 };
 
 const DELIVERY = {
@@ -90,7 +95,8 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const items = Array.isArray(payload.items) ? payload.items : [];
   if (!items.length) return json(400, { error: "Your basket is empty." }, requestOrigin);
   const discountCode = String(payload.discountCode || "").trim().toUpperCase();
-  const hasWelcomeDiscount = discountCode === "WELCOME10";
+  const discountPct = DISCOUNT_CODES[discountCode] || 0;
+  const hasDiscount = discountPct > 0;
 
   const lineItems = [];
   for (const item of items) {
@@ -102,7 +108,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
 
     if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` }, requestOrigin);
 
-    const discountedPrice = hasWelcomeDiscount ? price * 0.9 : price;
+    const discountedPrice = hasDiscount ? price * (1 - discountPct) : price;
     lineItems.push({
       "price_data][currency": "gbp",
       "price_data][product_data][name": `${name} ${dose}`,
@@ -135,7 +141,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[address]", compactText(payload.customer?.address, 480));
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
   params.append("metadata[delivery]", delivery.label);
-  if (hasWelcomeDiscount) params.append("metadata[discount]", "WELCOME10");
+  if (hasDiscount) params.append("metadata[discount]", discountCode);
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");
 
   lineItems.forEach((lineItem, index) => {
