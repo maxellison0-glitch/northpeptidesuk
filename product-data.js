@@ -11,9 +11,9 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 40 },
-      { label: "1x15mg", dose: "15mg", price: 58 },
-      { label: "1x20mg", dose: "20mg", price: 76 }
+      { label: "1x10mg", dose: "10mg", price: 45 },
+      { label: "1x15mg", dose: "15mg", price: 65 },
+      { label: "1x20mg", dose: "20mg", price: 85 }
     ],
     stripePaymentLink: ""
   },
@@ -29,8 +29,8 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x15mg", dose: "15mg", price: 58 },
-      { label: "1x30mg", dose: "30mg", price: 108 }
+      { label: "1x15mg", dose: "15mg", price: 65 },
+      { label: "1x30mg", dose: "30mg", price: 120 }
     ],
     stripePaymentLink: ""
   },
@@ -46,7 +46,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 17 }
+      { label: "1x10mg", dose: "10mg", price: 19 }
     ],
     stripePaymentLink: ""
   },
@@ -62,7 +62,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 44 }
+      { label: "1x10mg", dose: "10mg", price: 49 }
     ],
     stripePaymentLink: ""
   },
@@ -78,7 +78,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x50mg", dose: "50mg", price: 15 }
+      { label: "1x50mg", dose: "50mg", price: 17 }
     ],
     stripePaymentLink: ""
   },
@@ -94,7 +94,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 20 }
+      { label: "1x10mg", dose: "10mg", price: 22 }
     ],
     stripePaymentLink: ""
   },
@@ -110,7 +110,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x80mg", dose: "80mg", price: 54 }
+      { label: "1x80mg", dose: "80mg", price: 60 }
     ],
     stripePaymentLink: ""
   },
@@ -126,7 +126,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x5mg", dose: "5mg", price: 17 }
+      { label: "1x5mg", dose: "5mg", price: 19 }
     ],
     stripePaymentLink: ""
   },
@@ -142,7 +142,7 @@ const PRODUCT_DATA = {
       "Purity certificate on request"
     ],
     variants: [
-      { label: "1x5mg", dose: "5mg", price: 29 }
+      { label: "1x5mg", dose: "5mg", price: 32 }
     ],
     stripePaymentLink: ""
   }

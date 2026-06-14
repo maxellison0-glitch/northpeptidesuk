@@ -151,19 +151,9 @@
       return product.variants[Number(select.value)];
     }
 
-    function discountFor(variant) {
-      return variant.was ? Math.max(variant.was - variant.price, 0) : 5;
-    }
-
-    function wasPriceFor(variant) {
-      return variant.was || variant.price + discountFor(variant);
-    }
-
     function updatePrice() {
       const variant = selectedVariant();
-      document.getElementById("price-was").textContent = money(wasPriceFor(variant));
       document.getElementById("price-now").textContent = money(variant.price);
-      document.getElementById("price-save").textContent = `Save ${money(discountFor(variant))}`;
     }
 
     function addItemToBasket(name, price, dose, qty = 1) {
@@ -258,9 +248,7 @@
               <label for="variant">Choose size</label>
               <select id="variant" onchange="updatePrice()">${options}</select>
               <div class="price-row">
-                <span class="price-was" id="price-was">${money(wasPriceFor(firstVariant))}</span>
                 <span class="price-now" id="price-now">${money(firstVariant.price)}</span>
-                <span class="price-save" id="price-save">Save ${money(discountFor(firstVariant))}</span>
               </div>
               <div class="qty-row">
                 <label>Quantity</label>
