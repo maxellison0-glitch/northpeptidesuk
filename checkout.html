@@ -476,10 +476,8 @@
     .rs-included { font-size: 0.76rem; color: #51625A; line-height: 1.5; margin-bottom: 12px; }
     .rs-price-block { margin-bottom: 11px; }
     .rs-price-row { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; }
-    .rs-price-from { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #7B8C82; text-transform: uppercase; letter-spacing: 0.06em; }
     .rs-price { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #12211A; line-height: 1; }
-    .rs-price-breakdown { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #9CA3AF; margin-bottom: 2px; }
-    .rs-price-note { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: #B8C4BE; }
+    .rs-price-breakdown { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #9CA3AF; margin-top: 3px; }
     .rs-add-btn { width: 100%; padding: 11px 14px; background: #00795F; border: none; border-radius: 7px; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,121,95,0.18); transition: background 0.16s; }
     .rs-add-btn:hover:not(:disabled) { background: #00614C; }
     .rs-add-btn.added { background: #7C9C8E; cursor: default; }
@@ -540,11 +538,9 @@
       <p class="rs-included">Includes 3ml empty cartridge &middot; sealed BAC water &middot; compatible accessories</p>
       <div class="rs-price-block">
         <div class="rs-price-row">
-          <span class="rs-price-from" id="rs-price-from">From</span>
-          <span class="rs-price" id="rs-price-display">£14.99</span>
+          <span class="rs-price" id="rs-price-display">£24.99</span>
         </div>
-        <div class="rs-price-breakdown" id="rs-price-breakdown">First kit £24.99 &middot; second £19.99 &middot; additional £14.99</div>
-        <p class="rs-price-note">Multi-kit pricing applies automatically.</p>
+        <div class="rs-price-breakdown" id="rs-price-breakdown">Second kit £19.99</div>
       </div>
       <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
       <p class="rs-legal">For laboratory research use only. Components are supplied sealed and unprepared. Not filled, mixed, dosed, or intended for human or animal administration.</p>
@@ -774,17 +770,14 @@
   function updateRsBtn() {
     const btn = document.getElementById('rs-add-btn');
     const priceEl = document.getElementById('rs-price-display');
-    const fromEl = document.getElementById('rs-price-from');
     const breakdownEl = document.getElementById('rs-price-breakdown');
     if (!btn) return;
     btn.classList.remove('added');
     const eligible = basketData.filter(rsIsEligible);
-    const kitCount = basketData.filter(i => i._kitFor).length;
     if (eligible.length === 0) {
       btn.textContent = 'ADD ELIGIBLE VIAL FIRST';
       btn.disabled = true;
-      if (priceEl) priceEl.textContent = '£14.99';
-      if (fromEl) fromEl.textContent = 'From';
+      if (priceEl) priceEl.textContent = '£24.99';
       if (breakdownEl) breakdownEl.style.display = '';
       return;
     }
@@ -792,12 +785,10 @@
     if (rsSelectedProduct && rsHasKit(rsSelectedProduct.name, rsSelectedProduct.dose)) {
       const kit = basketData.find(i => i._kitFor === rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose));
       if (kit && priceEl) priceEl.textContent = '£' + Number(kit.price).toFixed(2).replace('.00', '');
-      if (fromEl) fromEl.textContent = '';
       if (breakdownEl) breakdownEl.style.display = 'none';
       btn.textContent = 'UPDATE KIT →';
     } else {
-      if (priceEl) priceEl.textContent = '£14.99';
-      if (fromEl) fromEl.textContent = 'From';
+      if (priceEl) priceEl.textContent = '£24.99';
       if (breakdownEl) breakdownEl.style.display = '';
       btn.textContent = 'ADD KIT →';
     }
@@ -850,8 +841,8 @@
   function recalcRsKitPrices() {
     const kits = basketData.filter(i => i._kitFor);
     kits.forEach((kit, idx) => {
-      kit.price = idx === 0 ? 24.99 : idx === 1 ? 19.99 : 14.99;
-      const tierSuffix = idx === 1 ? ' · Multi-kit price applied' : idx >= 2 ? ' · Additional kit price applied' : '';
+      kit.price = idx === 0 ? 24.99 : 19.99;
+      const tierSuffix = idx >= 1 ? ' · Multi-kit price applied' : '';
       kit.dose = 'For: ' + kit._kitProductName + ' ' + kit._kitProductDose
         + ' · Sealed BAC water volume: ' + kit._kitVolume + 'ml' + tierSuffix;
     });
