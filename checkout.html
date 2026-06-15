@@ -524,23 +524,23 @@
       <span class="rs-tag">PEN-STYLE RESEARCH KIT</span>
       <h2>Upgrade to a pen-style setup.</h2>
       <p class="rs-subtitle">Add a cartridge-based research handling kit to an eligible basket item, with sealed BAC water and compatible accessories.</p>
-      <p class="rs-vol-label">Select product:</p>
+      <p class="rs-vol-label">Select product for kit:</p>
       <div class="rs-prod-row" id="rs-prod-row">
         <div class="rs-no-products">Add a research vial to enable this kit.</div>
       </div>
       <p class="rs-select-error" id="rs-select-error" style="display:none">Select a product first.</p>
-      <p class="rs-vol-label">Select sealed BAC water volume:</p>
+      <p class="rs-vol-label">Select BAC water volume:</p>
       <div class="rs-vol-row">
         <button class="rs-vol-btn" data-ml="1" onclick="selectRsVol(1)">1ml</button>
         <button class="rs-vol-btn active" data-ml="2" onclick="selectRsVol(2)">2ml</button>
         <button class="rs-vol-btn" data-ml="3" onclick="selectRsVol(3)">3ml</button>
       </div>
-      <p class="rs-included">Includes 3ml empty cartridge &middot; sealed BAC water &middot; compatible accessories</p>
+      <p class="rs-included">Includes 3ml cartridge &middot; sealed bacteriostatic water &middot; universal pen-compatible accessories (x3)</p>
       <div class="rs-price-block">
         <div class="rs-price-row">
           <span class="rs-price" id="rs-price-display">£24.99</span>
         </div>
-        <div class="rs-price-breakdown" id="rs-price-breakdown">Second kit £19.99</div>
+        <div class="rs-price-breakdown" id="rs-price-breakdown">2nd kit £19.99 &middot; 3rd+ £14.99</div>
       </div>
       <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
       <p class="rs-legal">For laboratory research use only. Components are supplied sealed and unprepared. Not filled, mixed, dosed, or intended for human or animal administration.</p>
@@ -841,10 +841,11 @@
   function recalcRsKitPrices() {
     const kits = basketData.filter(i => i._kitFor);
     kits.forEach((kit, idx) => {
-      kit.price = idx === 0 ? 24.99 : 19.99;
-      const tierSuffix = idx >= 1 ? ' · Multi-kit price applied' : '';
-      kit.dose = 'For: ' + kit._kitProductName + ' ' + kit._kitProductDose
-        + ' · Sealed BAC water volume: ' + kit._kitVolume + 'ml' + tierSuffix;
+      kit.price = idx === 0 ? 24.99 : idx === 1 ? 19.99 : 14.99;
+      const tierSuffix = idx === 1 ? ' · Multi-kit price applied' : idx >= 2 ? ' · Additional kit price applied' : '';
+      kit.dose = 'For: ' + kit._kitProductName + ' (' + kit._kitProductDose + ')' + tierSuffix
+        + '<br>BAC water volume: ' + kit._kitVolume + 'ml'
+        + '<br>Includes: 3ml cartridge · sealed bacteriostatic water · universal pen-compatible accessories (x3)';
     });
   }
 
