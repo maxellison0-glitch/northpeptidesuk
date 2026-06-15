@@ -448,6 +448,60 @@
       border-radius: 2px;
       z-index: 9999;
     }
+
+    /* PEN-STYLE RESEARCH KIT UPSELL */
+    .rs-upsell { background: #ffffff; border-radius: 12px; padding: 18px 18px 18px 20px; margin-bottom: 22px; display: flex; gap: 18px; align-items: flex-start; border: 1.5px solid #B8DECE; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
+    .rs-upsell::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #00795F 0%, #00b386 100%); pointer-events: none; }
+    .rs-body { flex: 1; min-width: 0; }
+    .rs-tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(0,121,95,0.08); border: 1px solid rgba(0,121,95,0.22); font-family: 'DM Mono', monospace; font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; }
+    .rs-upsell h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.1rem, 3.5vw, 1.35rem); font-weight: 800; color: #12211A; line-height: 1.08; margin-bottom: 5px; }
+    .rs-subtitle { font-size: 0.78rem; color: #51625A; line-height: 1.6; margin-bottom: 12px; }
+    .rs-vol-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7B8C82; margin-bottom: 6px; }
+    .rs-vol-row { display: flex; gap: 6px; margin-bottom: 10px; }
+    .rs-vol-btn { flex: 1; padding: 9px 0; border: 1px solid #D5E0D8; border-radius: 7px; background: #F4F8F5; color: #51625A; font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.16s; }
+    .rs-vol-btn:hover { background: #E8F3EE; color: #1A2620; border-color: #B8D4C4; }
+    .rs-vol-btn.active { border-color: #00795F; background: #E8F3EE; color: #00795F; box-shadow: 0 0 0 1px #00795F; }
+    .rs-prod-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+    .rs-prod-btn { flex: 1 0 calc(50% - 4px); min-width: 120px; padding: 8px 10px; border: 1px solid #D5E0D8; border-radius: 7px; background: #F4F8F5; text-align: left; cursor: pointer; transition: all 0.16s; display: flex; flex-direction: column; gap: 2px; }
+    .rs-prod-btn:hover { background: #E8F3EE; border-color: #B8D4C4; }
+    .rs-prod-btn.active { border-color: #00795F; background: #E8F3EE; box-shadow: 0 0 0 1px #00795F; }
+    .rs-prod-btn.has-kit { border-color: rgba(0,121,95,0.4); }
+    .rs-prod-btn-name { font-size: 0.78rem; font-weight: 600; color: #1A2620; line-height: 1.3; pointer-events: none; }
+    .rs-prod-btn-dose { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: #7B8C82; pointer-events: none; }
+    .rs-prod-btn.active .rs-prod-btn-name { color: #00795F; }
+    .rs-prod-btn.active .rs-prod-btn-dose { color: rgba(0,121,95,0.75); }
+    .rs-prod-btn.has-kit .rs-prod-btn-dose { color: #00795F; }
+    .rs-no-products { padding: 10px 12px; border: 1px solid #DCE5DE; border-radius: 7px; background: #F4F8F5; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #9CA3AF; margin-bottom: 8px; width: 100%; }
+    .rs-select-error { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #DC2626; margin-bottom: 10px; }
+    .rs-included { font-size: 0.76rem; color: #51625A; line-height: 1.5; margin-bottom: 12px; }
+    .rs-price-block { margin-bottom: 11px; }
+    .rs-price-row { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; }
+    .rs-price-from { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #7B8C82; text-transform: uppercase; letter-spacing: 0.06em; }
+    .rs-price { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #12211A; line-height: 1; }
+    .rs-price-breakdown { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #9CA3AF; margin-bottom: 2px; }
+    .rs-price-note { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: #B8C4BE; }
+    .rs-add-btn { width: 100%; padding: 11px 14px; background: #00795F; border: none; border-radius: 7px; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,121,95,0.18); transition: background 0.16s; }
+    .rs-add-btn:hover:not(:disabled) { background: #00614C; }
+    .rs-add-btn.added { background: #7C9C8E; cursor: default; }
+    .rs-add-btn:disabled { background: #B0C4BB; cursor: not-allowed; box-shadow: none; opacity: 0.7; }
+    .order-kit-remove { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #C4CEC8; cursor: pointer; margin-left: 8px; background: none; border: none; padding: 0; vertical-align: middle; transition: color 0.15s; line-height: 1; }
+    .order-kit-remove:hover { color: #DC2626; }
+    .rs-legal { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.52rem; line-height: 1.65; color: #9CA3AF; }
+    .rs-visual { width: 64px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; padding: 8px 0; }
+    .rs-pen-wrap { position: relative; width: 26px; height: 100px; animation: rs-float 3.6s ease-in-out infinite; }
+    @keyframes rs-float { 0%,100%{ transform:translateY(0) rotate(0.5deg); } 50%{ transform:translateY(-7px) rotate(-0.5deg); } }
+    .rs-pen-cap { position: absolute; left: 2px; right: 2px; top: 0; height: 13px; background: #00795F; border: 1.5px solid #005f49; border-radius: 4px 4px 2px 2px; }
+    .rs-pen-body { position: absolute; left: 0; right: 0; top: 13px; bottom: 18px; border: 1.5px solid #B8DECE; border-radius: 4px 4px 3px 3px; background: #F4FAF7; overflow: hidden; }
+    .rs-pen-liquid { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0 0 2px 2px; background: linear-gradient(180deg, rgba(0,180,120,0.45) 0%, rgba(0,121,95,0.75) 100%); transition: height 0.38s cubic-bezier(0.34,1.56,0.64,1); }
+    .rs-pen-mark { position: absolute; right: 0; width: 5px; height: 1px; background: rgba(0,121,95,0.35); }
+    .rs-pen-needle { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 2px; height: 16px; background: linear-gradient(180deg, #8AA094 0%, transparent 100%); border-radius: 0 0 1px 1px; }
+    .rs-pen-glow { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, rgba(0,121,95,0.12) 0%, transparent 70%); animation: rs-glow 3.6s ease-in-out infinite; }
+    @keyframes rs-glow { 0%,100%{ opacity:0.3; } 50%{ opacity:0.9; } }
+    @media (max-width: 480px) {
+      .rs-upsell { padding: 18px; }
+      .rs-visual { display: none; }
+      .rs-prod-btn { flex: 1 0 100%; }
+    }
   </style>
 </head>
 <body>
@@ -466,6 +520,50 @@
     <p>Check your basket, confirm delivery details, then continue to Stripe for secure card payment.</p>
   </div>
 
+  <!-- RESEARCH SIMPLIFIED UPSELL -->
+  <div class="rs-upsell" id="rs-upsell">
+    <div class="rs-body">
+      <span class="rs-tag">PEN-STYLE RESEARCH KIT</span>
+      <h2>Upgrade to a pen-style setup.</h2>
+      <p class="rs-subtitle">Add a cartridge-based research handling kit to an eligible basket item, with sealed BAC water and compatible accessories.</p>
+      <p class="rs-vol-label">Select product:</p>
+      <div class="rs-prod-row" id="rs-prod-row">
+        <div class="rs-no-products">Add a research vial to enable this kit.</div>
+      </div>
+      <p class="rs-select-error" id="rs-select-error" style="display:none">Select a product first.</p>
+      <p class="rs-vol-label">Select sealed BAC water volume:</p>
+      <div class="rs-vol-row">
+        <button class="rs-vol-btn" data-ml="1" onclick="selectRsVol(1)">1ml</button>
+        <button class="rs-vol-btn active" data-ml="2" onclick="selectRsVol(2)">2ml</button>
+        <button class="rs-vol-btn" data-ml="3" onclick="selectRsVol(3)">3ml</button>
+      </div>
+      <p class="rs-included">Includes 3ml empty cartridge &middot; sealed BAC water &middot; compatible accessories</p>
+      <div class="rs-price-block">
+        <div class="rs-price-row">
+          <span class="rs-price-from" id="rs-price-from">From</span>
+          <span class="rs-price" id="rs-price-display">£14.99</span>
+        </div>
+        <div class="rs-price-breakdown" id="rs-price-breakdown">First kit £24.99 &middot; second £19.99 &middot; additional £14.99</div>
+        <p class="rs-price-note">Multi-kit pricing applies automatically.</p>
+      </div>
+      <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
+      <p class="rs-legal">For laboratory research use only. Components are supplied sealed and unprepared. Not filled, mixed, dosed, or intended for human or animal administration.</p>
+    </div>
+    <div class="rs-visual" aria-hidden="true">
+      <div class="rs-pen-wrap">
+        <div class="rs-pen-cap"></div>
+        <div class="rs-pen-body">
+          <div class="rs-pen-liquid" id="rs-pen-liquid" style="height:52%"></div>
+          <div class="rs-pen-mark" style="bottom:70%"></div>
+          <div class="rs-pen-mark" style="bottom:50%; width:4px; opacity:0.55"></div>
+          <div class="rs-pen-mark" style="bottom:31%"></div>
+        </div>
+        <div class="rs-pen-glow"></div>
+        <div class="rs-pen-needle"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ORDER SUMMARY -->
   <p class="sec-head">Your Order</p>
   <div class="order-box">
@@ -479,11 +577,11 @@
   </div>
 
   <!-- CHECKOUT ADD-ONS -->
-  <p class="sec-head">Reconstitution Supplies</p>
+  <p class="sec-head">Standard Reconstitution Supplies</p>
   <div class="addon-box">
     <div class="addon-intro">
-      <strong>Need reconstitution supplies?</strong>
-      <span>Everything required to prepare your research peptides. Add individually or grab the bundle.</span>
+      <strong>Standard Reconstitution Supplies</strong>
+      <span>For regular vial preparation only. These supplies are separate from the Pen-Style Research Kit.</span>
     </div>
     <div class="addon-list">
       <div class="addon-row featured">
@@ -562,12 +660,12 @@
       <div class="delivery-option-price" id="standard-delivery-price">£3</div>
     </label>
     <label class="delivery-option" id="label-express">
-      <input type="radio" name="delivery" value="express" data-price="8.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="express" data-price="7.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Special Delivery</div>
         <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
       </div>
-      <div class="delivery-option-price">£8.95</div>
+      <div class="delivery-option-price">£7.95</div>
     </label>
   </div>
 
@@ -657,6 +755,150 @@
 </div>
 
 <script>
+  let rsVolume = 2;
+  let rsSelectedProduct = null;
+
+  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'syringe kit', 'essentials bundle', 'alcohol wipes', 'pen-style research kit'];
+
+  function rsIsEligible(item) {
+    const n = item.name.toLowerCase();
+    return !RS_EXCLUDED.some(x => n.includes(x)) && item.dose !== 'Accessory';
+  }
+
+  function rsKitKey(name, dose) { return name + '||' + dose; }
+
+  function rsHasKit(name, dose) {
+    return basketData.some(i => i._kitFor === rsKitKey(name, dose));
+  }
+
+  function updateRsBtn() {
+    const btn = document.getElementById('rs-add-btn');
+    const priceEl = document.getElementById('rs-price-display');
+    const fromEl = document.getElementById('rs-price-from');
+    const breakdownEl = document.getElementById('rs-price-breakdown');
+    if (!btn) return;
+    btn.classList.remove('added');
+    const eligible = basketData.filter(rsIsEligible);
+    const kitCount = basketData.filter(i => i._kitFor).length;
+    if (eligible.length === 0) {
+      btn.textContent = 'ADD ELIGIBLE VIAL FIRST';
+      btn.disabled = true;
+      if (priceEl) priceEl.textContent = '£14.99';
+      if (fromEl) fromEl.textContent = 'From';
+      if (breakdownEl) breakdownEl.style.display = '';
+      return;
+    }
+    btn.disabled = false;
+    if (rsSelectedProduct && rsHasKit(rsSelectedProduct.name, rsSelectedProduct.dose)) {
+      const kit = basketData.find(i => i._kitFor === rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose));
+      if (kit && priceEl) priceEl.textContent = '£' + Number(kit.price).toFixed(2).replace('.00', '');
+      if (fromEl) fromEl.textContent = '';
+      if (breakdownEl) breakdownEl.style.display = 'none';
+      btn.textContent = 'UPDATE KIT →';
+    } else {
+      if (priceEl) priceEl.textContent = '£14.99';
+      if (fromEl) fromEl.textContent = 'From';
+      if (breakdownEl) breakdownEl.style.display = '';
+      btn.textContent = 'ADD KIT →';
+    }
+  }
+
+  function renderRsProductSelector() {
+    const eligible = basketData.filter(rsIsEligible);
+    const row = document.getElementById('rs-prod-row');
+    if (!row) return;
+    if (eligible.length === 0) {
+      row.innerHTML = '<div class="rs-no-products">Add a research vial to enable this kit.</div>';
+      updateRsBtn();
+      return;
+    }
+    if (eligible.length === 1 && !rsSelectedProduct) {
+      rsSelectedProduct = { name: eligible[0].name, dose: eligible[0].dose };
+    }
+    row.innerHTML = eligible.map(item => {
+      const isActive = rsSelectedProduct && rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose) === rsKitKey(item.name, item.dose);
+      const hasKit = rsHasKit(item.name, item.dose);
+      const doseText = item.dose + (hasKit ? ' ✔ Kit added' : '');
+      return '<button class="rs-prod-btn' + (isActive ? ' active' : '') + (hasKit ? ' has-kit' : '') + '"'
+        + ' data-name=' + JSON.stringify(item.name)
+        + ' data-dose=' + JSON.stringify(item.dose)
+        + ' onclick="selectRsProd(this)">'
+        + '<span class="rs-prod-btn-name">' + item.name + '</span>'
+        + '<span class="rs-prod-btn-dose">' + doseText + '</span>'
+        + '</button>';
+    }).join('');
+    updateRsBtn();
+  }
+
+  function selectRsProd(el) {
+    rsSelectedProduct = { name: el.dataset.name, dose: el.dataset.dose };
+    document.getElementById('rs-select-error').style.display = 'none';
+    renderRsProductSelector();
+  }
+
+  function selectRsVol(ml) {
+    rsVolume = ml;
+    document.querySelectorAll('.rs-vol-btn').forEach(btn => {
+      btn.classList.toggle('active', Number(btn.dataset.ml) === ml);
+    });
+    const fills = { 1: '31%', 2: '52%', 3: '73%' };
+    const liquid = document.getElementById('rs-pen-liquid');
+    if (liquid) liquid.style.height = fills[ml];
+    updateRsBtn();
+  }
+
+  function recalcRsKitPrices() {
+    const kits = basketData.filter(i => i._kitFor);
+    kits.forEach((kit, idx) => {
+      kit.price = idx === 0 ? 24.99 : idx === 1 ? 19.99 : 14.99;
+      const tierSuffix = idx === 1 ? ' · Multi-kit price applied' : idx >= 2 ? ' · Additional kit price applied' : '';
+      kit.dose = 'For: ' + kit._kitProductName + ' ' + kit._kitProductDose
+        + ' · Sealed BAC water volume: ' + kit._kitVolume + 'ml' + tierSuffix;
+    });
+  }
+
+  function removeKitItem(key) {
+    const idx = basketData.findIndex(i => i._kitFor === key);
+    if (idx === -1) return;
+    basketData.splice(idx, 1);
+    recalcRsKitPrices();
+    saveCheckoutBasket();
+    renderOrder();
+    renderRsProductSelector();
+    updateRsBtn();
+  }
+
+  function addResearchKit() {
+    const btn = document.getElementById('rs-add-btn');
+    if (!rsSelectedProduct) {
+      document.getElementById('rs-select-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('rs-select-error').style.display = 'none';
+    const key = rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose);
+    const existing = basketData.find(i => i._kitFor === key);
+    if (existing) {
+      existing._kitVolume = rsVolume;
+    } else {
+      basketData.push({
+        name: 'Pen-Style Research Kit',
+        price: 24.99,
+        dose: '',
+        qty: 1,
+        _kitFor: key,
+        _kitProductName: rsSelectedProduct.name,
+        _kitProductDose: rsSelectedProduct.dose,
+        _kitVolume: rsVolume
+      });
+    }
+    recalcRsKitPrices();
+    saveCheckoutBasket();
+    renderOrder();
+    btn.textContent = 'Added ✓';
+    btn.classList.add('added');
+    setTimeout(() => { updateRsBtn(); renderRsProductSelector(); }, 1600);
+  }
+
   let basketData = [];
   let deliveryPrice = 3;
   let deliveryLabel = 'Royal Mail Tracked 24';
@@ -826,18 +1068,23 @@
       container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:#00795F;">Go back to shop →</a></p>';
       return;
     }
-    container.innerHTML = basketData.map(item => `
-      <div class="order-line">
-        <div>
-          <div class="order-line-name">${item.name}</div>
-          <div class="order-line-dose">${item.dose}</div>
-        </div>
-        <span class="order-line-qty">x${item.qty}</span>
-        <span class="order-line-price">${item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)}</span>
-      </div>
-    `).join('');
+    container.innerHTML = basketData.map(item => {
+      const isKit = Boolean(item._kitFor);
+      const safeKey = isKit ? item._kitFor.replace(/&/g, '&amp;').replace(/"/g, '&quot;') : '';
+      const removeBtn = isKit
+        ? '<button class="order-kit-remove" data-kitfor="' + safeKey + '" onclick="removeKitItem(this.dataset.kitfor)">× Remove</button>'
+        : '';
+      return '<div class="order-line">'
+        + '<div style="flex:1;min-width:0">'
+        + '<div class="order-line-name">' + item.name + removeBtn + '</div>'
+        + '<div class="order-line-dose">' + item.dose + '</div>'
+        + '</div>'
+        + '<span class="order-line-qty">x' + item.qty + '</span>'
+        + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'
+        + '</div>';
+    }).join('');
     document.getElementById('order-summary-hidden').value = basketData.map(item =>
-      `${item.name} ${item.dose} x${item.qty} = £${formatMoney(item.price * item.qty)}`
+      item.name + ' ' + item.dose + ' x' + item.qty + ' = £' + formatMoney(item.price * item.qty)
     ).join('\n');
     document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateTotals();
@@ -888,6 +1135,7 @@
     const saved = sessionStorage.getItem('npuk_basket');
     if (saved) basketData = JSON.parse(saved);
     renderOrder();
+    renderRsProductSelector();
   });
 
   document.getElementById('checkout-form').addEventListener('submit', async (e) => {
