@@ -577,10 +577,10 @@
           </div>
           <div>
           <div class="addon-name">Essentials Bundle</div>
-          <div class="addon-desc">10ml bac water + syringe kit + alcohol wipes</div>
+          <div class="addon-desc">10ml BAC water + insulin needles + alcohol wipes</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£14.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',14.99,'Bac water + syringe kit + wipes')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£14.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Essentials Bundle',14.99,'BAC water + insulin needles + wipes')">Add</button></div>
       </div>
       <div class="addon-row">
         <div class="addon-info">
@@ -596,11 +596,11 @@
         <div class="addon-info">
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
           <div>
-          <div class="addon-name">Syringe Kit</div>
-          <div class="addon-desc">1ml syringes ×10 · larger gauge for reconstitution ×1</div>
+          <div class="addon-name">Insulin Needle Pack</div>
+          <div class="addon-desc">1ml sterile insulin needles x10</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Syringe Kit',6.99,'10 pack, 1ml + larger gauge for reconstitution')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Insulin Needle Pack',6.99,'10 pack, 1ml insulin needles')">Add</button></div>
       </div>
       <div class="addon-row">
         <div class="addon-info">
@@ -773,7 +773,7 @@
   let rsVolume = 2;
   let rsSelectedProduct = null;
 
-  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'syringe kit', 'essentials bundle', 'alcohol wipes', 'pen-style research kit', 'sterile disposable pen tips', 'pen tips'];
+  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'essentials bundle', 'alcohol wipes', 'pen-style research kit', 'sterile disposable pen tips', 'pen tips'];
 
   function rsIsEligible(item) {
     const n = item.name.toLowerCase();
@@ -972,7 +972,7 @@
         document.getElementById('shelley-banner').style.display = 'block';
         launchConfetti();
         if (!basketData.some(item => item.shelleyGift)) {
-          basketData.push({ name: 'Syringe Kit', price: 0, dose: '10 pack, 1ml + larger gauge for reconstitution', qty: 1, shelleyGift: true });
+          basketData.push({ name: 'Insulin Needle Pack', price: 0, dose: '10 pack, 1ml insulin needles', qty: 1, shelleyGift: true });
           saveCheckoutBasket();
           renderOrder();
         }

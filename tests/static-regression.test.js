@@ -18,9 +18,9 @@ const whyUs = read("why-us.html");
 const labReports = read("lab-reports.html");
 
 const expectedAccessoryPrices = [
-  ["Essentials Bundle", "Bac water + syringe kit + wipes", "14.99"],
+  ["Essentials Bundle", "BAC water + insulin needles + wipes", "14.99"],
   ["Bacteriostatic Water", "10ml vial", "6.99"],
-  ["Syringe Kit", "10 pack, 1ml + larger gauge for reconstitution", "6.99"],
+  ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "6.99"],
   ["Sterile Disposable Pen Tips", "6mm x5", "3.99"],
   ["Alcohol Wipes", "10 pack", "2.99"],
   ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "3"]
@@ -111,9 +111,11 @@ assert(
   index.includes("Research Supplies") &&
     index.includes("Pen-Style Research Kit") &&
     index.includes("research-pen-kit-style.png") &&
+    index.includes("research-bac-water.png") &&
+    index.includes("research-insulin-needles.png") &&
     index.includes("Sterile Disposable Pen Tips") &&
     index.includes("Bacteriostatic Water") &&
-    index.includes("Syringe Kit") &&
+    index.includes("Insulin Needle Pack") &&
     index.includes("Essentials Bundle"),
   "homepage should expose research supplies as catalogue products"
 );

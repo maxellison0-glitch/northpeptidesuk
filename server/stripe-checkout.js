@@ -38,12 +38,11 @@ const CATALOG = {
   "CJC-1295 No DAC|5mg": 32,
   "CJC-1295 No DAC|2x 5mg": 58,
   "CJC-1295 No DAC|3x 5mg": 77,
-  "Essentials Bundle|Bac water + syringe kit + wipes": 14.99,
+  "Essentials Bundle|BAC water + insulin needles + wipes": 14.99,
   "Bacteriostatic Water|10ml vial": 6.99,
   "Bacteriostatic Water|Accessory": 6.99,
-  "Syringe Kit|10 pack, 1ml": 6.99,
-  "Syringe Kit|10 pack, 1ml + larger gauge for reconstitution": 6.99,
-  "Syringe Kit|Accessory": 6.99,
+  "Insulin Needle Pack|10 pack, 1ml insulin needles": 6.99,
+  "Insulin Needle Pack|Accessory": 6.99,
   "Alcohol Wipes|10 pack": 2.99,
   "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99,
   "Sterile Disposable Pen Tips|6mm x5": 3.99,
@@ -129,7 +128,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
     const price = resolveCatalogPrice(item, name, dose);
     const quantity = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
 
-    if (discountCode === 'SHELLEY' && name === 'Syringe Kit') continue;
+    if (discountCode === 'SHELLEY' && name === 'Insulin Needle Pack') continue;
 
     if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` }, requestOrigin);
 
@@ -173,7 +172,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
   params.append("metadata[delivery]", delivery.label);
   if (hasDiscount) params.append("metadata[discount]", discountCode);
-  if (discountCode === 'SHELLEY') params.append("metadata[gift]", "Free Syringe Kit included");
+  if (discountCode === 'SHELLEY') params.append("metadata[gift]", "Free Insulin Needle Pack included");
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");
 
   lineItems.forEach((lineItem, index) => {

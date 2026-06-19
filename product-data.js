@@ -195,12 +195,13 @@ const PRODUCT_DATA = {
   "bacteriostatic-water": {
     name: "Bacteriostatic Water",
     category: "Research supplies",
-    image: "hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg",
-    summary: "Sealed bacteriostatic water vial for laboratory preparation workflows.",
+    image: "research-bac-water.png",
+    summary: "10ml sealed bacteriostatic mixing water for research preparation workflows.",
     details: [
       "10ml vial",
       "Supplied sealed",
-      "For regular vial preparation workflows",
+      "0.9% benzyl alcohol",
+      "Preparation supply",
       "Research use only"
     ],
     variants: [
@@ -209,18 +210,18 @@ const PRODUCT_DATA = {
     stripePaymentLink: ""
   },
   "syringe-kit": {
-    name: "Syringe Kit",
+    name: "Insulin Needle Pack",
     category: "Research supplies",
-    image: "hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg",
-    summary: "Standard syringe kit for regular vial preparation workflows.",
+    image: "research-insulin-needles.png",
+    summary: "Pack of 1ml sterile disposable insulin needles for research preparation use.",
     details: [
-      "1ml syringes x10",
-      "Larger gauge for reconstitution x1",
+      "1ml insulin needles x10",
+      "31G 1/4 inch",
       "Supplied sealed",
       "Research use only"
     ],
     variants: [
-      { label: "10 pack", dose: "10 pack, 1ml + larger gauge for reconstitution", price: 6.99 }
+      { label: "10 pack", dose: "10 pack, 1ml insulin needles", price: 6.99 }
     ],
     stripePaymentLink: ""
   },
@@ -244,15 +245,15 @@ const PRODUCT_DATA = {
     name: "Essentials Bundle",
     category: "Research supplies",
     image: "hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg",
-    summary: "Standard preparation bundle containing bac water, syringe kit and alcohol wipes.",
+    summary: "Core research preparation bundle containing BAC water, insulin needles and alcohol wipes.",
     details: [
       "10ml bacteriostatic water",
-      "Syringe kit",
-      "Alcohol wipes",
+      "1ml insulin needles x10",
+      "Alcohol wipes x10",
       "Research use only"
     ],
     variants: [
-      { label: "Bundle", dose: "Bac water + syringe kit + wipes", price: 14.99 }
+      { label: "Bundle", dose: "BAC water + insulin needles + wipes", price: 14.99 }
     ],
     stripePaymentLink: ""
   }
