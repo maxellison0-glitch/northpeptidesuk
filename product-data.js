@@ -178,7 +178,7 @@ const PRODUCT_DATA = {
   "pen-tips": {
     name: "Sterile Disposable Pen Tips",
     category: "Research supplies",
-    image: "hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
+    image: "research-pen-tips.jpg",
     summary: "Universal-fit sterile disposable pen tips for pen-style research setups.",
     details: [
       "6mm universal-fit tips",
@@ -228,7 +228,7 @@ const PRODUCT_DATA = {
   "alcohol-wipes": {
     name: "Alcohol Wipes",
     category: "Research supplies",
-    image: "hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg",
+    image: "research-alcohol-wipes.jpg",
     summary: "Sterile alcohol wipe pack for preparation workflows.",
     details: [
       "10 pack",
@@ -244,7 +244,7 @@ const PRODUCT_DATA = {
   "essentials-bundle": {
     name: "Essentials Bundle",
     category: "Research supplies",
-    image: "hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg",
+    image: "research-essentials-bundle.jpg",
     summary: "Core research preparation bundle containing BAC water, insulin needles and alcohol wipes.",
     details: [
       "10ml bacteriostatic water",
