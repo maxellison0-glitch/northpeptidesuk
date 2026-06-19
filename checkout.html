@@ -235,6 +235,9 @@
     .addon-symbol.kit { width: 30px; height: 23px; border: 2px solid currentColor; border-radius: 7px; background: rgba(176,175,155,0.15); animation: addon-float 3.6s ease-in-out infinite; }
     .addon-symbol.kit::before { content: ""; position: absolute; left: 6px; right: 6px; top: -7px; height: 7px; border: 2px solid currentColor; border-bottom: 0; border-radius: 6px 6px 0 0; opacity: 0.75; }
     .addon-symbol.kit::after { content: ""; position: absolute; left: 7px; right: 7px; top: 9px; height: 2px; background: currentColor; box-shadow: 0 -5px 0 rgba(176,175,155,0.5), 0 5px 0 rgba(176,175,155,0.5); }
+    .addon-symbol.cool { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 6px; background: rgba(176,175,155,0.15); }
+    .addon-symbol.cool::before { content: ""; position: absolute; left: 6px; right: 6px; top: 5px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(176,175,155,0.55), 0 10px 0 rgba(176,175,155,0.35); }
+    .addon-symbol.cool::after { content: ""; position: absolute; right: -6px; top: -6px; width: 13px; height: 13px; border-radius: 50%; border: 2px solid currentColor; background: #ffffff; }
     @keyframes addon-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -3px; } }
     .addon-name { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
     .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
@@ -616,6 +619,16 @@
       </div>
       <div class="addon-row">
         <div class="addon-info">
+          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
+          <div>
+          <div class="addon-name">Sterile Disposable Pen Tips</div>
+          <div class="addon-desc">Universal-fit 6mm x5</div>
+          </div>
+        </div>
+        <div class="addon-action"><span class="addon-price">£3.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Sterile Disposable Pen Tips',3.99,'6mm x5')">Add</button></div>
+      </div>
+      <div class="addon-row">
+        <div class="addon-info">
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol wipes"></span></div>
           <div>
           <div class="addon-name">Alcohol Wipes</div>
@@ -623,6 +636,25 @@
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£2.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',2.99,'10 pack')">Add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sec-head">Dispatch Packaging</p>
+  <div class="addon-box">
+    <div class="addon-intro">
+      <span>Add insulated foil packaging with gel packs for temperature-conscious dispatch.</span>
+    </div>
+    <div class="addon-list">
+      <div class="addon-row featured">
+        <div class="addon-info">
+          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol cool"></span></div>
+          <div>
+          <div class="addon-name">Thermal Cooled Packaging</div>
+          <div class="addon-desc">Insulated foil pouch + gel packs</div>
+          </div>
+        </div>
+        <div class="addon-action"><span class="addon-price">&pound;3.00</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Thermal Cooled Packaging',3,'Insulated foil pouch + gel packs')">Add</button></div>
       </div>
     </div>
   </div>
@@ -756,7 +788,7 @@
   let rsVolume = 2;
   let rsSelectedProduct = null;
 
-  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'syringe kit', 'essentials bundle', 'alcohol wipes', 'pen-style research kit'];
+  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'syringe kit', 'essentials bundle', 'alcohol wipes', 'pen-style research kit', 'sterile disposable pen tips', 'pen tips'];
 
   function rsIsEligible(item) {
     const n = item.name.toLowerCase();

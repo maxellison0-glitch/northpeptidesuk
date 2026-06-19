@@ -950,9 +950,10 @@
   <section class="shop-section" id="products">
     <div class="shop-section-header">
       <h2 class="shop-section-title">Research Catalogue</h2>
-      <span class="shop-section-tag">9 stocked products</span>
+      <span class="shop-section-tag">15 stocked products</span>
     </div>
 
+    <h3 class="category-heading-light">Research Compounds</h3>
     <div class="acc-grid">
         <div class="shop-card" id="product-retatrutide">
           <div class="shop-card-img" onclick="window.location.href='product.html?product=retatrutide'">
@@ -1125,6 +1126,125 @@
         </div>
     </div>
 
+    <h3 class="category-heading-light">Research Supplies</h3>
+    <div class="acc-grid">
+        <div class="shop-card" id="product-pen-style-research-kit">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=pen-style-research-kit'">
+            <img src="hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png" alt="Pen-Style Research Kit">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+            <span class="shop-badge badge-bestseller">Setup Kit</span>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=pen-style-research-kit">Pen-Style Research Kit</a>
+            <span class="shop-card-dose">Cartridge setup</span>
+            <div class="card-trust-micro">Sealed components · Research Use</div>
+            <select class="shop-card-select" id="penkit-sel" onchange="updateBundlePrice('penkit-sel','penkit-p')">
+              <option value="24.99|3ml cartridge + BAC water + x5 pen tips">Kit — £24.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="penkit-p">£24.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('penkit-qty',-1)">−</button><span class="qty-value" id="penkit-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('penkit-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('penkit-sel','Pen-Style Research Kit','penkit-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-pen-tips">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=pen-tips'">
+            <img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="Sterile Disposable Pen Tips">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=pen-tips">Sterile Disposable Pen Tips</a>
+            <span class="shop-card-dose">Universal-fit 6mm</span>
+            <div class="card-trust-micro">Sealed pack · Research Use</div>
+            <select class="shop-card-select" id="pentips-sel" onchange="updateBundlePrice('pentips-sel','pentips-p')">
+              <option value="3.99|6mm x5">6mm x5 — £3.99</option>
+              <option value="6.99|6mm x10">6mm x10 — £6.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="pentips-p">£3.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('pentips-qty',-1)">−</button><span class="qty-value" id="pentips-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('pentips-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('pentips-sel','Sterile Disposable Pen Tips','pentips-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-bacteriostatic-water">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=bacteriostatic-water'">
+            <img src="hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg" alt="Bacteriostatic Water">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=bacteriostatic-water">Bacteriostatic Water</a>
+            <span class="shop-card-dose">Sealed vial</span>
+            <div class="card-trust-micro">Preparation supply · Research Use</div>
+            <select class="shop-card-select" id="bac-sel" onchange="updateBundlePrice('bac-sel','bac-p')">
+              <option value="6.99|10ml vial">10ml vial — £6.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="bac-p">£6.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('bac-qty',-1)">−</button><span class="qty-value" id="bac-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('bac-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('bac-sel','Bacteriostatic Water','bac-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-syringe-kit">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=syringe-kit'">
+            <img src="hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg" alt="Syringe Kit">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=syringe-kit">Syringe Kit</a>
+            <span class="shop-card-dose">Reconstitution supply</span>
+            <div class="card-trust-micro">Sealed supplies · Research Use</div>
+            <select class="shop-card-select" id="syringe-sel" onchange="updateBundlePrice('syringe-sel','syringe-p')">
+              <option value="6.99|10 pack, 1ml + larger gauge for reconstitution">10 pack — £6.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="syringe-p">£6.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('syringe-qty',-1)">−</button><span class="qty-value" id="syringe-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('syringe-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('syringe-sel','Syringe Kit','syringe-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-alcohol-wipes">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=alcohol-wipes'">
+            <img src="hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg" alt="Alcohol Wipes">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=alcohol-wipes">Alcohol Wipes</a>
+            <span class="shop-card-dose">Sterile pack</span>
+            <div class="card-trust-micro">Preparation supply · Research Use</div>
+            <select class="shop-card-select" id="wipes-sel" onchange="updateBundlePrice('wipes-sel','wipes-p')">
+              <option value="2.99|10 pack">10 pack — £2.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="wipes-p">£2.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('wipes-qty',-1)">−</button><span class="qty-value" id="wipes-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('wipes-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('wipes-sel','Alcohol Wipes','wipes-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-essentials-bundle">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=essentials-bundle'">
+            <img src="hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg" alt="Essentials Bundle">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">i</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=essentials-bundle">Essentials Bundle</a>
+            <span class="shop-card-dose">BAC water + syringes + wipes</span>
+            <div class="card-trust-micro">Preparation supplies · Research Use</div>
+            <select class="shop-card-select" id="essentials-sel" onchange="updateBundlePrice('essentials-sel','essentials-p')">
+              <option value="14.99|Bac water + syringe kit + wipes">Bundle — £14.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="essentials-p">£14.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><div class="qty-control"><button class="qty-btn" type="button" onclick="adjustProductQty('essentials-qty',-1)">−</button><span class="qty-value" id="essentials-qty">1</span><button class="qty-btn" type="button" onclick="adjustProductQty('essentials-qty',1)">+</button></div><button class="shop-add-btn" onclick="addBundleToBasket('essentials-sel','Essentials Bundle','essentials-qty')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
   </section>
 
   <!-- HOW TO ORDER -->
@@ -1171,7 +1291,7 @@
       <h2 class="help-light-title">Start simple.<br><em>Ask before you order.</em></h2>
       <p class="help-light-body">If you are comparing products or unsure what the checkout process looks like, contact support first. I will keep it clear and straightforward.</p>
       <p class="help-light-body">No pressure and no hard sell. Add what you need, review your basket, then complete payment through Stripe checkout.</p>
-      <p class="help-light-note">Need practical extras? Bacteriostatic water, syringe kits and alcohol wipes can now be added during checkout.</p>
+      <p class="help-light-note">Need practical extras? Bacteriostatic water, syringe kits, pen tips, alcohol wipes and pen-style research kits can be added from the catalogue or at checkout.</p>
       <a href="mailto:support@northpeptidesuk.com" class="help-light-btn">Email Support →</a>
     </div>
   </section>
@@ -1258,6 +1378,7 @@
           <li><a href="#products">KPV</a></li>
           <li><a href="#products">Ipamorelin</a></li>
           <li><a href="#products">CJC-1295</a></li>
+          <li><a href="#products">Research Supplies</a></li>
         </ul>
       </div>
       <div class="footer-light-col">

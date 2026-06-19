@@ -21,7 +21,9 @@ const expectedAccessoryPrices = [
   ["Essentials Bundle", "Bac water + syringe kit + wipes", "14.99"],
   ["Bacteriostatic Water", "10ml vial", "6.99"],
   ["Syringe Kit", "10 pack, 1ml + larger gauge for reconstitution", "6.99"],
-  ["Alcohol Wipes", "50 pack", "2.99"]
+  ["Sterile Disposable Pen Tips", "6mm x5", "3.99"],
+  ["Alcohol Wipes", "10 pack", "2.99"],
+  ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "3"]
 ];
 
 for (const [name, dose, price] of expectedAccessoryPrices) {
@@ -104,6 +106,30 @@ assert(
     product.includes("function adjustDetailQty(delta)") &&
     product.includes("addItemToBasket(product.name, variant.price, variant.dose, selectedQuantity())"),
   "product detail page should add selected quantity"
+);
+assert(
+  index.includes("Research Supplies") &&
+    index.includes("Pen-Style Research Kit") &&
+    index.includes("Sterile Disposable Pen Tips") &&
+    index.includes("Bacteriostatic Water") &&
+    index.includes("Syringe Kit") &&
+    index.includes("Essentials Bundle"),
+  "homepage should expose research supplies as catalogue products"
+);
+assert(
+  productData.includes('"pen-style-research-kit"') &&
+    productData.includes('"pen-tips"') &&
+    productData.includes('"bacteriostatic-water"') &&
+    productData.includes('"syringe-kit"') &&
+    productData.includes('"essentials-bundle"'),
+  "product detail data should include research supplies"
+);
+assert(
+  serverCheckout.includes('"Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99') &&
+    serverCheckout.includes('"Sterile Disposable Pen Tips|6mm x5": 3.99') &&
+    serverCheckout.includes("function resolveCatalogPrice(item, name, dose)") &&
+    checkout.includes("'sterile disposable pen tips'"),
+  "checkout and Stripe catalog should accept pen-style research supplies"
 );
 
 assert(

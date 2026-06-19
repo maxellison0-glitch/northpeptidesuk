@@ -145,5 +145,102 @@ const PRODUCT_DATA = {
       { label: "1x5mg", dose: "5mg", price: 32 }
     ],
     stripePaymentLink: ""
+  },
+  "pen-style-research-kit": {
+    name: "Pen-Style Research Kit",
+    category: "Research supplies",
+    image: "hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png",
+    summary: "Pen-style research setup supplied as sealed, unprepared components.",
+    details: [
+      "3ml cartridge",
+      "Sealed bacteriostatic water",
+      "Sterile disposable pen tips 6mm x5",
+      "Research use only"
+    ],
+    variants: [
+      { label: "Kit", dose: "3ml cartridge + BAC water + x5 pen tips", price: 24.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "pen-tips": {
+    name: "Sterile Disposable Pen Tips",
+    category: "Research supplies",
+    image: "hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
+    summary: "Universal-fit sterile disposable pen tips for pen-style research setups.",
+    details: [
+      "6mm universal-fit tips",
+      "Supplied sealed",
+      "Compatible with pen-style research kits",
+      "Research use only"
+    ],
+    variants: [
+      { label: "6mm x5", dose: "6mm x5", price: 3.99 },
+      { label: "6mm x10", dose: "6mm x10", price: 6.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "bacteriostatic-water": {
+    name: "Bacteriostatic Water",
+    category: "Research supplies",
+    image: "hf_20260523_171913_268b3f25-7ab9-4d79-b49a-4d240337c3e1.jpeg",
+    summary: "Sealed bacteriostatic water vial for laboratory preparation workflows.",
+    details: [
+      "10ml vial",
+      "Supplied sealed",
+      "For regular vial preparation workflows",
+      "Research use only"
+    ],
+    variants: [
+      { label: "10ml vial", dose: "10ml vial", price: 6.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "syringe-kit": {
+    name: "Syringe Kit",
+    category: "Research supplies",
+    image: "hf_20260523_171928_8b2379c0-f3be-4c97-8444-a21ba56a8e49.jpeg",
+    summary: "Standard syringe kit for regular vial preparation workflows.",
+    details: [
+      "1ml syringes x10",
+      "Larger gauge for reconstitution x1",
+      "Supplied sealed",
+      "Research use only"
+    ],
+    variants: [
+      { label: "10 pack", dose: "10 pack, 1ml + larger gauge for reconstitution", price: 6.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "alcohol-wipes": {
+    name: "Alcohol Wipes",
+    category: "Research supplies",
+    image: "hf_20260523_175145_3f58f132-13fe-4fe4-9040-7b65860412e3.jpeg",
+    summary: "Sterile alcohol wipe pack for preparation workflows.",
+    details: [
+      "10 pack",
+      "Supplied sealed",
+      "Preparation supply",
+      "Research use only"
+    ],
+    variants: [
+      { label: "10 pack", dose: "10 pack", price: 2.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "essentials-bundle": {
+    name: "Essentials Bundle",
+    category: "Research supplies",
+    image: "hf_20260523_171744_2a4b1a06-cabd-4504-9366-d7fc0068c604.jpeg",
+    summary: "Standard preparation bundle containing bac water, syringe kit and alcohol wipes.",
+    details: [
+      "10ml bacteriostatic water",
+      "Syringe kit",
+      "Alcohol wipes",
+      "Research use only"
+    ],
+    variants: [
+      { label: "Bundle", dose: "Bac water + syringe kit + wipes", price: 14.99 }
+    ],
+    stripePaymentLink: ""
   }
 };

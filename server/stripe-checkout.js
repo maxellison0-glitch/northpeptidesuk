@@ -44,8 +44,14 @@ const CATALOG = {
   "Syringe Kit|10 pack, 1ml": 6.99,
   "Syringe Kit|10 pack, 1ml + larger gauge for reconstitution": 6.99,
   "Syringe Kit|Accessory": 6.99,
-  "Alcohol Wipes|10 pack": 2.99
+  "Alcohol Wipes|10 pack": 2.99,
+  "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99,
+  "Sterile Disposable Pen Tips|6mm x5": 3.99,
+  "Sterile Disposable Pen Tips|6mm x10": 6.99,
+  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 3
 };
+
+const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
@@ -91,6 +97,21 @@ function compactText(value, maxLength = 480) {
   return String(value || "").trim().slice(0, maxLength);
 }
 
+function resolveCatalogPrice(item, name, dose) {
+  const directPrice = CATALOG[`${name}|${dose}`];
+  if (directPrice) return directPrice;
+
+  if (name === "Pen-Style Research Kit" && item?._kitFor) {
+    const browserPrice = Number(item.price);
+    const volume = Number(item._kitVolume);
+    if (PEN_STYLE_KIT_PRICES.has(browserPrice) && [1, 2, 3].includes(volume)) {
+      return browserPrice;
+    }
+  }
+
+  return null;
+}
+
 async function createCheckoutSession(payload = {}, requestOrigin) {
   if (!process.env.STRIPE_SECRET_KEY) return json(500, { error: "Stripe is not configured yet." }, requestOrigin);
 
@@ -105,7 +126,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
     const name = compactText(item.name, 80);
     const dose = compactText(item.dose, 80);
     const key = `${name}|${dose}`;
-    const price = CATALOG[key];
+    const price = resolveCatalogPrice(item, name, dose);
     const quantity = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
 
     if (discountCode === 'SHELLEY' && name === 'Syringe Kit') continue;
