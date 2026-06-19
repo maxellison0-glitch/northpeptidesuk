@@ -149,14 +149,27 @@ const PRODUCT_DATA = {
   "pen-style-research-kit": {
     name: "Pen-Style Research Kit",
     category: "Research supplies",
-    image: "hf_20260523_171726_965fffb4-4236-47b2-9838-b5eabef6df13.png",
-    summary: "Pen-style research setup supplied as sealed, unprepared components.",
+    image: "research-pen-kit-style.png",
+    summary: "A cleaner pen-style setup for repeatable measured research handling, supplied with the cartridge, BAC water and sterile pen tips needed to build the setup.",
     details: [
-      "3ml cartridge",
-      "Sealed bacteriostatic water",
-      "Sterile disposable pen tips 6mm x5",
+      "Includes 3ml cartridge, sealed bacteriostatic water and 6mm sterile pen tips x5",
+      "Pairs with the research vial you select at checkout",
+      "Built for cleaner handling and repeatable measured volumes",
+      "Preparation preference can be confirmed separately by email after checkout",
+      "Thermal cooled packaging available at checkout",
       "Research use only"
     ],
+    trust: {
+      items: [
+        ["Contents", "Cartridge Kit"],
+        ["Format", "Pen-Style"],
+        ["Handling", "Measured"],
+        ["Dispatch", "Within 24h"],
+        ["Follow-up", "Email Confirmed"],
+        ["Use", "Research Only"]
+      ],
+      chips: ["3ml Cartridge", "BAC Water", "5 Pen Tips", "Thermal Packaging Option"]
+    },
     variants: [
       { label: "Kit", dose: "3ml cartridge + BAC water + x5 pen tips", price: 24.99 }
     ],

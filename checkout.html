@@ -488,6 +488,7 @@
     .order-kit-remove:hover { color: #DC2626; }
     .rs-legal { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.52rem; line-height: 1.65; color: #9CA3AF; }
     .rs-visual { width: 64px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; padding: 8px 0; }
+    .rs-kit-image { width: 76px; height: 112px; object-fit: cover; object-position: center; border-radius: 10px; border: 1px solid #DCE6E0; box-shadow: 0 8px 18px rgba(18,33,26,0.12); background: #F6F8F6; }
     .rs-pen-wrap { position: relative; width: 26px; height: 100px; animation: rs-float 3.6s ease-in-out infinite; }
     @keyframes rs-float { 0%,100%{ transform:translateY(0) rotate(0.5deg); } 50%{ transform:translateY(-7px) rotate(-0.5deg); } }
     .rs-pen-cap { position: absolute; left: 2px; right: 2px; top: 0; height: 13px; background: #00795F; border: 1.5px solid #005f49; border-radius: 4px 4px 2px 2px; }
@@ -530,18 +531,12 @@
     <div class="rs-body">
       <span class="rs-tag">PEN-STYLE RESEARCH KIT</span>
       <h2>Upgrade to a pen-style setup.</h2>
-      <p class="rs-subtitle">Includes 3ml cartridge, sealed bacteriostatic water, and x5 universal-fit sterile disposable pen tips.</p>
+      <p class="rs-subtitle">Kit contents: 3ml cartridge, sealed bacteriostatic water, and x5 universal-fit sterile disposable pen tips. Designed for clean, repeatable measured research handling.</p>
       <p class="rs-vol-label">Select product for kit:</p>
       <div class="rs-prod-row" id="rs-prod-row">
         <div class="rs-no-products">Add a research vial to enable this kit.</div>
       </div>
       <p class="rs-select-error" id="rs-select-error" style="display:none">Select a product first.</p>
-      <p class="rs-vol-label">Select BAC water volume</p>
-      <div class="rs-vol-row">
-        <button class="rs-vol-btn" data-ml="1" onclick="selectRsVol(1)">1ml</button>
-        <button class="rs-vol-btn active" data-ml="2" onclick="selectRsVol(2)">2ml</button>
-        <button class="rs-vol-btn" data-ml="3" onclick="selectRsVol(3)">3ml</button>
-      </div>
       <div class="rs-price-block">
         <div class="rs-price-row">
           <span class="rs-price" id="rs-price-display">£24.99</span>
@@ -549,20 +544,10 @@
         <div class="rs-price-breakdown" id="rs-price-breakdown">2nd kit £19.99 &middot; 3rd+ £14.99</div>
       </div>
       <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
-      <p class="rs-legal">For laboratory research use only. Components are supplied sealed and unprepared. Not filled, mixed, dosed, or intended for human or animal administration.</p>
+      <p class="rs-legal">For laboratory research use only. Any preparation preference is confirmed separately by email after checkout.</p>
     </div>
     <div class="rs-visual" aria-hidden="true">
-      <div class="rs-pen-wrap">
-        <div class="rs-pen-cap"></div>
-        <div class="rs-pen-body">
-          <div class="rs-pen-liquid" id="rs-pen-liquid" style="height:52%"></div>
-          <div class="rs-pen-mark" style="bottom:70%"></div>
-          <div class="rs-pen-mark" style="bottom:50%; width:4px; opacity:0.55"></div>
-          <div class="rs-pen-mark" style="bottom:31%"></div>
-        </div>
-        <div class="rs-pen-glow"></div>
-        <div class="rs-pen-needle"></div>
-      </div>
+      <img class="rs-kit-image" src="research-pen-kit-style.png" alt="">
     </div>
   </div>
 
@@ -877,9 +862,7 @@
     kits.forEach((kit, idx) => {
       kit.price = idx === 0 ? 24.99 : idx === 1 ? 19.99 : 14.99;
       const tierSuffix = idx === 1 ? ' · Multi-kit price applied' : idx >= 2 ? ' · Additional kit price applied' : '';
-      kit.dose = 'For: ' + kit._kitProductName + ' (' + kit._kitProductDose + ')' + tierSuffix
-        + '<br>BAC water volume: ' + kit._kitVolume + 'ml'
-        + '<br>Includes: 3ml cartridge · sealed bacteriostatic water · Sterile Disposable Pen Tips 6mm &times; 5';
+      kit.dose = 'For: ' + kit._kitProductName + ' (' + kit._kitProductDose + ')' + tierSuffix;
     });
   }
 

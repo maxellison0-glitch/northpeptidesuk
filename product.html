@@ -217,6 +217,21 @@
       )).join("");
       const detailItems = product.details.map(item => `<li>${item}</li>`).join("");
       const firstVariant = product.variants[0];
+      const trust = product.trust || {
+        items: [
+          ["Purity", "99%+ Stated"],
+          ["Form", "Lyophilised"],
+          ["Storage", "Frozen"],
+          ["Dispatch", "Within 24h"],
+          ["Batch Details", "On Request"],
+          ["Use", "Research Only"]
+        ],
+        chips: ["Purity Stated", "UK Stocked", "Stored Frozen", "Batch Details Available"]
+      };
+      const trustItems = trust.items.map(([label, value], index) => (
+        `<div class="tp-item"><span class="tp-label">${label}</span><span class="tp-value ${index === 0 ? "tp-v-purity" : ""} ${label === "Use" ? "tp-v-research" : ""}">${value}</span></div>`
+      )).join("");
+      const trustChips = trust.chips.map((chip, index) => `<span class="tp-chip ${index === 0 ? "tp-chip-purity" : ""}">${chip}</span>`).join("");
       app.innerHTML = `
         <a class="back" href="index.html#products">← Back to products</a>
         <section class="grid">
@@ -229,18 +244,10 @@
             <p class="summary">${product.summary}</p>
             <div class="trust-panel">
               <div class="tp-grid">
-                <div class="tp-item"><span class="tp-label">Purity</span><span class="tp-value tp-v-purity">99%+ Stated</span></div>
-                <div class="tp-item"><span class="tp-label">Form</span><span class="tp-value">Lyophilised</span></div>
-                <div class="tp-item"><span class="tp-label">Storage</span><span class="tp-value">Frozen</span></div>
-                <div class="tp-item"><span class="tp-label">Dispatch</span><span class="tp-value">Within 24h</span></div>
-                <div class="tp-item"><span class="tp-label">Batch Details</span><span class="tp-value">On Request</span></div>
-                <div class="tp-item"><span class="tp-label">Use</span><span class="tp-value tp-v-research">Research Only</span></div>
+                ${trustItems}
               </div>
               <div class="tp-chips">
-                <span class="tp-chip tp-chip-purity">Purity Stated</span>
-                <span class="tp-chip">UK Stocked</span>
-                <span class="tp-chip">Stored Frozen</span>
-                <span class="tp-chip">Batch Details Available</span>
+                ${trustChips}
               </div>
             </div>
             <ul class="details">${detailItems}</ul>

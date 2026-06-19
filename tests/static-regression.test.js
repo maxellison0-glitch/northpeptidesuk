@@ -110,6 +110,7 @@ assert(
 assert(
   index.includes("Research Supplies") &&
     index.includes("Pen-Style Research Kit") &&
+    index.includes("research-pen-kit-style.png") &&
     index.includes("Sterile Disposable Pen Tips") &&
     index.includes("Bacteriostatic Water") &&
     index.includes("Syringe Kit") &&
@@ -118,6 +119,7 @@ assert(
 );
 assert(
   productData.includes('"pen-style-research-kit"') &&
+    productData.includes('image: "research-pen-kit-style.png"') &&
     productData.includes('"pen-tips"') &&
     productData.includes('"bacteriostatic-water"') &&
     productData.includes('"syringe-kit"') &&
