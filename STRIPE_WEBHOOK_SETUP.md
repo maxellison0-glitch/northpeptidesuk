@@ -9,7 +9,7 @@ Add these in Vercel project settings:
 - `STRIPE_SECRET_KEY` - already configured for checkout
 - `STRIPE_WEBHOOK_SECRET` - copied from the Stripe webhook endpoint
 - `RESEND_API_KEY` - optional, required for order notification emails
-- `ORDER_NOTIFY_EMAIL` - where paid order emails should be sent
+- `ORDER_NOTIFY_EMAIL` - where paid order emails should be sent (currently `northpeptidesuk@gmail.com`)
 - `ORDER_FROM_EMAIL` - optional sender, defaults to `North Peptides UK <onboarding@resend.dev>`
 
 Do not commit real values to GitHub.

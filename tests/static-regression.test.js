@@ -17,6 +17,7 @@ const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("verce
 const whyUs = read("why-us.html");
 const labReports = read("lab-reports.html");
 const compliance = read("compliance.html");
+const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
 const expectedAccessoryPrices = [
   ["Essentials Bundle", "BAC water + insulin needles + wipes", "14.99"],
@@ -219,4 +220,30 @@ assert(
 assert(
   index.includes('href="compliance.html">Research Use Policy</a>'),
   "homepage footer should link to the compliance page"
+);
+assert(
+  index.includes("What you need to<br><em>review your basket.</em>") &&
+    !index.includes("Start simple.") &&
+    !index.includes("Ask before you order.") &&
+    !index.includes("What are the main stocked options?") &&
+    !index.includes("Which product should I look at first?") &&
+    !index.includes("Do I need the checkout basics?") &&
+    !index.includes("How does payment and dispatch work?") &&
+    !index.includes("Can I ask before ordering?"),
+  "homepage should replace the sales-led help and repetitive FAQ copy with basket review guidance"
+);
+assert(
+  !index.includes("Northern England") &&
+    !index.includes("🧬") &&
+    !index.includes("🧊") &&
+    !index.includes("📋") &&
+    !index.includes("⚗") &&
+    !index.includes("⚡"),
+  "homepage should use UK-only wording and no decorative emojis"
+);
+assert(
+  sitePages.every((page) => !page.includes("support@northpeptidesuk.com")) &&
+    sitePages.every((page) => !page.includes("Northern England")) &&
+    sitePages.some((page) => page.includes("northpeptidesuk@gmail.com")),
+  "site support links should use the new support address and UK-only wording"
 );
