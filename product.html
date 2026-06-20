@@ -43,6 +43,9 @@
     .tp-chips { display: flex; flex-wrap: wrap; gap: 7px; }
     .tp-chip { border: 1px solid #DCE5DE; background: #F4F8F5; border-radius: 999px; padding: 6px 11px; font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: #51625A; }
     .tp-chip-purity { border-color: #B8E8D0; background: #ECFAF4; color: #00663F; font-weight: 600; }
+    .supply-trust .tp-grid { background: #E6E8E7; border-color: #E6E8E7; }
+    .supply-trust .tp-item { background: #FBFCFB; }
+    .supply-trust .tp-label { color: #738078; }
     @media (max-width: 760px) { .tp-grid { grid-template-columns: repeat(2, 1fr); } }
     .details { margin: 0 0 24px; padding-left: 18px; color: #3D4F46; line-height: 1.8; font-size: 0.9rem; }
     .details li::marker { color: #00795F; }
@@ -228,10 +231,25 @@
         ],
         chips: ["Purity Stated", "UK Stocked", "Stored Frozen", "Batch Details Available"]
       };
+      const isSupply = Boolean(product.supply);
       const trustItems = trust.items.map(([label, value], index) => (
-        `<div class="tp-item"><span class="tp-label">${label}</span><span class="tp-value ${index === 0 ? "tp-v-purity" : ""} ${label === "Use" ? "tp-v-research" : ""}">${value}</span></div>`
+        `<div class="tp-item"><span class="tp-label">${label}</span><span class="tp-value ${!isSupply && index === 0 ? "tp-v-purity" : ""} ${label === "Use" ? "tp-v-research" : ""}">${value}</span></div>`
       )).join("");
-      const trustChips = trust.chips.map((chip, index) => `<span class="tp-chip ${index === 0 ? "tp-chip-purity" : ""}">${chip}</span>`).join("");
+      const trustChips = trust.chips.map((chip, index) => `<span class="tp-chip ${!isSupply && index === 0 ? "tp-chip-purity" : ""}">${chip}</span>`).join("");
+      const relatedSupplies = isSupply ? "" : `
+            <div class="also-need">
+              <div class="also-need-title">You may also need</div>
+              <div class="addon-row">
+                <div class="addon-card">
+                  <div><span class="addon-name">Bacteriostatic Water</span><span class="addon-price">£6.99</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Bacteriostatic Water', 6.99)">Add</button>
+                </div>
+                <div class="addon-card">
+                  <div><span class="addon-name">Insulin Needle Pack</span><span class="addon-price">£6.99</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Insulin Needle Pack', 6.99)">Add</button>
+                </div>
+              </div>
+            </div>`;
       app.innerHTML = `
         <a class="back" href="index.html#products">← Back to products</a>
         <section class="grid">
@@ -242,7 +260,7 @@
             <div class="tag">${product.category}</div>
             <h1>${product.name}</h1>
             <p class="summary">${product.summary}</p>
-            <div class="trust-panel">
+            <div class="trust-panel ${isSupply ? "supply-trust" : ""}">
               <div class="tp-grid">
                 ${trustItems}
               </div>
@@ -252,7 +270,7 @@
             </div>
             <ul class="details">${detailItems}</ul>
             <div class="buy-box">
-              <label for="variant">Choose size</label>
+              <label for="variant">${isSupply ? "Choose option" : "Choose size"}</label>
               <select id="variant" onchange="updatePrice()">${options}</select>
               <div class="price-row">
                 <span class="price-now" id="price-now">${money(firstVariant.price)}</span>
@@ -273,19 +291,7 @@
             <div class="research-box">
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.
             </div>
-            <div class="also-need">
-              <div class="also-need-title">You may also need</div>
-              <div class="addon-row">
-                <div class="addon-card">
-                  <div><span class="addon-name">Bacteriostatic Water</span><span class="addon-price">£6.99</span></div>
-                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Bacteriostatic Water', 6.99)">Add</button>
-                </div>
-                <div class="addon-card">
-                  <div><span class="addon-name">Insulin Needle Pack</span><span class="addon-price">£6.99</span></div>
-                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Insulin Needle Pack', 6.99)">Add</button>
-                </div>
-              </div>
-            </div>
+            ${relatedSupplies}
           </div>
         </section>
       `;

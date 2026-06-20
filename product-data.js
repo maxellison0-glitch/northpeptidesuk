@@ -149,13 +149,14 @@ const PRODUCT_DATA = {
   "pen-style-research-kit": {
     name: "Pen-Style Research Kit",
     category: "Research supplies",
+    supply: true,
     image: "research-pen-kit-style.png",
     summary: "A cleaner pen-style setup for repeatable measured research handling, supplied with the cartridge, BAC water and sterile pen tips needed to build the setup.",
     details: [
       "Includes 3ml cartridge, sealed bacteriostatic water and 6mm sterile pen tips x5",
       "Pairs with the research vial you select at checkout",
       "Built for cleaner handling and repeatable measured volumes",
-      "Preparation preference can be confirmed separately by email after checkout",
+      "Select a research product separately where required",
       "Thermal cooled packaging available at checkout",
       "Research use only"
     ],
@@ -178,23 +179,29 @@ const PRODUCT_DATA = {
   "pen-tips": {
     name: "Sterile Disposable Pen Tips",
     category: "Research supplies",
+    supply: true,
     image: "research-pen-tips.jpg",
-    summary: "Universal-fit sterile disposable pen tips for pen-style research setups.",
+    summary: "Disposable pen tips for compatible pen-style research kits.",
     details: [
-      "6mm universal-fit tips",
-      "Supplied sealed",
+      "Available in 5 or 10 tip packs",
+      "Sealed pack",
       "Compatible with pen-style research kits",
       "Research use only"
     ],
+    trust: {
+      items: [["Pack", "5 Tips"], ["Options", "5 or 10"], ["Format", "Disposable"], ["Packaging", "Sealed"], ["Compatibility", "Pen-Style Kits"], ["Use", "Research Only"]],
+      chips: ["Disposable Tips", "Sealed Pack", "Research Supply"]
+    },
     variants: [
-      { label: "6mm x5", dose: "6mm x5", price: 3.99 },
-      { label: "6mm x10", dose: "6mm x10", price: 6.99 }
+      { label: "5 tips", dose: "6mm x5", price: 3.99 },
+      { label: "10 tips", dose: "6mm x10", price: 6.99 }
     ],
     stripePaymentLink: ""
   },
   "bacteriostatic-water": {
     name: "Bacteriostatic Water",
     category: "Research supplies",
+    supply: true,
     image: "research-bac-water.png",
     summary: "10ml sealed bacteriostatic mixing water for research preparation workflows.",
     details: [
@@ -204,6 +211,10 @@ const PRODUCT_DATA = {
       "Preparation supply",
       "Research use only"
     ],
+    trust: {
+      items: [["Volume", "10ml"], ["Format", "Liquid"], ["Contents", "0.9% Benzyl Alcohol"], ["Packaging", "Sealed Vial"], ["Category", "Research Supply"], ["Use", "Research Only"]],
+      chips: ["10ml Vial", "Sealed", "Research Supply"]
+    },
     variants: [
       { label: "10ml vial", dose: "10ml vial", price: 6.99 }
     ],
@@ -212,6 +223,7 @@ const PRODUCT_DATA = {
   "syringe-kit": {
     name: "Insulin Needle Pack",
     category: "Research supplies",
+    supply: true,
     image: "research-insulin-needles.png",
     summary: "Pack of 1ml sterile disposable insulin needles for research preparation use.",
     details: [
@@ -220,6 +232,10 @@ const PRODUCT_DATA = {
       "Supplied sealed",
       "Research use only"
     ],
+    trust: {
+      items: [["Pack", "10 Needles"], ["Capacity", "1ml"], ["Gauge", "31G"], ["Length", "1/4 Inch"], ["Packaging", "Sealed"], ["Use", "Research Only"]],
+      chips: ["10 Pack", "1ml", "Research Supply"]
+    },
     variants: [
       { label: "10 pack", dose: "10 pack, 1ml insulin needles", price: 6.99 }
     ],
@@ -228,14 +244,19 @@ const PRODUCT_DATA = {
   "alcohol-wipes": {
     name: "Alcohol Wipes",
     category: "Research supplies",
+    supply: true,
     image: "research-alcohol-wipes.jpg",
-    summary: "Sterile alcohol wipe pack for preparation workflows.",
+    summary: "Single-use alcohol wipe pack for research preparation workflows.",
     details: [
       "10 pack",
-      "Supplied sealed",
+      "Single-use wipes",
       "Preparation supply",
       "Research use only"
     ],
+    trust: {
+      items: [["Pack", "10 Wipes"], ["Format", "Single-Use"], ["Category", "Preparation Supply"], ["Packaging", "Sealed Pack"], ["Availability", "UK Stocked"], ["Use", "Research Only"]],
+      chips: ["10 Pack", "Single-Use", "Research Supply"]
+    },
     variants: [
       { label: "10 pack", dose: "10 pack", price: 2.99 }
     ],
@@ -244,6 +265,7 @@ const PRODUCT_DATA = {
   "essentials-bundle": {
     name: "Essentials Bundle",
     category: "Research supplies",
+    supply: true,
     image: "research-essentials-bundle.jpg",
     summary: "Core research preparation bundle containing BAC water, insulin needles and alcohol wipes.",
     details: [
@@ -252,6 +274,10 @@ const PRODUCT_DATA = {
       "Alcohol wipes x10",
       "Research use only"
     ],
+    trust: {
+      items: [["Includes", "BAC Water"], ["Needles", "10 x 1ml"], ["Wipes", "10 Pack"], ["Format", "Supply Bundle"], ["Category", "Research Supply"], ["Use", "Research Only"]],
+      chips: ["Three Essentials", "Ready Bundle", "Research Supply"]
+    },
     variants: [
       { label: "Bundle", dose: "BAC water + insulin needles + wipes", price: 14.99 }
     ],

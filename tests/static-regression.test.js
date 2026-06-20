@@ -98,10 +98,10 @@ for (const compactLabel of ["1x10mg", "1x15mg", "1x20mg", "1x30mg", "1x50mg", "1
   assert(productData.includes(`label: "${compactLabel}"`), `product detail data should show compact label ${compactLabel}`);
 }
 assert(
-  index.includes("function productQty(qtyId)") &&
-    index.includes("function adjustProductQty(qtyId, delta)") &&
-    index.includes("addBundleToBasket('reta-sel','Retatrutide','reta-qty')"),
-  "homepage product cards should have quantity adders wired to add-to-basket"
+  !index.includes("function productQty(qtyId)") &&
+    !index.includes("function adjustProductQty(qtyId, delta)") &&
+    index.includes("addBundleToBasket('reta-sel','Retatrutide')"),
+  "homepage product cards should add one selected item at a time"
 );
 assert(
   product.includes("function selectedQuantity()") &&
@@ -246,4 +246,32 @@ assert(
     sitePages.every((page) => !page.includes("Northern England")) &&
     sitePages.some((page) => page.includes("northpeptidesuk@gmail.com")),
   "site support links should use the new support address and UK-only wording"
+);
+assert(
+  !index.includes("onclick=\"adjustProductQty(") &&
+    index.includes("function addBundleToBasket(selId, name)") &&
+    index.includes('shop-card-info-icon">View</div>'),
+  "homepage product cards should add one item at a time and make images clearly open product details"
+);
+assert(
+  index.includes('class="shop-card supply-card" id="product-pen-tips"') &&
+    index.includes('class="shop-card supply-card" id="product-bacteriostatic-water"') &&
+    index.includes("Disposable tips for compatible pen-style research kits") &&
+    index.includes("10ml sealed vial") &&
+    index.includes("insulin needles in a sealed pack") &&
+    index.includes("10 single-use wipes"),
+  "research supplies should use practical, distinct card content"
+);
+assert(
+  productData.includes('"pen-tips": {') &&
+    productData.includes('["Pack", "5 Tips"]') &&
+    productData.includes('"bacteriostatic-water": {') &&
+    productData.includes('["Volume", "10ml"]') &&
+    productData.includes('"syringe-kit": {') &&
+    productData.includes('["Pack", "10 Needles"]') &&
+    productData.includes('"alcohol-wipes": {') &&
+    productData.includes('["Pack", "10 Wipes"]') &&
+    productData.includes('"essentials-bundle": {') &&
+    !productData.includes('"pen-tips": {\n    name: "Sterile Disposable Pen Tips",\n    category: "Research supplies",\n    image: "research-pen-tips.jpg",\n    summary: "Universal-fit sterile disposable pen tips for pen-style research setups.",\n    details: [\n      "6mm universal-fit tips",\n      "Supplied sealed",\n      "Compatible with pen-style research kits",\n      "Research use only"\n    ],\n    variants:'),
+  "supply detail pages should define practical information instead of peptide defaults"
 );
