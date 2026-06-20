@@ -54,9 +54,8 @@ const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
-  "ADMININVALID": 0.90,
   "AJ":           0.10,
-  "SHELLEY":      0.50
+  "AJ20":         0.20
 };
 
 const DELIVERY = {
@@ -128,8 +127,6 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
     const price = resolveCatalogPrice(item, name, dose);
     const quantity = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
 
-    if (discountCode === 'SHELLEY' && name === 'Insulin Needle Pack') continue;
-
     if (!price) return json(400, { error: `Unavailable item: ${name} ${dose}` }, requestOrigin);
 
     const discountedPrice = hasDiscount ? price * (1 - discountPct) : price;
@@ -145,7 +142,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SHELLEY' || productSubtotal >= 30);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || productSubtotal >= 30);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({
@@ -172,7 +169,6 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
   params.append("metadata[delivery]", delivery.label);
   if (hasDiscount) params.append("metadata[discount]", discountCode);
-  if (discountCode === 'SHELLEY') params.append("metadata[gift]", "Free Insulin Needle Pack included");
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");
 
   lineItems.forEach((lineItem, index) => {

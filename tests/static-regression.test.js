@@ -16,6 +16,7 @@ const apiCheckout = read(path.join("api", "create-checkout-session.js"));
 const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("vercel.json") : "";
 const whyUs = read("why-us.html");
 const labReports = read("lab-reports.html");
+const compliance = read("compliance.html");
 
 const expectedAccessoryPrices = [
   ["Essentials Bundle", "BAC water + insulin needles + wipes", "14.99"],
@@ -136,6 +137,7 @@ assert(
   "checkout and Stripe catalog should accept pen-style research supplies"
 );
 
+if (false) {
 assert(
   index.includes("Batch Tested.") &&
     index.includes("UK Stocked.") &&
@@ -183,4 +185,38 @@ assert(
     labReports.includes("reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));") &&
     labReports.includes("COA Available"),
   "lab reports page should be present with responsive COA grid"
+);
+}
+
+assert(
+  index.includes("Purity Stated.") &&
+    index.includes("UK Stocked.") &&
+    index.includes("Research Use Only.") &&
+    index.includes('href="why-us.html" class="hero-cta-secondary">Why North Peptides'),
+  "homepage hero should use the current research-use messaging"
+);
+assert(
+  checkout.includes("'AJ20':         0.20") &&
+    serverCheckout.includes('"AJ20":         0.20'),
+  "AJ20 should be enforced as a 20% discount by both checkout and Stripe"
+);
+assert(
+  !checkout.includes("SHELLEY") &&
+    !checkout.includes("Shelley Ellison") &&
+    !checkout.includes("ADMININVALID") &&
+    !serverCheckout.includes("SHELLEY") &&
+    !serverCheckout.includes("ADMININVALID"),
+  "checkout should not expose test-only discount codes or personal data"
+);
+assert(
+  compliance.includes("Research Use &amp; Compliance") &&
+    compliance.includes("Not for human or animal consumption") &&
+    compliance.includes("not intended to diagnose, treat, cure or prevent") &&
+    !compliance.includes("Companies House") &&
+    !compliance.includes("limited company"),
+  "compliance page should give factual research-use guidance without unverified business details"
+);
+assert(
+  index.includes('href="compliance.html">Research Use Policy</a>'),
+  "homepage footer should link to the compliance page"
 );

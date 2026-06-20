@@ -407,51 +407,6 @@
       .addon-visual { width: 42px; height: 42px; border-radius: 9px; }
       .addon-symbol.syringe { width: 27px; }
     }
-    .shelley-banner {
-      background: linear-gradient(135deg, #00795F 0%, #004d3b 100%);
-      border-radius: 12px;
-      padding: 18px 22px;
-      margin-bottom: 16px;
-      display: none;
-    }
-    .shelley-banner-hi {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 5px;
-    }
-    .shelley-banner-msg {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-    .shelley-bac-prompt {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-    .shelley-bac-text { flex: 1; min-width: 0; }
-    .shelley-bac-title { font-size: 0.85rem; color: #ffffff; font-weight: 600; margin-bottom: 3px; }
-    .shelley-bac-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.72); }
-    .shelley-bac-btn { white-space: nowrap; padding: 9px 14px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-    .shelley-bac-btn:hover { background: rgba(255,255,255,0.32); }
-    .shelley-bac-btn:disabled { opacity: 0.55; cursor: default; }
-    .confetti-piece {
-      position: fixed;
-      top: -12px;
-      pointer-events: none;
-      border-radius: 2px;
-      z-index: 9999;
-    }
-
     /* PEN-STYLE RESEARCH KIT UPSELL */
     .rs-upsell { background: #ffffff; border-radius: 12px; padding: 18px 18px 18px 20px; margin-bottom: 22px; display: flex; gap: 18px; align-items: flex-start; border: 1px solid #DCE6E0; box-shadow: 0 2px 10px rgba(18,33,26,0.05); position: relative; overflow: hidden; }
     .rs-upsell::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(0,121,95,0.85) 0%, rgba(0,179,134,0.85) 100%); pointer-events: none; }
@@ -544,7 +499,7 @@
         <div class="rs-price-breakdown" id="rs-price-breakdown">2nd kit £19.99 &middot; 3rd+ £14.99</div>
       </div>
       <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
-      <p class="rs-legal">For laboratory research use only. Any preparation preference is confirmed separately by email after checkout.</p>
+      <p class="rs-legal">For laboratory research use only. Not for human or animal consumption.</p>
     </div>
     <div class="rs-visual" aria-hidden="true">
       <img class="rs-kit-image" src="research-pen-kit-style.png" alt="">
@@ -651,17 +606,6 @@
     <button class="discount-btn" onclick="applyDiscount()">Apply</button>
   </div>
   <div class="discount-msg" id="discount-msg"></div>
-  <div class="shelley-banner" id="shelley-banner">
-    <div class="shelley-banner-hi">Hi Shelley!</div>
-    <div class="shelley-banner-msg">50% off + free delivery + free needles — your exclusive access.</div>
-    <div class="shelley-bac-prompt">
-      <div class="shelley-bac-text">
-        <div class="shelley-bac-title">Would you like bacteriostatic water?</div>
-        <div class="shelley-bac-sub">You probably do. Max says you do. (50% off with your code)</div>
-      </div>
-      <button class="shelley-bac-btn" id="shelley-bac-btn" onclick="addBacForShelley()">Add — £6.99</button>
-    </div>
-  </div>
 
   <!-- DELIVERY -->
   <p class="sec-head">Delivery</p>
@@ -916,10 +860,8 @@
   let appliedDiscountCode = '';
   const DISCOUNT_CODES = {
     'WELCOME10':    0.10,
-    'ADMININVALID': 0.90,
     'AJ':           0.10,
-    'AJ20':         0.20,
-    'SHELLEY':      0.50
+    'AJ20':         0.20
   };
 
   function getSubtotal() {
@@ -939,7 +881,7 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = appliedDiscountCode === 'AJ' || appliedDiscountCode === 'SHELLEY' || discSub >= 30;
+      const freeDelivery = appliedDiscountCode === 'AJ' || discSub >= 30;
       deliveryPrice = freeDelivery ? 0 : 3;
       document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
       const nudge = document.getElementById('delivery-nudge');
@@ -967,29 +909,7 @@
       appliedDiscountPct = pct;
       appliedDiscountCode = code;
       document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
-      if (code === 'SHELLEY') {
-        msg.textContent = '50% off + free delivery + free needles applied.';
-        document.getElementById('shelley-banner').style.display = 'block';
-        launchConfetti();
-        if (!basketData.some(item => item.shelleyGift)) {
-          basketData.push({ name: 'Insulin Needle Pack', price: 0, dose: '10 pack, 1ml insulin needles', qty: 1, shelleyGift: true });
-          saveCheckoutBasket();
-          renderOrder();
-        }
-        const bacBtn = document.getElementById('shelley-bac-btn');
-        bacBtn.disabled = false;
-        bacBtn.textContent = 'Add — £6.99';
-        bacBtn.classList.remove('added');
-        const form = document.getElementById('checkout-form');
-        const shelleyAddress = { name: 'Shelley Ellison', email: 'shelley@daisymaison.co.uk', address1: 'Fairmont, Kitty Lane', city: 'Blackpool', postcode: 'FY4 5EG', notes: 'Max is really really cool 😎' };
-        Object.entries(shelleyAddress).forEach(([name, val]) => {
-          const el = form.querySelector('[name="' + name + '"]');
-          if (el && !el.value) el.value = val;
-        });
-      } else {
-        msg.textContent = 'Discount applied — ' + Math.round(pct * 100) + '% off.';
-        document.getElementById('shelley-banner').style.display = 'none';
-      }
+      msg.textContent = 'Discount applied - ' + Math.round(pct * 100) + '% off.';
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
@@ -998,47 +918,7 @@
       appliedDiscountCode = '';
       msg.textContent = 'Invalid code. Please check it and try again.';
       msg.className = 'discount-msg error';
-      document.getElementById('shelley-banner').style.display = 'none';
       updateTotals();
-    }
-  }
-
-  function addBacForShelley() {
-    const btn = document.getElementById('shelley-bac-btn');
-    if (btn.disabled) return;
-    btn.disabled = true;
-    btn.textContent = 'Added!';
-    btn.classList.add('added');
-    const existing = basketData.find(item => item.name === 'Bacteriostatic Water' && item.dose === '10ml vial');
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      basketData.push({ name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial', qty: 1 });
-    }
-    saveCheckoutBasket();
-    renderOrder();
-  }
-
-  function launchConfetti() {
-    const colors = ['#00795F','#4CAF50','#86C88A','#d4edda','#ffffff','#FFD700','#FFA07A'];
-    for (let i = 0; i < 80; i++) {
-      const el = document.createElement('div');
-      el.className = 'confetti-piece';
-      const size = 5 + Math.random() * 8;
-      el.style.left = (Math.random() * 100) + 'vw';
-      el.style.width = size + 'px';
-      el.style.height = size + 'px';
-      el.style.background = colors[Math.floor(Math.random() * colors.length)];
-      document.body.appendChild(el);
-      const delay = Math.random() * 700;
-      const duration = 1800 + Math.random() * 1400;
-      const drift = (Math.random() - 0.5) * 140;
-      const rot = Math.random() * 720;
-      el.animate([
-        { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: 1 },
-        { transform: 'translateY(100vh) translateX(' + drift + 'px) rotate(' + rot + 'deg)', opacity: 0 }
-      ], { delay, duration, easing: 'cubic-bezier(0.25,0.46,0.45,0.94)', fill: 'forwards' });
-      setTimeout(() => el.remove(), delay + duration + 100);
     }
   }
 
