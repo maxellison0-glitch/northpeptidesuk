@@ -5,8 +5,17 @@ const fs = require('node:fs');
 const read = file => fs.readFileSync(file, 'utf8');
 
 test('all storefront pages include the shared analytics script', () => {
-  for (const file of ['index.html', 'checkout.html', 'compliance.html']) {
-    assert.match(read(file), /<script src="tiktok-analytics\.js" defer><\/script>/, file);
+  const pages = [
+    'index.html',
+    'checkout.html',
+    'compliance.html',
+    'why-us.html',
+    'product.html',
+    'lab-reports.html',
+    'blog/how-to-reconstitute-peptides.html'
+  ];
+  for (const file of pages) {
+    assert.match(read(file), /<script src="\/tiktok-analytics\.js" defer><\/script>/, file);
   }
 });
 
@@ -42,4 +51,8 @@ test('compliance page explains TikTok analytics and withdrawal', () => {
   assert.match(source, /TikTok Pixel/);
   assert.match(source, /Cookie settings/);
   assert.match(source, /withdraw/i);
+});
+
+test('cookie policy link works from nested pages', () => {
+  assert.match(read('tiktok-analytics.js'), /policyLink\.href = '\/compliance\.html'/);
 });

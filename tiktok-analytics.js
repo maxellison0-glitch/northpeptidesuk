@@ -115,7 +115,7 @@
     const message = document.createElement('p');
     message.append('We use analytics cookies to understand site traffic and improve advertising. ');
     const policyLink = document.createElement('a');
-    policyLink.href = 'compliance.html';
+    policyLink.href = '/compliance.html';
     policyLink.textContent = 'Learn more';
     message.appendChild(policyLink);
 
