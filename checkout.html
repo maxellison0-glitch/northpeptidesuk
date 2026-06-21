@@ -851,11 +851,13 @@
     if (!existing && window.NPUKAnalytics) {
       const kit = basketData.find(item => item._kitFor === key);
       window.NPUKAnalytics.track('AddToCart', {
-        content_type: 'product',
-        content_name: 'Pen-Style Research Kit',
-        content_id: 'Pen-Style Research Kit:' + key,
-        quantity: 1,
-        price: kit ? Number(kit.price) : 24.99,
+        contents: [{
+          content_id: 'Pen-Style Research Kit:' + key,
+          content_name: 'Pen-Style Research Kit',
+          content_type: 'product',
+          quantity: 1,
+          price: kit ? Number(kit.price) : 24.99
+        }],
         value: kit ? Number(kit.price) : 24.99,
         currency: 'GBP'
       });
@@ -959,11 +961,13 @@
     renderOrder();
     if (window.NPUKAnalytics) {
       window.NPUKAnalytics.track('AddToCart', {
-        content_type: 'product',
-        content_name: name,
-        content_id: name + ':' + dose,
-        quantity: 1,
-        price: Number(price),
+        contents: [{
+          content_id: name + ':' + dose,
+          content_name: name,
+          content_type: 'product',
+          quantity: 1,
+          price: Number(price)
+        }],
         value: Number(price),
         currency: 'GBP'
       });
@@ -1031,6 +1035,7 @@
     document.getElementById('main-checkout').style.display = 'none';
     document.getElementById('success-page').style.display = 'block';
     sessionStorage.removeItem('npuk_basket');
+    sessionStorage.removeItem('npuk_checkout_value');
   }
 
   function showStripeCancel() {
@@ -1045,10 +1050,16 @@
     const paymentStatus = new URLSearchParams(window.location.search).get('payment');
     if (paymentStatus === 'success') {
       if (basketData.length > 0 && window.NPUKAnalytics) {
+        const storedValue = Number(sessionStorage.getItem('npuk_checkout_value'));
         window.NPUKAnalytics.track('CompletePayment', {
-          content_type: 'product',
-          quantity: basketData.reduce((sum, item) => sum + item.qty, 0),
-          value: getSubtotal(),
+          contents: basketData.map(item => ({
+            content_id: item.name + ':' + item.dose,
+            content_name: item.name,
+            content_type: 'product',
+            quantity: item.qty,
+            price: Number(item.price)
+          })),
+          value: Number.isFinite(storedValue) && storedValue > 0 ? storedValue : getSubtotal(),
           currency: 'GBP'
         });
       }
@@ -1089,6 +1100,7 @@
       if (!res.ok || !data.url) {
         throw new Error(data.error || 'Stripe checkout failed.');
       }
+      sessionStorage.setItem('npuk_checkout_value', String(getDiscountedSubtotal() + deliveryPrice));
       window.location.href = data.url;
     } catch (error) {
       const msg = document.getElementById('discount-msg');

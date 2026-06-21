@@ -1,7 +1,6 @@
 (function (window, document) {
   'use strict';
 
-  const PIXEL_ID = 'D8RU9FBC77UATVQ6JIUG';
   const CONSENT_KEY = 'npuk_analytics_consent';
   let pixelLoaded = false;
 
@@ -62,7 +61,7 @@
         else d.head.appendChild(script);
       };
 
-      ttq.load(PIXEL_ID);
+      ttq.load('D8RU9FBC77UATVQ6JIUG');
       ttq.grantConsent();
       ttq.page();
     }(window, document, 'ttq');

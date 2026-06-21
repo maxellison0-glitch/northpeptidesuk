@@ -24,11 +24,13 @@ function addToBasket(name, price, dose, qty = 1) {
   showBasket();
   if (window.NPUKAnalytics) {
     window.NPUKAnalytics.track('AddToCart', {
-      content_type: 'product',
-      content_name: name,
-      content_id: name + ':' + dose,
-      quantity,
-      price: Number(price),
+      contents: [{
+        content_id: name + ':' + dose,
+        content_name: name,
+        content_type: 'product',
+        quantity,
+        price: Number(price)
+      }],
       value: Number(price) * quantity,
       currency: 'GBP'
     });
@@ -124,8 +126,13 @@ function goToCheckout() {
   saveBasket();
   if (window.NPUKAnalytics) {
     window.NPUKAnalytics.track('InitiateCheckout', {
-      content_type: 'product',
-      quantity: basket.reduce((sum, item) => sum + item.qty, 0),
+      contents: basket.map(item => ({
+        content_id: item.name + ':' + item.dose,
+        content_name: item.name,
+        content_type: 'product',
+        quantity: item.qty,
+        price: Number(item.price)
+      })),
       value: getTotal(),
       currency: 'GBP'
     });

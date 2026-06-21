@@ -39,6 +39,8 @@ Reject does not merely hide the banner: it guarantees that `analytics.tiktok.com
 - `InitiateCheckout`: when the visitor proceeds from the basket to checkout, including basket value and GBP currency.
 - `CompletePayment`: only after the existing Stripe return flow reports `payment=success`; it is not emitted merely when the checkout form is submitted.
 
+Commerce payloads use TikTok's standard structure: `contents` is an array with one object per line item containing `content_id`, `content_name`, `content_type`, `quantity`, and numeric unit `price`; event-level `value` is numeric and `currency` is `GBP`. The checkout value sent to Stripe is retained across the redirect so `CompletePayment` uses the completed checkout total rather than reconstructing an incomplete total on return.
+
 Event calls made before consent are discarded rather than queued. This prevents actions taken before acceptance from being sent retroactively.
 
 ## User Interface
