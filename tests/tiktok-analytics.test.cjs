@@ -77,10 +77,18 @@ test('acceptance loads the configured pixel once', () => {
   assert.equal(app.store.get('npuk_analytics_consent'), 'accepted');
   assert.equal(app.appendedScripts.length, 1);
   assert.match(app.appendedScripts[0].src, /sdkid=D8RU9FBC77UATVQ6JIUG/);
+  assert.equal(app.window.ttq.filter(call => call[0] === 'page').length, 1);
 });
 
 test('saved acceptance loads TikTok at startup', () => {
   assert.equal(boot('accepted').appendedScripts.length, 1);
+});
+
+test('a genuine reload sends one new PageView', () => {
+  const firstPage = boot('accepted');
+  const reloadedPage = boot('accepted');
+  assert.equal(firstPage.window.ttq.filter(call => call[0] === 'page').length, 1);
+  assert.equal(reloadedPage.window.ttq.filter(call => call[0] === 'page').length, 1);
 });
 
 test('events before consent are discarded rather than queued', () => {

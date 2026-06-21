@@ -27,7 +27,7 @@
 
 - [ ] **Step 1: Write failing consent tests**
 
-Create a Node test harness using `vm.runInNewContext` with fake `window`, `document`, and `localStorage`. Assert that an unset choice renders `#npuk-cookie-banner` without appending a TikTok script; Reject saves `rejected` and still appends no script; Accept saves `accepted` and appends exactly one script whose URL contains `sdkid=D8RU9FBC77UATVQ6JIUG`; a saved acceptance loads once on startup; and `track()` before acceptance does not create or queue TikTok calls.
+Create a Node test harness using `vm.runInNewContext` with fake `window`, `document`, and `localStorage`. Assert that an unset choice renders `#npuk-cookie-banner` without appending a TikTok script; Reject saves `rejected` and still appends no script; Accept saves `accepted`, appends exactly one script whose URL contains `sdkid=D8RU9FBC77UATVQ6JIUG`, and queues exactly one PageView even if Accept is pressed again on the same page; a saved acceptance loads once and sends one PageView on each genuine page load; and `track()` before acceptance does not create or queue TikTok calls.
 
 ```js
 const test = require('node:test');

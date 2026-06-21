@@ -34,7 +34,7 @@ Reject does not merely hide the banner: it guarantees that `analytics.tiktok.com
 
 ## Events
 
-- `PageView`: each storefront page after consent and Pixel initialization.
+- `PageView`: exactly once per real storefront page load after consent and Pixel initialization. Reopening Cookie settings or pressing Accept again on the same page must not emit another PageView.
 - `AddToCart`: successful additions through the shared basket function, with product name, variant, price, quantity, value, and GBP currency where available.
 - `InitiateCheckout`: when the visitor proceeds from the basket to checkout, including basket value and GBP currency.
 - `CompletePayment`: only after the existing Stripe return flow reports `payment=success`; it is not emitted merely when the checkout form is submitted.
