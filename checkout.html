@@ -6,6 +6,7 @@
   <title>Checkout — North Peptides UK</title>
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="css/style.css">
+  <script src="tiktok-analytics.js" defer></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -847,6 +848,18 @@
     recalcRsKitPrices();
     saveCheckoutBasket();
     renderOrder();
+    if (!existing && window.NPUKAnalytics) {
+      const kit = basketData.find(item => item._kitFor === key);
+      window.NPUKAnalytics.track('AddToCart', {
+        content_type: 'product',
+        content_name: 'Pen-Style Research Kit',
+        content_id: 'Pen-Style Research Kit:' + key,
+        quantity: 1,
+        price: kit ? Number(kit.price) : 24.99,
+        value: kit ? Number(kit.price) : 24.99,
+        currency: 'GBP'
+      });
+    }
     btn.textContent = 'Added ✓';
     btn.classList.add('added');
     setTimeout(() => { updateRsBtn(); renderRsProductSelector(); }, 1600);
@@ -944,6 +957,17 @@
     }
     saveCheckoutBasket();
     renderOrder();
+    if (window.NPUKAnalytics) {
+      window.NPUKAnalytics.track('AddToCart', {
+        content_type: 'product',
+        content_name: name,
+        content_id: name + ':' + dose,
+        quantity: 1,
+        price: Number(price),
+        value: Number(price),
+        currency: 'GBP'
+      });
+    }
     button.textContent = 'Added';
     button.classList.add('added');
     setTimeout(() => {
@@ -1016,14 +1040,22 @@
   }
 
   window.addEventListener('load', () => {
+    const saved = sessionStorage.getItem('npuk_basket');
+    if (saved) basketData = JSON.parse(saved);
     const paymentStatus = new URLSearchParams(window.location.search).get('payment');
     if (paymentStatus === 'success') {
+      if (basketData.length > 0 && window.NPUKAnalytics) {
+        window.NPUKAnalytics.track('CompletePayment', {
+          content_type: 'product',
+          quantity: basketData.reduce((sum, item) => sum + item.qty, 0),
+          value: getSubtotal(),
+          currency: 'GBP'
+        });
+      }
       showStripeSuccess();
       return;
     }
     if (paymentStatus === 'cancelled') showStripeCancel();
-    const saved = sessionStorage.getItem('npuk_basket');
-    if (saved) basketData = JSON.parse(saved);
     renderOrder();
     renderRsProductSelector();
   });
