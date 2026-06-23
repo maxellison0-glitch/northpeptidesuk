@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -470,23 +470,7 @@
 </head>
 <body>
 
-<!-- DISPATCH BANNER -->
-<div style="background:#00795F;color:#ffffff;text-align:center;padding:9px 16px;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;">⚡ Next-day UK dispatch on in-stock vials &middot; Order before 1:00 PM &middot; Royal Mail Tracked 24 &amp; Special Delivery available</div>
 
-<!-- WELCOME POPUP -->
-<div id="welcome-popup" style="display:flex;position:fixed;inset:0;background:rgba(18,49,40,0.55);z-index:10000;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#ffffff;border:1px solid #D1E4D7;border-top:3px solid #00795F;border-radius:16px;max-width:360px;width:100%;padding:32px 28px 28px;text-align:center;box-shadow:0 20px 48px rgba(18,49,40,0.18);">
-    <p style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#00795F;margin-bottom:10px;">// Before you checkout</p>
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#123128;line-height:1.2;margin-bottom:20px;">You get <span style="color:#00795F;">free delivery</span> on this order.</h2>
-    <div style="display:flex;flex-direction:column;gap:1px;background:#D1E4D7;margin-bottom:24px;border-radius:8px;overflow:hidden;text-align:left;">
-      <div style="background:#F0F8F3;padding:12px 14px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#16201b;">🚚 Free UK delivery on every order</div>
-      <div style="background:#F0F8F3;padding:12px 14px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#16201b;">🧊 Free thermal packaging included</div>
-      <div style="background:#F0F8F3;padding:12px 14px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#16201b;">📦 Next-day dispatch on in-stock vials</div>
-      <div style="background:#F0F8F3;padding:12px 14px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:0.72rem;color:#16201b;">🔒 Discreet, secure packaging</div>
-    </div>
-    <button onclick="document.getElementById('welcome-popup').style.display='none'" style="width:100%;background:#00795F;color:#ffffff;border:none;padding:14px;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;cursor:pointer;border-radius:8px;">Got it — continue to checkout</button>
-  </div>
-</div>
 
 <div class="checkout-wrap" id="main-checkout">
 
@@ -898,6 +882,7 @@
     'AJ':           0.10,
     'AJ20':         0.20
   };
+  const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ'];
 
   function getSubtotal() {
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -916,7 +901,7 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = appliedDiscountCode === 'AJ' || discSub >= 30;
+      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 30;
       deliveryPrice = freeDelivery ? 0 : 3;
       document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
       const nudge = document.getElementById('delivery-nudge');
@@ -938,22 +923,35 @@
   function applyDiscount() {
     const code = document.getElementById('discount-input').value.trim().toUpperCase();
     const msg = document.getElementById('discount-msg');
-    const pct = DISCOUNT_CODES[code];
-    if (pct !== undefined) {
+    if (FREE_DELIVERY_CODES.includes(code) && DISCOUNT_CODES[code] === undefined) {
       discountApplied = true;
-      appliedDiscountPct = pct;
+      appliedDiscountPct = 0;
       appliedDiscountCode = code;
-      document.getElementById('discount-code-hidden').value = code + ' (' + Math.round(pct * 100) + '% off)';
-      msg.textContent = 'Discount applied - ' + Math.round(pct * 100) + '% off.';
+      document.getElementById('discount-code-hidden').value = code + ' (free delivery)';
+      msg.textContent = 'Free delivery applied — Summer Heatwave offer.';
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
-      discountApplied = false;
-      appliedDiscountPct = 0;
-      appliedDiscountCode = '';
-      msg.textContent = 'Invalid code. Please check it and try again.';
-      msg.className = 'discount-msg error';
-      updateTotals();
+      const pct = DISCOUNT_CODES[code];
+      if (pct !== undefined) {
+        discountApplied = true;
+        appliedDiscountPct = pct;
+        appliedDiscountCode = code;
+        const label = FREE_DELIVERY_CODES.includes(code)
+          ? Math.round(pct * 100) + '% off + free delivery'
+          : Math.round(pct * 100) + '% off';
+        document.getElementById('discount-code-hidden').value = code + ' (' + label + ')';
+        msg.textContent = 'Discount applied — ' + label + '.';
+        msg.className = 'discount-msg success';
+        updateTotals();
+      } else {
+        discountApplied = false;
+        appliedDiscountPct = 0;
+        appliedDiscountCode = '';
+        msg.textContent = 'Invalid code. Please check it and try again.';
+        msg.className = 'discount-msg error';
+        updateTotals();
+      }
     }
   }
 
