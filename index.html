@@ -1,634 +1,1491 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout — North Peptides UK</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body { background: var(--black); }
-
-    .checkout-page {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 24px 20px 80px;
+  <title>Buy Research Peptides UK | Retatrutide, Tirzepatide, BPC-157 | North Peptides UK</title>
+  <meta name="description" content="Buy research peptides UK — Retatrutide, Tirzepatide, BPC-157, TB-500, KLOW Stack, Ipamorelin, CJC-1295, GHK-Cu and KPV. UK stocked, fast dispatch, 99%+ purity.">
+  <link rel="canonical" href="https://northpeptidesuk.com/">
+  <meta property="og:title" content="Buy Research Peptides UK | North Peptides UK">
+  <meta property="og:description" content="Premium research peptides UK — Retatrutide, Tirzepatide, BPC-157, TB-500 and more. UK stocked, fast dispatch, 99%+ purity.">
+  <meta property="og:url" content="https://northpeptidesuk.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "North Peptides UK",
+    "url": "https://northpeptidesuk.com",
+    "description": "Premium research peptides UK. Retatrutide, Tirzepatide, BPC-157, TB-500 and more. UK stocked, fast dispatch.",
+    "areaServed": ["London","Manchester","Birmingham","Leeds","Glasgow","United Kingdom"],
+    "currenciesAccepted": "GBP",
+    "paymentAccepted": "Stripe Checkout, Card",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Research Peptides",
+      "itemListElement": [
+        {"@type":"Offer","priceCurrency":"GBP","price":"41","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 10mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"77","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 20mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"59","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 15mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"108","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 30mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"23.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"BPC-157 10mg","description":"Body Protective Compound. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"49","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"TB-500 10mg","description":"Thymosin Beta-4 fragment. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"60","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KLOW Stack 80mg","description":"GHK-Cu, TB-500, BPC-157, KPV blend. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"24.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Ipamorelin 5mg","description":"Selective GH secretagogue. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"32","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"CJC-1295 No DAC 5mg","description":"Modified GRF 1-29. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"27","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"GHK-Cu 50mg","description":"Copper peptide. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"30","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KPV 10mg","description":"Anti-inflammatory tripeptide. 99%+ purity. UK stocked."}}
+      ]
     }
+  }
+  </script>
+  <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+  <link rel="apple-touch-icon" href="/favicon.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/tiktok-analytics.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    html, body { max-width: 100%; overflow-x: hidden; background: #F7FAF8; color: #1a1a1a; margin: 0; padding: 0; }
+    :root { --soft-neutral: #7C9C8E; --soft-neutral-light: #EDF4EF; }
 
-    .checkout-logo {
+    /* ===== NAV ===== */
+    .shop-nav {
+      background: transparent;
+      border-bottom: none;
+      padding: 0 40px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      gap: 16px;
+    }
+    .shop-nav.scrolled {
+      position: fixed;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid #E2EAE4;
+      transition: background 0.3s;
+    }
+    .shop-nav-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       letter-spacing: 0.08em;
-      color: var(--white);
-      margin-bottom: 24px;
-      display: block;
-      text-decoration: none;
-    }
-
-    .checkout-logo span { color: var(--accent); }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover { color: var(--accent); }
-
-    /* TRUST BAR */
-    .trust-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-bottom: 32px;
-    }
-
-    .trust-item {
-      background: var(--grey);
-      padding: 14px 8px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .trust-icon { font-size: 1.2rem; }
-
-    .trust-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.55rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      line-height: 1.3;
-      text-align: center;
-    }
-
-    /* ORDER SUMMARY */
-    .section-heading {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .order-summary {
-      background: var(--grey);
-      margin-bottom: 24px;
-    }
-
-    .order-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .order-line:last-child { border-bottom: none; }
-
-    .order-line-name {
-      font-size: 0.85rem;
-      color: var(--white);
-    }
-
-    .order-line-dose {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--accent);
-      margin-top: 2px;
-    }
-
-    .order-line-qty {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin: 0 16px;
-    }
-
-    .order-line-price {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--white);
+      color: #16241E;
       white-space: nowrap;
-    }
-
-    .order-empty {
-      padding: 24px 16px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    .order-subtotal {
-      display: flex;
-      justify-content: space-between;
-      padding: 14px 16px;
-      border-top: 1px solid var(--border);
-      background: var(--grey-mid);
-    }
-
-    .order-subtotal span:first-child {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .order-subtotal span:last-child {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    /* DELIVERY OPTIONS */
-    .delivery-options {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-      margin-bottom: 24px;
-    }
-
-    .delivery-option {
-      background: var(--grey);
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .delivery-option:hover { background: var(--grey-mid); }
-    .delivery-option.selected { background: var(--grey-mid); border-left: 2px solid var(--accent); }
-
-    .delivery-option input[type="radio"] {
-      accent-color: var(--accent);
-      width: 16px;
-      height: 16px;
       flex-shrink: 0;
     }
-
-    .delivery-option-info { flex: 1; }
-
-    .delivery-option-name {
-      font-size: 0.85rem;
-      color: var(--white);
-      margin-bottom: 2px;
+    .shop-nav-logo span { color: #00795F; }
+    .shop-nav-cats {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
-
-    .delivery-option-desc {
+    .shop-nav-cats a {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #51625A;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
-
-    .delivery-option-price {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent);
+    .shop-nav-cats a:hover {
+      color: #00795F;
+      border-color: rgba(0,121,95,0.25);
+      background: rgba(0,121,95,0.06);
     }
-
-    /* ORDER TOTAL */
-    .order-total-box {
+    .shop-nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .shop-contact-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #51625A;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .shop-basket-btn {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 16px;
-      background: var(--grey);
-      border-left: 2px solid var(--accent);
-      margin-bottom: 32px;
-    }
-
-    .order-total-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .order-total-amount {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--white);
-    }
-
-    /* FORM */
-    .checkout-form-section {
-      margin-bottom: 32px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .form-group {
-      margin-bottom: 12px;
-    }
-
-    .form-group label {
-      display: block;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      background: var(--grey);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 12px 14px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem;
-      transition: border-color 0.2s;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent-mid);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 70px;
-    }
-
-    .optional-label {
-      color: var(--text-muted);
-      font-size: 0.55rem;
-      margin-left: 4px;
-    }
-
-    /* TESTIMONIALS */
-    .testimonials {
-      margin-bottom: 32px;
-    }
-
-    .testimonial-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-    }
-
-    .testimonial {
-      background: var(--grey);
-      padding: 20px 16px;
-    }
-
-    .testimonial-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 12px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
+      gap: 6px;
+      padding: 8px 14px;
+      background: #00795F;
+      color: #ffffff;
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .stars {
-      color: var(--accent);
-      font-size: 0.75rem;
-      margin-bottom: 8px;
-      letter-spacing: 2px;
-    }
-
-    /* PLACE ORDER BTN */
-    .btn-place-order {
-      width: 100%;
-      padding: 18px;
-      background: var(--accent);
-      color: var(--black);
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
       border: none;
       cursor: pointer;
-      transition: opacity 0.2s;
-      margin-bottom: 12px;
+      border-radius: 20px;
+      transition: background 0.2s;
+      white-space: nowrap;
     }
-
-    .btn-place-order:hover { opacity: 0.9; }
-    .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    .order-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    /* SUCCESS */
-    .success-page {
-      display: none;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .success-check {
-      width: 64px;
-      height: 64px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent);
+    .shop-basket-btn:hover { background: #005F4B; }
+    .shop-basket-count {
+      background: #ffffff;
+      color: #00795F;
+      font-size: 0.55rem;
+      font-weight: 700;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== HERO ===== */
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #FDFEFD 0%, #ECF6F0 100%);
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 40px 60px;
+    }
+    .hero-aurora {
+      position: absolute;
+      inset: -20px;
+      background:
+        radial-gradient(620px 300px at 18% 18%, rgba(0,166,126,0.13), transparent 70%),
+        radial-gradient(720px 360px at 82% 28%, rgba(0,200,150,0.10), transparent 70%),
+        radial-gradient(900px 420px at 50% 105%, rgba(0,166,126,0.09), transparent 72%);
+      filter: blur(12px);
+      opacity: 1;
+    }
+    .hero-aurora::after { content: none; }
+    .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0) 35%, rgba(253,254,253,0.85) 85%); }
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 640px; width: 100%; }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #00795F;
+      border: 1px solid rgba(0,121,95,0.28);
+      padding: 7px 18px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.7);
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 3.35rem);
+      font-weight: 800;
+      color: #12211A;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .hero-title em { font-style: normal; color: #00795F; }
+    .hero-sub {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #49594F;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-cta-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      margin: 0 auto 24px;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      background: #00795F;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid #006B53;
+      box-shadow: 0 12px 26px rgba(0,121,95,0.22);
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-cta-primary:hover {
+      background: #00684F;
+      box-shadow: 0 14px 30px rgba(0,121,95,0.28);
+      transform: translateY(-1px);
     }
 
-    .success-page h2 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px;
+      background: #ffffff;
+      color: #33443B;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #D7E3DA;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .hero-cta-secondary:hover { border-color: #9FC6B6; color: #00795F; background: #F0F8F3; }
+
+    /* GLASS CATEGORY BUTTONS */
+    .hero-cats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid #DCE9E0;
+    }
+    .hero-cats-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8AA094;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 4px;
     }
 
-    .success-page p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 340px;
-      margin: 0 auto 8px;
+    /* Liquid glass pill — pure CSS recreation */
+    .glass-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2C3D34;
+      transition: transform 0.25s ease, color 0.2s;
+      isolation: isolate;
+    }
+    .glass-pill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      box-shadow:
+        inset 0 0 0 1px rgba(18,46,35,0.08),
+        0 2px 10px rgba(18,46,35,0.06);
+      transition: background 0.3s, box-shadow 0.3s;
+      z-index: -1;
+    }
+    .glass-pill:hover {
+      transform: translateY(-2px) scale(1.03);
+      color: #00795F;
+    }
+    .glass-pill:hover::before {
+      background: rgba(0,121,95,0.08);
+      box-shadow:
+        inset 0 0 0 1px rgba(0,121,95,0.3),
+        0 4px 14px rgba(0,121,95,0.14);
+    }
+    .glass-pill:active { transform: scale(0.97); }
+    .glass-pill-icon { font-size: 0.9rem; line-height: 1; }
+
+    /* HERO STATS */
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #12211A; line-height: 1; }
+    .hero-stat-label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7E9284; }
+    .payment-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #2C3D34;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid #D7E3DA;
     }
 
-    @media (max-width: 480px) {
-      .trust-label { font-size: 0.5rem; }
-      .form-row { grid-template-columns: 1fr; }
+    .hero-disclaimer {
+      text-align: center;
+      padding: 10px 40px;
+      background: rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
+    .hero-disclaimer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+
+
+    /* ===== FEATURED ===== */
+    .featured-section { background: #F7FAF8; padding: 48px 40px 32px; }
+    .featured-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .featured-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: #1a1a1a; }
+    .featured-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; }
+    .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    /* Glow border card */
+    .featured-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 0.5s ease both;
+    }
+    .featured-card:nth-child(1) { animation-delay: 0.05s; }
+    .featured-card:nth-child(2) { animation-delay: 0.15s; }
+    .featured-card:nth-child(3) { animation-delay: 0.25s; }
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 15px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(0,166,126,0.6), rgba(0,166,126,0.1) 50%, rgba(0,166,126,0.4));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+    .featured-card:hover::before { opacity: 1; }
+    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,166,126,0.15), 0 4px 16px rgba(0,0,0,0.08); }
+    .featured-card-highlight {
+      border: 1px solid #E2EAE4;
+    }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .featured-card-img {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+      background: #F3F4F6;
+    }
+    .featured-card-img-link { display: block; color: inherit; text-decoration: none; }
+    .featured-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .featured-card-img:hover img { transform: scale(1.05); }
+    .featured-card-img-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .featured-card-img:hover .featured-card-img-overlay { background: rgba(0,0,0,0.12); }
+    .feat-info-icon {
+      background: #ffffff; color: #1a1a1a; min-width: 42px; height: 34px; padding: 0 10px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; opacity: 0; transition: opacity 0.2s;
+      font-family: 'Syne', sans-serif;
+    }
+    .featured-card-img:hover .feat-info-icon { opacity: 1; }
+
+    /* ALL badges same green */
+    .feat-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: #00795F; color: #ffffff;
+      font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px; font-weight: 600;
+      animation: pulse-badge 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-badge { 0%,100% { box-shadow: 0 0 0 0 rgba(0,166,126,0.5); } 50% { box-shadow: 0 0 0 5px rgba(0,166,126,0); } }
+
+    .feat-savings {
+      position: absolute; top: 12px; right: 12px;
+      background: #FEF3C7; color: #D97706;
+      border: 1px solid #FDE68A;
+      font-family: 'DM Mono', monospace; font-size: 0.52rem; padding: 3px 7px; border-radius: 4px;
+    }
+    .featured-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; position: relative; z-index: 1; }
+    .featured-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1a1a1a; }
+    .featured-desc { font-size: 0.73rem; color: #6B7280; line-height: 1.5; }
+    .featured-select {
+      width: 100%; background: #F7FAF8; border: 1px solid #E2EAE4; color: #1a1a1a;
+      padding: 8px 28px 8px 10px; font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300A67E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center; border-radius: 6px;
+    }
+    .featured-select:focus { outline: none; border-color: #00795F; }
+    .featured-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; }
+    .featured-price { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800; color: #1a1a1a; }
+    .featured-add-btn {
+      padding: 10px 16px; background: #1a1a1a; color: #ffffff;
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer;
+      border-radius: 6px; transition: background 0.2s, transform 0.1s; white-space: nowrap;
+    }
+    .featured-add-btn:hover { background: #00795F; }
+    .featured-add-btn:active { transform: scale(0.97); }
+    .featured-card-highlight .featured-add-btn { background: #1a1a1a; }
+    .featured-card-highlight .featured-add-btn:hover { background: #00795F; }
+    .payment-note {
+      display: block;
+      margin-top: 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #6B7280;
+      white-space: nowrap;
+    }
+
+    /* ===== CATEGORY NAV ===== */
+    .cat-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #E2EAE4;
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    .cat-nav-inner { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-pill-nav {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid #E2EAE4; background: #F7FAF8;
+      color: #6B7280; font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cat-pill-nav:hover { border-color: #00795F; color: #00795F; background: #f0fdf9; }
+    .cat-pill-nav.active { background: #00795F; color: #ffffff; border-color: #00795F; }
+
+    /* ===== PRODUCTS ===== */
+    .shop-section { padding: 36px 40px 56px; background: #F7FAF8; }
+    .shop-section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+    .shop-section-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a1a1a; }
+    .shop-section-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: #00795F; }
+
+    .acc-section { margin-bottom: 2px; }
+    .acc-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0 12px; border-bottom: 2px solid #E2EAE4;
+      cursor: pointer; user-select: none;
+    }
+    .acc-title { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1a1a1a; font-weight: 600; }
+    .acc-count { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #9CA3AF; }
+    .acc-chevron { color: #00795F; font-size: 0.85rem; transition: transform 0.3s; flex-shrink: 0; }
+    .acc-section.open .acc-chevron { transform: rotate(180deg); }
+    .acc-body { overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; max-height: 2000px; opacity: 1; }
+    .acc-section.closed .acc-body { max-height: 0; opacity: 0; }
+    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; padding: 18px 0; }
+
+    .shop-card { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-height: 398px; transition: box-shadow 0.2s, transform 0.2s; }
+    .shop-card:hover { box-shadow: 0 10px 26px rgba(18,46,35,0.08); transform: translateY(-1px); }
+    .shop-card-img { position: relative; background: #F3F4F6; aspect-ratio: 4 / 3; cursor: pointer; overflow: hidden; }
+    .shop-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .shop-card-img:hover img { transform: scale(1.03); }
+    .shop-card-img-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .shop-card-img:hover .shop-card-img-overlay { background: rgba(0,0,0,0.12); }
+    .shop-card-info-icon { background: #fff; color: #1a1a1a; min-height: 30px; padding: 0 10px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0; transition: opacity 0.2s; font-family: 'DM Mono', monospace; }
+    .shop-card-img:hover .shop-card-info-icon { opacity: 1; }
+    .shop-badge { position: absolute; top: 8px; right: 8px; font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; white-space: nowrap; }
+    .badge-out { background: #F3F4F6; color: #9CA3AF; border: 1px solid #E2EAE4; }
+    .badge-bestseller { background: #EFF8F4; color: #00614C; border: 1px solid #B8DCCF; }
+    .badge-trending { background: #EFF8F4; color: #00614C; border: 1px solid #B8DCCF; }
+    .shop-card-body { padding: 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .shop-card-name { font-family: 'Syne', sans-serif; font-size: 0.98rem; font-weight: 800; color: #1a1a1a; line-height: 1.2; text-decoration: none; }
+    .shop-card-name:hover { color: #00795F; }
+    .shop-card-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; letter-spacing: 0.05em; }
+    .shop-card-select { width: 100%; background: #F7FAF8; border: 1px solid #D8E3DB; color: #1a1a1a; padding: 9px 30px 9px 10px; font-family: 'DM Mono', monospace; font-size: 0.7rem; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300795F' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; border-radius: 6px; }
+    .shop-card-select:focus { outline: none; border-color: var(--soft-neutral); }
+    .shop-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: auto; }
+    .shop-card-price { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #1a1a1a; }
+    .shop-card-price-muted { color: #9CA3AF; font-size: 0.85rem; }
+    .shop-card-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .shop-buy-row { display: flex; align-items: center; gap: 6px; }
+    .shop-add-btn { padding: 8px 12px; background: #00795F; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 6px; transition: background 0.2s; white-space: nowrap; }
+    .shop-add-btn:hover { background: #005F4B; }
+    .shop-waitlist-btn { display: block; width: 100%; padding: 8px; background: transparent; color: #9CA3AF; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #E2EAE4; cursor: pointer; border-radius: 4px; text-align: center; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .shop-waitlist-btn:hover { border-color: #00795F; color: #00795F; }
+    .supply-card { min-height: 340px; border-color: #D8E2DC; background: #FCFDFC; }
+    .supply-card .shop-card-img { aspect-ratio: 16 / 10; background: #F0F4F1; }
+    .supply-card .shop-card-body { gap: 8px; }
+    .supply-card .shop-card-name { font-size: 0.92rem; }
+    .supply-label { align-self: flex-start; color: #536359; background: #EEF3EF; border: 1px solid #D9E4DC; border-radius: 4px; padding: 3px 6px; font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .supply-card-note { color: #5E6D63; font-size: 0.72rem; line-height: 1.45; }
+    .supply-card .shop-card-footer { border-top: 1px solid #E7ECE8; padding-top: 10px; }
+
+    /* ===== REVIEWS (moved below products) ===== */
+    .reviews-section {
+      background: #ffffff;
+      border-top: 1px solid #E2EAE4;
+      padding: 48px 40px;
+    }
+    .reviews-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .reviews-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; }
+    .reviews-stars { color: #00795F; letter-spacing: 2px; font-size: 1rem; }
+    .reviews-score { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E2EAE4; }
+    .review-card { background: #F7FAF8; padding: 22px; }
+    .review-stars { color: #00795F; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px; }
+    .review-text { font-size: 0.8rem; color: #6B7280; line-height: 1.75; font-style: italic; margin-bottom: 10px; }
+    .review-author { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: #00795F; }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed; bottom: 80px; right: 20px; z-index: 500;
+      background: #ffffff; color: #16241E;
+      padding: 11px 16px; border-radius: 8px; border: 1px solid #E2EAE4; border-left: 3px solid #00795F;
+      font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em;
+      box-shadow: 0 10px 28px rgba(18,46,35,0.14);
+      transform: translateX(130%); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-width: 260px;
+    }
+    .toast.show { transform: translateX(0); }
+    .toast-name { color: #00795F; font-weight: 600; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: #ffffff; border-radius: 14px; max-width: 420px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .modal-img-wrap { position: relative; }
+    .modal-img { width: 100%; height: 220px; object-fit: cover; background: #F3F4F6; }
+    .modal-close-x { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; z-index: 10; }
+    .modal-body { padding: 22px; }
+    .modal-name { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+    .modal-dose { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #00795F; letter-spacing: 0.05em; margin-bottom: 14px; }
+    .modal-points { list-style: none; margin-bottom: 16px; }
+    .modal-points li { font-size: 0.83rem; color: #374151; padding: 7px 0; border-bottom: 1px solid #F3F4F6; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+    .modal-points li::before { content: '✓'; color: #00795F; font-weight: 700; flex-shrink: 0; }
+    .modal-points li:last-child { border-bottom: none; }
+    .modal-disclaimer { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #9CA3AF; line-height: 1.6; margin-bottom: 14px; padding: 8px; background: #F7FAF8; border-radius: 4px; }
+    .modal-actions { display: flex; gap: 8px; }
+    .modal-close { flex: 1; padding: 11px; background: #F3F4F6; color: #6B7280; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+    .modal-close:hover { background: #E2EAE4; }
+    .modal-add-btn { flex: 2; padding: 11px; background: #00795F; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+    .modal-add-btn:hover { background: #005F4B; }
+
+    /* ===== STICKY BASKET ===== */
+    .sticky-basket { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; background: rgba(255,255,255,0.97); border-top: 1px solid #E2EAE4; padding: 12px 24px; display: none; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 -8px 24px rgba(18,46,35,0.10); }
+    .sticky-basket.visible { display: flex; }
+    .sticky-basket-info { display: flex; flex-direction: column; gap: 2px; }
+    .sticky-basket-count { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: #76897D; }
+    .sticky-basket-total { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800; color: #16241E; }
+    .sticky-basket-btn { padding: 11px 22px; background: #00795F; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 4px; flex-shrink: 0; transition: opacity 0.2s; }
+    .sticky-basket-btn:hover { opacity: 0.88; }
+
+    /* ===== BASKET DRAWER ===== */
+    .basket-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .basket-overlay.active { opacity: 1; pointer-events: all; }
+    .basket-drawer { position: fixed; top: 0; right: -420px; width: 420px; max-width: 100vw; height: 100vh; background: #ffffff; z-index: 201; display: flex; flex-direction: column; transition: right 0.3s ease; border-left: 1px solid #E2EAE4; }
+    .basket-drawer.active { right: 0; }
+    .basket-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid #E2EAE4; }
+    .basket-header h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #1a1a1a; }
+    .basket-close { background: none; border: none; color: #9CA3AF; cursor: pointer; font-size: 1.1rem; }
+    .basket-close:hover { color: #1a1a1a; }
+    .basket-items { flex: 1; overflow-y: auto; padding: 14px 22px; }
+    .basket-empty { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: #9CA3AF; text-align: center; margin-top: 40px; }
+    .basket-item { display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid #F3F4F6; }
+    .basket-item-info { flex: 1; }
+    .basket-item-name { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600; color: #1a1a1a; }
+    .basket-item-dose { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #00795F; }
+    .basket-item-controls { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #1a1a1a; }
+    .basket-item-controls button { background: #F3F4F6; border: 1px solid #E2EAE4; color: #1a1a1a; width: 22px; height: 22px; cursor: pointer; border-radius: 4px; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
+    .basket-item-price { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: #1a1a1a; min-width: 38px; text-align: right; }
+    .basket-item-remove { background: none; border: none; color: #D1D5DB; cursor: pointer; font-size: 0.72rem; }
+    .basket-item-remove:hover { color: #EF4444; }
+    .basket-footer { padding: 18px 22px; border-top: 1px solid #E2EAE4; }
+    .basket-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .basket-total-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
+    .basket-total-amount { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #1a1a1a; }
+    .btn-checkout { width: 100%; padding: 13px; background: #00795F; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+    .btn-checkout:hover { background: #005F4B; }
+
+    /* ===== REST ===== */
+    .help-light { background: #ffffff; border-top: 1px solid #E2EAE4; padding: 60px 40px; }
+    .help-light-inner { max-width: 600px; }
+    .help-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
+    .help-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 16px; }
+    .help-light-title em { font-style: normal; color: #00795F; }
+    .help-light-body { font-size: 0.86rem; color: #6B7280; line-height: 1.8; margin-bottom: 14px; max-width: 500px; }
+    .help-light-note { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: #6B7280; border-left: 2px solid #E2EAE4; padding-left: 12px; line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
+    .help-light-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #00795F; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 6px; transition: background 0.2s; }
+    .help-light-btn:hover { background: #005F4B; }
+    .faq-light { background: #ffffff; border-top: 1px solid #E2EAE4; padding: 56px 40px; }
+    .faq-light-inner { max-width: 760px; }
+    .faq-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft-neutral); margin-bottom: 12px; }
+    .faq-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 22px; }
+    .faq-light-list { border: 1px solid #E2EAE4; border-radius: 8px; overflow: hidden; background: #ffffff; }
+    .faq-item { border-bottom: 1px solid #F3F4F6; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary { list-style: none; cursor: pointer; padding: 18px 20px; font-size: 0.9rem; font-weight: 650; color: #1a1a1a; display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-family: 'DM Mono', monospace; color: var(--soft-neutral); font-size: 1rem; transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding: 0 20px 18px; font-size: 0.82rem; color: #6B7280; line-height: 1.75; max-width: 640px; }
+    .faq-item a { color: #1a1a1a; font-weight: 700; text-decoration: underline; text-decoration-color: var(--soft-neutral); text-underline-offset: 3px; }
+    .faq-route { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft-neutral); }
+    .about-light { background: #F7FAF8; padding: 60px 40px; border-top: 1px solid #E2EAE4; }
+    .about-light-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
+    .about-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
+    .about-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 24px; }
+    .about-light-title em { font-style: normal; color: #00795F; }
+    .about-light-text p { font-size: 0.86rem; color: #6B7280; line-height: 1.85; margin-bottom: 14px; max-width: 520px; }
+    .about-light-sig { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2EAE4; display: flex; flex-direction: column; gap: 4px; }
+    .about-light-sig-name { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; color: #1a1a1a; }
+    .about-light-sig-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00795F; }
+    .about-light-stats { display: flex; flex-direction: column; gap: 1px; background: #E2EAE4; position: sticky; top: 80px; }
+    .about-light-stat { background: #ffffff; padding: 22px 26px; display: flex; flex-direction: column; gap: 5px; }
+    .about-light-stat-num { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; color: #00795F; line-height: 1; }
+    .about-light-stat-label { font-size: 0.76rem; color: #6B7280; line-height: 1.4; }
+    .how-light { background: #ffffff; padding: 60px 40px; border-top: 1px solid #E2EAE4; }
+    .how-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
+    .how-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; margin-bottom: 36px; }
+    .how-light-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .how-light-step { background: #F7FAF8; padding: 26px; border-radius: 8px; border: 1px solid #E2EAE4; }
+    .how-light-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: rgba(0,166,126,0.12); line-height: 1; margin-bottom: 10px; }
+    .how-light-step h3 { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; color: #1a1a1a; margin-bottom: 7px; }
+    .how-light-step p { font-size: 0.8rem; color: #6B7280; line-height: 1.6; }
+    .disclaimer-light { background: #F7FAF8; padding: 34px 40px; border-top: 1px solid #E2EAE4; }
+    .disclaimer-light-box { max-width: 920px; margin: 0 auto; padding: 22px 24px; background: #ffffff; border: 1px solid #DCE6DF; border-radius: 10px; box-shadow: 0 8px 24px rgba(18,46,35,0.05); }
+    .disclaimer-light-box h3 { font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #1a1a1a; margin-bottom: 9px; }
+    .disclaimer-light-box p { font-size: 0.76rem; color: #4B5563; line-height: 1.75; }
+    .footer-light { background: #F0F5F2; color: #3D4F46; padding: 48px 40px 32px; border-top: 1px solid #DEE8E1; }
+    .footer-light-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-light-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; margin-bottom: 10px; color: #16241E; }
+    .footer-light-logo span { color: #00795F; }
+    .footer-light-desc { font-size: 0.8rem; color: #5C6B63; line-height: 1.7; }
+    .footer-light-meta { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7B8C82; }
+    .footer-light-col h4 { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8AA095; margin-bottom: 14px; }
+    .footer-light-col ul { list-style: none; }
+    .footer-light-col ul li { margin-bottom: 8px; }
+    .footer-light-col ul li a { font-size: 0.8rem; color: #5C6B63; text-decoration: none; transition: color 0.2s; }
+    .footer-light-col ul li a:hover { color: #00795F; }
+    .footer-light-bottom { border-top: 1px solid #DCE6DF; padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-light-bottom p { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; color: #7B8C82; }
+    .footer-disclaimer-text { font-family: 'DM Mono', monospace; font-size: 0.53rem; color: #8AA095; text-align: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid #DCE6DF; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .shop-nav { padding: 0 16px; }
+      .shop-nav-cats { display: none; }
+      .shop-contact-btn { display: none; }
+      #basket-btn-label { display: none; }
+      .shop-basket-btn { padding: 8px 11px; gap: 4px; }
+      .hero-banner { padding: 80px 20px 44px; min-height: 100svh; min-height: 100vh; width: 100%; }
+      .hero-aurora { inset: 0; filter: blur(30px); }
+      .hero-content { max-width: 100%; }
+      .hero-title { font-size: clamp(1.9rem, 8vw, 3rem); }
+      .hero-cats { gap: 7px; }
+      .glass-pill { padding: 8px 15px; font-size: 0.62rem; }
+      .hero-stats { gap: 16px; margin-top: 24px; }
+      .hero-disclaimer { padding: 9px 16px; }
+      .featured-section { padding: 24px 16px 20px; }
+      .featured-grid { grid-template-columns: 1fr; gap: 12px; }
+      .cat-nav { padding: 8px 16px; top: 53px; }
+      .shop-section { padding: 16px 14px 24px; }
+      .shop-section-header { margin-bottom: 12px; gap: 8px; flex-wrap: wrap; }
+      .acc-header { padding: 13px 0 10px; }
+      .acc-grid { grid-template-columns: 1fr; gap: 10px; padding: 10px 0; }
+      .shop-card { display: grid; grid-template-columns: 116px minmax(0, 1fr); min-height: auto; border-radius: 10px; }
+      .shop-card-img { aspect-ratio: auto; min-height: 136px; height: 100%; }
+      .shop-card-img img { object-fit: cover; }
+      .shop-badge { font-size: 0.42rem; letter-spacing: 0.03em; padding: 3px 5px; top: 6px; right: 6px; }
+      .shop-card-body { min-width: 0; padding: 10px; gap: 6px; }
+      .shop-card-name { font-size: 0.92rem; line-height: 1.15; }
+      .shop-card-dose { font-size: 0.56rem; }
+      .shop-card-select { padding: 8px 28px 8px 9px; font-size: 16px; min-height: 38px; }
+      .shop-card-footer { align-items: flex-end; gap: 8px; }
+      .shop-card-price { font-size: 0.98rem; }
+      .shop-card-actions { align-items: flex-end; }
+      .shop-buy-row { gap: 5px; }
+      .qty-btn { width: 30px; height: 40px; }
+      .qty-value { width: 28px; }
+      .shop-add-btn { min-height: 42px; padding: 8px 10px; font-size: 0.56rem; }
+      .reviews-section { padding: 32px 16px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .help-light { padding: 32px 16px; }
+      .faq-light { padding: 32px 16px; }
+      .faq-item summary { padding: 16px; font-size: 0.84rem; }
+      .faq-item p { padding: 0 16px 16px; font-size: 0.78rem; }
+      .about-light { padding: 32px 16px; }
+      .about-light-grid { grid-template-columns: 1fr; gap: 24px; }
+      .about-light-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+      .how-light { padding: 32px 16px; }
+      .disclaimer-light { padding: 20px 16px; }
+      .footer-light { padding: 32px 16px 80px; }
+      .footer-light-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-light-bottom { flex-direction: column; gap: 4px; }
+      .basket-drawer { width: 100vw; }
+      .modal-box { margin: 0; border-radius: 14px 14px 0 0; position: fixed; bottom: 0; left: 0; right: 0; max-width: 100%; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .toast { bottom: 76px; right: 12px; left: 12px; max-width: none; }
+    }
+    @media (max-width: 380px) {
+      .acc-grid { grid-template-columns: 1fr; }
+      .shop-card { grid-template-columns: 96px minmax(0, 1fr); }
+      .shop-card-img { min-height: 128px; }
+      .shop-card-footer { flex-wrap: wrap; }
+      .shop-add-btn { width: 100%; }
+    }
+    /* ===== CARD TRUST MICRO ===== */
+    .card-trust-micro {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #8AA094;
+      line-height: 1;
+    }
+    .ctm-purity { color: #00795F; font-weight: 600; }
+
+    /* ===== TRUST BADGES (reusable) ===== */
+    .tbadge-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0; }
+    .tbadge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 4px;
+      font-family: 'DM Mono', monospace; font-size: 0.5rem;
+      letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    }
+    .tbadge-purity   { background: #ECFAF4; color: #00663F; border: 1px solid #B8E8D0; }
+    .tbadge-batch    { background: #EFF6FF; color: #1E5CB3; border: 1px solid #BFDBFE; }
+    .tbadge-uk       { background: #EFF6FF; color: #1D3A8A; border: 1px solid #C7D7F5; }
+    .tbadge-cold     { background: #EFF8FF; color: #1570B8; border: 1px solid #B6E3FF; }
+    .tbadge-lab      { background: #ECFDF5; color: #007B52; border: 1px solid #A7E8CB; }
+    .tbadge-research { background: #FFFBEB; color: #A16207; border: 1px solid #FDE68A; }
+
+
+    /* SALE PRICING */
+    .price-was {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: #9CA3AF;
+      text-decoration: line-through;
+      letter-spacing: 0.04em;
+    }
+    .price-sale {
+      color: #00795F;
+    }
+    .sale-badge {
+      display: inline-block;
+      background: #00795F;
+      color: #ffffff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .featured-price-wrap { display: flex; flex-direction: column; gap: 2px; }
+    .featured-price-was { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #9CA3AF; text-decoration: line-through; }
+
   </style>
 </head>
 <body>
 
-<div class="checkout-page" id="main-checkout">
+  <!-- DISPATCH BANNER -->
+  <div style="background:#00795F;color:#ffffff;text-align:center;padding:9px 16px;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;">⚡ Next-day UK dispatch on in-stock vials &middot; Order before 1:00 PM &middot; Royal Mail Tracked 24 &amp; Special Delivery available</div>
 
-  <!-- LOGO -->
-  <a href=""https://northpeptidesuk.com" class="checkout-logo">NORTH<span>PEPTIDES</span>UK</a>
-  <a href=""https://northpeptidesuk.com" class="back-link">← Continue Shopping</a>
+  <!-- TOAST -->
 
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-item">
-      <span class="trust-icon">🔒</span>
-      <span class="trust-label">Secure Order</span>
+  <div class="toast" id="toast">Added: <span class="toast-name" id="toast-name"></span></div>
+
+  <!-- BASKET OVERLAY -->
+  <div class="basket-overlay" id="basket-overlay" onclick="hideBasket()"></div>
+
+  <!-- BASKET DRAWER -->
+  <div class="basket-drawer" id="basket-drawer">
+    <div class="basket-header">
+      <h3>Your Basket</h3>
+      <button class="basket-close" onclick="hideBasket()">✕</button>
     </div>
-    <div class="trust-item">
-      <span class="trust-icon">🇬🇧</span>
-      <span class="trust-label">UK Dispatched</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-icon">₿</span>
-      <span class="trust-label">Crypto Accepted</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-icon">📦</span>
-      <span class="trust-label">Tracked Shipping</span>
-    </div>
-  </div>
-
-  <!-- ORDER SUMMARY -->
-  <p class="section-heading">// Your Order</p>
-  <div class="order-summary">
-    <div id="checkout-lines">
-      <p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>
-    </div>
-    <div class="order-subtotal">
-      <span>Subtotal</span>
-      <span id="subtotal">£0</span>
-    </div>
-  </div>
-
-  <!-- DELIVERY -->
-  <p class="section-heading">// Delivery</p>
-  <div class="delivery-options">
-    <label class="delivery-option selected" id="label-standard">
-      <input type="radio" name="delivery" value="standard" data-price="4.95" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
-      <div class="delivery-option-info">
-        <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1 to 2 working days</div>
-      </div>
-      <div class="delivery-option-price">£4.95</div>
-    </label>
-    <label class="delivery-option" id="label-express">
-      <input type="radio" name="delivery" value="express" data-price="9.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
-      <div class="delivery-option-info">
-        <div class="delivery-option-name">Royal Mail Special Delivery</div>
-        <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
-      </div>
-      <div class="delivery-option-price">£9.95</div>
-    </label>
-  </div>
-
-  <!-- TOTAL -->
-  <div class="order-total-box">
-    <span class="order-total-label">Total inc. delivery</span>
-    <span class="order-total-amount" id="grand-total">£0</span>
-  </div>
-
-  <!-- CONTACT FORM -->
-  <p class="section-heading">// Your Details</p>
-  <div class="checkout-form-section">
-    <form id="checkout-form" action="https://formspree.io/f/xpwzgqkj" method="POST">
-      <input type="hidden" name="order_summary" id="order-summary-hidden">
-      <input type="hidden" name="delivery_method" id="delivery-method-hidden">
-      <input type="hidden" name="total" id="total-hidden">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" name="name" required placeholder="Your full name">
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" name="email" required placeholder="your@email.com">
-      </div>
-      <div class="form-group">
-        <label>Address Line 1</label>
-        <input type="text" name="address1" required placeholder="House number and street">
-      </div>
-      <div class="form-group">
-        <label>Address Line 2 <span class="optional-label">(optional)</span></label>
-        <input type="text" name="address2" placeholder="Flat, apartment, unit">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Town / City</label>
-          <input type="text" name="city" required placeholder="Town or city">
+    <div id="basket-view">
+      <div class="basket-items" id="basket-items"><p class="basket-empty">Your basket is empty.</p></div>
+      <div class="basket-footer">
+        <div class="basket-total-row">
+          <span class="basket-total-label">Total</span>
+          <span class="basket-total-amount" id="basket-total">£0</span>
         </div>
-        <div class="form-group">
-          <label>Postcode</label>
-          <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
+        <button class="btn-checkout" onclick="goToCheckout()">Proceed to Checkout →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY BASKET -->
+  <div class="sticky-basket" id="sticky-basket">
+    <div class="sticky-basket-info">
+      <span class="sticky-basket-count" id="sticky-count">0 items</span>
+      <span class="sticky-basket-total" id="sticky-total">£0</span>
+    </div>
+    <button class="sticky-basket-btn" onclick="goToCheckout()">Checkout →</button>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box">
+      <div class="modal-img-wrap">
+        <img src="" alt="" class="modal-img" id="modal-img">
+        <button class="modal-close-x" onclick="closeModalBtn()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-dose" id="modal-dose"></div>
+        <ul class="modal-points" id="modal-points"></ul>
+        <div class="modal-disclaimer">For research purposes only. Not for human consumption.</div>
+        <div class="modal-actions">
+          <button class="modal-close" onclick="closeModalBtn()">← Back</button>
+          <button class="modal-add-btn" id="modal-add-btn" onclick="addModalToBasket()">Add to Basket</button>
         </div>
       </div>
-      <div class="form-group">
-        <label>County <span class="optional-label">(optional)</span></label>
-        <input type="text" name="county" placeholder="County">
-      </div>
-      <div class="form-group">
-        <label>Notes <span class="optional-label">(optional)</span></label>
-        <textarea name="notes" placeholder="Any notes for your order"></textarea>
-      </div>
+    </div>
+  </div>
 
-      <!-- TESTIMONIALS -->
-      <div class="testimonials" style="margin-top:32px;">
-        <p class="section-heading">// What Researchers Say</p>
-        <div class="testimonial-grid">
-          <div class="testimonial">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">The bloke behind this is genuinely one of a kind. So knowledgeable, so patient. I had loads of questions as a first timer and he answered every single one without making me feel stupid. My research results have been incredible. Cannot recommend enough.</p>
-            <span class="testimonial-author">James R — Manchester</span>
+  <!-- NAV: Logo left, category pills middle, basket right -->
+  <nav class="shop-nav">
+    <div class="shop-nav-logo">NORTH<span>PEPTIDES</span>UK</div>
+    <ul class="shop-nav-cats">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#how-to-order">Order</a></li>
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="lab-reports.html">Documentation</a></li>
+    </ul>
+    <div class="shop-nav-right">
+      <button class="shop-basket-btn" onclick="showBasket()" id="nav-basket-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span id="basket-btn-label">Basket</span>
+        <span class="shop-basket-count" id="basket-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-banner">
+    <div class="hero-aurora"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">North Peptides UK</span>
+      <h1 class="hero-title">
+        Purity Stated.<br>
+        UK Stocked.<br>
+        <em>Research Use Only.</em>
+      </h1>
+      <p class="hero-sub">Lyophilised research peptides with purity stated on every product. UK stocked, frozen until dispatch, with direct support before you order.</p>
+      <div class="hero-cta-row">
+        <a href="#products" class="hero-cta-primary">Shop Now →</a>
+        <a href="why-us.html" class="hero-cta-secondary">Why North Peptides →</a>
+      </div>
+      <!-- GLASS JUMP BUTTONS -->
+      <div class="hero-cats">
+        <span class="hero-cats-label">Jump to</span>
+        <a href="#products" class="glass-pill" onclick="scrollToSection('products')">
+          Products
+        </a>
+        <a href="#how-to-order" class="glass-pill" onclick="scrollToSection('how-to-order')">
+          <span class="glass-pill-icon">→</span> Order
+        </a>
+        <a href="#disclaimer" class="glass-pill" onclick="scrollToSection('disclaimer')">
+          <span class="glass-pill-icon">i</span> Research
+        </a>
+        <a href="#faq" class="glass-pill" onclick="scrollToSection('faq')">
+          <span class="glass-pill-icon">?</span> FAQ
+        </a>
+      </div>
+      <!-- STATS -->
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">99%+</span><span class="hero-stat-label">Purity Stated</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">UK</span><span class="hero-stat-label">Stocked</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">Frozen</span><span class="hero-stat-label">Until Dispatch</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">24h</span><span class="hero-stat-label">Dispatch</span></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- PRODUCTS -->
+  <section class="shop-section" id="products">
+    <div class="shop-section-header">
+      <h2 class="shop-section-title">Research Catalogue</h2>
+      <span class="shop-section-tag">15 stocked products</span>
+    </div>
+
+    <h3 class="category-heading-light">Research Compounds</h3>
+    <div class="acc-grid">
+        <div class="shop-card" id="product-retatrutide">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=retatrutide'">
+            <img src="hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg" alt="Retatrutide" id="reta-img">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+            <span class="shop-badge badge-bestseller">Best Seller</span>
           </div>
-          <div class="testimonial">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">I was nervous about ordering from a smaller supplier but honestly the experience was better than any of the big sites. Arrived fast, packaged well and the communication throughout was brilliant. Feels like a proper community not just a shop.</p>
-            <span class="testimonial-author">Sarah M — London</span>
-          </div>
-          <div class="testimonial">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">Six months into my research journey and I genuinely cannot believe where I am now. The support I got from this guy alongside my orders made all the difference. He clearly uses this stuff himself and that shows. Will not go anywhere else.</p>
-            <span class="testimonial-author">Mike T — Leeds</span>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=retatrutide">Retatrutide</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
+              <option value="45|10mg">1x10mg — £45</option>
+              <option value="65|15mg">1x15mg — £65</option>
+              <option value="85|20mg">1x20mg — £85</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="reta-p">£45</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('reta-sel','Retatrutide')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <button type="submit" class="btn-place-order" id="submit-btn">Place Order →</button>
-      <p class="order-note">No payment required now. We will email you within 24 hours with crypto payment details to complete your order. BTC · ETH · LTC · USDT accepted.</p>
-    </form>
-  </div>
-</div>
-
-<!-- SUCCESS -->
-<div class="checkout-page success-page" id="success-page">
-  <div class="success-check">✓</div>
-  <h2>Order Received</h2>
-  <p>We will email you within 24 hours with your crypto payment details to complete the order.</p>
-  <p style="margin-top:8px;">Any questions — message us on Telegram: <strong style="color:var(--accent)">@NORTHPEPTIDESUK</strong></p>
-  <a href="index.html" style="display:inline-block;margin-top:32px;color:var(--accent);font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
-</div>
-
-<script>
-  let basketData = [];
-  let deliveryPrice = 4.95;
-  let deliveryLabel = 'Royal Mail Tracked 24';
-
-  function getSubtotal() {
-    return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  }
-
-  function updateTotals() {
-    const subtotal = getSubtotal();
-    const grand = subtotal + deliveryPrice;
-    document.getElementById('subtotal').textContent = '£' + subtotal;
-    document.getElementById('grand-total').textContent = '£' + grand.toFixed(2).replace('.00', '');
-    document.getElementById('total-hidden').value = '£' + grand.toFixed(2);
-  }
-
-  function updateDelivery(radio) {
-    deliveryPrice = parseFloat(radio.dataset.price);
-    deliveryLabel = radio.dataset.label;
-    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
-
-    document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
-    radio.closest('.delivery-option').classList.add('selected');
-    updateTotals();
-  }
-
-  function renderOrder() {
-    const container = document.getElementById('checkout-lines');
-    if (basketData.length === 0) {
-      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:var(--accent)">Go back to shop →</a></p>';
-      return;
-    }
-
-    container.innerHTML = basketData.map(item => `
-      <div class="order-line">
-        <div>
-          <div class="order-line-name">${item.name}</div>
-          <div class="order-line-dose">${item.dose}</div>
+        <div class="shop-card" id="product-tirzepatide">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=tirzepatide'">
+            <img src="hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg" alt="Tirzepatide" id="tirz-img">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+            <span class="shop-badge badge-trending">Currently Trending</span>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=tirzepatide">Tirzepatide</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="tirz-sel" onchange="updateRetaTirz('tirz-sel','tirz-p','tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
+              <option value="65|15mg">1x15mg — £65</option>
+              <option value="120|30mg">1x30mg — £120</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="tirz-p">£65</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('tirz-sel','Tirzepatide')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
         </div>
-        <span class="order-line-qty">x${item.qty}</span>
-        <span class="order-line-price">£${item.price * item.qty}</span>
+
+        <div class="shop-card" id="product-bpc-157">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=bpc-157'">
+            <img src="hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+            <span class="shop-badge badge-trending">Currently Trending</span>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=bpc-157">BPC-157</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
+              <option value="23.99|10mg">1x10mg — £23.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="bpc-p">£23.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-tb-500">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=tb-500'">
+            <img src="hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg" alt="TB-500">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=tb-500">TB-500</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
+              <option value="49|10mg">1x10mg — £49</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="tb-p">£49</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('tb-sel','TB-500')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-ghk-cu">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=ghk-cu'">
+            <img src="hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg" alt="GHK-Cu">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=ghk-cu">GHK-Cu</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
+              <option value="27|50mg">1x50mg — £27</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="ghk-p">£27</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-kpv">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=kpv'">
+            <img src="hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png" alt="KPV">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=kpv">KPV</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
+              <option value="30|10mg">1x10mg — £30</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="kpv-p">£30</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('kpv-sel','KPV')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-klow-stack">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=klow-stack'">
+            <img src="hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg" alt="KLOW Stack">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+            <span class="shop-badge badge-trending">Currently Trending</span>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=klow-stack">KLOW Stack</a>
+            <span class="shop-card-dose">4 compound blend</span>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
+              <option value="60|80mg">1x80mg — £60</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="klow-p">£60</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-ipamorelin">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=ipamorelin'">
+            <img src="hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg" alt="Ipamorelin">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=ipamorelin">Ipamorelin</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
+              <option value="24.99|5mg">1x5mg — £24.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="ipa-p">£24.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card" id="product-cjc-1295">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=cjc-1295'">
+            <img src="hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg" alt="CJC-1295">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=cjc-1295">CJC-1295 (No DAC)</a>
+            <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
+            <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
+              <option value="32|5mg">1x5mg — £32</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="cjc-p">£32</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <h3 class="category-heading-light">Research Supplies</h3>
+    <div class="acc-grid">
+        <div class="shop-card supply-card" id="product-pen-style-research-kit">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=pen-style-research-kit'">
+            <img src="research-pen-kit-style.png" alt="Pen-Style Research Kit">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+            <span class="shop-badge badge-bestseller">Setup Kit</span>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=pen-style-research-kit">Pen-Style Research Kit</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">3ml cartridge, BAC water and 5 disposable pen tips.</div>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="penkit-p">£24.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Pen-Style Research Kit',24.99,'3ml cartridge + BAC water + x5 pen tips')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card supply-card" id="product-pen-tips">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=pen-tips'">
+            <img src="research-pen-tips.jpg" alt="Sterile Disposable Pen Tips">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=pen-tips">Sterile Disposable Pen Tips</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">Disposable tips for compatible pen-style research kits.</div>
+            <select class="shop-card-select" id="pentips-sel" onchange="updateBundlePrice('pentips-sel','pentips-p')">
+              <option value="3.99|6mm x5">5 tips — £3.99</option>
+              <option value="6.99|6mm x10">10 tips — £6.99</option>
+            </select>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="pentips-p">£3.99</span></div></div>
+              <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('pentips-sel','Sterile Disposable Pen Tips')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card supply-card" id="product-bacteriostatic-water">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=bacteriostatic-water'">
+            <img src="research-bac-water.png" alt="Bacteriostatic Water">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=bacteriostatic-water">Bacteriostatic Water</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">10ml sealed vial for laboratory preparation workflows.</div>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="bac-p">£6.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Bacteriostatic Water',6.99,'10ml vial')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card supply-card" id="product-syringe-kit">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=syringe-kit'">
+            <img src="research-insulin-needles.png" alt="Insulin Needle Pack">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=syringe-kit">Insulin Needle Pack</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">10 x 1ml insulin needles in a sealed pack.</div>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="syringe-p">£6.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Insulin Needle Pack',6.99,'10 pack, 1ml insulin needles')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card supply-card" id="product-alcohol-wipes">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=alcohol-wipes'">
+            <img src="research-alcohol-wipes.jpg" alt="Alcohol Wipes">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=alcohol-wipes">Alcohol Wipes</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">10 single-use wipes for research preparation workflows.</div>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="wipes-p">£2.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Alcohol Wipes',2.99,'10 pack')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-card supply-card" id="product-essentials-bundle">
+          <div class="shop-card-img" onclick="window.location.href='product.html?product=essentials-bundle'">
+            <img src="research-essentials-bundle.jpg" alt="Essentials Bundle">
+            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
+          </div>
+          <div class="shop-card-body">
+            <a class="shop-card-name" href="product.html?product=essentials-bundle">Essentials Bundle</a>
+            <span class="supply-label">Research Supply</span>
+            <div class="supply-card-note">BAC water, 10 needles and 10 wipes in one bundle.</div>
+            <div class="shop-card-footer">
+              <div><div><span class="shop-card-price" id="essentials-p">£14.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Essentials Bundle',14.99,'BAC water + insulin needles + wipes')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section class="how-light" id="how-to-order">
+    <p class="how-light-tag">Simple Process</p>
+    <h2 class="how-light-title">How to Order</h2>
+    <div class="how-light-grid">
+      <div class="how-light-step"><div class="how-light-num">01</div><h3>Add to Basket</h3><p>Browse products, select your size and add to basket.</p></div>
+      <div class="how-light-step"><div class="how-light-num">02</div><h3>Review Checkout</h3><p>Enter your delivery address, confirm your basket and choose tracked shipping.</p></div>
+      <div class="how-light-step"><div class="how-light-num">03</div><h3>Pay Securely</h3><p>Continue to Stripe for secure card checkout.</p></div>
+      <div class="how-light-step"><div class="how-light-num">04</div><h3>Dispatched</h3><p>Once payment is confirmed your order is dispatched within 24 to 48 hours.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK SECTION -->
+  <section class="reviews-section">
+    <div class="reviews-header">
+      <span class="reviews-tag">How We Work</span>
+      <span class="reviews-score">Purity stated · Frozen until dispatch · Batch details on request · <a href="why-us.html" style="color:#00795F;text-decoration:none;">Direct support</a></span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-text">Purity is stated clearly on every product. Documentation from our suppliers is available on request — contact support with your product name before or after ordering.</p>
+        <span class="review-author">Purity Stated on Every Product</span>
       </div>
-    `).join('');
+      <div class="review-card">
+        <p class="review-text">All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature. Stored frozen and dispatched promptly once payment is confirmed.</p>
+        <span class="review-author">Frozen Until Dispatch</span>
+      </div>
+      <div class="review-card">
+        <p class="review-text">Products are sourced from established manufacturers. Batch details are available on request for researchers who require documentation before or after ordering.</p>
+        <span class="review-author">Batch Details on Request</span>
+      </div>
+    </div>
+  </section>
 
-    document.getElementById('order-summary-hidden').value = basketData.map(item =>
-      `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
-    ).join('\n');
+  <!-- HELP -->
+  <section class="help-light">
+    <div class="help-light-inner">
+      <p class="help-light-tag">Before Checkout</p>
+      <h2 class="help-light-title">What you need to<br><em>review your basket.</em></h2>
+      <p class="help-light-body">Confirm your product, size, quantity and delivery address. Choose your shipping method, then continue to secure Stripe payment.</p>
+    </div>
+  </section>
 
-    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
-    updateTotals();
-  }
+  <!-- ABOUT -->
+  <section class="about-light" id="about">
+    <p class="about-light-tag">Who We Are</p>
+    <div class="about-light-grid">
+      <div class="about-light-text">
+        <h2 class="about-light-title">Purity stated.<br>UK stocked.<br><em>Research use only.</em></h2>
+        <p>North Peptides UK supplies lyophilised research peptides with purity stated on every product, sourced from established manufacturers and stocked in the UK.</p>
+        <p>All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature before shipping.</p>
+        <p>Batch details and purity documentation are available on request. Contact support directly with your product name for any documentation you need.</p>
+        <p>The ordering process is straightforward by design. Choose your product, review your basket, and complete payment securely through Stripe. Pre-order questions are answered directly.</p>
+        <div class="about-light-sig">
+          <span class="about-light-sig-name">— North Peptides UK</span>
+          <span class="about-light-sig-tag">// Est. 2025 · UK</span>
+        </div>
+      </div>
+      <div class="about-light-stats">
+        <div class="about-light-stat"><span class="about-light-stat-num">99%+</span><span class="about-light-stat-label">Purity stated on every product</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Stocked and dispatched from the UK</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">Batch</span><span class="about-light-stat-label">Details available on request</span></div>
+        <div class="about-light-stat"><span class="about-light-stat-num">Frozen</span><span class="about-light-stat-label">Stored frozen until dispatch</span></div>
+      </div>
+    </div>
+  </section>
 
-  // Load basket from sessionStorage
-  window.addEventListener('load', () => {
-    const saved = sessionStorage.getItem('npuk_basket');
-    if (saved) basketData = JSON.parse(saved);
-    renderOrder();
-  });
+  <!-- DISCLAIMER -->
+  <section class="disclaimer-light" id="disclaimer">
+    <div class="disclaimer-light-box">
+      <h3>Research Use Only</h3>
+      <p>All products listed on North Peptides UK are sold strictly for laboratory and scientific research purposes only. These compounds are not medicines, are not approved for human or animal consumption, and are not intended to diagnose, treat, cure or prevent any medical condition. By purchasing from North Peptides UK you confirm that you are a qualified researcher and that all compounds will be used exclusively in a controlled research environment. North Peptides UK accepts no liability for misuse.</p>
+    </div>
+  </section>
 
-  // Form submit
-  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+  <!-- FOOTER -->
+  <footer class="footer-light">
+    <div class="footer-light-grid">
+      <div>
+        <div class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</div>
+        <p class="footer-light-desc">Research peptides with purity stated on every product. UK stocked and dispatched from the UK. Stored frozen until dispatch, with direct support before you order.</p>
+        <p class="footer-light-meta">Est. 2025 · UK</p>
+      </div>
+      <div class="footer-light-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Retatrutide</a></li>
+          <li><a href="#products">Tirzepatide</a></li>
+          <li><a href="#products">KLOW Stack</a></li>
+          <li><a href="#products">BPC-157</a></li>
+          <li><a href="#products">TB-500</a></li>
+          <li><a href="#products">GHK-Cu</a></li>
+          <li><a href="#products">KPV</a></li>
+          <li><a href="#products">Ipamorelin</a></li>
+          <li><a href="#products">CJC-1295</a></li>
+          <li><a href="#products">Research Supplies</a></li>
+        </ul>
+      </div>
+      <div class="footer-light-col">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="why-us.html">Why North Peptides</a></li>
+          <li><a href="lab-reports.html">Product Documentation</a></li>
+          <li><a href="#how-to-order">How to Order</a></li>
+          <li><a href="compliance.html">Research Use Policy</a></li>
+          <li><a href="mailto:northpeptidesuk@gmail.com">Support</a></li>
+          <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-light-bottom">
+      <p>© 2026 North Peptides UK. All Rights Reserved.</p>
+      <p>Secure Stripe Checkout · Card</p>
+    </div>
+    <p class="footer-disclaimer-text">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
+  </footer>
 
-    try {
-      const res = await fetch(e.target.action, {
-        method: 'POST',
-        body: new FormData(e.target),
-        headers: { 'Accept': 'application/json' }
-      });
+  <script src="basket.js"></script>
+  <script>
 
-      if (res.ok) {
-        document.getElementById('main-checkout').style.display = 'none';
-        document.getElementById('success-page').style.display = 'block';
-        sessionStorage.removeItem('npuk_basket');
+    // NAV scroll behaviour
+    const nav = document.querySelector('.shop-nav');
+    const heroHeight = document.querySelector('.hero-banner').offsetHeight;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('scrolled');
+        nav.style.position = 'fixed';
       } else {
-        btn.textContent = 'Error — please try again';
-        btn.disabled = false;
+        nav.classList.remove('scrolled');
+        nav.style.position = 'absolute';
       }
-    } catch {
-      btn.textContent = 'Error — please try again';
-      btn.disabled = false;
+    }, { passive: true });
+
+    // TOAST
+    let toastTimer;
+    function showToast(name) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-name').textContent = name;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
     }
-  });
-</script>
+
+    // ACCORDION
+    function toggleAcc(header) {
+      const s = header.parentElement;
+      s.classList.toggle('open');
+      s.classList.toggle('closed');
+    }
+
+    // CATEGORY PILLS
+    function setActivePill(el) {
+      document.querySelectorAll('.cat-pill-nav').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Smooth scroll for glass pills
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) { setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'start'}), 10); }
+    }
+    function scrollToProduct(id) {
+      const el = document.getElementById(id);
+      if (el) { setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'center'}), 10); }
+    }
+
+    // MODAL
+    let _modalProduct = null;
+    function openModal(name, dose, img, points, price, variant) {
+      _modalProduct = { name, price: parseFloat(price), variant };
+      document.getElementById('modal-name').textContent = name;
+      document.getElementById('modal-dose').textContent = dose;
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-img').alt = name;
+      document.getElementById('modal-points').innerHTML = points.map(p => `<li>${p}</li>`).join('');
+      document.getElementById('modal-add-btn').style.display = price > 0 ? '' : 'none';
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+    function addModalToBasket() {
+      if (_modalProduct && _modalProduct.price > 0) { addToBasket(_modalProduct.name, _modalProduct.price, _modalProduct.variant); closeModalBtn(); }
+    }
+    function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalBtn(); }
+    function closeModalBtn() { document.getElementById('modal-overlay').classList.remove('active'); }
+
+    // PRICE UPDATES
+    function updateBundlePrice(selId, priceId) {
+      document.getElementById(priceId).textContent = '£' + document.getElementById(selId).value.split('|')[0];
+    }
+    function updateRetaTirz(selId, priceId, imgId, imgMap) {
+      const sel = document.getElementById(selId);
+      const parts = sel.value.split('|');
+      document.getElementById(priceId).textContent = '£' + parts[0];
+      const dose = parts[1]; const key = dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
+      if (imgMap[key] && document.getElementById(imgId)) document.getElementById(imgId).src = imgMap[key];
+    }
+    function updateFeaturedPrice(selId, priceId) {
+      document.getElementById(priceId).textContent = '£' + document.getElementById(selId).value.split('|')[0];
+    }
+    function updateFeaturedRetaTirz(selId, priceId, imgId, imgMap) {
+      const sel = document.getElementById(selId);
+      const parts = sel.value.split('|');
+      document.getElementById(priceId).textContent = '£' + parts[0];
+      const dose = parts[1]; const key = dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
+      if (imgMap[key] && document.getElementById(imgId)) document.getElementById(imgId).src = imgMap[key];
+    }
+    // ADD TO BASKET
+    function addBundleToBasket(selId, name) {
+      const parts = document.getElementById(selId).value.split('|');
+      addToBasket(name, parseFloat(parts[0]), parts[1]);
+    }
+    function addFeaturedToBasket(selId, name) {
+      const parts = document.getElementById(selId).value.split('|');
+      addToBasket(name, parseFloat(parts[0]), parts[1]);
+    }
+
+    // Wrap addToBasket to show toast
+    const _origAdd = window.addToBasket;
+    window.addToBasket = function(name, price, dose) {
+      if (typeof _origAdd === 'function') _origAdd(name, price, dose);
+      showToast(name);
+    };
+
+    // STICKY BAR
+    function updateStickyBar() {
+      const bar = document.getElementById('sticky-basket');
+      const count = basket.reduce((s,i) => s+i.qty, 0);
+      const total = basket.reduce((s,i) => s+(i.price*i.qty), 0);
+      if (count > 0) {
+        bar.classList.add('visible');
+        document.getElementById('sticky-count').textContent = count + (count===1?' item':' items');
+        document.getElementById('sticky-total').textContent = '£' + total;
+      } else { bar.classList.remove('visible'); }
+    }
+
+    const _origUpdate = window.updateBasketUI;
+    window.updateBasketUI = function() {
+      if (typeof _origUpdate === 'function') _origUpdate();
+      const count = basket.reduce((s,i) => s+i.qty, 0);
+      const badge = document.getElementById('basket-count');
+      const label = document.getElementById('basket-btn-label');
+      if (badge) { badge.textContent = count; badge.style.display = count > 0 ? 'flex' : 'none'; }
+      if (label) { label.style.display = count > 0 ? 'none' : 'inline'; }
+      updateStickyBar();
+    };
+  </script>
 
 </body>
 </html>
+
+

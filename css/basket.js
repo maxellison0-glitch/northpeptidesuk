@@ -1,4 +1,4 @@
-let basket = [];
+﻿let basket = [];
 
 // Load from session on page load
 window.addEventListener('load', () => {
