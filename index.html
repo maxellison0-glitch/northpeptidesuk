@@ -1042,7 +1042,7 @@
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=retatrutide">Retatrutide</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
-            <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png'})">
+            <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png','50mg':'reta-50mg.png'})">
               <option value="45|10mg">1x10mg — £45</option>
               <option value="65|15mg">1x15mg — £65</option>
               <option value="85|20mg">1x20mg — £85</option>
@@ -1206,7 +1206,7 @@
 
         <div class="shop-card" id="product-nad-plus">
           <div class="shop-card-img" onclick="window.location.href='product.html?product=nad-plus'">
-            <img src="nad-plus.jpg" alt="NAD+">
+            <img src="nad-plus.png" alt="NAD+">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
             <span class="shop-badge badge-trending">Research Compound</span>
           </div>
@@ -1617,7 +1617,7 @@
       const sel = document.getElementById(selId);
       const parts = sel.value.split('|');
       document.getElementById(priceId).textContent = '£' + parts[0];
-      const dose = parts[1]; const key = dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
+      const dose = parts[1]; const key = dose.includes('50mg') ? '50mg' : dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
       if (imgMap[key] && document.getElementById(imgId)) document.getElementById(imgId).src = imgMap[key];
     }
     function updateFeaturedPrice(selId, priceId) {
@@ -1627,7 +1627,7 @@
       const sel = document.getElementById(selId);
       const parts = sel.value.split('|');
       document.getElementById(priceId).textContent = '£' + parts[0];
-      const dose = parts[1]; const key = dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
+      const dose = parts[1]; const key = dose.includes('50mg') ? '50mg' : dose.includes('10mg') ? '10mg' : dose.includes('15mg') ? '15mg' : dose.includes('30mg') ? '20mg' : '20mg';
       if (imgMap[key] && document.getElementById(imgId)) document.getElementById(imgId).src = imgMap[key];
     }
     // ADD TO BASKET
