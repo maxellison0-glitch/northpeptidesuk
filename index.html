@@ -557,12 +557,13 @@
     .shop-waitlist-btn { display: block; width: 100%; padding: 8px; background: transparent; color: #9CA3AF; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid #E2EAE4; cursor: pointer; border-radius: 4px; text-align: center; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .shop-waitlist-btn:hover { border-color: #00795F; color: #00795F; }
     .supply-card { min-height: 340px; border-color: #D8E2DC; background: #FCFDFC; }
-    .supply-card .shop-card-img { aspect-ratio: 16 / 10; background: #F0F4F1; }
+    .supply-card .shop-card-img { aspect-ratio: 16 / 10; background: #F0F4F1; border-bottom: 1px solid #D8E2DC; }
     .supply-card .shop-card-body { gap: 8px; }
     .supply-card .shop-card-name { font-size: 0.92rem; }
     .supply-label { align-self: flex-start; color: #536359; background: #EEF3EF; border: 1px solid #D9E4DC; border-radius: 4px; padding: 3px 6px; font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
     .supply-card-note { color: #5E6D63; font-size: 0.72rem; line-height: 1.45; }
     .supply-card .shop-card-footer { border-top: 1px solid #E7ECE8; padding-top: 10px; }
+    .category-heading-light { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: #4A5C51; font-weight: 600; padding: 24px 0 12px; border-bottom: 2px solid #E2EAE4; margin-top: 16px; display: block; }
 
     /* ===== REVIEWS (moved below products) ===== */
     .reviews-section {
@@ -738,6 +739,7 @@
       .acc-grid { grid-template-columns: 1fr; gap: 10px; padding: 10px 0; }
       .shop-card { display: grid; grid-template-columns: 116px minmax(0, 1fr); min-height: auto; border-radius: 10px; }
       .shop-card-img { aspect-ratio: auto; min-height: 136px; height: 100%; }
+      .supply-card .shop-card-img { aspect-ratio: auto; border-bottom: none; border-right: 1px solid #D8E2DC; }
       .shop-card-img img { object-fit: cover; }
       .shop-badge { font-size: 0.42rem; letter-spacing: 0.03em; padding: 3px 5px; top: 6px; right: 6px; }
       .shop-card-body { min-width: 0; padding: 10px; gap: 6px; }
@@ -1028,7 +1030,7 @@
   <section class="shop-section" id="products">
     <div class="shop-section-header">
       <h2 class="shop-section-title">Research Catalogue</h2>
-      <span class="shop-section-tag">21 stocked products</span>
+      <span class="shop-section-tag">20 stocked products</span>
     </div>
 
     <h3 class="category-heading-light">Research Compounds</h3>
@@ -1392,32 +1394,16 @@
 
         <div class="shop-card supply-card" id="product-alcohol-wipes">
           <div class="shop-card-img" onclick="window.location.href='product.html?product=alcohol-wipes'">
-            <img src="research-alcohol-wipes.jpg" alt="Alcohol Wipes">
+            <img src="research-alcohol-wipes.png" alt="Alcohol Wipes">
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="product.html?product=alcohol-wipes">Alcohol Wipes</a>
             <span class="supply-label">Research Supply</span>
-            <div class="supply-card-note">10 single-use wipes for research preparation workflows.</div>
+            <div class="supply-card-note">10 single-use pre-injection wipes, 70% isopropyl alcohol.</div>
             <div class="shop-card-footer">
               <div><div><span class="shop-card-price" id="wipes-p">£2.99</span></div></div>
               <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Alcohol Wipes',2.99,'10 pack')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="shop-card supply-card" id="product-essentials-bundle">
-          <div class="shop-card-img" onclick="window.location.href='product.html?product=essentials-bundle'">
-            <img src="research-essentials-bundle.jpg" alt="Essentials Bundle">
-            <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
-          </div>
-          <div class="shop-card-body">
-            <a class="shop-card-name" href="product.html?product=essentials-bundle">Essentials Bundle</a>
-            <span class="supply-label">Research Supply</span>
-            <div class="supply-card-note">BAC water, 10 needles and 10 wipes in one bundle.</div>
-            <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="essentials-p">£14.99</span></div></div>
-              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Essentials Bundle',14.99,'BAC water + insulin needles + wipes')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
         </div>

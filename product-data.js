@@ -245,7 +245,7 @@ const PRODUCT_DATA = {
     name: "Alcohol Wipes",
     category: "Research supplies",
     supply: true,
-    image: "research-alcohol-wipes.jpg",
+    image: "research-alcohol-wipes.png",
     summary: "Single-use alcohol wipe pack for research preparation workflows.",
     details: [
       "10 pack",
@@ -259,27 +259,6 @@ const PRODUCT_DATA = {
     },
     variants: [
       { label: "10 pack", dose: "10 pack", price: 2.99 }
-    ],
-    stripePaymentLink: ""
-  },
-  "essentials-bundle": {
-    name: "Essentials Bundle",
-    category: "Research supplies",
-    supply: true,
-    image: "research-essentials-bundle.jpg",
-    summary: "Core research preparation bundle containing BAC water, insulin needles and alcohol wipes.",
-    details: [
-      "10ml bacteriostatic water",
-      "1ml insulin needles x10",
-      "Alcohol wipes x10",
-      "Research use only"
-    ],
-    trust: {
-      items: [["Includes", "BAC Water"], ["Needles", "10 x 1ml"], ["Wipes", "10 Pack"], ["Format", "Supply Bundle"], ["Category", "Research Supply"], ["Use", "Research Only"]],
-      chips: ["Three Essentials", "Ready Bundle", "Research Supply"]
-    },
-    variants: [
-      { label: "Bundle", dose: "BAC water + insulin needles + wipes", price: 14.99 }
     ],
     stripePaymentLink: ""
   }
