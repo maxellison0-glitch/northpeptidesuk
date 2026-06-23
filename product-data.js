@@ -146,6 +146,102 @@ const PRODUCT_DATA = {
     ],
     stripePaymentLink: ""
   },
+  "nad-plus": {
+    name: "NAD+",
+    category: "Cellular research",
+    image: "nad-plus.png",
+    summary: "Nicotinamide Adenine Dinucleotide research compound supplied as a 1000mg lyophilised powder.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x1000mg", dose: "1000mg", price: 84.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "ss-31": {
+    name: "SS-31",
+    category: "Research peptide",
+    image: "ss-31.png",
+    summary: "Mitochondria-targeted antioxidant research compound supplied as a 10mg lyophilised vial.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x10mg", dose: "10mg", price: 24.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  semax: {
+    name: "Semax",
+    category: "Nootropic research",
+    image: "semax.png",
+    summary: "Nootropic research peptide supplied as a 30mg lyophilised vial.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x30mg", dose: "30mg", price: 20.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  selank: {
+    name: "Selank",
+    category: "Nootropic research",
+    image: "selank.png",
+    summary: "Anxiolytic nootropic research peptide supplied as a 30mg lyophilised vial.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x30mg", dose: "30mg", price: 20.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  epitalon: {
+    name: "Epitalon",
+    category: "Research peptide",
+    image: "epitalon.png",
+    summary: "Pineal tetrapeptide research compound supplied as a 10mg lyophilised vial.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x10mg", dose: "10mg", price: 13.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  pinealon: {
+    name: "Pinealon",
+    category: "Research peptide",
+    image: "pinealon.png",
+    summary: "Brain peptide research compound supplied as a 20mg lyophilised vial.",
+    details: [
+      "99%+ purity — verified",
+      "UK stocked, 24h dispatch",
+      "Stored frozen until dispatch",
+      "Purity certificate on request"
+    ],
+    variants: [
+      { label: "1x20mg", dose: "20mg", price: 29.99 }
+    ],
+    stripePaymentLink: ""
+  },
   "pen-style-research-kit": {
     name: "Pen-Style Research Kit",
     category: "Research supplies",
