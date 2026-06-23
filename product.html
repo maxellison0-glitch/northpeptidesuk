@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | North Peptides UK</title>
+  <script src="/tiktok-analytics.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script src="product-data.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "DM Sans", sans-serif; background: #F7FAF8; color: #1A2620; }
+    a { color: inherit; }
+    .nav { height: 62px; padding: 0 40px; background: #ffffff; border-bottom: 1px solid #E2EAE4; color: #16241E; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .logo { font-family: Syne, sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; text-decoration: none; }
+    .logo span { color: #00795F; }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links a { color: #51625A; text-decoration: none; }
+    .nav-links a:hover { color: #00795F; }
+    .nav-basket { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; background: #00795F; color: #fff; text-decoration: none; }
+    .nav-basket:hover { color: #fff; background: #005F4B; }
+    .nav-basket-count { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: #ffffff; color: #00795F; font-size: 0.58rem; font-weight: 800; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 42px 40px 70px; }
+    .back { display: inline-block; margin-bottom: 24px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6B7C72; text-decoration: none; }
+    .back:hover { color: #00795F; }
+    .grid { display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.1fr); gap: 38px; align-items: start; }
+    .image-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
+    .image-panel img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; background: #F2F6F3; }
+    .info-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
+    .tag { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
+    h1 { font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: 14px; color: #12211A; }
+    .summary { color: #51625A; line-height: 1.7; max-width: 620px; margin-bottom: 22px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .trust-chip { border: 1px solid #DCE5DE; background: #F4F8F5; border-radius: 999px; padding: 7px 11px; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: #51625A; }
+    /* TRUST PANEL */
+    .trust-panel { margin-bottom: 22px; }
+    .tp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E2EAE4; border: 1px solid #E2EAE4; border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
+    .tp-item { background: #F7FAF8; padding: 11px 13px; display: flex; flex-direction: column; gap: 3px; }
+    .tp-label { font-family: "DM Mono", monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8AA094; }
+    .tp-value { font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 600; color: #1A2620; letter-spacing: 0.04em; }
+    .tp-v-purity { color: #00795F; }
+    .tp-v-research { color: #92700A; }
+    .tp-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tp-chip { border: 1px solid #DCE5DE; background: #F4F8F5; border-radius: 999px; padding: 6px 11px; font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: #51625A; }
+    .tp-chip-purity { border-color: #B8E8D0; background: #ECFAF4; color: #00663F; font-weight: 600; }
+    .supply-trust .tp-grid { background: #E6E8E7; border-color: #E6E8E7; }
+    .supply-trust .tp-item { background: #FBFCFB; }
+    .supply-trust .tp-label { color: #738078; }
+    @media (max-width: 760px) { .tp-grid { grid-template-columns: repeat(2, 1fr); } }
+    .details { margin: 0 0 24px; padding-left: 18px; color: #3D4F46; line-height: 1.8; font-size: 0.9rem; }
+    .details li::marker { color: #00795F; }
+    .buy-box { border: 1px solid #E2EAE4; border-radius: 10px; padding: 22px; background: #FAFCFA; }
+    label { display: block; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7B8C82; margin-bottom: 8px; }
+    select { width: 100%; min-height: 46px; border: 1px solid #D5E0D8; border-radius: 7px; background: #ffffff; color: #1A2620; padding: 0 13px; font: 500 0.85rem "DM Mono", monospace; margin-bottom: 18px; }
+    select:focus { outline: none; border-color: #00795F; }
+    .price-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+    .price-was { color: #9CA89F; text-decoration: line-through; font: 600 1rem "DM Sans", sans-serif; }
+    .price-now { color: #12211A; font-family: Syne, sans-serif; font-size: 2.35rem; font-weight: 800; line-height: 1; }
+    .price-save { border-radius: 999px; background: rgba(0,121,95,0.1); color: #00795F; padding: 6px 10px; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .qty-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+    .qty-control { display: inline-flex; align-items: center; height: 46px; border: 1px solid #D5E0D8; border-radius: 7px; overflow: hidden; background: #ffffff; }
+    .qty-btn { width: 42px; height: 44px; border: 0; background: #F4F8F5; color: #00795F; font-family: "DM Mono", monospace; font-size: 1rem; cursor: pointer; }
+    .qty-value { width: 44px; text-align: center; font-family: "DM Mono", monospace; font-size: 0.8rem; color: #1A2620; }
+    .actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    button, .button { border: 0; border-radius: 7px; min-height: 54px; padding: 0 16px; cursor: pointer; font-family: "DM Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+    .primary { background: #00795F; color: #ffffff; font-weight: 800; box-shadow: 0 10px 22px rgba(0,121,95,0.18); }
+    .primary:hover { background: #00684F; }
+    .checkout-followup { display: none; background: #ffffff; color: #2A3A32; border: 1px solid #D5E0D8; }
+    .checkout-followup.visible { display: inline-flex; }
+    .checkout-followup:hover { border-color: #9FC6B6; color: #00795F; }
+    .research-box { margin-top: 24px; border: 1px solid #E2EAE4; border-radius: 8px; padding: 15px; background: #F4F8F5; color: #51625A; font-size: 0.78rem; line-height: 1.7; }
+    .research-box strong { color: #1A2620; }
+    .also-need { margin-top: 16px; }
+    .also-need-title { margin-bottom: 10px; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7B8C82; }
+    .addon-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .addon-card { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 62px; padding: 12px; border: 1px solid #E2EAE4; border-radius: 8px; background: #FAFCFA; }
+    .addon-name { display: block; color: #1A2620; font-size: 0.82rem; font-weight: 700; }
+    .addon-price { display: block; margin-top: 3px; color: #7B8C82; font-family: "DM Mono", monospace; font-size: 0.68rem; }
+    .addon-btn { min-height: 34px; padding: 0 12px; border-radius: 5px; background: rgba(0,121,95,0.08); color: #00795F; border: 1px solid rgba(0,121,95,0.25); font-size: 0.62rem; flex-shrink: 0; }
+    .addon-btn:hover { background: #00795F; color: #ffffff; }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 50; max-width: 300px; padding: 13px 16px; border: 1px solid #E2EAE4; border-left: 3px solid #00795F; border-radius: 8px; background: #ffffff; color: #1A2620; box-shadow: 0 16px 42px rgba(18,46,35,0.14); font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.04em; transform: translateX(130%); transition: transform 0.28s ease; }
+    .toast.show { transform: translateX(0); }
+    .missing { max-width: 680px; margin: 80px auto; text-align: center; background: #ffffff; border: 1px solid #E2EAE4; border-radius: 10px; padding: 34px; }
+    .missing h1 { font-size: 2rem; }
+    @media (max-width: 760px) {
+      .nav { padding: 0 18px; }
+      .nav-links { gap: 10px; font-size: 0.56rem; }
+      .nav-links a:not(.nav-basket) { display: none; }
+      .wrap { padding: 28px 16px 52px; }
+      .grid { grid-template-columns: 1fr; gap: 18px; }
+      .info-panel { padding: 20px; }
+      .addon-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div class="nav-links">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#how-to-order">Order</a>
+      <a href="lab-reports.html">Lab Reports</a>
+      <a href="why-us.html">Why Us</a>
+      <a href="mailto:northpeptidesuk@gmail.com">Support</a>
+      <a href="checkout.html" class="nav-basket">Basket <span class="nav-basket-count" id="nav-basket-count">0</span></a>
+    </div>
+  </nav>
+
+  <main class="wrap" id="app"></main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("product") || "retatrutide";
+    const product = PRODUCT_DATA[slug];
+    const app = document.getElementById("app");
+
+    function money(value) {
+      return "£" + value;
+    }
+
+    function getBasket() {
+      try {
+        return JSON.parse(sessionStorage.getItem("npuk_basket") || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function saveBasket(basket) {
+      sessionStorage.setItem("npuk_basket", JSON.stringify(basket));
+    }
+
+    function basketCount() {
+      return getBasket().reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function updateBasketCount() {
+      const count = document.getElementById("nav-basket-count");
+      if (count) count.textContent = basketCount();
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    function selectedVariant() {
+      const select = document.getElementById("variant");
+      return product.variants[Number(select.value)];
+    }
+
+    function updatePrice() {
+      const variant = selectedVariant();
+      document.getElementById("price-now").textContent = money(variant.price);
+    }
+
+    function addItemToBasket(name, price, dose, qty = 1) {
+      const quantity = Math.max(1, Math.min(Number.parseInt(qty, 10) || 1, 12));
+      const basket = getBasket();
+      const existing = basket.find(item => item.name === name && item.dose === dose);
+      if (existing) {
+        existing.qty += quantity;
+      } else {
+        basket.push({ name, price, dose, qty: quantity });
+      }
+      saveBasket(basket);
+      updateBasketCount();
+    }
+    function selectedQuantity() {
+      const el = document.getElementById("detail-qty");
+      return Math.max(1, Math.min(Number.parseInt(el?.textContent, 10) || 1, 12));
+    }
+    function adjustDetailQty(delta) {
+      const el = document.getElementById("detail-qty");
+      if (!el) return;
+      el.textContent = Math.max(1, Math.min(selectedQuantity() + delta, 12));
+    }
+
+    function addDetailToBasket(goCheckout = false) {
+      const variant = selectedVariant();
+      addItemToBasket(product.name, variant.price, variant.dose, selectedQuantity());
+      if (goCheckout) {
+        window.location.href = "checkout.html";
+        return;
+      }
+      const button = document.getElementById("add-button");
+      const followup = document.getElementById("checkout-followup");
+      button.textContent = "Added";
+      showToast(`${product.name} added to your basket`);
+      if (followup) followup.classList.add("visible");
+      setTimeout(() => { button.textContent = "Add to Basket"; }, 1200);
+    }
+
+    function addAddonToBasket(button, name, price) {
+      addItemToBasket(name, price, "Accessory");
+      button.textContent = "Added";
+      showToast(`${name} added to your basket`);
+      setTimeout(() => { button.textContent = "Add"; }, 1200);
+    }
+
+    function renderMissing() {
+      app.innerHTML = `
+        <div class="missing">
+          <h1>Product not found</h1>
+          <p class="summary">This product page does not exist yet.</p>
+          <a class="button primary" href="index.html#products">Back to products</a>
+        </div>
+      `;
+    }
+
+    function renderProduct() {
+      document.title = `${product.name} | North Peptides UK`;
+      const options = product.variants.map((variant, index) => (
+        `<option value="${index}">${variant.label} - ${money(variant.price)}</option>`
+      )).join("");
+      const detailItems = product.details.map(item => `<li>${item}</li>`).join("");
+      const firstVariant = product.variants[0];
+      const trust = product.trust || {
+        items: [
+          ["Purity", "99%+ Stated"],
+          ["Form", "Lyophilised"],
+          ["Storage", "Frozen"],
+          ["Dispatch", "Within 24h"],
+          ["Batch Details", "On Request"],
+          ["Use", "Research Only"]
+        ],
+        chips: ["Purity Stated", "UK Stocked", "Stored Frozen", "Batch Details Available"]
+      };
+      const isSupply = Boolean(product.supply);
+      const trustItems = trust.items.map(([label, value], index) => (
+        `<div class="tp-item"><span class="tp-label">${label}</span><span class="tp-value ${!isSupply && index === 0 ? "tp-v-purity" : ""} ${label === "Use" ? "tp-v-research" : ""}">${value}</span></div>`
+      )).join("");
+      const trustChips = trust.chips.map((chip, index) => `<span class="tp-chip ${!isSupply && index === 0 ? "tp-chip-purity" : ""}">${chip}</span>`).join("");
+      const relatedSupplies = isSupply ? "" : `
+            <div class="also-need">
+              <div class="also-need-title">You may also need</div>
+              <div class="addon-row">
+                <div class="addon-card">
+                  <div><span class="addon-name">Bacteriostatic Water</span><span class="addon-price">£6.99</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Bacteriostatic Water', 6.99)">Add</button>
+                </div>
+                <div class="addon-card">
+                  <div><span class="addon-name">Insulin Needle Pack</span><span class="addon-price">£6.99</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Insulin Needle Pack', 6.99)">Add</button>
+                </div>
+              </div>
+            </div>`;
+      app.innerHTML = `
+        <a class="back" href="index.html#products">← Back to products</a>
+        <section class="grid">
+          <div class="image-panel">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+          <div class="info-panel">
+            <div class="tag">${product.category}</div>
+            <h1>${product.name}</h1>
+            <p class="summary">${product.summary}</p>
+            <div class="trust-panel ${isSupply ? "supply-trust" : ""}">
+              <div class="tp-grid">
+                ${trustItems}
+              </div>
+              <div class="tp-chips">
+                ${trustChips}
+              </div>
+            </div>
+            <ul class="details">${detailItems}</ul>
+            <div class="buy-box">
+              <label for="variant">${isSupply ? "Choose option" : "Choose size"}</label>
+              <select id="variant" onchange="updatePrice()">${options}</select>
+              <div class="price-row">
+                <span class="price-now" id="price-now">${money(firstVariant.price)}</span>
+              </div>
+              <div class="qty-row">
+                <label>Quantity</label>
+                <div class="qty-control">
+                  <button class="qty-btn" type="button" onclick="adjustDetailQty(-1)">−</button>
+                  <span class="qty-value" id="detail-qty">1</span>
+                  <button class="qty-btn" type="button" onclick="adjustDetailQty(1)">+</button>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="primary" id="add-button" onclick="addDetailToBasket(false)">Add to Basket</button>
+                <a class="button checkout-followup" id="checkout-followup" href="checkout.html">Continue to Checkout</a>
+              </div>
+            </div>
+            <div class="research-box">
+              <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.
+            </div>
+            ${relatedSupplies}
+          </div>
+        </section>
+      `;
+    }
+
+    if (!product) {
+      renderMissing();
+    } else {
+      renderProduct();
+      updateBasketCount();
+    }
+  </script>
+</body>
+</html>
