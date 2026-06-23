@@ -26,7 +26,18 @@
     .back:hover { color: #00795F; }
     .grid { display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.1fr); gap: 38px; align-items: start; }
     .image-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
-    .image-panel img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; background: #F2F6F3; }
+    .main-product-img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; background: #F2F6F3; }
+    .img-thumbs { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #E2EAE4; background: #F7FAF8; }
+    .img-thumb-wrap { width: 52px; height: 52px; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; transition: border-color 0.2s; }
+    .img-thumb-wrap.active { border-color: #00795F; }
+    .img-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .intranasal-box { margin-top: 16px; border: 1px solid #B8DCCF; border-radius: 10px; background: #F0FAF6; padding: 14px 16px; }
+    .intranasal-box-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00795F; font-weight: 600; margin-bottom: 4px; display: block; }
+    .intranasal-box-heading { font-size: 0.9rem; font-weight: 700; color: #12211A; margin-bottom: 5px; }
+    .intranasal-box-desc { font-size: 0.74rem; color: #4A5C51; line-height: 1.65; margin-bottom: 11px; }
+    .intranasal-box-btn { width: 100%; padding: 11px; background: #00795F; color: #fff; font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 7px; transition: background 0.2s; }
+    .intranasal-box-btn:hover { background: #005F4B; }
+    .intranasal-box-btn.added { background: #ECFAF4; color: #00795F; border: 1px solid #B8DCCF; cursor: default; pointer-events: none; }
     .info-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
     .tag { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
     h1 { font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: 14px; color: #12211A; }
@@ -204,6 +215,19 @@
       setTimeout(() => { button.textContent = "Add"; }, 1200);
     }
 
+    function switchProductImg(wrap, src) {
+      document.getElementById("main-product-img").src = src;
+      document.querySelectorAll(".img-thumb-wrap").forEach(t => t.classList.remove("active"));
+      wrap.classList.add("active");
+    }
+
+    function addIntranasalToBasket(btn) {
+      addItemToBasket("Intranasal Research Kit", 4.99, "Kit add-on");
+      btn.textContent = "Added ✓";
+      btn.classList.add("added");
+      showToast("Intranasal Research Kit added to basket");
+    }
+
     function renderMissing() {
       app.innerHTML = `
         <div class="missing">
@@ -251,11 +275,28 @@
                 </div>
               </div>
             </div>`;
+      const thumbs = product.secondaryImage ? `
+            <div class="img-thumbs">
+              <div class="img-thumb-wrap active" onclick="switchProductImg(this,'${product.image}')">
+                <img src="${product.image}" alt="${product.name}">
+              </div>
+              <div class="img-thumb-wrap" onclick="switchProductImg(this,'${product.secondaryImage}')">
+                <img src="${product.secondaryImage}" alt="${product.name} research kit">
+              </div>
+            </div>` : "";
+      const intranasalSection = product.intranasalAddon ? `
+            <div class="intranasal-box">
+              <span class="intranasal-box-label">Research Kit Add-on</span>
+              <div class="intranasal-box-heading">Make this a research kit</div>
+              <p class="intranasal-box-desc">Add an Intranasal Research Kit with sterile saline, 10ml nasal spray bottle, transfer syringe, alcohol wipes, and label.</p>
+              <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit — +£4.99</button>
+            </div>` : "";
       app.innerHTML = `
         <a class="back" href="index.html#products">← Back to products</a>
         <section class="grid">
           <div class="image-panel">
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img">
+            ${thumbs}
           </div>
           <div class="info-panel">
             <div class="tag">${product.category}</div>
@@ -289,6 +330,7 @@
                 <a class="button checkout-followup" id="checkout-followup" href="checkout.html">Continue to Checkout</a>
               </div>
             </div>
+            ${intranasalSection}
             <div class="research-box">
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.
             </div>

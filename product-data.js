@@ -182,6 +182,8 @@ const PRODUCT_DATA = {
     name: "Semax",
     category: "Nootropic research",
     image: "semax.png",
+    secondaryImage: "research-intranasal-kit.png",
+    intranasalAddon: true,
     summary: "Nootropic research peptide supplied as a 30mg lyophilised vial.",
     details: [
       "99%+ purity — verified",
@@ -198,6 +200,8 @@ const PRODUCT_DATA = {
     name: "Selank",
     category: "Nootropic research",
     image: "selank.png",
+    secondaryImage: "research-intranasal-kit.png",
+    intranasalAddon: true,
     summary: "Anxiolytic nootropic research peptide supplied as a 30mg lyophilised vial.",
     details: [
       "99%+ purity — verified",
@@ -239,6 +243,37 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x20mg", dose: "20mg", price: 29.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "intranasal-research-kit": {
+    name: "Intranasal Research Kit",
+    category: "Research supplies",
+    supply: true,
+    image: "research-intranasal-kit.png",
+    summary: "A compact intranasal research preparation kit designed for use alongside compatible research compounds. Includes a 10ml nasal spray bottle, sterile 0.9% saline ampoule, transfer syringe, transfer adaptor, alcohol wipes, and blank label.",
+    details: [
+      "1 x 10ml nasal spray bottle",
+      "1 x sterile 0.9% saline ampoule",
+      "1 x transfer syringe",
+      "1 x blunt fill needle or transfer adaptor",
+      "2 x alcohol wipes",
+      "1 x blank label",
+      "Research use only"
+    ],
+    trust: {
+      items: [
+        ["Bottle", "10ml Nasal Spray"],
+        ["Saline", "0.9% Sterile"],
+        ["Includes", "Transfer Syringe"],
+        ["Extras", "Wipes + Label"],
+        ["Category", "Research Supply"],
+        ["Use", "Research Only"]
+      ],
+      chips: ["10ml Bottle", "Sterile Saline", "Transfer Kit", "Research Supply"]
+    },
+    variants: [
+      { label: "Kit", dose: "10ml nasal spray + saline + syringe + adaptor + wipes + label", price: 6.99 }
     ],
     stripePaymentLink: ""
   },
