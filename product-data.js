@@ -182,7 +182,7 @@ const PRODUCT_DATA = {
     name: "Semax",
     category: "Nootropic research",
     image: "semax.png",
-    secondaryImage: "research-intranasal-kit.png",
+    secondaryImage: "research-intranasal-kit.jpg",
     intranasalAddon: true,
     summary: "Nootropic research peptide supplied as a 30mg lyophilised vial.",
     details: [
@@ -200,7 +200,7 @@ const PRODUCT_DATA = {
     name: "Selank",
     category: "Nootropic research",
     image: "selank.png",
-    secondaryImage: "research-intranasal-kit.png",
+    secondaryImage: "research-intranasal-kit.jpg",
     intranasalAddon: true,
     summary: "Anxiolytic nootropic research peptide supplied as a 30mg lyophilised vial.",
     details: [
@@ -250,7 +250,7 @@ const PRODUCT_DATA = {
     name: "Intranasal Research Kit",
     category: "Research supplies",
     supply: true,
-    image: "research-intranasal-kit.png",
+    image: "research-intranasal-kit.jpg",
     summary: "A compact intranasal research preparation kit designed for use alongside compatible research compounds. Includes a 10ml nasal spray bottle, sterile 0.9% saline ampoule, transfer syringe, transfer adaptor, alcohol wipes, and blank label.",
     details: [
       "1 x 10ml nasal spray bottle",
