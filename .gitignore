@@ -1,0 +1,17 @@
+# Dependencies (dev tooling only — never shipped to the browser)
+node_modules/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Build / tooling caches
+tools/.cache/
+.netlify/
+.vercel/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log

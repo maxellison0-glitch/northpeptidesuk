@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product | North Peptides UK</title>
+  <link rel="icon" href="/favicon.jpg" type="image/jpeg">
   <script src="/tiktok-analytics.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -82,6 +83,14 @@
     .checkout-followup:hover { border-color: #9FC6B6; color: #00795F; }
     .research-box { margin-top: 24px; border: 1px solid #E2EAE4; border-radius: 8px; padding: 15px; background: #F4F8F5; color: #51625A; font-size: 0.78rem; line-height: 1.7; }
     .research-box strong { color: #1A2620; }
+    .faq-section { margin-top: 26px; }
+    .faq-heading { font-family: Syne, sans-serif; font-size: 1.15rem; color: #12211A; margin-bottom: 12px; }
+    .faq-item { border: 1px solid #E2EAE4; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; background: #ffffff; }
+    .faq-item summary { cursor: pointer; font-weight: 600; font-size: 0.86rem; color: #1A2620; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::before { content: "+ "; color: #00795F; font-weight: 800; }
+    .faq-item[open] summary::before { content: "− "; }
+    .faq-item p { margin-top: 8px; color: #51625A; font-size: 0.82rem; line-height: 1.7; }
     .also-need { margin-top: 16px; }
     .also-need-title { margin-bottom: 10px; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7B8C82; }
     .addon-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -238,8 +247,99 @@
       `;
     }
 
+    const SITE_ORIGIN = "https://northpeptidesuk.com";
+
+    function setMeta(attr, key, content) {
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    }
+
+    function injectSEO() {
+      const seo = product.seo || {};
+      const canonicalUrl = `${SITE_ORIGIN}/product.html?product=${slug}`;
+      const title = seo.title || `${product.name} | UK Research Peptide | North Peptides UK`;
+      const lowestPrice = Math.min(...product.variants.map(v => v.price));
+      const desc = (seo.metaDescription
+        || `${product.summary} UK stocked, 99%+ purity, 24h dispatch. From £${lowestPrice}. Research use only.`).slice(0, 158);
+      const imageUrl = `${SITE_ORIGIN}/${product.image}`;
+
+      document.title = title;
+
+      let canonical = document.head.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        document.head.appendChild(canonical);
+      }
+      canonical.href = canonicalUrl;
+
+      setMeta("name", "description", desc);
+      setMeta("property", "og:type", "product");
+      setMeta("property", "og:title", title);
+      setMeta("property", "og:description", desc);
+      setMeta("property", "og:url", canonicalUrl);
+      setMeta("property", "og:image", imageUrl);
+      setMeta("property", "og:site_name", "North Peptides UK");
+      setMeta("name", "twitter:card", "summary_large_image");
+      setMeta("name", "twitter:title", title);
+      setMeta("name", "twitter:description", desc);
+      setMeta("name", "twitter:image", imageUrl);
+
+      const offers = product.variants.map(v => ({
+        "@type": "Offer",
+        "name": `${product.name} ${v.dose}`,
+        "price": String(v.price),
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "url": canonicalUrl
+      }));
+      const graph = [
+        {
+          "@type": "Product",
+          "name": product.name,
+          "description": product.summary,
+          "image": imageUrl,
+          "category": product.category,
+          "brand": { "@type": "Brand", "name": "North Peptides UK" },
+          "offers": offers
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_ORIGIN + "/" },
+            { "@type": "ListItem", "position": 2, "name": product.category, "item": SITE_ORIGIN + "/#products" },
+            { "@type": "ListItem", "position": 3, "name": product.name, "item": canonicalUrl }
+          ]
+        }
+      ];
+      if (Array.isArray(seo.faq) && seo.faq.length) {
+        graph.push({
+          "@type": "FAQPage",
+          "mainEntity": seo.faq.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a }
+          }))
+        });
+      }
+      let ldScript = document.getElementById("product-jsonld");
+      if (!ldScript) {
+        ldScript = document.createElement("script");
+        ldScript.type = "application/ld+json";
+        ldScript.id = "product-jsonld";
+        document.head.appendChild(ldScript);
+      }
+      ldScript.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
+    }
+
     function renderProduct() {
-      document.title = `${product.name} | North Peptides UK`;
+      injectSEO();
       const options = product.variants.map((variant, index) => (
         `<option value="${index}">${variant.label} - ${money(variant.price)}</option>`
       )).join("");
@@ -291,6 +391,15 @@
               <p class="intranasal-box-desc">Add an Intranasal Research Kit with sterile saline, 10ml nasal spray bottle, transfer syringe, alcohol wipes, and label.</p>
               <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit — +£4.99</button>
             </div>` : "";
+      const faqSection = (product.seo && Array.isArray(product.seo.faq) && product.seo.faq.length) ? `
+            <div class="faq-section">
+              <h2 class="faq-heading">Frequently asked questions</h2>
+              ${product.seo.faq.map(f => `
+              <details class="faq-item">
+                <summary>${f.q}</summary>
+                <p>${f.a}</p>
+              </details>`).join("")}
+            </div>` : "";
       app.innerHTML = `
         <a class="back" href="index.html#products">← Back to products</a>
         <section class="grid">
@@ -335,6 +444,7 @@
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.
             </div>
             ${relatedSupplies}
+            ${faqSection}
           </div>
         </section>
       `;
