@@ -2,7 +2,11 @@
   'use strict';
 
   const CONSENT_KEY = 'npuk_analytics_consent';
+  // GA4 stays dormant until a measurement ID is provided via window.NPUK_GA4_ID.
+  // It rides the exact same consent gate as the TikTok pixel below.
+  const GA4_ID = (window.NPUK_GA4_ID || '').trim();
   let pixelLoaded = false;
+  let gtagLoaded = false;
 
   function getConsent() {
     try {
@@ -69,10 +73,27 @@
     return true;
   }
 
+  function loadGtag() {
+    if (gtagLoaded || !GA4_ID || getConsent() !== 'accepted') return false;
+    gtagLoaded = true;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA4_ID, { anonymize_ip: true });
+    return true;
+  }
+
   function accept() {
     saveConsent('accepted');
     setBannerVisible(false);
     loadPixel();
+    loadGtag();
   }
 
   function reject() {
@@ -86,9 +107,11 @@
   }
 
   function track(eventName, payload) {
-    if (getConsent() !== 'accepted' || !pixelLoaded || !window.ttq) return false;
-    window.ttq.track(eventName, payload || {});
-    return true;
+    if (getConsent() !== 'accepted') return false;
+    var sent = false;
+    if (pixelLoaded && window.ttq) { window.ttq.track(eventName, payload || {}); sent = true; }
+    if (gtagLoaded && window.gtag) { window.gtag('event', eventName, payload || {}); sent = true; }
+    return sent;
   }
 
   function createButton(label, onClick) {
@@ -136,7 +159,7 @@
 
   function start() {
     renderConsentUi();
-    if (getConsent() === 'accepted') loadPixel();
+    if (getConsent() === 'accepted') { loadPixel(); loadGtag(); }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

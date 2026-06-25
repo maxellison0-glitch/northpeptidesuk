@@ -3,6 +3,15 @@ const PRODUCT_DATA = {
     name: "Retatrutide",
     category: "Metabolic research",
     image: "hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg",
+    seo: {
+      title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
+      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, verified to 99%+ purity and stored frozen until dispatch. A purity certificate is available on request." },
+        { q: "Do you stock Retatrutide in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
+        { q: "Is Retatrutide for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
+      ]
+    },
     summary: "GLP-1, GIP and glucagon receptor research compound supplied as lyophilised powder.",
     details: [
       "99%+ purity — verified",
@@ -21,6 +30,14 @@ const PRODUCT_DATA = {
     name: "Tirzepatide",
     category: "Metabolic research",
     image: "hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg",
+    seo: {
+      title: "Buy Tirzepatide UK | 15mg & 30mg Research Peptide | North Peptides UK",
+      metaDescription: "Tirzepatide research compound, UK stocked. 15mg & 30mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
+      faq: [
+        { q: "What purity is your Tirzepatide?", a: "Every batch is supplied at 99%+ purity, with a certificate of analysis available on request." },
+        { q: "Is Tirzepatide for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+      ]
+    },
     summary: "Dual GIP and GLP-1 receptor agonist research compound supplied as lyophilised powder.",
     details: [
       "99%+ purity — verified",
@@ -38,6 +55,14 @@ const PRODUCT_DATA = {
     name: "BPC-157",
     category: "Research peptide",
     image: "hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg",
+    seo: {
+      title: "Buy BPC-157 UK | 10mg Research Peptide, 99%+ Purity | North Peptides UK",
+      metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity verified, 24h dispatch. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is BPC-157 supplied as?", a: "A 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch." },
+        { q: "Is BPC-157 for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
+      ]
+    },
     summary: "Research peptide supplied as a 10mg lyophilised vial.",
     details: [
       "99%+ purity — verified",
@@ -54,6 +79,14 @@ const PRODUCT_DATA = {
     name: "TB-500",
     category: "Research peptide",
     image: "hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg",
+    seo: {
+      title: "Buy TB-500 UK | 10mg Thymosin Beta-4 Research Peptide | North Peptides UK",
+      metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is TB-500?", a: "A Thymosin Beta-4 fragment research compound supplied as a 10mg lyophilised vial at 99%+ purity." },
+        { q: "Is TB-500 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+      ]
+    },
     summary: "Thymosin Beta-4 fragment research compound supplied as a 10mg lyophilised vial.",
     details: [
       "99%+ purity — verified",
@@ -182,6 +215,14 @@ const PRODUCT_DATA = {
     name: "Semax",
     category: "Nootropic research",
     image: "semax.png",
+    seo: {
+      title: "Buy Semax UK | 30mg Nootropic Research Peptide | North Peptides UK",
+      metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial verified to 99%+ purity and stored frozen until dispatch." },
+        { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+      ]
+    },
     secondaryImage: "research-intranasal-kit.jpg",
     intranasalAddon: true,
     summary: "Nootropic research peptide supplied as a 30mg lyophilised vial.",
@@ -200,6 +241,14 @@ const PRODUCT_DATA = {
     name: "Selank",
     category: "Nootropic research",
     image: "selank.png",
+    seo: {
+      title: "Buy Selank UK | 30mg Nootropic Research Peptide | North Peptides UK",
+      metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial verified to 99%+ purity and stored frozen until dispatch." },
+        { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+      ]
+    },
     secondaryImage: "research-intranasal-kit.jpg",
     intranasalAddon: true,
     summary: "Anxiolytic nootropic research peptide supplied as a 30mg lyophilised vial.",

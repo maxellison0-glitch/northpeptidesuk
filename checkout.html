@@ -362,6 +362,8 @@
     }
     .btn-place-order:hover { background: #00614C; }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
+    .research-confirm { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; padding: 12px 14px; border: 1px solid #E2EAE4; border-radius: 8px; background: #F7FAF8; font-size: 0.8rem; line-height: 1.55; color: #3D4F46; cursor: pointer; }
+    .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: #00795F; cursor: pointer; }
     .order-note {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
@@ -698,6 +700,10 @@
       <p>We collect your delivery address here for dispatch. Your payment details are handled securely by Stripe on the next screen.</p>
     </div>
 
+    <label class="research-confirm">
+      <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
+      <span>I confirm I am ordering these products strictly for laboratory research use only, and not for human or animal consumption.</span>
+    </label>
     <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
     <p class="order-note">Payments are processed securely by Stripe.</p>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
@@ -1091,6 +1097,11 @@
     e.preventDefault();
     e.stopImmediatePropagation();
     const btn = document.getElementById('submit-btn');
+    const researchConfirm = document.getElementById('research-use-confirm');
+    if (researchConfirm && !researchConfirm.checked) {
+      if (researchConfirm.reportValidity) researchConfirm.reportValidity();
+      return;
+    }
     if (basketData.length === 0) {
       const msg = document.getElementById('discount-msg');
       msg.textContent = 'Add at least one item before checkout.';
