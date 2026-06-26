@@ -12,10 +12,10 @@ Status: `done` = built & gated · `next` = queued · `idea` = candidate
 |---|---|---|---|
 | done | Retatrutide vs Tirzepatide: Research Compound Comparison | retatrutide vs tirzepatide | retatrutide, tirzepatide |
 | done | How to Reconstitute Peptides: A UK Researcher Guide | how to reconstitute peptides | bac water, needles, wipes |
-| next | What Is BPC-157? A Research Compound Overview | what is bpc-157 / bpc-157 uk | bpc-157, klow-stack |
-| next | Bacteriostatic Water vs Sterile Water for Peptides | bacteriostatic water vs sterile water | bacteriostatic-water |
-| next | What Is the KLOW Stack? Four-Compound Research Blend | klow stack | klow-stack, bpc-157, tb-500, ghk-cu, kpv |
-| next | Buying Research Peptides in the UK: What to Check | buy research peptides uk | (category / trust) |
+| done | What Is BPC-157? A Research Compound Overview | what is bpc-157 / bpc-157 uk | bpc-157, klow-stack |
+| done | Bacteriostatic Water vs Sterile Water for Peptides | bacteriostatic water vs sterile water | bacteriostatic-water |
+| done | What Is the KLOW Stack? Four-Compound Research Blend | klow stack | klow-stack, bpc-157, tb-500, ghk-cu |
+| done | Buying Research Peptides in the UK: What to Check | buy research peptides uk | (category / trust) |
 
 ## Tier 2 — Compound explainers (topical authority, one per product)
 | Status | Working title | Target keyword | Links to |
