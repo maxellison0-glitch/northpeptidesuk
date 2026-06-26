@@ -443,3 +443,7 @@ const PRODUCT_DATA = {
     stripePaymentLink: ""
   }
 };
+
+// Expose to Node tooling (content engine) without affecting browser usage,
+// where PRODUCT_DATA remains a normal global.
+if (typeof module !== "undefined" && module.exports) { module.exports = PRODUCT_DATA; }

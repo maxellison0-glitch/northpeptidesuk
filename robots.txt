@@ -3,4 +3,4 @@ Allow: /
 Disallow: /checkout.html
 Disallow: /api/
 
-Sitemap: https://northpeptidesuk.com/sitemap.xml
+Sitemap: https://www.northpeptidesuk.com/sitemap.xml
