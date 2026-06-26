@@ -38,7 +38,6 @@ const CATALOG = {
   "CJC-1295 No DAC|5mg": 32,
   "CJC-1295 No DAC|2x 5mg": 58,
   "CJC-1295 No DAC|3x 5mg": 77,
-  "Essentials Bundle|BAC water + insulin needles + wipes": 14.99,
   "Bacteriostatic Water|10ml vial": 6.99,
   "Bacteriostatic Water|Accessory": 6.99,
   "Insulin Needle Pack|10 pack, 1ml insulin needles": 6.99,

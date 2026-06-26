@@ -1,0 +1,11 @@
+{
+  "name": "northpeptidesuk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "North Peptides UK storefront — static site plus the content-engine tooling and commerce checks.",
+  "scripts": {
+    "test": "node --test tests/price-parity.test.cjs tests/tiktok-analytics.test.cjs",
+    "compliance": "node content-engine/compliance.js",
+    "verify-copy": "node content-engine/verify-product-copy.js"
+  }
+}
