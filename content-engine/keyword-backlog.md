@@ -20,12 +20,12 @@ Status: `done` = built & gated · `next` = queued · `idea` = candidate
 ## Tier 2 — Compound explainers (topical authority, one per product)
 | Status | Working title | Target keyword | Links to |
 |---|---|---|---|
-| idea | Semax vs Selank: Nootropic Research Compounds | semax vs selank | semax, selank, intranasal-research-kit |
-| idea | What Is TB-500? Thymosin Beta-4 Research Overview | tb-500 / thymosin beta-4 | tb-500, klow-stack |
-| idea | What Is GHK-Cu? Copper Peptide Research Overview | ghk-cu copper peptide | ghk-cu |
-| idea | What Is NAD+? Cellular Research Compound Overview | nad+ research | nad-plus |
-| idea | Ipamorelin and CJC-1295 Research Compounds | ipamorelin cjc-1295 | ipamorelin, cjc-1295 |
-| idea | Epitalon and Pinealon: Pineal Peptide Research | epitalon / pinealon | epitalon, pinealon |
+| done | Semax vs Selank: Nootropic Research Compounds | semax vs selank | semax, selank, intranasal-research-kit |
+| done | What Is TB-500? Thymosin Beta-4 Research Overview | what is tb-500 | tb-500, klow-stack |
+| done | What Is GHK-Cu? Copper Peptide Research Overview | what is ghk-cu | ghk-cu, klow-stack |
+| done | What Is NAD+? Cellular Research Compound Overview | what is nad+ | nad-plus |
+| done | Ipamorelin vs CJC-1295: Research Compounds Compared | ipamorelin vs cjc-1295 | ipamorelin, cjc-1295 |
+| done | Epitalon vs Pinealon: Pineal Peptide Research | epitalon vs pinealon | epitalon, pinealon |
 
 ## Tier 3 — Handling cluster (internal-link hub, sells consumables)
 | Status | Working title | Target keyword | Links to |
