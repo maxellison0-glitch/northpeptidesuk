@@ -273,40 +273,13 @@
       padding: 14px 16px;
       margin-bottom: 28px;
     }
-    .payment-methods-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9CA3AF;
-      margin-bottom: 10px;
-    }
-    .payment-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .pay-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 5px 10px;
-      border: 1px solid #E5E7EB;
-      border-radius: 4px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.05em;
-      color: #6B7280;
-      background: #F8F9FA;
-    }
-    .pay-badge-green { border-color: #C9E2D5; background: #E9F5EE; color: #1C6A50; }
-    .payment-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      color: #9CA3AF;
-      margin-top: 10px;
-      line-height: 1.5;
-    }
+    .pay-secure { display: flex; align-items: center; gap: 8px; }
+    .pay-lock { color: #00795F; flex-shrink: 0; }
+    .pay-secure-text { font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: #1a1a1a; font-weight: 500; }
+    .pay-stripe { margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: #6B7280; white-space: nowrap; }
+    .pay-stripe strong { color: #635BFF; font-weight: 700; letter-spacing: -0.01em; }
+    .pay-cards { display: flex; gap: 7px; align-items: center; margin-top: 12px; }
+    .pay-card { display: block; }
 
     /* FORM */
     .form-group { margin-bottom: 12px; }
@@ -644,11 +617,29 @@
 
   <!-- PAYMENT METHODS -->
   <div class="payment-methods">
-    <div class="payment-methods-label">Secure Stripe checkout</div>
-    <div class="payment-badges">
-      <span class="pay-badge pay-badge-green">Card</span>
+    <div class="pay-secure">
+      <svg class="pay-lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path d="M7 10V7a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" fill="currentColor"/>
+      </svg>
+      <span class="pay-secure-text">Secure checkout</span>
+      <span class="pay-stripe">Powered by <strong>Stripe</strong></span>
     </div>
-    <p class="payment-note">Payments are processed securely by Stripe.</p>
+    <div class="pay-cards" aria-label="Accepted cards: Visa, Mastercard, American Express">
+      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Visa">
+        <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#E5E7EB"/>
+        <text x="19" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-style="italic" font-size="9.5" fill="#1A1F71">VISA</text>
+      </svg>
+      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Mastercard">
+        <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#E5E7EB"/>
+        <circle cx="16" cy="12" r="6" fill="#EB001B"/>
+        <circle cx="23" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
+      </svg>
+      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="American Express">
+        <rect width="38" height="24" rx="3.5" fill="#1F72CF"/>
+        <text x="19" y="15.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.8" fill="#fff" letter-spacing="0.5">AMEX</text>
+      </svg>
+    </div>
   </div>
 
   <!-- FORM -->
@@ -705,7 +696,6 @@
       <span>I confirm I am ordering these products strictly for laboratory research use only, and not for human or animal consumption.</span>
     </label>
     <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
-    <p class="order-note">Payments are processed securely by Stripe.</p>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
