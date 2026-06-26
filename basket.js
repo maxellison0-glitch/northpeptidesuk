@@ -2,6 +2,16 @@
 
 let basket = [];
 
+// Persist the basket so it survives navigation to checkout.html, which reads
+// the same `npuk_basket` sessionStorage key (shared with product.html).
+function loadBasket() {
+  try { return JSON.parse(sessionStorage.getItem('npuk_basket') || '[]'); } catch (e) { return []; }
+}
+function saveBasket() {
+  try { sessionStorage.setItem('npuk_basket', JSON.stringify(basket)); } catch (e) {}
+}
+basket = loadBasket();
+
 function addToBasket(name, price, dose) {
   const existing = basket.find(i => i.name === name && i.dose === dose);
   if (existing) {
@@ -9,18 +19,27 @@ function addToBasket(name, price, dose) {
   } else {
     basket.push({ name, price, dose, qty: 1 });
   }
+  saveBasket();
   updateBasketUI();
   showBasket();
 }
 
+// Persist the basket and hand off to the checkout page.
+function goToCheckout() {
+  saveBasket();
+  window.location.href = 'checkout.html';
+}
+
 function removeFromBasket(index) {
   basket.splice(index, 1);
+  saveBasket();
   updateBasketUI();
 }
 
 function changeQty(index, delta) {
   basket[index].qty += delta;
   if (basket[index].qty <= 0) basket.splice(index, 1);
+  saveBasket();
   updateBasketUI();
 }
 
@@ -131,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('checkout-view').style.display = 'none';
           document.getElementById('success-view').style.display = 'block';
           basket = [];
+          saveBasket();
           updateBasketUI();
         } else {
           btn.textContent = 'Error — try again';

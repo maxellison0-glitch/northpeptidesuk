@@ -45,7 +45,8 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 45 },
       { label: "1x15mg", dose: "15mg", price: 65 },
-      { label: "1x20mg", dose: "20mg", price: 85 }
+      { label: "1x20mg", dose: "20mg", price: 85 },
+      { label: "1x50mg", dose: "50mg", price: 179.99 }
     ],
     stripePaymentLink: ""
   },

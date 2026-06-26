@@ -47,7 +47,20 @@ const CATALOG = {
   "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99,
   "Sterile Disposable Pen Tips|6mm x5": 3.99,
   "Sterile Disposable Pen Tips|6mm x10": 6.99,
-  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 3
+  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 3,
+  // Compounds previously missing from the catalogue (were 400ing at checkout):
+  "Retatrutide|50mg": 179.99,
+  "NAD+|1000mg": 84.99,
+  "SS-31|10mg": 24.99,
+  "Semax|30mg": 20.99,
+  "Selank|30mg": 20.99,
+  "Epitalon|10mg": 13.99,
+  "Pinealon|20mg": 29.99,
+  // Intranasal kit — keyed for the homepage card, the product-page variant and
+  // the discounted "+kit" add-on button (all three dose strings the UI sends):
+  "Intranasal Research Kit|Kit add-on": 4.99,
+  "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 6.99,
+  "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 6.99
 };
 
 const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
@@ -60,7 +73,7 @@ const DISCOUNT_CODES = {
 
 const DELIVERY = {
   standard: { label: "Royal Mail Tracked 24", price: 3 },
-  express: { label: "Royal Mail Special Delivery", price: 8.95 }
+  express: { label: "Royal Mail Special Delivery", price: 7.95 }
 };
 
 const SITE_URL = "https://northpeptidesuk.com";
@@ -142,7 +155,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || productSubtotal >= 30);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || productSubtotal >= 30);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({
