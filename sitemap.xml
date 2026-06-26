@@ -1,165 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://northpeptidesuk.com/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/why-us.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/why-us.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/lab-reports.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/lab-reports.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/compliance.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/compliance.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/blog/index.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/index.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/blog/how-to-reconstitute-peptides.html</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/product.html?product=retatrutide</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=tirzepatide</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=bpc-157</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=tb-500</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=ghk-cu</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=kpv</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=klow-stack</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=ipamorelin</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=cjc-1295</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=nad-plus</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=ss-31</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=semax</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=selank</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=epitalon</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=pinealon</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=intranasal-research-kit</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=pen-style-research-kit</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=pen-tips</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=bacteriostatic-water</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=syringe-kit</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/product.html?product=alcohol-wipes</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/what-is-tb-500.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=retatrutide</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=tirzepatide</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=bpc-157</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=tb-500</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=ghk-cu</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=kpv</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=klow-stack</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=ipamorelin</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=cjc-1295</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=nad-plus</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=ss-31</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=semax</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=selank</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=epitalon</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=pinealon</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://northpeptidesuk.com/product.html?product=intranasal-research-kit</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/what-is-nad-plus.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=pen-style-research-kit</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/what-is-klow-stack.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=pen-tips</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/what-is-ghk-cu.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=bacteriostatic-water</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/what-is-bpc-157.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=syringe-kit</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/semax-vs-selank.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northpeptidesuk.com/product.html?product=alcohol-wipes</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://www.northpeptidesuk.com/blog/retatrutide-vs-tirzepatide.html</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/ipamorelin-vs-cjc-1295.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/epitalon-vs-pinealon.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/buy-research-peptides-uk.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/bacteriostatic-water-vs-sterile-water.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.northpeptidesuk.com/blog/how-to-reconstitute-peptides.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

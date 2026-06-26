@@ -25,10 +25,10 @@
       "@type": "OfferCatalog",
       "name": "Research Peptides",
       "itemListElement": [
-        {"@type":"Offer","priceCurrency":"GBP","price":"41","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 10mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"77","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 20mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"59","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 15mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"108","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 30mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"45","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 10mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"85","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 20mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"65","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 15mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"120","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 30mg","description":"Dual GIP and GLP-1 receptor agonist. 99%+ purity. UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"23.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"BPC-157 10mg","description":"Body Protective Compound. 99%+ purity. UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"49","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"TB-500 10mg","description":"Thymosin Beta-4 fragment. 99%+ purity. UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"60","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KLOW Stack 80mg","description":"GHK-Cu, TB-500, BPC-157, KPV blend. UK stocked."}},
@@ -870,6 +870,101 @@
       .shop-nav { top: 30px; }
       .ticker-track span { font-size: 0.56rem; }
     }
+    /* ============================================================
+       HOMEPAGE ENRICHMENTS — comparison, calculator, FAQ, signup, reveal
+       ============================================================ */
+
+    /* Scroll reveal */
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    [data-reveal].reveal-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } }
+
+    /* Shared section header bits reused below */
+    .sec-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
+    .sec-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 10px; }
+    .sec-sub { font-size: 0.86rem; color: #6B7280; line-height: 1.75; max-width: 560px; margin-bottom: 28px; }
+
+    /* ===== COMPARE TABLE ===== */
+    .compare-section { background: #F7FAF8; border-top: 1px solid #E2EAE4; padding: 60px 40px; }
+    .compare-inner { max-width: 880px; margin: 0 auto; }
+    .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #E2EAE4; border-radius: 10px; overflow: hidden; background: #ffffff; }
+    .compare-table th, .compare-table td { padding: 13px 16px; text-align: left; font-size: 0.82rem; border-bottom: 1px solid #F3F4F6; vertical-align: top; }
+    .compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table thead th { background: #F7FAF8; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6B7280; font-weight: 500; }
+    .compare-table thead th.compare-h-us { color: #00795F; }
+    .compare-table th[scope="row"] { font-family: 'DM Sans', sans-serif; font-weight: 600; color: #1a1a1a; width: 40%; }
+    .compare-us { color: #0A6B53; font-weight: 600; }
+    .compare-us::before { content: "✓ "; color: #00795F; font-weight: 800; }
+    .compare-them { color: #9AA8A0; }
+    .compare-foot { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #9AA8A0; line-height: 1.65; }
+    @media (max-width: 760px) {
+      .compare-section { padding: 32px 16px; }
+      .compare-table th, .compare-table td { padding: 10px 11px; font-size: 0.76rem; }
+      .compare-table th[scope="row"] { width: 44%; }
+    }
+
+    /* ===== RESEARCH TOOLS / CALCULATOR ===== */
+    .tools-section { background: #ffffff; border-top: 1px solid #E2EAE4; padding: 60px 40px; }
+    .tools-inner { max-width: 880px; margin: 0 auto; }
+    .calc-card { border: 1px solid #E2EAE4; border-radius: 12px; background: #F7FAF8; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+    .calc-field { margin-bottom: 14px; }
+    .calc-field:last-child { margin-bottom: 0; }
+    .calc-field label { display: block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; margin-bottom: 7px; }
+    .calc-field input { width: 100%; height: 44px; border: 1px solid #D5E0D8; border-radius: 7px; background: #ffffff; color: #1a1a1a; padding: 0 13px; font: 500 0.9rem 'DM Mono', monospace; }
+    .calc-field input:focus { outline: none; border-color: #00795F; }
+    .calc-output { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+    .calc-out-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 11px; border-bottom: 1px solid #F3F4F6; }
+    .calc-out-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .calc-out-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: #6B7280; }
+    .calc-out-val { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #00795F; line-height: 1; text-align: right; }
+    .calc-out-val small { font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 400; color: #9AA8A0; display: block; margin-top: 4px; }
+    .calc-note { margin-top: 16px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A9A90; line-height: 1.7; border-left: 2px solid #E2EAE4; padding-left: 12px; }
+    @media (max-width: 760px) {
+      .tools-section { padding: 32px 16px; }
+      .calc-card { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
+    }
+
+    /* ===== FAQ ACCORDION (animated) ===== */
+    .faq-section { background: #F7FAF8; border-top: 1px solid #E2EAE4; padding: 60px 40px; }
+    .faq-inner { max-width: 760px; margin: 0 auto; }
+    .faq-acc { border: 1px solid #E2EAE4; border-radius: 8px; overflow: hidden; background: #ffffff; }
+    .faq-acc-item { border-bottom: 1px solid #F3F4F6; }
+    .faq-acc-item:last-child { border-bottom: none; }
+    .faq-acc-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 17px 20px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 650; color: #1a1a1a; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .faq-acc-q::after { content: "+"; font-family: 'DM Mono', monospace; color: var(--soft-neutral); font-size: 1.15rem; transition: transform 0.25s ease; flex-shrink: 0; }
+    .faq-acc-item.open .faq-acc-q::after { transform: rotate(45deg); color: #00795F; }
+    .faq-acc-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-acc-a-inner { padding: 0 20px 18px; font-size: 0.82rem; color: #6B7280; line-height: 1.75; }
+    .faq-acc-a-inner a { color: #1a1a1a; font-weight: 700; text-decoration: underline; text-decoration-color: var(--soft-neutral); text-underline-offset: 3px; }
+    @media (max-width: 760px) { .faq-section { padding: 32px 16px; } }
+
+    /* ===== EMAIL SIGNUP BAND ===== */
+    .signup-band { background: linear-gradient(135deg, #00795F 0%, #015A47 100%); color: #ffffff; padding: 56px 40px; border-top: 1px solid #DEE8E1; }
+    .signup-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+    .signup-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .signup-title { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3.4vw, 2.2rem); font-weight: 800; color: #ffffff; line-height: 1.12; margin-bottom: 10px; }
+    .signup-sub { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 460px; margin: 0 auto 22px; }
+    .signup-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+    .signup-form input { flex: 1; min-width: 0; height: 50px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; background: rgba(255,255,255,0.12); color: #ffffff; padding: 0 16px; font: 500 0.9rem 'DM Mono', monospace; }
+    .signup-form input::placeholder { color: rgba(255,255,255,0.6); }
+    .signup-form input:focus { outline: none; border-color: #ffffff; background: rgba(255,255,255,0.18); }
+    .signup-form button { flex-shrink: 0; height: 50px; padding: 0 22px; background: #ffffff; color: #00795F; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 8px; transition: transform 0.15s, background 0.2s; }
+    .signup-form button:hover { background: #ECFAF4; transform: translateY(-1px); }
+    .signup-ok { color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.04em; padding: 14px; }
+    .signup-fine { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    @media (max-width: 760px) {
+      .signup-band { padding: 38px 16px; }
+      .signup-form { flex-direction: column; }
+      .signup-form button { width: 100%; }
+    }
+
+    /* ===== FOOTER MINI SIGNUP ===== */
+    .foot-signup { margin-top: 14px; display: flex; gap: 8px; max-width: 320px; }
+    .foot-signup input { flex: 1; min-width: 0; height: 40px; border: 1px solid #D5E0D8; border-radius: 6px; background: #ffffff; color: #1a1a1a; padding: 0 12px; font: 500 0.78rem 'DM Mono', monospace; }
+    .foot-signup input:focus { outline: none; border-color: #00795F; }
+    .foot-signup button { flex-shrink: 0; height: 40px; padding: 0 14px; background: #00795F; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 6px; }
+    .foot-signup button:hover { background: #005F4B; }
+    .foot-signup-ok { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #00795F; }
   </style>
 </head>
 <body>
@@ -1087,10 +1182,10 @@
             <a class="shop-card-name" href="product.html?product=bpc-157">BPC-157</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
-              <option value="25.99|10mg">1x10mg — £25.99</option>
+              <option value="23.99|10mg">1x10mg — £23.99</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="bpc-p">£25.99</span></div></div>
+              <div><div><span class="shop-card-price" id="bpc-p">£23.99</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1105,10 +1200,10 @@
             <a class="shop-card-name" href="product.html?product=tb-500">TB-500</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
-              <option value="37.99|10mg">1x10mg — £37.99</option>
+              <option value="49|10mg">1x10mg — £49</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="tb-p">£37.99</span></div></div>
+              <div><div><span class="shop-card-price" id="tb-p">£49</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('tb-sel','TB-500')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1123,10 +1218,10 @@
             <a class="shop-card-name" href="product.html?product=ghk-cu">GHK-Cu</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
-              <option value="17.99|50mg">1x50mg — £17.99</option>
+              <option value="27|50mg">1x50mg — £27</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="ghk-p">£17.99</span></div></div>
+              <div><div><span class="shop-card-price" id="ghk-p">£27</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1141,10 +1236,10 @@
             <a class="shop-card-name" href="product.html?product=kpv">KPV</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
-              <option value="23.99|10mg">1x10mg — £23.99</option>
+              <option value="30|10mg">1x10mg — £30</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="kpv-p">£23.99</span></div></div>
+              <div><div><span class="shop-card-price" id="kpv-p">£30</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('kpv-sel','KPV')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1161,10 +1256,10 @@
             <span class="shop-card-dose">4 compound blend</span>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
-              <option value="84.99|80mg">1x80mg — £84.99</option>
+              <option value="60|80mg">1x80mg — £60</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="klow-p">£84.99</span></div></div>
+              <div><div><span class="shop-card-price" id="klow-p">£60</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1179,10 +1274,10 @@
             <a class="shop-card-name" href="product.html?product=ipamorelin">Ipamorelin</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
-              <option value="15.99|5mg">1x5mg — £15.99</option>
+              <option value="24.99|5mg">1x5mg — £24.99</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="ipa-p">£15.99</span></div></div>
+              <div><div><span class="shop-card-price" id="ipa-p">£24.99</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1197,10 +1292,10 @@
             <a class="shop-card-name" href="product.html?product=cjc-1295">CJC-1295 (No DAC)</a>
             <div class="card-trust-micro"><span class="ctm-purity">99%+</span> · UK Stocked · Research Use</div>
             <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
-              <option value="18.99|5mg">1x5mg — £18.99</option>
+              <option value="32|5mg">1x5mg — £32</option>
             </select>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="cjc-p">£18.99</span></div></div>
+              <div><div><span class="shop-card-price" id="cjc-p">£32</span></div></div>
               <div class="shop-card-actions"><div class="shop-buy-row"><button class="shop-add-btn" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add</button></div><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
@@ -1387,8 +1482,8 @@
             <span class="supply-label">Research Supply</span>
             <div class="supply-card-note">10ml sealed vial for laboratory preparation workflows.</div>
             <div class="shop-card-footer">
-              <div><div><span class="shop-card-price" id="bac-p">£7.99</span></div></div>
-              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Bacteriostatic Water',7.99,'10ml vial')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
+              <div><div><span class="shop-card-price" id="bac-p">£6.99</span></div></div>
+              <div class="shop-card-actions"><button class="shop-add-btn" onclick="addToBasket('Bacteriostatic Water',6.99,'10ml vial')">Add</button><span class="payment-note">Secure Stripe checkout</span></div>
             </div>
           </div>
         </div>
@@ -1462,6 +1557,63 @@
     </div>
   </section>
 
+  <!-- HOW WE COMPARE -->
+  <section class="compare-section" id="compare">
+    <div class="compare-inner" data-reveal>
+      <p class="sec-tag">How We Compare</p>
+      <h2 class="sec-title">What sets our handling apart.</h2>
+      <p class="sec-sub">A straight look at how we operate versus what is commonly seen across the research-peptide market.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Standard</th>
+            <th scope="col" class="compare-h-us">North Peptides UK</th>
+            <th scope="col">Typical supplier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Purity stated on every product</th><td class="compare-us">Yes, on every listing</td><td class="compare-them">Often vague or unstated</td></tr>
+          <tr><th scope="row">Certificate &amp; batch details</th><td class="compare-us">Available on request</td><td class="compare-them">Frequently not offered</td></tr>
+          <tr><th scope="row">UK stocked &amp; dispatched</th><td class="compare-us">Yes, from the UK</td><td class="compare-them">Often shipped from overseas</td></tr>
+          <tr><th scope="row">Stored frozen until dispatch</th><td class="compare-us">Yes, frozen throughout</td><td class="compare-them">Often held at room temperature</td></tr>
+          <tr><th scope="row">Discreet, unmarked packaging</th><td class="compare-us">Yes, plain outer parcel</td><td class="compare-them">Varies</td></tr>
+          <tr><th scope="row">Direct pre-order support</th><td class="compare-us">Telegram &amp; email</td><td class="compare-them">Limited or none</td></tr>
+        </tbody>
+      </table>
+      <p class="compare-foot">The "typical supplier" column is an editorial generalisation provided for comparison and is not a statement about any specific named company. All products are supplied strictly for research use only.</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH TOOLS: RECONSTITUTION CALCULATOR -->
+  <section class="tools-section" id="calculator">
+    <div class="tools-inner" data-reveal>
+      <p class="sec-tag">Research Tools</p>
+      <h2 class="sec-title">Reconstitution calculator.</h2>
+      <p class="sec-sub">Work out the concentration of a reconstituted research vial and the volume that corresponds to a target quantity. For laboratory planning only.</p>
+      <div class="calc-card">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label for="calc-peptide">Peptide in vial (mg)</label>
+            <input id="calc-peptide" type="number" min="0" step="any" value="10" inputmode="decimal" oninput="updateCalc()">
+          </div>
+          <div class="calc-field">
+            <label for="calc-water">Bacteriostatic water added (ml)</label>
+            <input id="calc-water" type="number" min="0" step="any" value="2" inputmode="decimal" oninput="updateCalc()">
+          </div>
+          <div class="calc-field">
+            <label for="calc-target">Target quantity (mg) &mdash; optional</label>
+            <input id="calc-target" type="number" min="0" step="any" value="0.5" inputmode="decimal" oninput="updateCalc()">
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="calc-out-row"><span class="calc-out-label">Concentration</span><span class="calc-out-val" id="calc-conc">&mdash;</span></div>
+          <div class="calc-out-row"><span class="calc-out-label">Volume for target</span><span class="calc-out-val" id="calc-vol">&mdash;</span></div>
+        </div>
+      </div>
+      <p class="calc-note"><strong>Research use only.</strong> This tool performs reconstitution mathematics for laboratory planning. It is not dosing guidance, and the figures are not instructions for use in humans or animals. See our <a href="blog/how-to-reconstitute-peptides.html">reconstitution guide</a> for handling notes.</p>
+    </div>
+  </section>
+
   <!-- HELP -->
   <section class="help-light">
     <div class="help-light-inner">
@@ -1495,6 +1647,68 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="faq-inner" data-reveal>
+      <p class="sec-tag">Questions</p>
+      <h2 class="sec-title">Frequently asked questions.</h2>
+      <div class="faq-acc">
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">Are these products legal to buy in the UK?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Yes. Research peptides are supplied strictly for laboratory and scientific research and are not classed as medicines under the Human Medicines Regulations. They are sold on a research-use-only basis and are not for human or animal consumption. By ordering you confirm you are purchasing for legitimate research purposes and are 18 or over.</div></div>
+        </div>
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">How are orders dispatched?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Orders are dispatched from the UK by Royal Mail Tracked 24 or Special Delivery, typically within 24&ndash;48 hours of payment being confirmed. Parcels are sent in plain, unmarked packaging with no product names visible on the outside.</div></div>
+        </div>
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">What purity are your peptides, and can I see documentation?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Purity is stated at 99%+ on every product. Certificate and batch details are available on request &mdash; contact support with your product name before or after ordering and we will share the documentation we hold for that batch.</div></div>
+        </div>
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">How should the products be stored?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Lyophilised vials are kept frozen until dispatch. For storage, unopened vials are typically held at &minus;20&deg;C for the long term and 2&ndash;8&deg;C for short periods. Once reconstituted with bacteriostatic water, vials are generally refrigerated at 2&ndash;8&deg;C, protected from light, and not subjected to repeated freeze&ndash;thaw cycles.</div></div>
+        </div>
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">How do I pay?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Checkout is handled securely through Stripe for card payment. Add your items to the basket, review your order and delivery details, then continue to secure payment. Pre-order questions are answered directly over <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" rel="noopener">Telegram</a> or email.</div></div>
+        </div>
+        <div class="faq-acc-item">
+          <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">What does "research use only" mean?</button>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">It means these compounds are supplied for in-vitro laboratory and scientific research only. They are not medicines, are not for human or animal consumption, and we make no therapeutic claims about them. See our <a href="compliance.html">research-use policy</a> for full details.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Are these products legal to buy in the UK?","acceptedAnswer":{"@type":"Answer","text":"Research peptides are supplied strictly for laboratory and scientific research and are not classed as medicines. They are sold on a research-use-only basis and are not for human or animal consumption."}},
+      {"@type":"Question","name":"How are orders dispatched?","acceptedAnswer":{"@type":"Answer","text":"Orders are dispatched from the UK by Royal Mail Tracked 24 or Special Delivery, typically within 24-48 hours of payment, in plain unmarked packaging."}},
+      {"@type":"Question","name":"What purity are your peptides, and can I see documentation?","acceptedAnswer":{"@type":"Answer","text":"Purity is stated at 99%+ on every product. Certificate and batch details are available on request."}},
+      {"@type":"Question","name":"How should the products be stored?","acceptedAnswer":{"@type":"Answer","text":"Lyophilised vials are kept frozen until dispatch; unopened vials at -20C long-term and 2-8C short-term, reconstituted vials refrigerated at 2-8C."}},
+      {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Checkout is handled securely through Stripe for card payment."}},
+      {"@type":"Question","name":"What does research use only mean?","acceptedAnswer":{"@type":"Answer","text":"These compounds are supplied for in-vitro laboratory and scientific research only. They are not medicines, are not for human or animal consumption, and no therapeutic claims are made."}}
+    ]
+  }
+  </script>
+
+  <!-- EMAIL SIGNUP -->
+  <section class="signup-band" id="signup">
+    <div class="signup-inner" data-reveal>
+      <p class="signup-tag">Stay in the loop</p>
+      <h2 class="signup-title">Restock alerts &amp; new compound drops.</h2>
+      <p class="signup-sub">Join the research list for restock notifications, new additions to the catalogue and handling guides. No spam &mdash; unsubscribe anytime.</p>
+      <form class="signup-form" id="signup-form" data-endpoint="" onsubmit="return handleSignup(event,'signup-form')">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Join list</button>
+      </form>
+      <p class="signup-fine">Research-use-only supplier. You must be 18 or over to order. We will only email you about stock and research resources.</p>
+    </div>
+  </section>
+
   <!-- DISCLAIMER -->
   <section class="disclaimer-light" id="disclaimer">
     <div class="disclaimer-light-box">
@@ -1510,6 +1724,10 @@
         <div class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</div>
         <p class="footer-light-desc">Research peptides with purity stated on every product. UK stocked and dispatched from the UK. Stored frozen until dispatch, with direct support before you order.</p>
         <p class="footer-light-meta">Est. 2025 · UK</p>
+        <form class="foot-signup" id="foot-signup" data-endpoint="" onsubmit="return handleSignup(event,'foot-signup')">
+          <input type="email" name="email" placeholder="Email for restock alerts" required aria-label="Email address">
+          <button type="submit">Join</button>
+        </form>
       </div>
       <div class="footer-light-col">
         <h4>Products</h4>
@@ -1532,6 +1750,8 @@
           <li><a href="why-us.html">Why North Peptides</a></li>
           <li><a href="lab-reports.html">Product Documentation</a></li>
           <li><a href="blog/index.html">Research Guides</a></li>
+          <li><a href="#calculator">Reconstitution Calculator</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#how-to-order">How to Order</a></li>
           <li><a href="compliance.html">Research Use Policy</a></li>
           <li><a href="mailto:northpeptidesuk@gmail.com">Support</a></li>
@@ -1673,6 +1893,79 @@
       if (label) { label.style.display = count > 0 ? 'none' : 'inline'; }
       updateStickyBar();
     };
+  </script>
+
+  <!-- Homepage enrichments: calculator, FAQ accordion, email signup, scroll reveal -->
+  <script>
+    // ---- Reconstitution calculator ----
+    function _round(n, d) { var f = Math.pow(10, d); return (Math.round(n * f) / f); }
+    function _fmt(n, d) { if (!isFinite(n)) return '—'; return _round(n, d).toLocaleString('en-GB'); }
+    function updateCalc() {
+      var mgEl = document.getElementById('calc-peptide');
+      var mlEl = document.getElementById('calc-water');
+      var tgEl = document.getElementById('calc-target');
+      if (!mgEl || !mlEl) return;
+      var mg = parseFloat(mgEl.value), ml = parseFloat(mlEl.value), target = parseFloat(tgEl.value);
+      var concEl = document.getElementById('calc-conc'), volEl = document.getElementById('calc-vol');
+      if (!(mg > 0) || !(ml > 0)) { concEl.innerHTML = '—'; volEl.innerHTML = '—'; return; }
+      var concMgMl = mg / ml;                 // mg per ml
+      concEl.innerHTML = _fmt(concMgMl, 3) + ' mg/ml<small>' + _fmt(concMgMl * 1000, 0) + ' mcg/ml</small>';
+      if (target > 0) {
+        var vol = target / concMgMl;          // ml that holds the target quantity
+        volEl.innerHTML = _fmt(vol, 3) + ' ml<small>' + _fmt(vol * 100, 1) + ' units on a 1ml / 100-unit syringe</small>';
+      } else {
+        volEl.innerHTML = '—<small>enter a target quantity</small>';
+      }
+    }
+
+    // ---- FAQ accordion (animated) ----
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var panel = item.querySelector('.faq-acc-a');
+      var open = item.classList.toggle('open');
+      panel.style.maxHeight = open ? (panel.scrollHeight + 'px') : '0px';
+    }
+
+    // ---- Email signup (front-end) ----
+    // To go live: set data-endpoint on the <form> to your ESP/Formspree URL
+    // (e.g. https://formspree.io/f/XXXX or a Klaviyo subscribe endpoint).
+    // Until then submissions are stored locally so the UI works end-to-end.
+    function handleSignup(e, formId) {
+      e.preventDefault();
+      var form = document.getElementById(formId);
+      if (!form) return false;
+      var input = form.querySelector('input[type=email]');
+      var email = (input && input.value || '').trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { if (input) input.focus(); return false; }
+      try {
+        var list = JSON.parse(localStorage.getItem('npuk_signups') || '[]');
+        if (list.indexOf(email) < 0) list.push(email);
+        localStorage.setItem('npuk_signups', JSON.stringify(list));
+      } catch (err) {}
+      var endpoint = form.getAttribute('data-endpoint');
+      if (endpoint) {
+        fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email: email }) }).catch(function () {});
+      }
+      var isFooter = form.classList.contains('foot-signup');
+      form.outerHTML = isFooter
+        ? '<p class="foot-signup-ok">✓ You’re on the list.</p>'
+        : '<div class="signup-ok">✓ You’re on the list — we’ll be in touch with restock alerts.</div>';
+      return false;
+    }
+
+    // ---- Scroll reveal ----
+    (function () {
+      var els = document.querySelectorAll('[data-reveal]');
+      if (!els.length) return;
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('reveal-in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('reveal-in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // init
+    if (document.getElementById('calc-peptide')) updateCalc();
   </script>
 
 </body>
