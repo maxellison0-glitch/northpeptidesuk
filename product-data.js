@@ -598,6 +598,8 @@ const PRODUCT_DATA = {
     name: "NAD+",
     category: "Cellular research",
     image: "nad-plus.png",
+    penAddon: true,
+    sisterProduct: { slug: "nad-plus-pen", label: "Also available as", name: "NAD+ Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy NAD+ UK | 1000mg Research Compound, 99%+ Purity | North Peptides UK",
       metaDescription: "NAD+ (nicotinamide adenine dinucleotide) research compound, UK stocked. 1000mg lyophilised powder, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -638,6 +640,56 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x1000mg", dose: "1000mg", price: 84.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "nad-plus-pen": {
+    name: "NAD+ Pen Vial",
+    category: "Cellular research",
+    image: "nad-plus-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "nad-plus", label: "Also available as", name: "NAD+ Standard Vial — Lyophilised Powder" },
+    seo: {
+      title: "Buy NAD+ Pen Vial UK | Pre-Reconstituted 1000mg/3ml | North Peptides UK",
+      metaDescription: "NAD+ nicotinamide adenine dinucleotide pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the NAD+ Pen Vial?", a: "The same NAD+ nicotinamide adenine dinucleotide research compound, supplied pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "NAD+ nicotinamide adenine dinucleotide coenzyme pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "NAD+ Pen Vial contains the same nicotinamide adenine dinucleotide research compound as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format — 1000mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Redox cofactor activity (NAD+/NADH) in enzymatic research, studied in vitro",
+      "Sirtuin and PARP enzyme research models",
+      "Mitochondrial energy-metabolism research",
+      "Cellular NAD+ pool measurement and assay development"
+    ],
+    specs: [
+      ["Compound type", "Pyridine dinucleotide coenzyme (not a peptide)"],
+      ["Molecular formula", "C21H27N7O14P2 (free acid)"],
+      ["Molecular weight", "~663.4 g/mol"],
+      ["CAS number", "53-84-9"],
+      ["Synonyms", "beta-NAD, Coenzyme I, nadide"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x1000mg / 3ml", dose: "1000mg / 3ml", price: 102 }
     ],
     stripePaymentLink: ""
   },
