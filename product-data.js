@@ -4,6 +4,7 @@ const PRODUCT_DATA = {
     category: "Metabolic research",
     image: "reta-50mg.png",
     penAddon: true,
+    sisterProduct: { slug: "retatrutide-pen", label: "Also available as", name: "Retatrutide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
       metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -48,6 +49,59 @@ const PRODUCT_DATA = {
       { label: "1x15mg", dose: "15mg", price: 65 },
       { label: "1x20mg", dose: "20mg", price: 85 },
       { label: "1x50mg", dose: "50mg", price: 179.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "retatrutide-pen": {
+    name: "Retatrutide Pen Vial",
+    category: "Metabolic research",
+    image: "reta-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy Retatrutide Pen Vial UK | Pre-Reconstituted 10mg, 20mg, 50mg | North Peptides UK",
+      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Ready to load into research auto-injector pen. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
+    longDescription: [
+      "Retatrutide Pen Vial contains the same synthetic lipidated triple-agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
+      "Available in 10mg, 20mg and 50mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Binding and signalling activity at the GLP-1, GIP and glucagon receptors, studied in vitro",
+      "Comparative receptor pharmacology against single- and dual-agonist reference peptides",
+      "Stability and handling characteristics of lipidated peptides in liquid preparations",
+      "Use as a reference standard in analytical method development"
+    ],
+    specs: [
+      ["Compound type", "GLP-1 / GIP / glucagon triple receptor agonist"],
+      ["Structure", "39-residue lipidated peptide"],
+      ["Molecular formula", "C221H342N46O68"],
+      ["Molecular weight", "~4731 g/mol"],
+      ["CAS number", "2381089-83-2"],
+      ["Synonyms", "LY3437943"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg", dose: "10mg", price: 54 },
+      { label: "1x20mg", dose: "20mg", price: 102 },
+      { label: "1x50mg", dose: "50mg", price: 216 }
     ],
     stripePaymentLink: ""
   },
