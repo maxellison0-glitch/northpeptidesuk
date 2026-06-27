@@ -158,6 +158,8 @@ const PRODUCT_DATA = {
     name: "BPC-157",
     category: "Research peptide",
     image: "hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "bpc-157-pen", label: "Also available as", name: "BPC-157 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy BPC-157 UK | 10mg Research Peptide, 99%+ Purity | North Peptides UK",
       metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity verified, 24h dispatch. Research use only — not for human consumption.",
@@ -199,6 +201,59 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 23.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "bpc-157-pen": {
+    name: "BPC-157 Pen Vial",
+    category: "Research peptide",
+    image: "bpc-157-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "bpc-157", label: "Also available as", name: "BPC-157 Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy BPC-157 Pen Vial UK | Pre-Reconstituted 10mg, 20mg | North Peptides UK",
+      metaDescription: "BPC-157 pre-reconstituted liquid pen vial. 10mg and 20mg sizes. Ready to load into research auto-injector pen. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the BPC-157 Pen Vial?", a: "The same BPC-157 synthetic pentadecapeptide research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "What sizes are available?", a: "10mg and 20mg pen vials are available. Select your size using the dropdown before adding to basket." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "BPC-157 pentadecapeptide research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg and 20mg.",
+    longDescription: [
+      "BPC-157 Pen Vial contains the same synthetic pentadecapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
+      "Available in 10mg and 20mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Angiogenesis and vascular endothelial signalling, examined in preclinical models",
+      "Cell-migration and tissue-repair processes studied across tendon, ligament and gastrointestinal models",
+      "Interaction with nitric oxide and dopamine signalling pathways, characterised in published research",
+      "Gastrointestinal-mucosa research models"
+    ],
+    specs: [
+      ["Compound type", "Synthetic pentadecapeptide"],
+      ["Sequence", "GEPPPGKPADDAGLV"],
+      ["Molecular formula", "C62H98N16O22"],
+      ["Molecular weight", "~1419.5 g/mol"],
+      ["CAS number", "137525-51-0"],
+      ["Synonyms", "Body Protection Compound 157, PL-14736"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 29 },
+      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 58 }
     ],
     stripePaymentLink: ""
   },
