@@ -66,10 +66,12 @@
       right: 0;
       z-index: 100;
       gap: 16px;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .shop-nav.scrolled {
       position: fixed;
-      top: 0 !important;
+      top: var(--npbar-h) !important;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
