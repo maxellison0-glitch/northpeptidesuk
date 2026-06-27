@@ -55,6 +55,13 @@
     .sister-link-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00795F; font-weight: 600; margin-bottom: 2px; }
     .sister-link-name { font-size: 0.82rem; font-weight: 700; color: #12211A; }
     .sister-link-arrow { color: #00795F; font-size: 1rem; flex-shrink: 0; }
+    .upgrade-card { margin-top: 12px; border: 1px solid #00795F; border-radius: 10px; background: linear-gradient(135deg, #F0FAF6 0%, #E4F5EF 100%); padding: 14px 16px; }
+    .upgrade-card-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00795F; font-weight: 600; margin-bottom: 8px; display: block; }
+    .upgrade-card-body { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .upgrade-card-heading { font-size: 0.9rem; font-weight: 700; color: #12211A; margin-bottom: 5px; }
+    .upgrade-card-desc { font-size: 0.74rem; color: #4A5C51; line-height: 1.65; margin: 0; }
+    .upgrade-card-btn { display: inline-block; padding: 10px 16px; background: #00795F; color: #fff; font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 7px; text-decoration: none; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .upgrade-card-btn:hover { background: #005F4B; }
     .info-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
     .tag { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
     h1 { font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: 14px; color: #12211A; }
@@ -438,22 +445,34 @@
               <p class="intranasal-box-desc">Add an Intranasal Research Kit with sterile saline, 10ml nasal spray bottle, transfer syringe, alcohol wipes, and label.</p>
               <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit — +£4.99</button>
             </div>` : "";
-      const sisterSection = product.sisterProduct ? `
-            <a class="sister-link" href="product.html?product=${product.sisterProduct.slug}">
+      const sisterSection = product.sisterProduct ? (
+        product.sisterProduct.slug.endsWith('-pen')
+          ? `<div class="upgrade-card">
+              <span class="upgrade-card-label">Pen-Ready Upgrade</span>
+              <div class="upgrade-card-body">
+                <div>
+                  <div class="upgrade-card-heading">Skip the reconstitution</div>
+                  <p class="upgrade-card-desc">Get this compound pre-reconstituted in a universal pen-compatible vial — just load and go. No measuring, no mixing.</p>
+                </div>
+                <a class="upgrade-card-btn" href="product.html?product=${product.sisterProduct.slug}">View Pen Vial →</a>
+              </div>
+            </div>`
+          : `<a class="sister-link" href="product.html?product=${product.sisterProduct.slug}">
               <div>
                 <div class="sister-link-label">${product.sisterProduct.label}</div>
                 <div class="sister-link-name">${product.sisterProduct.name}</div>
               </div>
               <span class="sister-link-arrow">→</span>
-            </a>` : "";
-      const penSection = product.penAddon ? `
+            </a>`
+      ) : "";
+      const penSection = slug.endsWith('-pen') ? `
             <div class="pen-box">
-              <span class="pen-box-label">Upgrade Add-on</span>
+              <span class="pen-box-label">Compatible Add-on</span>
               <div class="pen-box-inner">
-                <img class="pen-box-img" src="research-pen-kit-style.png" alt="Research auto-injector pen">
+                <img class="pen-box-img" src="research-pen-kit-style.png" alt="Disposable injection pen">
                 <div class="pen-box-body">
-                  <div class="pen-box-heading">Universal Cartridge Format — Need a Pen?</div>
-                  <p class="pen-box-desc">This vial is a standard 3ml cartridge compatible with any injection pen. Don't have one? Add a disposable single-use pen + 10 sterile needle tips to your order.</p>
+                  <div class="pen-box-heading">This vial fits any auto-injector pen</div>
+                  <p class="pen-box-desc">Already have a pen? You're set — just load this vial. Need one? Add a disposable single-use pen + 10 sterile needle tips to your order.</p>
                   <button class="pen-box-btn" type="button" onclick="addPenToBasket(this)">Add Disposable Injection Pen — +£9.99</button>
                 </div>
               </div>
