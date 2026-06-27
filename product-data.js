@@ -1215,6 +1215,8 @@ const PRODUCT_DATA = {
     name: "Epitalon",
     category: "Research peptide",
     image: "epitalon.png",
+    penAddon: true,
+    sisterProduct: { slug: "epitalon-pen", label: "Also available as", name: "Epitalon Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Epitalon UK | 10mg Research Peptide, 99%+ Purity | North Peptides UK",
       metaDescription: "Epitalon (Epithalon, AEDG) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -1256,6 +1258,57 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 13.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "epitalon-pen": {
+    name: "Epitalon Pen Vial",
+    category: "Research peptide",
+    image: "epitalon-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "epitalon", label: "Also available as", name: "Epitalon Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy Epitalon Pen Vial UK | Pre-Reconstituted 10mg/3ml | North Peptides UK",
+      metaDescription: "Epitalon (AEDG) pineal tetrapeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the Epitalon Pen Vial?", a: "The same Epitalon (Ala-Glu-Asp-Gly, AEDG) pineal tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "Epitalon Pen Vial contains the same synthetic pineal tetrapeptide (Ala-Glu-Asp-Gly, AEDG) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Telomerase enzyme activity, studied in vitro",
+      "Telomere-length and replicative-senescence research models",
+      "Pineal-gland and melatonin-rhythm research",
+      "Circadian-biology research models"
+    ],
+    specs: [
+      ["Compound type", "Synthetic pineal tetrapeptide (AEDG)"],
+      ["Sequence", "Ala-Glu-Asp-Gly"],
+      ["Molecular formula", "C14H22N4O9"],
+      ["Molecular weight", "~390.4 g/mol"],
+      ["CAS number", "307297-39-8"],
+      ["Synonyms", "Epithalon, AEDG"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 17 }
     ],
     stripePaymentLink: ""
   },
