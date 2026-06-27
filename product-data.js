@@ -2,7 +2,8 @@ const PRODUCT_DATA = {
   retatrutide: {
     name: "Retatrutide",
     category: "Metabolic research",
-    image: "hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg",
+    image: "reta-50mg.png",
+    penAddon: true,
     seo: {
       title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
       metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -199,6 +200,7 @@ const PRODUCT_DATA = {
     name: "GHK-Cu",
     category: "Research peptide",
     image: "hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg",
+    penAddon: true,
     seo: {
       title: "Buy GHK-Cu UK | 50mg Copper Peptide Research Compound | North Peptides UK",
       metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 50mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -240,6 +242,56 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x50mg", dose: "50mg", price: 27 }
+    ],
+    stripePaymentLink: ""
+  },
+  "ghk-cu-pen": {
+    name: "GHK-Cu Pen Vial",
+    category: "Research peptide",
+    image: "ghk-cu-pen-vial.png",
+    penAddon: true,
+    seo: {
+      title: "Buy GHK-Cu Pen Vial UK | 50mg/3ml Pre-Reconstituted | North Peptides UK",
+      metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the GHK-Cu Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 50mg/3ml liquid in a pen-compatible cartridge vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "GHK-Cu Pen Vial contains the same copper(II) tripeptide research compound as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format — 50mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Copper(II) coordination chemistry of the GHK tripeptide, studied in vitro",
+      "Collagen-synthesis and extracellular-matrix research models",
+      "Fibroblast and skin-cell research models",
+      "Comparative studies of copper-peptide complexes"
+    ],
+    specs: [
+      ["Compound type", "Copper(II) tripeptide complex (Copper Tripeptide-1)"],
+      ["Sequence", "Gly-His-Lys (Cu2+-chelated)"],
+      ["Molecular formula", "C14H22CuN6O4"],
+      ["Molecular weight", "~401.9 g/mol"],
+      ["CAS number", "89030-95-5"],
+      ["Synonyms", "Copper peptide, prezatide copper"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 32 }
     ],
     stripePaymentLink: ""
   },

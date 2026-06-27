@@ -41,6 +41,16 @@
     .intranasal-box-btn { width: 100%; padding: 11px; background: #00795F; color: #fff; font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 7px; transition: background 0.2s; }
     .intranasal-box-btn:hover { background: #005F4B; }
     .intranasal-box-btn.added { background: #ECFAF4; color: #00795F; border: 1px solid #B8DCCF; cursor: default; pointer-events: none; }
+    .pen-box { margin-top: 16px; border: 1px solid #B8DCCF; border-radius: 10px; background: #F0FAF6; padding: 14px 16px; }
+    .pen-box-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00795F; font-weight: 600; margin-bottom: 8px; display: block; }
+    .pen-box-inner { display: flex; gap: 14px; align-items: flex-start; }
+    .pen-box-img { width: 72px; height: 72px; object-fit: contain; border-radius: 7px; flex-shrink: 0; background: #ffffff; border: 1px solid #DCF0E8; padding: 4px; }
+    .pen-box-body { flex: 1; }
+    .pen-box-heading { font-size: 0.9rem; font-weight: 700; color: #12211A; margin-bottom: 5px; }
+    .pen-box-desc { font-size: 0.74rem; color: #4A5C51; line-height: 1.65; margin-bottom: 11px; }
+    .pen-box-btn { width: 100%; padding: 11px; background: #00795F; color: #fff; font-family: "DM Mono", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; border-radius: 7px; transition: background 0.2s; }
+    .pen-box-btn:hover { background: #005F4B; }
+    .pen-box-btn.added { background: #ECFAF4; color: #00795F; border: 1px solid #B8DCCF; cursor: default; pointer-events: none; }
     .info-panel { background: #ffffff; border: 1px solid #E2EAE4; border-radius: 12px; padding: 28px; box-shadow: 0 10px 30px rgba(18,46,35,0.06); }
     .tag { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00795F; margin-bottom: 12px; }
     h1 { font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: 14px; color: #12211A; }
@@ -261,6 +271,13 @@
       showToast("Intranasal Research Kit added to basket");
     }
 
+    function addPenToBasket(btn) {
+      addItemToBasket("Research Pen Kit", 14.99, "Kit add-on");
+      btn.textContent = "Added ✓";
+      btn.classList.add("added");
+      showToast("Research Pen Kit added to basket");
+    }
+
     function renderMissing() {
       app.innerHTML = `
         <div class="missing">
@@ -417,6 +434,18 @@
               <p class="intranasal-box-desc">Add an Intranasal Research Kit with sterile saline, 10ml nasal spray bottle, transfer syringe, alcohol wipes, and label.</p>
               <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit — +£4.99</button>
             </div>` : "";
+      const penSection = product.penAddon ? `
+            <div class="pen-box">
+              <span class="pen-box-label">Upgrade Add-on</span>
+              <div class="pen-box-inner">
+                <img class="pen-box-img" src="research-pen-kit-style.png" alt="Research auto-injector pen">
+                <div class="pen-box-body">
+                  <div class="pen-box-heading">Add a Research Pen</div>
+                  <p class="pen-box-desc">Precision-click auto-injector pen + 5 sterile pen tips. Dial your dose and administer without a syringe — ideal for repeat research protocols.</p>
+                  <button class="pen-box-btn" type="button" onclick="addPenToBasket(this)">Add Research Pen Kit — +£14.99</button>
+                </div>
+              </div>
+            </div>` : "";
       const faqSection = (product.seo && Array.isArray(product.seo.faq) && product.seo.faq.length) ? `
             <div class="pd-section faq-section">
               <div class="pd-eyebrow">Questions</div>
@@ -507,6 +536,7 @@
               </div>
             </div>
             ${intranasalSection}
+            ${penSection}
             <div class="research-box">
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.
             </div>
