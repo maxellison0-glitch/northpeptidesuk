@@ -261,6 +261,8 @@ const PRODUCT_DATA = {
     name: "TB-500",
     category: "Research peptide",
     image: "hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "tb-500-pen", label: "Also available as", name: "TB-500 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy TB-500 UK | 10mg Thymosin Beta-4 Fragment Research Peptide | North Peptides UK",
       metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -302,6 +304,57 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 49 }
+    ],
+    stripePaymentLink: ""
+  },
+  "tb-500-pen": {
+    name: "TB-500 Pen Vial",
+    category: "Research peptide",
+    image: "tb-500-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "tb-500", label: "Also available as", name: "TB-500 Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy TB-500 Pen Vial UK | Pre-Reconstituted 10mg/3ml | North Peptides UK",
+      metaDescription: "TB-500 Thymosin Beta-4 fragment pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the TB-500 Pen Vial?", a: "The same TB-500 Thymosin Beta-4 fragment research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "TB-500 Pen Vial contains the same synthetic Thymosin Beta-4 fragment (Ac-LKKTETQ) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Actin-binding and actin-sequestering activity, studied in vitro",
+      "Cell migration and angiogenesis, examined in preclinical models",
+      "Pro-inflammatory cytokine signalling in tissue-research models",
+      "Comparative studies alongside other tissue-research peptides"
+    ],
+    specs: [
+      ["Compound type", "Thymosin Beta-4 fragment"],
+      ["Sequence", "Ac-Leu-Lys-Lys-Thr-Glu-Thr-Gln-OH"],
+      ["Molecular formula", "C38H68N10O14"],
+      ["Molecular weight", "~889 g/mol"],
+      ["CAS number", "885340-08-9"],
+      ["Synonyms", "TB500, Tb4 (17-23)"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 59 }
     ],
     stripePaymentLink: ""
   },
@@ -410,6 +463,8 @@ const PRODUCT_DATA = {
     name: "KPV",
     category: "Research peptide",
     image: "hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
+    penAddon: true,
+    sisterProduct: { slug: "kpv-pen", label: "Also available as", name: "KPV Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy KPV UK | 10mg Research Peptide, 99%+ Purity | North Peptides UK",
       metaDescription: "KPV (Lys-Pro-Val) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -451,6 +506,57 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 30 }
+    ],
+    stripePaymentLink: ""
+  },
+  "kpv-pen": {
+    name: "KPV Pen Vial",
+    category: "Research peptide",
+    image: "kpv-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "kpv", label: "Also available as", name: "KPV Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy KPV Pen Vial UK | Pre-Reconstituted 10mg/3ml | North Peptides UK",
+      metaDescription: "KPV alpha-MSH fragment tripeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the KPV Pen Vial?", a: "The same KPV (Lys-Pro-Val) alpha-MSH fragment tripeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "KPV Pen Vial contains the same KPV (Lys-Pro-Val) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "NF-kB signalling pathway activity, characterised in inflammation research models",
+      "Pro-inflammatory cytokine (IL-6, TNF-alpha) signalling, studied in vitro",
+      "Antimicrobial-activity research models",
+      "Gastrointestinal inflammation research models"
+    ],
+    specs: [
+      ["Compound type", "Alpha-MSH C-terminal fragment tripeptide"],
+      ["Sequence", "Lys-Pro-Val"],
+      ["Molecular formula", "C16H30N4O4"],
+      ["Molecular weight", "~342.4 g/mol"],
+      ["CAS number", "67727-97-3"],
+      ["Synonyms", "Lysyl-prolyl-valine"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 36 }
     ],
     stripePaymentLink: ""
   },
@@ -894,6 +1000,8 @@ const PRODUCT_DATA = {
     name: "Pinealon",
     category: "Research peptide",
     image: "pinealon.png",
+    penAddon: true,
+    sisterProduct: { slug: "pinealon-pen", label: "Also available as", name: "Pinealon Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Pinealon UK | 20mg Research Peptide, 99%+ Purity | North Peptides UK",
       metaDescription: "Pinealon (Glu-Asp-Arg) research peptide, UK stocked. 20mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -935,6 +1043,57 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x20mg", dose: "20mg", price: 29.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "pinealon-pen": {
+    name: "Pinealon Pen Vial",
+    category: "Research peptide",
+    image: "pinealon-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "pinealon", label: "Also available as", name: "Pinealon Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy Pinealon Pen Vial UK | Pre-Reconstituted 20mg/3ml | North Peptides UK",
+      metaDescription: "Pinealon (EDR tripeptide) pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the Pinealon Pen Vial?", a: "The same Pinealon (Glu-Asp-Arg, EDR) regulatory tripeptide research compound, supplied pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "Pinealon Pen Vial contains the same Pinealon (Glu-Asp-Arg, EDR) synthetic regulatory tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 20mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Blood-brain-barrier permeability of short peptides, studied in research models",
+      "Neuroprotection in hypoxia and oxidative-stress models",
+      "Transcriptional and epigenetic regulation in neuronal research models",
+      "Cognitive function as a measured endpoint in aged-animal models"
+    ],
+    specs: [
+      ["Compound type", "Synthetic regulatory tripeptide (EDR)"],
+      ["Sequence", "Glu-Asp-Arg"],
+      ["Molecular formula", "C15H26N6O8"],
+      ["Molecular weight", "~418.4 g/mol"],
+      ["CAS number", "175175-23-2"],
+      ["Synonyms", "Pinealon"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 36 }
     ],
     stripePaymentLink: ""
   },
