@@ -99,9 +99,9 @@ const PRODUCT_DATA = {
       "Pen kit available as add-on"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 54 },
-      { label: "1x20mg", dose: "20mg", price: 102 },
-      { label: "1x50mg", dose: "50mg", price: 216 }
+      { label: "1x10mg", dose: "10mg", price: 50 },
+      { label: "1x20mg", dose: "20mg", price: 90 },
+      { label: "1x50mg", dose: "50mg", price: 150 }
     ],
     stripePaymentLink: ""
   },
