@@ -201,6 +201,7 @@ const PRODUCT_DATA = {
     category: "Research peptide",
     image: "hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg",
     penAddon: true,
+    sisterProduct: { slug: "ghk-cu-pen", label: "Also available as", name: "GHK-Cu Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy GHK-Cu UK | 50mg Copper Peptide Research Compound | North Peptides UK",
       metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 50mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -250,6 +251,7 @@ const PRODUCT_DATA = {
     category: "Research peptide",
     image: "ghk-cu-pen-vial.png",
     penAddon: true,
+    sisterProduct: { slug: "ghk-cu", label: "Also available as", name: "GHK-Cu Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy GHK-Cu Pen Vial UK | 50mg/3ml Pre-Reconstituted | North Peptides UK",
       metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
@@ -262,7 +264,7 @@ const PRODUCT_DATA = {
     },
     summary: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
-      "GHK-Cu Pen Vial contains the same copper(II) tripeptide research compound as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format — 50mg dissolved in 3ml solution.",
+      "GHK-Cu Pen Vial contains the same copper(II) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 50mg dissolved in 3ml solution.",
       "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
