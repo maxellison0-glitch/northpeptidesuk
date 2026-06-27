@@ -415,7 +415,7 @@
         `<div class="tp-item"><span class="tp-label">${label}</span><span class="tp-value ${!isSupply && index === 0 ? "tp-v-purity" : ""} ${label === "Use" ? "tp-v-research" : ""}">${value}</span></div>`
       )).join("");
       const trustChips = trust.chips.map((chip, index) => `<span class="tp-chip ${!isSupply && index === 0 ? "tp-chip-purity" : ""}">${chip}</span>`).join("");
-      const relatedSupplies = isSupply ? "" : `
+      const relatedSupplies = (isSupply || slug.endsWith('-pen')) ? "" : `
             <div class="also-need">
               <div class="also-need-title">You may also need</div>
               <div class="addon-row">
