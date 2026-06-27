@@ -109,6 +109,8 @@ const PRODUCT_DATA = {
     name: "Tirzepatide",
     category: "Metabolic research",
     image: "hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "tirzepatide-pen", label: "Also available as", name: "Tirzepatide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Tirzepatide UK | 15mg & 30mg Research Peptide | North Peptides UK",
       metaDescription: "Tirzepatide research compound, UK stocked. 15mg & 30mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -151,6 +153,59 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x15mg", dose: "15mg", price: 65 },
       { label: "1x30mg", dose: "30mg", price: 120 }
+    ],
+    stripePaymentLink: ""
+  },
+  "tirzepatide-pen": {
+    name: "Tirzepatide Pen Vial",
+    category: "Metabolic research",
+    image: "tirzepatide-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "tirzepatide", label: "Also available as", name: "Tirzepatide Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy Tirzepatide Pen Vial UK | Pre-Reconstituted 15mg, 30mg | North Peptides UK",
+      metaDescription: "Tirzepatide dual GIP/GLP-1 agonist pre-reconstituted as a liquid in a pen-compatible vial. 15mg and 30mg sizes. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the Tirzepatide Pen Vial?", a: "The same Tirzepatide dual GIP/GLP-1 receptor agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "What sizes are available?", a: "15mg and 30mg pen vials are available. Select your size using the dropdown before adding to basket." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "Tirzepatide dual GIP/GLP-1 receptor agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 15mg and 30mg.",
+    longDescription: [
+      "Tirzepatide Pen Vial contains the same dual GIP and GLP-1 receptor agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
+      "Available in 15mg and 30mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Co-agonist binding and signalling at the GIP and GLP-1 receptors, studied in vitro",
+      "Comparative pharmacology against GLP-1-only reference peptides",
+      "Peptide stability, solubility and handling in laboratory preparations",
+      "Use as an analytical reference standard"
+    ],
+    specs: [
+      ["Compound type", "GIP / GLP-1 dual receptor agonist"],
+      ["Structure", "39-amino-acid peptide (C-terminal amide)"],
+      ["Molecular formula", "C225H348N48O68"],
+      ["Molecular weight", "~4814 g/mol"],
+      ["CAS number", "2023788-19-2"],
+      ["Synonyms", "LY3298176"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 78 },
+      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 144 }
     ],
     stripePaymentLink: ""
   },
@@ -564,6 +619,8 @@ const PRODUCT_DATA = {
     name: "KLOW Stack",
     category: "Research blend",
     image: "hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "klow-stack-pen", label: "Also available as", name: "KLOW Stack Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy KLOW Stack UK | 80mg 4-Peptide Research Blend | North Peptides UK",
       metaDescription: "KLOW Stack research blend (GHK-Cu, TB-500, BPC-157, KPV), UK stocked. 80mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -605,10 +662,60 @@ const PRODUCT_DATA = {
     ],
     stripePaymentLink: ""
   },
+  "klow-stack-pen": {
+    name: "KLOW Stack Pen Vial",
+    category: "Research blend",
+    image: "klow-stack-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "klow-stack", label: "Also available as", name: "KLOW Stack Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy KLOW Stack Pen Vial UK | Pre-Reconstituted 80mg/3ml | North Peptides UK",
+      metaDescription: "KLOW Stack 4-peptide research blend (GHK-Cu, TB-500, BPC-157, KPV) pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is in the KLOW Stack Pen Vial?", a: "The same four-compound blend — GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "KLOW Stack Pen Vial contains the same four-compound research blend — GHK-Cu, TB-500, BPC-157 and KPV at a fixed ratio — as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Combined collagen, extracellular-matrix and cell-migration research models",
+      "Comparative study of single compounds versus a fixed-ratio blend",
+      "Angiogenesis and tissue-research endpoints across the four components",
+      "Inflammation-related signalling contributed by the KPV component"
+    ],
+    specs: [
+      ["Composition", "GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg"],
+      ["Total peptide", "80mg per vial"],
+      ["Blend type", "Four-compound tissue-research blend"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 72 }
+    ],
+    stripePaymentLink: ""
+  },
   ipamorelin: {
     name: "Ipamorelin",
     category: "Research peptide",
     image: "hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "ipamorelin-pen", label: "Also available as", name: "Ipamorelin Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Ipamorelin UK | 5mg Research Peptide, 99%+ Purity | North Peptides UK",
       metaDescription: "Ipamorelin research peptide, UK stocked. 5mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -653,10 +760,63 @@ const PRODUCT_DATA = {
     ],
     stripePaymentLink: ""
   },
+  "ipamorelin-pen": {
+    name: "Ipamorelin Pen Vial",
+    category: "Research peptide",
+    image: "ipamorelin-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "ipamorelin", label: "Also available as", name: "Ipamorelin Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy Ipamorelin Pen Vial UK | Pre-Reconstituted 5mg/3ml | North Peptides UK",
+      metaDescription: "Ipamorelin selective GH secretagogue pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the Ipamorelin Pen Vial?", a: "The same Ipamorelin selective growth-hormone secretagogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "Ipamorelin Pen Vial contains the same selective growth-hormone secretagogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Growth-hormone secretagogue (ghrelin/GHS receptor) signalling, studied in vitro",
+      "Receptor selectivity relative to GHRP-2 and GHRP-6, characterised in research",
+      "Pituitary growth-hormone pulse patterns in preclinical models",
+      "Comparative studies alongside GHRH-analogue peptides"
+    ],
+    specs: [
+      ["Compound type", "Selective growth-hormone secretagogue (pentapeptide)"],
+      ["Sequence", "Aib-His-D-2-Nal-D-Phe-Lys-NH2"],
+      ["Molecular formula", "C38H49N9O5"],
+      ["Molecular weight", "~711.9 g/mol"],
+      ["CAS number", "170851-70-4"],
+      ["Synonyms", "NNC 26-0161"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 30 }
+    ],
+    stripePaymentLink: ""
+  },
   "cjc-1295": {
     name: "CJC-1295 (No DAC)",
     category: "Research peptide",
     image: "hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg",
+    penAddon: true,
+    sisterProduct: { slug: "cjc-1295-pen", label: "Also available as", name: "CJC-1295 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy CJC-1295 No DAC UK | 5mg Mod GRF 1-29 Research Peptide | North Peptides UK",
       metaDescription: "CJC-1295 No DAC (Mod GRF 1-29) research peptide, UK stocked. 5mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -697,6 +857,56 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x5mg", dose: "5mg", price: 32 }
+    ],
+    stripePaymentLink: ""
+  },
+  "cjc-1295-pen": {
+    name: "CJC-1295 Pen Vial",
+    category: "Research peptide",
+    image: "cjc-1295-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "cjc-1295", label: "Also available as", name: "CJC-1295 Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy CJC-1295 Pen Vial UK | Pre-Reconstituted 5mg/3ml | North Peptides UK",
+      metaDescription: "CJC-1295 No DAC (Mod GRF 1-29) GHRH analogue pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the CJC-1295 Pen Vial?", a: "The same CJC-1295 (No DAC) GHRH analogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "CJC-1295 (No DAC) GHRH analogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "CJC-1295 Pen Vial contains the same Modified GRF (1-29) GHRH analogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "GHRH-receptor signalling and growth-hormone pulse dynamics, studied in vitro",
+      "Half-life and clearance characteristics of the no-DAC analogue",
+      "Combination research with GHS peptides acting at distinct receptors",
+      "Comparative studies against the DAC-modified variant"
+    ],
+    specs: [
+      ["Compound type", "GHRH (1-29) analogue — Mod GRF 1-29"],
+      ["Structure", "29-amino-acid peptide (D-Ala2, C-terminal amide)"],
+      ["Molecular formula", "C152H252N44O42"],
+      ["Molecular weight", "~3368 g/mol"],
+      ["Synonyms", "Modified GRF 1-29, CJC-1295 without DAC"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 38 }
     ],
     stripePaymentLink: ""
   },
@@ -803,6 +1013,8 @@ const PRODUCT_DATA = {
     name: "SS-31",
     category: "Research peptide",
     image: "ss-31.png",
+    penAddon: true,
+    sisterProduct: { slug: "ss-31-pen", label: "Also available as", name: "SS-31 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy SS-31 UK | 10mg Elamipretide Research Peptide | North Peptides UK",
       metaDescription: "SS-31 (elamipretide) mitochondria-targeted research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
@@ -845,6 +1057,57 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 24.99 }
+    ],
+    stripePaymentLink: ""
+  },
+  "ss-31-pen": {
+    name: "SS-31 Pen Vial",
+    category: "Research peptide",
+    image: "ss-31-pen-vial.png",
+    penAddon: true,
+    sisterProduct: { slug: "ss-31", label: "Also available as", name: "SS-31 Standard Vial — Frozen / Lyophilised" },
+    seo: {
+      title: "Buy SS-31 Pen Vial UK | Pre-Reconstituted 10mg/3ml | North Peptides UK",
+      metaDescription: "SS-31 (elamipretide) mitochondria-targeted tetrapeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
+      faq: [
+        { q: "What is the SS-31 Pen Vial?", a: "The same SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "SS-31 Pen Vial contains the same elamipretide mitochondria-targeted tetrapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
+      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Cardiolipin binding on the inner mitochondrial membrane, studied in vitro",
+      "Reactive-oxygen-species generation measured at source in research models",
+      "Electron-transport-chain efficiency and membrane-potential endpoints",
+      "ATP-production research models"
+    ],
+    specs: [
+      ["Compound type", "Mitochondria-targeted tetrapeptide (elamipretide)"],
+      ["Sequence", "D-Arg-Dmt-Lys-Phe-NH2"],
+      ["Molecular formula", "C32H49N9O5 (free base)"],
+      ["Molecular weight", "~639.8 g/mol"],
+      ["CAS number", "736992-21-5"],
+      ["Synonyms", "Elamipretide, MTP-131, Bendavia"],
+      ["Purity", "99%+"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "99%+ purity — verified",
+      "Pre-reconstituted — pen-ready",
+      "UK stocked, 24h dispatch",
+      "Pen kit available as add-on"
+    ],
+    variants: [
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 30 }
     ],
     stripePaymentLink: ""
   },
