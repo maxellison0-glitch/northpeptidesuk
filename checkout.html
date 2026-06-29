@@ -388,61 +388,46 @@
       .addon-visual { width: 42px; height: 42px; border-radius: 9px; }
       .addon-symbol.syringe { width: 27px; }
     }
-    /* PEN-STYLE RESEARCH KIT UPSELL */
-    .rs-upsell { background: #ffffff; border-radius: 12px; padding: 18px 18px 18px 20px; margin-bottom: 22px; display: flex; gap: 18px; align-items: flex-start; border: 1px solid #DCE6E0; box-shadow: 0 2px 10px rgba(18,33,26,0.05); position: relative; overflow: hidden; }
-    .rs-upsell::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(0,121,95,0.85) 0%, rgba(0,179,134,0.85) 100%); pointer-events: none; }
-    .rs-body { flex: 1; min-width: 0; }
-    .rs-tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(0,121,95,0.08); border: 1px solid rgba(0,121,95,0.22); font-family: 'DM Mono', monospace; font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; }
-    .rs-upsell h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.1rem, 3.5vw, 1.35rem); font-weight: 800; color: #12211A; line-height: 1.08; margin-bottom: 5px; }
-    .rs-subtitle { font-size: 0.78rem; color: #51625A; line-height: 1.6; margin-bottom: 12px; }
-    .rs-vol-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7B8C82; margin-bottom: 6px; }
-    .rs-vol-row { display: flex; gap: 6px; margin-bottom: 16px; }
-    .rs-vol-btn { flex: 1; padding: 9px 0; border: 1px solid #D5E0D8; border-radius: 7px; background: #F4F8F5; color: #51625A; font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.16s; }
-    .rs-vol-btn:hover { background: #E8F3EE; color: #1A2620; border-color: #B8D4C4; }
-    .rs-vol-btn.active { border-color: #00795F; background: #E8F3EE; color: #00795F; box-shadow: 0 0 0 1px #00795F; }
-    .rs-prod-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
-    .rs-prod-btn { flex: 1 0 calc(50% - 4px); min-width: 120px; padding: 8px 10px; border: 1px solid #D5E0D8; border-radius: 7px; background: #F4F8F5; text-align: left; cursor: pointer; transition: all 0.16s; display: flex; flex-direction: column; gap: 2px; }
-    .rs-prod-btn:hover { background: #E8F3EE; border-color: #B8D4C4; }
-    .rs-prod-btn.active { border-color: #00795F; background: #E8F3EE; box-shadow: 0 0 0 1px #00795F; }
-    .rs-prod-btn.has-kit { border-color: rgba(0,121,95,0.4); }
-    .rs-prod-btn-name { font-size: 0.78rem; font-weight: 600; color: #1A2620; line-height: 1.3; pointer-events: none; }
-    .rs-prod-btn-dose { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: #7B8C82; pointer-events: none; }
-    .rs-prod-btn.active .rs-prod-btn-name { color: #00795F; }
-    .rs-prod-btn.active .rs-prod-btn-dose { color: rgba(0,121,95,0.75); }
-    .rs-prod-btn.has-kit .rs-prod-btn-dose { color: #00795F; }
-    .rs-no-products { padding: 10px 12px; border: 1px solid #DCE5DE; border-radius: 7px; background: #F4F8F5; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #9CA3AF; margin-bottom: 8px; width: 100%; }
-    .rs-select-error { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #DC2626; margin-bottom: 10px; }
-    .rs-price-block { margin-bottom: 11px; }
-    .rs-price-row { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; }
-    .rs-price { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #12211A; line-height: 1; }
-    .rs-price-breakdown { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #9CA3AF; margin-top: 3px; }
-    .rs-add-btn { width: 100%; padding: 11px 14px; background: #00795F; border: none; border-radius: 7px; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,121,95,0.18); transition: background 0.16s; }
-    .rs-add-btn:hover:not(:disabled) { background: #00614C; }
-    .rs-add-btn.added { background: #7C9C8E; cursor: default; }
-    .rs-add-btn:disabled { background: #B0C4BB; cursor: not-allowed; box-shadow: none; opacity: 0.7; }
-    .order-kit-remove { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: #C4CEC8; cursor: pointer; margin-left: 8px; background: none; border: none; padding: 0; vertical-align: middle; transition: color 0.15s; line-height: 1; }
-    .order-kit-remove:hover { color: #DC2626; }
-    .rs-legal { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.52rem; line-height: 1.65; color: #9CA3AF; }
-    .rs-visual { width: 64px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; padding: 8px 0; }
-    .rs-kit-image { width: 76px; height: 112px; object-fit: cover; object-position: center; border-radius: 10px; border: 1px solid #DCE6E0; box-shadow: 0 8px 18px rgba(18,33,26,0.12); background: #F6F8F6; }
-    .rs-pen-wrap { position: relative; width: 26px; height: 100px; animation: rs-float 3.6s ease-in-out infinite; }
-    @keyframes rs-float { 0%,100%{ transform:translateY(0) rotate(0.5deg); } 50%{ transform:translateY(-7px) rotate(-0.5deg); } }
-    .rs-pen-cap { position: absolute; left: 2px; right: 2px; top: 0; height: 13px; background: #00795F; border: 1.5px solid #005f49; border-radius: 4px 4px 2px 2px; }
-    .rs-pen-body { position: absolute; left: 0; right: 0; top: 13px; bottom: 18px; border: 1.5px solid #B8DECE; border-radius: 4px 4px 3px 3px; background: #F4FAF7; overflow: hidden; }
-    .rs-pen-liquid { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 0 0 2px 2px; background: linear-gradient(180deg, rgba(0,180,120,0.45) 0%, rgba(0,121,95,0.75) 100%); transition: height 0.38s cubic-bezier(0.34,1.56,0.64,1); }
-    .rs-pen-mark { position: absolute; right: 0; width: 5px; height: 1px; background: rgba(0,121,95,0.35); }
-    .rs-pen-needle { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 2px; height: 16px; background: linear-gradient(180deg, #8AA094 0%, transparent 100%); border-radius: 0 0 1px 1px; }
-    .rs-pen-glow { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, rgba(0,121,95,0.12) 0%, transparent 70%); animation: rs-glow 3.6s ease-in-out infinite; }
-    @keyframes rs-glow { 0%,100%{ opacity:0.3; } 50%{ opacity:0.9; } }
+    /* COOLING UPSELL CARD */
+    .cooling-card { background: var(--paper); border: 1px solid #B8D9E8; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; position: relative; overflow: hidden; }
+    .cooling-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #2B8FA8, #4BD4EB); pointer-events: none; }
+    .cooling-card-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+    .cooling-icon-wrap { width: 48px; height: 48px; border-radius: 10px; border: 1px solid #B8D9E8; background: linear-gradient(135deg, #E8F5FB, #D0EEFA); flex-shrink: 0; display: grid; place-items: center; position: relative; }
+    .cooling-card-title { font-size: 0.92rem; font-weight: 700; color: #12211A; margin-bottom: 3px; }
+    .cooling-card-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+    .cooling-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .cooling-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; color: #12211A; }
+    .cooling-add-btn { padding: 9px 18px; background: #1E7A96; color: #fff; border: none; border-radius: 7px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .cooling-add-btn:hover { background: #155F77; }
+    .cooling-add-btn.added { background: var(--soft-neutral); cursor: default; }
+    /* RECONSTITUTION CALCULATOR */
+    .calc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 22px; }
+    .calc-intro { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+    .calc-item { padding: 16px 0; border-bottom: 1px solid #EEF4EF; }
+    .calc-item:first-child { padding-top: 0; }
+    .calc-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .calc-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .calc-item-name { font-weight: 600; font-size: 0.92rem; color: #12211A; }
+    .calc-item-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #00795F; background: rgba(0,121,95,0.09); padding: 2px 9px; border-radius: 12px; }
+    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: #00795F; background: rgba(0,121,95,0.07); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 12px; }
+    .calc-water-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .calc-water-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .calc-water-btns { display: flex; gap: 5px; flex-wrap: wrap; }
+    .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 5px 11px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .calc-water-btn:hover { border-color: #00795F; color: #00795F; }
+    .calc-water-btn.active { background: #00795F; color: #fff; border-color: #00795F; }
+    .calc-conc { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #12211A; margin-bottom: 10px; line-height: 1.25; }
+    .calc-conc-sub { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); font-weight: 400; display: block; margin-top: 3px; }
+    .calc-table { border-radius: 8px; overflow: hidden; border: 1px solid #EEF4EF; }
+    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; border-bottom: 1px solid #EEF4EF; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); background: #FAFCFA; }
+    .calc-row:last-child { border-bottom: none; }
+    .calc-row:first-child { background: #EFF9F4; }
+    .calc-val { color: #12211A; font-weight: 600; }
     @media (max-width: 480px) {
-      .rs-upsell { padding: 16px; margin-bottom: 18px; }
-      .rs-visual { display: none; }
-      .rs-prod-btn { flex: 1 0 100%; }
-      .rs-subtitle { margin-bottom: 10px; }
-      .rs-prod-row { margin-bottom: 6px; }
-      .rs-vol-row { margin-bottom: 12px; }
-      .rs-price-block { margin-bottom: 9px; }
-      .rs-legal { margin-top: 10px; }
+      .cooling-card { flex-direction: column; align-items: flex-start; }
+      .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
+      .cooling-price { flex: 1; }
+      .calc-water-row { gap: 7px; }
     }
   </style>
 </head>
@@ -464,29 +449,36 @@
     <p>Check your basket, confirm delivery details, then continue to Stripe for secure card payment.</p>
   </div>
 
-  <!-- RESEARCH SIMPLIFIED UPSELL -->
-  <div class="rs-upsell" id="rs-upsell">
-    <div class="rs-body">
-      <span class="rs-tag">PEN-STYLE RESEARCH KIT</span>
-      <h2>Upgrade to a pen-style setup.</h2>
-      <p class="rs-subtitle">Kit contents: 3ml cartridge, sealed bacteriostatic water, and x5 universal-fit sterile disposable pen tips. Designed for clean, repeatable measured research handling.</p>
-      <p class="rs-vol-label">Select product for kit:</p>
-      <div class="rs-prod-row" id="rs-prod-row">
-        <div class="rs-no-products">Add a research vial to enable this kit.</div>
-      </div>
-      <p class="rs-select-error" id="rs-select-error" style="display:none">Select a product first.</p>
-      <div class="rs-price-block">
-        <div class="rs-price-row">
-          <span class="rs-price" id="rs-price-display">£24.99</span>
+  <!-- SMART SECTION: Cooling upsell (regular vials) + Reconstitution Calculator -->
+  <div id="smart-section" style="display:none">
+
+    <!-- Cold chain upsell — shown only when regular vials in basket, not pen vials -->
+    <div id="cooling-highlight" style="display:none">
+      <p class="sec-head">Cold Chain Protection</p>
+      <div class="cooling-card">
+        <div class="cooling-card-left">
+          <div class="cooling-icon-wrap" aria-hidden="true">
+            <span class="addon-symbol cool" style="color:#2B8FA8"></span>
+          </div>
+          <div>
+            <div class="cooling-card-title">Thermal Cooled Packaging</div>
+            <div class="cooling-card-desc">Insulated foil pouch + gel packs. Keeps your peptides cold from dispatch to your door.</div>
+          </div>
         </div>
-        <div class="rs-price-breakdown" id="rs-price-breakdown">2nd kit £19.99 &middot; 3rd+ £14.99</div>
+        <div class="cooling-card-right">
+          <span class="cooling-price">£3.00</span>
+          <button type="button" class="cooling-add-btn" onclick="addCoolingPackaging(this)">Add</button>
+        </div>
       </div>
-      <button class="rs-add-btn" id="rs-add-btn" onclick="addResearchKit()">ADD KIT &rarr;</button>
-      <p class="rs-legal">For laboratory research use only. Not for human or animal consumption.</p>
     </div>
-    <div class="rs-visual" aria-hidden="true">
-      <img class="rs-kit-image" src="research-pen-kit-style.png" alt="">
+
+    <!-- Reconstitution calculator — pre-filled from basket -->
+    <p class="sec-head">Reconstitution Calculator</p>
+    <div class="calc-card">
+      <p class="calc-intro">Pre-filled from your basket. Tap a water volume to recalculate — units are 0.01mL (standard insulin syringe).</p>
+      <div id="calc-items"></div>
     </div>
+
   </div>
 
   <!-- ORDER SUMMARY -->
@@ -561,24 +553,6 @@
     </div>
   </div>
 
-  <p class="sec-head">Optional Dispatch Packaging</p>
-  <div class="addon-box">
-    <div class="addon-intro">
-      <span>Add insulated foil packaging with gel packs for temperature-conscious dispatch.</span>
-    </div>
-    <div class="addon-list">
-      <div class="addon-row featured">
-        <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol cool"></span></div>
-          <div>
-          <div class="addon-name">Thermal Cooled Packaging</div>
-          <div class="addon-desc">Insulated foil pouch + gel packs</div>
-          </div>
-        </div>
-        <div class="addon-action"><span class="addon-price">&pound;3.00</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Thermal Cooled Packaging',3,'Insulated foil pouch + gel packs')">Add</button></div>
-      </div>
-    </div>
-  </div>
 
   <!-- DISCOUNT CODE -->
   <p class="sec-head">Discount Code</p>
@@ -716,156 +690,104 @@
 </div>
 
 <script>
-  let rsVolume = 2;
-  let rsSelectedProduct = null;
+  // ── RECONSTITUTION CALCULATOR + COOLING UPSELL ──────────────────────────
+  const CALC_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'alcohol wipes',
+    'pen-style research kit', 'sterile disposable pen tips', 'pen tips', 'thermal cooled', 'intranasal'];
 
-  const RS_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'essentials bundle', 'alcohol wipes', 'pen-style research kit', 'sterile disposable pen tips', 'pen tips'];
-
-  function rsIsEligible(item) {
-    const n = item.name.toLowerCase();
-    return !RS_EXCLUDED.some(x => n.includes(x)) && item.dose !== 'Accessory';
+  function isPenVial(item) {
+    return /\/\s*3\s*ml/i.test(item.dose || '');
   }
 
-  function rsKitKey(name, dose) { return name + '||' + dose; }
-
-  function rsHasKit(name, dose) {
-    return basketData.some(i => i._kitFor === rsKitKey(name, dose));
+  function isCalcEligible(item) {
+    if (item._kitFor) return false;
+    const n = (item.name || '').toLowerCase();
+    if (CALC_EXCLUDED.some(x => n.includes(x))) return false;
+    if (!item.dose || item.dose === 'Accessory') return false;
+    return /\d+(\.\d+)?\s*mg/i.test(item.dose);
   }
 
-  function updateRsBtn() {
-    const btn = document.getElementById('rs-add-btn');
-    const priceEl = document.getElementById('rs-price-display');
-    const breakdownEl = document.getElementById('rs-price-breakdown');
-    if (!btn) return;
-    btn.classList.remove('added');
-    const eligible = basketData.filter(rsIsEligible);
-    if (eligible.length === 0) {
-      btn.textContent = 'ADD ELIGIBLE VIAL FIRST';
-      btn.disabled = true;
-      if (priceEl) priceEl.textContent = '£24.99';
-      if (breakdownEl) breakdownEl.style.display = '';
-      return;
-    }
-    btn.disabled = false;
-    if (rsSelectedProduct && rsHasKit(rsSelectedProduct.name, rsSelectedProduct.dose)) {
-      const kit = basketData.find(i => i._kitFor === rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose));
-      if (kit && priceEl) priceEl.textContent = '£' + Number(kit.price).toFixed(2).replace('.00', '');
-      if (breakdownEl) breakdownEl.style.display = 'none';
-      btn.textContent = 'UPDATE KIT →';
-    } else {
-      if (priceEl) priceEl.textContent = '£24.99';
-      if (breakdownEl) breakdownEl.style.display = '';
-      btn.textContent = 'ADD KIT →';
-    }
+  function parseMg(dose) {
+    const m = (dose || '').match(/(\d+(?:\.\d+)?)\s*mg/i);
+    return m ? parseFloat(m[1]) : null;
   }
 
-  function renderRsProductSelector() {
-    const eligible = basketData.filter(rsIsEligible);
-    const row = document.getElementById('rs-prod-row');
-    if (!row) return;
-    if (eligible.length === 0) {
-      row.innerHTML = '<div class="rs-no-products">Add a research vial to enable this kit.</div>';
-      updateRsBtn();
-      return;
-    }
-    if (eligible.length === 1 && !rsSelectedProduct) {
-      rsSelectedProduct = { name: eligible[0].name, dose: eligible[0].dose };
-    }
-    row.innerHTML = eligible.map(item => {
-      const isActive = rsSelectedProduct && rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose) === rsKitKey(item.name, item.dose);
-      const hasKit = rsHasKit(item.name, item.dose);
-      const doseText = item.dose + (hasKit ? ' ✔ Kit added' : '');
-      return '<button class="rs-prod-btn' + (isActive ? ' active' : '') + (hasKit ? ' has-kit' : '') + '"'
-        + ' data-name=' + JSON.stringify(item.name)
-        + ' data-dose=' + JSON.stringify(item.dose)
-        + ' onclick="selectRsProd(this)">'
-        + '<span class="rs-prod-btn-name">' + item.name + '</span>'
-        + '<span class="rs-prod-btn-dose">' + doseText + '</span>'
-        + '</button>';
+  function calcTableHTML(mg, waterMl) {
+    const concMgMl = mg / waterMl;
+    const concMcgMl = concMgMl * 1000;
+    const refs = [
+      { ml: 0.01, label: '1 unit · 0.01mL' },
+      { ml: 0.05, label: '5 units · 0.05mL' },
+      { ml: 0.10, label: '10 units · 0.1mL' },
+      { ml: 0.25, label: '25 units · 0.25mL' },
+      { ml: 0.50, label: '50 units · 0.5mL' },
+    ];
+    const rows = refs.map(r => {
+      const amt = r.ml * concMcgMl;
+      const display = amt >= 1000
+        ? (amt / 1000).toFixed(3).replace(/\.?0+$/, '') + ' mg'
+        : amt % 1 === 0 ? amt + ' mcg' : amt.toFixed(1) + ' mcg';
+      return '<div class="calc-row"><span>' + r.label + '</span><span class="calc-val">' + display + '</span></div>';
     }).join('');
-    updateRsBtn();
+    return '<div class="calc-conc">' + concMgMl.toFixed(2) + ' mg/mL'
+      + '<span class="calc-conc-sub">' + Math.round(concMcgMl).toLocaleString() + ' mcg/mL &nbsp;·&nbsp; ' + waterMl + 'mL bacteriostatic water</span>'
+      + '</div>'
+      + '<div class="calc-table">' + rows + '</div>';
   }
 
-  function selectRsProd(el) {
-    rsSelectedProduct = { name: el.dataset.name, dose: el.dataset.dose };
-    document.getElementById('rs-select-error').style.display = 'none';
-    renderRsProductSelector();
+  function setCalcWater(itemId, mg, ml, btn) {
+    btn.closest('.calc-water-btns').querySelectorAll('.calc-water-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(itemId + '-result').innerHTML = calcTableHTML(mg, ml);
   }
 
-  function selectRsVol(ml) {
-    rsVolume = ml;
-    document.querySelectorAll('.rs-vol-btn').forEach(btn => {
-      btn.classList.toggle('active', Number(btn.dataset.ml) === ml);
-    });
-    const fills = { 1: '31%', 2: '52%', 3: '73%' };
-    const liquid = document.getElementById('rs-pen-liquid');
-    if (liquid) liquid.style.height = fills[ml];
-    updateRsBtn();
+  function renderCalcItem(item, idx) {
+    const mg = parseMg(item.dose);
+    if (!mg) return '';
+    const pen = isPenVial(item);
+    const defWater = pen ? 3 : 2;
+    const id = 'ci' + idx;
+    const waterSel = pen
+      ? '<div class="calc-pen-note">Pen vial &middot; 3mL cartridge</div>'
+      : '<div class="calc-water-row">'
+        + '<span class="calc-water-label">Water</span>'
+        + '<div class="calc-water-btns">'
+        + [1, 2, 3, 5, 10].map(ml =>
+            '<button class="calc-water-btn' + (ml === defWater ? ' active' : '') + '"'
+            + ' onclick="setCalcWater('' + id + '',' + mg + ',' + ml + ',this)">' + ml + 'mL</button>'
+          ).join('')
+        + '</div></div>';
+    return '<div class="calc-item">'
+      + '<div class="calc-item-header">'
+      + '<span class="calc-item-name">' + item.name + '</span>'
+      + '<span class="calc-item-mg">' + mg + 'mg</span>'
+      + '</div>'
+      + waterSel
+      + '<div class="calc-result" id="' + id + '-result">' + calcTableHTML(mg, defWater) + '</div>'
+      + '</div>';
   }
 
-  function recalcRsKitPrices() {
-    const kits = basketData.filter(i => i._kitFor);
-    kits.forEach((kit, idx) => {
-      kit.price = idx === 0 ? 24.99 : idx === 1 ? 19.99 : 14.99;
-      const tierSuffix = idx === 1 ? ' · Multi-kit price applied' : idx >= 2 ? ' · Additional kit price applied' : '';
-      kit.dose = 'For: ' + kit._kitProductName + ' (' + kit._kitProductDose + ')' + tierSuffix;
-    });
+  function addCoolingPackaging(btn) {
+    if (btn.classList.contains('added')) return;
+    addCheckoutAddon(btn, 'Thermal Cooled Packaging', 3, 'Insulated foil pouch + gel packs');
   }
 
   function removeKitItem(key) {
     const idx = basketData.findIndex(i => i._kitFor === key);
-    if (idx === -1) return;
-    basketData.splice(idx, 1);
-    recalcRsKitPrices();
-    saveCheckoutBasket();
-    renderOrder();
-    renderRsProductSelector();
-    updateRsBtn();
+    if (idx !== -1) { basketData.splice(idx, 1); saveCheckoutBasket(); renderOrder(); }
   }
 
-  function addResearchKit() {
-    const btn = document.getElementById('rs-add-btn');
-    if (!rsSelectedProduct) {
-      document.getElementById('rs-select-error').style.display = 'block';
-      return;
-    }
-    document.getElementById('rs-select-error').style.display = 'none';
-    const key = rsKitKey(rsSelectedProduct.name, rsSelectedProduct.dose);
-    const existing = basketData.find(i => i._kitFor === key);
-    if (existing) {
-      existing._kitVolume = rsVolume;
-    } else {
-      basketData.push({
-        name: 'Pen-Style Research Kit',
-        price: 24.99,
-        dose: '',
-        qty: 1,
-        _kitFor: key,
-        _kitProductName: rsSelectedProduct.name,
-        _kitProductDose: rsSelectedProduct.dose,
-        _kitVolume: rsVolume
-      });
-    }
-    recalcRsKitPrices();
-    saveCheckoutBasket();
-    renderOrder();
-    if (!existing && window.NPUKAnalytics) {
-      const kit = basketData.find(item => item._kitFor === key);
-      window.NPUKAnalytics.track('AddToCart', {
-        contents: [{
-          content_id: 'Pen-Style Research Kit:' + key,
-          content_name: 'Pen-Style Research Kit',
-          content_type: 'product',
-          quantity: 1,
-          price: kit ? Number(kit.price) : 24.99
-        }],
-        value: kit ? Number(kit.price) : 24.99,
-        currency: 'GBP'
-      });
-    }
-    btn.textContent = 'Added ✓';
-    btn.classList.add('added');
-    setTimeout(() => { updateRsBtn(); renderRsProductSelector(); }, 1600);
+  function updateSmartSection() {
+    const eligible = basketData.filter(isCalcEligible);
+    const hasRegular = eligible.some(i => !isPenVial(i));
+    const section = document.getElementById('smart-section');
+    const coolingHL = document.getElementById('cooling-highlight');
+    if (!section) return;
+    if (eligible.length === 0) { section.style.display = 'none'; return; }
+    section.style.display = '';
+    const coolingInBasket = basketData.some(i => (i.name || '').toLowerCase().includes('thermal cooled'));
+    if (coolingHL) coolingHL.style.display = (hasRegular && !coolingInBasket) ? '' : 'none';
+    const calcEl = document.getElementById('calc-items');
+    if (calcEl) calcEl.innerHTML = eligible.map((item, i) => renderCalcItem(item, i)).join('');
   }
 
   let basketData = [];
@@ -1021,6 +943,7 @@
     ).join('\n');
     document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateTotals();
+    updateSmartSection();
   }
 
   function getCustomerPayload(form) {
