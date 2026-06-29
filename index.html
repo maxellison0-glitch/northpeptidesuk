@@ -204,6 +204,40 @@
       letter-spacing: -0.02em;
     }
     .hero-title em { font-style: normal; color: #00795F; }
+    .hero-title-dispatch {
+      background: linear-gradient(120deg, #007A5E 0%, #00C07A 55%, #00E5A0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-dispatch-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00795F;
+      background: rgba(0,121,95,0.07);
+      border: 1px solid rgba(0,121,95,0.25);
+      padding: 6px 14px 6px 10px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .dispatch-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00C07A;
+      flex-shrink: 0;
+      animation: live-dot 1.9s ease-in-out infinite;
+    }
+    @keyframes live-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,192,122,0.55); }
+      55%       { box-shadow: 0 0 0 5px rgba(0,192,122,0); }
+    }
+    .hero-stat-num.accent { color: #007A5E; }
     .hero-sub {
       font-size: clamp(0.85rem, 2vw, 1rem);
       color: #49594F;
@@ -1071,12 +1105,17 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="hero-tag">North Peptides UK</span>
+      <div class="hero-dispatch-pill">
+        <span class="dispatch-live-dot"></span>
+        Same Day UK Dispatch
+      </div>
       <h1 class="hero-title">
         Purity Stated.<br>
         UK Stocked.<br>
+        <span class="hero-title-dispatch">Same Day Dispatch.</span><br>
         <em>Research Use Only.</em>
       </h1>
-      <p class="hero-sub">Lyophilised research peptides with purity stated on every product. UK stocked, frozen until dispatch, with direct support before you order.</p>
+      <p class="hero-sub">Same day UK dispatch on all orders. Lyophilised research peptides with purity stated on every product. UK stocked, frozen until dispatch, with direct support before you order.</p>
       <div class="hero-cta-row">
         <a href="#products" class="hero-cta-primary">Shop Now →</a>
         <a href="why-us.html" class="hero-cta-secondary">Why North Peptides →</a>
@@ -1102,7 +1141,7 @@
         <div class="hero-stat"><span class="hero-stat-num">99%+</span><span class="hero-stat-label">Purity Stated</span></div>
         <div class="hero-stat"><span class="hero-stat-num">UK</span><span class="hero-stat-label">Stocked</span></div>
         <div class="hero-stat"><span class="hero-stat-num">Frozen</span><span class="hero-stat-label">Until Dispatch</span></div>
-        <div class="hero-stat"><span class="hero-stat-num">24h</span><span class="hero-stat-label">Dispatch</span></div>
+        <div class="hero-stat"><span class="hero-stat-num accent">Same Day</span><span class="hero-stat-label">Dispatch</span></div>
       </div>
     </div>
   </div>
