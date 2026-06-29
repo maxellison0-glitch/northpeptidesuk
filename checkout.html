@@ -753,7 +753,7 @@
         + '<div class="calc-water-btns">'
         + [1, 2, 3, 5, 10].map(ml =>
             '<button class="calc-water-btn' + (ml === defWater ? ' active' : '') + '"'
-            + ' onclick="setCalcWater('' + id + '',' + mg + ',' + ml + ',this)">' + ml + 'mL</button>'
+            + ' onclick="setCalcWater(\'' + id + '\',' + mg + ',' + ml + ',this)">' + ml + 'mL</button>'
           ).join('')
         + '</div></div>';
     return '<div class="calc-item">'
@@ -1006,7 +1006,6 @@
     }
     if (paymentStatus === 'cancelled') showStripeCancel();
     renderOrder();
-    renderRsProductSelector();
   });
 
   document.getElementById('checkout-form').addEventListener('submit', async (e) => {

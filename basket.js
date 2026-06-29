@@ -2,6 +2,8 @@
 
 let basket = [];
 
+function fmt(v) { return Number(v).toFixed(2).replace(/\.00$/, ''); }
+
 // Persist the basket so it survives navigation to checkout.html, which reads
 // the same `npuk_basket` sessionStorage key (shared with product.html).
 function loadBasket() {
@@ -79,12 +81,12 @@ function renderBasketItems() {
         <span>${item.qty}</span>
         <button onclick="changeQty(${i}, 1)">+</button>
       </div>
-      <div class="basket-item-price">£${(item.price * item.qty)}</div>
+      <div class="basket-item-price">£${fmt(item.price * item.qty)}</div>
       <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
     </div>
   `).join('');
 
-  if (totalEl) totalEl.textContent = '£' + getTotal();
+  if (totalEl) totalEl.textContent = '£' + fmt(getTotal());
 }
 
 function showBasket() {
@@ -105,12 +107,12 @@ function showCheckout() {
 
   const summary = document.getElementById('checkout-summary');
   summary.innerHTML = basket.map(item =>
-    `<div class="checkout-line"><span>${item.name} ${item.dose} x${item.qty}</span><span>£${item.price * item.qty}</span></div>`
-  ).join('') + `<div class="checkout-line checkout-total-line"><span>Total</span><span>£${getTotal()}</span></div>`;
+    `<div class="checkout-line"><span>${item.name} ${item.dose} x${item.qty}</span><span>£${fmt(item.price * item.qty)}</span></div>`
+  ).join('') + `<div class="checkout-line checkout-total-line"><span>Total</span><span>£${fmt(getTotal())}</span></div>`;
 
   document.getElementById('order-details').value = basket.map(item =>
-    `${item.name} ${item.dose} x${item.qty} = £${item.price * item.qty}`
-  ).join('\n') + `\n\nTOTAL: £${getTotal()}`;
+    `${item.name} ${item.dose} x${item.qty} = £${fmt(item.price * item.qty)}`
+  ).join('\n') + `\n\nTOTAL: £${fmt(getTotal())}`;
 }
 
 function backToBasket() {
