@@ -13,7 +13,7 @@ const SITE = {
   name: 'North Peptides UK',
   telegram: '@NORTHPEPTIDESUK',
   telegramUrl: 'https://t.me/NORTHPEPTIDESUK',
-  email: 'northpeptidesuk@gmail.com',
+  email: 'orders@northpeptidesuk.com',
 };
 
 // Static pages that belong in the sitemap (paths relative to base).

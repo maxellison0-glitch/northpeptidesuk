@@ -244,7 +244,7 @@ assert(
 assert(
   sitePages.every((page) => !page.includes("support@northpeptidesuk.com")) &&
     sitePages.every((page) => !page.includes("Northern England")) &&
-    sitePages.some((page) => page.includes("northpeptidesuk@gmail.com")),
+    sitePages.some((page) => page.includes("orders@northpeptidesuk.com")),
   "site support links should use the new support address and UK-only wording"
 );
 assert(
