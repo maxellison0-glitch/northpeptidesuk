@@ -432,6 +432,11 @@
     .calc-dose-input:focus { border-color: #00795F; box-shadow: 0 0 0 3px rgba(0,121,95,0.1); }
     .calc-dose-unit { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #6B7C72; letter-spacing: 0.05em; }
     .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #00795F; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
+    .order-line-blend-detail { font-size: 0.58rem; color: #9CA3AF; margin-top: 2px; }
+    /* Blend per-unit breakdown in result box */
+    .calc-blend-row { margin-top: 10px; border-top: 1px solid rgba(0,121,95,0.15); padding-top: 10px; display: flex; flex-direction: column; gap: 3px; }
+    .calc-blend-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #12211A; }
+    .calc-blend-comp span:last-child { color: #00795F; font-weight: 600; }
     /* Draw result */
     .calc-draw { margin-top: 14px; }
     .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; animation: calcPop 0.3s ease; }
@@ -439,8 +444,18 @@
     .calc-draw-info { flex: 1; }
     .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); }
     .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: rgba(255,255,255,0.35); margin-top: 3px; }
+    .calc-draw-breakdown { margin-top: 8px; background: rgba(0,121,95,0.06); border: 1px solid rgba(0,121,95,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
+    .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #16241E; border-bottom: 1px solid rgba(0,121,95,0.08); padding-bottom: 4px; }
+    .calc-draw-comp:last-child { border-bottom: none; padding-bottom: 0; }
+    .calc-draw-comp span:last-child { color: #00795F; font-weight: 600; }
     /* Saved confirmation */
     .calc-saved { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #00795F; display: flex; align-items: center; gap: 5px; margin-top: 9px; opacity: 0; transition: opacity 0.35s; }
+    /* Calculator toggle */
+    .calc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 0; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #16241E; text-transform: uppercase; transition: border-color 0.15s, background 0.15s; }
+    .calc-toggle:hover { border-color: #00795F; background: rgba(0,121,95,0.03); }
+    .calc-toggle-chevron { font-size: 0.75rem; color: #00795F; transition: transform 0.22s; display: inline-block; }
+    .calc-toggle.open .calc-toggle-chevron { transform: rotate(90deg); }
+    .calc-card { margin-top: 10px; }
     @media (max-width: 480px) {
       .cooling-card { flex-direction: column; align-items: flex-start; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
@@ -490,9 +505,12 @@
       </div>
     </div>
 
-    <!-- Reconstitution calculator — pre-filled from basket -->
-    <p class="sec-head">Reconstitution Calculator</p>
-    <div class="calc-card">
+    <!-- Reconstitution calculator — hidden by default, tap to expand -->
+    <button type="button" class="calc-toggle" id="calc-toggle" onclick="toggleCalc()">
+      <span>Reconstitution Calculator</span>
+      <span class="calc-toggle-chevron">&#9658;</span>
+    </button>
+    <div class="calc-card" id="calc-card" style="display:none">
       <p class="calc-intro">How much to draw — based on your basket.</p>
       <div id="calc-items"></div>
     </div>
@@ -712,37 +730,53 @@
   const CALC_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'alcohol wipes',
     'pen-style research kit', 'sterile disposable pen tips', 'pen tips', 'thermal cooled', 'intranasal'];
 
-  // Product-aware dose chips (mcg). Matched via item.name.toLowerCase().includes(key).
-  const DOSE_CHIPS = {
-    retatrutide: [2000, 4000, 6000, 8000],
-    tirzepatide: [2500, 5000, 7500, 10000],
-    ipamorelin:  [100, 200, 300, 500],
-    cjc:         [100, 200, 300, 500],
-    bpc:         [250, 500, 750, 1000],
-    'tb-500':    [2500, 5000, 10000, 20000],
-    tb500:       [2500, 5000, 10000, 20000],
-    ghk:         [500, 1000, 2000, 5000],
-    nad:         [250000, 500000, 750000, 1000000],
-    epitalon:    [5000, 10000, 20000, 50000],
-    pinealon:    [5000, 10000, 20000],
-    'ss-31':     [2500, 5000, 10000, 20000],
-    ss31:        [2500, 5000, 10000, 20000],
-    semax:       [100, 200, 400, 600],
-    selank:      [100, 200, 400, 600],
-    kpv:         [500, 1000, 2000],
-    klow:        [500, 1000, 2000, 5000],
+  // Blend composition: each entry maps a blend key → component breakdown (shares must sum to 1).
+  // KLOW Stack: GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg = 80mg (5:1:1:1 ratio)
+  const BLEND_COMPOSITIONS = {
+    klow: [
+      { name: 'GHK-Cu',  share: 50/80 },
+      { name: 'TB-500',  share: 10/80 },
+      { name: 'BPC-157', share: 10/80 },
+      { name: 'KPV',     share: 10/80 },
+    ],
   };
+
+  // Suggested placeholder dose per compound (mcg). Keeps the input contextual without pre-filling.
+  function getSuggestedDose(name) {
+    const n = name.toLowerCase();
+    if (n.includes('retatrutide')) return 2000;
+    if (n.includes('tirzepatide')) return 2500;
+    if (n.includes('ipamorelin')) return 200;
+    if (n.includes('cjc')) return 200;
+    if (n.includes('bpc')) return 500;
+    if (n.includes('tb-500') || n.includes('tb500')) return 2500;
+    if (n.includes('klow')) return 2000;
+    if (n.includes('ghk')) return 1000;
+    if (n.includes('kpv')) return 1000;
+    if (n.includes('ss-31') || n.includes('ss31')) return 2500;
+    if (n.includes('semax')) return 200;
+    if (n.includes('selank')) return 200;
+    if (n.includes('epitalon')) return 10000;
+    if (n.includes('pinealon')) return 10000;
+    if (n.includes('nad')) return 500000;
+    return null;
+  }
+
+  function getBlendKey(name) {
+    const n = (name || '').toLowerCase();
+    if (n.includes('klow')) return 'klow';
+    return null;
+  }
 
   const doseNotes    = {};  // { itemName: { mcg, units, mlVal, waterMl } }
   const calcItemMeta = {};  // { 'ci0': { name, mg, waterMl } }
 
-  function getDoseChips(name, mg) {
-    const n = name.toLowerCase();
-    for (const [key, chips] of Object.entries(DOSE_CHIPS)) {
-      if (n.includes(key)) return chips;
-    }
-    const vMcg = mg * 1000;
-    return [0.05, 0.1, 0.25, 0.5].map(f => Math.round(vMcg * f));
+  function toggleCalc() {
+    const toggle = document.getElementById('calc-toggle');
+    const card   = document.getElementById('calc-card');
+    const isOpen = toggle.classList.contains('open');
+    toggle.classList.toggle('open');
+    card.style.display = isOpen ? 'none' : '';
   }
 
   function calcUnitsFromDose(mcg, mg, waterMl) {
@@ -756,13 +790,21 @@
     const el = document.getElementById(itemId + '-draw');
     if (!el) return;
     if (!note) { el.innerHTML = ''; return; }
+    const blendKey = getBlendKey(meta.name);
+    let breakdownHTML = '';
+    if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
+      breakdownHTML = '<div class="calc-draw-breakdown">' +
+        BLEND_COMPOSITIONS[blendKey].map(function(c) {
+          return '<div class="calc-draw-comp"><span>' + c.name + '</span><span>' + fmtDose(note.mcg * c.share) + '</span></div>';
+        }).join('') + '</div>';
+    }
     el.innerHTML = `<div class="calc-draw-result">
       <span class="calc-draw-num">${note.units}</span>
       <div class="calc-draw-info">
         <div class="calc-draw-label">units to draw</div>
         <div class="calc-draw-sub">${note.mlVal}mL &nbsp;&middot;&nbsp; ${fmtDose(note.mcg)}</div>
       </div>
-    </div>`;
+    </div>${breakdownHTML}`;
   }
 
   function doseInputChanged(itemId, inputEl) {
@@ -789,14 +831,21 @@
       const note = doseNotes[name];
       let noteEl = lineEl.querySelector('.order-line-dose-note');
       if (note) {
-        const txt = note.units + ' units \xB7 ' + note.mlVal + 'mL \xB7 ' + fmtDose(note.mcg);
+        const blendKey = getBlendKey(name);
+        let html = '↳ ' + note.units + ' units \xB7 ' + note.mlVal + 'mL \xB7 ' + fmtDose(note.mcg);
+        if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
+          html += '<div class="order-line-blend-detail">' +
+            BLEND_COMPOSITIONS[blendKey].map(function(c) {
+              return c.name + '\xA0' + fmtDose(note.mcg * c.share);
+            }).join(' \xB7 ') + '</div>';
+        }
         if (!noteEl) {
           noteEl = document.createElement('div');
           noteEl.className = 'order-line-dose-note';
           const nameDiv = lineEl.querySelector('.order-line-name');
           if (nameDiv) nameDiv.insertAdjacentElement('afterend', noteEl);
         }
-        noteEl.innerHTML = '↳ ' + txt;
+        noteEl.innerHTML = html;
       } else if (noteEl) {
         noteEl.remove();
       }
@@ -804,12 +853,18 @@
   }
 
   function rebuildOrderSummary() {
-    const lines = basketData.map(item => {
+    const lines = basketData.map(function(item) {
       const base = item.name + ' ' + item.dose + ' x' + item.qty + ' = \xA3' + formatMoney(item.price * item.qty);
       const note = doseNotes[item.name];
-      return note
-        ? base + '\n  ↳ Dose: ' + fmtDose(note.mcg) + ' → draw ' + note.units + ' units (' + note.mlVal + 'mL) · ' + note.waterMl + 'mL bac water'
-        : base;
+      if (!note) return base;
+      let line = base + '\n  ↳ Dose: ' + fmtDose(note.mcg) + ' → draw ' + note.units + ' units (' + note.mlVal + 'mL) \xB7 ' + note.waterMl + 'mL bac water';
+      const blendKey = getBlendKey(item.name);
+      if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
+        line += '\n     ' + BLEND_COMPOSITIONS[blendKey].map(function(c) {
+          return c.name + ' ' + fmtDose(note.mcg * c.share);
+        }).join(' \xB7 ');
+      }
+      return line;
     });
     document.getElementById('order-summary-hidden').value = lines.join('\n');
     updateOrderDoseDisplay();
@@ -840,13 +895,22 @@
     return (mcg % 1 === 0 ? mcg : parseFloat(mcg.toFixed(1))) + ' mcg';
   }
 
-  function calcResultHTML(mg, waterMl) {
+  function calcResultHTML(mg, waterMl, itemName) {
     const concMgMl = mg / waterMl;
     const mcgPerUnit = concMgMl * 10; // 1 unit = 0.01mL on U-100 syringe → ×1000×0.01 = ×10
+    const blendKey = getBlendKey(itemName);
+    let blendHTML = '';
+    if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
+      blendHTML = '<div class="calc-blend-row">' +
+        BLEND_COMPOSITIONS[blendKey].map(function(c) {
+          return '<div class="calc-blend-comp"><span>' + c.name + '</span><span>' + fmtDose(mcgPerUnit * c.share) + '</span></div>';
+        }).join('') + '</div>';
+    }
     return `<div class="calc-result-box">
       <div class="calc-1u-label">1 unit draws</div>
       <div class="calc-1u-value">${fmtDose(mcgPerUnit)}</div>
       <div class="calc-1u-sub">${concMgMl.toFixed(2)} mg/mL &nbsp;&middot;&nbsp; ${waterMl}mL bac water</div>
+      ${blendHTML}
     </div>`;
   }
 
@@ -858,7 +922,7 @@
     el.style.opacity = '0';
     el.style.transform = 'translateY(5px)';
     setTimeout(() => {
-      el.innerHTML = calcResultHTML(mg, ml);
+      el.innerHTML = calcResultHTML(mg, ml, calcItemMeta[itemId] ? calcItemMeta[itemId].name : '');
       el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
@@ -896,11 +960,12 @@
         <span class="calc-product-mg">${mg}mg</span>
       </div>
       ${waterSel}
-      <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater)}</div>
+      <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater, item.name)}</div>
       <div class="calc-dose-row">
         <div class="calc-dose-label">My dose</div>
         <div class="calc-dose-input-wrap">
-          <input type="number" class="calc-dose-input" id="${id}-dose-input" placeholder="e.g. 500" min="1" step="any"
+          <input type="number" class="calc-dose-input" id="${id}-dose-input"
+            placeholder="${getSuggestedDose(item.name) || 'enter mcg'}" min="1" step="any"
             oninput="doseInputChanged('${id}', this)">
           <span class="calc-dose-unit">mcg</span>
         </div>
