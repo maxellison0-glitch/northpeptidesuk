@@ -21,7 +21,12 @@ const { SITE, STATIC_PAGES, PRODUCTS, productPriority } = require('./site.js');
 const ROOT = path.join(__dirname, '..');
 const ARTICLES_DIR = path.join(__dirname, 'articles');
 const BLOG_DIR = path.join(ROOT, 'blog');
-const BUILD_DATE = new Date().toISOString().slice(0, 10);
+const BUILD_DATE = (() => {
+  try {
+    const { execSync } = require('child_process');
+    return execSync('git log -1 --format=%as HEAD', { encoding: 'utf8', cwd: ROOT }).trim();
+  } catch { return new Date().toISOString().slice(0, 10); }
+})();
 
 const REQUIRED_FIELDS = ['slug', 'title', 'description', 'datePublished', 'intro', 'sections', 'relatedProducts'];
 

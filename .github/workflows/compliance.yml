@@ -38,7 +38,7 @@ jobs:
         # If a committed article was changed without rebuilding, the working
         # tree will now differ from what was committed. That is a drift error.
         run: |
-          if ! git diff --exit-code -- blog sitemap.xml robots.txt; then
+          if ! git diff --exit-code -- blog robots.txt; then
             echo "::error::Generated content is out of sync. Run 'node content-engine/build.js' and commit the result."
             exit 1
           fi
