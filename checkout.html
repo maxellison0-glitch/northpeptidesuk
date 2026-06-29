@@ -401,33 +401,36 @@
     .cooling-add-btn:hover { background: #155F77; }
     .cooling-add-btn.added { background: var(--soft-neutral); cursor: default; }
     /* RECONSTITUTION CALCULATOR */
-    .calc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 22px; }
-    .calc-intro { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
-    .calc-item { padding: 16px 0; border-bottom: 1px solid #EEF4EF; }
-    .calc-item:first-child { padding-top: 0; }
-    .calc-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .calc-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .calc-item-name { font-weight: 600; font-size: 0.92rem; color: #12211A; }
-    .calc-item-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #00795F; background: rgba(0,121,95,0.09); padding: 2px 9px; border-radius: 12px; }
-    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: #00795F; background: rgba(0,121,95,0.07); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 12px; }
-    .calc-water-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-    .calc-water-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .calc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
+    .calc-intro { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); padding: 14px 18px 0; line-height: 1.6; }
+    @keyframes calcSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes calcPop { 0%,100%{transform:scale(1)} 40%{transform:scale(1.06)} }
+    .calc-item { padding: 18px; border-top: 1px solid #EEF4EF; animation: calcSlideIn 0.35s ease both; }
+    .calc-item:first-child { border-top: none; }
+    .calc-product-header { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
+    .calc-product-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: #16241E; flex: 1; }
+    .calc-product-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #00795F; background: rgba(0,121,95,0.09); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(0,121,95,0.18); }
+    .calc-pen-label { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #00795F; background: rgba(0,121,95,0.07); border: 1px solid rgba(0,121,95,0.18); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .calc-water-row { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; flex-wrap: wrap; }
+    .calc-water-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
     .calc-water-btns { display: flex; gap: 5px; flex-wrap: wrap; }
-    .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 5px 11px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.16s; }
     .calc-water-btn:hover { border-color: #00795F; color: #00795F; }
     .calc-water-btn.active { background: #00795F; color: #fff; border-color: #00795F; }
-    .calc-conc { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #12211A; margin-bottom: 10px; line-height: 1.25; }
-    .calc-conc-sub { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); font-weight: 400; display: block; margin-top: 3px; }
-    .calc-table { border-radius: 8px; overflow: hidden; border: 1px solid #EEF4EF; }
-    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; border-bottom: 1px solid #EEF4EF; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); background: #FAFCFA; }
-    .calc-row:last-child { border-bottom: none; }
-    .calc-row:first-child { background: #EFF9F4; }
-    .calc-val { color: #12211A; font-weight: 600; }
+    /* Result */
+    .calc-result { transition: opacity 0.15s, transform 0.15s; }
+    .calc-result-box { background: linear-gradient(135deg, #EEF4EF 0%, #E4F2EB 100%); border: 1px solid rgba(0,121,95,0.14); border-radius: 10px; padding: 16px; }
+    .calc-1u-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00795F; margin-bottom: 3px; }
+    .calc-1u-value { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #12211A; line-height: 1; animation: calcPop 0.35s ease; }
+    .calc-1u-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #6B7C72; margin-top: 6px; }
+    .calc-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+    .calc-pill { font-family: 'DM Mono', monospace; font-size: 0.65rem; background: #fff; border: 1px solid rgba(0,121,95,0.18); border-radius: 20px; padding: 5px 12px; color: #16241E; white-space: nowrap; }
+    .calc-pill em { color: #00795F; font-style: normal; font-weight: 600; }
     @media (max-width: 480px) {
       .cooling-card { flex-direction: column; align-items: flex-start; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
       .cooling-price { flex: 1; }
-      .calc-water-row { gap: 7px; }
+      .calc-1u-value { font-size: 1.65rem; }
     }
   </style>
 </head>
@@ -475,7 +478,7 @@
     <!-- Reconstitution calculator — pre-filled from basket -->
     <p class="sec-head">Reconstitution Calculator</p>
     <div class="calc-card">
-      <p class="calc-intro">Pre-filled from your basket. Tap a water volume to recalculate — units are 0.01mL (standard insulin syringe).</p>
+      <p class="calc-intro">How much to draw — based on your basket.</p>
       <div id="calc-items"></div>
     </div>
 
@@ -711,33 +714,40 @@
     return m ? parseFloat(m[1]) : null;
   }
 
-  function calcTableHTML(mg, waterMl) {
+  function fmtDose(mcg) {
+    if (mcg >= 1000) {
+      const mg = mcg / 1000;
+      return (mg % 1 === 0 ? mg : parseFloat(mg.toFixed(2))) + ' mg';
+    }
+    return (mcg % 1 === 0 ? mcg : parseFloat(mcg.toFixed(1))) + ' mcg';
+  }
+
+  function calcResultHTML(mg, waterMl) {
     const concMgMl = mg / waterMl;
-    const concMcgMl = concMgMl * 1000;
-    const refs = [
-      { ml: 0.01, label: '1 unit · 0.01mL' },
-      { ml: 0.05, label: '5 units · 0.05mL' },
-      { ml: 0.10, label: '10 units · 0.1mL' },
-      { ml: 0.25, label: '25 units · 0.25mL' },
-      { ml: 0.50, label: '50 units · 0.5mL' },
-    ];
-    const rows = refs.map(r => {
-      const amt = r.ml * concMcgMl;
-      const display = amt >= 1000
-        ? (amt / 1000).toFixed(3).replace(/\.?0+$/, '') + ' mg'
-        : amt % 1 === 0 ? amt + ' mcg' : amt.toFixed(1) + ' mcg';
-      return '<div class="calc-row"><span>' + r.label + '</span><span class="calc-val">' + display + '</span></div>';
-    }).join('');
-    return '<div class="calc-conc">' + concMgMl.toFixed(2) + ' mg/mL'
-      + '<span class="calc-conc-sub">' + Math.round(concMcgMl).toLocaleString() + ' mcg/mL &nbsp;·&nbsp; ' + waterMl + 'mL bacteriostatic water</span>'
-      + '</div>'
-      + '<div class="calc-table">' + rows + '</div>';
+    const mcgPerUnit = concMgMl * 10; // 1 unit = 0.01mL on U-100 syringe → ×1000×0.01 = ×10
+    const pills = [5, 10, 20, 50].map(u =>
+      `<span class="calc-pill">${u}u &rarr; <em>${fmtDose(u * mcgPerUnit)}</em></span>`
+    ).join('');
+    return `<div class="calc-result-box">
+      <div class="calc-1u-label">1 unit draws</div>
+      <div class="calc-1u-value">${fmtDose(mcgPerUnit)}</div>
+      <div class="calc-1u-sub">${concMgMl.toFixed(2)} mg/mL &nbsp;&middot;&nbsp; ${waterMl}mL bac water</div>
+    </div>
+    <div class="calc-pills">${pills}</div>`;
   }
 
   function setCalcWater(itemId, mg, ml, btn) {
     btn.closest('.calc-water-btns').querySelectorAll('.calc-water-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById(itemId + '-result').innerHTML = calcTableHTML(mg, ml);
+    const el = document.getElementById(itemId + '-result');
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(5px)';
+    setTimeout(() => {
+      el.innerHTML = calcResultHTML(mg, ml);
+      el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 130);
   }
 
   function renderCalcItem(item, idx) {
@@ -747,23 +757,23 @@
     const defWater = pen ? 3 : 2;
     const id = 'ci' + idx;
     const waterSel = pen
-      ? '<div class="calc-pen-note">Pen vial &middot; 3mL cartridge</div>'
-      : '<div class="calc-water-row">'
-        + '<span class="calc-water-label">Water</span>'
-        + '<div class="calc-water-btns">'
-        + [1, 2, 3, 5, 10].map(ml =>
-            '<button class="calc-water-btn' + (ml === defWater ? ' active' : '') + '"'
-            + ' onclick="setCalcWater(\'' + id + '\',' + mg + ',' + ml + ',this)">' + ml + 'mL</button>'
-          ).join('')
-        + '</div></div>';
-    return '<div class="calc-item">'
-      + '<div class="calc-item-header">'
-      + '<span class="calc-item-name">' + item.name + '</span>'
-      + '<span class="calc-item-mg">' + mg + 'mg</span>'
-      + '</div>'
-      + waterSel
-      + '<div class="calc-result" id="' + id + '-result">' + calcTableHTML(mg, defWater) + '</div>'
-      + '</div>';
+      ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>`
+      : `<div class="calc-water-row">
+          <span class="calc-water-label">Bac water</span>
+          <div class="calc-water-btns">
+            ${[1, 2, 3, 5, 10].map(ml =>
+              `<button class="calc-water-btn${ml === defWater ? ' active' : ''}" onclick="setCalcWater('${id}',${mg},${ml},this)">${ml}mL</button>`
+            ).join('')}
+          </div>
+        </div>`;
+    return `<div class="calc-item">
+      <div class="calc-product-header">
+        <span class="calc-product-name">${item.name}</span>
+        <span class="calc-product-mg">${mg}mg</span>
+      </div>
+      ${waterSel}
+      <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater)}</div>
+    </div>`;
   }
 
   function addCoolingPackaging(btn) {
