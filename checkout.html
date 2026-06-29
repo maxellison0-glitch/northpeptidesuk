@@ -426,6 +426,22 @@
     .calc-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
     .calc-pill { font-family: 'DM Mono', monospace; font-size: 0.65rem; background: #fff; border: 1px solid rgba(0,121,95,0.18); border-radius: 20px; padding: 5px 12px; color: #16241E; white-space: nowrap; }
     .calc-pill em { color: #00795F; font-style: normal; font-weight: 600; }
+    /* Dose picker */
+    .calc-dose-row { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(0,121,95,0.1); }
+    .calc-dose-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.11em; text-transform: uppercase; color: #00795F; margin-bottom: 9px; }
+    .calc-dose-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .calc-dose-chip { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 7px 14px; border: 1px solid rgba(0,121,95,0.25); border-radius: 20px; background: transparent; color: #16241E; cursor: pointer; transition: all 0.16s; }
+    .calc-dose-chip:hover { background: rgba(0,121,95,0.07); border-color: #00795F; }
+    .calc-dose-chip.selected { background: #00795F; color: #fff; border-color: #00795F; }
+    /* Draw result */
+    .calc-draw { margin-top: 14px; }
+    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; animation: calcPop 0.3s ease; }
+    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: #00E5A0; line-height: 1; flex-shrink: 0; }
+    .calc-draw-info { flex: 1; }
+    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: rgba(255,255,255,0.35); margin-top: 3px; }
+    /* Saved confirmation */
+    .calc-saved { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #00795F; display: flex; align-items: center; gap: 5px; margin-top: 9px; opacity: 0; transition: opacity 0.35s; }
     @media (max-width: 480px) {
       .cooling-card { flex-direction: column; align-items: flex-start; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
@@ -697,6 +713,83 @@
   const CALC_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'alcohol wipes',
     'pen-style research kit', 'sterile disposable pen tips', 'pen tips', 'thermal cooled', 'intranasal'];
 
+  // Product-aware dose chips (mcg). Matched via item.name.toLowerCase().includes(key).
+  const DOSE_CHIPS = {
+    retatrutide: [2000, 4000, 6000, 8000],
+    tirzepatide: [2500, 5000, 7500, 10000],
+    ipamorelin:  [100, 200, 300, 500],
+    cjc:         [100, 200, 300, 500],
+    bpc:         [250, 500, 750, 1000],
+    'tb-500':    [2500, 5000, 10000, 20000],
+    tb500:       [2500, 5000, 10000, 20000],
+    ghk:         [500, 1000, 2000, 5000],
+    nad:         [250000, 500000, 750000, 1000000],
+    epitalon:    [5000, 10000, 20000, 50000],
+    pinealon:    [5000, 10000, 20000],
+    'ss-31':     [2500, 5000, 10000, 20000],
+    ss31:        [2500, 5000, 10000, 20000],
+    semax:       [100, 200, 400, 600],
+    selank:      [100, 200, 400, 600],
+    kpv:         [500, 1000, 2000],
+    klow:        [500, 1000, 2000, 5000],
+  };
+
+  const doseNotes    = {};  // { itemName: { mcg, units, mlVal, waterMl } }
+  const calcItemMeta = {};  // { 'ci0': { name, mg, waterMl } }
+
+  function getDoseChips(name, mg) {
+    const n = name.toLowerCase();
+    for (const [key, chips] of Object.entries(DOSE_CHIPS)) {
+      if (n.includes(key)) return chips;
+    }
+    const vMcg = mg * 1000;
+    return [0.05, 0.1, 0.25, 0.5].map(f => Math.round(vMcg * f));
+  }
+
+  function calcUnitsFromDose(mcg, mg, waterMl) {
+    const units = Math.round((mcg / ((mg / waterMl) * 10)) * 10) / 10;
+    return { units, mlVal: (units * 0.01).toFixed(2) };
+  }
+
+  function updateDrawEl(itemId) {
+    const meta = calcItemMeta[itemId];
+    const note = meta && doseNotes[meta.name];
+    const el = document.getElementById(itemId + '-draw');
+    if (!el) return;
+    if (!note) { el.innerHTML = ''; return; }
+    el.innerHTML = `<div class="calc-draw-result">
+      <span class="calc-draw-num">${note.units}</span>
+      <div class="calc-draw-info">
+        <div class="calc-draw-label">units to draw</div>
+        <div class="calc-draw-sub">${note.mlVal}mL &nbsp;&middot;&nbsp; ${fmtDose(note.mcg)}</div>
+      </div>
+    </div>`;
+  }
+
+  function selectDose(itemId, mcg, chipBtn) {
+    const meta = calcItemMeta[itemId];
+    if (!meta) return;
+    const { units, mlVal } = calcUnitsFromDose(mcg, meta.mg, meta.waterMl);
+    doseNotes[meta.name] = { mcg, units, mlVal, waterMl: meta.waterMl };
+    document.getElementById(itemId + '-chips').querySelectorAll('.calc-dose-chip').forEach(c => c.classList.remove('selected'));
+    chipBtn.classList.add('selected');
+    updateDrawEl(itemId);
+    const savedEl = document.getElementById(itemId + '-saved');
+    if (savedEl) { savedEl.style.opacity = '1'; setTimeout(() => { savedEl.style.opacity = '0'; }, 2500); }
+    rebuildOrderSummary();
+  }
+
+  function rebuildOrderSummary() {
+    const lines = basketData.map(item => {
+      const base = item.name + ' ' + item.dose + ' x' + item.qty + ' = \xA3' + formatMoney(item.price * item.qty);
+      const note = doseNotes[item.name];
+      return note
+        ? base + '\n  ↳ Dose: ' + fmtDose(note.mcg) + ' → draw ' + note.units + ' units (' + note.mlVal + 'mL) · ' + note.waterMl + 'mL bac water'
+        : base;
+    });
+    document.getElementById('order-summary-hidden').value = lines.join('\n');
+  }
+
   function isPenVial(item) {
     return /\/\s*3\s*ml/i.test(item.dose || '');
   }
@@ -739,6 +832,7 @@
   function setCalcWater(itemId, mg, ml, btn) {
     btn.closest('.calc-water-btns').querySelectorAll('.calc-water-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    if (calcItemMeta[itemId]) calcItemMeta[itemId].waterMl = ml;
     const el = document.getElementById(itemId + '-result');
     el.style.opacity = '0';
     el.style.transform = 'translateY(5px)';
@@ -747,6 +841,14 @@
       el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
+      // Recalculate draw if a dose was already selected
+      const meta = calcItemMeta[itemId];
+      if (meta && doseNotes[meta.name]) {
+        const { units, mlVal } = calcUnitsFromDose(doseNotes[meta.name].mcg, mg, ml);
+        doseNotes[meta.name] = { ...doseNotes[meta.name], units, mlVal, waterMl: ml };
+        updateDrawEl(itemId);
+        rebuildOrderSummary();
+      }
     }, 130);
   }
 
@@ -756,6 +858,7 @@
     const pen = isPenVial(item);
     const defWater = pen ? 3 : 2;
     const id = 'ci' + idx;
+    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater };
     const waterSel = pen
       ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>`
       : `<div class="calc-water-row">
@@ -766,6 +869,9 @@
             ).join('')}
           </div>
         </div>`;
+    const chips = getDoseChips(item.name, mg).map(mcg =>
+      `<button class="calc-dose-chip" data-mcg="${mcg}" onclick="selectDose('${id}',${mcg},this)">${fmtDose(mcg)}</button>`
+    ).join('');
     return `<div class="calc-item">
       <div class="calc-product-header">
         <span class="calc-product-name">${item.name}</span>
@@ -773,6 +879,12 @@
       </div>
       ${waterSel}
       <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater)}</div>
+      <div class="calc-dose-row">
+        <div class="calc-dose-label">My dose</div>
+        <div class="calc-dose-chips" id="${id}-chips">${chips}</div>
+      </div>
+      <div class="calc-draw" id="${id}-draw"></div>
+      <div class="calc-saved" id="${id}-saved">✓ Added to your order</div>
     </div>`;
   }
 
@@ -948,9 +1060,7 @@
         + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'
         + '</div>';
     }).join('');
-    document.getElementById('order-summary-hidden').value = basketData.map(item =>
-      item.name + ' ' + item.dose + ' x' + item.qty + ' = £' + formatMoney(item.price * item.qty)
-    ).join('\n');
+    rebuildOrderSummary();
     document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateTotals();
     updateSmartSection();
