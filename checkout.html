@@ -423,16 +423,15 @@
     .calc-1u-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00795F; margin-bottom: 3px; }
     .calc-1u-value { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #12211A; line-height: 1; animation: calcPop 0.35s ease; }
     .calc-1u-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #6B7C72; margin-top: 6px; }
-    .calc-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
-    .calc-pill { font-family: 'DM Mono', monospace; font-size: 0.65rem; background: #fff; border: 1px solid rgba(0,121,95,0.18); border-radius: 20px; padding: 5px 12px; color: #16241E; white-space: nowrap; }
-    .calc-pill em { color: #00795F; font-style: normal; font-weight: 600; }
-    /* Dose picker */
+    /* Dose input */
     .calc-dose-row { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(0,121,95,0.1); }
     .calc-dose-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.11em; text-transform: uppercase; color: #00795F; margin-bottom: 9px; }
-    .calc-dose-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-    .calc-dose-chip { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 7px 14px; border: 1px solid rgba(0,121,95,0.25); border-radius: 20px; background: transparent; color: #16241E; cursor: pointer; transition: all 0.16s; }
-    .calc-dose-chip:hover { background: rgba(0,121,95,0.07); border-color: #00795F; }
-    .calc-dose-chip.selected { background: #00795F; color: #fff; border-color: #00795F; }
+    .calc-dose-input-wrap { display: flex; align-items: center; gap: 8px; }
+    .calc-dose-input { font-family: 'DM Mono', monospace; font-size: 0.95rem; font-weight: 600; color: #16241E; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-radius: 8px; padding: 9px 14px; width: 110px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
+    .calc-dose-input::-webkit-outer-spin-button, .calc-dose-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .calc-dose-input:focus { border-color: #00795F; box-shadow: 0 0 0 3px rgba(0,121,95,0.1); }
+    .calc-dose-unit { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #6B7C72; letter-spacing: 0.05em; }
+    .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #00795F; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
     /* Draw result */
     .calc-draw { margin-top: 14px; }
     .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; animation: calcPop 0.3s ease; }
@@ -766,17 +765,42 @@
     </div>`;
   }
 
-  function selectDose(itemId, mcg, chipBtn) {
+  function doseInputChanged(itemId, inputEl) {
+    const mcg = parseFloat(inputEl.value);
     const meta = calcItemMeta[itemId];
     if (!meta) return;
+    if (!mcg || mcg <= 0) {
+      delete doseNotes[meta.name];
+      document.getElementById(itemId + '-draw').innerHTML = '';
+      rebuildOrderSummary();
+      return;
+    }
     const { units, mlVal } = calcUnitsFromDose(mcg, meta.mg, meta.waterMl);
     doseNotes[meta.name] = { mcg, units, mlVal, waterMl: meta.waterMl };
-    document.getElementById(itemId + '-chips').querySelectorAll('.calc-dose-chip').forEach(c => c.classList.remove('selected'));
-    chipBtn.classList.add('selected');
     updateDrawEl(itemId);
     const savedEl = document.getElementById(itemId + '-saved');
-    if (savedEl) { savedEl.style.opacity = '1'; setTimeout(() => { savedEl.style.opacity = '0'; }, 2500); }
+    if (savedEl) { savedEl.style.opacity = '1'; setTimeout(() => { savedEl.style.opacity = '0'; }, 3000); }
     rebuildOrderSummary();
+  }
+
+  function updateOrderDoseDisplay() {
+    document.querySelectorAll('.order-line[data-item-name]').forEach(function(lineEl) {
+      const name = lineEl.dataset.itemName;
+      const note = doseNotes[name];
+      let noteEl = lineEl.querySelector('.order-line-dose-note');
+      if (note) {
+        const txt = note.units + ' units \xB7 ' + note.mlVal + 'mL \xB7 ' + fmtDose(note.mcg);
+        if (!noteEl) {
+          noteEl = document.createElement('div');
+          noteEl.className = 'order-line-dose-note';
+          const nameDiv = lineEl.querySelector('.order-line-name');
+          if (nameDiv) nameDiv.insertAdjacentElement('afterend', noteEl);
+        }
+        noteEl.innerHTML = '↳ ' + txt;
+      } else if (noteEl) {
+        noteEl.remove();
+      }
+    });
   }
 
   function rebuildOrderSummary() {
@@ -788,6 +812,7 @@
         : base;
     });
     document.getElementById('order-summary-hidden').value = lines.join('\n');
+    updateOrderDoseDisplay();
   }
 
   function isPenVial(item) {
@@ -818,15 +843,11 @@
   function calcResultHTML(mg, waterMl) {
     const concMgMl = mg / waterMl;
     const mcgPerUnit = concMgMl * 10; // 1 unit = 0.01mL on U-100 syringe → ×1000×0.01 = ×10
-    const pills = [5, 10, 20, 50].map(u =>
-      `<span class="calc-pill">${u}u &rarr; <em>${fmtDose(u * mcgPerUnit)}</em></span>`
-    ).join('');
     return `<div class="calc-result-box">
       <div class="calc-1u-label">1 unit draws</div>
       <div class="calc-1u-value">${fmtDose(mcgPerUnit)}</div>
       <div class="calc-1u-sub">${concMgMl.toFixed(2)} mg/mL &nbsp;&middot;&nbsp; ${waterMl}mL bac water</div>
-    </div>
-    <div class="calc-pills">${pills}</div>`;
+    </div>`;
   }
 
   function setCalcWater(itemId, mg, ml, btn) {
@@ -856,7 +877,7 @@
     const mg = parseMg(item.dose);
     if (!mg) return '';
     const pen = isPenVial(item);
-    const defWater = pen ? 3 : 2;
+    const defWater = 3;
     const id = 'ci' + idx;
     calcItemMeta[id] = { name: item.name, mg, waterMl: defWater };
     const waterSel = pen
@@ -869,9 +890,6 @@
             ).join('')}
           </div>
         </div>`;
-    const chips = getDoseChips(item.name, mg).map(mcg =>
-      `<button class="calc-dose-chip" data-mcg="${mcg}" onclick="selectDose('${id}',${mcg},this)">${fmtDose(mcg)}</button>`
-    ).join('');
     return `<div class="calc-item">
       <div class="calc-product-header">
         <span class="calc-product-name">${item.name}</span>
@@ -881,10 +899,14 @@
       <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater)}</div>
       <div class="calc-dose-row">
         <div class="calc-dose-label">My dose</div>
-        <div class="calc-dose-chips" id="${id}-chips">${chips}</div>
+        <div class="calc-dose-input-wrap">
+          <input type="number" class="calc-dose-input" id="${id}-dose-input" placeholder="e.g. 500" min="1" step="any"
+            oninput="doseInputChanged('${id}', this)">
+          <span class="calc-dose-unit">mcg</span>
+        </div>
       </div>
       <div class="calc-draw" id="${id}-draw"></div>
-      <div class="calc-saved" id="${id}-saved">✓ Added to your order</div>
+      <div class="calc-saved" id="${id}-saved">✓ Dose reference added to your email confirmation</div>
     </div>`;
   }
 
@@ -1051,7 +1073,7 @@
       const removeBtn = isKit
         ? '<button class="order-kit-remove" data-kitfor="' + safeKey + '" onclick="removeKitItem(this.dataset.kitfor)">× Remove</button>'
         : '';
-      return '<div class="order-line">'
+      return '<div class="order-line" data-item-name="' + item.name.replace(/"/g, '&quot;') + '">'
         + '<div style="flex:1;min-width:0">'
         + '<div class="order-line-name">' + item.name + removeBtn + '</div>'
         + '<div class="order-line-dose">' + item.dose + '</div>'
