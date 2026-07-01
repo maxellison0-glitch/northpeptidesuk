@@ -232,6 +232,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[email]", compactText(payload.customer?.email, 160));
   params.append("metadata[address]", compactText(payload.customer?.address, 480));
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
+  params.append("metadata[doseReference]", compactText(payload.customer?.doseReference, 480));
   params.append("metadata[delivery]", delivery.label);
   if (hasDiscount) params.append("metadata[discount]", discountCode);
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");

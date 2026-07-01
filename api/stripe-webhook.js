@@ -113,6 +113,7 @@ function buildEmailHtml(session, lineItems) {
       <p><strong>Delivery:</strong> ${escapeHtml(metadata.delivery || "Not supplied")}</p>
       <p><strong>Address:</strong><br>${formatAddress(session)}</p>
       ${metadata.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(metadata.notes)}</p>` : ""}
+      ${metadata.doseReference ? `<p><strong>Dose reference:</strong><br>${escapeHtml(metadata.doseReference).replace(/\n/g, "<br>")}</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
         <thead>
@@ -185,6 +186,10 @@ function buildCustomerEmailHtml(session, lineItems) {
         </table>
         <p style="text-align:right;font-size:16px;"><strong>Total paid: ${formatMoney(session.amount_total, session.currency)}</strong></p>
         <p style="font-size:13px;color:#6B7280;">Order reference: ${escapeHtml(session.id)}</p>
+        ${session.metadata?.doseReference ? `<div style="margin:16px 0;padding:14px 16px;background:#F7FAF8;border:1px solid #E2EAE4;border-radius:10px;">
+          <p style="margin:0 0 8px;font-weight:700;color:#00795F;">Your dose reference</p>
+          <p style="margin:0;font-size:13px;white-space:pre-line;">${escapeHtml(session.metadata.doseReference)}</p>
+        </div>` : ""}
         <div style="margin:22px 0;padding:16px;background:#F7FAF8;border:1px solid #E2EAE4;border-radius:10px;text-align:center;">
           <p style="margin:0 0 10px;">Happy with your order? A quick review really helps other researchers.</p>
           <a href="${TRUSTPILOT_URL}" style="display:inline-block;background:#00B67A;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:8px;">★ Leave a Trustpilot review</a>
