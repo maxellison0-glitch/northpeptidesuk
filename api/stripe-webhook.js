@@ -242,12 +242,17 @@ module.exports = async function handler(req, res) {
 
   // Notify the shop and confirm to the customer. Don't let a customer-email failure
   // (e.g. a bounced address) block the 200 the owner notification depends on.
+  // Logged explicitly so the outcome is visible in Vercel's runtime logs directly —
+  // no need to go find the raw response body in Stripe's webhook delivery UI.
   const email = await sendOrderEmail(session, lineItems);
+  console.log(`[stripe-webhook] owner email: ${JSON.stringify(email)}`);
   let customerEmail;
   try {
     customerEmail = await sendCustomerEmail(session, lineItems);
+    console.log(`[stripe-webhook] customer email (to ${session.customer_details?.email || session.metadata?.email}): ${JSON.stringify(customerEmail)}`);
   } catch (err) {
     customerEmail = { skipped: true, error: err.message };
+    console.error(`[stripe-webhook] customer email FAILED: ${err.message}`);
   }
 
   return json(res, 200, { received: true, email, customerEmail });
