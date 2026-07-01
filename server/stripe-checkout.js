@@ -46,7 +46,7 @@ const CATALOG = {
   "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99,
   "Sterile Disposable Pen Tips|6mm x5": 3.99,
   "Sterile Disposable Pen Tips|6mm x10": 6.99,
-  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 3,
+  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 4.99,
   // Compounds previously missing from the catalogue (were 400ing at checkout):
   "Retatrutide|50mg": 179.99,
   "NAD+|1000mg": 84.99,
@@ -59,8 +59,42 @@ const CATALOG = {
   // the discounted "+kit" add-on button (all three dose strings the UI sends):
   "Intranasal Research Kit|Kit add-on": 4.99,
   "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 6.99,
-  "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 6.99
+  "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 6.99,
+  // Disposable injection-pen add-on (product-page "+£9.99" button):
+  "Disposable Research Pen Kit|Kit add-on": 9.99,
+  // Pen-vial variants — every one 400'd at checkout before this block, because the
+  // pen products send "<Name> Pen Vial|<dose>". Prices mirror product-data.js.
+  // The homepage sends the dose without spaces (e.g. "10mg/3ml"); the product page
+  // sends it spaced ("10mg / 3ml"). The whitespace-normalising fallback in
+  // resolveCatalogPrice() maps both forms onto these keys, so only one entry each.
+  "Retatrutide Pen Vial|10mg": 50,
+  "Retatrutide Pen Vial|20mg": 90,
+  "Retatrutide Pen Vial|50mg": 150,
+  "Tirzepatide Pen Vial|15mg / 3ml": 78,
+  "Tirzepatide Pen Vial|30mg / 3ml": 144,
+  "BPC-157 Pen Vial|10mg / 3ml": 29,
+  "BPC-157 Pen Vial|20mg / 3ml": 58,
+  "TB-500 Pen Vial|10mg / 3ml": 59,
+  "GHK-Cu Pen Vial|50mg / 3ml": 32,
+  "KPV Pen Vial|10mg / 3ml": 36,
+  "KLOW Stack Pen Vial|80mg / 3ml": 72,
+  "Ipamorelin Pen Vial|5mg / 3ml": 30,
+  "CJC-1295 Pen Vial|5mg / 3ml": 38,
+  "NAD+ Pen Vial|1000mg / 3ml": 102,
+  "SS-31 Pen Vial|10mg / 3ml": 30,
+  "Epitalon Pen Vial|10mg / 3ml": 17,
+  "Pinealon Pen Vial|20mg / 3ml": 36
 };
+
+// Whitespace-normalised view of CATALOG so "10mg / 3ml" and "10mg/3ml" (the product
+// page vs. homepage dose formats) resolve to the same price. Built once at load.
+function normaliseKey(value) {
+  return String(value || "").replace(/\s+/g, " ").replace(/\s*\/\s*/g, "/").trim();
+}
+const CATALOG_NORMALISED = {};
+for (const [key, value] of Object.entries(CATALOG)) {
+  CATALOG_NORMALISED[normaliseKey(key)] = value;
+}
 
 const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 
@@ -109,7 +143,12 @@ function compactText(value, maxLength = 480) {
 
 function resolveCatalogPrice(item, name, dose) {
   const directPrice = CATALOG[`${name}|${dose}`];
-  if (directPrice) return directPrice;
+  if (directPrice != null) return directPrice;
+
+  // Fall back to a whitespace-normalised match so a dose the UI sends as
+  // "10mg/3ml" still resolves to the catalogue's "10mg / 3ml" entry.
+  const normalisedPrice = CATALOG_NORMALISED[normaliseKey(`${name}|${dose}`)];
+  if (normalisedPrice != null) return normalisedPrice;
 
   if (name === "Pen-Style Research Kit" && item?._kitFor) {
     const browserPrice = Number(item.price);

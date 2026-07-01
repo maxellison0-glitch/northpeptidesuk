@@ -1478,7 +1478,7 @@ const PRODUCT_DATA = {
     name: "Sterile Disposable Pen Tips",
     category: "Research supplies",
     supply: true,
-    image: "research-pen-tips.jpg",
+    image: "research-pen-tips.png",
     summary: "Disposable pen tips for compatible pen-style research kits.",
     details: [
       "Available in 5 or 10 tip packs",
