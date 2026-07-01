@@ -421,33 +421,30 @@
     .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.16s; }
     .calc-water-btn:hover { border-color: #00795F; color: #00795F; }
     .calc-water-btn.active { background: #00795F; color: #fff; border-color: #00795F; }
-    /* Result */
-    .calc-result { transition: opacity 0.15s, transform 0.15s; }
-    .calc-result-box { background: linear-gradient(135deg, #EEF4EF 0%, #E4F2EB 100%); border: 1px solid rgba(0,121,95,0.14); border-radius: 10px; padding: 16px; }
-    .calc-1u-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00795F; margin-bottom: 3px; }
-    .calc-1u-value { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #12211A; line-height: 1; animation: calcPop 0.35s ease; }
-    .calc-1u-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #6B7C72; margin-top: 6px; }
-    /* Dose input */
-    .calc-dose-row { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(0,121,95,0.1); }
-    .calc-dose-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.11em; text-transform: uppercase; color: #00795F; margin-bottom: 9px; }
-    .calc-dose-input-wrap { display: flex; align-items: center; gap: 8px; }
-    .calc-dose-input { font-family: 'DM Mono', monospace; font-size: 0.95rem; font-weight: 600; color: #16241E; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-radius: 8px; padding: 9px 14px; width: 110px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
+    /* Ask card — question, input and the live concentration reference all live in
+       one connected block instead of a separate stat box floating above an
+       unlabelled input further down the card. */
+    .calc-ask-card { background: linear-gradient(135deg, #EEF4EF 0%, #E4F2EB 100%); border: 1px solid rgba(0,121,95,0.14); border-radius: 10px; padding: 18px; transition: opacity 0.15s, transform 0.15s; }
+    .calc-ask-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #12211A; margin-bottom: 12px; }
+    .calc-dose-input-wrap { display: flex; align-items: stretch; margin-bottom: 8px; }
+    .calc-dose-input { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #16241E; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; width: 140px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
     .calc-dose-input::-webkit-outer-spin-button, .calc-dose-input::-webkit-inner-spin-button { -webkit-appearance: none; }
     .calc-dose-input:focus { border-color: #00795F; box-shadow: 0 0 0 3px rgba(0,121,95,0.1); }
-    .calc-dose-unit { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #6B7C72; letter-spacing: 0.05em; }
+    .calc-dose-unit { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #00795F; letter-spacing: 0.04em; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-radius: 0 8px 8px 0; padding: 0 14px; display: flex; align-items: center; }
+    .calc-dose-hint { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A968F; margin-bottom: 12px; }
+    .calc-ref-line { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4A5C52; padding-top: 12px; border-top: 1px solid rgba(0,121,95,0.16); animation: calcPop 0.3s ease; }
+    .calc-ref-line strong { color: #00795F; font-size: 0.78rem; }
     .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #00795F; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
     .order-line-blend-detail { font-size: 0.58rem; color: #9CA3AF; margin-top: 2px; }
-    /* Blend per-unit breakdown in result box */
-    .calc-blend-row { margin-top: 10px; border-top: 1px solid rgba(0,121,95,0.15); padding-top: 10px; display: flex; flex-direction: column; gap: 3px; }
-    .calc-blend-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #12211A; }
-    .calc-blend-comp span:last-child { color: #00795F; font-weight: 600; }
     /* Draw result */
+    /* This is the actual answer the visitor came for, so it gets the most visual
+       weight in the card — bigger number, clearer labelling than anything above it. */
     .calc-draw { margin-top: 14px; }
-    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; animation: calcPop 0.3s ease; }
-    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: #00E5A0; line-height: 1; flex-shrink: 0; }
+    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; animation: calcPop 0.3s ease; }
+    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.75rem; font-weight: 800; color: #00E5A0; line-height: 1; flex-shrink: 0; }
     .calc-draw-info { flex: 1; }
-    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.5); }
-    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: rgba(255,255,255,0.35); margin-top: 3px; }
+    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
     .calc-draw-breakdown { margin-top: 8px; background: rgba(0,121,95,0.06); border: 1px solid rgba(0,121,95,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
     .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #16241E; border-bottom: 1px solid rgba(0,121,95,0.08); padding-bottom: 4px; }
     .calc-draw-comp:last-child { border-bottom: none; padding-bottom: 0; }
@@ -464,7 +461,8 @@
       .cooling-card { flex-direction: column; align-items: flex-start; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
       .cooling-price { flex: 1; }
-      .calc-1u-value { font-size: 1.65rem; }
+      .calc-dose-input { width: 110px; font-size: 1.1rem; }
+      .calc-draw-num { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -881,23 +879,14 @@
     return (mcg % 1 === 0 ? mcg : parseFloat(mcg.toFixed(1))) + ' mcg';
   }
 
-  function calcResultHTML(mg, waterMl, itemName) {
+  // A small reference line living inside the same ask-card as the dose input,
+  // rather than a separate stat box shown before the visitor has done anything.
+  // It updates live as the water volume changes so it's always accurate for
+  // whatever dose they're about to type.
+  function calcRefLineHTML(mg, waterMl) {
     const concMgMl = mg / waterMl;
     const mcgPerUnit = concMgMl * 10; // 1 unit = 0.01mL on U-100 syringe → ×1000×0.01 = ×10
-    const blendKey = getBlendKey(itemName);
-    let blendHTML = '';
-    if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
-      blendHTML = '<div class="calc-blend-row">' +
-        BLEND_COMPOSITIONS[blendKey].map(function(c) {
-          return '<div class="calc-blend-comp"><span>' + c.name + '</span><span>' + fmtDose(mcgPerUnit * c.share) + '</span></div>';
-        }).join('') + '</div>';
-    }
-    return `<div class="calc-result-box">
-      <div class="calc-1u-label">1 unit draws</div>
-      <div class="calc-1u-value">${fmtDose(mcgPerUnit)}</div>
-      <div class="calc-1u-sub">${concMgMl.toFixed(2)} mg/mL &nbsp;&middot;&nbsp; ${waterMl}mL bac water</div>
-      ${blendHTML}
-    </div>`;
+    return `<div class="calc-ref-line">At ${waterMl}mL bac water, 1 unit on your syringe = <strong>${fmtDose(mcgPerUnit)}</strong></div>`;
   }
 
   function setCalcWater(itemId, mg, ml, btn) {
@@ -908,7 +897,7 @@
     el.style.opacity = '0';
     el.style.transform = 'translateY(5px)';
     setTimeout(() => {
-      el.innerHTML = calcResultHTML(mg, ml, calcItemMeta[itemId] ? calcItemMeta[itemId].name : '');
+      el.innerHTML = calcRefLineHTML(mg, ml);
       el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
@@ -946,15 +935,16 @@
         <span class="calc-product-mg">${mg}mg</span>
       </div>
       ${waterSel}
-      <div class="calc-result" id="${id}-result">${calcResultHTML(mg, defWater, item.name)}</div>
-      <div class="calc-dose-row">
-        <div class="calc-dose-label">My dose</div>
+      <div class="calc-ask-card">
+        <div class="calc-ask-label">How much would you like?</div>
         <div class="calc-dose-input-wrap">
           <input type="number" class="calc-dose-input" id="${id}-dose-input"
-            placeholder="${getSuggestedDose(item.name) || 'enter mcg'}" min="1" step="any"
+            placeholder="${getSuggestedDose(item.name) || 'e.g. 500'}" min="1" step="any"
             oninput="doseInputChanged('${id}', this)">
           <span class="calc-dose-unit">mcg</span>
         </div>
+        <div class="calc-dose-hint">1000mcg = 1mg — enter the amount for one injection</div>
+        <div id="${id}-result">${calcRefLineHTML(mg, defWater)}</div>
       </div>
       <div class="calc-draw" id="${id}-draw"></div>
       <div class="calc-saved" id="${id}-saved">✓ Dose reference added to your email confirmation</div>
