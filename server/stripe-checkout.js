@@ -210,11 +210,13 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("mode", "payment");
   params.append("success_url", `${siteUrl}/checkout.html?payment=success&session_id={CHECKOUT_SESSION_ID}`);
   params.append("cancel_url", `${siteUrl}/checkout.html?payment=cancelled`);
-  // Let Stripe render every eligible method — Apple Pay, Google Pay, Link and card —
-  // instead of card-only. Wallets are ~half of UK ecommerce and let mobile shoppers
-  // pay in one tap without touching the address form. (Enable the methods you want in
-  // the Stripe Dashboard; Checkout shows whichever are eligible for the customer.)
-  params.append("automatic_payment_methods[enabled]", "true");
+  // Deliberately NOT sending payment_method_types — omitting it entirely is how Stripe
+  // Checkout Sessions render every eligible method (card, Apple Pay, Google Pay, Link)
+  // instead of card-only. (automatic_payment_methods is a Payment Intents API param —
+  // it doesn't exist on Checkout Sessions and 400s if sent, as this did in production.)
+  // Enable the methods you want to show in the Stripe Dashboard; Checkout picks
+  // whichever are eligible for the customer automatically.
+  //
   // Stripe is the source of truth for the delivery address so the on-site form doesn't
   // have to ask for it too. Collect a UK shipping address plus billing + phone.
   params.append("shipping_address_collection[allowed_countries][]", "GB");
