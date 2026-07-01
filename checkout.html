@@ -994,9 +994,10 @@
   const DISCOUNT_CODES = {
     'WELCOME10':    0.10,
     'AJ':           0.10,
-    'AJ20':         0.20
+    'AJ20':         0.20,
+    '123':          0.99 // test-purchase code — remove after confirming live checkout works
   };
-  const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ'];
+  const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ', '123'];
 
   function getSubtotal() {
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -1022,7 +1023,7 @@
       if (freeDelivery) {
         nudge.textContent = 'Free delivery applied';
       } else {
-        const needed = (30 - discSub).toFixed(2);
+        const needed = (50 - discSub).toFixed(2);
         nudge.textContent = 'Add £' + needed + ' more for free delivery';
       }
     }

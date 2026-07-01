@@ -101,7 +101,8 @@ const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
   "AJ":           0.10,
-  "AJ20":         0.20
+  "AJ20":         0.20,
+  "123":          0.99 // test-purchase code — remove after confirming live checkout works
 };
 
 const DELIVERY = {
@@ -193,7 +194,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || productSubtotal >= 50);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || discountCode === '123' || productSubtotal >= 50);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({
