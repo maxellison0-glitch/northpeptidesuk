@@ -440,11 +440,18 @@
     /* This is the actual answer the visitor came for, so it gets the most visual
        weight in the card — bigger number, clearer labelling than anything above it. */
     .calc-draw { margin-top: 14px; }
-    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; animation: calcPop 0.3s ease; }
+    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; animation: calcPop 0.3s ease; }
+    .calc-draw-top { display: flex; align-items: center; gap: 14px; }
     .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.75rem; font-weight: 800; color: #00E5A0; line-height: 1; flex-shrink: 0; }
     .calc-draw-info { flex: 1; }
     .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
     .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+    /* Visual syringe fill — the single biggest gap found vs. paid dosing-calculator
+       apps in research: a real fill line the customer can pattern-match against
+       the physical syringe in their hand, not just a number in isolation. */
+    .calc-syringe-wrap { margin-top: 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .calc-syringe-svg { width: 100%; height: auto; display: block; }
+    .calc-syringe-overflow { margin-top: 6px; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #FFB4A2; }
     .calc-draw-breakdown { margin-top: 8px; background: rgba(0,121,95,0.06); border: 1px solid rgba(0,121,95,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
     .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #16241E; border-bottom: 1px solid rgba(0,121,95,0.08); padding-bottom: 4px; }
     .calc-draw-comp:last-child { border-bottom: none; padding-bottom: 0; }
@@ -768,6 +775,38 @@
     return { units, mlVal: (units * 0.01).toFixed(2) };
   }
 
+  // A U-100 (100-unit) insulin syringe fill illustration, matching the standard
+  // this calculator's own unit math already assumes. The customer's actual task
+  // is "pull the plunger to this line" — this lets them pattern-match against
+  // the physical syringe rather than trust an isolated number.
+  function syringeVisualHTML(units) {
+    const CAP = 100;
+    const clamped = Math.max(0, Math.min(units, CAP));
+    const barrelX = 16, barrelW = 246, barrelY = 12, barrelH = 22;
+    const fillW = (clamped / CAP) * barrelW;
+    const ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(function (t) {
+      const x = barrelX + (t / CAP) * barrelW;
+      const major = t % 20 === 0;
+      const tickBottom = barrelY + barrelH + (major ? 7 : 4);
+      let svg = '<line x1="' + x + '" y1="' + barrelY + '" x2="' + x + '" y2="' + tickBottom + '" stroke="rgba(255,255,255,' + (major ? 0.45 : 0.22) + ')" stroke-width="1"/>';
+      if (major) svg += '<text x="' + x + '" y="' + (tickBottom + 9) + '" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle" font-family="DM Mono, monospace">' + t + '</text>';
+      return svg;
+    }).join('');
+    const drawLineX = barrelX + fillW;
+    const overflow = units > CAP;
+    return '<div class="calc-syringe-wrap">' +
+      '<svg class="calc-syringe-svg" viewBox="0 0 280 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' +
+        '<rect x="2" y="' + (barrelY - 2) + '" width="9" height="' + (barrelH + 4) + '" rx="2" fill="rgba(255,255,255,0.22)"/>' +
+        '<rect x="' + barrelX + '" y="' + barrelY + '" width="' + barrelW + '" height="' + barrelH + '" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>' +
+        (fillW > 0 ? '<rect x="' + barrelX + '" y="' + (barrelY + 2) + '" width="' + fillW + '" height="' + (barrelH - 4) + '" rx="2" fill="#00E5A0" opacity="0.85"/>' : '') +
+        (fillW > 0 ? '<line x1="' + drawLineX + '" y1="4" x2="' + drawLineX + '" y2="' + (barrelY + barrelH + 3) + '" stroke="#00E5A0" stroke-width="2"/>' : '') +
+        '<line x1="' + (barrelX + barrelW) + '" y1="' + (barrelY + barrelH / 2) + '" x2="272" y2="' + (barrelY + barrelH / 2) + '" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>' +
+        ticks +
+      '</svg>' +
+      (overflow ? '<div class="calc-syringe-overflow">Exceeds one 100-unit syringe — split into ' + Math.ceil(units / CAP) + ' draws</div>' : '') +
+    '</div>';
+  }
+
   function updateDrawEl(itemId) {
     const meta = calcItemMeta[itemId];
     const note = meta && doseNotes[meta.name];
@@ -783,11 +822,14 @@
         }).join('') + '</div>';
     }
     el.innerHTML = `<div class="calc-draw-result">
-      <span class="calc-draw-num">${note.units}</span>
-      <div class="calc-draw-info">
-        <div class="calc-draw-label">units to draw</div>
-        <div class="calc-draw-sub">${note.mlVal}mL &nbsp;&middot;&nbsp; ${fmtDose(note.mcg)}</div>
+      <div class="calc-draw-top">
+        <span class="calc-draw-num">${note.units}</span>
+        <div class="calc-draw-info">
+          <div class="calc-draw-label">units to draw</div>
+          <div class="calc-draw-sub">${note.mlVal}mL &nbsp;&middot;&nbsp; ${fmtDose(note.mcg)}</div>
+        </div>
       </div>
+      ${syringeVisualHTML(note.units)}
     </div>${breakdownHTML}`;
   }
 
