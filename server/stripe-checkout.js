@@ -69,7 +69,7 @@ const CATALOG = {
   // resolveCatalogPrice() maps both forms onto these keys, so only one entry each.
   "Retatrutide Pen Vial|10mg": 50,
   "Retatrutide Pen Vial|20mg": 90,
-  "Retatrutide Pen Vial|50mg": 150,
+  "Retatrutide Pen Vial|50mg": 179.99,
   "Tirzepatide Pen Vial|15mg / 3ml": 78,
   "Tirzepatide Pen Vial|30mg / 3ml": 144,
   "BPC-157 Pen Vial|10mg / 3ml": 29,
