@@ -222,6 +222,10 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("shipping_address_collection[allowed_countries][]", "GB");
   params.append("billing_address_collection", "required");
   params.append("phone_number_collection[enabled]", "true");
+  // In "payment" mode Stripe does not create a Customer record unless told to.
+  // Without this every order was anonymous in Stripe — no repeat-customer history,
+  // no per-customer order list. "always" builds a real Customer on every checkout.
+  params.append("customer_creation", "always");
   const customerEmail = compactText(payload.customer?.email, 160);
   if (customerEmail) params.append("customer_email", customerEmail);
   params.append("metadata[name]", compactText(payload.customer?.name, 120));
