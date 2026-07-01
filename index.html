@@ -605,6 +605,30 @@
     .supply-card .shop-card-footer { border-top: 1px solid #E7ECE8; padding-top: 10px; }
     .category-heading-light { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: #4A5C51; font-weight: 600; padding: 24px 0 12px; border-bottom: 2px solid #E2EAE4; margin-top: 16px; display: block; }
 
+    /* ===== PRODUCT CATEGORY JUMP NAV (in-page, on #products) ===== */
+    /* top offset clears the fixed .shop-nav (58px tall) once it switches to position:fixed on scroll */
+    .cat-jump-nav { position: sticky; top: 58px; z-index: 20; display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 0 14px; margin-bottom: 4px; background: #F7FAF8; }
+    .cat-jump-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: #fff; border: 1px solid #D8E2DC; border-radius: 999px; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #2E3B33; text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .cat-jump-nav a:hover, .cat-jump-nav a:focus-visible { border-color: #00795F; color: #00795F; background: #EDF4EF; }
+    .cat-jump-nav a .cat-jump-count { color: #9CA3AF; font-weight: 500; }
+
+    /* ===== CATEGORY SECTION HEADERS (real, visually distinct headings — not micro-labels) ===== */
+    .product-category { scroll-margin-top: 130px; margin-top: 36px; }
+    .product-category:first-of-type { margin-top: 8px; }
+    .category-heading-block { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px 20px; margin-top: 20px; border: 1px solid #E2EAE4; border-left: 5px solid #00795F; border-radius: 10px; background: #ffffff; }
+    .category-heading-block.is-supplies { border-left-color: #7C9C8E; }
+    .category-heading-text h3.category-heading-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: #1a1a1a; line-height: 1.25; margin: 0 0 4px; }
+    .category-heading-text p.category-heading-desc { font-size: 0.8rem; color: #5E6D63; line-height: 1.5; margin: 0; max-width: 520px; }
+    .category-heading-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00795F; font-weight: 700; margin: 0 0 6px; display: block; }
+    .category-heading-count { flex-shrink: 0; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5C51; background: #EEF3EF; border: 1px solid #D9E4DC; border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+    @media (max-width: 760px) {
+      .cat-jump-nav { top: 58px; padding: 8px 0 10px; gap: 6px; }
+      .cat-jump-nav a { padding: 6px 10px; font-size: 0.58rem; }
+      .category-heading-block { padding: 14px 16px; margin-top: 14px; }
+      .category-heading-text h3.category-heading-title { font-size: 1.05rem; }
+      .category-heading-text p.category-heading-desc { font-size: 0.76rem; }
+    }
+
     /* ===== TRUSTPILOT ===== */
     .tp-section { padding: 40px 40px 8px; }
     .tp-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
@@ -1171,10 +1195,26 @@
   <section class="shop-section" id="products">
     <div class="shop-section-header">
       <h2 class="shop-section-title">Research Catalogue</h2>
-      <span class="shop-section-tag">21 stocked products</span>
+      <span class="shop-section-tag">34 stocked products</span>
     </div>
 
-    <h3 class="category-heading-light">Research Compounds</h3>
+    <!-- In-page jump nav: makes the three product groupings obvious immediately,
+         and lets a visitor skip straight to the one they want. -->
+    <nav class="cat-jump-nav" aria-label="Jump to product category">
+      <a href="#cat-standard-vials">Standard Vials <span class="cat-jump-count">(15)</span></a>
+      <a href="#cat-pen-vials">Pen Vials <span class="cat-jump-count">(13)</span></a>
+      <a href="#cat-research-supplies">Research Supplies <span class="cat-jump-count">(6)</span></a>
+    </nav>
+
+    <div class="product-category" id="cat-standard-vials">
+      <div class="category-heading-block">
+        <div class="category-heading-text">
+          <span class="category-heading-eyebrow">Category 1 of 3</span>
+          <h3 class="category-heading-title">Standard Vials — Frozen / Lyophilised</h3>
+          <p class="category-heading-desc">Peptide powder shipped frozen. Reconstitute yourself with bacteriostatic water before use — see our reconstitution calculator below.</p>
+        </div>
+        <span class="category-heading-count">15 products</span>
+      </div>
     <div class="acc-grid">
 
         <div class="shop-card" id="product-ghk-cu">
@@ -1462,8 +1502,17 @@
           </div>
         </div>
     </div>
+    </div><!-- /.product-category#cat-standard-vials -->
 
-    <h3 class="category-heading-light">Pre-Reconstituted Pen Vials</h3>
+    <div class="product-category" id="cat-pen-vials">
+      <div class="category-heading-block">
+        <div class="category-heading-text">
+          <span class="category-heading-eyebrow">Category 2 of 3</span>
+          <h3 class="category-heading-title">Pen Vials — Pre-Reconstituted &amp; Ready to Use</h3>
+          <p class="category-heading-desc">The same compounds as our standard vials, but already mixed into a ready liquid. No reconstitution or bacteriostatic water needed — just draw and use.</p>
+        </div>
+        <span class="category-heading-count">13 products</span>
+      </div>
     <div class="acc-grid">
 
         <div class="shop-card" id="product-ghk-cu-pen">
@@ -1718,8 +1767,17 @@
         </div>
 
     </div>
+    </div><!-- /.product-category#cat-pen-vials -->
 
-    <h3 class="category-heading-light">Research Supplies</h3>
+    <div class="product-category" id="cat-research-supplies">
+      <div class="category-heading-block is-supplies">
+        <div class="category-heading-text">
+          <span class="category-heading-eyebrow">Category 3 of 3</span>
+          <h3 class="category-heading-title">Research Supplies</h3>
+          <p class="category-heading-desc">Accessories and prep supplies: reconstitution kits, bacteriostatic water, pen tips, needles and wipes. Not peptide compounds.</p>
+        </div>
+        <span class="category-heading-count">6 products</span>
+      </div>
     <div class="acc-grid">
 
         <div class="shop-card supply-card" id="product-intranasal-research-kit">
@@ -1824,6 +1882,7 @@
           </div>
         </div>
     </div>
+    </div><!-- /.product-category#cat-research-supplies -->
 
   </section>
 
