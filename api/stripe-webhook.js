@@ -78,6 +78,20 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+const TRUSTPILOT_URL = "https://www.trustpilot.com/review/northpeptidesuk.com";
+
+// Pull the delivery address Stripe collected (shipping preferred, billing as fallback)
+// so we no longer need to ask for it on the site. Handles both the older
+// session.shipping_details shape and the newer collected_information one.
+function formatAddress(session) {
+  const shipping = session.shipping_details || session.collected_information?.shipping_details;
+  const addr = shipping?.address || session.customer_details?.address;
+  const name = shipping?.name || session.customer_details?.name;
+  if (!addr) return escapeHtml(session.metadata?.address || "See Stripe dashboard");
+  return [name, addr.line1, addr.line2, addr.city, addr.state, addr.postal_code, addr.country]
+    .filter(Boolean).map(escapeHtml).join("<br>");
+}
+
 function buildEmailHtml(session, lineItems) {
   const metadata = session.metadata || {};
   const rows = (lineItems.data || []).map(item => `
@@ -97,7 +111,7 @@ function buildEmailHtml(session, lineItems) {
       <p><strong>Email:</strong> ${escapeHtml(metadata.email || session.customer_details?.email || "Not supplied")}</p>
       <p><strong>Phone:</strong> ${escapeHtml(session.customer_details?.phone || "Not supplied")}</p>
       <p><strong>Delivery:</strong> ${escapeHtml(metadata.delivery || "Not supplied")}</p>
-      <p><strong>Address:</strong><br>${escapeHtml(metadata.address || "Check Stripe customer details")}</p>
+      <p><strong>Address:</strong><br>${formatAddress(session)}</p>
       ${metadata.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(metadata.notes)}</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
@@ -114,27 +128,86 @@ function buildEmailHtml(session, lineItems) {
   `;
 }
 
-async function sendOrderEmail(session, lineItems) {
-  if (!process.env.RESEND_API_KEY || !process.env.ORDER_NOTIFY_EMAIL) {
-    return { skipped: true, reason: "Email environment variables are not configured." };
-  }
+const ORDER_FROM_EMAIL = process.env.ORDER_FROM_EMAIL || "North Peptides UK <orders@northpeptidesuk.com>";
 
+async function resendSend(payload) {
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      from: process.env.ORDER_FROM_EMAIL || "North Peptides UK <onboarding@resend.dev>",
-      to: [process.env.ORDER_NOTIFY_EMAIL],
-      subject: `Paid order ${session.id} - ${formatMoney(session.amount_total, session.currency)}`,
-      html: buildEmailHtml(session, lineItems)
-    })
+    body: JSON.stringify(payload)
   });
-
   const data = await response.json();
-  if (!response.ok) throw new Error(data.message || "Order email failed.");
+  if (!response.ok) throw new Error(data.message || "Email send failed.");
+  return data;
+}
+
+// Internal notification to the shop (orders@…): the full paid-order breakdown.
+async function sendOrderEmail(session, lineItems) {
+  if (!process.env.RESEND_API_KEY || !process.env.ORDER_NOTIFY_EMAIL) {
+    return { skipped: true, reason: "Email environment variables are not configured." };
+  }
+  const data = await resendSend({
+    from: ORDER_FROM_EMAIL,
+    to: [process.env.ORDER_NOTIFY_EMAIL],
+    reply_to: session.customer_details?.email || undefined,
+    subject: `Paid order ${session.id} - ${formatMoney(session.amount_total, session.currency)}`,
+    html: buildEmailHtml(session, lineItems)
+  });
+  return { skipped: false, id: data.id };
+}
+
+function buildCustomerEmailHtml(session, lineItems) {
+  const rows = (lineItems.data || []).map(item => `
+    <tr>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.description || "Item")}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:center;">${escapeHtml(item.quantity || 1)}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:right;">${formatMoney(item.amount_total, session.currency)}</td>
+    </tr>`).join("");
+  const name = session.customer_details?.name || session.metadata?.name || "there";
+  return `
+    <div style="font-family:Arial,Helvetica,sans-serif;color:#16241E;line-height:1.6;max-width:560px;margin:0 auto;">
+      <div style="background:#00795F;color:#fff;padding:22px 24px;border-radius:12px 12px 0 0;">
+        <h2 style="margin:0;font-size:20px;">Order confirmed — thank you</h2>
+      </div>
+      <div style="border:1px solid #E2EAE4;border-top:none;border-radius:0 0 12px 12px;padding:24px;">
+        <p>Hi ${escapeHtml(name)},</p>
+        <p>Thanks for your order with North Peptides UK. We've received your payment and your order is being prepared for same-day dispatch on business days. You'll get tracking once it's on the way.</p>
+        <table style="width:100%;border-collapse:collapse;margin:16px 0;">
+          <thead><tr>
+            <th style="text-align:left;border-bottom:2px solid #16241E;padding-bottom:8px;">Item</th>
+            <th style="text-align:center;border-bottom:2px solid #16241E;padding-bottom:8px;">Qty</th>
+            <th style="text-align:right;border-bottom:2px solid #16241E;padding-bottom:8px;">Amount</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <p style="text-align:right;font-size:16px;"><strong>Total paid: ${formatMoney(session.amount_total, session.currency)}</strong></p>
+        <p style="font-size:13px;color:#6B7280;">Order reference: ${escapeHtml(session.id)}</p>
+        <div style="margin:22px 0;padding:16px;background:#F7FAF8;border:1px solid #E2EAE4;border-radius:10px;text-align:center;">
+          <p style="margin:0 0 10px;">Happy with your order? A quick review really helps other researchers.</p>
+          <a href="${TRUSTPILOT_URL}" style="display:inline-block;background:#00B67A;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:8px;">★ Leave a Trustpilot review</a>
+        </div>
+        <p>Questions about your order? Just reply to this email — it reaches us at orders@northpeptidesuk.com.</p>
+        <p style="font-size:12px;color:#9CA3AF;margin-top:20px;">North Peptides UK · Research use only. Not for human or animal consumption.</p>
+      </div>
+    </div>`;
+}
+
+// Confirmation to the customer, sent as orders@… so replies land in the shop inbox.
+async function sendCustomerEmail(session, lineItems) {
+  const to = session.customer_details?.email || session.metadata?.email;
+  if (!process.env.RESEND_API_KEY || !to) {
+    return { skipped: true, reason: "No Resend key or customer email." };
+  }
+  const data = await resendSend({
+    from: ORDER_FROM_EMAIL,
+    to: [to],
+    reply_to: process.env.ORDER_NOTIFY_EMAIL || undefined,
+    subject: "Your North Peptides UK order is confirmed",
+    html: buildCustomerEmailHtml(session, lineItems)
+  });
   return { skipped: false, id: data.id };
 }
 
@@ -166,9 +239,18 @@ module.exports = async function handler(req, res) {
 
   const session = event.data.object;
   const lineItems = await stripeGet(`/checkout/sessions/${session.id}/line_items?limit=100`);
-  const email = await sendOrderEmail(session, lineItems);
 
-  return json(res, 200, { received: true, email });
+  // Notify the shop and confirm to the customer. Don't let a customer-email failure
+  // (e.g. a bounced address) block the 200 the owner notification depends on.
+  const email = await sendOrderEmail(session, lineItems);
+  let customerEmail;
+  try {
+    customerEmail = await sendCustomerEmail(session, lineItems);
+  } catch (err) {
+    customerEmail = { skipped: true, error: err.message };
+  }
+
+  return json(res, 200, { received: true, email, customerEmail });
 };
 
 module.exports.config = {
