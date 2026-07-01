@@ -69,7 +69,7 @@ const CATALOG = {
   // resolveCatalogPrice() maps both forms onto these keys, so only one entry each.
   "Retatrutide Pen Vial|10mg": 50,
   "Retatrutide Pen Vial|20mg": 90,
-  "Retatrutide Pen Vial|50mg": 150,
+  "Retatrutide Pen Vial|50mg": 179.99,
   "Tirzepatide Pen Vial|15mg / 3ml": 78,
   "Tirzepatide Pen Vial|30mg / 3ml": 144,
   "BPC-157 Pen Vial|10mg / 3ml": 29,
@@ -101,8 +101,7 @@ const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 const DISCOUNT_CODES = {
   "WELCOME10":    0.10,
   "AJ":           0.10,
-  "AJ20":         0.20,
-  "123":          0.99 // test-purchase code — remove after confirming live checkout works
+  "AJ20":         0.20
 };
 
 const DELIVERY = {
@@ -194,7 +193,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || discountCode === '123' || productSubtotal >= 50);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || productSubtotal >= 50);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({

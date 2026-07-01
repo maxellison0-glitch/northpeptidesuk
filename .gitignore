@@ -15,3 +15,7 @@ tools/.cache/
 .DS_Store
 Thumbs.db
 *.log
+
+# Internal business data (margins, supplier costs, etc.) — this repo is public,
+# never commit anything here.
+internal/

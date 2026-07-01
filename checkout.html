@@ -1063,10 +1063,9 @@
   const DISCOUNT_CODES = {
     'WELCOME10':    0.10,
     'AJ':           0.10,
-    'AJ20':         0.20,
-    '123':          0.99 // test-purchase code — remove after confirming live checkout works
+    'AJ20':         0.20
   };
-  const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ', '123'];
+  const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ'];
 
   function getSubtotal() {
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
