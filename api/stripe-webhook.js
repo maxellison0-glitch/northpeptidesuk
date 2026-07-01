@@ -211,16 +211,16 @@ async function sendCustomerEmail(session, lineItems) {
   return { skipped: false, id: data.id };
 }
 
-// Instant alert to the shop when a manually-created Stripe Invoice (e.g. a
-// family/off-catalogue order) gets paid, so this doesn't need checking by hand.
-async function sendInvoicePaidEmail(invoice) {
+// Instant alert to the shop for manually-created Stripe Invoices (e.g. a
+// family/off-catalogue order) — covers both "created" and "paid" so this
+// doesn't need checking by hand at either stage.
+async function sendInvoiceEventEmail(invoice, label, amount) {
   if (!process.env.RESEND_API_KEY || !process.env.ORDER_NOTIFY_EMAIL) {
     return { skipped: true, reason: "Email environment variables are not configured." };
   }
-  const amount = formatMoney(invoice.amount_paid, invoice.currency);
   const html = `
     <div style="font-family:Arial,sans-serif;color:#111827;line-height:1.5;">
-      <h2>Invoice paid</h2>
+      <h2>${escapeHtml(label)}</h2>
       <p><strong>Invoice:</strong> ${escapeHtml(invoice.number || invoice.id)}</p>
       <p><strong>Amount:</strong> ${amount}</p>
       <p><strong>Customer:</strong> ${escapeHtml(invoice.customer_name || "Not supplied")}</p>
@@ -232,10 +232,23 @@ async function sendInvoicePaidEmail(invoice) {
     from: ORDER_FROM_EMAIL,
     to: [process.env.ORDER_NOTIFY_EMAIL],
     reply_to: invoice.customer_email || undefined,
-    subject: `Invoice paid ${invoice.number || invoice.id} - ${amount}`,
+    subject: `${label} ${invoice.number || invoice.id} - ${amount}`,
     html
   });
   return { skipped: false, id: data.id };
+}
+
+// Shared try/catch/log wrapper for the invoice.* event branches below.
+async function notifyInvoiceEvent(res, invoice, label, amount) {
+  let invoiceEmail;
+  try {
+    invoiceEmail = await sendInvoiceEventEmail(invoice, label, amount);
+    console.log(`[stripe-webhook] ${label} email (${invoice.number || invoice.id}): ${JSON.stringify(invoiceEmail)}`);
+  } catch (err) {
+    invoiceEmail = { skipped: true, error: err.message };
+    console.error(`[stripe-webhook] ${label} email FAILED: ${err.message}`);
+  }
+  return json(res, 200, { received: true, invoiceEmail });
 }
 
 module.exports = async function handler(req, res) {
@@ -260,17 +273,13 @@ module.exports = async function handler(req, res) {
   } catch {
     return json(res, 400, { error: "Invalid JSON payload." });
   }
+  if (event.type === "invoice.created") {
+    const invoice = event.data.object;
+    return notifyInvoiceEvent(res, invoice, "Invoice created", formatMoney(invoice.amount_due, invoice.currency));
+  }
   if (event.type === "invoice.paid") {
     const invoice = event.data.object;
-    let invoiceEmail;
-    try {
-      invoiceEmail = await sendInvoicePaidEmail(invoice);
-      console.log(`[stripe-webhook] invoice paid email (${invoice.number || invoice.id}): ${JSON.stringify(invoiceEmail)}`);
-    } catch (err) {
-      invoiceEmail = { skipped: true, error: err.message };
-      console.error(`[stripe-webhook] invoice paid email FAILED: ${err.message}`);
-    }
-    return json(res, 200, { received: true, invoiceEmail });
+    return notifyInvoiceEvent(res, invoice, "Invoice paid", formatMoney(invoice.amount_paid, invoice.currency));
   }
 
   if (event.type !== "checkout.session.completed") {
