@@ -30,8 +30,8 @@ Status: `done` = built & gated · `next` = queued · `idea` = candidate
 ## Tier 3 — Handling cluster (internal-link hub, sells consumables)
 | Status | Working title | Target keyword | Links to |
 |---|---|---|---|
-| idea | How to Store Research Peptides Correctly | how to store peptides | bacteriostatic-water |
-| idea | Intranasal Research Peptide Preparation | intranasal peptides | intranasal-research-kit, semax, selank |
+| done | How to Store Research Peptides Correctly | how to store peptides | bacteriostatic-water |
+| done | Intranasal Research Peptide Preparation | intranasal peptides | intranasal-research-kit, semax, selank |
 | idea | Why Are Peptides Freeze-Dried? Lyophilisation Explained | what is lyophilisation | (handling) |
 | idea | Peptide Solubility: Which Compounds Dissolve How | peptide solubility | bacteriostatic-water |
 
