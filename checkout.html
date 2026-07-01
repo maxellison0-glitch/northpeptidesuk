@@ -430,7 +430,12 @@
     .calc-dose-input { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #16241E; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; width: 140px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
     .calc-dose-input::-webkit-outer-spin-button, .calc-dose-input::-webkit-inner-spin-button { -webkit-appearance: none; }
     .calc-dose-input:focus { border-color: #00795F; box-shadow: 0 0 0 3px rgba(0,121,95,0.1); }
-    .calc-dose-unit { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #00795F; letter-spacing: 0.04em; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-radius: 0 8px 8px 0; padding: 0 14px; display: flex; align-items: center; }
+    .calc-unit-toggle { display: flex; }
+    .calc-unit-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: #6B7C72; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-left: none; padding: 0 12px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .calc-unit-btn:first-child { border-left: 1px solid rgba(0,121,95,0.3); }
+    .calc-unit-btn:last-child { border-radius: 0 8px 8px 0; }
+    .calc-unit-btn.active { background: #00795F; color: #fff; }
+    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A968F; line-height: 1.5; margin-top: 8px; }
     .calc-dose-hint { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A968F; margin-bottom: 12px; }
     .calc-ref-line { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4A5C52; padding-top: 12px; border-top: 1px solid rgba(0,121,95,0.16); animation: calcPop 0.3s ease; }
     .calc-ref-line strong { color: #00795F; font-size: 0.78rem; }
@@ -834,10 +839,14 @@
   }
 
   function doseInputChanged(itemId, inputEl) {
-    const mcg = parseFloat(inputEl.value);
+    const raw = parseFloat(inputEl.value);
     const meta = calcItemMeta[itemId];
     if (!meta) return;
-    if (!mcg || mcg <= 0) {
+    // The number field always holds whatever the visitor typed; the unit toggle
+    // says how to interpret it, so a value in mg gets converted to mcg here —
+    // all internal math and storage stays in mcg regardless of the toggle.
+    const mcg = meta.unit === 'mg' ? raw * 1000 : raw;
+    if (!raw || raw <= 0) {
       delete doseNotes[meta.name];
       document.getElementById(itemId + '-draw').innerHTML = '';
       rebuildOrderSummary();
@@ -849,6 +858,23 @@
     const savedEl = document.getElementById(itemId + '-saved');
     if (savedEl) { savedEl.style.opacity = '1'; setTimeout(() => { savedEl.style.opacity = '0'; }, 3000); }
     rebuildOrderSummary();
+  }
+
+  // Switches whether the typed number is interpreted as mcg or mg. Re-reads
+  // whatever is already in the input under the new unit so the result updates
+  // immediately, and swaps the placeholder to match.
+  function setCalcUnit(itemId, unit, btn) {
+    const meta = calcItemMeta[itemId];
+    if (!meta) return;
+    meta.unit = unit;
+    btn.closest('.calc-unit-toggle').querySelectorAll('.calc-unit-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const input = document.getElementById(itemId + '-dose-input');
+    if (input) {
+      const suggestedMcg = getSuggestedDose(meta.name);
+      input.placeholder = suggestedMcg ? (unit === 'mg' ? parseFloat((suggestedMcg / 1000).toFixed(2)) : suggestedMcg) : 'e.g. 500';
+      if (input.value) doseInputChanged(itemId, input);
+    }
   }
 
   function updateOrderDoseDisplay() {
@@ -960,9 +986,12 @@
     const pen = isPenVial(item);
     const defWater = 3;
     const id = 'ci' + idx;
-    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater };
+    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater, unit: 'mcg' };
+    const penNote = pen
+      ? `<div class="calc-pen-note">Loading your own pen-style injector instead of drawing with a syringe? Follow that device's own dosing dial — this reference assumes a standard syringe draw.</div>`
+      : '';
     const waterSel = pen
-      ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>`
+      ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>${penNote}`
       : `<div class="calc-water-row">
           <span class="calc-water-label">Bac water</span>
           <div class="calc-water-btns">
@@ -983,7 +1012,10 @@
           <input type="number" class="calc-dose-input" id="${id}-dose-input"
             placeholder="${getSuggestedDose(item.name) || 'e.g. 500'}" min="1" step="any"
             oninput="doseInputChanged('${id}', this)">
-          <span class="calc-dose-unit">mcg</span>
+          <div class="calc-unit-toggle">
+            <button type="button" class="calc-unit-btn active" onclick="setCalcUnit('${id}','mcg',this)">mcg</button>
+            <button type="button" class="calc-unit-btn" onclick="setCalcUnit('${id}','mg',this)">mg</button>
+          </div>
         </div>
         <div class="calc-dose-hint">1000mcg = 1mg — enter the amount for one injection</div>
         <div id="${id}-result">${calcRefLineHTML(mg, defWater)}</div>
