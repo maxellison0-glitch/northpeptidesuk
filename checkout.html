@@ -672,7 +672,6 @@
   <!-- FORM -->
   <p class="sec-head">Your Details</p>
   <form id="checkout-form">
-    <input type="hidden" name="order_summary" id="order-summary-hidden">
     <input type="hidden" name="delivery_method" id="delivery-method-hidden">
     <input type="hidden" name="total" id="total-hidden">
     <input type="hidden" name="discount_code" id="discount-code-hidden">
@@ -905,21 +904,25 @@
   }
 
   function rebuildOrderSummary() {
-    const lines = basketData.map(function(item) {
-      const base = item.name + ' ' + item.dose + ' x' + item.qty + ' = \xA3' + formatMoney(item.price * item.qty);
-      const note = doseNotes[item.name];
-      if (!note) return base;
-      let line = base + '\n  ↳ Dose: ' + fmtDose(note.mcg) + ' → draw ' + note.units + ' units (' + note.mlVal + 'mL) \xB7 ' + note.waterMl + 'mL bac water';
-      const blendKey = getBlendKey(item.name);
+    updateOrderDoseDisplay();
+  }
+
+  // The actual text sent to the server/email for whatever doses have been
+  // calculated — only items with a dose note, not the full basket (Stripe's
+  // own line items already itemize name/dose/price; this is just the extra
+  // part they don't capture).
+  function doseReferenceSummary() {
+    return Object.keys(doseNotes).map(function(name) {
+      const note = doseNotes[name];
+      let line = name + ': ' + fmtDose(note.mcg) + ' → ' + note.units + ' units (' + note.mlVal + 'mL), ' + note.waterMl + 'mL bac water';
+      const blendKey = getBlendKey(name);
       if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
-        line += '\n     ' + BLEND_COMPOSITIONS[blendKey].map(function(c) {
+        line += ' [' + BLEND_COMPOSITIONS[blendKey].map(function(c) {
           return c.name + ' ' + fmtDose(note.mcg * c.share);
-        }).join(' \xB7 ');
+        }).join(', ') + ']';
       }
       return line;
-    });
-    document.getElementById('order-summary-hidden').value = lines.join('\n');
-    updateOrderDoseDisplay();
+    }).join('\n');
   }
 
   function isPenVial(item) {
@@ -986,7 +989,9 @@
     const pen = isPenVial(item);
     const defWater = 3;
     const id = 'ci' + idx;
-    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater, unit: 'mcg' };
+    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater, unit: 'mg' };
+    const suggestedMcg = getSuggestedDose(item.name);
+    const suggestedPlaceholder = suggestedMcg ? parseFloat((suggestedMcg / 1000).toFixed(2)) : 'e.g. 0.5';
     const penNote = pen
       ? `<div class="calc-pen-note">Loading your own pen-style injector instead of drawing with a syringe? Follow that device's own dosing dial — this reference assumes a standard syringe draw.</div>`
       : '';
@@ -1010,11 +1015,11 @@
         <div class="calc-ask-label">How much would you like?</div>
         <div class="calc-dose-input-wrap">
           <input type="number" class="calc-dose-input" id="${id}-dose-input"
-            placeholder="${getSuggestedDose(item.name) || 'e.g. 500'}" min="1" step="any"
+            placeholder="${suggestedPlaceholder}" min="0.001" step="any"
             oninput="doseInputChanged('${id}', this)">
           <div class="calc-unit-toggle">
-            <button type="button" class="calc-unit-btn active" onclick="setCalcUnit('${id}','mcg',this)">mcg</button>
-            <button type="button" class="calc-unit-btn" onclick="setCalcUnit('${id}','mg',this)">mg</button>
+            <button type="button" class="calc-unit-btn" onclick="setCalcUnit('${id}','mcg',this)">mcg</button>
+            <button type="button" class="calc-unit-btn active" onclick="setCalcUnit('${id}','mg',this)">mg</button>
           </div>
         </div>
         <div class="calc-dose-hint">1000mcg = 1mg — enter the amount for one injection</div>
@@ -1211,7 +1216,8 @@
     return {
       name: String(data.get('name') || '').trim(),
       email: String(data.get('email') || '').trim(),
-      notes: String(data.get('notes') || '').trim()
+      notes: String(data.get('notes') || '').trim(),
+      doseReference: doseReferenceSummary()
     };
   }
 
