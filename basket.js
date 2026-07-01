@@ -4,13 +4,15 @@ let basket = [];
 
 function fmt(v) { return Number(v).toFixed(2).replace(/\.00$/, ''); }
 
-// Persist the basket so it survives navigation to checkout.html, which reads
-// the same `npuk_basket` sessionStorage key (shared with product.html).
+// Persist the basket in localStorage so it survives navigation to checkout.html AND
+// a tab/browser close (returning visitors keep their cart). Shared key with
+// product.html and checkout.html.
+const FREE_SHIP_THRESHOLD = 50;
 function loadBasket() {
-  try { return JSON.parse(sessionStorage.getItem('npuk_basket') || '[]'); } catch (e) { return []; }
+  try { return JSON.parse(localStorage.getItem('npuk_basket') || '[]'); } catch (e) { return []; }
 }
 function saveBasket() {
-  try { sessionStorage.setItem('npuk_basket', JSON.stringify(basket)); } catch (e) {}
+  try { localStorage.setItem('npuk_basket', JSON.stringify(basket)); } catch (e) {}
 }
 basket = loadBasket();
 
@@ -84,9 +86,22 @@ function renderBasketItems() {
       <div class="basket-item-price">£${fmt(item.price * item.qty)}</div>
       <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
     </div>
-  `).join('');
+  `).join('') + renderShipNote();
 
   if (totalEl) totalEl.textContent = '£' + fmt(getTotal());
+}
+
+// Free-shipping progress nudge — surfaces the £50 threshold right in the drawer so
+// shoppers add one more item instead of discovering it only at checkout.
+function renderShipNote() {
+  const total = getTotal();
+  if (total >= FREE_SHIP_THRESHOLD) {
+    return '<div class="basket-ship-note unlocked">✓ You’ve unlocked free UK delivery</div>';
+  }
+  const remaining = FREE_SHIP_THRESHOLD - total;
+  const pct = Math.min(100, Math.round((total / FREE_SHIP_THRESHOLD) * 100));
+  return '<div class="basket-ship-note">Add <strong>£' + fmt(remaining) + '</strong> more for free UK delivery'
+    + '<div class="basket-ship-bar"><span style="width:' + pct + '%"></span></div></div>';
 }
 
 function showBasket() {

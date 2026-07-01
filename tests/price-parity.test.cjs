@@ -59,6 +59,62 @@ test('every sellable variant resolves in the server CATALOG at its shown price',
   }
 });
 
+// Mirror of server resolveCatalogPrice()'s whitespace-normalised fallback: the
+// homepage sends doses without spaces ("10mg/3ml") while the catalogue stores them
+// spaced ("10mg / 3ml"). Both must resolve to the same price.
+const normaliseKey = (s) => String(s || '').replace(/\s+/g, ' ').replace(/\s*\/\s*/g, '/').trim();
+const CATALOG_NORM = {};
+for (const [k, v] of Object.entries(CATALOG)) CATALOG_NORM[normaliseKey(k)] = v;
+const resolvePrice = (name, dose) => {
+  const key = `${name}|${dose}`;
+  if (key in CATALOG) return CATALOG[key];
+  const n = normaliseKey(key);
+  return n in CATALOG_NORM ? CATALOG_NORM[n] : null;
+};
+
+test('every homepage buy-widget option resolves in the CATALOG at its shown price', () => {
+  const nameBySel = {};
+  for (const m of indexHtml.matchAll(/add(?:Bundle|Featured)ToBasket\('([^']+)','([^']+)'\)/g)) nameBySel[m[1]] = m[2];
+  let checked = 0;
+  for (const m of indexHtml.matchAll(/<select[^>]*id="([^"]+)"[\s\S]*?<\/select>/g)) {
+    const name = nameBySel[m[1]];
+    if (!name) continue; // not an add-to-basket widget
+    for (const o of m[0].matchAll(/value="([\d.]+)\|([^"]+)"/g)) {
+      const shown = Number(o[1]), dose = o[2];
+      const price = resolvePrice(name, dose);
+      assert.ok(price !== null, `Homepage "${name}|${dose}" would 400 at checkout — not in CATALOG [#${m[1]}]`);
+      assert.strictEqual(price, shown, `Homepage "${name}|${dose}" shows £${shown} but CATALOG charges £${price} [#${m[1]}]`);
+      checked++;
+    }
+  }
+  assert.ok(checked > 30, `expected to check the full homepage grid, only saw ${checked} options`);
+});
+
+test('every homepage literal Add button resolves at its shown price', () => {
+  for (const m of indexHtml.matchAll(/addToBasket\('([^']+)',\s*([\d.]+),\s*'([^']+)'\)/g)) {
+    const name = m[1], shown = Number(m[2]), dose = m[3];
+    const price = resolvePrice(name, dose);
+    assert.ok(price !== null, `Homepage button "${name}|${dose}" would 400 at checkout — not in CATALOG`);
+    assert.strictEqual(price, shown, `Homepage button "${name}|${dose}" shows £${shown} but CATALOG charges £${price}`);
+  }
+});
+
+test('every checkout/product add-on button resolves at its shown price', () => {
+  // Hardcoded add-on emits in product.html (accessory/intranasal/pen) and checkout.html (thermal).
+  const addons = [
+    ['Bacteriostatic Water', 6.99, 'Accessory'],
+    ['Insulin Needle Pack', 6.99, 'Accessory'],
+    ['Intranasal Research Kit', 4.99, 'Kit add-on'],
+    ['Disposable Research Pen Kit', 9.99, 'Kit add-on'],
+    ['Thermal Cooled Packaging', 4.99, 'Insulated foil pouch + gel packs'],
+  ];
+  for (const [name, shown, dose] of addons) {
+    const price = resolvePrice(name, dose);
+    assert.ok(price !== null, `Add-on "${name}|${dose}" would 400 at checkout — not in CATALOG`);
+    assert.strictEqual(price, shown, `Add-on "${name}|${dose}" shows £${shown} but CATALOG charges £${price}`);
+  }
+});
+
 test('the intranasal +kit add-on resolves at its button price', () => {
   assert.strictEqual(CATALOG['Intranasal Research Kit|Kit add-on'], 4.99,
     'product.html adds the intranasal add-on at £4.99 — CATALOG must match');

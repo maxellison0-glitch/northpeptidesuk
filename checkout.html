@@ -338,6 +338,10 @@
     }
     .btn-place-order:hover { background: #00614C; }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
+    .field-hint { display: block; margin-top: 5px; font-size: 0.72rem; color: #6B7C72; letter-spacing: 0.01em; }
+    .checkout-tp { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 4px 0 12px; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em; color: #3D4F46; text-decoration: none; }
+    .checkout-tp span { color: #00B67A; letter-spacing: 1px; font-size: 0.85rem; }
+    .checkout-tp:hover { color: #00795F; }
     .research-confirm { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; padding: 12px 14px; border: 1px solid #E2EAE4; border-radius: 8px; background: #F7FAF8; font-size: 0.8rem; line-height: 1.55; color: #3D4F46; cursor: pointer; }
     .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: #00795F; cursor: pointer; }
     .order-note {
@@ -605,7 +609,7 @@
       <input type="radio" name="delivery" value="standard" data-price="3" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £30</span></div>
+        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £50</span></div>
       </div>
       <div class="delivery-option-price" id="standard-delivery-price">£3</div>
     </label>
@@ -670,28 +674,7 @@
     <div class="form-group">
       <label>Email Address</label>
       <input type="email" name="email" required placeholder="your@email.com">
-    </div>
-    <div class="form-group">
-      <label>Address Line 1</label>
-      <input type="text" name="address1" required placeholder="House number and street">
-    </div>
-    <div class="form-group">
-      <label>Address Line 2 <span class="optional-label">(optional)</span></label>
-      <input type="text" name="address2" placeholder="Flat, apartment, unit">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Town / City</label>
-        <input type="text" name="city" required placeholder="Town or city">
-      </div>
-      <div class="form-group">
-        <label>Postcode</label>
-        <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
-      </div>
-    </div>
-    <div class="form-group">
-      <label>County <span class="optional-label">(optional)</span></label>
-      <input type="text" name="county" placeholder="County">
+      <span class="field-hint">Order confirmation &amp; tracking are sent here.</span>
     </div>
     <div class="form-group">
       <label>Notes <span class="optional-label">(optional)</span></label>
@@ -700,14 +683,17 @@
 
     <!-- TRUST NOTE -->
     <div class="checkout-trust-note">
-      <strong>Clear, simple ordering.</strong>
-      <p>We collect your delivery address here for dispatch. Your payment details are handled securely by Stripe on the next screen.</p>
+      <strong>Fast, guest checkout — no account needed.</strong>
+      <p>Just your name and email here. You'll enter your delivery address and pay securely with card, Apple Pay, Google Pay or Link on the next screen (handled by Stripe).</p>
     </div>
 
     <label class="research-confirm">
       <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
       <span>I confirm I am ordering these products strictly for laboratory research use only, and not for human or animal consumption.</span>
     </label>
+    <a class="checkout-tp" href="https://www.trustpilot.com/review/northpeptidesuk.com" target="_blank" rel="noopener">
+      <span aria-hidden="true">★★★★★</span> Rated by researchers on Trustpilot
+    </a>
     <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
@@ -1029,7 +1015,7 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 30;
+      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 50;
       deliveryPrice = freeDelivery ? 0 : 3;
       document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
       const nudge = document.getElementById('delivery-nudge');
@@ -1093,7 +1079,7 @@
   }
 
   function saveCheckoutBasket() {
-    sessionStorage.setItem('npuk_basket', JSON.stringify(basketData));
+    localStorage.setItem('npuk_basket', JSON.stringify(basketData));
   }
 
   function addCheckoutAddon(button, name, price, dose) {
@@ -1155,18 +1141,11 @@
 
   function getCustomerPayload(form) {
     const data = new FormData(form);
-    const address = [
-      data.get('address1'),
-      data.get('address2'),
-      data.get('city'),
-      data.get('county'),
-      data.get('postcode')
-    ].filter(Boolean).join(', ');
-
+    // Address is collected by Stripe on the hosted checkout page, so it is no longer
+    // gathered here — only name, email (to prefill Stripe + send confirmations) and notes.
     return {
       name: String(data.get('name') || '').trim(),
       email: String(data.get('email') || '').trim(),
-      address,
       notes: String(data.get('notes') || '').trim()
     };
   }
@@ -1179,7 +1158,7 @@
   function showStripeSuccess() {
     document.getElementById('main-checkout').style.display = 'none';
     document.getElementById('success-page').style.display = 'block';
-    sessionStorage.removeItem('npuk_basket');
+    localStorage.removeItem('npuk_basket');
     sessionStorage.removeItem('npuk_checkout_value');
   }
 
@@ -1190,7 +1169,7 @@
   }
 
   window.addEventListener('load', () => {
-    const saved = sessionStorage.getItem('npuk_basket');
+    const saved = localStorage.getItem('npuk_basket');
     if (saved) basketData = JSON.parse(saved);
     const paymentStatus = new URLSearchParams(window.location.search).get('payment');
     if (paymentStatus === 'success') {

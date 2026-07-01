@@ -8,9 +8,12 @@ Add these in Vercel project settings:
 
 - `STRIPE_SECRET_KEY` - already configured for checkout
 - `STRIPE_WEBHOOK_SECRET` - copied from the Stripe webhook endpoint
-- `RESEND_API_KEY` - optional, required for order notification emails
-- `ORDER_NOTIFY_EMAIL` - where paid order emails should be sent (currently `orders@northpeptidesuk.com`)
-- `ORDER_FROM_EMAIL` - optional sender, defaults to `North Peptides UK <onboarding@resend.dev>`
+- `RESEND_API_KEY` - required for order notification + customer confirmation emails
+- `ORDER_NOTIFY_EMAIL` - where paid order alerts are sent (`orders@northpeptidesuk.com`)
+- `ORDER_FROM_EMAIL` - optional sender, defaults to `North Peptides UK <orders@northpeptidesuk.com>` (verify the domain in Resend first)
+- `RESEND_AUDIENCE_ID` - optional, stores newsletter signups (`/api/subscribe`) in a Resend Audience
+
+See `SETUP_EMAIL_AND_TRUSTPILOT.md` for the full walkthrough (Resend + Google Workspace, wallets, Trustpilot).
 
 Do not commit real values to GitHub.
 

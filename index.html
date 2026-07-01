@@ -605,6 +605,25 @@
     .supply-card .shop-card-footer { border-top: 1px solid #E7ECE8; padding-top: 10px; }
     .category-heading-light { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: #4A5C51; font-weight: 600; padding: 24px 0 12px; border-bottom: 2px solid #E2EAE4; margin-top: 16px; display: block; }
 
+    /* ===== TRUSTPILOT ===== */
+    .tp-section { padding: 40px 40px 8px; }
+    .tp-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .tp-badge { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 18px; border: 1px solid #E2EAE4; border-radius: 999px; background: #fff; transition: transform 0.15s, box-shadow 0.15s; }
+    .tp-badge:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .tp-stars { color: #00B67A; letter-spacing: 2px; font-size: 1.05rem; }
+    .tp-badge-text { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.04em; color: #16241E; }
+    .tp-badge-text strong { color: #00B67A; }
+    .trustpilot-widget { width: 100%; max-width: 1000px; min-height: 24px; }
+    .tp-cta { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #00795F; text-decoration: none; border-bottom: 1px solid rgba(0,121,95,0.35); padding-bottom: 2px; }
+    .tp-cta:hover { color: #015A47; }
+    @media (max-width: 700px) { .tp-section { padding: 28px 16px 4px; } }
+
+    /* ===== BASKET FREE-SHIPPING NUDGE ===== */
+    .basket-ship-note { margin: 12px 4px 4px; padding: 10px 12px; border-radius: 8px; background: #F7FAF8; border: 1px solid #E2EAE4; font-size: 0.74rem; color: #3D4F46; text-align: center; }
+    .basket-ship-note.unlocked { background: #ECFAF4; border-color: #B7E7D5; color: #00795F; font-weight: 600; }
+    .basket-ship-bar { margin-top: 8px; height: 6px; border-radius: 4px; background: #E2EAE4; overflow: hidden; }
+    .basket-ship-bar span { display: block; height: 100%; background: linear-gradient(90deg, #00795F, #00B67A); transition: width 0.3s; }
+
     /* ===== REVIEWS (moved below products) ===== */
     .reviews-section {
       background: #ffffff;
@@ -1821,6 +1840,34 @@
   </section>
 
   <!-- HOW WE WORK SECTION -->
+  <!-- TRUSTPILOT — live reviews -->
+  <section class="tp-section" id="trustpilot">
+    <div class="tp-inner" data-reveal>
+      <a class="tp-badge" href="https://www.trustpilot.com/review/northpeptidesuk.com" target="_blank" rel="noopener">
+        <span class="tp-stars" aria-hidden="true">★★★★★</span>
+        <span class="tp-badge-text">Reviewed on <strong>Trustpilot</strong></span>
+      </a>
+      <!--
+        LIVE TRUSTPILOT REVIEWS
+        This official TrustBox fills with your real reviews once you paste your IDs.
+        Get them from Trustpilot Business > Integrations > TrustBox:
+          1. Replace data-businessunit-id below with YOUR Business Unit ID.
+          2. (Optional) swap data-template-id if you choose a different widget style.
+        Until then, the star badge above already links to your Trustpilot page.
+      -->
+      <div class="trustpilot-widget"
+           data-locale="en-GB"
+           data-template-id="53aa8912dec7e10d38f59f36"
+           data-businessunit-id="REPLACE_WITH_YOUR_TRUSTPILOT_BUSINESS_UNIT_ID"
+           data-style-height="140px"
+           data-style-width="100%"
+           data-theme="light">
+        <a href="https://www.trustpilot.com/review/northpeptidesuk.com" target="_blank" rel="noopener">Read our reviews on Trustpilot</a>
+      </div>
+      <a class="tp-cta" href="https://www.trustpilot.com/evaluate/northpeptidesuk.com" target="_blank" rel="noopener">Leave us a review →</a>
+    </div>
+  </section>
+
   <section class="reviews-section">
     <div class="reviews-header">
       <span class="reviews-tag">How We Work</span>
@@ -1986,7 +2033,7 @@
       <p class="signup-tag">Stay in the loop</p>
       <h2 class="signup-title">Restock alerts &amp; new compound drops.</h2>
       <p class="signup-sub">Join the research list for restock notifications, new additions to the catalogue and handling guides. No spam &mdash; unsubscribe anytime.</p>
-      <form class="signup-form" id="signup-form" data-endpoint="" onsubmit="return handleSignup(event,'signup-form')">
+      <form class="signup-form" id="signup-form" data-endpoint="/api/subscribe" onsubmit="return handleSignup(event,'signup-form')">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit">Join list</button>
       </form>
@@ -2009,7 +2056,7 @@
         <div class="footer-light-logo">NORTH<span>PEPTIDES</span>UK</div>
         <p class="footer-light-desc">Research peptides with purity stated on every product. UK stocked and dispatched from the UK. Stored frozen until dispatch, with direct support before you order.</p>
         <p class="footer-light-meta">Est. 2025 · UK</p>
-        <form class="foot-signup" id="foot-signup" data-endpoint="" onsubmit="return handleSignup(event,'foot-signup')">
+        <form class="foot-signup" id="foot-signup" data-endpoint="/api/subscribe" onsubmit="return handleSignup(event,'foot-signup')">
           <input type="email" name="email" placeholder="Email for restock alerts" required aria-label="Email address">
           <button type="submit">Join</button>
         </form>
@@ -2052,6 +2099,8 @@
     <p class="footer-disclaimer-text">All products are for research purposes only. Not for human consumption. Not medicines. Not for use in humans or animals.</p>
   </footer>
 
+  <!-- Trustpilot TrustBox loader -->
+  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
   <script src="basket.js"></script>
   <script>
 

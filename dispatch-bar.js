@@ -117,7 +117,7 @@
     function () {
       return {
         mode: 'ship',
-        html: 'Free UK delivery on orders over <span class="npbar-hl">&pound;30</span>'
+        html: 'Free UK delivery on orders over <span class="npbar-hl">&pound;50</span>'
       };
     }
   ];

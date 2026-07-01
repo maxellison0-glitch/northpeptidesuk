@@ -189,14 +189,14 @@
 
     function getBasket() {
       try {
-        return JSON.parse(sessionStorage.getItem("npuk_basket") || "[]");
+        return JSON.parse(localStorage.getItem("npuk_basket") || "[]");
       } catch {
         return [];
       }
     }
 
     function saveBasket(basket) {
-      sessionStorage.setItem("npuk_basket", JSON.stringify(basket));
+      localStorage.setItem("npuk_basket", JSON.stringify(basket));
     }
 
     function basketCount() {
