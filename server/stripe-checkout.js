@@ -193,7 +193,7 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
   const productSubtotal = lineItems.reduce((sum, li) => sum + (li["price_data][unit_amount"] / 100) * li.quantity, 0);
   const isExpress = payload.deliveryMethod === 'express';
-  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || productSubtotal >= 30);
+  const freeStandard = !isExpress && (discountCode === 'AJ' || discountCode === 'SUMMERSHIP' || productSubtotal >= 50);
   const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
   if (deliveryCharge > 0) {
     lineItems.push({

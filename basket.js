@@ -7,7 +7,7 @@ function fmt(v) { return Number(v).toFixed(2).replace(/\.00$/, ''); }
 // Persist the basket in localStorage so it survives navigation to checkout.html AND
 // a tab/browser close (returning visitors keep their cart). Shared key with
 // product.html and checkout.html.
-const FREE_SHIP_THRESHOLD = 30;
+const FREE_SHIP_THRESHOLD = 50;
 function loadBasket() {
   try { return JSON.parse(localStorage.getItem('npuk_basket') || '[]'); } catch (e) { return []; }
 }
@@ -91,7 +91,7 @@ function renderBasketItems() {
   if (totalEl) totalEl.textContent = '£' + fmt(getTotal());
 }
 
-// Free-shipping progress nudge — surfaces the £30 threshold right in the drawer so
+// Free-shipping progress nudge — surfaces the £50 threshold right in the drawer so
 // shoppers add one more item instead of discovering it only at checkout.
 function renderShipNote() {
   const total = getTotal();
