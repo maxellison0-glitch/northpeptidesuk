@@ -209,6 +209,10 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("mode", "payment");
   params.append("success_url", `${siteUrl}/checkout.html?payment=success&session_id={CHECKOUT_SESSION_ID}`);
   params.append("cancel_url", `${siteUrl}/checkout.html?payment=cancelled`);
+  // Lets a real Stripe Promotion Code (with its own redemption limits/expiry, enforced
+  // by Stripe itself) be entered on Stripe's own hosted page, separate from the site's
+  // own on-page discount-code box above.
+  params.append("allow_promotion_codes", "true");
   // Deliberately NOT sending payment_method_types — omitting it entirely is how Stripe
   // Checkout Sessions render every eligible method (card, Apple Pay, Google Pay, Link)
   // instead of card-only. (automatic_payment_methods is a Payment Intents API param —
