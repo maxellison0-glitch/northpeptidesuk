@@ -80,6 +80,17 @@
     .exp-title { font-family: Syne, sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; margin-bottom: 7px; }
     .exp-body { font-size: 0.82rem; color: #51625A; line-height: 1.65; }
 
+    /* INDEPENDENT TESTING STATUS */
+    .testing-status { background: #F7FAF8; padding: 52px 40px; border-bottom: 1px solid #E2EAE4; }
+    .testing-inner { max-width: 920px; margin: 0 auto; }
+    .testing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
+    .testing-card { background: #ffffff; border: 1px solid #DDE8E1; border-radius: 10px; padding: 22px; box-shadow: 0 8px 24px rgba(18,46,35,0.04); }
+    .testing-card.is-priority { border-color: #BFD9CE; }
+    .testing-label { display: inline-flex; align-items: center; min-height: 24px; padding: 4px 9px; border-radius: 999px; background: #EAF6F1; border: 1px solid #C6DED3; color: #00684F; font-size: 0.66rem; font-weight: 700; margin-bottom: 12px; }
+    .testing-title { font-family: Syne, sans-serif; font-size: 1rem; font-weight: 800; color: #12211A; margin-bottom: 7px; }
+    .testing-body { font-size: 0.84rem; color: #51625A; line-height: 1.65; }
+    .testing-note { margin-top: 18px; font-size: 0.78rem; color: #6B7B72; line-height: 1.65; max-width: 720px; }
+
     /* INFO BAR */
     .info-bar { background: #12211A; padding: 18px 40px; }
     .info-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 32px; flex-wrap: wrap; align-items: center; justify-content: center; }
@@ -186,6 +197,7 @@
     @media (max-width: 768px) {
       .page-hero { padding: 48px 18px 44px; }
       .explainer { padding: 36px 18px; }
+      .testing-status { padding: 36px 18px; }
       .info-bar { padding: 16px 18px; }
       .docs-section { padding: 36px 18px; }
       .request-section { padding: 44px 18px; }
@@ -265,6 +277,33 @@
     </div>
   </div>
 
+  <!-- INDEPENDENT TESTING STATUS -->
+  <section class="testing-status">
+    <div class="testing-inner">
+      <p class="section-tag">Independent Testing Status</p>
+      <h2 class="section-title">Third-party COA testing is being prioritised.</h2>
+      <p style="font-size:0.9rem;color:#49594F;max-width:680px;line-height:1.75;margin-top:6px;">We are arranging independent COA testing for selected high-demand compounds. Results will be reviewed and added here once received. Until then, the current documentation status remains supplier batch details and purity documentation available on request.</p>
+      <div class="testing-grid">
+        <article class="testing-card is-priority">
+          <span class="testing-label">Priority Test</span>
+          <h3 class="testing-title">BPC-157</h3>
+          <p class="testing-body">Independent COA testing is being arranged for BPC-157. The report will be published on this page once the sample has been tested and the document has been reviewed.</p>
+        </article>
+        <article class="testing-card is-priority">
+          <span class="testing-label">Priority Test</span>
+          <h3 class="testing-title">Retatrutide</h3>
+          <p class="testing-body">Independent COA testing is being arranged for Retatrutide. The report will be published on this page once the sample has been tested and the document has been reviewed.</p>
+        </article>
+        <article class="testing-card">
+          <span class="testing-label">Under Review</span>
+          <h3 class="testing-title">GHK-Cu</h3>
+          <p class="testing-body">GHK-Cu is under review for the next testing round. We are prioritising the first two COAs before committing to additional independent tests.</p>
+        </article>
+      </div>
+      <p class="testing-note">No product is described as independently verified until the relevant third-party report is received. All products remain strictly for laboratory research use only and are not for human or animal consumption.</p>
+    </div>
+  </section>
+
   <!-- INFO BAR -->
   <div class="info-bar">
     <div class="info-inner">
@@ -276,7 +315,7 @@
       <span class="info-div">·</span>
       <div class="info-item"><span class="info-val">UK</span><span class="info-label">Stocked &amp; Dispatched</span></div>
       <span class="info-div">·</span>
-      <div class="info-item"><span class="info-val">Email</span><span class="info-label">Docs by Request</span></div>
+      <div class="info-item"><span class="info-val">COA</span><span class="info-label">BPC &amp; Reta In Progress</span></div>
     </div>
   </div>
 

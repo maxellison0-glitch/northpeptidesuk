@@ -7,9 +7,9 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "retatrutide-pen", label: "Also available as", name: "Retatrutide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
-      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
+      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, 99%+ purity stated, 24h dispatch. Research use only — not for human consumption.",
       faq: [
-        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, verified to 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, stated at 99%+ purity and stored frozen until dispatch. Supplier documentation is available on request, and independent COA testing is being arranged." },
         { q: "What receptors does Retatrutide act on?", a: "It is described in the research literature as a triple receptor agonist with reported activity at the GLP-1, GIP and glucagon receptors. It is supplied only as a reference material for that research." },
         { q: "Do you stock Retatrutide in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Retatrutide for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
@@ -39,9 +39,10 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
+      "Independent COA testing being arranged",
       "Purity certificate on request"
     ],
     variants: [
@@ -93,7 +94,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -145,7 +146,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -198,7 +199,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -217,9 +218,9 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "bpc-157-pen", label: "Also available as", name: "BPC-157 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy BPC-157 UK | 10mg Research Peptide, 99%+ Purity | North Peptides UK",
-      metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity verified, 24h dispatch. Research use only — not for human consumption.",
+      metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity stated, 24h dispatch. Research use only — not for human consumption.",
       faq: [
-        { q: "What is BPC-157 supplied as?", a: "A 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is BPC-157 supplied as?", a: "A 10mg lyophilised vial, stated at 99%+ purity and stored frozen until dispatch. Supplier documentation is available on request, and independent COA testing is being arranged." },
         { q: "What is BPC-157?", a: "A synthetic pentadecapeptide (15 amino acids) based on a partial sequence of a protein found in gastric juice. It is one of the most frequently referenced peptides in tissue-research literature." },
         { q: "Do you stock BPC-157 in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is BPC-157 for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
@@ -249,9 +250,10 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
+      "Independent COA testing being arranged",
       "Purity certificate on request"
     ],
     variants: [
@@ -301,7 +303,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -323,7 +325,7 @@ const PRODUCT_DATA = {
       metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is TB-500?", a: "The synthetic, N-acetylated heptapeptide fragment Ac-LKKTETQ, corresponding to the actin-binding region of the protein Thymosin Beta-4. It is supplied as a 10mg lyophilised vial at 99%+ purity." },
-        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial, stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
         { q: "Do you stock TB-500 in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is TB-500 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -352,7 +354,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -403,7 +405,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -453,7 +455,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -504,7 +506,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -554,7 +556,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -605,7 +607,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -652,7 +654,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -700,7 +702,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -750,7 +752,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -801,7 +803,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -850,7 +852,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -900,7 +902,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -949,7 +951,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, solutions are generally kept refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -999,7 +1001,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -1050,7 +1052,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -1101,7 +1103,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -1120,7 +1122,7 @@ const PRODUCT_DATA = {
       metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Semax?", a: "A synthetic heptapeptide derived from a fragment of ACTH (4-7) with a Pro-Gly-Pro extension that increases stability, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial verified to 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
         { q: "Do you stock Semax in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1151,7 +1153,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -1170,7 +1172,7 @@ const PRODUCT_DATA = {
       metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Selank?", a: "A synthetic heptapeptide analogue of the immunomodulatory peptide tuftsin, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial verified to 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
         { q: "Do you stock Selank in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1201,7 +1203,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -1251,7 +1253,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -1302,7 +1304,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
@@ -1352,7 +1354,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Purity certificate on request"
@@ -1403,7 +1405,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "99%+ purity — verified",
+      "99%+ purity stated",
       "Pre-reconstituted — pen-ready",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
