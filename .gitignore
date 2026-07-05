@@ -8,6 +8,7 @@ node_modules/
 
 # Build / tooling caches
 tools/.cache/
+.superpowers/
 .netlify/
 .vercel/
 
