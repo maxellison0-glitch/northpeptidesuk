@@ -16,11 +16,13 @@ const fs = require('fs');
 const path = require('path');
 const { lint, formatReport } = require('./compliance.js');
 const { renderArticle, renderBlogIndex } = require('./template.js');
-const { SITE, STATIC_PAGES, PRODUCTS, productPriority } = require('./site.js');
+const { renderProductPage } = require('./product-page-template.js');
+const { SITE, STATIC_PAGES, PRODUCTS, productPriority, productUrl, productPath } = require('./site.js');
 
 const ROOT = path.join(__dirname, '..');
 const ARTICLES_DIR = path.join(__dirname, 'articles');
 const BLOG_DIR = path.join(ROOT, 'blog');
+const PRODUCTS_DIR = path.join(ROOT, 'products');
 const BUILD_DATE = (() => {
   try {
     const { execSync } = require('child_process');
@@ -63,7 +65,7 @@ function buildSitemap(articles) {
     entries.push(urlEntry(SITE.base + p.path, BUILD_DATE, p.changefreq, p.priority));
   }
   for (const slug of Object.keys(PRODUCTS)) {
-    entries.push(urlEntry(`${SITE.base}/product.html?product=${slug}`, BUILD_DATE, 'weekly', productPriority(slug)));
+    entries.push(urlEntry(productUrl(slug), BUILD_DATE, 'weekly', productPriority(slug)));
   }
   for (const a of articles) {
     entries.push(urlEntry(`${SITE.base}/blog/${a.slug}.html`, a.dateModified || a.datePublished, 'monthly', '0.6'));
@@ -82,7 +84,7 @@ function buildProductFeed() {
       slug,
       name: product.name,
       category: product.category,
-      url: `${SITE.base}/product.html?product=${slug}`,
+      url: productUrl(slug),
       image: `${SITE.base}/${product.image}`,
       summary: product.summary,
       researchUseOnly: true,
@@ -108,6 +110,10 @@ function updateRobots() {
   fs.writeFileSync(robotsPath, txt);
 }
 
+function productPageFile(slug) {
+  return path.join(ROOT, productPath(slug), 'index.html');
+}
+
 function main() {
   const checkOnly = process.argv.includes('--check');
   const articles = loadArticles();
@@ -115,6 +121,7 @@ function main() {
 
   // Render + gate every article BEFORE writing anything (fail closed).
   const rendered = [];
+  const renderedProducts = [];
   let failed = 0;
   for (const a of articles) {
     const html = renderArticle(a);
@@ -123,11 +130,18 @@ function main() {
     if (!result.ok) failed++;
     rendered.push({ a, html });
   }
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    const html = renderProductPage(slug, product);
+    const result = lint(html);
+    console.log(formatReport(`products/${slug}/index.html`, result));
+    if (!result.ok) failed++;
+    renderedProducts.push({ slug, html });
+  }
   if (failed) {
-    console.error(`\nCOMPLIANCE GATE FAILED — ${failed}/${articles.length} article(s) blocked. Nothing written.`);
+    console.error(`\nCOMPLIANCE GATE FAILED - ${failed} generated page(s) blocked. Nothing written.`);
     process.exit(1);
   }
-  console.log(`\nCompliance gate: ${articles.length}/${articles.length} passed.`);
+  console.log(`\nCompliance gate: ${articles.length + renderedProducts.length}/${articles.length + renderedProducts.length} passed.`);
 
   if (checkOnly) { console.log('--check: no files written.'); return; }
 
@@ -136,6 +150,12 @@ function main() {
   for (const { a, html } of rendered) {
     fs.writeFileSync(path.join(BLOG_DIR, `${a.slug}.html`), html);
   }
+  if (!fs.existsSync(PRODUCTS_DIR)) fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
+  for (const { slug, html } of renderedProducts) {
+    const file = productPageFile(slug);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, html);
+  }
   fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), renderBlogIndex(articles));
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(articles));
   fs.writeFileSync(path.join(ROOT, 'products.json'), JSON.stringify(buildProductFeed(), null, 2) + '\n');
@@ -143,8 +163,9 @@ function main() {
 
   console.log(`\nBuilt ${articles.length} article(s):`);
   for (const a of articles) console.log(`  · blog/${a.slug}.html  — "${a.title}"`);
+  console.log(`Built ${renderedProducts.length} static product page(s) under products/`);
   console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, robots.txt`);
 }
 
 if (require.main === module) main();
-module.exports = { loadArticles, buildSitemap, buildProductFeed };
+module.exports = { loadArticles, buildSitemap, buildProductFeed, productPageFile };

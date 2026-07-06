@@ -44,8 +44,13 @@ function product(slug) {
   return p;
 }
 
+function productPath(slug) {
+  product(slug);
+  return `/products/${slug}/`;
+}
+
 function productUrl(slug) {
-  return `${SITE.base}/product.html?product=${slug}`;
+  return `${SITE.base}${productPath(slug)}`;
 }
 
 function priceFrom(slug) {
@@ -82,4 +87,5 @@ module.exports = {
   SITE, STATIC_PAGES, PRODUCTS,
   escapeHtml, formatGBP,
   product, productUrl, priceFrom, resolveProducts, productPriority,
+  productPath,
 };
