@@ -15,6 +15,20 @@ function saveBasket() {
   try { localStorage.setItem('npuk_basket', JSON.stringify(basket)); } catch (e) {}
 }
 basket = loadBasket();
+function trackBasketEvent(eventName, items, value) {
+  if (!window.NPUKAnalytics) return;
+  window.NPUKAnalytics.track(eventName, {
+    contents: items.map(item => ({
+      content_id: item.name + ':' + item.dose,
+      content_name: item.name,
+      content_type: 'product',
+      quantity: item.qty || 1,
+      price: Number(item.price)
+    })),
+    value: Number(value),
+    currency: 'GBP'
+  });
+}
 
 function addToBasket(name, price, dose) {
   const existing = basket.find(i => i.name === name && i.dose === dose);
@@ -25,12 +39,14 @@ function addToBasket(name, price, dose) {
   }
   saveBasket();
   updateBasketUI();
+  trackBasketEvent('AddToCart', [{ name, price, dose, qty: 1 }], price);
   showBasket();
 }
 
 // Persist the basket and hand off to the checkout page.
 function goToCheckout() {
   saveBasket();
+  trackBasketEvent('InitiateCheckout', basket, getTotal());
   window.location.href = 'checkout.html';
 }
 

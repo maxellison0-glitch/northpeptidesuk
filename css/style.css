@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --black: #080A0F;
+  --black: #071226;
   --white: #F4F4F0;
-  --accent: #00E5A0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-mid: rgba(0, 229, 160, 0.4);
-  --grey: #1A1D24;
-  --grey-mid: #2A2D35;
-  --grey-light: #6B7280;
+  --accent: #38BDF8;
+  --accent-dim: rgba(56,189,248,0.12);
+  --accent-mid: rgba(56,189,248,0.4);
+  --grey: #172033;
+  --grey-mid: #243248;
+  --grey-light: #607086;
   --text-muted: #9CA3AF;
   --warning: #F59E0B;
   --danger: #EF4444;
@@ -116,7 +116,7 @@ nav {
   position: absolute;
   top: -200px; right: -200px;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -319,9 +319,9 @@ section { padding: 80px 40px; }
 }
 
 .stock-live {
-  background: rgba(0, 229, 160, 0.15);
+  background: rgba(56,189,248,0.15);
   color: var(--accent);
-  border: 1px solid rgba(0, 229, 160, 0.3);
+  border: 1px solid rgba(56,189,248,0.3);
 }
 
 .stock-low {
@@ -445,7 +445,7 @@ section { padding: 80px 40px; }
 }
 
 .disclaimer-box {
-  border: 1px solid rgba(0,229,160,0.2);
+  border: 1px solid rgba(56,189,248,0.2);
   background: var(--accent-dim);
   padding: 40px;
   max-width: 800px;
@@ -568,13 +568,13 @@ footer {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 8px 32px rgba(0,229,160,0.3);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.3);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tg-float:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,229,160,0.4);
+  box-shadow: 0 12px 40px rgba(56,189,248,0.4);
 }
 
 /* MOBILE FIXES */
@@ -830,7 +830,7 @@ footer {
   letter-spacing: 0.05em;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300E5A0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2338BDF8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 36px;
@@ -1225,7 +1225,7 @@ footer {
 .wa-float { position: fixed; bottom: 80px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .wa-bubble { width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,.45); transition: transform .2s, box-shadow .2s; animation: wa-pulse 2.8s ease-in-out infinite; }
 .wa-float:hover .wa-bubble { transform: scale(1.07); box-shadow: 0 6px 28px rgba(37,211,102,.6); animation: none; }
-.wa-tip { background: #fff; color: #16241E; font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .05em; padding: 7px 13px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.13); white-space: nowrap; opacity: 0; transform: translateX(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
+.wa-tip { background: #fff; color: #132A46; font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .05em; padding: 7px 13px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,.13); white-space: nowrap; opacity: 0; transform: translateX(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
 .wa-float:hover .wa-tip { opacity: 1; transform: translateX(0); }
 @keyframes wa-pulse { 0%, 100% { box-shadow: 0 4px 18px rgba(37,211,102,.45); } 50% { box-shadow: 0 4px 24px rgba(37,211,102,.65), 0 0 0 7px rgba(37,211,102,.12); } }
 @media (max-width: 480px) { .wa-float { bottom: 80px; right: 16px; } .wa-tip { display: none; } .wa-bubble { width: 52px; height: 52px; } }

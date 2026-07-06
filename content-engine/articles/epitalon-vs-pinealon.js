@@ -24,7 +24,7 @@ module.exports = {
           <tr><td>Peptide length</td><td>Tetrapeptide (4 amino acids)</td><td>Tripeptide (3 amino acids)</td></tr>
           <tr><td>Research class</td><td>Pineal peptide bioregulator</td><td>Short "brain peptide" bioregulator</td></tr>
           <tr><td>Supplied as</td><td>10mg lyophilised vial</td><td>20mg lyophilised vial</td></tr>
-          <tr><td>Verified purity</td><td>99%+</td><td>99%+</td></tr>
+          <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
         </tbody>
       </table>`,
     },
@@ -48,7 +48,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>Both <a href="/product.html?product=epitalon">Epitalon</a> and <a href="/product.html?product=pinealon">Pinealon</a> are UK stocked and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis on request. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>Both <a href="/product.html?product=epitalon">Epitalon</a> and <a href="/product.html?product=pinealon">Pinealon</a> are UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
@@ -56,7 +56,7 @@ module.exports = {
     { q: 'What is the difference between Epitalon and Pinealon?',
       a: 'Epitalon is a synthetic tetrapeptide (4 amino acids) most associated with cellular-aging research; Pinealon is a synthetic tripeptide (3 amino acids) studied more in neuropeptide and cellular research models. Both are short pineal-associated peptide bioregulators.' },
     { q: 'How are Epitalon and Pinealon supplied?',
-      a: 'Epitalon as a 10mg lyophilised vial and Pinealon as a 20mg lyophilised vial, both verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'Epitalon as a 10mg lyophilised vial and Pinealon as a 20mg lyophilised vial, both listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can Epitalon or Pinealon be used in humans?',
       a: 'No. Both are supplied strictly for laboratory and scientific research and are not for human or animal consumption.' },
   ],

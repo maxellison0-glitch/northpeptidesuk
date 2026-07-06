@@ -28,7 +28,7 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How TB-500 Is Supplied',
-      html: `      <p><a href="/product.html?product=tb-500">TB-500</a> is stocked as a 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request. It is UK stocked and dispatched within 24 hours on business days. It is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
+      html: `      <p><a href="/product.html?product=tb-500">TB-500</a> is stocked as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days. It is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
     },
     {
       id: 'handling',
@@ -43,13 +43,13 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing TB-500 in the UK',
-      html: `      <p>North Peptides UK stocks TB-500 domestically, so there are no import delays for UK-based researchers. Every batch is verified to 99%+ purity with a certificate of analysis on request. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>North Peptides UK stocks TB-500 domestically, so there are no import delays for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
   faqs: [
     { q: 'What is TB-500 supplied as?',
-      a: 'A 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'A 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can TB-500 be used in humans?',
       a: 'No. TB-500 is supplied strictly for laboratory and scientific research and is not for human or animal consumption.' },
     { q: 'How is TB-500 reconstituted?',

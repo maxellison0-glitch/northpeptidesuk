@@ -23,7 +23,7 @@ module.exports = {
     {
       id: 'at-a-glance',
       heading: 'Retatrutide and Tirzepatide at a Glance',
-      html: `      <p>Both compounds are supplied by North Peptides UK as lyophilised (freeze-dried) powder in sealed vials, verified to 99%+ purity and stored frozen until dispatch. The table below summarises how they compare as research materials before we look at each attribute in detail.</p>
+      html: `      <p>Both compounds are supplied by North Peptides UK as lyophilised (freeze-dried) powder in sealed vials, listed with supplier-stated 99%+ purity and stored frozen until dispatch. The table below summarises how they compare as research materials before we look at each attribute in detail.</p>
       <table class="compare-table">
         <thead>
           <tr><th>Attribute</th><th>Retatrutide</th><th>Tirzepatide</th></tr>
@@ -33,7 +33,7 @@ module.exports = {
           <tr><td>Receptor targets</td><td>GLP-1, GIP and glucagon receptors</td><td>GIP and GLP-1 receptors</td></tr>
           <tr><td>Supplied as</td><td>Lyophilised vial</td><td>Lyophilised vial</td></tr>
           <tr><td>Vial sizes (UK)</td><td>10mg, 15mg, 20mg</td><td>15mg, 30mg</td></tr>
-          <tr><td>Verified purity</td><td>99%+</td><td>99%+</td></tr>
+          <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
           <tr><td>Reconstitution solvent</td><td>Bacteriostatic water</td><td>Bacteriostatic water</td></tr>
           <tr><td>UK availability</td><td>Stocked, 24h dispatch</td><td>Stocked, 24h dispatch</td></tr>
         </tbody>
@@ -52,8 +52,8 @@ module.exports = {
       heading: 'How Each Is Supplied',
       html: `      <p>Both are supplied as lyophilised powder, the most stable format for transport and storage. North Peptides UK stocks the following vial sizes:</p>
       <ul>
-        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Verified to 99%+ purity with a certificate of analysis available on request.</li>
-        <li><strong><a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Verified to 99%+ purity with a certificate of analysis available on request.</li>
+        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
       </ul>
       <p>Each batch is stored frozen until dispatch and shipped from the UK with tracked delivery, typically within 24 hours on business days. The larger vial sizes are usually selected where a research protocol calls for a higher total quantity of material per vial.</p>`,
     },
@@ -80,7 +80,7 @@ module.exports = {
     {
       id: 'choosing',
       heading: 'Choosing Between Them for a Research Model',
-      html: `      <p>The decision usually comes down to the experimental question rather than any difference in handling or quality, since both are supplied at the same verified purity. A few considerations researchers commonly weigh:</p>
+      html: `      <p>The decision usually comes down to the experimental question rather than any difference in handling or quality, since both are supplied at the same stated purity. A few considerations researchers commonly weigh:</p>
       <ul>
         <li><strong>Pathway coverage</strong> — Tirzepatide isolates the GIP and GLP-1 pathways; Retatrutide adds glucagon-receptor activity. The model's design dictates which is appropriate.</li>
         <li><strong>Reference comparability</strong> — Tirzepatide has a longer track record as a dual-agonist reference compound, which can matter when a study is being compared against existing literature.</li>
@@ -92,7 +92,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing Both in the UK',
-      html: `      <p>North Peptides UK stocks both compounds domestically, so there are no import delays or customs handling for UK-based researchers. Every batch is verified to 99%+ purity, stored frozen until dispatch, and accompanied by a certificate of analysis on request.</p>
+      html: `      <p>North Peptides UK stocks both compounds domestically, so there are no import delays or customs handling for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity, stored frozen until dispatch, and documented with supplier paperwork available on request where held.</p>
       <p>Orders are dispatched within 24 hours on business days with tracked delivery. If you need help confirming vial sizes or purity documentation before ordering, you can reach the team directly on Telegram at ${'@NORTHPEPTIDESUK'}.</p>`,
     },
   ],
@@ -101,7 +101,7 @@ module.exports = {
     { q: 'What is the main difference between Retatrutide and Tirzepatide?',
       a: 'Their receptor targets. Tirzepatide is a dual agonist acting on the GIP and GLP-1 receptors, while Retatrutide is a triple agonist that also acts on the glucagon receptor. Both are supplied as lyophilised research compounds.' },
     { q: 'Are Retatrutide and Tirzepatide available in the UK?',
-      a: 'Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis available on request.' },
+      a: 'Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held.' },
     { q: 'How are these research compounds supplied?',
       a: 'As lyophilised (freeze-dried) powder in sealed vials, stored frozen until dispatch. Retatrutide is stocked in 10mg, 15mg and 20mg vials; Tirzepatide in 15mg and 30mg vials.' },
     { q: 'Can these research compounds be used in humans?',

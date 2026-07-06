@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,6 +16,7 @@
   <meta property="og:image" content="https://www.northpeptidesuk.com/logo.png">
   <meta property="og:url" content="https://www.northpeptidesuk.com/lab-reports.html">
   <meta name="twitter:card" content="summary">
+  <script src="/site-config.js" defer></script>
   <script src="/tiktok-analytics.js" defer></script>
   <script src="/age-gate.js"></script>
   <script src="/dispatch-bar.js"></script>
@@ -24,42 +25,42 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: "DM Sans", sans-serif; background: #F7FAF8; color: #1A2620; line-height: 1.6; }
+    body { font-family: "DM Sans", sans-serif; background: #F5F9FC; color: #172033; line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
 
     /* NAV */
-    .nav { height: 62px; padding: 0 40px; background: #ffffff; border-bottom: 1px solid #E2EAE4; display: flex; align-items: center; justify-content: space-between; gap: 18px; position: sticky; top: 0; z-index: 100; }
+    .nav { height: 62px; padding: 0 40px; background: #ffffff; border-bottom: 1px solid #D8E5F2; display: flex; align-items: center; justify-content: space-between; gap: 18px; position: sticky; top: 0; z-index: 100; }
     .logo { font-family: Syne, sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; }
-    .logo span { color: #00795F; }
+    .logo span { color: #1F6FEB; }
     .nav-links { display: flex; align-items: center; gap: 18px; font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .nav-links a { color: #51625A; }
-    .nav-links a:hover { color: #00795F; }
-    .nav-links a.active { color: #00795F; font-weight: 600; }
-    .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 999px; background: #00795F; color: #fff !important; white-space: nowrap; }
-    .nav-cta:hover { background: #005F4B !important; color: #fff !important; }
+    .nav-links a { color: #4B5F75; }
+    .nav-links a:hover { color: #1F6FEB; }
+    .nav-links a.active { color: #1F6FEB; font-weight: 600; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 999px; background: #1F6FEB; color: #fff !important; white-space: nowrap; }
+    .nav-cta:hover { background: #174EA6 !important; color: #fff !important; }
     @media (max-width: 760px) { .nav { padding: 0 18px; } .nav-links a:not(.nav-cta) { display: none; } }
 
     /* HERO */
     .page-hero {
-      background: linear-gradient(180deg, #FDFEFD 0%, #ECF6F0 100%);
+      background: linear-gradient(180deg, #FBFDFF 0%, #EAF4FB 100%);
       padding: 70px 40px 60px;
       position: relative; overflow: hidden;
-      border-bottom: 1px solid #E2EAE4;
+      border-bottom: 1px solid #D8E5F2;
     }
     .page-hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(700px 320px at 80% 50%, rgba(0,166,126,0.09), transparent 70%);
+      background: radial-gradient(700px 320px at 80% 50%, rgba(14,165,233,0.09), transparent 70%);
       pointer-events: none;
     }
     .page-hero-inner { max-width: 760px; position: relative; z-index: 1; }
-    .page-tag { display: inline-block; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; border: 1px solid rgba(0,121,95,0.28); padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,0.7); }
-    .page-title { font-family: Syne, sans-serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; color: #12211A; line-height: 1.05; margin-bottom: 16px; letter-spacing: -0.02em; }
-    .page-title em { font-style: normal; color: #00795F; }
-    .page-sub { font-size: 1rem; color: #49594F; line-height: 1.75; max-width: 560px; margin-bottom: 28px; }
+    .page-tag { display: inline-block; font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; border: 1px solid rgba(31,111,235,0.28); padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; background: rgba(255,255,255,0.7); }
+    .page-title { font-family: Syne, sans-serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; color: #10233F; line-height: 1.05; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .page-title em { font-style: normal; color: #1F6FEB; }
+    .page-sub { font-size: 1rem; color: #465A70; line-height: 1.75; max-width: 560px; margin-bottom: 28px; }
     .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .h-chip { padding: 7px 14px; border-radius: 999px; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #D5E0D8; background: #ffffff; color: #3D4F46; }
-    .h-chip-green { border-color: #B8E8D0; background: #ECFAF4; color: #00663F; font-weight: 600; }
+    .h-chip { padding: 7px 14px; border-radius: 999px; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #CADAEA; background: #ffffff; color: #394D63; }
+    .h-chip-green { border-color: #B9D7F8; background: #EAF4FF; color: #174EA6; font-weight: 600; }
 
     /* NOTICE BOX */
     .notice-bar { background: #FFF8E6; border-top: 1px solid #F5E0A0; border-bottom: 1px solid #F5E0A0; padding: 14px 40px; }
@@ -70,29 +71,29 @@
     @media (max-width: 768px) { .notice-bar { padding: 12px 18px; } }
 
     /* WHAT WE PROVIDE */
-    .explainer { background: #ffffff; border-top: 1px solid #E2EAE4; border-bottom: 1px solid #E2EAE4; padding: 52px 40px; }
+    .explainer { background: #ffffff; border-top: 1px solid #D8E5F2; border-bottom: 1px solid #D8E5F2; padding: 52px 40px; }
     .explainer-inner { max-width: 920px; margin: 0 auto; }
-    .section-tag { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00795F; margin-bottom: 10px; }
-    .section-title { font-family: Syne, sans-serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 700; color: #1a1a1a; line-height: 1.15; margin-bottom: 8px; }
+    .section-tag { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; margin-bottom: 10px; }
+    .section-title { font-family: Syne, sans-serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 700; color: #111827; line-height: 1.15; margin-bottom: 8px; }
     .explainer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 32px; }
-    .exp-card { background: #F7FAF8; border: 1px solid #E2EAE4; border-radius: 10px; padding: 22px; }
+    .exp-card { background: #F5F9FC; border: 1px solid #D8E5F2; border-radius: 10px; padding: 22px; }
     .exp-icon { font-size: 1.5rem; margin-bottom: 12px; }
-    .exp-title { font-family: Syne, sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; margin-bottom: 7px; }
-    .exp-body { font-size: 0.82rem; color: #51625A; line-height: 1.65; }
+    .exp-title { font-family: Syne, sans-serif; font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 7px; }
+    .exp-body { font-size: 0.82rem; color: #4B5F75; line-height: 1.65; }
 
     /* INDEPENDENT TESTING STATUS */
-    .testing-status { background: #F7FAF8; padding: 52px 40px; border-bottom: 1px solid #E2EAE4; }
+    .testing-status { background: #F5F9FC; padding: 52px 40px; border-bottom: 1px solid #D8E5F2; }
     .testing-inner { max-width: 920px; margin: 0 auto; }
     .testing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
-    .testing-card { background: #ffffff; border: 1px solid #DDE8E1; border-radius: 10px; padding: 22px; box-shadow: 0 8px 24px rgba(18,46,35,0.04); }
+    .testing-card { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 10px; padding: 22px; box-shadow: 0 8px 24px rgba(15,31,54,0.04); }
     .testing-card.is-priority { border-color: #BFD9CE; }
-    .testing-label { display: inline-flex; align-items: center; min-height: 24px; padding: 4px 9px; border-radius: 999px; background: #EAF6F1; border: 1px solid #C6DED3; color: #00684F; font-size: 0.66rem; font-weight: 700; margin-bottom: 12px; }
-    .testing-title { font-family: Syne, sans-serif; font-size: 1rem; font-weight: 800; color: #12211A; margin-bottom: 7px; }
-    .testing-body { font-size: 0.84rem; color: #51625A; line-height: 1.65; }
+    .testing-label { display: inline-flex; align-items: center; min-height: 24px; padding: 4px 9px; border-radius: 999px; background: #EAF4FF; border: 1px solid #C5DAEC; color: #185ABC; font-size: 0.66rem; font-weight: 700; margin-bottom: 12px; }
+    .testing-title { font-family: Syne, sans-serif; font-size: 1rem; font-weight: 800; color: #10233F; margin-bottom: 7px; }
+    .testing-body { font-size: 0.84rem; color: #4B5F75; line-height: 1.65; }
     .testing-note { margin-top: 18px; font-size: 0.78rem; color: #6B7B72; line-height: 1.65; max-width: 720px; }
 
     /* INFO BAR */
-    .info-bar { background: #12211A; padding: 18px 40px; }
+    .info-bar { background: #10233F; padding: 18px 40px; }
     .info-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 32px; flex-wrap: wrap; align-items: center; justify-content: center; }
     .info-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .info-val { font-family: Syne, sans-serif; font-size: 1.3rem; font-weight: 800; color: #ffffff; line-height: 1; text-align: center; }
@@ -106,44 +107,44 @@
 
     .doc-card {
       background: #ffffff;
-      border: 1px solid #E2EAE4;
+      border: 1px solid #D8E5F2;
       border-radius: 12px;
       overflow: hidden;
       transition: box-shadow 0.2s, transform 0.2s;
     }
-    .doc-card:hover { box-shadow: 0 10px 28px rgba(18,46,35,0.09); transform: translateY(-2px); }
+    .doc-card:hover { box-shadow: 0 10px 28px rgba(15,31,54,0.09); transform: translateY(-2px); }
 
     .dc-header {
-      background: linear-gradient(135deg, #12211A 0%, #1D3A2B 100%);
+      background: linear-gradient(135deg, #10233F 0%, #1D3A2B 100%);
       padding: 18px 20px 16px;
       display: flex; align-items: flex-start; justify-content: space-between;
     }
     .dc-product { font-family: Syne, sans-serif; font-size: 1.05rem; font-weight: 800; color: #ffffff; }
     .dc-category { font-family: "DM Mono", monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 3px; }
-    .dc-status-badge { background: rgba(0,121,95,0.3); color: rgba(255,255,255,0.85); font-family: "DM Mono", monospace; font-size: 0.54rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(0,166,126,0.3); white-space: nowrap; }
+    .dc-status-badge { background: rgba(31,111,235,0.3); color: rgba(255,255,255,0.85); font-family: "DM Mono", monospace; font-size: 0.54rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(14,165,233,0.3); white-space: nowrap; }
 
     .dc-body { padding: 18px 20px; display: flex; flex-direction: column; gap: 0; }
-    .dc-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #F3F4F6; }
+    .dc-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #F3F7FB; }
     .dc-row:last-child { border-bottom: none; }
     .dc-key { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8AA094; }
-    .dc-val { font-family: "DM Mono", monospace; font-size: 0.68rem; color: #1A2620; font-weight: 500; }
-    .dc-val-green { color: #00795F; font-weight: 600; }
+    .dc-val { font-family: "DM Mono", monospace; font-size: 0.68rem; color: #172033; font-weight: 500; }
+    .dc-val-green { color: #1F6FEB; font-weight: 600; }
     .dc-val-muted { color: #9CA3AF; font-style: italic; }
 
-    .dc-footer { padding: 14px 20px; border-top: 1px solid #F3F4F6; background: #FAFCFA; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .dc-avail { display: flex; align-items: center; gap: 6px; font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6B7280; }
-    .dc-avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #00795F; flex-shrink: 0; }
+    .dc-footer { padding: 14px 20px; border-top: 1px solid #F3F7FB; background: #FCFDFF; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .dc-avail { display: flex; align-items: center; gap: 6px; font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; color: #607086; }
+    .dc-avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #1F6FEB; flex-shrink: 0; }
     .dc-request-btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 7px 14px; border-radius: 6px;
-      background: rgba(0,121,95,0.08); border: 1px solid rgba(0,121,95,0.25);
-      color: #00795F; font-family: "DM Mono", monospace; font-size: 0.58rem;
+      background: rgba(31,111,235,0.08); border: 1px solid rgba(31,111,235,0.25);
+      color: #1F6FEB; font-family: "DM Mono", monospace; font-size: 0.58rem;
       letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
       transition: background 0.2s, color 0.2s;
     }
-    .dc-request-btn:hover { background: #00795F; color: #ffffff; }
+    .dc-request-btn:hover { background: #1F6FEB; color: #ffffff; }
 
-    /* — PLACEHOLDER NOTICE WITHIN CARDS — */
+    /* - PLACEHOLDER NOTICE WITHIN CARDS - */
     .placeholder-note {
       font-family: "DM Mono", monospace;
       font-size: 0.56rem;
@@ -157,42 +158,42 @@
     }
 
     /* REQUEST SECTION */
-    .request-section { background: #12211A; padding: 56px 40px; }
+    .request-section { background: #10233F; padding: 56px 40px; }
     .request-inner { max-width: 660px; margin: 0 auto; text-align: center; }
-    .request-tag { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,166,126,0.8); margin-bottom: 14px; }
+    .request-tag { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(14,165,233,0.8); margin-bottom: 14px; }
     .request-title { font-family: Syne, sans-serif; font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 16px; }
-    .request-title em { font-style: normal; color: #00A67E; }
+    .request-title em { font-style: normal; color: #0EA5E9; }
     .request-body { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
     .request-cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .request-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #00795F; color: #ffffff; font-family: "DM Mono", monospace; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 8px; border: 1px solid #006B53; transition: background 0.2s; }
-    .request-btn-primary:hover { background: #005F4B; color: #fff; }
+    .request-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #1F6FEB; color: #ffffff; font-family: "DM Mono", monospace; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 8px; border: 1px solid #185ABC; transition: background 0.2s; }
+    .request-btn-primary:hover { background: #174EA6; color: #fff; }
     .request-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; background: transparent; color: rgba(255,255,255,0.75); font-family: "DM Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s, color 0.2s; }
     .request-btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 
     /* HOW TO REQUEST */
-    .process-section { background: #ffffff; border-top: 1px solid #E2EAE4; padding: 52px 40px; }
+    .process-section { background: #ffffff; border-top: 1px solid #D8E5F2; padding: 52px 40px; }
     .process-inner { max-width: 920px; margin: 0 auto; }
-    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: #E2EAE4; border: 1px solid #E2EAE4; border-radius: 10px; overflow: hidden; margin-top: 28px; }
-    .process-step { background: #F7FAF8; padding: 24px 22px; }
-    .process-num { font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: rgba(0,166,126,0.14); line-height: 1; margin-bottom: 10px; }
-    .process-step h3 { font-family: Syne, sans-serif; font-size: 0.9rem; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-    .process-step p { font-size: 0.8rem; color: #51625A; line-height: 1.6; }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: #D8E5F2; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; margin-top: 28px; }
+    .process-step { background: #F5F9FC; padding: 24px 22px; }
+    .process-num { font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: rgba(14,165,233,0.14); line-height: 1; margin-bottom: 10px; }
+    .process-step h3 { font-family: Syne, sans-serif; font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 6px; }
+    .process-step p { font-size: 0.8rem; color: #4B5F75; line-height: 1.6; }
 
     /* FOOTER */
-    .footer { background: #F0F5F2; border-top: 1px solid #DEE8E1; padding: 40px 40px 28px; }
+    .footer { background: #EDF4FA; border-top: 1px solid #D8E5F2; padding: 40px 40px 28px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
     .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
-    .footer-logo { font-family: Syne, sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: #16241E; margin-bottom: 8px; }
-    .footer-logo span { color: #00795F; }
-    .footer-desc { font-size: 0.8rem; color: #5C6B63; line-height: 1.65; max-width: 280px; }
+    .footer-logo { font-family: Syne, sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.08em; color: #132A46; margin-bottom: 8px; }
+    .footer-logo span { color: #1F6FEB; }
+    .footer-desc { font-size: 0.8rem; color: #566B80; line-height: 1.65; max-width: 280px; }
     .footer-links { display: flex; gap: 40px; flex-wrap: wrap; }
-    .footer-col h4 { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8AA095; margin-bottom: 12px; }
+    .footer-col h4 { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: #7C8FA6; margin-bottom: 12px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul li a { font-size: 0.8rem; color: #5C6B63; }
-    .footer-col ul li a:hover { color: #00795F; }
-    .footer-bottom { border-top: 1px solid #DCE6DF; padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; color: #7B8C82; }
-    .footer-disclaimer { font-family: "DM Mono", monospace; font-size: 0.52rem; color: #8AA095; text-align: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid #DCE6DF; }
+    .footer-col ul li a { font-size: 0.8rem; color: #566B80; }
+    .footer-col ul li a:hover { color: #1F6FEB; }
+    .footer-bottom { border-top: 1px solid #D7E3EF; padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.06em; color: #738197; }
+    .footer-disclaimer { font-family: "DM Mono", monospace; font-size: 0.52rem; color: #7C8FA6; text-align: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid #D7E3EF; }
 
     @media (max-width: 768px) {
       .page-hero { padding: 48px 18px 44px; }
@@ -205,6 +206,15 @@
       .footer { padding: 32px 18px 28px; }
       .footer-top { flex-direction: column; gap: 24px; }
       .footer-bottom { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .nav { padding: 0 12px; gap: 10px; }
+      .logo { font-size: 0.84rem; letter-spacing: 0.05em; }
+      .nav-links { gap: 8px; }
+      .nav-cta { padding: 8px 10px; font-size: 0.6rem; }
+      .page-title { font-size: 1.72rem; }
+      .page-title em { overflow-wrap: anywhere; }
+      .page-tag { font-size: 0.54rem; letter-spacing: 0.14em; padding: 6px 12px; }
     }
   </style>
 </head>
@@ -227,7 +237,7 @@
     <div class="page-hero-inner">
       <span class="page-tag">Purity &amp; Batch Information</span>
       <h1 class="page-title">Product<br><em>Documentation</em></h1>
-      <p class="page-sub">Purity is stated on every product we stock. Batch details and supporting documentation are available on request — contact support with your product name at any point before or after ordering.</p>
+      <p class="page-sub">Purity is stated on every product we stock. Batch details and supporting documentation are available on request - contact support with your product name at any point before or after ordering.</p>
       <div class="hero-chips">
         <span class="h-chip h-chip-green">Purity Stated</span>
         <span class="h-chip">Batch Details on Request</span>
@@ -242,7 +252,7 @@
   <div class="notice-bar">
     <div class="notice-inner">
       <span class="notice-icon">Info</span>
-      <p class="notice-text"><strong>How documentation works:</strong> The cards below summarise what we hold for each product in the current catalogue. Batch details, purity documentation and any supporting paperwork from our suppliers are provided by email on request — typically within one business day.</p>
+      <p class="notice-text"><strong>How documentation works:</strong> The cards below summarise what we hold for each product in the current catalogue. Batch details, purity documentation and any supporting paperwork from our suppliers are provided by email on request - typically within one business day.</p>
     </div>
   </div>
 
@@ -251,7 +261,7 @@
     <div class="explainer-inner">
       <p class="section-tag">What Is Available</p>
       <h2 class="section-title">Documentation we can provide</h2>
-      <p style="font-size:0.9rem;color:#49594F;max-width:640px;line-height:1.75;margin-top:6px;">Contact <a href="mailto:orders@northpeptidesuk.com" style="color:#00795F;font-weight:600;">orders@northpeptidesuk.com</a> with your product name. We will provide whatever documentation we hold from our suppliers for the current batch.</p>
+      <p style="font-size:0.9rem;color:#465A70;max-width:640px;line-height:1.75;margin-top:6px;">Contact <a href="mailto:orders@northpeptidesuk.com" style="color:#1F6FEB;font-weight:600;">orders@northpeptidesuk.com</a> with your product name. We will provide whatever documentation we hold from our suppliers for the current batch.</p>
       <div class="explainer-grid">
         <div class="exp-card">
           <div class="exp-icon">01</div>
@@ -282,7 +292,7 @@
     <div class="testing-inner">
       <p class="section-tag">Independent Testing Status</p>
       <h2 class="section-title">Third-party COA testing is being prioritised.</h2>
-      <p style="font-size:0.9rem;color:#49594F;max-width:680px;line-height:1.75;margin-top:6px;">We are arranging independent COA testing for selected high-demand compounds. Results will be reviewed and added here once received. Until then, the current documentation status remains supplier batch details and purity documentation available on request.</p>
+      <p style="font-size:0.9rem;color:#465A70;max-width:680px;line-height:1.75;margin-top:6px;">We are arranging independent COA testing for selected high-demand compounds. Results will be reviewed and added here once received. Until then, the current documentation status remains supplier batch details and purity documentation available on request.</p>
       <div class="testing-grid">
         <article class="testing-card is-priority">
           <span class="testing-label">Priority Test</span>
@@ -322,9 +332,9 @@
   <!-- PRODUCT DOCS GRID -->
   <section class="docs-section">
     <div class="docs-inner">
-      <p class="section-tag">Current Stock — Documentation Status</p>
+      <p class="section-tag">Current Stock - Documentation Status</p>
       <h2 class="section-title">Product documentation overview</h2>
-      <p style="font-size:0.86rem;color:#49594F;max-width:600px;line-height:1.75;margin-top:8px;">For any product below, email <a href="mailto:orders@northpeptidesuk.com" style="color:#00795F;font-weight:600;">orders@northpeptidesuk.com</a> with the product name. We will reply with whatever documentation we hold for the current batch, typically within one business day.</p>
+      <p style="font-size:0.86rem;color:#465A70;max-width:600px;line-height:1.75;margin-top:8px;">For any product below, email <a href="mailto:orders@northpeptidesuk.com" style="color:#1F6FEB;font-weight:600;">orders@northpeptidesuk.com</a> with the product name. We will reply with whatever documentation we hold for the current batch, typically within one business day.</p>
 
       <div class="docs-grid">
 
@@ -343,7 +353,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Retatrutide" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Retatrutide" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -362,7 +372,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Tirzepatide" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Tirzepatide" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -381,7 +391,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20BPC-157" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20BPC-157" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -400,7 +410,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20TB-500" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20TB-500" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -419,7 +429,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20GHK-Cu" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20GHK-Cu" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -438,7 +448,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20KPV" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20KPV" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -457,7 +467,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20KLOW%20Stack" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20KLOW%20Stack" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -476,7 +486,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Ipamorelin" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Ipamorelin" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -495,7 +505,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20CJC-1295" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20CJC-1295" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -516,7 +526,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20NAD" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20NAD" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -537,7 +547,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20SS-31" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20SS-31" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -558,7 +568,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Semax" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Semax" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -579,7 +589,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Selank" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Selank" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -600,7 +610,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Epitalon" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Epitalon" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -621,7 +631,7 @@
           </div>
           <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Pinealon" class="dc-request-btn">Request Docs →</a>
+            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20Pinealon" class="dc-request-btn">Request Docs -></a>
           </div>
         </div>
 
@@ -634,9 +644,9 @@
     <div class="request-inner">
       <p class="request-tag">Get Documentation</p>
       <h2 class="request-title">Need batch details or<br><em>purity documentation?</em></h2>
-      <p class="request-body">Email support with your product name. We will share whatever documentation we hold from our suppliers for the current batch — typically within one business day.</p>
+      <p class="request-body">Email support with your product name. We will share whatever documentation we hold from our suppliers for the current batch - typically within one business day.</p>
       <div class="request-cta-row">
-        <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request" class="request-btn-primary">Email a Doc Request →</a>
+        <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request" class="request-btn-primary">Email a Doc Request -></a>
         <a href="https://t.me/NORTHPEPTIDESUK" target="_blank" class="request-btn-secondary">Telegram</a>
         <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" class="request-btn-secondary" style="background:#25D366;color:#fff;border-color:#25D366;">WhatsApp</a>
       </div>
@@ -662,7 +672,7 @@
         <div class="process-step">
           <div class="process-num">03</div>
           <h3>Docs Sent</h3>
-          <p>We reply with whatever is available — batch details, purity information, or supplier documentation. Typically within one business day.</p>
+          <p>We reply with whatever is available - batch details, purity information, or supplier documentation. Typically within one business day.</p>
         </div>
         <div class="process-step">
           <div class="process-num">04</div>
@@ -716,7 +726,7 @@
     .wa-float{position:fixed;bottom:80px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;text-decoration:none}
     .wa-bubble{width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;animation:wa-pulse 2.8s ease-in-out infinite}
     .wa-float:hover .wa-bubble{transform:scale(1.07);box-shadow:0 6px 28px rgba(37,211,102,.6);animation:none}
-    .wa-tip{background:#fff;color:#16241E;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.05em;padding:7px 13px;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,.13);white-space:nowrap;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s;pointer-events:none}
+    .wa-tip{background:#fff;color:#132A46;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.05em;padding:7px 13px;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,.13);white-space:nowrap;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s;pointer-events:none}
     .wa-float:hover .wa-tip{opacity:1;transform:translateX(0)}
     @keyframes wa-pulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.45)}50%{box-shadow:0 4px 24px rgba(37,211,102,.65),0 0 0 7px rgba(37,211,102,.12)}}
     @media(max-width:480px){.wa-float{bottom:80px;right:16px}.wa-tip{display:none}.wa-bubble{width:52px;height:52px}}

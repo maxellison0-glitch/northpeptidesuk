@@ -9,6 +9,7 @@
   <link rel="apple-touch-icon" href="/logo.png">
   
   <link rel="stylesheet" href="css/style.css">
+  <script src="/site-config.js" defer></script>
   <script src="/tiktok-analytics.js" defer></script>
   <script src="/age-gate.js"></script>
   <script src="/dispatch-bar.js"></script>
@@ -339,9 +340,8 @@
     .btn-place-order:hover { background: #00614C; }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
     .field-hint { display: block; margin-top: 5px; font-size: 0.72rem; color: #6B7C72; letter-spacing: 0.01em; }
-    .checkout-tp { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 4px 0 12px; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em; color: #3D4F46; text-decoration: none; }
-    .checkout-tp span { color: #00B67A; letter-spacing: 1px; font-size: 0.85rem; }
-    .checkout-tp:hover { color: #00795F; }
+    .checkout-assurance { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 4px 0 12px; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em; color: #3D4F46; text-align: center; }
+    .checkout-assurance span { color: #00795F; font-size: 0.85rem; }
     .research-confirm { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; padding: 12px 14px; border: 1px solid #E2EAE4; border-radius: 8px; background: #F7FAF8; font-size: 0.8rem; line-height: 1.55; color: #3D4F46; cursor: pointer; }
     .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: #00795F; cursor: pointer; }
     .order-note {
@@ -451,8 +451,8 @@
     .calc-draw-info { flex: 1; }
     .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
     .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
-    /* Visual syringe fill — the single biggest gap found vs. paid dosing-calculator
-       apps in research: a real fill line the customer can pattern-match against
+    /* Visual syringe fill — the single biggest gap found vs. paid calculation
+       tools in research: a real fill line the customer can pattern-match against
        the physical syringe in their hand, not just a number in isolation. */
     .calc-syringe-wrap { margin-top: 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
     .calc-syringe-svg { width: 100%; height: auto; display: block; }
@@ -700,9 +700,9 @@
       <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
       <span>I confirm I am ordering these products strictly for laboratory research use only, and not for human or animal consumption.</span>
     </label>
-    <a class="checkout-tp" href="https://www.trustpilot.com/review/northpeptidesuk.com" target="_blank" rel="noopener">
-      <span aria-hidden="true">★★★★★</span> Rated by researchers on Trustpilot
-    </a>
+    <div class="checkout-assurance">
+      <span aria-hidden="true">✓</span> Secure Stripe checkout, tracked dispatch and direct order support
+    </div>
     <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
@@ -736,7 +736,7 @@
     ],
   };
 
-  // Suggested placeholder dose per compound (mcg). Keeps the input contextual without pre-filling.
+  // Suggested placeholder amount per compound (mcg). Keeps the input contextual without pre-filling.
   function getSuggestedDose(name) {
     const n = name.toLowerCase();
     if (n.includes('retatrutide')) return 2000;
@@ -908,7 +908,7 @@
   }
 
   // The actual text sent to the server/email for whatever doses have been
-  // calculated — only items with a dose note, not the full basket (Stripe's
+  // calculated — only items with a reference note, not the full basket (Stripe's
   // own line items already itemize name/dose/price; this is just the extra
   // part they don't capture).
   function doseReferenceSummary() {
@@ -972,7 +972,7 @@
       el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-      // Recalculate draw if a dose was already selected
+      // Recalculate the volume reference if an amount was already selected
       const meta = calcItemMeta[itemId];
       if (meta && doseNotes[meta.name]) {
         const { units, mlVal } = calcUnitsFromDose(doseNotes[meta.name].mcg, mg, ml);
@@ -993,7 +993,7 @@
     const suggestedMcg = getSuggestedDose(item.name);
     const suggestedPlaceholder = suggestedMcg ? parseFloat((suggestedMcg / 1000).toFixed(2)) : 'e.g. 0.5';
     const penNote = pen
-      ? `<div class="calc-pen-note">Loading your own pen-style injector instead of drawing with a syringe? Follow that device's own dosing dial — this reference assumes a standard syringe draw.</div>`
+      ? `<div class="calc-pen-note">Working with a pen-style research cartridge? Follow your internal protocol for that format — this reference uses a standard syringe-style volume calculation.</div>`
       : '';
     const waterSel = pen
       ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>${penNote}`
@@ -1022,11 +1022,11 @@
             <button type="button" class="calc-unit-btn active" onclick="setCalcUnit('${id}','mg',this)">mg</button>
           </div>
         </div>
-        <div class="calc-dose-hint">1000mcg = 1mg — enter the amount for one injection</div>
+        <div class="calc-dose-hint">1000mcg = 1mg — enter the target amount for this laboratory calculation</div>
         <div id="${id}-result">${calcRefLineHTML(mg, defWater)}</div>
       </div>
       <div class="calc-draw" id="${id}-draw"></div>
-      <div class="calc-saved" id="${id}-saved">✓ Dose reference added to your email confirmation</div>
+      <div class="calc-saved" id="${id}-saved">✓ Calculation reference added to your email confirmation</div>
     </div>`;
   }
 
@@ -1299,6 +1299,19 @@
         throw new Error(data.error || 'Stripe checkout failed.');
       }
       sessionStorage.setItem('npuk_checkout_value', String(getDiscountedSubtotal() + deliveryPrice));
+      if (window.NPUKAnalytics) {
+        window.NPUKAnalytics.track('InitiateCheckout', {
+          contents: basketData.map(item => ({
+            content_id: item.name + ':' + item.dose,
+            content_name: item.name,
+            content_type: 'product',
+            quantity: item.qty,
+            price: Number(item.price)
+          })),
+          value: Number(getDiscountedSubtotal() + deliveryPrice),
+          currency: 'GBP'
+        });
+      }
       window.location.href = data.url;
     } catch (error) {
       const msg = document.getElementById('discount-msg');

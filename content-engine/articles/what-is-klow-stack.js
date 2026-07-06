@@ -17,7 +17,7 @@ module.exports = {
     {
       id: 'what-it-is',
       heading: 'What Is the KLOW Stack?',
-      html: `      <p>The <a href="/product.html?product=klow-stack">KLOW Stack</a> is a research blend that brings four separate research peptides together into one lyophilised vial. Instead of reconstituting and storing four individual compounds, a researcher working with all four prepares a single vial. North Peptides UK supplies it as an 80mg vial, verified to 99%+ purity.</p>`,
+      html: `      <p>The <a href="/product.html?product=klow-stack">KLOW Stack</a> is a research blend that brings four separate research peptides together into one lyophilised vial. Instead of reconstituting and storing four individual compounds, a researcher working with all four prepares a single vial. North Peptides UK supplies it as an 80mg vial, listed with supplier-stated 99%+ purity.</p>`,
     },
     {
       id: 'whats-in-it',
@@ -53,7 +53,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>The KLOW Stack is UK stocked and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis available on request. For questions about the blend before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>The KLOW Stack is UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about the blend before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
@@ -61,7 +61,7 @@ module.exports = {
     { q: 'What does the KLOW Stack contain?',
       a: 'Four research compounds in one vial: GHK-Cu, TB-500, BPC-157 and KPV. Each is also available individually from North Peptides UK.' },
     { q: 'How is the KLOW Stack supplied?',
-      a: 'As an 80mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'As an 80mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'How is the KLOW Stack reconstituted?',
       a: 'With bacteriostatic water. All four compounds are water soluble and dissolve together; around 2ml per vial is a common starting volume. Add the solvent down the side of the vial and swirl gently.' },
     { q: 'Can the KLOW Stack be used in humans?',

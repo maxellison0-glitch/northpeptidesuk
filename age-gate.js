@@ -1,8 +1,8 @@
-/* ============================================================================
-   North Peptides UK — Age Verification Gate
+﻿/* ============================================================================
+   North Peptides UK - Age Verification Gate
    Self-contained, no dependencies. Include in <head> on every page:
        <script src="/age-gate.js"></script>
-   (no `defer` — it must run during head parse so the anti-flash backdrop
+   (no `defer` - it must run during head parse so the anti-flash backdrop
     paints before page content does.)
 
    Behaviour:
@@ -26,7 +26,7 @@
       var ts = parseInt(saved, 10);
       if (!isNaN(ts) && (Date.now() - ts) < MAX_AGE_DAYS * 86400000) return;
     }
-  } catch (e) { /* storage blocked — fall through and show the gate */ }
+  } catch (e) { /* storage blocked - fall through and show the gate */ }
 
   // --- Inject styles + lock the page as early as possible (anti-flash) ------
   var css =
@@ -34,28 +34,28 @@
     'html.' + LOCK_CLASS + '::before{content:"";position:fixed;inset:0;background:#0c2016;z-index:2147483640;}' +
     '.npag-overlay{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;' +
       'padding:24px;box-sizing:border-box;font-family:"DM Sans",sans-serif;opacity:0;transition:opacity .28s ease;' +
-      'background:radial-gradient(120% 120% at 50% 0%,rgba(18,42,32,.86),rgba(8,18,13,.95));' +
+      'background:radial-gradient(120% 120% at 50% 0%,rgba(15,31,54,.86),rgba(7,18,38,.95));' +
       '-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}' +
     '.npag-overlay.is-visible{opacity:1;}' +
     '.npag-overlay.is-closing{opacity:0;}' +
-    '.npag-card{background:#fff;border:1px solid #DEE9E2;border-radius:20px;max-width:384px;width:100%;' +
-      'padding:38px 32px 28px;box-sizing:border-box;text-align:center;box-shadow:0 30px 80px rgba(6,16,11,.45);' +
+    '.npag-card{background:#fff;border:1px solid #D8E5F2;border-radius:20px;max-width:384px;width:100%;' +
+      'padding:38px 32px 28px;box-sizing:border-box;text-align:center;box-shadow:0 30px 80px rgba(7,18,38,.45);' +
       'transform:translateY(12px) scale(.98);transition:transform .3s cubic-bezier(.2,.8,.2,1);}' +
     '.npag-overlay.is-visible .npag-card{transform:none;}' +
-    '.npag-logo{font-family:"Syne",sans-serif;font-weight:800;font-size:1.02rem;letter-spacing:.08em;color:#16241E;margin-bottom:22px;}' +
-    '.npag-logo span{color:#00795F;}' +
-    '.npag-eyebrow{font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#00795F;margin-bottom:14px;}' +
-    '.npag-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.5rem;line-height:1.15;color:#12211A;margin:0 0 12px;}' +
-    '.npag-body{font-family:"DM Sans",sans-serif;font-size:.86rem;line-height:1.6;color:#56685E;margin:0 0 24px;}' +
+    '.npag-logo{font-family:"Syne",sans-serif;font-weight:800;font-size:1.02rem;letter-spacing:.08em;color:#132A46;margin-bottom:22px;}' +
+    '.npag-logo span{color:#1F6FEB;}' +
+    '.npag-eyebrow{font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#1F6FEB;margin-bottom:14px;}' +
+    '.npag-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.5rem;line-height:1.15;color:#10233F;margin:0 0 12px;}' +
+    '.npag-body{font-family:"DM Sans",sans-serif;font-size:.86rem;line-height:1.6;color:#53677D;margin:0 0 24px;}' +
     '.npag-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}' +
     '.npag-btn{width:100%;padding:14px;border-radius:11px;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.14em;' +
       'text-transform:uppercase;font-weight:600;cursor:pointer;box-sizing:border-box;' +
       'transition:background .18s ease,border-color .18s ease,color .18s ease;}' +
-    '.npag-btn-primary{background:#00795F;color:#fff;border:1px solid #00795F;}' +
-    '.npag-btn-primary:hover{background:#02654f;border-color:#02654f;}' +
-    '.npag-btn-secondary{background:transparent;color:#56685E;border:1px solid #DEE9E2;}' +
-    '.npag-btn-secondary:hover{border-color:#B9CCC2;color:#12211A;}' +
-    '.npag-fine{font-family:"DM Mono",monospace;font-size:.58rem;line-height:1.7;color:#9AACA2;border-top:1px solid #EEF3F0;padding-top:16px;margin:0;}' +
+    '.npag-btn-primary{background:#1F6FEB;color:#fff;border:1px solid #1F6FEB;}' +
+    '.npag-btn-primary:hover{background:#174EA6;border-color:#174EA6;}' +
+    '.npag-btn-secondary{background:transparent;color:#53677D;border:1px solid #D8E5F2;}' +
+    '.npag-btn-secondary:hover{border-color:#AFC4DA;color:#10233F;}' +
+    '.npag-fine{font-family:"DM Mono",monospace;font-size:.58rem;line-height:1.7;color:#9AACA2;border-top:1px solid #EAF0F7;padding-top:16px;margin:0;}' +
     '@media(max-width:420px){.npag-card{padding:32px 22px 24px;}.npag-title{font-size:1.32rem;}}';
 
   var style = document.createElement('style');
@@ -119,7 +119,7 @@
       card.innerHTML =
         '<div class="npag-logo">' + LOGO + '</div>' +
         '<div class="npag-eyebrow">Access Restricted</div>' +
-        '<h2 class="npag-title">Sorry &mdash; you can’t enter</h2>' +
+        '<h2 class="npag-title">Sorry &mdash; you can't enter</h2>' +
         '<p class="npag-body">You must be 18 or older to access this website. You will be redirected shortly.</p>';
     }
     setTimeout(function () { window.location.href = 'https://www.google.com/'; }, 2400);

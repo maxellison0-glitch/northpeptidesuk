@@ -28,7 +28,7 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How NAD+ Is Supplied',
-      html: `      <p><a href="/product.html?product=nad-plus">NAD+</a> is stocked as a 1000mg lyophilised powder, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request. It is UK stocked and dispatched within 24 hours on business days. The larger quantity per vial suits research protocols that call for more material.</p>`,
+      html: `      <p><a href="/product.html?product=nad-plus">NAD+</a> is stocked as a 1000mg lyophilised powder, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days. The larger quantity per vial suits research protocols that call for more material.</p>`,
     },
     {
       id: 'handling',
@@ -43,7 +43,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing NAD+ in the UK',
-      html: `      <p>North Peptides UK stocks NAD+ domestically, with no import delays for UK-based researchers. Every batch is verified to 99%+ purity with a certificate of analysis on request. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>North Peptides UK stocks NAD+ domestically, with no import delays for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
@@ -51,7 +51,7 @@ module.exports = {
     { q: 'What does NAD+ stand for?',
       a: 'Nicotinamide Adenine Dinucleotide — a coenzyme found in all living cells that plays a central role in cellular energy metabolism.' },
     { q: 'How is NAD+ supplied?',
-      a: 'As a 1000mg lyophilised powder, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'As a 1000mg lyophilised powder, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can NAD+ be used in humans?',
       a: 'No. NAD+ is supplied strictly for laboratory and scientific research and is not for human or animal consumption.' },
   ],

@@ -17,14 +17,14 @@ module.exports = {
     {
       id: 'at-a-glance',
       heading: 'Semax and Selank at a Glance',
-      html: `      <p>Both are supplied as 30mg lyophilised vials, verified to 99%+ purity, and both pair with the intranasal research kit. The table summarises how they compare as research materials.</p>
+      html: `      <p>Both are supplied as 30mg lyophilised vials, listed with supplier-stated 99%+ purity, and both pair with the intranasal research kit. The table summarises how they compare as research materials.</p>
       <table class="compare-table">
         <thead><tr><th>Attribute</th><th>Semax</th><th>Selank</th></tr></thead>
         <tbody>
           <tr><td>Derived from</td><td>An ACTH peptide fragment</td><td>The peptide tuftsin</td></tr>
           <tr><td>Research class</td><td>Nootropic research peptide</td><td>Anxiolytic nootropic research peptide</td></tr>
           <tr><td>Supplied as</td><td>30mg lyophilised vial</td><td>30mg lyophilised vial</td></tr>
-          <tr><td>Verified purity</td><td>99%+</td><td>99%+</td></tr>
+          <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
           <tr><td>Intranasal kit</td><td>Available</td><td>Available</td></tr>
         </tbody>
       </table>`,
@@ -54,7 +54,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>Both <a href="/product.html?product=semax">Semax</a> and <a href="/product.html?product=selank">Selank</a> are UK stocked and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis on request. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>Both <a href="/product.html?product=semax">Semax</a> and <a href="/product.html?product=selank">Selank</a> are UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
@@ -62,7 +62,7 @@ module.exports = {
     { q: 'What is the difference between Semax and Selank?',
       a: 'They derive from different parent molecules: Semax from an ACTH peptide fragment, Selank from tuftsin. Both are nootropic research peptides; Selank is additionally described as an anxiolytic peptide in research literature.' },
     { q: 'How are Semax and Selank supplied?',
-      a: 'Both as 30mg lyophilised vials, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'Both as 30mg lyophilised vials, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can Semax or Selank be used in humans?',
       a: 'No. Both are supplied strictly for laboratory and scientific research and are not for human or animal consumption.' },
   ],

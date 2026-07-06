@@ -15,16 +15,18 @@ test('all storefront pages include the shared analytics script', () => {
     'blog/how-to-reconstitute-peptides.html'
   ];
   for (const file of pages) {
+    assert.match(read(file), /<script src="\/site-config\.js" defer><\/script>/, file);
     assert.match(read(file), /<script src="\/tiktok-analytics\.js" defer><\/script>/, file);
   }
 });
 
 test('basket emits AddToCart and InitiateCheckout', () => {
   const source = read('basket.js');
-  assert.match(source, /NPUKAnalytics\.track\('AddToCart'/);
-  assert.match(source, /NPUKAnalytics\.track\('InitiateCheckout'/);
-  assert.match(source, /contents:\s*\[\{[\s\S]*?content_id:[\s\S]*?content_name:[\s\S]*?content_type:\s*'product'[\s\S]*?quantity:[\s\S]*?price:/);
-  assert.match(source, /NPUKAnalytics\.track\('InitiateCheckout',[\s\S]*?contents:\s*basket\.map/);
+  assert.match(source, /NPUKAnalytics\.track\(eventName/);
+  assert.match(source, /trackBasketEvent\('AddToCart'/);
+  assert.match(source, /trackBasketEvent\('InitiateCheckout'/);
+  assert.match(source, /contents:\s*items\.map\(item => \(\{[\s\S]*?content_id:[\s\S]*?content_name:[\s\S]*?content_type:\s*'product'[\s\S]*?quantity:[\s\S]*?price:/);
+  assert.match(source, /trackBasketEvent\('InitiateCheckout',\s*basket,\s*getTotal\(\)\)/);
   assert.match(source, /currency:\s*'GBP'/);
 });
 
@@ -43,12 +45,13 @@ test('checkout emits add-on and successful Stripe events', () => {
 
 test('successful payment restores basket before tracking and clearing it', () => {
   const source = read('checkout.html');
-  const loadBasket = source.indexOf("sessionStorage.getItem('npuk_basket')");
+  const loadBasket = source.indexOf("localStorage.getItem('npuk_basket')");
   const completePayment = source.indexOf("NPUKAnalytics.track('CompletePayment'");
   const showSuccessCall = source.indexOf('showStripeSuccess();', completePayment);
   assert.ok(loadBasket >= 0 && loadBasket < completePayment);
   assert.ok(completePayment < showSuccessCall);
-  assert.match(source, /function showStripeSuccess\(\)[\s\S]*?sessionStorage\.removeItem\('npuk_basket'\)/);
+  assert.match(source, /function showStripeSuccess\(\)[\s\S]*?localStorage\.removeItem\('npuk_basket'\)/);
+  assert.match(source, /function showStripeSuccess\(\)[\s\S]*?sessionStorage\.removeItem\('npuk_checkout_value'\)/);
 });
 
 test('compliance page explains TikTok analytics and withdrawal', () => {

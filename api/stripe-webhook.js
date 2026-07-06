@@ -78,8 +78,6 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
-const TRUSTPILOT_URL = "https://www.trustpilot.com/review/northpeptidesuk.com";
-
 // Pull the delivery address Stripe collected (shipping preferred, billing as fallback)
 // so we no longer need to ask for it on the site. Handles both the older
 // session.shipping_details shape and the newer collected_information one.
@@ -113,7 +111,7 @@ function buildEmailHtml(session, lineItems) {
       <p><strong>Delivery:</strong> ${escapeHtml(metadata.delivery || "Not supplied")}</p>
       <p><strong>Address:</strong><br>${formatAddress(session)}</p>
       ${metadata.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(metadata.notes)}</p>` : ""}
-      ${metadata.doseReference ? `<p><strong>Dose reference:</strong><br>${escapeHtml(metadata.doseReference).replace(/\n/g, "<br>")}</p>` : ""}
+      ${metadata.doseReference ? `<p><strong>Calculation reference:</strong><br>${escapeHtml(metadata.doseReference).replace(/\n/g, "<br>")}</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
         <thead>
@@ -169,31 +167,31 @@ function buildCustomerEmailHtml(session, lineItems) {
     </tr>`).join("");
   const name = session.customer_details?.name || session.metadata?.name || "there";
   return `
-    <div style="font-family:Arial,Helvetica,sans-serif;color:#16241E;line-height:1.6;max-width:560px;margin:0 auto;">
+    <div style="font-family:Arial,Helvetica,sans-serif;color:#132A46;line-height:1.6;max-width:560px;margin:0 auto;">
       <div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:#F7FAF8;">
         Order confirmed — dispatching within 24&ndash;48 hours in plain, unmarked packaging.
       </div>
-      <div style="background:#0B0F0D;padding:18px 24px;border-radius:12px 12px 0 0;text-align:center;">
+      <div style="background:#10233F;padding:18px 24px;border-radius:12px 12px 0 0;text-align:center;">
         <img src="https://www.northpeptidesuk.com/logo.png" width="52" height="52" alt="North Peptides UK" style="display:inline-block;border-radius:50%;border:0;">
       </div>
-      <div style="background:#00795F;color:#fff;padding:20px 24px;">
+      <div style="background:#1F6FEB;color:#fff;padding:20px 24px;">
         <h2 style="margin:0;font-size:20px;">Order confirmed — thank you</h2>
-        <p style="margin:6px 0 0;font-size:14px;color:#D9F0E8;">We've got it, ${escapeHtml(name)} — here's what happens next.</p>
+        <p style="margin:6px 0 0;font-size:14px;color:#DCEBFF;">We've got it, ${escapeHtml(name)} — here's what happens next.</p>
       </div>
-      <div style="border:1px solid #E2EAE4;border-top:none;border-radius:0 0 12px 12px;padding:24px;">
+      <div style="border:1px solid #D8E5F2;border-top:none;border-radius:0 0 12px 12px;padding:24px;">
         <table style="width:100%;border-collapse:collapse;margin:0 0 22px;">
           <tr>
-            <td style="width:33%;text-align:center;padding:10px 4px;background:#F7FAF8;border-radius:8px 0 0 8px;">
+            <td style="width:33%;text-align:center;padding:10px 4px;background:#F5F9FC;border-radius:8px 0 0 8px;">
               <div style="font-size:20px;">&#10003;</div>
-              <div style="font-size:11px;font-weight:700;color:#00795F;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Confirmed</div>
+              <div style="font-size:11px;font-weight:700;color:#1F6FEB;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Confirmed</div>
             </td>
-            <td style="width:33%;text-align:center;padding:10px 4px;background:#F0F5F2;">
+            <td style="width:33%;text-align:center;padding:10px 4px;background:#EEF7FD;">
               <div style="font-size:20px;">&#128230;</div>
-              <div style="font-size:11px;font-weight:700;color:#4B5D54;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Dispatching</div>
+              <div style="font-size:11px;font-weight:700;color:#4B5F75;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Dispatching</div>
             </td>
-            <td style="width:33%;text-align:center;padding:10px 4px;background:#F0F5F2;border-radius:0 8px 8px 0;">
+            <td style="width:33%;text-align:center;padding:10px 4px;background:#EEF7FD;border-radius:0 8px 8px 0;">
               <div style="font-size:20px;">&#128666;</div>
-              <div style="font-size:11px;font-weight:700;color:#4B5D54;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Delivered</div>
+              <div style="font-size:11px;font-weight:700;color:#4B5F75;letter-spacing:0.03em;text-transform:uppercase;margin-top:4px;">Delivered</div>
             </td>
           </tr>
         </table>
@@ -201,21 +199,21 @@ function buildCustomerEmailHtml(session, lineItems) {
         <p>Thanks for your order with North Peptides UK. Payment's confirmed and your order will be dispatched within 24&ndash;48 hours on business days by Royal Mail Tracked 24 or Special Delivery — sent in plain, unmarked packaging with no product names visible on the outside. You'll get a tracking number by email once it's on its way.</p>
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
           <thead><tr>
-            <th style="text-align:left;border-bottom:2px solid #16241E;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Item</th>
-            <th style="text-align:center;border-bottom:2px solid #16241E;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Qty</th>
-            <th style="text-align:right;border-bottom:2px solid #16241E;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Amount</th>
+            <th style="text-align:left;border-bottom:2px solid #10233F;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Item</th>
+            <th style="text-align:center;border-bottom:2px solid #10233F;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Qty</th>
+            <th style="text-align:right;border-bottom:2px solid #10233F;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Amount</th>
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
         <p style="text-align:right;font-size:16px;"><strong>Total paid: ${formatMoney(session.amount_total, session.currency)}</strong></p>
         <p style="font-size:13px;color:#6B7280;">Order reference: ${escapeHtml(session.id)}</p>
-        ${session.metadata?.doseReference ? `<div style="margin:16px 0;padding:14px 16px;background:#F7FAF8;border:1px solid #E2EAE4;border-radius:10px;">
-          <p style="margin:0 0 8px;font-weight:700;color:#00795F;">Your dose reference</p>
+        ${session.metadata?.doseReference ? `<div style="margin:16px 0;padding:14px 16px;background:#F5F9FC;border:1px solid #D8E5F2;border-radius:10px;">
+          <p style="margin:0 0 8px;font-weight:700;color:#1F6FEB;">Your calculation reference</p>
           <p style="margin:0;font-size:13px;white-space:pre-line;">${escapeHtml(session.metadata.doseReference)}</p>
         </div>` : ""}
-        <div style="margin:22px 0;padding:16px;background:#F7FAF8;border:1px solid #E2EAE4;border-radius:10px;text-align:center;">
-          <p style="margin:0 0 10px;">Happy with your order? A quick review really helps other researchers.</p>
-          <a href="${TRUSTPILOT_URL}" style="display:inline-block;background:#00B67A;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:8px;">★ Leave a Trustpilot review</a>
+        <div style="margin:22px 0;padding:16px;background:#EEF7FD;border:1px solid #CFE0F1;border-radius:10px;">
+          <p style="margin:0 0 6px;font-weight:700;color:#10233F;">Need help with this order?</p>
+          <p style="margin:0;font-size:14px;color:#4B5F75;">Reply to this email with your order reference and we will help with dispatch, tracking or documentation questions.</p>
         </div>
         <p>Questions about your order? Just reply to this email — it reaches us at orders@northpeptidesuk.com.</p>
         <p style="font-size:12px;color:#9CA3AF;margin-top:20px;">North Peptides UK · Research use only. Not for human or animal consumption.</p>
@@ -229,7 +227,7 @@ function buildCustomerEmailText(session, lineItems) {
     `- ${item.description || "Item"} x${item.quantity || 1} — ${formatMoney(item.amount_total, session.currency)}`
   ).join("\n");
   const dose = session.metadata?.doseReference
-    ? `\nYour dose reference:\n${session.metadata.doseReference}\n`
+    ? `\nYour calculation reference:\n${session.metadata.doseReference}\n`
     : "";
   return `Order confirmed — thank you, ${name}
 
@@ -240,7 +238,6 @@ ${items}
 Total paid: ${formatMoney(session.amount_total, session.currency)}
 Order reference: ${session.id}
 ${dose}
-Happy with your order? Leave a review: ${TRUSTPILOT_URL}
 
 Questions about your order? Reply to this email — it reaches us at orders@northpeptidesuk.com.
 

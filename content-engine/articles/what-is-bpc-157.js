@@ -29,7 +29,7 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How BPC-157 Is Supplied',
-      html: `      <p><a href="/product.html?product=bpc-157">BPC-157</a> is stocked by North Peptides UK as a 10mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request. It is UK stocked and dispatched within 24 hours on business days.</p>
+      html: `      <p><a href="/product.html?product=bpc-157">BPC-157</a> is stocked by North Peptides UK as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days.</p>
       <p>It is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend, alongside GHK-Cu, TB-500 and KPV.</p>`,
     },
     {
@@ -46,13 +46,13 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing BPC-157 in the UK',
-      html: `      <p>North Peptides UK stocks BPC-157 domestically, so there are no import delays for UK-based researchers. Every batch is verified to 99%+ purity, stored frozen until dispatch, and accompanied by a certificate of analysis on request. For questions about a batch before ordering, you can reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>North Peptides UK stocks BPC-157 domestically, so there are no import delays for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity, stored frozen until dispatch, and documented with supplier paperwork available on request where held. For questions about a batch before ordering, you can reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
   faqs: [
     { q: 'What is BPC-157 supplied as?',
-      a: 'A 10mg lyophilised (freeze-dried) vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'A 10mg lyophilised (freeze-dried) vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can BPC-157 be used in humans?',
       a: 'No. BPC-157 is supplied strictly for laboratory and scientific research and is not for human or animal consumption.' },
     { q: 'How is BPC-157 reconstituted?',

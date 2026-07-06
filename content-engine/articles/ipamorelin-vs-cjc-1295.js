@@ -17,14 +17,14 @@ module.exports = {
     {
       id: 'at-a-glance',
       heading: 'Ipamorelin and CJC-1295 at a Glance',
-      html: `      <p>Both are supplied as 5mg lyophilised vials, verified to 99%+ purity. The table summarises how they compare as research materials.</p>
+      html: `      <p>Both are supplied as 5mg lyophilised vials, listed with supplier-stated 99%+ purity. The table summarises how they compare as research materials.</p>
       <table class="compare-table">
         <thead><tr><th>Attribute</th><th>Ipamorelin</th><th>CJC-1295 (No DAC)</th></tr></thead>
         <tbody>
           <tr><td>Compound class</td><td>Growth-hormone secretagogue (GHRP-type)</td><td>GHRH analogue (Modified GRF 1-29)</td></tr>
           <tr><td>Mechanism studied</td><td>Acts at the ghrelin/GH-secretagogue receptor</td><td>Acts at the GHRH receptor</td></tr>
           <tr><td>Supplied as</td><td>5mg lyophilised vial</td><td>5mg lyophilised vial</td></tr>
-          <tr><td>Verified purity</td><td>99%+</td><td>99%+</td></tr>
+          <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
         </tbody>
       </table>`,
     },
@@ -48,7 +48,7 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>Both <a href="/product.html?product=ipamorelin">Ipamorelin</a> and <a href="/product.html?product=cjc-1295">CJC-1295 (No DAC)</a> are UK stocked and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis on request. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>Both <a href="/product.html?product=ipamorelin">Ipamorelin</a> and <a href="/product.html?product=cjc-1295">CJC-1295 (No DAC)</a> are UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
@@ -56,7 +56,7 @@ module.exports = {
     { q: 'What is the difference between Ipamorelin and CJC-1295?',
       a: 'They act at different receptors in the growth-hormone-secretion pathway. Ipamorelin is a GH secretagogue acting at the ghrelin receptor; CJC-1295 (No DAC) is a GHRH analogue acting at the GHRH receptor. They are often studied together.' },
     { q: 'How are Ipamorelin and CJC-1295 supplied?',
-      a: 'Both as 5mg lyophilised vials, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'Both as 5mg lyophilised vials, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Can Ipamorelin or CJC-1295 be used in humans?',
       a: 'No. Both are supplied strictly for laboratory and scientific research and are not for human or animal consumption.' },
   ],

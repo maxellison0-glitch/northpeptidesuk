@@ -77,7 +77,7 @@
           "name": "Are Retatrutide and Tirzepatide available in the UK?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis available on request."
+            "text": "Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held."
           }
         },
         {
@@ -101,84 +101,85 @@
   ]
 }
   </script>
+  <script src="/site-config.js" defer></script>
   <script src="/tiktok-analytics.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: #F8F9FA; color: #1a1a1a; line-height: 1.7; }
+    body { font-family: 'DM Sans', sans-serif; background: #F8F9FA; color: #111827; line-height: 1.7; }
     a { text-decoration: none; }
-    .nav { background: #12211A; padding: 0 40px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav { background: #10233F; padding: 0 40px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
     .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.08em; color: #fff; }
-    .nav-logo span { color: #00A67E; }
+    .nav-logo span { color: #0EA5E9; }
     .nav-right { display: flex; align-items: center; gap: 20px; }
     .nav-link { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); transition: color 0.2s; }
-    .nav-link:hover { color: #00A67E; }
-    .nav-cta { padding: 7px 16px; background: #00A67E; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 4px; transition: opacity 0.2s; }
+    .nav-link:hover { color: #0EA5E9; }
+    .nav-cta { padding: 7px 16px; background: #0EA5E9; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 4px; transition: opacity 0.2s; }
     .nav-cta:hover { opacity: 0.88; }
-    .article-hero { background: #12211A; padding: 56px 40px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .article-hero { background: #10233F; padding: 56px 40px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .article-hero-inner { max-width: 760px; margin: 0 auto; }
-    .article-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00A67E; border: 1px solid rgba(0,166,126,0.3); padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; background: rgba(0,166,126,0.08); }
+    .article-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #0EA5E9; border: 1px solid rgba(14,165,233,0.3); padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; background: rgba(14,165,233,0.08); }
     .article-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.01em; }
-    .article-title em { font-style: normal; color: #00A67E; }
+    .article-title em { font-style: normal; color: #0EA5E9; }
     .article-meta { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
     .article-intro { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 620px; }
     .article-layout { max-width: 1100px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; }
-    .article-content h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #12211A; margin: 36px 0 14px; letter-spacing: -0.01em; }
+    .article-content h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #10233F; margin: 36px 0 14px; letter-spacing: -0.01em; }
     .article-content h2:first-child { margin-top: 0; }
-    .article-content h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #12211A; margin: 24px 0 10px; }
+    .article-content h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #10233F; margin: 24px 0 10px; }
     .article-content p { font-size: 0.96rem; color: #374151; line-height: 1.85; margin-bottom: 16px; }
     .article-content ul, .article-content ol { margin: 12px 0 18px 20px; }
     .article-content li { font-size: 0.96rem; color: #374151; line-height: 1.75; margin-bottom: 6px; }
-    .article-content strong { color: #12211A; }
-    .article-content a { color: #00795F; border-bottom: 1px solid rgba(0,121,95,0.3); }
-    .article-content a:hover { color: #00A67E; }
+    .article-content strong { color: #10233F; }
+    .article-content a { color: #1F6FEB; border-bottom: 1px solid rgba(31,111,235,0.3); }
+    .article-content a:hover { color: #0EA5E9; }
     .callout { border-radius: 8px; padding: 18px 20px; margin: 24px 0; }
-    .callout-green { background: #f0fdf9; border-left: 3px solid #00A67E; }
+    .callout-green { background: #EEF7FD; border-left: 3px solid #0EA5E9; }
     .callout-amber { background: #fffbeb; border-left: 3px solid #D97706; }
-    .callout-dark { background: #12211A; border-left: 3px solid #00A67E; }
+    .callout-dark { background: #10233F; border-left: 3px solid #0EA5E9; }
     .callout-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
-    .callout-green .callout-title { color: #00A67E; }
+    .callout-green .callout-title { color: #0EA5E9; }
     .callout-amber .callout-title { color: #D97706; }
-    .callout-dark .callout-title { color: #00A67E; }
+    .callout-dark .callout-title { color: #0EA5E9; }
     .callout p { font-size: 0.9rem !important; margin-bottom: 0 !important; }
     .callout-green p { color: #065f46; }
     .callout-amber p { color: #92400e; }
     .callout-dark p { color: rgba(255,255,255,0.78) !important; }
     .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.88rem; }
-    .compare-table th { background: #12211A; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
-    .compare-table td { padding: 10px 14px; border-bottom: 1px solid #E5E7EB; color: #374151; vertical-align: top; }
+    .compare-table th { background: #10233F; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+    .compare-table td { padding: 10px 14px; border-bottom: 1px solid #E2E8F0; color: #374151; vertical-align: top; }
     .compare-table tr:nth-child(even) td { background: #F8F9FA; }
     .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td:first-child { font-weight: 600; color: #12211A; }
-    .faq-item { border-top: 1px solid #E5E7EB; padding: 18px 0; }
+    .compare-table td:first-child { font-weight: 600; color: #10233F; }
+    .faq-item { border-top: 1px solid #E2E8F0; padding: 18px 0; }
     .faq-item h3 { margin: 0 0 6px; }
     .faq-item p { margin: 0; }
     .article-sidebar { position: sticky; top: 80px; }
-    .sidebar-card { background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-    .sidebar-card-header { background: #12211A; padding: 12px 16px; }
-    .sidebar-card-header-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #00A67E; }
+    .sidebar-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+    .sidebar-card-header { background: #10233F; padding: 12px 16px; }
+    .sidebar-card-header-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #0EA5E9; }
     .sidebar-card-body { padding: 16px; }
-    .sidebar-product { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F3F4F6; }
+    .sidebar-product { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F3F7FB; }
     .sidebar-product:last-of-type { border-bottom: none; }
-    .sidebar-product-name { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: #12211A; display: block; }
-    .sidebar-product-price { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #00A67E; }
-    .sidebar-product-dot { width: 8px; height: 8px; background: #00A67E; border-radius: 50%; flex-shrink: 0; }
-    .sidebar-cta { display: block; width: 100%; padding: 12px; background: #12211A; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; border-radius: 6px; transition: background 0.2s; margin-top: 12px; }
-    .sidebar-cta:hover { background: #00A67E; }
+    .sidebar-product-name { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: #10233F; display: block; }
+    .sidebar-product-price { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #0EA5E9; }
+    .sidebar-product-dot { width: 8px; height: 8px; background: #0EA5E9; border-radius: 50%; flex-shrink: 0; }
+    .sidebar-cta { display: block; width: 100%; padding: 12px; background: #10233F; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; border-radius: 6px; transition: background 0.2s; margin-top: 12px; }
+    .sidebar-cta:hover { background: #0EA5E9; }
     .sidebar-toc { list-style: none; }
-    .sidebar-toc li { border-bottom: 1px solid #F3F4F6; }
+    .sidebar-toc li { border-bottom: 1px solid #F3F7FB; }
     .sidebar-toc li:last-child { border-bottom: none; }
-    .sidebar-toc a { display: block; padding: 9px 0; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.04em; color: #6B7280; transition: color 0.2s; }
-    .sidebar-toc a:hover { color: #00A67E; }
-    .article-disclaimer { background: #F0F5F2; border-top: 1px solid #E5E7EB; padding: 24px 40px; max-width: 1100px; margin: 0 auto; }
-    .article-disclaimer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8AA095; line-height: 1.7; letter-spacing: 0.03em; }
-    .footer { background: #12211A; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .sidebar-toc a { display: block; padding: 9px 0; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.04em; color: #607086; transition: color 0.2s; }
+    .sidebar-toc a:hover { color: #0EA5E9; }
+    .article-disclaimer { background: #EDF4FA; border-top: 1px solid #E2E8F0; padding: 24px 40px; max-width: 1100px; margin: 0 auto; }
+    .article-disclaimer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #7C8FA6; line-height: 1.7; letter-spacing: 0.03em; }
+    .footer { background: #10233F; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; color: #fff; }
-    .footer-logo span { color: #00A67E; }
-    .footer p { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #8AA095; letter-spacing: 0.06em; }
-    .footer-tg { color: #00A67E; }
+    .footer-logo span { color: #0EA5E9; }
+    .footer p { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #7C8FA6; letter-spacing: 0.06em; }
+    .footer-tg { color: #0EA5E9; }
     @media (max-width: 768px) {
       .nav { padding: 0 16px; }
       .article-hero { padding: 36px 16px 32px; }
@@ -195,7 +196,7 @@
     <div class="nav-right">
       <a href="/#products" class="nav-link">Products</a>
       <a href="/blog/index.html" class="nav-link">Guides</a>
-      <a href="/#products" class="nav-cta">Shop Now →</a>
+      <a href="/#products" class="nav-cta">Shop Now -></a>
     </div>
   </nav>
 
@@ -211,7 +212,7 @@
   <div class="article-layout">
     <article class="article-content">
       <h2 id="at-a-glance">Retatrutide and Tirzepatide at a Glance</h2>
-      <p>Both compounds are supplied by North Peptides UK as lyophilised (freeze-dried) powder in sealed vials, verified to 99%+ purity and stored frozen until dispatch. The table below summarises how they compare as research materials before we look at each attribute in detail.</p>
+      <p>Both compounds are supplied by North Peptides UK as lyophilised (freeze-dried) powder in sealed vials, listed with supplier-stated 99%+ purity and stored frozen until dispatch. The table below summarises how they compare as research materials before we look at each attribute in detail.</p>
       <table class="compare-table">
         <thead>
           <tr><th>Attribute</th><th>Retatrutide</th><th>Tirzepatide</th></tr>
@@ -221,7 +222,7 @@
           <tr><td>Receptor targets</td><td>GLP-1, GIP and glucagon receptors</td><td>GIP and GLP-1 receptors</td></tr>
           <tr><td>Supplied as</td><td>Lyophilised vial</td><td>Lyophilised vial</td></tr>
           <tr><td>Vial sizes (UK)</td><td>10mg, 15mg, 20mg</td><td>15mg, 30mg</td></tr>
-          <tr><td>Verified purity</td><td>99%+</td><td>99%+</td></tr>
+          <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
           <tr><td>Reconstitution solvent</td><td>Bacteriostatic water</td><td>Bacteriostatic water</td></tr>
           <tr><td>UK availability</td><td>Stocked, 24h dispatch</td><td>Stocked, 24h dispatch</td></tr>
         </tbody>
@@ -243,8 +244,8 @@
       <h2 id="supplied-form">How Each Is Supplied</h2>
       <p>Both are supplied as lyophilised powder, the most stable format for transport and storage. North Peptides UK stocks the following vial sizes:</p>
       <ul>
-        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Verified to 99%+ purity with a certificate of analysis available on request.</li>
-        <li><strong><a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Verified to 99%+ purity with a certificate of analysis available on request.</li>
+        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
       </ul>
       <p>Each batch is stored frozen until dispatch and shipped from the UK with tracked delivery, typically within 24 hours on business days. The larger vial sizes are usually selected where a research protocol calls for a higher total quantity of material per vial.</p>
 
@@ -265,7 +266,7 @@
       <p>Neither compound is more fragile than the other in this respect; they follow the same stability rules as the wider peptide class.</p>
 
       <h2 id="choosing">Choosing Between Them for a Research Model</h2>
-      <p>The decision usually comes down to the experimental question rather than any difference in handling or quality, since both are supplied at the same verified purity. A few considerations researchers commonly weigh:</p>
+      <p>The decision usually comes down to the experimental question rather than any difference in handling or quality, since both are supplied at the same stated purity. A few considerations researchers commonly weigh:</p>
       <ul>
         <li><strong>Pathway coverage</strong> — Tirzepatide isolates the GIP and GLP-1 pathways; Retatrutide adds glucagon-receptor activity. The model's design dictates which is appropriate.</li>
         <li><strong>Reference comparability</strong> — Tirzepatide has a longer track record as a dual-agonist reference compound, which can matter when a study is being compared against existing literature.</li>
@@ -275,7 +276,7 @@
       <p>Some research programmes hold both on hand precisely so the same protocol can be run across the dual- and triple-agonist profiles for comparison.</p>
 
       <h2 id="sourcing-uk">Sourcing Both in the UK</h2>
-      <p>North Peptides UK stocks both compounds domestically, so there are no import delays or customs handling for UK-based researchers. Every batch is verified to 99%+ purity, stored frozen until dispatch, and accompanied by a certificate of analysis on request.</p>
+      <p>North Peptides UK stocks both compounds domestically, so there are no import delays or customs handling for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity, stored frozen until dispatch, and documented with supplier paperwork available on request where held.</p>
       <p>Orders are dispatched within 24 hours on business days with tracked delivery. If you need help confirming vial sizes or purity documentation before ordering, you can reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>
 
       <h2 id="faq">Frequently Asked Questions</h2>
@@ -285,7 +286,7 @@
       </div>
       <div class="faq-item">
         <h3>Are Retatrutide and Tirzepatide available in the UK?</h3>
-        <p>Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, verified to 99%+ purity with a certificate of analysis available on request.</p>
+        <p>Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held.</p>
       </div>
       <div class="faq-item">
         <h3>How are these research compounds supplied?</h3>
@@ -330,7 +331,7 @@
               <span class="sidebar-product-price">£6.99</span>
             </div>
           </a>
-          <a href="/#products" class="sidebar-cta">Shop Research Compounds →</a>
+          <a href="/#products" class="sidebar-cta">Shop Research Compounds -></a>
         </div>
       </div>
 
@@ -381,7 +382,7 @@
               <span class="sidebar-product-price">£60</span>
             </div>
           </a>
-          <a href="/#products" class="sidebar-cta">Shop Research Compounds →</a>
+          <a href="/#products" class="sidebar-cta">Shop Research Compounds -></a>
         </div>
       </div>
     </aside>

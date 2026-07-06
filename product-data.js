@@ -43,7 +43,7 @@ const PRODUCT_DATA = {
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Independent COA testing being arranged",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 45 },
@@ -61,19 +61,19 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy Retatrutide Pen Vial UK | Pre-Reconstituted 10mg, 20mg, 50mg | North Peptides UK",
-      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Ready to load into research auto-injector pen. UK stocked, 24h dispatch. Research use only.",
+      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Prepared in a pen-compatible research cartridge format. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
     longDescription: [
       "Retatrutide Pen Vial contains the same synthetic lipidated triple-agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 10mg, 20mg and 50mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 10mg, 20mg and 50mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Binding and signalling activity at the GLP-1, GIP and glucagon receptors, studied in vitro",
@@ -95,7 +95,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -116,9 +116,9 @@ const PRODUCT_DATA = {
       title: "Buy Tirzepatide UK | 15mg & 30mg Research Peptide | North Peptides UK",
       metaDescription: "Tirzepatide research compound, UK stocked. 15mg & 30mg lyophilised vials, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
-        { q: "What is Tirzepatide supplied as?", a: "A lyophilised powder in a sealed vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Tirzepatide supplied as?", a: "A lyophilised powder in a sealed vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "What receptors does Tirzepatide act on?", a: "It is described in the literature as a dual receptor agonist with reported activity at the GIP and GLP-1 receptors. It is supplied only as a reference material for research." },
-        { q: "What purity is your Tirzepatide?", a: "Every batch is supplied at 99%+ purity, with a certificate of analysis available on request." },
+        { q: "What purity is your Tirzepatide?", a: "Each listing states 99%+ purity, with supplier documentation available on request where held." },
         { q: "Is Tirzepatide for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
     },
@@ -149,7 +149,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x15mg", dose: "15mg", price: 65 },
@@ -168,16 +168,16 @@ const PRODUCT_DATA = {
       metaDescription: "Tirzepatide dual GIP/GLP-1 agonist pre-reconstituted as a liquid in a pen-compatible vial. 15mg and 30mg sizes. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the Tirzepatide Pen Vial?", a: "The same Tirzepatide dual GIP/GLP-1 receptor agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "15mg and 30mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Tirzepatide dual GIP/GLP-1 receptor agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 15mg and 30mg.",
     longDescription: [
       "Tirzepatide Pen Vial contains the same dual GIP and GLP-1 receptor agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 15mg and 30mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 15mg and 30mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Co-agonist binding and signalling at the GIP and GLP-1 receptors, studied in vitro",
@@ -200,7 +200,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -254,7 +254,7 @@ const PRODUCT_DATA = {
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
       "Independent COA testing being arranged",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 23.99 }
@@ -269,19 +269,19 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "bpc-157", label: "Also available as", name: "BPC-157 Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy BPC-157 Pen Vial UK | Pre-Reconstituted 10mg, 20mg | North Peptides UK",
-      metaDescription: "BPC-157 pre-reconstituted liquid pen vial. 10mg and 20mg sizes. Ready to load into research auto-injector pen. UK stocked, 24h dispatch. Research use only.",
+      metaDescription: "BPC-157 pre-reconstituted liquid pen vial. 10mg and 20mg sizes. Prepared in a pen-compatible research cartridge format. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the BPC-157 Pen Vial?", a: "The same BPC-157 synthetic pentadecapeptide research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg and 20mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "BPC-157 pentadecapeptide research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg and 20mg.",
     longDescription: [
       "BPC-157 Pen Vial contains the same synthetic pentadecapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 10mg and 20mg sizes. Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 10mg and 20mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Angiogenesis and vascular endothelial signalling, examined in preclinical models",
@@ -304,7 +304,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -325,7 +325,7 @@ const PRODUCT_DATA = {
       metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is TB-500?", a: "The synthetic, N-acetylated heptapeptide fragment Ac-LKKTETQ, corresponding to the actin-binding region of the protein Thymosin Beta-4. It is supplied as a 10mg lyophilised vial at 99%+ purity." },
-        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial, stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial, stated at 99%+ purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock TB-500 in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is TB-500 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -357,7 +357,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 49 }
@@ -375,15 +375,15 @@ const PRODUCT_DATA = {
       metaDescription: "TB-500 Thymosin Beta-4 fragment pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the TB-500 Pen Vial?", a: "The same TB-500 Thymosin Beta-4 fragment research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "TB-500 Pen Vial contains the same synthetic Thymosin Beta-4 fragment (Ac-LKKTETQ) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Actin-binding and actin-sequestering activity, studied in vitro",
@@ -406,7 +406,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -418,7 +418,7 @@ const PRODUCT_DATA = {
   "ghk-cu": {
     name: "GHK-Cu",
     category: "Research peptide",
-    image: "hf_20260523_171846_eb6a53a7-44d0-4dca-9c3a-bac61701229d.jpeg",
+    image: "ghk-cu-blue-powder.webp",
     penAddon: true,
     sisterProduct: { slug: "ghk-cu-pen", label: "Also available as", name: "GHK-Cu Pen Vial — Pre-Reconstituted" },
     seo: {
@@ -426,7 +426,7 @@ const PRODUCT_DATA = {
       metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 50mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is GHK-Cu?", a: "The copper(II) complex of the tripeptide glycyl-L-histidyl-L-lysine (Gly-His-Lys), a naturally occurring copper-binding peptide, supplied as a 50mg lyophilised vial for research." },
-        { q: "What is GHK-Cu supplied as?", a: "A 50mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is GHK-Cu supplied as?", a: "A 50mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock GHK-Cu in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is GHK-Cu for research use only?", a: "Yes. It is supplied strictly for laboratory research, is not a cosmetic, and is not for human or animal consumption." }
       ]
@@ -458,7 +458,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x50mg", dose: "50mg", price: 27 }
@@ -476,15 +476,15 @@ const PRODUCT_DATA = {
       metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the GHK-Cu Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 50mg/3ml liquid in a pen-compatible cartridge vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "GHK-Cu Pen Vial contains the same copper(II) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 50mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Copper(II) coordination chemistry of the GHK tripeptide, studied in vitro",
@@ -507,7 +507,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -527,7 +527,7 @@ const PRODUCT_DATA = {
       metaDescription: "KPV (Lys-Pro-Val) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is KPV?", a: "The tripeptide lysine-proline-valine (Lys-Pro-Val), corresponding to the C-terminal fragment of the hormone alpha-MSH, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is KPV supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is KPV supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock KPV in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is KPV for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -559,7 +559,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 30 }
@@ -577,15 +577,15 @@ const PRODUCT_DATA = {
       metaDescription: "KPV alpha-MSH fragment tripeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the KPV Pen Vial?", a: "The same KPV (Lys-Pro-Val) alpha-MSH fragment tripeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "KPV Pen Vial contains the same KPV (Lys-Pro-Val) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "NF-kB signalling pathway activity, characterised in inflammation research models",
@@ -608,7 +608,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -620,7 +620,7 @@ const PRODUCT_DATA = {
   "klow-stack": {
     name: "KLOW Stack",
     category: "Research blend",
-    image: "hf_20260523_171756_e0946bdc-4f47-4100-b4ea-b3a5094a1afb.jpeg",
+    image: "klow-stack-blue-powder.webp",
     penAddon: true,
     sisterProduct: { slug: "klow-stack-pen", label: "Also available as", name: "KLOW Stack Pen Vial — Pre-Reconstituted" },
     seo: {
@@ -628,7 +628,7 @@ const PRODUCT_DATA = {
       metaDescription: "KLOW Stack research blend (GHK-Cu, TB-500, BPC-157, KPV), UK stocked. 80mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is in the KLOW Stack?", a: "A single lyophilised vial combining GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — 80mg of peptide in total, at a fixed research ratio." },
-        { q: "What is the KLOW Stack supplied as?", a: "An 80mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is the KLOW Stack supplied as?", a: "An 80mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock the KLOW Stack in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is the KLOW Stack for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -657,7 +657,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x80mg", dose: "80mg", price: 60 }
@@ -675,15 +675,15 @@ const PRODUCT_DATA = {
       metaDescription: "KLOW Stack 4-peptide research blend (GHK-Cu, TB-500, BPC-157, KPV) pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is in the KLOW Stack Pen Vial?", a: "The same four-compound blend — GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "KLOW Stack Pen Vial contains the same four-compound research blend — GHK-Cu, TB-500, BPC-157 and KPV at a fixed ratio — as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Combined collagen, extracellular-matrix and cell-migration research models",
@@ -703,7 +703,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -723,7 +723,7 @@ const PRODUCT_DATA = {
       metaDescription: "Ipamorelin research peptide, UK stocked. 5mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is Ipamorelin?", a: "A synthetic pentapeptide and selective growth-hormone secretagogue acting at the ghrelin/GHS receptor, supplied as a 5mg lyophilised vial for research." },
-        { q: "What is Ipamorelin supplied as?", a: "A 5mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Ipamorelin supplied as?", a: "A 5mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Ipamorelin in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Ipamorelin for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -755,7 +755,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x5mg", dose: "5mg", price: 24.99 }
@@ -773,15 +773,15 @@ const PRODUCT_DATA = {
       metaDescription: "Ipamorelin selective GH secretagogue pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the Ipamorelin Pen Vial?", a: "The same Ipamorelin selective growth-hormone secretagogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Ipamorelin Pen Vial contains the same selective growth-hormone secretagogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Growth-hormone secretagogue (ghrelin/GHS receptor) signalling, studied in vitro",
@@ -804,7 +804,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -855,7 +855,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x5mg", dose: "5mg", price: 32 }
@@ -873,15 +873,15 @@ const PRODUCT_DATA = {
       metaDescription: "CJC-1295 No DAC (Mod GRF 1-29) GHRH analogue pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the CJC-1295 Pen Vial?", a: "The same CJC-1295 (No DAC) GHRH analogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "CJC-1295 (No DAC) GHRH analogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "CJC-1295 Pen Vial contains the same Modified GRF (1-29) GHRH analogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "GHRH-receptor signalling and growth-hormone pulse dynamics, studied in vitro",
@@ -903,7 +903,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -923,7 +923,7 @@ const PRODUCT_DATA = {
       metaDescription: "NAD+ (nicotinamide adenine dinucleotide) research compound, UK stocked. 1000mg lyophilised powder, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is NAD+?", a: "Nicotinamide adenine dinucleotide, a coenzyme central to hundreds of enzymatic reactions including cellular energy metabolism, supplied as a 1000mg lyophilised powder for research." },
-        { q: "What is NAD+ supplied as?", a: "A 1000mg lyophilised powder at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is NAD+ supplied as?", a: "A 1000mg lyophilised powder at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock NAD+ in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is NAD+ for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -954,7 +954,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x1000mg", dose: "1000mg", price: 84.99 }
@@ -972,15 +972,15 @@ const PRODUCT_DATA = {
       metaDescription: "NAD+ nicotinamide adenine dinucleotide pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the NAD+ Pen Vial?", a: "The same NAD+ nicotinamide adenine dinucleotide research compound, supplied pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "NAD+ nicotinamide adenine dinucleotide coenzyme pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "NAD+ Pen Vial contains the same nicotinamide adenine dinucleotide research compound as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format — 1000mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Redox cofactor activity (NAD+/NADH) in enzymatic research, studied in vitro",
@@ -1002,7 +1002,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -1022,7 +1022,7 @@ const PRODUCT_DATA = {
       metaDescription: "SS-31 (elamipretide) mitochondria-targeted research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is SS-31?", a: "A synthetic, mitochondria-targeting tetrapeptide (elamipretide) that selectively associates with cardiolipin on the inner mitochondrial membrane, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is SS-31 supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is SS-31 supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock SS-31 in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is SS-31 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1055,7 +1055,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 24.99 }
@@ -1073,15 +1073,15 @@ const PRODUCT_DATA = {
       metaDescription: "SS-31 (elamipretide) mitochondria-targeted tetrapeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the SS-31 Pen Vial?", a: "The same SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "SS-31 Pen Vial contains the same elamipretide mitochondria-targeted tetrapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Cardiolipin binding on the inner mitochondrial membrane, studied in vitro",
@@ -1104,7 +1104,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -1122,7 +1122,7 @@ const PRODUCT_DATA = {
       metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Semax?", a: "A synthetic heptapeptide derived from a fragment of ACTH (4-7) with a Pro-Gly-Pro extension that increases stability, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Semax in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1156,7 +1156,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x30mg", dose: "30mg", price: 20.99 }
@@ -1172,7 +1172,7 @@ const PRODUCT_DATA = {
       metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial, 99%+ purity, 24h dispatch. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Selank?", a: "A synthetic heptapeptide analogue of the immunomodulatory peptide tuftsin, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial stated at 99%+ purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Selank in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1206,7 +1206,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x30mg", dose: "30mg", price: 20.99 }
@@ -1224,7 +1224,7 @@ const PRODUCT_DATA = {
       metaDescription: "Epitalon (Epithalon, AEDG) research peptide, UK stocked. 10mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is Epitalon?", a: "A synthetic tetrapeptide (Ala-Glu-Asp-Gly, AEDG) modelled on a fragment of the pineal-gland peptide epithalamin, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is Epitalon supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Epitalon supplied as?", a: "A 10mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Epitalon in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Epitalon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1256,7 +1256,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 13.99 }
@@ -1274,15 +1274,15 @@ const PRODUCT_DATA = {
       metaDescription: "Epitalon (AEDG) pineal tetrapeptide pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the Epitalon Pen Vial?", a: "The same Epitalon (Ala-Glu-Asp-Gly, AEDG) pineal tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Epitalon Pen Vial contains the same synthetic pineal tetrapeptide (Ala-Glu-Asp-Gly, AEDG) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Telomerase enzyme activity, studied in vitro",
@@ -1305,7 +1305,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],
@@ -1325,7 +1325,7 @@ const PRODUCT_DATA = {
       metaDescription: "Pinealon (Glu-Asp-Arg) research peptide, UK stocked. 20mg lyophilised vial, 99%+ purity, 24h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is Pinealon?", a: "A synthetic tripeptide (Glu-Asp-Arg, EDR) belonging to the family of short regulatory peptides studied in neurobiology, supplied as a 20mg lyophilised vial for research." },
-        { q: "What is Pinealon supplied as?", a: "A 20mg lyophilised vial at 99%+ purity, stored frozen until dispatch. A certificate of analysis is available on request." },
+        { q: "What is Pinealon supplied as?", a: "A 20mg lyophilised vial at 99%+ purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Pinealon in the UK?", a: "Yes. It is UK stocked with dispatch within 24 hours on business days via tracked delivery." },
         { q: "Is Pinealon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1357,7 +1357,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "UK stocked, 24h dispatch",
       "Stored frozen until dispatch",
-      "Purity certificate on request"
+      "Supplier documentation on request"
     ],
     variants: [
       { label: "1x20mg", dose: "20mg", price: 29.99 }
@@ -1375,15 +1375,15 @@ const PRODUCT_DATA = {
       metaDescription: "Pinealon (EDR tripeptide) pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial. UK stocked, 24h dispatch. Research use only.",
       faq: [
         { q: "What is the Pinealon Pen Vial?", a: "The same Pinealon (Glu-Asp-Arg, EDR) regulatory tripeptide research compound, supplied pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial." },
-        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for research auto-injector pens." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable research auto-injector pen kit is available as an add-on at checkout." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Pinealon Pen Vial contains the same Pinealon (Glu-Asp-Arg, EDR) synthetic regulatory tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 20mg dissolved in 3ml solution.",
-      "Intended for use with a research auto-injector pen (available as an add-on at checkout). Supplied strictly as a research reference material; not for human or animal consumption."
+      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Blood-brain-barrier permeability of short peptides, studied in research models",
@@ -1406,7 +1406,7 @@ const PRODUCT_DATA = {
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
       "99%+ purity stated",
-      "Pre-reconstituted — pen-ready",
+      "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
       "Pen kit available as add-on"
     ],

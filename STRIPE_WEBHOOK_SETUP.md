@@ -13,7 +13,7 @@ Add these in Vercel project settings:
 - `ORDER_FROM_EMAIL` - optional sender, defaults to `North Peptides UK <orders@northpeptidesuk.com>` (verify the domain in Resend first)
 - `RESEND_AUDIENCE_ID` - optional, stores newsletter signups (`/api/subscribe`) in a Resend Audience
 
-See `SETUP_EMAIL_AND_TRUSTPILOT.md` for the full walkthrough (Resend + Google Workspace, wallets, Trustpilot).
+See `SETUP_EMAIL_AND_REVIEWS.md` for the full walkthrough (Resend + Google Workspace, wallets, reviews).
 
 Do not commit real values to GitHub.
 

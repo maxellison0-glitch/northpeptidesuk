@@ -1,4 +1,4 @@
-# Setup: Order Emails, Newsletter, Wallets & Trustpilot
+# Setup: Order Emails, Newsletter, Wallets & Reviews
 
 Everything below is a one-time setup in dashboards — no code changes needed. The site
 code is already built to use these once you switch them on.
@@ -35,7 +35,7 @@ alerts to you, newsletter), we use **Resend** — free tier: 3,000 emails/month.
 
 Now every paid order:
 - emails **you** a full order breakdown (delivery address included, pulled from Stripe), and
-- emails the **customer** a branded confirmation from orders@ with a Trustpilot review invite.
+- emails the **customer** a branded confirmation from orders@ with direct reply support.
 
 Replies to either land in your Workspace inbox.
 
@@ -71,21 +71,16 @@ mobile shoppers pay in one tap without typing an address.
 
 ---
 
-## 4. Trustpilot — show live reviews
+## 4. Reviews - rebuild cleanly
 
-The homepage has a Trustpilot section (star badge + a live "TrustBox" + "Leave a review").
-The badge and links already work and point to
-`trustpilot.com/review/northpeptidesuk.com`. To make the **live reviews widget** populate:
+The live site must not show rating scores, stars, review counts or review markup until the
+new review source contains real customer feedback.
 
-1. Trustpilot Business → **Integrations → TrustBox** → pick a widget (the "Carousel" is
-   already set up in the code).
-2. Copy your **Business Unit ID**.
-3. In `index.html`, find `REPLACE_WITH_YOUR_TRUSTPILOT_BUSINESS_UNIT_ID` and paste your ID
-   in its place. Commit/push.
+Recommended rebuild path:
 
-### Auto-invite customers to review (optional)
-Trustpilot can email customers to ask for a review automatically. Easiest method:
-Trustpilot Business → **Get reviews → Automatic Feedback Service (AFS)** gives you a unique
-BCC address. Add that as a BCC on your order-confirmation flow (ask us to wire it in and
-provide the AFS address). The customer confirmation email already includes a manual
-"Leave a Trustpilot review" button in the meantime.
+1. Keep the homepage in "review collection in progress" mode for now.
+2. Collect post-purchase feedback by asking customers to reply to the order email.
+3. When a new review platform is chosen, add only genuine verified reviews and keep the
+   visible page content aligned with any structured data.
+4. Do not add aggregate rating schema for the business itself. If product review feeds are
+   added later, keep them product-specific and policy-compliant.

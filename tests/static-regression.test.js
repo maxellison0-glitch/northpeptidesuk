@@ -20,17 +20,22 @@ const compliance = read("compliance.html");
 const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
 const expectedAccessoryPrices = [
-  ["Essentials Bundle", "BAC water + insulin needles + wipes", "14.99"],
   ["Bacteriostatic Water", "10ml vial", "6.99"],
   ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "6.99"],
   ["Sterile Disposable Pen Tips", "6mm x5", "3.99"],
   ["Alcohol Wipes", "10 pack", "2.99"],
-  ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "3"]
+  ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "4.99"]
 ];
 
+const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 for (const [name, dose, price] of expectedAccessoryPrices) {
+  const buttonArg = name === "Thermal Cooled Packaging" ? "btn" : "this";
+  const checkoutPattern = new RegExp(
+    `addCheckoutAddon\\(${buttonArg},\\s*'${escapeRegex(name)}',\\s*${escapeRegex(price)},\\s*'${escapeRegex(dose)}'\\)`
+  );
   assert(
-    checkout.includes(`addCheckoutAddon(this,'${name}',${price},'${dose}')`),
+    checkoutPattern.test(checkout),
     `${name} checkout add-on should use ${price}`
   );
   assert(
@@ -44,23 +49,23 @@ assert(
   "mobile product grid should use one tight column"
 );
 assert(
-  index.includes(".shop-card { display: grid; grid-template-columns: 116px minmax(0, 1fr);"),
+  index.includes(".shop-card { display: grid; grid-template-columns: 118px minmax(0, 1fr);"),
   "mobile product cards should use compact image/detail columns"
 );
 assert(
-  index.includes(".shop-card-img { aspect-ratio: auto; min-height: 136px; height: 100%;"),
+  index.includes(".shop-card-img { aspect-ratio: auto; min-height: 148px; height: 100%;"),
   "mobile product images should be compact thumbnails"
 );
 assert(
-  index.includes(".shop-add-btn { min-height: 42px;"),
+  index.includes(".shop-add-btn { min-height: 40px;"),
   "mobile add buttons should keep a reliable touch target"
 );
 
 assert(
   checkout.includes("function formatMoney(value)") &&
     checkout.includes("formatMoney(item.price * item.qty)") &&
-    basket.includes("function formatMoney(value)") &&
-    basket.includes("formatMoney(item.price * item.qty)"),
+    basket.includes("function fmt(v)") &&
+    basket.includes("fmt(item.price * item.qty)"),
   "basket and checkout rows should format decimal prices consistently"
 );
 
@@ -117,8 +122,7 @@ assert(
     index.includes("research-insulin-needles.png") &&
     index.includes("Sterile Disposable Pen Tips") &&
     index.includes("Bacteriostatic Water") &&
-    index.includes("Insulin Needle Pack") &&
-    index.includes("Essentials Bundle"),
+    index.includes("Insulin Needle Pack"),
   "homepage should expose research supplies as catalogue products"
 );
 assert(
@@ -126,8 +130,7 @@ assert(
     productData.includes('image: "research-pen-kit-style.png"') &&
     productData.includes('"pen-tips"') &&
     productData.includes('"bacteriostatic-water"') &&
-    productData.includes('"syringe-kit"') &&
-    productData.includes('"essentials-bundle"'),
+    productData.includes('"syringe-kit"'),
   "product detail data should include research supplies"
 );
 assert(
@@ -212,7 +215,7 @@ assert(
 assert(
   compliance.includes("Research Use &amp; Compliance") &&
     compliance.includes("Not for human or animal consumption") &&
-    compliance.includes("not intended to diagnose, treat, cure or prevent") &&
+    compliance.includes("not intended for any medical, therapeutic, diagnostic, or preventative purpose") &&
     !compliance.includes("Companies House") &&
     !compliance.includes("limited company"),
   "compliance page should give factual research-use guidance without unverified business details"
@@ -259,7 +262,7 @@ assert(
     index.includes("Disposable tips for compatible pen-style research kits") &&
     index.includes("10ml sealed vial") &&
     index.includes("insulin needles in a sealed pack") &&
-    index.includes("10 single-use wipes"),
+    index.includes("10 single-use preparation wipes"),
   "research supplies should use practical, distinct card content"
 );
 assert(
@@ -271,7 +274,6 @@ assert(
     productData.includes('["Pack", "10 Needles"]') &&
     productData.includes('"alcohol-wipes": {') &&
     productData.includes('["Pack", "10 Wipes"]') &&
-    productData.includes('"essentials-bundle": {') &&
     !productData.includes('"pen-tips": {\n    name: "Sterile Disposable Pen Tips",\n    category: "Research supplies",\n    image: "research-pen-tips.jpg",\n    summary: "Universal-fit sterile disposable pen tips for pen-style research setups.",\n    details: [\n      "6mm universal-fit tips",\n      "Supplied sealed",\n      "Compatible with pen-style research kits",\n      "Research use only"\n    ],\n    variants:'),
   "supply detail pages should define practical information instead of peptide defaults"
 );

@@ -28,7 +28,7 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How GHK-Cu Is Supplied',
-      html: `      <p><a href="/product.html?product=ghk-cu">GHK-Cu</a> is stocked as a 50mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request. It is UK stocked and dispatched within 24 hours on business days, and is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
+      html: `      <p><a href="/product.html?product=ghk-cu">GHK-Cu</a> is stocked as a 50mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days, and is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
     },
     {
       id: 'handling',
@@ -43,13 +43,13 @@ module.exports = {
     {
       id: 'sourcing-uk',
       heading: 'Sourcing GHK-Cu in the UK',
-      html: `      <p>North Peptides UK stocks GHK-Cu domestically, with no import delays for UK-based researchers. Every batch is verified to 99%+ purity with a certificate of analysis on request. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>North Peptides UK stocks GHK-Cu domestically, with no import delays for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about a batch before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
   faqs: [
     { q: 'What is GHK-Cu supplied as?',
-      a: 'A 50mg lyophilised vial, verified to 99%+ purity and stored frozen until dispatch, with a certificate of analysis available on request.' },
+      a: 'A 50mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held.' },
     { q: 'Why does a GHK-Cu solution look blue-green?',
       a: 'The faint blue-green tint comes from the copper bound in the peptide complex. It is entirely normal and not a sign of contamination.' },
     { q: 'Can GHK-Cu be used in humans?',

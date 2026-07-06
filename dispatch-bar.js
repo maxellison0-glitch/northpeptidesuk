@@ -1,17 +1,17 @@
-/* ============================================================================
-   North Peptides UK — Dynamic Dispatch Announcement Bar
+﻿/* ============================================================================
+   North Peptides UK - Dynamic Dispatch Announcement Bar
    Self-contained, no dependencies. Include in <head> on every page:
        <script src="/dispatch-bar.js"></script>
-   (no `defer` — it injects its space-reservation CSS during head parse so the
+   (no `defer` - it injects its space-reservation CSS during head parse so the
     fixed bar causes zero layout shift / CLS.)
 
-   Dispatch policy: Monday–Friday, same-day dispatch on orders placed before
+   Dispatch policy: Monday-Friday, same-day dispatch on orders placed before
    13:00 (1 PM) UK time. All times are computed in Europe/London regardless of
    the visitor's own timezone, so the cut-off is always correct.
 
    Behaviour (updates live, every second, no reload needed):
-   - Mon–Fri before 1 PM : live countdown to the 1 PM cut-off for same-day dispatch.
-   - Mon–Thu after 1 PM  : "dispatched first thing tomorrow morning".
+   - Mon-Fri before 1 PM : live countdown to the 1 PM cut-off for same-day dispatch.
+   - Mon-Thu after 1 PM  : "dispatched first thing tomorrow morning".
    - Fri after 1 PM / Sat / Sun : "dispatched first thing Monday morning".
    ========================================================================== */
 (function () {
@@ -32,20 +32,20 @@
     '@media(max-width:768px){.shop-nav{top:calc(30px + var(--npbar-h))!important;}}' +
     '.npbar{position:fixed;top:0;left:0;right:0;height:var(--npbar-h);z-index:300;' +
       'display:flex;align-items:center;justify-content:center;gap:9px;' +
-      'background:#12211A;color:#E6EFEA;font-family:"DM Mono",monospace;' +
+      'background:#10233F;color:#E6EFEA;font-family:"DM Mono",monospace;' +
       'font-size:.7rem;letter-spacing:.03em;padding:0 16px;box-sizing:border-box;' +
       'white-space:nowrap;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08);}' +
     '.npbar-inner{display:flex;align-items:center;gap:9px;max-width:100%;overflow:hidden;transition:opacity .26s ease;}' +
     '.npbar-inner.is-swapping{opacity:0;}' +
     '.npbar-text{overflow:hidden;text-overflow:ellipsis;}' +
     '.npbar strong{color:#fff;font-weight:500;}' +
-    '.npbar .npbar-hl{color:#5FD0AE;font-weight:500;}' +
-    '.npbar-dot{width:6px;height:6px;border-radius:50%;background:#3FBE92;flex-shrink:0;transition:background .26s ease;}' +
+    '.npbar .npbar-hl{color:#7DD3FC;font-weight:500;}' +
+    '.npbar-dot{width:6px;height:6px;border-radius:50%;background:#38BDF8;flex-shrink:0;transition:background .26s ease;}' +
     '.npbar.is-sameday .npbar-dot{animation:npbar-pulse 2s infinite;}' +
     '.npbar.is-next .npbar-dot{background:#C9A24B;animation:none;}' +
-    '.npbar.is-ship .npbar-dot{background:#5FD0AE;animation:none;}' +
-    '@keyframes npbar-pulse{0%{box-shadow:0 0 0 0 rgba(63,190,146,.55)}' +
-      '70%{box-shadow:0 0 0 6px rgba(63,190,146,0)}100%{box-shadow:0 0 0 0 rgba(63,190,146,0)}}' +
+    '.npbar.is-ship .npbar-dot{background:#7DD3FC;animation:none;}' +
+    '@keyframes npbar-pulse{0%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}' +
+      '70%{box-shadow:0 0 0 6px rgba(56,189,248,0)}100%{box-shadow:0 0 0 0 rgba(56,189,248,0)}}' +
     '@media(max-width:768px){.npbar{font-size:.6rem;gap:7px;}}' +
     '@media(max-width:380px){.npbar{font-size:.55rem;}}';
 
@@ -66,7 +66,7 @@
     var o = {};
     for (var i = 0; i < parts.length; i++) o[parts[i].type] = parts[i].value;
     return {
-      day: DAY_INDEX[o.weekday],     // 0=Sun … 6=Sat
+      day: DAY_INDEX[o.weekday],     // 0=Sun ... 6=Sat
       h: (+o.hour) % 24,             // some engines emit "24" at midnight
       m: +o.minute,
       s: +o.second
@@ -101,11 +101,11 @@
     }
 
     // Otherwise work out the next dispatch day.
-    // Mon–Thu after cut-off -> tomorrow; Fri after cut-off / Sat / Sun -> Monday.
+    // Mon-Thu after cut-off -> tomorrow; Fri after cut-off / Sat / Sun -> Monday.
     var nextLabel = (t.day >= 1 && t.day <= 4) ? 'tomorrow' : 'Monday';
     return {
       mode: 'next',
-      html: '<strong>Order today</strong> — dispatched first thing ' +
+      html: '<strong>Order today</strong> - dispatched first thing ' +
             '<span class="npbar-hl">' + nextLabel + '</span> morning'
     };
   }

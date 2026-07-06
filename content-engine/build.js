@@ -71,6 +71,35 @@ function buildSitemap(articles) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`;
 }
 
+function buildProductFeed() {
+  return {
+    site: SITE.name,
+    baseUrl: SITE.base,
+    generatedAt: BUILD_DATE,
+    disclaimer: 'Products are supplied for laboratory research use only and are not for human or animal consumption.',
+    documentationStatus: 'Supplier documentation is available on request where held. Independent COA testing is being arranged for selected products.',
+    products: Object.entries(PRODUCTS).map(([slug, product]) => ({
+      slug,
+      name: product.name,
+      category: product.category,
+      url: `${SITE.base}/product.html?product=${slug}`,
+      image: `${SITE.base}/${product.image}`,
+      summary: product.summary,
+      researchUseOnly: true,
+      supply: Boolean(product.supply),
+      variants: product.variants.map(variant => ({
+        label: variant.label,
+        dose: variant.dose,
+        price: variant.price,
+        currency: 'GBP',
+      })),
+      specs: Array.isArray(product.specs)
+        ? product.specs.map(([label, value]) => ({ label, value }))
+        : [],
+    })),
+  };
+}
+
 function updateRobots() {
   const robotsPath = path.join(ROOT, 'robots.txt');
   let txt = fs.readFileSync(robotsPath, 'utf8');
@@ -109,12 +138,13 @@ function main() {
   }
   fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), renderBlogIndex(articles));
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(articles));
+  fs.writeFileSync(path.join(ROOT, 'products.json'), JSON.stringify(buildProductFeed(), null, 2) + '\n');
   updateRobots();
 
   console.log(`\nBuilt ${articles.length} article(s):`);
   for (const a of articles) console.log(`  · blog/${a.slug}.html  — "${a.title}"`);
-  console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), robots.txt`);
+  console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, robots.txt`);
 }
 
 if (require.main === module) main();
-module.exports = { loadArticles, buildSitemap };
+module.exports = { loadArticles, buildSitemap, buildProductFeed };

@@ -1,0 +1,1757 @@
+{
+  "site": "North Peptides UK",
+  "baseUrl": "https://www.northpeptidesuk.com",
+  "generatedAt": "2026-07-05",
+  "disclaimer": "Products are supplied for laboratory research use only and are not for human or animal consumption.",
+  "documentationStatus": "Supplier documentation is available on request where held. Independent COA testing is being arranged for selected products.",
+  "products": [
+    {
+      "slug": "retatrutide",
+      "name": "Retatrutide",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=retatrutide",
+      "image": "https://www.northpeptidesuk.com/reta-50mg.png",
+      "summary": "GLP-1, GIP and glucagon receptor triple-agonist research compound supplied as a lyophilised powder.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 45,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x15mg",
+          "dose": "15mg",
+          "price": 65,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x20mg",
+          "dose": "20mg",
+          "price": 85,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x50mg",
+          "dose": "50mg",
+          "price": 179.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GLP-1 / GIP / glucagon triple receptor agonist"
+        },
+        {
+          "label": "Structure",
+          "value": "39-residue lipidated peptide"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C221H342N46O68"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~4731 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "2381089-83-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "LY3437943"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "retatrutide-pen",
+      "name": "Retatrutide Pen Vial",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=retatrutide-pen",
+      "image": "https://www.northpeptidesuk.com/reta-pen-vial.png",
+      "summary": "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 50,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x20mg",
+          "dose": "20mg",
+          "price": 90,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x50mg",
+          "dose": "50mg",
+          "price": 179.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GLP-1 / GIP / glucagon triple receptor agonist"
+        },
+        {
+          "label": "Structure",
+          "value": "39-residue lipidated peptide"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C221H342N46O68"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~4731 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "2381089-83-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "LY3437943"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "tirzepatide",
+      "name": "Tirzepatide",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=tirzepatide",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg",
+      "summary": "Dual GIP and GLP-1 receptor agonist research compound supplied as a lyophilised powder.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x15mg",
+          "dose": "15mg",
+          "price": 65,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x30mg",
+          "dose": "30mg",
+          "price": 120,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GIP / GLP-1 dual receptor agonist"
+        },
+        {
+          "label": "Structure",
+          "value": "39-amino-acid peptide (C-terminal amide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C225H348N48O68"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~4814 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "2023788-19-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "LY3298176"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "tirzepatide-pen",
+      "name": "Tirzepatide Pen Vial",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=tirzepatide-pen",
+      "image": "https://www.northpeptidesuk.com/tirzepatide-pen-vial.png",
+      "summary": "Tirzepatide dual GIP/GLP-1 receptor agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 15mg and 30mg.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x15mg / 3ml",
+          "dose": "15mg / 3ml",
+          "price": 78,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x30mg / 3ml",
+          "dose": "30mg / 3ml",
+          "price": 144,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GIP / GLP-1 dual receptor agonist"
+        },
+        {
+          "label": "Structure",
+          "value": "39-amino-acid peptide (C-terminal amide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C225H348N48O68"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~4814 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "2023788-19-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "LY3298176"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "bpc-157",
+      "name": "BPC-157",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=bpc-157",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg",
+      "summary": "Synthetic pentadecapeptide research compound supplied as a 10mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 23.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic pentadecapeptide"
+        },
+        {
+          "label": "Sequence",
+          "value": "GEPPPGKPADDAGLV"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C62H98N16O22"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~1419.5 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "137525-51-0"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Body Protection Compound 157, PL-14736"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "bpc-157-pen",
+      "name": "BPC-157 Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=bpc-157-pen",
+      "image": "https://www.northpeptidesuk.com/bpc-157-pen-vial.png",
+      "summary": "BPC-157 pentadecapeptide research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg and 20mg.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 29,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x20mg / 3ml",
+          "dose": "20mg / 3ml",
+          "price": 58,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic pentadecapeptide"
+        },
+        {
+          "label": "Sequence",
+          "value": "GEPPPGKPADDAGLV"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C62H98N16O22"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~1419.5 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "137525-51-0"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Body Protection Compound 157, PL-14736"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "tb-500",
+      "name": "TB-500",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=tb-500",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg",
+      "summary": "Thymosin Beta-4 fragment (Ac-LKKTETQ) research compound supplied as a 10mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 49,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Thymosin Beta-4 fragment"
+        },
+        {
+          "label": "Sequence",
+          "value": "Ac-Leu-Lys-Lys-Thr-Glu-Thr-Gln-OH"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C38H68N10O14"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~889 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "885340-08-9"
+        },
+        {
+          "label": "Synonyms",
+          "value": "TB500, Tb4 (17-23)"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "tb-500-pen",
+      "name": "TB-500 Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=tb-500-pen",
+      "image": "https://www.northpeptidesuk.com/tb-500-pen-vial.png",
+      "summary": "TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 59,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Thymosin Beta-4 fragment"
+        },
+        {
+          "label": "Sequence",
+          "value": "Ac-Leu-Lys-Lys-Thr-Glu-Thr-Gln-OH"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C38H68N10O14"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~889 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "885340-08-9"
+        },
+        {
+          "label": "Synonyms",
+          "value": "TB500, Tb4 (17-23)"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "ghk-cu",
+      "name": "GHK-Cu",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ghk-cu",
+      "image": "https://www.northpeptidesuk.com/ghk-cu-blue-powder.webp",
+      "summary": "Copper(II) tripeptide research compound supplied as a 50mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x50mg",
+          "dose": "50mg",
+          "price": 27,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Copper(II) tripeptide complex (Copper Tripeptide-1)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Gly-His-Lys (Cu2+-chelated)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C14H22CuN6O4"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~401.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "89030-95-5"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Copper peptide, prezatide copper"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "ghk-cu-pen",
+      "name": "GHK-Cu Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ghk-cu-pen",
+      "image": "https://www.northpeptidesuk.com/ghk-cu-pen-vial.png",
+      "summary": "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x50mg / 3ml",
+          "dose": "50mg / 3ml",
+          "price": 32,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Copper(II) tripeptide complex (Copper Tripeptide-1)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Gly-His-Lys (Cu2+-chelated)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C14H22CuN6O4"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~401.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "89030-95-5"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Copper peptide, prezatide copper"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "kpv",
+      "name": "KPV",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=kpv",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
+      "summary": "Alpha-MSH fragment tripeptide research compound supplied as a 10mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 30,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Alpha-MSH C-terminal fragment tripeptide"
+        },
+        {
+          "label": "Sequence",
+          "value": "Lys-Pro-Val"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C16H30N4O4"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~342.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "67727-97-3"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Lysyl-prolyl-valine"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "kpv-pen",
+      "name": "KPV Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=kpv-pen",
+      "image": "https://www.northpeptidesuk.com/kpv-pen-vial.png",
+      "summary": "KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 36,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Alpha-MSH C-terminal fragment tripeptide"
+        },
+        {
+          "label": "Sequence",
+          "value": "Lys-Pro-Val"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C16H30N4O4"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~342.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "67727-97-3"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Lysyl-prolyl-valine"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "klow-stack",
+      "name": "KLOW Stack",
+      "category": "Research blend",
+      "url": "https://www.northpeptidesuk.com/product.html?product=klow-stack",
+      "image": "https://www.northpeptidesuk.com/klow-stack-blue-powder.webp",
+      "summary": "Four-compound research blend containing GHK-Cu, TB-500, BPC-157 and KPV in a single 80mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x80mg",
+          "dose": "80mg",
+          "price": 60,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Composition",
+          "value": "GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg"
+        },
+        {
+          "label": "Total peptide",
+          "value": "80mg per vial"
+        },
+        {
+          "label": "Blend type",
+          "value": "Four-compound tissue-research blend"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "klow-stack-pen",
+      "name": "KLOW Stack Pen Vial",
+      "category": "Research blend",
+      "url": "https://www.northpeptidesuk.com/product.html?product=klow-stack-pen",
+      "image": "https://www.northpeptidesuk.com/klow-stack-pen-vial.png",
+      "summary": "KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x80mg / 3ml",
+          "dose": "80mg / 3ml",
+          "price": 72,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Composition",
+          "value": "GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg"
+        },
+        {
+          "label": "Total peptide",
+          "value": "80mg per vial"
+        },
+        {
+          "label": "Blend type",
+          "value": "Four-compound tissue-research blend"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "ipamorelin",
+      "name": "Ipamorelin",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ipamorelin",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg",
+      "summary": "Selective growth-hormone secretagogue research compound supplied as a 5mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x5mg",
+          "dose": "5mg",
+          "price": 24.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Selective growth-hormone secretagogue (pentapeptide)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Aib-His-D-2-Nal-D-Phe-Lys-NH2"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C38H49N9O5"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~711.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "170851-70-4"
+        },
+        {
+          "label": "Synonyms",
+          "value": "NNC 26-0161"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "ipamorelin-pen",
+      "name": "Ipamorelin Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ipamorelin-pen",
+      "image": "https://www.northpeptidesuk.com/ipamorelin-pen-vial.png",
+      "summary": "Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x5mg / 3ml",
+          "dose": "5mg / 3ml",
+          "price": 30,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Selective growth-hormone secretagogue (pentapeptide)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Aib-His-D-2-Nal-D-Phe-Lys-NH2"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C38H49N9O5"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~711.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "170851-70-4"
+        },
+        {
+          "label": "Synonyms",
+          "value": "NNC 26-0161"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "cjc-1295",
+      "name": "CJC-1295 (No DAC)",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=cjc-1295",
+      "image": "https://www.northpeptidesuk.com/hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg",
+      "summary": "GHRH (1-29) analogue research compound (Mod GRF 1-29) supplied as a 5mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x5mg",
+          "dose": "5mg",
+          "price": 32,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GHRH (1-29) analogue — Mod GRF 1-29"
+        },
+        {
+          "label": "Structure",
+          "value": "29-amino-acid peptide (D-Ala2, C-terminal amide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C152H252N44O42"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~3368 g/mol"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Modified GRF 1-29, CJC-1295 without DAC"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "cjc-1295-pen",
+      "name": "CJC-1295 Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=cjc-1295-pen",
+      "image": "https://www.northpeptidesuk.com/cjc-1295-pen-vial.png",
+      "summary": "CJC-1295 (No DAC) GHRH analogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x5mg / 3ml",
+          "dose": "5mg / 3ml",
+          "price": 38,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "GHRH (1-29) analogue — Mod GRF 1-29"
+        },
+        {
+          "label": "Structure",
+          "value": "29-amino-acid peptide (D-Ala2, C-terminal amide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C152H252N44O42"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~3368 g/mol"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Modified GRF 1-29, CJC-1295 without DAC"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "nad-plus",
+      "name": "NAD+",
+      "category": "Cellular research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=nad-plus",
+      "image": "https://www.northpeptidesuk.com/nad-plus.png",
+      "summary": "Nicotinamide Adenine Dinucleotide coenzyme research compound supplied as a 1000mg lyophilised powder.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x1000mg",
+          "dose": "1000mg",
+          "price": 84.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Pyridine dinucleotide coenzyme (not a peptide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C21H27N7O14P2 (free acid)"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~663.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "53-84-9"
+        },
+        {
+          "label": "Synonyms",
+          "value": "beta-NAD, Coenzyme I, nadide"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "nad-plus-pen",
+      "name": "NAD+ Pen Vial",
+      "category": "Cellular research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=nad-plus-pen",
+      "image": "https://www.northpeptidesuk.com/nad-plus-pen-vial.png",
+      "summary": "NAD+ nicotinamide adenine dinucleotide coenzyme pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x1000mg / 3ml",
+          "dose": "1000mg / 3ml",
+          "price": 102,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Pyridine dinucleotide coenzyme (not a peptide)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C21H27N7O14P2 (free acid)"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~663.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "53-84-9"
+        },
+        {
+          "label": "Synonyms",
+          "value": "beta-NAD, Coenzyme I, nadide"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "ss-31",
+      "name": "SS-31",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ss-31",
+      "image": "https://www.northpeptidesuk.com/ss-31.png",
+      "summary": "Mitochondria-targeted tetrapeptide research compound (elamipretide) supplied as a 10mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 24.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Mitochondria-targeted tetrapeptide (elamipretide)"
+        },
+        {
+          "label": "Sequence",
+          "value": "D-Arg-Dmt-Lys-Phe-NH2"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C32H49N9O5 (free base)"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~639.8 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "736992-21-5"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Elamipretide, MTP-131, Bendavia"
+        },
+        {
+          "label": "Salt form",
+          "value": "Commonly supplied as acetate"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "ss-31-pen",
+      "name": "SS-31 Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=ss-31-pen",
+      "image": "https://www.northpeptidesuk.com/ss-31-pen-vial.png",
+      "summary": "SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 30,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Mitochondria-targeted tetrapeptide (elamipretide)"
+        },
+        {
+          "label": "Sequence",
+          "value": "D-Arg-Dmt-Lys-Phe-NH2"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C32H49N9O5 (free base)"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~639.8 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "736992-21-5"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Elamipretide, MTP-131, Bendavia"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "semax",
+      "name": "Semax",
+      "category": "Nootropic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=semax",
+      "image": "https://www.northpeptidesuk.com/semax.png",
+      "summary": "Nootropic research peptide (ACTH(4-7) analogue) supplied as a 30mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x30mg",
+          "dose": "30mg",
+          "price": 20.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic heptapeptide (ACTH(4-7) analogue)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Met-Glu-His-Phe-Pro-Gly-Pro"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C37H51N9O10S"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~813.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "80714-61-0"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Semax"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "selank",
+      "name": "Selank",
+      "category": "Nootropic research",
+      "url": "https://www.northpeptidesuk.com/product.html?product=selank",
+      "image": "https://www.northpeptidesuk.com/selank.png",
+      "summary": "Anxiolytic nootropic research peptide (tuftsin analogue) supplied as a 30mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x30mg",
+          "dose": "30mg",
+          "price": 20.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic heptapeptide (tuftsin analogue)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Thr-Lys-Pro-Arg-Pro-Gly-Pro"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C33H57N11O9"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~751.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "129954-34-3"
+        },
+        {
+          "label": "Synonyms",
+          "value": "TP-7"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "epitalon",
+      "name": "Epitalon",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=epitalon",
+      "image": "https://www.northpeptidesuk.com/epitalon.png",
+      "summary": "Pineal tetrapeptide research compound (AEDG) supplied as a 10mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg",
+          "dose": "10mg",
+          "price": 13.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic pineal tetrapeptide (AEDG)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Ala-Glu-Asp-Gly"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C14H22N4O9"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~390.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "307297-39-8"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Epithalon, AEDG"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "epitalon-pen",
+      "name": "Epitalon Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=epitalon-pen",
+      "image": "https://www.northpeptidesuk.com/epitalon-pen-vial.png",
+      "summary": "Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 17,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic pineal tetrapeptide (AEDG)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Ala-Glu-Asp-Gly"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C14H22N4O9"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~390.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "307297-39-8"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Epithalon, AEDG"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "pinealon",
+      "name": "Pinealon",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=pinealon",
+      "image": "https://www.northpeptidesuk.com/pinealon.png",
+      "summary": "Short regulatory tripeptide research compound (EDR) supplied as a 20mg lyophilised vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x20mg",
+          "dose": "20mg",
+          "price": 29.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic regulatory tripeptide (EDR)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Glu-Asp-Arg"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C15H26N6O8"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~418.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "175175-23-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Pinealon"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ]
+    },
+    {
+      "slug": "pinealon-pen",
+      "name": "Pinealon Pen Vial",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/product.html?product=pinealon-pen",
+      "image": "https://www.northpeptidesuk.com/pinealon-pen-vial.png",
+      "summary": "Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x20mg / 3ml",
+          "dose": "20mg / 3ml",
+          "price": 36,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic regulatory tripeptide (EDR)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Glu-Asp-Arg"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C15H26N6O8"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~418.4 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "175175-23-2"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Pinealon"
+        },
+        {
+          "label": "Purity",
+          "value": "99%+"
+        },
+        {
+          "label": "Form",
+          "value": "Pre-reconstituted liquid"
+        },
+        {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; do not freeze once reconstituted"
+        }
+      ]
+    },
+    {
+      "slug": "intranasal-research-kit",
+      "name": "Intranasal Research Kit",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=intranasal-research-kit",
+      "image": "https://www.northpeptidesuk.com/research-intranasal-kit.jpg",
+      "summary": "A compact intranasal research preparation kit designed for use alongside compatible research compounds. Includes a 10ml nasal spray bottle, sterile 0.9% saline ampoule, transfer syringe, transfer adaptor, alcohol wipes, and blank label.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "Kit",
+          "dose": "10ml nasal spray + saline + syringe + adaptor + wipes + label",
+          "price": 6.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    },
+    {
+      "slug": "pen-style-research-kit",
+      "name": "Pen-Style Research Kit",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=pen-style-research-kit",
+      "image": "https://www.northpeptidesuk.com/research-pen-kit-style.png",
+      "summary": "A cleaner pen-style setup for repeatable measured research handling, supplied with the cartridge, BAC water and sterile pen tips needed to build the setup.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "Kit",
+          "dose": "3ml cartridge + BAC water + x5 pen tips",
+          "price": 24.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    },
+    {
+      "slug": "pen-tips",
+      "name": "Sterile Disposable Pen Tips",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=pen-tips",
+      "image": "https://www.northpeptidesuk.com/research-pen-tips.png",
+      "summary": "Disposable pen tips for compatible pen-style research kits.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "5 tips",
+          "dose": "6mm x5",
+          "price": 3.99,
+          "currency": "GBP"
+        },
+        {
+          "label": "10 tips",
+          "dose": "6mm x10",
+          "price": 6.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    },
+    {
+      "slug": "bacteriostatic-water",
+      "name": "Bacteriostatic Water",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=bacteriostatic-water",
+      "image": "https://www.northpeptidesuk.com/research-bac-water.png",
+      "summary": "10ml sealed bacteriostatic mixing water for research preparation workflows.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "10ml vial",
+          "dose": "10ml vial",
+          "price": 6.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    },
+    {
+      "slug": "syringe-kit",
+      "name": "Insulin Needle Pack",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=syringe-kit",
+      "image": "https://www.northpeptidesuk.com/research-insulin-needles.png",
+      "summary": "Pack of 1ml sterile disposable insulin needles for research preparation use.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "10 pack",
+          "dose": "10 pack, 1ml insulin needles",
+          "price": 6.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    },
+    {
+      "slug": "alcohol-wipes",
+      "name": "Alcohol Wipes",
+      "category": "Research supplies",
+      "url": "https://www.northpeptidesuk.com/product.html?product=alcohol-wipes",
+      "image": "https://www.northpeptidesuk.com/research-alcohol-wipes.png",
+      "summary": "Single-use alcohol wipe pack for research preparation workflows.",
+      "researchUseOnly": true,
+      "supply": true,
+      "variants": [
+        {
+          "label": "10 pack",
+          "dose": "10 pack",
+          "price": 2.99,
+          "currency": "GBP"
+        }
+      ],
+      "specs": []
+    }
+  ]
+}

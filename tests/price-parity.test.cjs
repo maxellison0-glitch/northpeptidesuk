@@ -41,7 +41,7 @@ test('homepage card prices match the product-data default price', () => {
   for (const [id, slug] of Object.entries(CARD_TO_SLUG)) {
     const p = PRODUCTS[slug];
     assert.ok(p, `product-data.js is missing "${slug}"`);
-    const m = indexHtml.match(new RegExp(`id="${id}">£([\\d.]+)<`));
+    const m = indexHtml.match(new RegExp(`id="${id}">[^\\d]*([\\d.]+)<`));
     assert.ok(m, `homepage card span #${id} not found in index.html`);
     assert.strictEqual(Number(m[1]), p.variants[0].price,
       `Homepage card ${slug} shows £${m[1]} but product-data default is £${p.variants[0].price}`);
