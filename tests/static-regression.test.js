@@ -7,6 +7,7 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
 const checkout = read("checkout.html");
 const basket = read("basket.js");
+const cssBasket = read(path.join("css", "basket.js"));
 const serverCheckout = read(path.join("server", "stripe-checkout.js"));
 const index = read("index.html");
 const product = read("product.html");
@@ -67,6 +68,13 @@ assert(
     basket.includes("function fmt(v)") &&
     basket.includes("fmt(item.price * item.qty)"),
   "basket and checkout rows should format decimal prices consistently"
+);
+assert(
+  basket.includes("const price = parseFloat(parts[0]);") &&
+    cssBasket.includes("const price = parseFloat(parts[0]);") &&
+    !basket.includes("const price = parseInt(parts[0]);") &&
+    !cssBasket.includes("const price = parseInt(parts[0]);"),
+  "legacy basket variant helper should preserve decimal prices"
 );
 
 assert(

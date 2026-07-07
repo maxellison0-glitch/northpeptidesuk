@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { lint, formatReport } = require('../content-engine/compliance.js');
 
 const ROOT = path.join(__dirname, '..');
@@ -106,6 +107,24 @@ test('public sources decode cleanly as UTF-8', () => {
 
   walk(ROOT);
   assert.deepEqual(matches, []);
+});
+
+test('public JavaScript assets parse cleanly', () => {
+  const files = [
+    'age-gate.js',
+    'basket.js',
+    'css/basket.js',
+    'dispatch-bar.js',
+    'product-data.js',
+    'site-config.js',
+    'tiktok-analytics.js',
+  ];
+  for (const file of files) {
+    assert.doesNotThrow(
+      () => new vm.Script(read(file), { filename: file }),
+      `${file} should be valid JavaScript`
+    );
+  }
 });
 
 test('high-risk administration and unsupported review phrases are absent', () => {

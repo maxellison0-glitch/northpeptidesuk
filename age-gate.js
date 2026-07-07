@@ -119,7 +119,7 @@
       card.innerHTML =
         '<div class="npag-logo">' + LOGO + '</div>' +
         '<div class="npag-eyebrow">Access Restricted</div>' +
-        '<h2 class="npag-title">Sorry &mdash; you can't enter</h2>' +
+        '<h2 class="npag-title">Sorry &mdash; you cannot enter</h2>' +
         '<p class="npag-body">You must be 18 or older to access this website. You will be redirected shortly.</p>';
     }
     setTimeout(function () { window.location.href = 'https://www.google.com/'; }, 2400);

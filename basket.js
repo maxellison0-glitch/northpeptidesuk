@@ -154,7 +154,7 @@ function backToBasket() {
 function addToBasketVariant(selectId, name) {
   const select = document.getElementById(selectId);
   const parts = select.value.split('|');
-  const price = parseInt(parts[0]);
+  const price = parseFloat(parts[0]);
   const dose = parts[2];
   addToBasket(name, price, dose);
 }
