@@ -567,39 +567,11 @@
       .category-heading-text p.category-heading-desc { font-size: 0.76rem; }
     }
 
-    /* ===== REVIEWS ===== */
-    .tp-section { padding: 40px 40px 8px; }
-    .tp-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
-    .tp-badge { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 18px; border: 1px solid #D8E5F2; border-radius: 999px; background: #fff; }
-    .tp-stars { color: #1F6FEB; letter-spacing: 2px; font-size: 1.05rem; }
-    .tp-badge-text { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.04em; color: #132A46; }
-    .tp-badge-text strong { color: #1F6FEB; }
-    .tp-placeholder-copy { max-width: 560px; margin: 0; font-size: 0.84rem; color: #607086; line-height: 1.7; }
-    .tp-cta { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #1F6FEB; text-decoration: none; border-bottom: 1px solid rgba(31,111,235,0.35); padding-bottom: 2px; }
-    .tp-cta:hover { color: #174EA6; }
-    @media (max-width: 700px) { .tp-section { padding: 28px 16px 4px; } }
-
     /* ===== BASKET FREE-SHIPPING NUDGE ===== */
     .basket-ship-note { margin: 12px 4px 4px; padding: 10px 12px; border-radius: 8px; background: #F5F9FC; border: 1px solid #D8E5F2; font-size: 0.74rem; color: #394D63; text-align: center; }
     .basket-ship-note.unlocked { background: #EAF4FF; border-color: #B9D7F8; color: #1F6FEB; font-weight: 600; }
     .basket-ship-bar { margin-top: 8px; height: 6px; border-radius: 4px; background: #D8E5F2; overflow: hidden; }
     .basket-ship-bar span { display: block; height: 100%; background: linear-gradient(90deg, #1F6FEB, #38BDF8); transition: width 0.3s; }
-
-    /* ===== REVIEWS (moved below products) ===== */
-    .reviews-section {
-      background: #ffffff;
-      border-top: 1px solid #D8E5F2;
-      padding: 48px 40px;
-    }
-    .reviews-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-    .reviews-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; }
-    .reviews-stars { color: #1F6FEB; letter-spacing: 2px; font-size: 1rem; }
-    .reviews-score { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #607086; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #D8E5F2; }
-    .review-card { background: #F5F9FC; padding: 22px; }
-    .review-stars { color: #1F6FEB; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px; }
-    .review-text { font-size: 0.8rem; color: #607086; line-height: 1.75; font-style: italic; margin-bottom: 10px; }
-    .review-author { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: #1F6FEB; }
 
     /* ===== TOAST ===== */
     .toast {
@@ -671,15 +643,6 @@
     .btn-checkout:hover { background: #174EA6; }
 
     /* ===== REST ===== */
-    .help-light { background: #ffffff; border-top: 1px solid #D8E5F2; padding: 60px 40px; }
-    .help-light-inner { max-width: 600px; }
-    .help-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; margin-bottom: 12px; }
-    .help-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #111827; line-height: 1.2; margin-bottom: 16px; }
-    .help-light-title em { font-style: normal; color: #1F6FEB; }
-    .help-light-body { font-size: 0.86rem; color: #607086; line-height: 1.8; margin-bottom: 14px; max-width: 500px; }
-    .help-light-note { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: #607086; border-left: 2px solid #D8E5F2; padding-left: 12px; line-height: 1.6; margin-bottom: 24px; max-width: 460px; }
-    .help-light-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #1F6FEB; color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 6px; transition: background 0.2s; }
-    .help-light-btn:hover { background: #174EA6; }
     .faq-light { background: #ffffff; border-top: 1px solid #D8E5F2; padding: 56px 40px; }
     .faq-light-inner { max-width: 760px; }
     .faq-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft-neutral); margin-bottom: 12px; }
@@ -695,7 +658,7 @@
     .faq-item a { color: #111827; font-weight: 700; text-decoration: underline; text-decoration-color: var(--soft-neutral); text-underline-offset: 3px; }
     .faq-route { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft-neutral); }
     .about-light { background: #F5F9FC; padding: 60px 40px; border-top: 1px solid #D8E5F2; }
-    .about-light-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
+    .about-light-grid { max-width: 760px; }
     .about-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; margin-bottom: 12px; }
     .about-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #111827; line-height: 1.2; margin-bottom: 24px; }
     .about-light-title em { font-style: normal; color: #1F6FEB; }
@@ -703,10 +666,6 @@
     .about-light-sig { margin-top: 24px; padding-top: 20px; border-top: 1px solid #D8E5F2; display: flex; flex-direction: column; gap: 4px; }
     .about-light-sig-name { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; color: #111827; }
     .about-light-sig-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1F6FEB; }
-    .about-light-stats { display: flex; flex-direction: column; gap: 1px; background: #D8E5F2; position: sticky; top: 80px; }
-    .about-light-stat { background: #ffffff; padding: 22px 26px; display: flex; flex-direction: column; gap: 5px; }
-    .about-light-stat-num { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; color: #1F6FEB; line-height: 1; }
-    .about-light-stat-label { font-size: 0.76rem; color: #607086; line-height: 1.4; }
     .how-light { background: #ffffff; padding: 60px 40px; border-top: 1px solid #D8E5F2; }
     .how-light-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; margin-bottom: 12px; }
     .how-light-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #111827; margin-bottom: 36px; }
@@ -770,9 +729,6 @@
       .qty-btn { width: 30px; height: 40px; }
       .qty-value { width: 28px; }
       .shop-add-btn { min-height: 40px; padding: 8px 10px; font-size: 0.56rem; }
-      .reviews-section { padding: 32px 16px; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .help-light { padding: 32px 16px; }
       .faq-light { padding: 32px 16px; }
       .faq-item summary { padding: 16px; font-size: 0.84rem; }
       .faq-item p { padding: 0 16px 16px; font-size: 0.78rem; }
@@ -782,7 +738,6 @@
       .about-light-title,
       .about-light-text p { min-width: 0; max-width: 100%; }
       .about-light-title em { overflow-wrap: anywhere; }
-      .about-light-stats { position: static; display: grid; grid-template-columns: 1fr 1fr; }
       .how-light { padding: 32px 16px; }
       .disclaimer-light { padding: 20px 16px; }
       .footer-light { padding: 32px 16px 80px; }
@@ -925,25 +880,6 @@
     .sec-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #1F6FEB; margin-bottom: 12px; }
     .sec-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #111827; line-height: 1.2; margin-bottom: 10px; }
     .sec-sub { font-size: 0.86rem; color: #607086; line-height: 1.75; max-width: 560px; margin-bottom: 28px; }
-
-    /* ===== COMPARE TABLE ===== */
-    .compare-section { background: #F5F9FC; border-top: 1px solid #D8E5F2; padding: 60px 40px; }
-    .compare-inner { max-width: 880px; margin: 0 auto; }
-    .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #ffffff; }
-    .compare-table th, .compare-table td { padding: 13px 16px; text-align: left; font-size: 0.82rem; border-bottom: 1px solid #F3F7FB; vertical-align: top; }
-    .compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table thead th { background: #F5F9FC; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: #607086; font-weight: 500; }
-    .compare-table thead th.compare-h-us { color: #1F6FEB; }
-    .compare-table th[scope="row"] { font-family: 'DM Sans', sans-serif; font-weight: 600; color: #111827; width: 40%; }
-    .compare-us { color: #1D5FBF; font-weight: 600; }
-    .compare-us::before { content: "Yes "; color: #1F6FEB; font-weight: 800; }
-    .compare-them { color: #97A6B7; }
-    .compare-foot { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #97A6B7; line-height: 1.65; }
-    @media (max-width: 760px) {
-      .compare-section { padding: 32px 16px; }
-      .compare-table th, .compare-table td { padding: 10px 11px; font-size: 0.76rem; }
-      .compare-table th[scope="row"] { width: 44%; }
-    }
 
     /* ===== RESEARCH TOOLS / CALCULATOR ===== */
     .tools-section { background: #ffffff; border-top: 1px solid #D8E5F2; padding: 60px 40px; }
@@ -1844,70 +1780,6 @@
     </div>
   </section>
 
-  <!-- HOW WE WORK SECTION -->
-  <!-- REVIEW COLLECTION STATUS -->
-  <section class="tp-section" id="review-status">
-    <div class="tp-inner" data-reveal>
-      <div class="tp-badge">
-        <span class="tp-stars" aria-hidden="true">Review</span>
-        <span class="tp-badge-text"><strong>Review collection in progress</strong></span>
-      </div>
-      <p class="tp-placeholder-copy">Buyer review collection will be linked here once the review profile is live. Until then, this section avoids ratings, review counts, and testimonial claims.</p>
-      <a class="tp-cta" href="mailto:orders@northpeptidesuk.com?subject=North%20Peptides%20UK%20support" rel="noopener">Contact support</a>
-    </div>
-  </section>
-
-  <section class="reviews-section">
-    <div class="reviews-header">
-      <span class="reviews-tag">How We Work</span>
-      <span class="reviews-score">Purity stated · Frozen until dispatch · BPC &amp; Reta COA testing in progress · <a href="why-us.html" style="color:#1F6FEB;text-decoration:none;">Direct support</a></span>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <p class="review-text">Purity is stated clearly on every product. Documentation from our suppliers is available on request — contact support with your product name before or after ordering.</p>
-        <span class="review-author">Purity Stated on Every Product</span>
-      </div>
-      <div class="review-card">
-        <p class="review-text">All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature. Stored frozen and dispatched promptly once payment is confirmed.</p>
-        <span class="review-author">Frozen Until Dispatch</span>
-      </div>
-      <div class="review-card">
-        <p class="review-text">Products are sourced from established manufacturers. Batch details are available on request for researchers who require documentation before or after ordering.</p>
-        <span class="review-author">Batch Details on Request</span>
-      </div>
-      <div class="review-card">
-        <p class="review-text">Independent COA testing is being arranged first for BPC-157 and Retatrutide. Reports will be added to the documentation page once received and reviewed.</p>
-        <span class="review-author">Independent Testing Status</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW WE COMPARE -->
-  <section class="compare-section" id="compare">
-    <div class="compare-inner" data-reveal>
-      <p class="sec-tag">How We Compare</p>
-      <h2 class="sec-title">What sets our handling apart.</h2>
-      <p class="sec-sub">A straight look at how we operate versus what is commonly seen across the research-peptide market.</p>
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th scope="col">Standard</th>
-            <th scope="col" class="compare-h-us">North Peptides UK</th>
-            <th scope="col">Typical supplier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Purity stated on every product</th><td class="compare-us">Yes, on every listing</td><td class="compare-them">Often vague or unstated</td></tr>
-          <tr><th scope="row">UK stocked &amp; dispatched</th><td class="compare-us">Yes, from the UK</td><td class="compare-them">Often shipped from overseas</td></tr>
-          <tr><th scope="row">Stored frozen until dispatch</th><td class="compare-us">Yes, frozen throughout</td><td class="compare-them">Often held at room temperature</td></tr>
-          <tr><th scope="row">Discreet, unmarked packaging</th><td class="compare-us">Yes, plain outer parcel</td><td class="compare-them">Varies</td></tr>
-          <tr><th scope="row">Direct pre-order support</th><td class="compare-us">Telegram &amp; email</td><td class="compare-them">Limited or none</td></tr>
-        </tbody>
-      </table>
-      <p class="compare-foot">The "typical supplier" column is an editorial generalisation provided for comparison and is not a statement about any specific named company. All products are supplied strictly for research use only.</p>
-    </div>
-  </section>
-
   <!-- RESEARCH TOOLS: RECONSTITUTION CALCULATOR -->
   <section class="tools-section" id="calculator">
     <div class="tools-inner" data-reveal>
@@ -1938,15 +1810,6 @@
     </div>
   </section>
 
-  <!-- HELP -->
-  <section class="help-light">
-    <div class="help-light-inner">
-      <p class="help-light-tag">Before Checkout</p>
-      <h2 class="help-light-title">What you need to<br><em>review your basket.</em></h2>
-      <p class="help-light-body">Confirm your product, size, quantity and delivery address. Choose your shipping method, then continue to secure Stripe payment.</p>
-    </div>
-  </section>
-
   <!-- ABOUT -->
   <section class="about-light" id="about">
     <p class="about-light-tag">Who We Are</p>
@@ -1961,12 +1824,6 @@
           <span class="about-light-sig-name">— North Peptides UK</span>
           <span class="about-light-sig-tag">// Est. 2025 · UK</span>
         </div>
-      </div>
-      <div class="about-light-stats">
-        <div class="about-light-stat"><span class="about-light-stat-num">99%+</span><span class="about-light-stat-label">Purity stated on every product</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">UK</span><span class="about-light-stat-label">Stocked and dispatched from the UK</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">COA</span><span class="about-light-stat-label">BPC and Reta testing in progress</span></div>
-        <div class="about-light-stat"><span class="about-light-stat-num">Frozen</span><span class="about-light-stat-label">Stored frozen until dispatch</span></div>
       </div>
     </div>
   </section>

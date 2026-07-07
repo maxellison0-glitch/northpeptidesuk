@@ -28,12 +28,26 @@ test('all public HTML pages pass the research-use compliance gate', () => {
   assert.equal(failures.join('\n\n'), '', 'compliance failures:\n' + failures.join('\n\n'));
 });
 
-test('homepage does not render placeholder or unsupported Trustpilot proof', () => {
+test('homepage does not render placeholder or unsupported review proof', () => {
   const index = read('index.html');
   assert.doesNotMatch(index, /REPLACE_WITH_YOUR_TRUSTPILOT_BUSINESS_UNIT_ID/);
   assert.doesNotMatch(index, /Reviewed on\s*<strong>Trustpilot<\/strong>/);
   assert.doesNotMatch(index, /trustpilot/i);
-  assert.match(index, /review collection in progress/i);
+  assert.doesNotMatch(index, /review collection in progress/i);
+  assert.doesNotMatch(index, /Buyer review collection/i);
+  assert.doesNotMatch(index, /tp-section/);
+});
+
+test('homepage bottom avoids redundant proof and comparison blocks', () => {
+  const index = read('index.html');
+  assert.doesNotMatch(index, /How We Compare/i);
+  assert.doesNotMatch(index, /compare-section/);
+  assert.doesNotMatch(index, /typical supplier/i);
+  assert.doesNotMatch(index, /reviews-section/);
+  assert.doesNotMatch(index, /Before Checkout/i);
+  assert.doesNotMatch(index, /about-light-stats/);
+  assert.match(index, /Reconstitution calculator/i);
+  assert.match(index, /How to Order/i);
 });
 
 test('checkout and customer emails no longer reference Trustpilot', () => {

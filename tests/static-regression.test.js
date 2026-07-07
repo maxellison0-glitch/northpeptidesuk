@@ -225,7 +225,10 @@ assert(
   "homepage footer should link to the compliance page"
 );
 assert(
-  index.includes("What you need to<br><em>review your basket.</em>") &&
+  index.includes("Reconstitution calculator.") &&
+    !index.includes("What you need to<br><em>review your basket.</em>") &&
+    !index.includes("How We Compare") &&
+    !index.includes("Review collection in progress") &&
     !index.includes("Start simple.") &&
     !index.includes("Ask before you order.") &&
     !index.includes("What are the main stocked options?") &&
@@ -233,7 +236,7 @@ assert(
     !index.includes("Do I need the checkout basics?") &&
     !index.includes("How does payment and dispatch work?") &&
     !index.includes("Can I ask before ordering?"),
-  "homepage should replace the sales-led help and repetitive FAQ copy with basket review guidance"
+  "homepage should keep the calculator while removing redundant bottom proof and checkout filler copy"
 );
 assert(
   !index.includes("Northern England") &&

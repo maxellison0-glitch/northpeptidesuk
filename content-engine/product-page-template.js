@@ -17,14 +17,20 @@ function priceLabel(product) {
 }
 
 function variantButtons(product) {
-  return product.variants.map(variant => `
-          <button class="variant-row" type="button" onclick='addToBasket(${js(product.name)}, ${Number(variant.price)}, ${js(variant.dose)})'>
+  return product.variants.map(variant => {
+    const aria = `Add ${product.name} ${variant.dose} to basket`;
+    return `
+          <button class="variant-row" type="button" aria-label="${escapeHtml(aria)}" onclick='addToBasket(${js(product.name)}, ${Number(variant.price)}, ${js(variant.dose)})'>
             <span>
               <strong>${escapeHtml(variant.label || variant.dose)}</strong>
               <small>${escapeHtml(variant.dose)}</small>
             </span>
-            <span>${escapeHtml(formatGBP(Number(variant.price)))}</span>
-          </button>`).join('');
+            <span class="variant-action">
+              <span class="variant-price">${escapeHtml(formatGBP(Number(variant.price)))}</span>
+              <span class="variant-cta">Add to Basket</span>
+            </span>
+          </button>`;
+  }).join('');
 }
 
 function listItems(items) {
@@ -252,10 +258,13 @@ const PRODUCT_CSS = `
     .summary { margin: 0 0 20px; font-size: 1rem; }
     .price-line { margin: 0 0 18px; font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: #10233F; }
     .variant-list { display: grid; gap: 10px; }
-    .variant-row { width: 100%; min-height: 58px; border: 1px solid #CADAEA; border-radius: 8px; background: #FCFDFF; color: #172033; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-    .variant-row:hover { border-color: #1F6FEB; background: #F5FAFF; }
+    .variant-row { width: 100%; min-height: 64px; border: 1px solid #CADAEA; border-radius: 8px; background: #FCFDFF; color: #172033; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .variant-row:hover { border-color: #1F6FEB; background: #F5FAFF; transform: translateY(-1px); }
     .variant-row strong { display: block; font-size: 0.92rem; }
     .variant-row small { display: block; margin-top: 2px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.67rem; }
+    .variant-action { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .variant-price { font-family: Syne, sans-serif; font-size: 1.05rem; font-weight: 800; color: #10233F; }
+    .variant-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 12px; border-radius: 6px; background: #1F6FEB; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
     .research-note { margin-top: 18px; border: 1px solid #D8E5F2; border-radius: 8px; padding: 14px 15px; background: #F5F8FC; color: #4B5F75; font-size: 0.82rem; line-height: 1.65; }
     .research-note strong { color: #172033; }
     .content-grid { max-width: 1160px; margin: 0 auto; padding: 18px 40px 70px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
@@ -307,6 +316,9 @@ const PRODUCT_CSS = `
       .nav-links { gap: 10px; font-size: 0.6rem; }
       .product-hero, .content-grid { grid-template-columns: 1fr; padding-left: 16px; padding-right: 16px; }
       .buy-card { padding: 22px; }
+      .variant-row { align-items: stretch; flex-direction: column; }
+      .variant-action { width: 100%; justify-content: space-between; }
+      .variant-cta { min-width: 132px; }
       .side-card { position: static; }
       .basket-drawer { width: 100vw; }
       .footer { flex-direction: column; align-items: flex-start; padding: 24px 16px; }

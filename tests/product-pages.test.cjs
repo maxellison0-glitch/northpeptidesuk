@@ -35,6 +35,7 @@ test('every catalogue item has a static product landing page', () => {
     assert.match(html, /\/site-config\.js/);
     assert.match(html, /\/tiktok-analytics\.js/);
     assert.match(html, /addToBasket\(/);
+    assert.match(html, /Add to Basket/, `${file} should expose a clear buy action`);
   }
 });
 
