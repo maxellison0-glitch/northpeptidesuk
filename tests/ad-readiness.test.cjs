@@ -50,7 +50,7 @@ test('checkout and customer emails no longer reference Trustpilot', () => {
 test('public sources do not contain common mojibake sequences', () => {
   const exts = new Set(['.html', '.js', '.json', '.md', '.cjs']);
   const skipDirs = new Set(['.git', 'node_modules', 'tests']);
-  const bad = /(?:â€|â€™|â€œ|â€�|â€“|â€”|â€¦|â†’|âœ|â‰|âˆ|Ã—|Â£|Â·|Â©|Ã‚|ðŸ)/;
+  const bad = /(?:\u00C3|\u00C2|\u00E2[\u0080-\u00BF]|\u00F0[\u0080-\u00BF])/;
   const matches = [];
 
   function walk(dir) {
@@ -64,6 +64,29 @@ test('public sources do not contain common mojibake sequences', () => {
       const rel = path.relative(ROOT, file).replace(/\\/g, '/');
       const source = fs.readFileSync(file, 'utf8');
       if (bad.test(source)) matches.push(rel);
+    }
+  }
+
+  walk(ROOT);
+  assert.deepEqual(matches, []);
+});
+
+test('public sources decode cleanly as UTF-8', () => {
+  const exts = new Set(['.html', '.js', '.json', '.md', '.cjs']);
+  const skipDirs = new Set(['.git', 'node_modules', 'tests']);
+  const matches = [];
+
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        if (!skipDirs.has(entry.name)) walk(path.join(dir, entry.name));
+        continue;
+      }
+      if (!entry.isFile() || !exts.has(path.extname(entry.name))) continue;
+      const file = path.join(dir, entry.name);
+      const rel = path.relative(ROOT, file).replace(/\\/g, '/');
+      const source = fs.readFileSync(file, 'utf8');
+      if (source.includes('\uFFFD')) matches.push(rel);
     }
   }
 
