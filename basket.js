@@ -47,7 +47,7 @@ function addToBasket(name, price, dose) {
 function goToCheckout() {
   saveBasket();
   trackBasketEvent('InitiateCheckout', basket, getTotal());
-  window.location.href = 'checkout.html';
+  window.location.href = '/checkout.html';
 }
 
 function removeFromBasket(index) {

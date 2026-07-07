@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product | North Peptides UK</title>
   <meta name="google-site-verification" content="">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
   <script src="/site-config.js" defer></script>
@@ -306,7 +307,7 @@
 
     function injectSEO() {
       const seo = product.seo || {};
-      const canonicalUrl = `${SITE_ORIGIN}/product.html?product=${slug}`;
+      const canonicalUrl = `${SITE_ORIGIN}/products/${slug}/`;
       const title = seo.title || `${product.name} | UK Research Peptide | North Peptides UK`;
       const lowestPrice = Math.min(...product.variants.map(v => v.price));
       const desc = (seo.metaDescription
@@ -432,10 +433,10 @@
                   <div class="upgrade-card-heading">Skip the reconstitution</div>
                   <p class="upgrade-card-desc">Get this compound pre-reconstituted in a universal pen-compatible vial. No measuring, no mixing.</p>
                 </div>
-                <a class="upgrade-card-btn" href="product.html?product=${product.sisterProduct.slug}">View Pen Vial</a>
+                <a class="upgrade-card-btn" href="/products/${product.sisterProduct.slug}/">View Pen Vial</a>
               </div>
             </div>`
-          : `<a class="sister-link" href="product.html?product=${product.sisterProduct.slug}">
+          : `<a class="sister-link" href="/products/${product.sisterProduct.slug}/">
               <div>
                 <div class="sister-link-label">${product.sisterProduct.label}</div>
                 <div class="sister-link-name">${product.sisterProduct.name}</div>
@@ -533,7 +534,7 @@
               </div>
               <div class="actions">
                 <button class="primary" id="add-button" onclick="addDetailToBasket(false)">Add to Basket</button>
-                <a class="button checkout-followup" id="checkout-followup" href="checkout.html">Continue to Checkout</a>
+                <a class="button checkout-followup" id="checkout-followup" href="/checkout.html">Continue to Checkout</a>
               </div>
             </div>
             ${intranasalSection}

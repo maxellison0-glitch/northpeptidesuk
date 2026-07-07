@@ -5,7 +5,7 @@
  * fences so the gate trusts it and scans only author prose.
  */
 
-const { SITE, STATIC_PAGES, escapeHtml, resolveProducts, priceFrom, formatGBP } = require('./site.js');
+const { SITE, STATIC_PAGES, PRODUCTS, escapeHtml, resolveProducts, priceFrom, formatGBP, productPath } = require('./site.js');
 
 // Default sidebar "popular products" if an article doesn't specify its own.
 const DEFAULT_POPULAR = ['retatrutide', 'tirzepatide', 'bpc-157', 'klow-stack'];
@@ -34,6 +34,13 @@ function readingTime(article) {
 
 function canonicalUrl(slug) {
   return `${SITE.base}/blog/${slug}.html`;
+}
+
+function rewriteProductLinks(html) {
+  return String(html).replace(
+    /(href=["'])(?:https:\/\/www\.northpeptidesuk\.com)?\/product\.html\?product=([a-z0-9-]+)(["'])/g,
+    (match, prefix, slug, suffix) => (PRODUCTS[slug] ? `${prefix}${productPath(slug)}${suffix}` : match)
+  );
 }
 
 // ---- JSON-LD ---------------------------------------------------------------
@@ -119,7 +126,7 @@ function ruoCallout() {
 
 function renderSections(article) {
   return article.sections.map((s, i) => {
-    const block = `      <h2 id="${s.id}">${escapeHtml(s.heading)}</h2>\n${s.html}`;
+    const block = `      <h2 id="${s.id}">${escapeHtml(s.heading)}</h2>\n${rewriteProductLinks(s.html)}`;
     // Drop the mandatory RUO callout in right after the first section.
     return i === 0 ? block + '\n' + ruoCallout() : block;
   }).join('\n\n');

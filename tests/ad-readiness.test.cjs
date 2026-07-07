@@ -154,7 +154,7 @@ test('machine-readable catalogue exists for search and AI retrieval', () => {
   for (const product of feed.products) {
     assert.ok(product.slug, 'product slug is required');
     assert.ok(product.name, `${product.slug} name is required`);
-    assert.ok(product.url.startsWith('https://www.northpeptidesuk.com/product.html?product='));
+    assert.ok(product.url.startsWith('https://www.northpeptidesuk.com/products/'));
     assert.ok(Array.isArray(product.variants) && product.variants.length >= 1, `${product.slug} variants are required`);
     assert.equal(product.researchUseOnly, true, `${product.slug} must be RUO-marked`);
     assert.doesNotMatch(JSON.stringify(product), /\bverified\b|\bHPLC\b|\bTrustpilot\b/i);
