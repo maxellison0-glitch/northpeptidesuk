@@ -17,20 +17,28 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
-      background: linear-gradient(180deg, #E3F0E8 0, #F5F8F5 260px, #F5F8F5 100%);
-      color: #16201b;
+      background: #F5F9FC;
+      color: #172033;
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
+    .checkout-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #10233F;
+      margin: 4px 0 20px;
+    }
+    .checkout-next-note { margin: 8px 0 16px; font-size: 0.8rem; line-height: 1.6; color: #4B5F75; }
     :root {
-      --brand-ink: #123128;
-      --brand-green: #00795F;
-      --brand-green-soft: #e8f3ee;
+      --brand-ink: #10233F;
+      --brand-primary: #1F6FEB;
+      --brand-primary-soft: #EEF7FD;
       --paper: #ffffff;
-      --page: #F5F8F5;
-      --line: #E0E8E1;
-      --muted: #66736b;
-      --soft-neutral: #7C9C8E;
-      --soft-neutral-light: #EDF4EF;
+      --page: #F5F9FC;
+      --line: #D8E5F2;
+      --muted: #63758A;
+      --soft-neutral: #8CA0B4;
+      --soft-neutral-light: #EEF7FD;
     }
 
     .checkout-wrap {
@@ -44,62 +52,30 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       background: #ffffff;
-      border: 1px solid #E4ECE6;
-      border-radius: 14px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 28px rgba(18,46,35,0.08);
+      border: 1px solid #D8E5F2;
+      border-radius: 10px;
+      padding: 13px 16px;
     }
     .checkout-logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       letter-spacing: 0.08em;
-      color: #16241E;
+      color: #10233F;
       text-decoration: none;
     }
-    .checkout-logo span { color: #00795F; }
+    .checkout-logo span { color: #1F6FEB; }
     .back-link {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.08em;
-      color: #5C6B63;
+      color: #63758A;
       text-decoration: none;
       transition: color 0.2s;
     }
-    .back-link:hover { color: #00795F; }
-
-    .checkout-intro {
-      margin: 0 0 22px;
-      padding: 20px 22px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px solid #E4ECE6;
-      box-shadow: 0 10px 28px rgba(18,46,35,0.06);
-    }
-    .checkout-intro-tag {
-      display: block;
-      margin-bottom: 7px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--brand-green);
-    }
-    .checkout-intro h1 {
-      margin-bottom: 8px;
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.45rem, 5vw, 2.1rem);
-      line-height: 1.08;
-      color: #16201b;
-    }
-    .checkout-intro p {
-      max-width: 520px;
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: var(--muted);
-    }
+    .back-link:hover { color: #1F6FEB; }
 
 
     /* SECTION HEADING */
@@ -108,7 +84,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--brand-green);
+      color: var(--brand-primary);
       margin-bottom: 10px;
     }
 
@@ -125,23 +101,23 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 16px;
-      border-bottom: 1px solid #EEF4EF;
+      border-bottom: 1px solid #EAF0F7;
     }
     .order-line:last-child { border-bottom: none; }
-    .order-line-name { font-size: 0.88rem; color: #1a1a1a; font-weight: 500; }
-    .order-line-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; margin-top: 2px; }
-    .order-line-qty { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #9CA3AF; margin: 0 12px; }
-    .order-line-price { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: #1a1a1a; font-weight: 600; white-space: nowrap; }
-    .order-empty { padding: 20px 16px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #9CA3AF; text-align: center; }
+    .order-line-name { font-size: 0.88rem; color: #172033; font-weight: 500; }
+    .order-line-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #63758A; margin-top: 2px; }
+    .order-line-qty { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #96A3B3; margin: 0 12px; }
+    .order-line-price { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: #172033; font-weight: 600; white-space: nowrap; }
+    .order-empty { padding: 20px 16px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #96A3B3; text-align: center; }
     .order-subtotal-row {
       display: flex;
       justify-content: space-between;
       padding: 12px 16px;
-      background: #F0F4EF;
+      background: #F5F8FC;
       border-top: 1px solid var(--line);
     }
-    .order-subtotal-row span:first-child { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
-    .order-subtotal-row span:last-child { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #1a1a1a; }
+    .order-subtotal-row span:first-child { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #96A3B3; }
+    .order-subtotal-row span:last-child { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #172033; }
 
     /* DISCOUNT CODE */
     .discount-row {
@@ -153,31 +129,31 @@
       flex: 1;
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 7px;
       padding: 11px 14px;
       font-family: 'DM Mono', monospace;
       font-size: 0.8rem;
-      color: #1a1a1a;
+      color: #172033;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-    .discount-input::placeholder { text-transform: none; color: #9CA3AF; }
-    .discount-input:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0,122,92,0.08); }
+    .discount-input::placeholder { text-transform: none; color: #96A3B3; }
+    .discount-input:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgba(31,111,235,0.08); }
     .discount-btn {
       padding: 11px 18px;
       background: #ffffff;
-      border: 1px solid #BFD8CC;
-      color: #00795F;
+      border: 1px solid #B8D6F0;
+      color: #1F6FEB;
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-radius: 6px;
+      border-radius: 7px;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
     }
-    .discount-btn:hover { background: #E9F5EE; }
+    .discount-btn:hover { background: #EAF4FF; }
     .discount-msg {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
@@ -186,7 +162,7 @@
       border-radius: 4px;
       display: none;
     }
-    .discount-msg.success { background: #E9F5EE; color: #1C6A50; border: 1px solid #C9E2D5; display: block; }
+    .discount-msg.success { background: #EAF4FF; color: #174EA6; border: 1px solid #B8D6F0; display: block; }
     .discount-msg.error { background: #FEF2F2; color: #EF4444; border: 1px solid #FECACA; display: block; }
 
     /* DELIVERY */
@@ -207,51 +183,45 @@
       cursor: pointer;
       transition: border-color 0.2s;
     }
-    .delivery-option.selected { border-color: var(--brand-green); background: var(--brand-green-soft); }
-    .delivery-option input[type="radio"] { accent-color: var(--brand-green); width: 16px; height: 16px; flex-shrink: 0; }
+    .delivery-option.selected { border-color: var(--brand-primary); background: var(--brand-primary-soft); }
+    .delivery-option input[type="radio"] { accent-color: var(--brand-primary); width: 16px; height: 16px; flex-shrink: 0; }
     .delivery-option-info { flex: 1; }
-    .delivery-option-name { font-size: 0.88rem; color: #1a1a1a; font-weight: 500; margin-bottom: 2px; }
-    .delivery-option-desc { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #6B7280; }
-    .delivery-option-price { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #1a1a1a; }
+    .delivery-option-name { font-size: 0.88rem; color: #172033; font-weight: 500; margin-bottom: 2px; }
+    .delivery-option-desc { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #63758A; }
+    .delivery-option-price { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #172033; }
 
     /* CHECKOUT ADD-ONS */
     .addon-box { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
-    .addon-intro { padding: 14px 16px; background: var(--brand-green-soft); border-bottom: 1px solid var(--line); }
-    .addon-intro strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 3px; }
-    .addon-intro span { display: block; font-size: 0.76rem; color: #6B7280; line-height: 1.5; }
     .addon-list { display: flex; flex-direction: column; }
-    .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EEF4EF; transition: background 0.2s, transform 0.2s; }
-    .addon-row:hover { background: #F9FBF7; transform: translateX(2px); }
-    .addon-row.featured { position: relative; background: #F3F9F5; }
-    .addon-row.featured::before { content: none; }
+    .addon-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EAF0F7; transition: background 0.15s; }
+    .addon-row:hover { background: #F5F8FC; }
     .addon-row:last-child { border-bottom: none; }
     .addon-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .addon-info > div:last-child { min-width: 0; }
-    .addon-visual { width: 46px; height: 46px; border-radius: 10px; border: 1px solid #E5E7EB; background: linear-gradient(135deg, #ffffff 0%, var(--soft-neutral-light) 100%); flex-shrink: 0; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
+    .addon-visual { width: 46px; height: 46px; border-radius: 10px; border: 1px solid #D8E5F2; background: linear-gradient(135deg, #ffffff 0%, var(--soft-neutral-light) 100%); flex-shrink: 0; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
     .addon-visual::after { content: none; }
     .addon-symbol { position: relative; z-index: 1; display: block; color: var(--soft-neutral); }
     .addon-symbol.vial { width: 16px; height: 25px; border: 2px solid currentColor; border-radius: 4px 4px 7px 7px; background: rgba(176,175,155,0.18); }
-    .addon-symbol.vial::before { content: ""; position: absolute; left: 3px; right: 3px; top: -7px; height: 6px; border-radius: 3px 3px 1px 1px; background: #1a1a1a; opacity: 0.85; }
+    .addon-symbol.vial::before { content: ""; position: absolute; left: 3px; right: 3px; top: -7px; height: 6px; border-radius: 3px 3px 1px 1px; background: #172033; opacity: 0.85; }
     .addon-symbol.vial::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: 5px; height: 5px; border-radius: 8px; background: currentColor; opacity: 0.35; }
     .addon-symbol.syringe { width: 30px; height: 12px; border: 2px solid currentColor; border-radius: 5px; transform: rotate(-24deg); background: rgba(255,255,255,0.65); }
-    .addon-symbol.syringe::before { content: ""; position: absolute; left: -8px; top: 3px; width: 8px; height: 2px; background: currentColor; box-shadow: -5px 0 0 #1a1a1a; }
-    .addon-symbol.syringe::after { content: ""; position: absolute; right: -11px; top: 4px; width: 12px; height: 2px; background: #1a1a1a; }
+    .addon-symbol.syringe::before { content: ""; position: absolute; left: -8px; top: 3px; width: 8px; height: 2px; background: currentColor; box-shadow: -5px 0 0 #172033; }
+    .addon-symbol.syringe::after { content: ""; position: absolute; right: -11px; top: 4px; width: 12px; height: 2px; background: #172033; }
     .addon-symbol.wipes { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 5px; background: rgba(176,175,155,0.15); transform: rotate(-4deg); }
     .addon-symbol.wipes::before { content: ""; position: absolute; left: 5px; right: 5px; top: 6px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(176,175,155,0.5); }
     .addon-symbol.wipes::after { content: ""; position: absolute; right: -4px; top: 3px; width: 9px; height: 9px; border-radius: 2px; background: #ffffff; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(8deg); }
-    .addon-symbol.kit { width: 30px; height: 23px; border: 2px solid currentColor; border-radius: 7px; background: rgba(176,175,155,0.15); animation: addon-float 3.6s ease-in-out infinite; }
+    .addon-symbol.kit { width: 30px; height: 23px; border: 2px solid currentColor; border-radius: 7px; background: rgba(176,175,155,0.15); }
     .addon-symbol.kit::before { content: ""; position: absolute; left: 6px; right: 6px; top: -7px; height: 7px; border: 2px solid currentColor; border-bottom: 0; border-radius: 6px 6px 0 0; opacity: 0.75; }
     .addon-symbol.kit::after { content: ""; position: absolute; left: 7px; right: 7px; top: 9px; height: 2px; background: currentColor; box-shadow: 0 -5px 0 rgba(176,175,155,0.5), 0 5px 0 rgba(176,175,155,0.5); }
-    .addon-symbol.cool { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 6px; background: rgba(176,175,155,0.15); }
+    .addon-symbol.cool { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 7px; background: rgba(176,175,155,0.15); }
     .addon-symbol.cool::before { content: ""; position: absolute; left: 6px; right: 6px; top: 5px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(176,175,155,0.55), 0 10px 0 rgba(176,175,155,0.35); }
     .addon-symbol.cool::after { content: ""; position: absolute; right: -6px; top: -6px; width: 13px; height: 13px; border-radius: 50%; border: 2px solid currentColor; background: #ffffff; }
-    @keyframes addon-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -3px; } }
-    .addon-name { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; }
-    .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #6B7280; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
+    .addon-name { font-size: 0.88rem; font-weight: 600; color: #172033; }
+    .addon-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: #63758A; margin-top: 2px; line-height: 1.5; overflow-wrap: anywhere; }
     .addon-action { display: flex; align-items: center; gap: 10px; }
-    .addon-price { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1a1a1a; white-space: nowrap; }
-    .addon-btn { min-width: 84px; padding: 9px 12px; background: var(--brand-green); color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .addon-btn:hover { background: #00614C; }
+    .addon-price { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #172033; white-space: nowrap; }
+    .addon-btn { min-width: 84px; padding: 9px 12px; background: var(--brand-primary); color: #ffffff; border: none; border-radius: 7px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .addon-btn:hover { background: #185ABC; }
     .addon-btn.added { background: var(--soft-neutral); color: #ffffff; }
 
     /* TOTAL */
@@ -265,24 +235,24 @@
       margin-bottom: 28px;
     }
     .total-box-left { display: flex; flex-direction: column; gap: 2px; }
-    .total-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #9DB7AA; }
+    .total-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #96A3B3; }
     .discount-applied-line { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--soft-neutral); display: none; }
     .total-amount { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #ffffff; }
 
     /* PAYMENT METHODS */
     .payment-methods {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      row-gap: 8px;
+      padding: 0 2px;
+      margin-bottom: 14px;
     }
-    .pay-secure { display: flex; align-items: center; gap: 8px; }
-    .pay-lock { color: #00795F; flex-shrink: 0; }
-    .pay-secure-text { font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: #1a1a1a; font-weight: 500; }
-    .pay-stripe { margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: #6B7280; white-space: nowrap; }
-    .pay-stripe strong { color: #635BFF; font-weight: 700; letter-spacing: -0.01em; }
-    .pay-cards { display: flex; gap: 7px; align-items: center; margin-top: 12px; }
+    .pay-secure { display: flex; align-items: center; gap: 7px; }
+    .pay-lock { color: #1F6FEB; flex-shrink: 0; }
+    .pay-secure-text { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: #4B5F75; font-weight: 500; }
+    .pay-cards { display: flex; gap: 6px; align-items: center; margin-left: auto; }
     .pay-card { display: block; }
 
     /* FORM */
@@ -293,7 +263,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #6B7280;
+      color: #63758A;
       margin-bottom: 6px;
     }
     .form-group input,
@@ -301,53 +271,50 @@
       width: 100%;
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 6px;
-      color: #1a1a1a;
+      border-radius: 7px;
+      color: #172033;
       padding: 12px 14px;
       font-family: 'DM Mono', monospace;
       font-size: 0.85rem;
       transition: border-color 0.2s;
     }
     .form-group input:focus,
-    .form-group textarea:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0,122,92,0.08); }
+    .form-group textarea:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgba(31,111,235,0.08); }
     .form-group textarea { resize: vertical; min-height: 70px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .optional-label { color: #9CA3AF; font-size: 0.55rem; margin-left: 4px; }
+    .optional-label { color: #96A3B3; font-size: 0.55rem; margin-left: 4px; }
 
     /* TRUST NOTE */
-    .checkout-trust-note { background: var(--brand-green-soft); border: 1px solid #cfe0d7; border-radius: 12px; padding: 16px; margin: 28px 0; }
-    .checkout-trust-note strong { display: block; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 6px; }
-    .checkout-trust-note p { font-size: 0.8rem; color: #6B7280; line-height: 1.7; }
-    .checkout-fine-print { margin: -4px 0 24px; font-size: 0.7rem; color: #9CA3AF; line-height: 1.6; }
+    .checkout-fine-print { margin: -4px 0 24px; font-size: 0.7rem; color: #4B5F75; line-height: 1.6; }
 
     /* PLACE ORDER */
     .btn-place-order {
       width: 100%;
-      padding: 18px;
-      background: var(--brand-green);
-      box-shadow: 0 12px 26px rgba(0,121,95,0.2);
+      min-height: 54px;
+      padding: 17px;
+      background: #1F6FEB;
+      box-shadow: 0 10px 22px rgba(31,111,235,0.18);
       color: #ffffff;
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       border: none;
-      border-radius: 8px;
+      border-radius: 7px;
       cursor: pointer;
       transition: background 0.2s;
       margin-bottom: 12px;
     }
-    .btn-place-order:hover { background: #00614C; }
+    .btn-place-order:hover { background: #185ABC; }
     .btn-place-order:disabled { opacity: 0.4; cursor: not-allowed; }
-    .field-hint { display: block; margin-top: 5px; font-size: 0.72rem; color: #6B7C72; letter-spacing: 0.01em; }
-    .checkout-assurance { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 4px 0 12px; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em; color: #3D4F46; text-align: center; }
-    .checkout-assurance span { color: #00795F; font-size: 0.85rem; }
-    .research-confirm { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; padding: 12px 14px; border: 1px solid #E2EAE4; border-radius: 8px; background: #F7FAF8; font-size: 0.8rem; line-height: 1.55; color: #3D4F46; cursor: pointer; }
-    .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: #00795F; cursor: pointer; }
+    .field-hint { display: block; margin-top: 5px; font-size: 0.72rem; color: #63758A; letter-spacing: 0.01em; }
+    .research-confirm { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; padding: 12px 14px; border: 1px solid #D8E5F2; border-radius: 8px; background: #F5F8FC; font-size: 0.8rem; line-height: 1.55; color: #4B5F75; cursor: pointer; }
+    .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: #1F6FEB; cursor: pointer; }
     .order-note {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
-      color: #9CA3AF;
+      color: #96A3B3;
       text-align: center;
       line-height: 1.7;
     }
@@ -361,18 +328,18 @@
     .success-check {
       width: 64px;
       height: 64px;
-      background: #f0fdf9;
-      border: 2px solid var(--soft-neutral);
+      background: #EEF7FD;
+      border: 2px solid #1F6FEB;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       margin: 0 auto 24px;
-      color: #1C6A50;
+      color: #1F6FEB;
     }
-    .success-page h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: #1a1a1a; margin-bottom: 12px; }
-    .success-page p { font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px; margin: 0 auto 8px; }
+    .success-page h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: #172033; margin-bottom: 12px; }
+    .success-page p { font-size: 0.85rem; color: #63758A; line-height: 1.7; max-width: 340px; margin: 0 auto 8px; }
 
     @media (max-width: 480px) {
       body { overflow-x: hidden; }
@@ -382,9 +349,7 @@
       .back-link { font-size: 0.56rem; letter-spacing: 0.04em; white-space: nowrap; padding-top: 2px; }
 .form-row { grid-template-columns: 1fr; }
       .addon-box { border-radius: 10px; }
-      .addon-intro { padding: 13px 14px; }
-      .addon-row { grid-template-columns: 1fr; gap: 10px; padding: 13px 14px; transform: none; }
-      .addon-row:hover { transform: none; }
+      .addon-row { grid-template-columns: 1fr; gap: 10px; padding: 13px 14px; }
       .addon-info { gap: 10px; align-items: flex-start; }
       .addon-action { justify-content: flex-start; width: 100%; padding-left: 52px; gap: 18px; }
       .addon-price { font-size: 1.08rem; }
@@ -393,80 +358,79 @@
       .addon-symbol.syringe { width: 27px; }
     }
     /* COOLING UPSELL CARD */
-    .cooling-card { background: var(--paper); border: 1px solid #B8D9E8; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; position: relative; overflow: hidden; }
-    .cooling-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #2B8FA8, #4BD4EB); pointer-events: none; }
+    .cooling-card { background: var(--paper); border: 1px solid #B8D6F0; border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; position: relative; overflow: hidden; }
+    .cooling-card::before { content: none; }
     .cooling-card-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
-    .cooling-icon-wrap { width: 48px; height: 48px; border-radius: 10px; border: 1px solid #B8D9E8; background: linear-gradient(135deg, #E8F5FB, #D0EEFA); flex-shrink: 0; display: grid; place-items: center; position: relative; }
-    .cooling-card-title { font-size: 0.92rem; font-weight: 700; color: #12211A; margin-bottom: 3px; }
+    .cooling-icon-wrap { width: 48px; height: 48px; border-radius: 10px; border: 1px solid #B8D6F0; background: linear-gradient(135deg, #EEF7FD, #E7F1FF); flex-shrink: 0; display: grid; place-items: center; position: relative; }
+    .cooling-card-title { font-size: 0.92rem; font-weight: 700; color: #10233F; margin-bottom: 3px; }
     .cooling-card-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
     .cooling-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
-    .cooling-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; color: #12211A; }
-    .cooling-add-btn { padding: 9px 18px; background: #1E7A96; color: #fff; border: none; border-radius: 7px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-    .cooling-add-btn:hover { background: #155F77; }
+    .cooling-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; color: #10233F; }
+    .cooling-add-btn { padding: 9px 18px; background: #1F6FEB; color: #fff; border: none; border-radius: 7px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .cooling-add-btn:hover { background: #185ABC; }
     .cooling-add-btn.added { background: var(--soft-neutral); cursor: default; }
     /* RECONSTITUTION CALCULATOR */
     .calc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
     .calc-intro { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); padding: 14px 18px 0; line-height: 1.6; }
     @keyframes calcSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes calcPop { 0%,100%{transform:scale(1)} 40%{transform:scale(1.06)} }
-    .calc-item { padding: 18px; border-top: 1px solid #EEF4EF; animation: calcSlideIn 0.35s ease both; }
+    .calc-item { padding: 18px; border-top: 1px solid #EAF0F7; animation: calcSlideIn 0.35s ease both; }
     .calc-item:first-child { border-top: none; }
     .calc-product-header { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
-    .calc-product-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: #16241E; flex: 1; }
-    .calc-product-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #00795F; background: rgba(0,121,95,0.09); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(0,121,95,0.18); }
-    .calc-pen-label { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #00795F; background: rgba(0,121,95,0.07); border: 1px solid rgba(0,121,95,0.18); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .calc-product-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: #10233F; flex: 1; }
+    .calc-product-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #1F6FEB; background: rgba(31,111,235,0.09); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(31,111,235,0.18); }
+    .calc-pen-label { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #1F6FEB; background: rgba(31,111,235,0.07); border: 1px solid rgba(31,111,235,0.18); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
     .calc-water-row { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; flex-wrap: wrap; }
     .calc-water-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
     .calc-water-btns { display: flex; gap: 5px; flex-wrap: wrap; }
     .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.16s; }
-    .calc-water-btn:hover { border-color: #00795F; color: #00795F; }
-    .calc-water-btn.active { background: #00795F; color: #fff; border-color: #00795F; }
+    .calc-water-btn:hover { border-color: #1F6FEB; color: #1F6FEB; }
+    .calc-water-btn.active { background: #1F6FEB; color: #fff; border-color: #1F6FEB; }
     /* Ask card — question, input and the live concentration reference all live in
        one connected block instead of a separate stat box floating above an
        unlabelled input further down the card. */
-    .calc-ask-card { background: linear-gradient(135deg, #EEF4EF 0%, #E4F2EB 100%); border: 1px solid rgba(0,121,95,0.14); border-radius: 10px; padding: 18px; transition: opacity 0.15s, transform 0.15s; }
-    .calc-ask-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #12211A; margin-bottom: 12px; }
+    .calc-ask-card { background: #F5F8FC; border: 1px solid rgba(31,111,235,0.14); border-radius: 10px; padding: 18px; transition: opacity 0.15s, transform 0.15s; }
+    .calc-ask-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #10233F; margin-bottom: 12px; }
     .calc-dose-input-wrap { display: flex; align-items: stretch; margin-bottom: 8px; }
-    .calc-dose-input { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #16241E; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; width: 140px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
+    .calc-dose-input { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #10233F; background: #fff; border: 1px solid rgba(31,111,235,0.3); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; width: 140px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
     .calc-dose-input::-webkit-outer-spin-button, .calc-dose-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .calc-dose-input:focus { border-color: #00795F; box-shadow: 0 0 0 3px rgba(0,121,95,0.1); }
+    .calc-dose-input:focus { border-color: #1F6FEB; box-shadow: 0 0 0 3px rgba(31,111,235,0.1); }
     .calc-unit-toggle { display: flex; }
-    .calc-unit-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: #6B7C72; background: #fff; border: 1px solid rgba(0,121,95,0.3); border-left: none; padding: 0 12px; cursor: pointer; transition: background 0.15s, color 0.15s; }
-    .calc-unit-btn:first-child { border-left: 1px solid rgba(0,121,95,0.3); }
+    .calc-unit-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: #63758A; background: #fff; border: 1px solid rgba(31,111,235,0.3); border-left: none; padding: 0 12px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .calc-unit-btn:first-child { border-left: 1px solid rgba(31,111,235,0.3); }
     .calc-unit-btn:last-child { border-radius: 0 8px 8px 0; }
-    .calc-unit-btn.active { background: #00795F; color: #fff; }
-    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A968F; line-height: 1.5; margin-top: 8px; }
-    .calc-dose-hint { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #8A968F; margin-bottom: 12px; }
-    .calc-ref-line { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4A5C52; padding-top: 12px; border-top: 1px solid rgba(0,121,95,0.16); animation: calcPop 0.3s ease; }
-    .calc-ref-line strong { color: #00795F; font-size: 0.78rem; }
-    .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #00795F; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
-    .order-line-blend-detail { font-size: 0.58rem; color: #9CA3AF; margin-top: 2px; }
+    .calc-unit-btn.active { background: #1F6FEB; color: #fff; }
+    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #96A3B3; line-height: 1.5; margin-top: 8px; }
+    .calc-dose-hint { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #96A3B3; margin-bottom: 12px; }
+    .calc-ref-line { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4B5F75; padding-top: 12px; border-top: 1px solid rgba(31,111,235,0.16); }
+    .calc-ref-line strong { color: #1F6FEB; font-size: 0.78rem; }
+    .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #1F6FEB; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
+    .order-line-blend-detail { font-size: 0.58rem; color: #96A3B3; margin-top: 2px; }
     /* Draw result */
     /* This is the actual answer the visitor came for, so it gets the most visual
        weight in the card — bigger number, clearer labelling than anything above it. */
     .calc-draw { margin-top: 14px; }
-    .calc-draw-result { background: linear-gradient(135deg, #0D1F18 0%, #162E21 100%); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; animation: calcPop 0.3s ease; }
+    .calc-draw-result { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; }
     .calc-draw-top { display: flex; align-items: center; gap: 14px; }
-    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.75rem; font-weight: 800; color: #00E5A0; line-height: 1; flex-shrink: 0; }
+    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: #1F6FEB; line-height: 1; flex-shrink: 0; }
     .calc-draw-info { flex: 1; }
-    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
-    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: rgba(255,255,255,0.5); margin-top: 5px; }
+    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #63758A; }
+    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: #96A3B3; margin-top: 5px; }
     /* Visual syringe fill — the single biggest gap found vs. paid calculation
        tools in research: a real fill line the customer can pattern-match against
        the physical syringe in their hand, not just a number in isolation. */
-    .calc-syringe-wrap { margin-top: 10px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .calc-syringe-wrap { margin-top: 10px; padding-top: 14px; border-top: 1px solid #EAF0F7; }
     .calc-syringe-svg { width: 100%; height: auto; display: block; }
-    .calc-syringe-overflow { margin-top: 6px; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #FFB4A2; }
-    .calc-draw-breakdown { margin-top: 8px; background: rgba(0,121,95,0.06); border: 1px solid rgba(0,121,95,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
-    .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #16241E; border-bottom: 1px solid rgba(0,121,95,0.08); padding-bottom: 4px; }
+    .calc-syringe-overflow { margin-top: 6px; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #C2410C; }
+    .calc-draw-breakdown { margin-top: 8px; background: rgba(31,111,235,0.06); border: 1px solid rgba(31,111,235,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
+    .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #10233F; border-bottom: 1px solid rgba(31,111,235,0.08); padding-bottom: 4px; }
     .calc-draw-comp:last-child { border-bottom: none; padding-bottom: 0; }
-    .calc-draw-comp span:last-child { color: #00795F; font-weight: 600; }
+    .calc-draw-comp span:last-child { color: #1F6FEB; font-weight: 600; }
     /* Saved confirmation */
-    .calc-saved { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #00795F; display: flex; align-items: center; gap: 5px; margin-top: 9px; opacity: 0; transition: opacity 0.35s; }
+    .calc-saved { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #1F6FEB; display: flex; align-items: center; gap: 5px; margin-top: 9px; opacity: 0; transition: opacity 0.35s; }
     /* Calculator toggle */
-    .calc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 0; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #16241E; text-transform: uppercase; transition: border-color 0.15s, background 0.15s; }
-    .calc-toggle:hover { border-color: #00795F; background: rgba(0,121,95,0.03); }
-    .calc-toggle-chevron { font-size: 0.75rem; color: #00795F; transition: transform 0.22s; display: inline-block; }
+    .calc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 0; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #10233F; text-transform: uppercase; transition: border-color 0.15s, background 0.15s; }
+    .calc-toggle:hover { border-color: #1F6FEB; background: rgba(31,111,235,0.03); }
+    .calc-toggle-chevron { font-size: 0.75rem; color: #1F6FEB; transition: transform 0.22s; display: inline-block; }
     .calc-toggle.open .calc-toggle-chevron { transform: rotate(90deg); }
     .calc-card { margin-top: 10px; }
     @media (max-width: 480px) {
@@ -490,26 +454,34 @@
     <a href="index.html" class="back-link">← Shop</a>
   </div>
 
-  <div class="checkout-intro">
-    <span class="checkout-intro-tag">Secure order review</span>
-    <h1>Review your order</h1>
-    <p>Check your basket, confirm delivery details, then continue to Stripe for secure card payment.</p>
+  <h1 class="checkout-title">Checkout</h1>
+
+  <!-- ORDER SUMMARY -->
+  <p class="sec-head">Your order</p>
+  <div class="order-box">
+    <div id="checkout-lines">
+      <p class="order-empty">Your basket is empty. <a href="index.html" style="color:#1F6FEB;">Continue shopping →</a></p>
+    </div>
+    <div class="order-subtotal-row">
+      <span>Subtotal</span>
+      <span id="subtotal">£0</span>
+    </div>
   </div>
 
-  <!-- SMART SECTION: Cooling upsell (regular vials) + Reconstitution Calculator -->
+  <!-- SMART SECTION: cold-chain add-on (regular vials) + reconstitution calculator -->
   <div id="smart-section" style="display:none">
 
-    <!-- Cold chain upsell — shown only when regular vials in basket, not pen vials -->
+    <!-- Cold-chain add-on — shown only when regular vials in basket, not pen vials -->
     <div id="cooling-highlight" style="display:none">
-      <p class="sec-head">Cold Chain Protection</p>
+      <p class="sec-head">Cold-chain packaging</p>
       <div class="cooling-card">
         <div class="cooling-card-left">
           <div class="cooling-icon-wrap" aria-hidden="true">
-            <span class="addon-symbol cool" style="color:#2B8FA8"></span>
+            <span class="addon-symbol cool" style="color:#1F6FEB"></span>
           </div>
           <div>
             <div class="cooling-card-title">Thermal Cooled Packaging</div>
-            <div class="cooling-card-desc">Insulated foil pouch + gel packs. Keeps your peptides cold from dispatch to your door.</div>
+            <div class="cooling-card-desc">Insulated foil pouch and gel packs to keep vials cold in transit.</div>
           </div>
         </div>
         <div class="cooling-card-right">
@@ -521,36 +493,21 @@
 
     <!-- Reconstitution calculator — hidden by default, tap to expand -->
     <button type="button" class="calc-toggle" id="calc-toggle" onclick="toggleCalc()">
-      <span>Reconstitution Calculator</span>
+      <span>Reconstitution calculator</span>
       <span class="calc-toggle-chevron">&#9658;</span>
     </button>
     <div class="calc-card" id="calc-card" style="display:none">
-      <p class="calc-intro">How much to draw — based on your basket.</p>
+      <p class="calc-intro">Draw volumes based on the items in your basket.</p>
       <div id="calc-items"></div>
     </div>
 
   </div>
 
-  <!-- ORDER SUMMARY -->
-  <p class="sec-head">Your Order</p>
-  <div class="order-box">
-    <div id="checkout-lines">
-      <p class="order-empty">No items in basket. <a href="index.html" style="color:#00795F;">Go back to shop →</a></p>
-    </div>
-    <div class="order-subtotal-row">
-      <span>Subtotal</span>
-      <span id="subtotal">£0</span>
-    </div>
-  </div>
-
   <!-- CHECKOUT ADD-ONS -->
-  <p class="sec-head">Optional Research Supplies</p>
+  <p class="sec-head">Optional research supplies</p>
   <div class="addon-box">
-    <div class="addon-intro">
-      <span>All optional. Add only what you need for your research preparation.</span>
-    </div>
     <div class="addon-list">
-      <div class="addon-row featured">
+      <div class="addon-row">
         <div class="addon-info">
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol kit"></span></div>
           <div>
@@ -605,7 +562,7 @@
 
 
   <!-- DISCOUNT CODE -->
-  <p class="sec-head">Discount Code</p>
+  <p class="sec-head">Discount code</p>
   <div class="discount-row">
     <input type="text" class="discount-input" id="discount-input" placeholder="Enter discount code">
     <button class="discount-btn" onclick="applyDiscount()">Apply</button>
@@ -642,35 +599,8 @@
     <span class="total-amount" id="grand-total">£0</span>
   </div>
 
-  <!-- PAYMENT METHODS -->
-  <div class="payment-methods">
-    <div class="pay-secure">
-      <svg class="pay-lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-        <path d="M7 10V7a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="2"/>
-        <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" fill="currentColor"/>
-      </svg>
-      <span class="pay-secure-text">Secure checkout</span>
-      <span class="pay-stripe">Powered by <strong>Stripe</strong></span>
-    </div>
-    <div class="pay-cards" aria-label="Accepted cards: Visa, Mastercard, American Express">
-      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Visa">
-        <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#E5E7EB"/>
-        <text x="19" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-style="italic" font-size="9.5" fill="#1A1F71">VISA</text>
-      </svg>
-      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Mastercard">
-        <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#E5E7EB"/>
-        <circle cx="16" cy="12" r="6" fill="#EB001B"/>
-        <circle cx="23" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
-      </svg>
-      <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="American Express">
-        <rect width="38" height="24" rx="3.5" fill="#1F72CF"/>
-        <text x="19" y="15.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.8" fill="#fff" letter-spacing="0.5">AMEX</text>
-      </svg>
-    </div>
-  </div>
-
   <!-- FORM -->
-  <p class="sec-head">Your Details</p>
+  <p class="sec-head">Your details</p>
   <form id="checkout-form">
     <input type="hidden" name="delivery_method" id="delivery-method-hidden">
     <input type="hidden" name="total" id="total-hidden">
@@ -690,20 +620,39 @@
       <textarea name="notes" placeholder="Anything we should know?"></textarea>
     </div>
 
-    <!-- TRUST NOTE -->
-    <div class="checkout-trust-note">
-      <strong>Fast, guest checkout — no account needed.</strong>
-      <p>Just your name and email here. You'll enter your delivery address and pay securely with card, Apple Pay, Google Pay or Link on the next screen (handled by Stripe).</p>
-    </div>
+    <p class="checkout-next-note">Add your delivery address and pay by card, Apple Pay or Google Pay on the next step — secure checkout handled by Stripe. No account needed.</p>
 
     <label class="research-confirm">
       <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
       <span>I confirm I am ordering these products strictly for laboratory research use only, and not for human or animal consumption.</span>
     </label>
-    <div class="checkout-assurance">
-      <span aria-hidden="true">✓</span> Secure Stripe checkout, tracked dispatch and direct order support
+
+    <div class="payment-methods">
+      <div class="pay-secure">
+        <svg class="pay-lock" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <path d="M7 10V7a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" fill="currentColor"/>
+        </svg>
+        <span class="pay-secure-text">Secure checkout</span>
+      </div>
+      <div class="pay-cards" aria-label="Accepted cards: Visa, Mastercard, American Express">
+        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Visa">
+          <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#D8E5F2"/>
+          <text x="19" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-style="italic" font-size="9.5" fill="#1A1F71">VISA</text>
+        </svg>
+        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Mastercard">
+          <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#D8E5F2"/>
+          <circle cx="16" cy="12" r="6" fill="#EB001B"/>
+          <circle cx="23" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
+        </svg>
+        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="American Express">
+          <rect width="38" height="24" rx="3.5" fill="#1F72CF"/>
+          <text x="19" y="15.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.8" fill="#fff" letter-spacing="0.5">AMEX</text>
+        </svg>
+      </div>
     </div>
-    <button type="submit" class="btn-place-order" id="submit-btn">Continue to Secure Payment →</button>
+
+    <button type="submit" class="btn-place-order" id="submit-btn">Continue to payment</button>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
@@ -713,10 +662,10 @@
 <div class="checkout-wrap success-page" id="success-page">
   <div style="text-align:center;padding:60px 0;">
     <div class="success-check">✓</div>
-    <h2>Payment Complete</h2>
-    <p style="margin-top:12px;">Your Stripe checkout has completed. We will prepare your order for dispatch review.</p>
-    <p style="margin-top:8px;">Any questions? Email <strong style="color:#00795F;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
-    <a href="index.html" style="display:inline-block;margin-top:32px;color:#00795F;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to Shop</a>
+    <h2>Order confirmed</h2>
+    <p style="margin-top:12px;">Thanks — your payment is complete. We'll email your confirmation and tracking, then prepare your order for dispatch.</p>
+    <p style="margin-top:8px;">Any questions? Email <strong style="color:#1F6FEB;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
+    <a href="index.html" style="display:inline-block;margin-top:32px;color:#1F6FEB;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to shop</a>
   </div>
 </div>
 
@@ -792,19 +741,19 @@
       const x = barrelX + (t / CAP) * barrelW;
       const major = t % 20 === 0;
       const tickBottom = barrelY + barrelH + (major ? 7 : 4);
-      let svg = '<line x1="' + x + '" y1="' + barrelY + '" x2="' + x + '" y2="' + tickBottom + '" stroke="rgba(255,255,255,' + (major ? 0.45 : 0.22) + ')" stroke-width="1"/>';
-      if (major) svg += '<text x="' + x + '" y="' + (tickBottom + 9) + '" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle" font-family="DM Mono, monospace">' + t + '</text>';
+      let svg = '<line x1="' + x + '" y1="' + barrelY + '" x2="' + x + '" y2="' + tickBottom + '" stroke="rgba(16,35,63,' + (major ? 0.4 : 0.2) + ')" stroke-width="1"/>';
+      if (major) svg += '<text x="' + x + '" y="' + (tickBottom + 9) + '" font-size="8" fill="rgba(16,35,63,0.45)" text-anchor="middle" font-family="DM Mono, monospace">' + t + '</text>';
       return svg;
     }).join('');
     const drawLineX = barrelX + fillW;
     const overflow = units > CAP;
     return '<div class="calc-syringe-wrap">' +
       '<svg class="calc-syringe-svg" viewBox="0 0 280 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' +
-        '<rect x="2" y="' + (barrelY - 2) + '" width="9" height="' + (barrelH + 4) + '" rx="2" fill="rgba(255,255,255,0.22)"/>' +
-        '<rect x="' + barrelX + '" y="' + barrelY + '" width="' + barrelW + '" height="' + barrelH + '" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>' +
-        (fillW > 0 ? '<rect x="' + barrelX + '" y="' + (barrelY + 2) + '" width="' + fillW + '" height="' + (barrelH - 4) + '" rx="2" fill="#00E5A0" opacity="0.85"/>' : '') +
-        (fillW > 0 ? '<line x1="' + drawLineX + '" y1="4" x2="' + drawLineX + '" y2="' + (barrelY + barrelH + 3) + '" stroke="#00E5A0" stroke-width="2"/>' : '') +
-        '<line x1="' + (barrelX + barrelW) + '" y1="' + (barrelY + barrelH / 2) + '" x2="272" y2="' + (barrelY + barrelH / 2) + '" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>' +
+        '<rect x="2" y="' + (barrelY - 2) + '" width="9" height="' + (barrelH + 4) + '" rx="2" fill="rgba(16,35,63,0.18)"/>' +
+        '<rect x="' + barrelX + '" y="' + barrelY + '" width="' + barrelW + '" height="' + barrelH + '" rx="4" fill="rgba(16,35,63,0.03)" stroke="rgba(16,35,63,0.28)" stroke-width="1.5"/>' +
+        (fillW > 0 ? '<rect x="' + barrelX + '" y="' + (barrelY + 2) + '" width="' + fillW + '" height="' + (barrelH - 4) + '" rx="2" fill="#1F6FEB" opacity="0.85"/>' : '') +
+        (fillW > 0 ? '<line x1="' + drawLineX + '" y1="4" x2="' + drawLineX + '" y2="' + (barrelY + barrelH + 3) + '" stroke="#1F6FEB" stroke-width="2"/>' : '') +
+        '<line x1="' + (barrelX + barrelW) + '" y1="' + (barrelY + barrelH / 2) + '" x2="272" y2="' + (barrelY + barrelH / 2) + '" stroke="rgba(16,35,63,0.4)" stroke-width="2"/>' +
         ticks +
       '</svg>' +
       (overflow ? '<div class="calc-syringe-overflow">Exceeds one 100-unit syringe — split into ' + Math.ceil(units / CAP) + ' draws</div>' : '') +
@@ -1111,7 +1060,7 @@
       appliedDiscountPct = 0;
       appliedDiscountCode = code;
       document.getElementById('discount-code-hidden').value = code + ' (free delivery)';
-      msg.textContent = 'Free delivery applied — Summer Heatwave offer.';
+      msg.textContent = 'Free delivery applied.';
       msg.className = 'discount-msg success';
       updateTotals();
     } else {
@@ -1184,7 +1133,7 @@
   function renderOrder() {
     const container = document.getElementById('checkout-lines');
     if (basketData.length === 0) {
-      container.innerHTML = '<p class="order-empty">No items in basket. <a href="index.html" style="color:#00795F;">Go back to shop →</a></p>';
+      container.innerHTML = '<p class="order-empty">Your basket is empty. <a href="index.html" style="color:#1F6FEB;">Continue shopping →</a></p>';
       return;
     }
     container.innerHTML = basketData.map(item => {
@@ -1317,7 +1266,7 @@
       const msg = document.getElementById('discount-msg');
       msg.textContent = error.message || 'Stripe checkout is not available yet.';
       msg.className = 'discount-msg error';
-      btn.textContent = 'Continue to Secure Payment ->';
+      btn.textContent = 'Continue to payment';
       btn.disabled = false;
     }
   }, true);
