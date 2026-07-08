@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave an Order Review | North Peptides UK</title>
+  <meta name="description" content="Leave a moderated North Peptides UK order review covering dispatch, packaging, ordering and support.">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:title" content="Leave an Order Review | North Peptides UK">
+  <meta property="og:description" content="Share feedback on dispatch, packaging, ordering and support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.northpeptidesuk.com/reviews/">
+  <link rel="canonical" href="https://www.northpeptidesuk.com/reviews/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <script src="/site-config.js" defer></script>
+  <script src="/tiktok-analytics.js" defer></script>
+  <script src="/age-gate.js"></script>
+  <script src="/dispatch-bar.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #132A46;
+      --muted: #566B80;
+      --soft: #F5F9FC;
+      --panel: #FFFFFF;
+      --line: #D8E5F2;
+      --blue: #1F6FEB;
+      --blue-dark: #174EA6;
+      --blue-soft: #EEF7FD;
+    }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      min-height: 100vh;
+      background: var(--soft);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 max(18px, calc((100% - 1120px) / 2));
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .brand {
+      color: var(--ink);
+      font-family: Syne, sans-serif;
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .brand span, .nav-links a:hover, .eyebrow, .page-title em { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 0.78rem; font-weight: 700; }
+    .nav-links a { color: var(--muted); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff !important;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+    main { padding: 54px 20px 68px; }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
+      gap: 34px;
+      align-items: start;
+    }
+    .intro { padding-top: 18px; }
+    .eyebrow {
+      display: block;
+      margin-bottom: 14px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .page-title {
+      max-width: 640px;
+      margin-bottom: 18px;
+      font-family: Syne, sans-serif;
+      font-size: clamp(2.15rem, 6vw, 4.35rem);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .review-rules {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+    }
+    .review-rules h2 {
+      margin-bottom: 10px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #7C8FA6;
+    }
+    .review-rules p, .review-rules li {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .review-rules ul { margin-top: 12px; padding-left: 18px; display: grid; gap: 7px; }
+    .form-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 22px 54px rgba(16, 35, 63, 0.08);
+      overflow: hidden;
+    }
+    .form-head {
+      padding: 24px 26px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff 0%, #F8FBFF 100%);
+    }
+    .form-head h2 {
+      margin-bottom: 7px;
+      font-family: Syne, sans-serif;
+      font-size: 1.24rem;
+      line-height: 1.2;
+    }
+    .form-head p { color: var(--muted); font-size: 0.88rem; }
+    form { padding: 24px 26px 26px; display: grid; gap: 18px; }
+    .field { display: grid; gap: 8px; }
+    label, legend {
+      font-family: "DM Mono", monospace;
+      color: #42566D;
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid #CAD9EA;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.16s, box-shadow 0.16s;
+    }
+    input { height: 46px; padding: 0 14px; }
+    textarea { min-height: 150px; resize: vertical; padding: 13px 14px; }
+    input:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(31, 111, 235, 0.12);
+    }
+    fieldset { border: 0; display: grid; gap: 9px; }
+    .rating-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .rating-row input { position: absolute; opacity: 0; pointer-events: none; }
+    .rating-row label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid #CAD9EA;
+      border-radius: 8px;
+      background: #F8FBFF;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0;
+      text-transform: none;
+      cursor: pointer;
+      transition: border-color 0.16s, background 0.16s, color 0.16s;
+    }
+    .rating-row input:checked + label {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .hint {
+      color: #738197;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+    .check {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid #DDE8F3;
+      border-radius: 8px;
+      background: #F8FBFF;
+    }
+    .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--blue); }
+    .check label {
+      font-family: "DM Sans", sans-serif;
+      color: #42566D;
+      font-size: 0.85rem;
+      letter-spacing: 0;
+      line-height: 1.55;
+      text-transform: none;
+    }
+    .submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 4px;
+    }
+    button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      cursor: pointer;
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0 20px;
+      transition: background 0.16s, transform 0.16s;
+      white-space: nowrap;
+    }
+    button:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    button:disabled { opacity: 0.62; cursor: wait; transform: none; }
+    .status {
+      min-height: 22px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+    .status.ok { color: #176B46; }
+    .status.error { color: #A43B3B; }
+    .footer {
+      background: #EDF4FA;
+      border-top: 1px solid var(--line);
+      padding: 36px 20px 28px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      color: #738197;
+      font-family: "DM Mono", monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .footer a { color: #42566D; }
+    .footer a:hover { color: var(--blue); }
+    .footer-note {
+      max-width: 1120px;
+      margin: 16px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid #D7E3EF;
+      color: #7C8FA6;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 0.52rem;
+    }
+    @media (max-width: 860px) {
+      .nav { padding: 0 16px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      main { padding: 36px 16px 52px; }
+      .page { grid-template-columns: 1fr; gap: 24px; }
+      .intro { padding-top: 0; }
+    }
+    @media (max-width: 520px) {
+      .brand { font-size: 0.84rem; letter-spacing: 0.05em; }
+      .nav-cta { padding: 8px 10px; font-size: 0.6rem; }
+      .page-title { font-size: 2.05rem; }
+      .review-rules, .form-head, form { padding-left: 16px; padding-right: 16px; }
+      .two-col, .rating-row { grid-template-columns: 1fr; }
+      .rating-row { gap: 7px; }
+      .submit-row { align-items: stretch; flex-direction: column; }
+      button { width: 100%; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">NORTH<span>PEPTIDES</span>UK</a>
+    <div class="nav-links">
+      <a href="/#products">Products</a>
+      <a href="/why-us.html">Why Us</a>
+      <a href="/compliance.html">Compliance</a>
+      <a href="/checkout.html" class="nav-cta">Basket</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page">
+      <section class="intro" aria-labelledby="review-title">
+        <span class="eyebrow">Order feedback</span>
+        <h1 class="page-title" id="review-title">Leave an <em>Order Review</em></h1>
+        <p class="lead">Share how the order process felt: dispatch, packaging, ordering and support. Reviews are checked before anything is published, so keep it factual and focused on the service experience.</p>
+
+        <div class="review-rules">
+          <h2>Moderated before publishing</h2>
+          <p>Keep your review to the order experience only.</p>
+          <ul>
+            <li>Useful: dispatch speed, packaging, communication, checkout and support.</li>
+            <li>Avoid: personal application, research outcomes, administration detail, health conditions or promotional claims.</li>
+            <li>All products are supplied for research use only and are not for human or animal consumption.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="form-panel" aria-labelledby="form-title">
+        <div class="form-head">
+          <h2 id="form-title">Submit a review</h2>
+          <p>This goes straight to the North Peptides UK inbox for moderation.</p>
+        </div>
+
+        <form id="review-form" data-endpoint="/api/submit-review">
+          <fieldset>
+            <legend>Rating</legend>
+            <div class="rating-row">
+              <input type="radio" id="rating-1" name="rating" value="1" required>
+              <label for="rating-1">1</label>
+              <input type="radio" id="rating-2" name="rating" value="2">
+              <label for="rating-2">2</label>
+              <input type="radio" id="rating-3" name="rating" value="3">
+              <label for="rating-3">3</label>
+              <input type="radio" id="rating-4" name="rating" value="4">
+              <label for="rating-4">4</label>
+              <input type="radio" id="rating-5" name="rating" value="5">
+              <label for="rating-5">5</label>
+            </div>
+          </fieldset>
+
+          <div class="two-col">
+            <div class="field">
+              <label for="display-name">Display name</label>
+              <input id="display-name" name="displayName" type="text" autocomplete="name" maxlength="80" required>
+            </div>
+            <div class="field">
+              <label for="order-reference">Order reference</label>
+              <input id="order-reference" name="orderReference" type="text" autocomplete="off" maxlength="80" placeholder="Optional">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Optional">
+            <p class="hint">Only used if we need to check something about the review.</p>
+          </div>
+
+          <div class="field">
+            <label for="review">Review</label>
+            <textarea id="review" name="review" minlength="20" maxlength="1200" required></textarea>
+            <p class="hint">Write about service, ordering, packaging, dispatch or support.</p>
+          </div>
+
+          <div class="check">
+            <input id="consent" name="consent" type="checkbox" required>
+            <label for="consent">I understand this review may be published after moderation and will stay limited to the order experience.</label>
+          </div>
+
+          <div class="submit-row">
+            <p class="status" id="review-status" role="status" aria-live="polite"></p>
+            <button type="submit" id="review-submit">Send Review</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>North Peptides UK</p>
+      <p><a href="mailto:orders@northpeptidesuk.com">orders@northpeptidesuk.com</a></p>
+    </div>
+    <p class="footer-note">Research use only. Not for human or animal consumption. Not medicines.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('review-form');
+      var status = document.getElementById('review-status');
+      var submit = document.getElementById('review-submit');
+      if (!form) return;
+
+      function setStatus(message, type) {
+        status.textContent = message || '';
+        status.className = 'status' + (type ? ' ' + type : '');
+      }
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        var data = new FormData(form);
+        var payload = {
+          rating: Number(data.get('rating')),
+          displayName: String(data.get('displayName') || '').trim(),
+          orderReference: String(data.get('orderReference') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          review: String(data.get('review') || '').trim(),
+          consent: data.get('consent') === 'on'
+        };
+
+        submit.disabled = true;
+        setStatus('Sending...', '');
+
+        try {
+          var response = await fetch(form.getAttribute('data-endpoint'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          var result = await response.json().catch(function () { return {}; });
+          if (!response.ok || !result.ok) throw new Error(result.error || 'Could not send the review.');
+          form.reset();
+          setStatus('Thanks. Your review has been sent for moderation.', 'ok');
+        } catch (err) {
+          setStatus(err.message || 'Could not send the review right now.', 'error');
+        } finally {
+          submit.disabled = false;
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

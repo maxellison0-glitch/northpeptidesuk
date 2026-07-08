@@ -22,6 +22,7 @@ const STATIC_PAGES = [
   { path: '/why-us.html',      changefreq: 'monthly', priority: '0.7' },
   { path: '/lab-reports.html', changefreq: 'monthly', priority: '0.7' },
   { path: '/compliance.html',  changefreq: 'monthly', priority: '0.4' },
+  { path: '/reviews/',         changefreq: 'monthly', priority: '0.5' },
   { path: '/blog/index.html',  changefreq: 'weekly',  priority: '0.6' },
 ];
 

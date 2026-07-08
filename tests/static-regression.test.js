@@ -18,6 +18,9 @@ const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("verce
 const whyUs = read("why-us.html");
 const labReports = read("lab-reports.html");
 const compliance = read("compliance.html");
+const reviews = read(path.join("reviews", "index.html"));
+const reviewApi = read(path.join("api", "submit-review.js"));
+const sitemap = read("sitemap.xml");
 const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
 const expectedAccessoryPrices = [
@@ -260,6 +263,24 @@ assert(
     sitePages.every((page) => !page.includes("Northern England")) &&
     sitePages.some((page) => page.includes("orders@northpeptidesuk.com")),
   "site support links should use the new support address and UK-only wording"
+);
+assert(
+  reviews.includes("Leave an Order Review") &&
+    reviews.includes("/api/submit-review") &&
+    reviews.includes("Moderated before publishing") &&
+    !/trustpilot/i.test(reviews),
+  "reviews route should collect moderated first-party order reviews without Trustpilot"
+);
+assert(
+  reviewApi.includes("PROHIBITED_REVIEW_TERMS") &&
+    reviewApi.includes("ORDER_NOTIFY_EMAIL") &&
+    reviewApi.includes("escapeHtml") &&
+    reviewApi.includes("RESEND_API_KEY"),
+  "review submission API should validate, notify, and escape review content"
+);
+assert(
+  sitemap.includes("https://www.northpeptidesuk.com/reviews/"),
+  "sitemap should include the reviews route"
 );
 assert(
   !index.includes("onclick=\"adjustProductQty(") &&

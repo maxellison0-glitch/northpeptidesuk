@@ -62,6 +62,85 @@ test('checkout and customer emails no longer reference Trustpilot', () => {
   }
 });
 
+test('reviews page is a real moderated collection route', () => {
+  const file = path.join(ROOT, 'reviews', 'index.html');
+  assert.ok(fs.existsSync(file), '/reviews/index.html should exist for QR and post-purchase links');
+  const reviews = fs.readFileSync(file, 'utf8');
+  assert.match(reviews, /Leave an Order Review/i);
+  assert.match(reviews, /\/api\/submit-review/);
+  assert.match(reviews, /dispatch, packaging, ordering and support/i);
+  assert.match(reviews, /Moderated before publishing/i);
+  assert.doesNotMatch(reviews, /trustpilot/i);
+  assert.doesNotMatch(reviews, /\b\d(?:\.\d)?\/5\b|\b\d+\s+reviews\b/i);
+});
+
+test('review submissions have validation and moderation guardrails', () => {
+  const file = path.join(ROOT, 'api', 'submit-review.js');
+  assert.ok(fs.existsSync(file), 'api/submit-review.js should receive review form submissions');
+  const api = fs.readFileSync(file, 'utf8');
+  assert.match(api, /RESEND_API_KEY/);
+  assert.match(api, /ORDER_NOTIFY_EMAIL/);
+  assert.match(api, /function escapeHtml/);
+  assert.match(api, /PROHIBITED_REVIEW_TERMS/);
+  assert.match(api, /consent/);
+  for (const phrase of ['dosage', 'injection', 'weight loss', 'treatment', 'healing']) {
+    assert.match(api, new RegExp(phrase, 'i'), `review API should block "${phrase}" claims`);
+  }
+});
+
+test('review submission handler rejects prohibited review claims before delivery', async () => {
+  const handler = require('../api/submit-review.js');
+  const previousEnv = {
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    ORDER_NOTIFY_EMAIL: process.env.ORDER_NOTIFY_EMAIL,
+  };
+  delete process.env.RESEND_API_KEY;
+  delete process.env.ORDER_NOTIFY_EMAIL;
+
+  try {
+    const blocked = await invokeReviewHandler(handler, {
+      rating: 5,
+      displayName: 'Max',
+      review: 'Great weight loss and injection result from this order.',
+      consent: true,
+    });
+    assert.equal(blocked.statusCode, 400);
+    assert.match(blocked.body.error, /ordering, dispatch, packaging or support/i);
+
+    const unavailable = await invokeReviewHandler(handler, {
+      rating: 5,
+      displayName: 'Max',
+      review: 'Great dispatch and careful packaging with clear support.',
+      consent: true,
+    });
+    assert.equal(unavailable.statusCode, 503);
+    assert.match(unavailable.body.error, /not available right now/i);
+  } finally {
+    if (previousEnv.RESEND_API_KEY === undefined) delete process.env.RESEND_API_KEY;
+    else process.env.RESEND_API_KEY = previousEnv.RESEND_API_KEY;
+    if (previousEnv.ORDER_NOTIFY_EMAIL === undefined) delete process.env.ORDER_NOTIFY_EMAIL;
+    else process.env.ORDER_NOTIFY_EMAIL = previousEnv.ORDER_NOTIFY_EMAIL;
+  }
+});
+
+async function invokeReviewHandler(handler, body) {
+  const req = {
+    method: 'POST',
+    headers: { origin: 'https://www.northpeptidesuk.com' },
+    body,
+  };
+  const res = {
+    headers: {},
+    statusCode: 200,
+    setHeader(name, value) { this.headers[name] = value; },
+    status(code) { this.statusCode = code; return this; },
+    send(payload) { this.body = JSON.parse(payload); return this; },
+    end() { this.ended = true; return this; },
+  };
+  await handler(req, res);
+  return res;
+}
+
 test('public sources do not contain common mojibake sequences', () => {
   const exts = new Set(['.html', '.js', '.json', '.md', '.cjs']);
   const skipDirs = new Set(['.git', 'node_modules', 'tests']);
