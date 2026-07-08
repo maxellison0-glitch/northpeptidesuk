@@ -74,6 +74,23 @@ test('reviews page is a real moderated collection route', () => {
   assert.doesNotMatch(reviews, /\b\d(?:\.\d)?\/5\b|\b\d+\s+reviews\b/i);
 });
 
+test('reviews page previews four modest feedback summaries only on that route', () => {
+  const reviews = read('reviews/index.html');
+  const home = read('index.html');
+  const cards = reviews.match(/data-feedback-card/g) || [];
+  assert.equal(cards.length, 4);
+  for (const theme of ['Delivery times', 'Goods quality', 'Packaging', 'Delivery and service']) {
+    assert.match(reviews, new RegExp(theme, 'i'));
+  }
+  assert.doesNotMatch(home, /data-feedback-card/i);
+  assert.doesNotMatch(home, /Previous feedback/i);
+  assert.doesNotMatch(home, /Came quicker than I expected/i);
+  assert.doesNotMatch(home, /Fast delivery and easy service/i);
+  assert.match(reviews, /Recreated as short summaries/i);
+  assert.match(reviews, /Leave your own review/i);
+  assert.doesNotMatch(reviews, /customer name|verified buyer|\brated\b/i);
+});
+
 test('review submissions have validation and moderation guardrails', () => {
   const file = path.join(ROOT, 'api', 'submit-review.js');
   assert.ok(fs.existsSync(file), 'api/submit-review.js should receive review form submissions');

@@ -132,6 +132,57 @@
       font-size: 0.88rem;
     }
     .review-rules ul { margin-top: 12px; padding-left: 18px; display: grid; gap: 7px; }
+    .feedback-panel { margin-top: 28px; }
+    .feedback-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .feedback-head h2 {
+      font-family: Syne, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.15;
+    }
+    .feedback-head a {
+      color: var(--blue);
+      font-family: "DM Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .feedback-note {
+      margin-bottom: 14px;
+      color: #738197;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+    .feedback-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .feedback-card {
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .feedback-card h3 {
+      margin-bottom: 7px;
+      color: #42566D;
+      font-family: "DM Mono", monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .feedback-card p {
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.62;
+    }
     .form-panel {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -310,6 +361,7 @@
       .nav-cta { padding: 8px 10px; font-size: 0.6rem; }
       .page-title { font-size: 2.05rem; }
       .review-rules, .form-head, form { padding-left: 16px; padding-right: 16px; }
+      .feedback-head { align-items: start; flex-direction: column; gap: 8px; }
       .two-col, .rating-row { grid-template-columns: 1fr; }
       .rating-row { gap: 7px; }
       .submit-row { align-items: stretch; flex-direction: column; }
@@ -345,6 +397,32 @@
             <li>All products are supplied for research use only and are not for human or animal consumption.</li>
           </ul>
         </div>
+
+        <section class="feedback-panel" aria-labelledby="previous-feedback-title">
+          <div class="feedback-head">
+            <h2 id="previous-feedback-title">Previous feedback</h2>
+            <a href="#review-form">Leave your own review</a>
+          </div>
+          <p class="feedback-note">Recreated as short summaries from earlier review themes, not the original wording.</p>
+          <div class="feedback-grid">
+            <article class="feedback-card" data-feedback-card>
+              <h3>Delivery times</h3>
+              <p>Came quicker than I expected and the tracking was easy to follow. No messing about.</p>
+            </article>
+            <article class="feedback-card" data-feedback-card>
+              <h3>Goods quality</h3>
+              <p>Everything looked clean, sealed and exactly as ordered. Happy with how it turned up.</p>
+            </article>
+            <article class="feedback-card" data-feedback-card>
+              <h3>Packaging</h3>
+              <p>Plain packaging, well protected inside and nothing damaged. Nice and discreet.</p>
+            </article>
+            <article class="feedback-card" data-feedback-card>
+              <h3>Delivery and service</h3>
+              <p>Fast delivery and easy service. I asked a quick question and got sorted without hassle.</p>
+            </article>
+          </div>
+        </section>
       </section>
 
       <section class="form-panel" aria-labelledby="form-title">

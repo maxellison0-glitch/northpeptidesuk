@@ -268,6 +268,9 @@ assert(
   reviews.includes("Leave an Order Review") &&
     reviews.includes("/api/submit-review") &&
     reviews.includes("Moderated before publishing") &&
+    (reviews.match(/data-feedback-card/g) || []).length === 4 &&
+    reviews.includes("Recreated as short summaries") &&
+    reviews.includes("Leave your own review") &&
     !/trustpilot/i.test(reviews),
   "reviews route should collect moderated first-party order reviews without Trustpilot"
 );
