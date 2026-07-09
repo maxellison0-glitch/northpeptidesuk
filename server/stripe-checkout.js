@@ -98,11 +98,37 @@ for (const [key, value] of Object.entries(CATALOG)) {
 
 const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
 
-const DISCOUNT_CODES = {
+// Public/legacy codes — already visible in this public repo. Kept hardcoded so
+// nothing breaks if the env var isn't set.
+const PUBLIC_DISCOUNT_CODES = {
   "WELCOME10":    0.10,
   "AJ":           0.10,
   "AJ20":         0.20
 };
+
+// Private codes come from the DISCOUNT_CODES_JSON env var (set in Vercel/host,
+// never committed). Format: '{"MAMAS-PROTOCOL":0.40,"FRIEND":0.25}'. Keys are
+// upper-cased at lookup time (see discountCode normalisation below). Env var
+// entries override same-key legacy codes.
+function loadPrivateDiscountCodes() {
+  const raw = process.env.DISCOUNT_CODES_JSON;
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return {};
+    const cleaned = {};
+    for (const [code, pct] of Object.entries(parsed)) {
+      const key = String(code).trim().toUpperCase();
+      const num = Number(pct);
+      if (key && Number.isFinite(num) && num > 0 && num < 1) cleaned[key] = num;
+    }
+    return cleaned;
+  } catch {
+    return {};
+  }
+}
+
+const DISCOUNT_CODES = { ...PUBLIC_DISCOUNT_CODES, ...loadPrivateDiscountCodes() };
 
 const DELIVERY = {
   standard: { label: "Royal Mail Tracked 24", price: 3 },
