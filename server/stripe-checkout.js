@@ -104,7 +104,7 @@ const PUBLIC_DISCOUNT_CODES = {
   "WELCOME10":       0.10,
   "AJ":              0.10,
   "AJ20":            0.20,
-  "MAMAS-PROTOCOL":  0.40
+  "FIRST40":         0.40
 };
 
 // Private codes come from the DISCOUNT_CODES_JSON env var (set in Vercel/host,
