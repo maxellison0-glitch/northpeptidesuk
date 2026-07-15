@@ -32,8 +32,8 @@ Status: `done` = built & gated · `next` = queued · `idea` = candidate
 |---|---|---|---|
 | done | How to Store Research Peptides Correctly | how to store peptides | bacteriostatic-water |
 | done | Intranasal Research Peptide Preparation | intranasal peptides | intranasal-research-kit, semax, selank |
-| idea | Why Are Peptides Freeze-Dried? Lyophilisation Explained | what is lyophilisation | (handling) |
-| idea | Peptide Solubility: Which Compounds Dissolve How | peptide solubility | bacteriostatic-water |
+| done | Why Are Peptides Freeze-Dried? Lyophilisation Explained | what is lyophilisation | (handling) |
+| done | Peptide Solubility: Which Compounds Dissolve How | peptide solubility | bacteriostatic-water |
 
 ## Tier 4 — Trust / buyer-intent (high conversion)
 | Status | Working title | Target keyword | Links to |
