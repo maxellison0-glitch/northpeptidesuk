@@ -23,6 +23,23 @@ const reviewApi = read(path.join("api", "submit-review.js"));
 const sitemap = read("sitemap.xml");
 const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
+assert(
+  checkout.includes("Dispatch cutoff: 1PM Monday&ndash;Friday.") &&
+    checkout.includes("Orders paid after 1PM dispatch the next working day.") &&
+    checkout.includes("Estimated 1&ndash;2 working days after dispatch") &&
+    checkout.includes("next working day after dispatch"),
+  "checkout should explain the dispatch cutoff beside delivery estimates"
+);
+assert(
+    index.includes("Orders paid before 1PM Monday&ndash;Friday dispatch the same day") &&
+    index.includes("Delivery estimates begin after dispatch.") &&
+    whyUs.includes("Same-Day Before 1PM Weekdays") &&
+    whyUs.includes("Orders paid before 1PM Monday to Friday dispatch the same day") &&
+    webhook.includes("Orders paid before 1PM Monday&ndash;Friday dispatch the same day") &&
+    webhook.includes("Orders paid before 1PM Monday-Friday dispatch the same day"),
+  "site and order confirmation copy should use the same dispatch policy"
+);
+
 const expectedAccessoryPrices = [
   ["Bacteriostatic Water", "10ml vial", "6.99"],
   ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "6.99"],
