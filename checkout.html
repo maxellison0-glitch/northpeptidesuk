@@ -106,6 +106,7 @@
     .order-line:last-child { border-bottom: none; }
     .order-line-name { font-size: 0.88rem; color: #172033; font-weight: 500; }
     .order-line-dose { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #63758A; margin-top: 2px; }
+    .order-line-included { color: #177245; font-size: 0.66rem; font-weight: 700; line-height: 1.4; margin-top: 4px; }
     .order-line-qty { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #96A3B3; margin: 0 12px; }
     .order-line-price { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: #172033; font-weight: 600; white-space: nowrap; }
     .order-empty { padding: 20px 16px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #96A3B3; text-align: center; }
@@ -542,7 +543,7 @@
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
           <div>
           <div class="addon-name">Sterile Disposable Pen Tips</div>
-          <div class="addon-desc">Universal-fit 6mm x5</div>
+          <div class="addon-desc" id="pen-tips-addon-desc">Universal-fit 6mm x5</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£3.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Sterile Disposable Pen Tips',3.99,'6mm x5')">Add</button></div>
@@ -552,7 +553,7 @@
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol wipes"></span></div>
           <div>
           <div class="addon-name">Alcohol Wipes</div>
-          <div class="addon-desc">10 pack, sterile</div>
+          <div class="addon-desc" id="wipes-addon-desc">10 pack, sterile</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£2.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',2.99,'10 pack')">Add</button></div>
@@ -875,7 +876,7 @@
   }
 
   function isPenVial(item) {
-    return /\/\s*3\s*ml/i.test(item.dose || '');
+    return /pen\s+vial/i.test(item.name || '') || /\/\s*3\s*ml/i.test(item.dose || '');
   }
 
   function isCalcEligible(item) {
@@ -1130,8 +1131,21 @@
     }, 1400);
   }
 
+  function updateAddonSupplyCopy() {
+    const hasPenKit = basketData.some(isPenVial);
+    const tips = document.getElementById('pen-tips-addon-desc');
+    const wipes = document.getElementById('wipes-addon-desc');
+    if (tips) tips.textContent = hasPenKit
+      ? 'Optional extra 5-pack - your pen kit already includes sterile tips'
+      : 'Universal-fit 6mm x5';
+    if (wipes) wipes.textContent = hasPenKit
+      ? 'Optional extra 10-pack - your pen kit already includes alcohol wipes'
+      : '10 pack, sterile';
+  }
+
   function renderOrder() {
     const container = document.getElementById('checkout-lines');
+    updateAddonSupplyCopy();
     if (basketData.length === 0) {
       container.innerHTML = '<p class="order-empty">Your basket is empty. <a href="index.html" style="color:#1F6FEB;">Continue shopping →</a></p>';
       return;
@@ -1146,6 +1160,7 @@
         + '<div style="flex:1;min-width:0">'
         + '<div class="order-line-name">' + item.name + removeBtn + '</div>'
         + '<div class="order-line-dose">' + item.dose + '</div>'
+        + (isPenVial(item) ? '<div class="order-line-included">Disposable pen, sterile needle tips and alcohol wipes included</div>' : '')
         + '</div>'
         + '<span class="order-line-qty">x' + item.qty + '</span>'
         + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'

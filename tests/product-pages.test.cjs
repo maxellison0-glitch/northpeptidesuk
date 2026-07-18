@@ -79,6 +79,9 @@ test('paired vial and pen products share one live order builder', () => {
     assert.match(html, /aria-label="Choose product format"/);
     assert.match(html, new RegExp(`"slug":"${product.sisterProduct.slug}"`));
     assert.match(html, new RegExp(`"image":"${PRODUCTS[product.sisterProduct.slug].image.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+    assert.match(html, /Complete disposable pen kit/);
+    assert.match(html, /Sterile disposable needle tips/);
+    assert.match(html, /Alcohol wipes/);
   }
 });
 
@@ -88,6 +91,27 @@ test('homepage consolidates pen vials into their compound product pages', () => 
   assert.doesNotMatch(homepage, /<div class="product-category" id="cat-pen-vials">/);
   assert.match(homepage, /<template id="legacy-pen-vial-cards">/);
   assert.match(homepage, />21 products</);
+});
+
+test('pen-vial orders consistently state that the disposable kit is included', () => {
+  const productData = read('product-data.js');
+  const checkout = read('checkout.html');
+  assert.doesNotMatch(productData, /Pen kit available as add-on/);
+  assert.doesNotMatch(productData, /Do I need a pen separately\?", a: "Yes\./);
+  assert.match(productData, /Each pen-vial order includes a pre-filled disposable research pen/);
+  assert.match(checkout, /Disposable pen, sterile needle tips and alcohol wipes included/);
+  assert.match(checkout, /your pen kit already includes sterile tips/);
+  assert.match(checkout, /your pen kit already includes alcohol wipes/);
+
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    if (!/-pen$/.test(slug)) continue;
+    const html = read(productPath(slug));
+    assert.match(html, /Complete disposable pen kit/);
+    assert.match(html, /Pre-filled disposable research pen/);
+    assert.match(html, /Sterile disposable needle tips/);
+    assert.match(html, /Alcohol wipes/);
+    assert.doesNotMatch(html, /pen-style research kit available as an add-on at checkout/i);
+  }
 });
 
 test('retatrutide builder updates format, size, add-on price and basket lines', () => {
@@ -127,6 +151,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
     'config-total-note': makeElement(),
     'config-size-grid': makeElement(),
     'config-bac-control': makeElement(),
+    'config-pen-kit': makeElement(),
     'product-image': makeElement(),
     'bac-yes': makeElement(),
     'bac-no': makeElement()
@@ -160,6 +185,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
   assert.equal(elements['config-total'].textContent, '£45');
   assert.equal(elements['config-total-note'].textContent, 'Vial only');
+  assert.equal(elements['config-pen-kit'].hidden, true);
   assert.equal(elements['product-image'].attributes.src, '/reta-50mg.png');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
 
@@ -170,8 +196,9 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
   assert.equal(elements['config-total'].textContent, '£50');
-  assert.equal(elements['config-total-note'].textContent, 'Pen vial');
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included');
   assert.equal(elements['config-bac-control'].hidden, true);
+  assert.equal(elements['config-pen-kit'].hidden, false);
   assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.png');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide Pen Vial');
   assert.equal(sizeButtons.length, 3);

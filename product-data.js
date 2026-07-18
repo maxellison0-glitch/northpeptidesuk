@@ -66,14 +66,14 @@ const PRODUCT_DATA = {
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
     longDescription: [
       "Retatrutide Pen Vial contains the same synthetic lipidated triple-agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 10mg, 20mg and 50mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 10mg, 20mg and 50mg sizes. Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Binding and signalling activity at the GLP-1, GIP and glucagon receptors, studied in vitro",
@@ -97,7 +97,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 50 },
@@ -170,14 +170,14 @@ const PRODUCT_DATA = {
         { q: "What is the Tirzepatide Pen Vial?", a: "The same Tirzepatide dual GIP/GLP-1 receptor agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "15mg and 30mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Tirzepatide dual GIP/GLP-1 receptor agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 15mg and 30mg.",
     longDescription: [
       "Tirzepatide Pen Vial contains the same dual GIP and GLP-1 receptor agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 15mg and 30mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 15mg and 30mg sizes. Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Co-agonist binding and signalling at the GIP and GLP-1 receptors, studied in vitro",
@@ -202,7 +202,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 78 },
@@ -274,14 +274,14 @@ const PRODUCT_DATA = {
         { q: "What is the BPC-157 Pen Vial?", a: "The same BPC-157 synthetic pentadecapeptide research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg and 20mg pen vials are available. Select your size using the dropdown before adding to basket." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "BPC-157 pentadecapeptide research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg and 20mg.",
     longDescription: [
       "BPC-157 Pen Vial contains the same synthetic pentadecapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 10mg and 20mg sizes. Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 10mg and 20mg sizes. Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Angiogenesis and vascular endothelial signalling, examined in preclinical models",
@@ -306,7 +306,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 29 },
@@ -376,14 +376,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the TB-500 Pen Vial?", a: "The same TB-500 Thymosin Beta-4 fragment research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "TB-500 Pen Vial contains the same synthetic Thymosin Beta-4 fragment (Ac-LKKTETQ) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Actin-binding and actin-sequestering activity, studied in vitro",
@@ -408,7 +408,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 59 }
@@ -477,14 +477,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the GHK-Cu Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 50mg/3ml liquid in a pen-compatible cartridge vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "GHK-Cu Pen Vial contains the same copper(II) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 50mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Copper(II) coordination chemistry of the GHK tripeptide, studied in vitro",
@@ -509,7 +509,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 32 }
@@ -578,14 +578,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the KPV Pen Vial?", a: "The same KPV (Lys-Pro-Val) alpha-MSH fragment tripeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "KPV Pen Vial contains the same KPV (Lys-Pro-Val) tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "NF-kB signalling pathway activity, characterised in inflammation research models",
@@ -610,7 +610,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 36 }
@@ -676,14 +676,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is in the KLOW Stack Pen Vial?", a: "The same four-compound blend — GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "KLOW Stack Pen Vial contains the same four-compound research blend — GHK-Cu, TB-500, BPC-157 and KPV at a fixed ratio — as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Combined collagen, extracellular-matrix and cell-migration research models",
@@ -705,7 +705,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 72 }
@@ -774,14 +774,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the Ipamorelin Pen Vial?", a: "The same Ipamorelin selective growth-hormone secretagogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Ipamorelin Pen Vial contains the same selective growth-hormone secretagogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Growth-hormone secretagogue (ghrelin/GHS receptor) signalling, studied in vitro",
@@ -806,7 +806,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 30 }
@@ -874,14 +874,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the CJC-1295 Pen Vial?", a: "The same CJC-1295 (No DAC) GHRH analogue research compound, supplied pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "CJC-1295 (No DAC) GHRH analogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "CJC-1295 Pen Vial contains the same Modified GRF (1-29) GHRH analogue research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 5mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "GHRH-receptor signalling and growth-hormone pulse dynamics, studied in vitro",
@@ -905,7 +905,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 38 }
@@ -973,14 +973,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the NAD+ Pen Vial?", a: "The same NAD+ nicotinamide adenine dinucleotide research compound, supplied pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "NAD+ nicotinamide adenine dinucleotide coenzyme pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "NAD+ Pen Vial contains the same nicotinamide adenine dinucleotide research compound as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format — 1000mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Redox cofactor activity (NAD+/NADH) in enzymatic research, studied in vitro",
@@ -1004,7 +1004,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x1000mg / 3ml", dose: "1000mg / 3ml", price: 102 }
@@ -1074,14 +1074,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the SS-31 Pen Vial?", a: "The same SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "SS-31 Pen Vial contains the same elamipretide mitochondria-targeted tetrapeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Cardiolipin binding on the inner mitochondrial membrane, studied in vitro",
@@ -1106,7 +1106,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 30 }
@@ -1275,14 +1275,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the Epitalon Pen Vial?", a: "The same Epitalon (Ala-Glu-Asp-Gly, AEDG) pineal tetrapeptide research compound, supplied pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Epitalon Pen Vial contains the same synthetic pineal tetrapeptide (Ala-Glu-Asp-Gly, AEDG) research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 10mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Telomerase enzyme activity, studied in vitro",
@@ -1307,7 +1307,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 17 }
@@ -1376,14 +1376,14 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is the Pinealon Pen Vial?", a: "The same Pinealon (Glu-Asp-Arg, EDR) regulatory tripeptide research compound, supplied pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "Do I need a pen separately?", a: "Yes. A disposable pen-style research kit is available as an add-on at checkout." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
     summary: "Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.",
     longDescription: [
       "Pinealon Pen Vial contains the same Pinealon (Glu-Asp-Arg, EDR) synthetic regulatory tripeptide research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format — 20mg dissolved in 3ml solution.",
-      "Compatible with the pen-style research kit available as an add-on at checkout. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Supplied as a complete disposable pen kit with sterile disposable needle tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Blood-brain-barrier permeability of short peptides, studied in research models",
@@ -1408,7 +1408,7 @@ const PRODUCT_DATA = {
       "99%+ purity stated",
       "Pre-reconstituted research liquid",
       "UK stocked, 24h dispatch",
-      "Pen kit available as add-on"
+      "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
       { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 36 }

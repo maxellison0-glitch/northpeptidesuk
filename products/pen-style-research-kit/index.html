@@ -88,17 +88,17 @@
     .nav-links a { color: #4B5F75; text-decoration: none; }
     .basket-nav { border: 0; border-radius: 999px; background: #1F6FEB; color: #fff; padding: 9px 13px; font: inherit; cursor: pointer; }
     #basket-count { display: none; align-items: center; justify-content: center; min-width: 18px; height: 18px; margin-left: 5px; border-radius: 999px; background: #fff; color: #1F6FEB; }
-    .product-hero { max-width: 1160px; margin: 0 auto; padding: 46px 40px 32px; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr); gap: 34px; align-items: start; }
+    .product-hero { max-width: 1160px; margin: 0 auto; padding: 30px 40px 32px; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr); gap: 34px; align-items: start; }
     .media-card, .buy-card, .side-card { background: #fff; border: 1px solid #D8E5F2; border-radius: 10px; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
     .media-card { overflow: hidden; }
     .media-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #EDF4FA; }
-    .buy-card { padding: 28px; }
+    .buy-card { padding: 26px; }
     .back-link { display: inline-block; margin-bottom: 18px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
     .eyebrow { margin: 0 0 10px; color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
     h1 { margin: 0 0 14px; font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; color: #10233F; }
     h2 { margin: 0 0 12px; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1.15; color: #10233F; }
     p { color: #40566C; line-height: 1.75; }
-    .summary { margin: 0 0 20px; font-size: 1rem; }
+    .summary { margin: 0 0 16px; font-size: 1rem; }
     .price-line { margin: 0 0 18px; font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: #10233F; }
     .variant-list { display: grid; gap: 10px; }
     .variant-row { width: 100%; min-height: 64px; border: 1px solid #CADAEA; border-radius: 8px; background: #FCFDFF; color: #172033; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
@@ -116,7 +116,8 @@
     .config-control label, .config-label-row label { margin: 0; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
     .config-label-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .config-label-row span { color: #40566C; font-family: 'DM Mono', monospace; font-size: 0.72rem; }
-    .config-size-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .config-size-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+    .config-control[hidden], .config-pen-kit[hidden] { display: none; }
     .config-size-btn, .config-format-btn, .config-toggle { min-height: 48px; border: 1px solid #CADAEA; border-radius: 8px; background: #fff; color: #172033; cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s; }
     .config-size-btn, .config-format-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; text-align: left; }
     .config-format-btn { align-items: flex-start; flex-direction: column; }
@@ -126,6 +127,14 @@
     .config-size-btn.active small, .config-format-btn.active small { color: rgba(255,255,255,0.78); }
     .config-toggle-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
     .config-toggle { padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 800; text-transform: none; letter-spacing: 0; }
+    .config-pen-kit { display: grid; gap: 6px; border: 1px solid #A9DDBF; border-radius: 8px; background: #F0FAF4; padding: 10px 12px; }
+    .config-pen-kit-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .config-pen-kit-head span { color: #177245; font-family: 'DM Mono', monospace; font-size: 0.57rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .config-pen-kit-head strong { color: #174A34; font-size: 0.82rem; text-align: right; }
+    .config-pen-kit-list { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+    .config-pen-kit-list span { position: relative; color: #2D5944; padding-left: 15px; font-size: 0.68rem; font-weight: 700; line-height: 1.3; }
+    .config-pen-kit-list span::before { position: absolute; left: 0; color: #16824F; content: '\2713'; font-weight: 800; }
+    .config-pen-kit p { margin: 0; color: #3D6854; font-size: 0.7rem; line-height: 1.45; }
     .config-total-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #D8E5F2; border-radius: 9px; background: #fff; padding: 12px; }
     .config-total-row small { display: block; margin-bottom: 4px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
     .config-total-row strong { display: block; color: #10233F; font-family: Syne, sans-serif; font-size: 1.75rem; line-height: 1; }
@@ -190,11 +199,19 @@
       .config-head { align-items: flex-start; flex-direction: column; }
       .config-head strong { text-align: left; font-size: 1.2rem; }
       .config-size-grid, .config-toggle-row { grid-template-columns: 1fr 1fr; }
+      .config-pen-kit-head { align-items: flex-start; flex-direction: column; }
+      .config-pen-kit-head strong { text-align: left; }
       .config-total-row { align-items: flex-start; flex-direction: column; }
       .config-total-row em { text-align: left; }
       .side-card { position: static; }
       .basket-drawer { width: 100vw; }
       .footer { flex-direction: column; align-items: flex-start; padding: 24px 16px; }
+    }
+    @media (max-width: 540px) {
+      .logo { font-size: 0.72rem; }
+      .nav-links { gap: 0; }
+      .nav-links a { display: none; }
+      .basket-nav { padding: 8px 10px; }
     }
 </style>
 </head>
