@@ -16,7 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
-  <link rel="preload" as="image" href="/klow-stack-blue-powder.webp">
+  <link rel="preload" as="image" href="/klow-stack-blue-powder.webp" fetchpriority="low">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,17 +125,17 @@
     .nav-links a { color: #4B5F75; text-decoration: none; }
     .basket-nav { border: 0; border-radius: 999px; background: #1F6FEB; color: #fff; padding: 9px 13px; font: inherit; cursor: pointer; }
     #basket-count { display: none; align-items: center; justify-content: center; min-width: 18px; height: 18px; margin-left: 5px; border-radius: 999px; background: #fff; color: #1F6FEB; }
-    .product-hero { max-width: 1160px; margin: 0 auto; padding: 30px 40px 32px; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr); gap: 34px; align-items: start; }
+    .product-hero { max-width: 1160px; margin: 0 auto; padding: 24px 40px 32px; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr); gap: 34px; align-items: start; }
     .media-card, .buy-card, .side-card { background: #fff; border: 1px solid #D8E5F2; border-radius: 10px; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
     .media-card { overflow: hidden; }
     .media-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #EDF4FA; }
-    .buy-card { padding: 26px; }
-    .back-link { display: inline-block; margin-bottom: 18px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
+    .buy-card { padding: 22px; }
+    .back-link { display: inline-block; margin-bottom: 12px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
     .eyebrow { margin: 0 0 10px; color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
-    h1 { margin: 0 0 14px; font-family: Syne, sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; color: #10233F; }
+    h1 { margin: 0 0 10px; font-family: Syne, sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; color: #10233F; }
     h2 { margin: 0 0 12px; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1.15; color: #10233F; }
     p { color: #40566C; line-height: 1.75; }
-    .summary { margin: 0 0 16px; font-size: 1rem; }
+    .summary { margin: 0 0 12px; font-size: 1rem; }
     .price-line { margin: 0 0 18px; font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: #10233F; }
     .variant-list { display: grid; gap: 10px; }
     .variant-row { width: 100%; min-height: 64px; border: 1px solid #CADAEA; border-radius: 8px; background: #FCFDFF; color: #172033; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
@@ -145,10 +145,10 @@
     .variant-action { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .variant-price { font-family: Syne, sans-serif; font-size: 1.05rem; font-weight: 800; color: #10233F; }
     .variant-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 12px; border-radius: 6px; background: #1F6FEB; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
-    .config-box { display: grid; gap: 14px; border: 1px solid #D8E5F2; border-radius: 10px; background: #FCFDFF; padding: 16px; }
-    .config-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E7EFF7; padding-bottom: 12px; }
+    .config-box { display: grid; gap: 12px; border: 1px solid #D8E5F2; border-radius: 10px; background: #FCFDFF; padding: 14px; }
+    .config-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E7EFF7; padding-bottom: 10px; }
     .config-head strong { color: #10233F; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1; text-align: right; }
-    .config-kicker { color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+    .config-kicker { color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
     .config-control { display: grid; gap: 7px; }
     .config-control label, .config-label-row label { margin: 0; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
     .config-label-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -166,18 +166,22 @@
     .config-toggle { padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 800; text-transform: none; letter-spacing: 0; }
     .config-pen-kit { display: grid; gap: 6px; border: 1px solid #A9DDBF; border-radius: 8px; background: #F0FAF4; padding: 10px 12px; }
     .config-pen-kit-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .config-pen-kit-head span { color: #177245; font-family: 'DM Mono', monospace; font-size: 0.57rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .config-pen-kit-head span { color: #177245; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
     .config-pen-kit-head strong { color: #174A34; font-size: 0.82rem; text-align: right; }
     .config-pen-kit-list { display: flex; flex-wrap: wrap; gap: 4px 14px; }
     .config-pen-kit-list span { position: relative; color: #2D5944; padding-left: 15px; font-size: 0.68rem; font-weight: 700; line-height: 1.3; }
     .config-pen-kit-list span::before { position: absolute; left: 0; color: #16824F; content: '\2713'; font-weight: 800; }
     .config-pen-kit p { margin: 0; color: #3D6854; font-size: 0.7rem; line-height: 1.45; }
     .config-total-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #D8E5F2; border-radius: 9px; background: #fff; padding: 12px; }
-    .config-total-row small { display: block; margin-bottom: 4px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .config-total-row small { display: block; margin-bottom: 4px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
     .config-total-row strong { display: block; color: #10233F; font-family: Syne, sans-serif; font-size: 1.75rem; line-height: 1; }
     .config-total-row em { color: #40566C; font-size: 0.78rem; font-style: normal; text-align: right; }
     .config-add-btn { width: 100%; min-height: 50px; border: 0; border-radius: 8px; background: #1F6FEB; color: #fff; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 10px 22px rgba(31,111,235,0.18); }
     .config-add-btn:hover { background: #185ABC; }
+    .config-sticky-bar { display: none; }
+    .format-alt { margin: 12px 0 0; color: #63758A; font-size: 0.8rem; }
+    .format-alt a { color: #1F6FEB; font-weight: 700; text-decoration: none; }
+    .format-alt a:hover { text-decoration: underline; }
     .research-note { margin-top: 18px; border: 1px solid #D8E5F2; border-radius: 8px; padding: 14px 15px; background: #F5F8FC; color: #4B5F75; font-size: 0.82rem; line-height: 1.65; }
     .research-note strong { color: #172033; }
     .content-grid { max-width: 1160px; margin: 0 auto; padding: 18px 40px 70px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
@@ -228,6 +232,14 @@
       .nav { padding: 0 16px; }
       .nav-links { gap: 10px; font-size: 0.6rem; }
       .product-hero, .content-grid { grid-template-columns: 1fr; padding-left: 16px; padding-right: 16px; }
+      /* Shorter hero on phones: the square crop pushed the whole builder below
+         the first screen. 3:2 contain keeps the full product image visible. */
+      .media-card img { aspect-ratio: 3 / 2; object-fit: contain; }
+      body:has(.config-sticky-bar) { padding-bottom: 84px; }
+      .config-sticky-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: #fff; border-top: 1px solid #D8E5F2; box-shadow: 0 -10px 26px rgba(15,31,54,0.10); }
+      .config-sticky-bar small { display: block; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+      .config-sticky-bar strong { display: block; color: #10233F; font-family: Syne, sans-serif; font-size: 1.3rem; line-height: 1.1; }
+      .config-sticky-bar button { flex: 1; max-width: 220px; min-height: 46px; border: 0; border-radius: 8px; background: #1F6FEB; color: #fff; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
       .buy-card { padding: 22px; }
       .variant-row { align-items: stretch; flex-direction: column; }
       .variant-action { width: 100%; justify-content: space-between; }
@@ -290,13 +302,13 @@
               </button>
               <button class="config-format-btn active" type="button" data-format-index="1" aria-pressed="true" onclick="selectConfiguredFormat(1)">
                 <span>Pen vial</span>
-                <small>Tips + wipes included</small>
+                <small>Complete pen kit included</small>
               </button>
             </div>
           </div>
           <div class="config-control">
             <label>Size</label>
-            <div class="config-size-grid" id="config-size-grid">
+            <div class="config-size-grid" id="config-size-grid" role="group" aria-label="Choose size">
 
           <button class="config-size-btn active" type="button" data-config-index="0" aria-pressed="true" onclick="selectConfiguredVariant(0)">
             <span>1x80mg / 3ml</span>
@@ -326,20 +338,28 @@
               <button class="config-toggle active" id="bac-no" type="button" aria-pressed="true" onclick="setBacWater(false)">No, I have it</button>
             </div>
           </div>
-          <div class="config-total-row">
+          <div class="config-total-row" aria-live="polite" aria-atomic="true">
             <span>
               <small>Order total</small>
               <strong id="config-total">£72</strong>
             </span>
-            <em id="config-total-note">Complete kit included</em>
+            <em id="config-total-note">Complete kit included · +£12 vs vial</em>
           </div>
           <button class="config-add-btn" type="button" onclick="addConfiguredToBasket()">Add to Basket</button>
         </section>
+        <div class="config-sticky-bar">
+          <span>
+            <small>Order total</small>
+            <strong id="config-total-bar">£72</strong>
+          </span>
+          <button type="button" onclick="addConfiguredToBasket()">Add to Basket</button>
+        </div>
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = 1;
-          window.NPUK_CONFIG_FORMATS = [{"slug":"klow-stack","type":"vial","productName":"KLOW Stack","label":"Vial","meta":"You reconstitute","image":"klow-stack-blue-powder.webp","bacWater":true,"variants":[{"label":"1x80mg","dose":"80mg","price":60}]},{"slug":"klow-stack-pen","type":"pen","productName":"KLOW Stack Pen Vial","label":"Pen vial","meta":"Tips + wipes included","image":"klow-stack-pen-vial.png","bacWater":false,"variants":[{"label":"1x80mg / 3ml","dose":"80mg / 3ml","price":72}]}];
-          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial add-on', price: 6.99 };
+          window.NPUK_CONFIG_FORMATS = [{"slug":"klow-stack","type":"vial","productName":"KLOW Stack","label":"Vial","meta":"You reconstitute","image":"klow-stack-blue-powder.webp","bacWater":true,"variants":[{"label":"1x80mg","dose":"80mg","price":60}]},{"slug":"klow-stack-pen","type":"pen","productName":"KLOW Stack Pen Vial","label":"Pen vial","meta":"Complete pen kit included","image":"klow-stack-pen-vial.png","bacWater":false,"variants":[{"label":"1x80mg / 3ml","dose":"80mg / 3ml","price":72}]}];
+          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial', price: 6.99 };
         </script>
+        <p class="format-alt">Also available as: <a href="/products/klow-stack/">KLOW Stack Standard Vial — Frozen / Lyophilised</a></p>
         <div class="research-note">
           <strong>Research use only.</strong> Products are supplied strictly for laboratory and scientific research use only. They are not medicines, are not for human or animal consumption, and no therapeutic claims are made.
         </div>
@@ -445,6 +465,37 @@
       return configuredFormat().variants[configuredVariantIndex];
     }
 
+    // Mirrors penPremium() in the build template: the £ gap between this pen
+    // variant and the same-strength standard vial, or null when no equivalent
+    // vial strength exists to compare against.
+    function configPenPremium(format, variant) {
+      if (format.type !== 'pen') return null;
+      const vial = window.NPUK_CONFIG_FORMATS.find(f => f.type === 'vial');
+      if (!vial) return null;
+      const mg = parseFloat(String(variant.dose));
+      if (!Number.isFinite(mg)) return null;
+      const match = vial.variants.find(v => parseFloat(String(v.dose)) === mg);
+      if (!match) return null;
+      const delta = Math.round((variant.price - match.price) * 100) / 100;
+      return delta > 0 ? delta : null;
+    }
+
+    function configTrack(eventName, payload) {
+      if (window.NPUKAnalytics && typeof window.NPUKAnalytics.track === 'function') {
+        window.NPUKAnalytics.track(eventName, payload);
+      }
+    }
+
+    function configContents(format, variant) {
+      return [{
+        content_id: format.productName + ':' + variant.dose,
+        content_name: format.productName,
+        content_type: 'product',
+        quantity: 1,
+        price: Number(variant.price)
+      }];
+    }
+
     function sizeButtonMarkup(variant, index) {
       const active = index === configuredVariantIndex;
       return '<button class="config-size-btn' + (active ? ' active' : '') + '" type="button" data-config-index="' + index + '" aria-pressed="' + (active ? 'true' : 'false') + '" onclick="selectConfiguredVariant(' + index + ')">' +
@@ -471,9 +522,30 @@
         productImage.setAttribute('src', '/' + format.image);
         productImage.setAttribute('alt', format.productName);
       }
-      if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
+      if (sizeGrid) {
+        // Rebuilding the grid destroys the focused button; put keyboard focus
+        // back on the active size so arrow/tab users don't fall out to <body>.
+        const hadFocus = typeof sizeGrid.contains === 'function'
+          && document.activeElement && sizeGrid.contains(document.activeElement);
+        sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
+        if (hadFocus && typeof sizeGrid.querySelector === 'function') {
+          const activeSize = sizeGrid.querySelector('.config-size-btn.active');
+          if (activeSize && typeof activeSize.focus === 'function') activeSize.focus();
+        }
+      }
       if (totalEl) totalEl.textContent = configMoney(total);
-      if (note) note.textContent = format.type === 'pen' ? 'Complete kit included' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');
+      const totalBar = document.getElementById('config-total-bar');
+      if (totalBar) totalBar.textContent = configMoney(total);
+      if (note) {
+        if (format.type === 'pen') {
+          const premium = configPenPremium(format, variant);
+          note.textContent = premium
+            ? 'Complete kit included \u00B7 +' + configMoney(premium) + ' vs vial'
+            : 'Complete kit included';
+        } else {
+          note.textContent = configuredBacWater ? 'Vial + BAC water' : 'Standard vial';
+        }
+      }
       if (bacControl) bacControl.hidden = !canAddBacWater;
       if (penKit) penKit.hidden = format.type !== 'pen';
       document.querySelectorAll('[data-format-index]').forEach(button => {
@@ -500,16 +572,41 @@
       configuredFormatIndex = index;
       configuredVariantIndex = 0;
       refreshConfiguredOrder();
+      const format = configuredFormat();
+      const variant = configuredVariant();
+      configTrack('FormatSelected', {
+        contents: configContents(format, variant),
+        value: Number(variant.price),
+        currency: 'GBP'
+      });
     }
 
     function selectConfiguredVariant(index) {
       configuredVariantIndex = index;
       refreshConfiguredOrder();
+      const format = configuredFormat();
+      const variant = configuredVariant();
+      configTrack('SizeSelected', {
+        contents: configContents(format, variant),
+        value: Number(variant.price),
+        currency: 'GBP'
+      });
     }
 
     function setBacWater(included) {
       configuredBacWater = Boolean(included);
       refreshConfiguredOrder();
+      configTrack('BacWaterToggled', {
+        contents: [{
+          content_id: window.NPUK_CONFIG_ADDON.name + ':' + window.NPUK_CONFIG_ADDON.dose,
+          content_name: window.NPUK_CONFIG_ADDON.name,
+          content_type: 'product',
+          quantity: 1,
+          price: Number(window.NPUK_CONFIG_ADDON.price)
+        }],
+        value: configuredBacWater ? Number(window.NPUK_CONFIG_ADDON.price) : 0,
+        currency: 'GBP'
+      });
     }
 
     function addConfiguredToBasket() {
@@ -523,6 +620,18 @@
     }
 
     refreshConfiguredOrder();
+
+    if (typeof document.addEventListener === 'function') {
+      document.addEventListener('DOMContentLoaded', function () {
+        const format = configuredFormat();
+        const variant = configuredVariant();
+        configTrack('ViewContent', {
+          contents: configContents(format, variant),
+          value: Number(variant.price),
+          currency: 'GBP'
+        });
+      });
+    }
   </script>
 
   <footer class="footer">

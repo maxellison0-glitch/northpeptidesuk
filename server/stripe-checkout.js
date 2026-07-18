@@ -40,6 +40,11 @@ const CATALOG = {
   "CJC-1295 No DAC|3x 5mg": 77,
   "Bacteriostatic Water|10ml vial": 6.99,
   "Bacteriostatic Water|Accessory": 6.99,
+  // Compatibility: product-page builders shipped between 2026-07 commits
+  // 18e40c2..0ea5b9a sent this dose string, which 400'd every checkout that
+  // included the BAC-water add-on. The builder now sends "10ml vial", but
+  // cached pages (and baskets persisted in localStorage) can still send this.
+  "Bacteriostatic Water|10ml vial add-on": 6.99,
   "Insulin Needle Pack|10 pack, 1ml insulin needles": 6.99,
   "Insulin Needle Pack|Accessory": 6.99,
   "Alcohol Wipes|10 pack": 2.99,

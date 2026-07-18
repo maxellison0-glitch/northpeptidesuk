@@ -523,7 +523,7 @@
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol vial"></span></div>
           <div>
           <div class="addon-name">Bacteriostatic Water</div>
-          <div class="addon-desc">10ml vial</div>
+          <div class="addon-desc" id="bac-addon-desc">10ml vial</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',6.99,'10ml vial')">Add</button></div>
@@ -533,7 +533,7 @@
           <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
           <div>
           <div class="addon-name">Insulin Needle Pack</div>
-          <div class="addon-desc">1ml sterile insulin needles x10</div>
+          <div class="addon-desc" id="needles-addon-desc">1ml sterile insulin needles x10</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Insulin Needle Pack',6.99,'10 pack, 1ml insulin needles')">Add</button></div>
@@ -881,6 +881,9 @@
 
   function isCalcEligible(item) {
     if (item._kitFor) return false;
+    // Pen vials arrive pre-reconstituted — showing them a reconstitution
+    // calculator contradicts the "complete kit, nothing to mix" promise.
+    if (isPenVial(item)) return false;
     const n = (item.name || '').toLowerCase();
     if (CALC_EXCLUDED.some(x => n.includes(x))) return false;
     if (!item.dose || item.dose === 'Accessory') return false;
@@ -992,7 +995,7 @@
 
   function updateSmartSection() {
     const eligible = basketData.filter(isCalcEligible);
-    const hasRegular = eligible.some(i => !isPenVial(i));
+    const hasRegular = eligible.length > 0;
     const section = document.getElementById('smart-section');
     const coolingHL = document.getElementById('cooling-highlight');
     if (!section) return;
@@ -1133,14 +1136,27 @@
 
   function updateAddonSupplyCopy() {
     const hasPenKit = basketData.some(isPenVial);
+    // Compound lines only (mg-dosed, not kit add-ons): when every compound in
+    // the basket is a pen vial, reconstitution supplies are irrelevant and
+    // offering them unannotated contradicts "complete kit included".
+    const compounds = basketData.filter(i => !i._kitFor && /\d+(\.\d+)?\s*mg/i.test(i.dose || ''));
+    const penOnly = compounds.length > 0 && compounds.every(isPenVial);
     const tips = document.getElementById('pen-tips-addon-desc');
     const wipes = document.getElementById('wipes-addon-desc');
+    const bac = document.getElementById('bac-addon-desc');
+    const needles = document.getElementById('needles-addon-desc');
     if (tips) tips.textContent = hasPenKit
       ? 'Optional extra 5-pack - your pen kit already includes sterile tips'
       : 'Universal-fit 6mm x5';
     if (wipes) wipes.textContent = hasPenKit
       ? 'Optional extra 10-pack - your pen kit already includes alcohol wipes'
       : '10 pack, sterile';
+    if (bac) bac.textContent = penOnly
+      ? 'Only needed for standard vials - your pen vials arrive pre-filled'
+      : '10ml vial';
+    if (needles) needles.textContent = penOnly
+      ? 'Only needed for standard vials - your pen kit already includes needle tips'
+      : '1ml sterile insulin needles x10';
   }
 
   function renderOrder() {

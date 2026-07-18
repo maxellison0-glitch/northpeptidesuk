@@ -82,6 +82,10 @@ test('paired vial and pen products share one live order builder', () => {
     assert.match(html, /Complete disposable pen kit/);
     assert.match(html, /Sterile disposable needle tips/);
     assert.match(html, /Alcohol wipes/);
+    // Crawlable cross-link — the format toggle is a <button>, so this anchor
+    // is the only internal link keeping the sister page out of orphan status.
+    assert.match(html, new RegExp(`<a href="/products/${product.sisterProduct.slug}/">`),
+      `${slug} should link to its sister product page`);
   }
 });
 
@@ -89,8 +93,21 @@ test('homepage consolidates pen vials into their compound product pages', () => 
   const homepage = read('index.html');
   assert.doesNotMatch(homepage, /href="#cat-pen-vials"/);
   assert.doesNotMatch(homepage, /<div class="product-category" id="cat-pen-vials">/);
-  assert.match(homepage, /<template id="legacy-pen-vial-cards">/);
+  // The dead legacy markup is gone for good — it was rendered nowhere but
+  // still had to be price-maintained because tests scan raw HTML.
+  assert.doesNotMatch(homepage, /<template id="legacy-pen-vial-cards">/);
   assert.match(homepage, />21 products</);
+});
+
+test('homepage surfaces the pen option with a crawlable link per paired compound', () => {
+  const homepage = read('index.html');
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    if (!/-pen$/.test(slug) || !product.sisterProduct) continue;
+    assert.match(homepage,
+      new RegExp(`<a class="card-pen-link" href="products/${slug}/"`),
+      `homepage should link to products/${slug}/ from its compound card`);
+  }
+  assert.match(homepage, /from &pound;10 over the standard vial/);
 });
 
 test('pen-vial orders consistently state that the disposable kit is included', () => {
@@ -184,7 +201,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
   assert.equal(elements['config-total'].textContent, '£45');
-  assert.equal(elements['config-total-note'].textContent, 'Vial only');
+  assert.equal(elements['config-total-note'].textContent, 'Standard vial');
   assert.equal(elements['config-pen-kit'].hidden, true);
   assert.equal(elements['product-image'].attributes.src, '/reta-50mg.png');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
@@ -196,7 +213,8 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
   assert.equal(elements['config-total'].textContent, '£55');
-  assert.equal(elements['config-total-note'].textContent, 'Complete kit included');
+  // The premium is anchored against the same-strength vial (£55 pen vs £45 vial).
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£10 vs vial');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
   assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.png');
@@ -215,6 +233,8 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   context.addConfiguredToBasket();
   assert.deepEqual(basket, [
     { name: 'Retatrutide', price: 85, dose: '20mg' },
-    { name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial add-on' }
+    // Must stay a key the server CATALOG resolves — "10ml vial add-on" shipped
+    // once and 400'd every checkout that included the builder's BAC water.
+    { name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial' }
   ]);
 });

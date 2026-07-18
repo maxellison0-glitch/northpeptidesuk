@@ -112,7 +112,9 @@ test('every homepage buy-widget option resolves in the CATALOG at its shown pric
       checked++;
     }
   }
-  assert.ok(checked > 30, `expected to check the full homepage grid, only saw ${checked} options`);
+  // 21 = every option in the visible 21-card grid (the count was >30 only
+  // while the dead legacy pen-card <template> was still being scanned).
+  assert.ok(checked >= 21, `expected to check the full homepage grid, only saw ${checked} options`);
 });
 
 test('every homepage literal Add button resolves at its shown price', () => {
@@ -128,6 +130,7 @@ test('every checkout/product add-on button resolves at its shown price', () => {
   // Hardcoded add-on emits in product.html (accessory/intranasal/pen) and checkout.html (thermal).
   const addons = [
     ['Bacteriostatic Water', 6.99, 'Accessory'],
+    ['Bacteriostatic Water', 6.99, '10ml vial'],
     ['Insulin Needle Pack', 6.99, 'Accessory'],
     ['Intranasal Research Kit', 4.99, 'Kit add-on'],
     ['Disposable Research Pen Kit', 9.99, 'Kit add-on'],
@@ -143,6 +146,49 @@ test('every checkout/product add-on button resolves at its shown price', () => {
 test('the intranasal +kit add-on resolves at its button price', () => {
   assert.strictEqual(CATALOG['Intranasal Research Kit|Kit add-on'], 4.99,
     'product.html adds the intranasal add-on at £4.99 — CATALOG must match');
+});
+
+// The order builder embeds its own copy of names, doses and prices
+// (NPUK_CONFIG_FORMATS / NPUK_CONFIG_ADDON) into every generated product page,
+// and the basket sends those strings verbatim to Stripe. This is the surface
+// that shipped broken in 2026-07: the builder's BAC-water add-on used a dose
+// string ("10ml vial add-on") the CATALOG could not resolve, so every checkout
+// containing it 400'd. Parse the embedded config out of each generated page
+// and prove every sellable line resolves at the price the page shows.
+test('every builder-embedded variant and add-on resolves in the CATALOG at its shown price', () => {
+  const productsDir = path.join(ROOT, 'products');
+  let pagesChecked = 0;
+  let linesChecked = 0;
+  for (const slug of fs.readdirSync(productsDir)) {
+    const file = path.join(productsDir, slug, 'index.html');
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const formatsMatch = html.match(/window\.NPUK_CONFIG_FORMATS = (\[.*?\]);/s);
+    if (!formatsMatch) continue; // page has no builder (single-format supply items)
+    pagesChecked++;
+
+    const formats = JSON.parse(formatsMatch[1]);
+    for (const format of formats) {
+      for (const variant of format.variants) {
+        const price = resolvePrice(format.productName, variant.dose);
+        assert.ok(price !== null,
+          `Builder "${format.productName}|${variant.dose}" would 400 at checkout — not in CATALOG [${slug}]`);
+        assert.strictEqual(price, variant.price,
+          `Builder "${format.productName}|${variant.dose}" shows £${variant.price} but CATALOG charges £${price} [${slug}]`);
+        linesChecked++;
+      }
+    }
+
+    const addonMatch = html.match(/window\.NPUK_CONFIG_ADDON = \{ name: '([^']+)', dose: '([^']+)', price: ([\d.]+) \};/);
+    assert.ok(addonMatch, `builder page ${slug} should embed its add-on definition`);
+    const addonPrice = resolvePrice(addonMatch[1], addonMatch[2]);
+    assert.ok(addonPrice !== null,
+      `Builder add-on "${addonMatch[1]}|${addonMatch[2]}" would 400 at checkout — not in CATALOG [${slug}]`);
+    assert.strictEqual(addonPrice, Number(addonMatch[3]),
+      `Builder add-on "${addonMatch[1]}|${addonMatch[2]}" shows £${addonMatch[3]} but CATALOG charges £${addonPrice} [${slug}]`);
+  }
+  assert.ok(pagesChecked >= 28, `expected builder configs on all paired pages, only saw ${pagesChecked}`);
+  assert.ok(linesChecked >= 60, `expected to check every builder line, only saw ${linesChecked}`);
 });
 
 test('no removed "Essentials Bundle" remnants remain', () => {
