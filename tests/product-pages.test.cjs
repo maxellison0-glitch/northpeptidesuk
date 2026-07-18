@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const ROOT = path.join(__dirname, '..');
 const PRODUCTS = require(path.join(ROOT, 'product-data.js'));
@@ -67,4 +68,112 @@ test('homepage and generated blog pages link to clean product URLs', () => {
     const html = read(file);
     assert.doesNotMatch(html, /product\.html\?product=/, `${file} should link to static product pages`);
   }
+});
+
+test('paired vial and pen products share one live order builder', () => {
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    if (!product.sisterProduct) continue;
+
+    const html = read(productPath(slug));
+    assert.match(html, /Build your order/);
+    assert.match(html, /aria-label="Choose product format"/);
+    assert.match(html, new RegExp(`"slug":"${product.sisterProduct.slug}"`));
+  }
+});
+
+test('retatrutide builder updates format, size, add-on price and basket lines', () => {
+  const html = read(productPath('retatrutide'));
+  const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(match => match[1]);
+  const dataScript = scripts.find(script => script.includes('window.NPUK_CONFIG_FORMATS ='));
+  const behaviourScript = scripts.find(script => script.includes('function addConfiguredToBasket'));
+  assert.ok(dataScript, 'product configuration data should be embedded');
+  assert.ok(behaviourScript, 'product configuration behaviour should be embedded');
+
+  const makeElement = dataset => {
+    const classes = new Set();
+    const attributes = {};
+    return {
+      dataset: dataset || {},
+      hidden: false,
+      textContent: '',
+      attributes,
+      classList: {
+        contains: name => classes.has(name),
+        toggle(name, enabled) {
+          if (enabled) classes.add(name);
+          else classes.delete(name);
+        }
+      },
+      setAttribute(name, value) {
+        attributes[name] = value;
+      }
+    };
+  };
+
+  let sizeButtons = [];
+  const formatButtons = [makeElement({ formatIndex: '0' }), makeElement({ formatIndex: '1' })];
+  const elements = {
+    'config-selection-name': makeElement(),
+    'config-total': makeElement(),
+    'config-total-note': makeElement(),
+    'config-size-grid': makeElement(),
+    'config-bac-control': makeElement(),
+    'bac-yes': makeElement(),
+    'bac-no': makeElement()
+  };
+  let sizeMarkup = '';
+  Object.defineProperty(elements['config-size-grid'], 'innerHTML', {
+    get: () => sizeMarkup,
+    set(value) {
+      sizeMarkup = value;
+      sizeButtons = [...value.matchAll(/data-config-index="(\d+)"/g)]
+        .map(match => makeElement({ configIndex: match[1] }));
+    }
+  });
+
+  const basket = [];
+  let basketOpened = false;
+  const context = {
+    Intl,
+    document: {
+      getElementById: id => elements[id] || null,
+      querySelectorAll: selector => selector === '[data-format-index]' ? formatButtons : sizeButtons
+    },
+    addToBasket: (name, price, dose) => basket.push({ name, price, dose }),
+    showBasket: () => { basketOpened = true; }
+  };
+  context.window = context;
+  vm.createContext(context);
+  vm.runInContext(dataScript, context);
+  vm.runInContext(behaviourScript, context);
+
+  assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
+  assert.equal(elements['config-total'].textContent, '£45');
+  assert.equal(elements['config-total-note'].textContent, 'Vial only');
+
+  context.setBacWater(true);
+  assert.equal(elements['config-total'].textContent, '£51.99');
+  assert.equal(elements['config-total-note'].textContent, 'Vial + BAC water');
+
+  context.selectConfiguredFormat(1);
+  assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
+  assert.equal(elements['config-total'].textContent, '£50');
+  assert.equal(elements['config-total-note'].textContent, 'Pen vial');
+  assert.equal(elements['config-bac-control'].hidden, true);
+  assert.equal(sizeButtons.length, 3);
+
+  context.selectConfiguredVariant(1);
+  context.addConfiguredToBasket();
+  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 90, dose: '20mg' }]);
+  assert.equal(basketOpened, true);
+
+  basket.length = 0;
+  context.selectConfiguredFormat(0);
+  context.selectConfiguredVariant(2);
+  context.setBacWater(true);
+  context.addConfiguredToBasket();
+  assert.deepEqual(basket, [
+    { name: 'Retatrutide', price: 85, dose: '20mg' },
+    { name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial add-on' }
+  ]);
 });

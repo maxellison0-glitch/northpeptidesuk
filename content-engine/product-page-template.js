@@ -1,6 +1,6 @@
 'use strict';
 
-const { SITE, escapeHtml, formatGBP, productUrl } = require('./site.js');
+const { SITE, PRODUCTS, escapeHtml, formatGBP, productUrl } = require('./site.js');
 
 const DISCLAIMER =
   'Products are supplied strictly for laboratory and scientific research use only. ' +
@@ -14,6 +14,66 @@ function priceLabel(product) {
   const prices = product.variants.map(variant => Number(variant.price));
   const min = Math.min(...prices);
   return product.variants.length > 1 ? `From ${formatGBP(min)}` : formatGBP(min);
+}
+
+function supportsBacWaterAddon(product) {
+  if (product.supply) return false;
+  if (/pen vial/i.test(product.name)) return false;
+  const specs = Array.isArray(product.specs) ? product.specs : [];
+  return specs.some(([label, value]) =>
+    /form/i.test(String(label)) && /lyophilised powder/i.test(String(value))
+  );
+}
+
+function formatType(product) {
+  return /pen vial/i.test(product.name) ? 'pen' : 'vial';
+}
+
+function formatLabel(type) {
+  return type === 'pen' ? 'Pen' : 'Vial';
+}
+
+function formatMeta(type) {
+  return type === 'pen' ? 'Pre-reconstituted' : 'You reconstitute';
+}
+
+function configuredFormats(slug, product) {
+  const formats = [{
+    slug,
+    type: formatType(product),
+    productName: product.name,
+    label: formatLabel(formatType(product)),
+    meta: formatMeta(formatType(product)),
+    bacWater: supportsBacWaterAddon(product),
+    variants: product.variants.map(variant => ({
+      label: String(variant.label || variant.dose),
+      dose: String(variant.dose),
+      price: Number(variant.price),
+    })),
+  }];
+
+  if (product.sisterProduct && PRODUCTS[product.sisterProduct.slug]) {
+    const sister = PRODUCTS[product.sisterProduct.slug];
+    const sisterType = formatType(sister);
+    formats.push({
+      slug: product.sisterProduct.slug,
+      type: sisterType,
+      productName: sister.name,
+      label: formatLabel(sisterType),
+      meta: formatMeta(sisterType),
+      bacWater: supportsBacWaterAddon(sister),
+      variants: sister.variants.map(variant => ({
+        label: String(variant.label || variant.dose),
+        dose: String(variant.dose),
+        price: Number(variant.price),
+      })),
+    });
+  }
+
+  return formats.sort((a, b) => {
+    if (a.type === b.type) return 0;
+    return a.type === 'vial' ? -1 : 1;
+  });
 }
 
 function variantButtons(product) {
@@ -31,6 +91,84 @@ function variantButtons(product) {
             </span>
           </button>`;
   }).join('');
+}
+
+function configuredVariantButtons(variants) {
+  return variants.map((variant, index) => {
+    const selected = index === 0;
+    return `
+          <button class="config-size-btn${selected ? ' active' : ''}" type="button" data-config-index="${index}" aria-pressed="${selected ? 'true' : 'false'}" onclick="selectConfiguredVariant(${index})">
+            <span>${escapeHtml(variant.label || variant.dose)}</span>
+            <small>${escapeHtml(formatGBP(Number(variant.price)))}</small>
+          </button>`;
+  }).join('');
+}
+
+function configuredFormatButtons(formats, activeIndex) {
+  if (formats.length < 2) return '';
+  return `
+          <div class="config-control">
+            <label>Format</label>
+            <div class="config-toggle-row" role="group" aria-label="Choose product format">
+${formats.map((format, index) => `
+              <button class="config-format-btn${index === activeIndex ? ' active' : ''}" type="button" data-format-index="${index}" aria-pressed="${index === activeIndex ? 'true' : 'false'}" onclick="selectConfiguredFormat(${index})">
+                <span>${escapeHtml(format.label)}</span>
+                <small>${escapeHtml(format.meta)}</small>
+              </button>`).join('')}
+            </div>
+          </div>`;
+}
+
+function buyInterface(slug, product) {
+  const formats = configuredFormats(slug, product);
+  const hasConfigurator = formats.length > 1 || supportsBacWaterAddon(product);
+  if (!hasConfigurator) {
+    return `
+        <div class="variant-list">
+${variantButtons(product)}
+        </div>`;
+  }
+
+  const activeFormatIndex = Math.max(0, formats.findIndex(format => format.slug === slug));
+  const activeFormat = formats[activeFormatIndex];
+
+  return `
+        <section class="config-box" aria-label="${escapeHtml(product.name)} order builder">
+          <div class="config-head">
+            <span class="config-kicker">Build your order</span>
+            <strong id="config-selection-name">${escapeHtml(activeFormat.productName)} ${escapeHtml(activeFormat.variants[0].dose)}</strong>
+          </div>
+${configuredFormatButtons(formats, activeFormatIndex)}
+          <div class="config-control">
+            <label>Size</label>
+            <div class="config-size-grid" id="config-size-grid">
+${configuredVariantButtons(activeFormat.variants)}
+            </div>
+          </div>
+          <div class="config-control" id="config-bac-control"${activeFormat.bacWater ? '' : ' hidden'}>
+            <div class="config-label-row">
+              <label>Bacteriostatic water</label>
+              <span>+&pound;6.99</span>
+            </div>
+            <div class="config-toggle-row" role="group" aria-label="Add bacteriostatic water">
+              <button class="config-toggle" id="bac-yes" type="button" aria-pressed="false" onclick="setBacWater(true)">Yes, include</button>
+              <button class="config-toggle active" id="bac-no" type="button" aria-pressed="true" onclick="setBacWater(false)">No, I have it</button>
+            </div>
+          </div>
+          <div class="config-total-row">
+            <span>
+              <small>Order total</small>
+              <strong id="config-total">${escapeHtml(formatGBP(Number(activeFormat.variants[0].price)))}</strong>
+            </span>
+            <em id="config-total-note">${escapeHtml(activeFormat.type === 'pen' ? 'Pen vial' : 'Vial only')}</em>
+          </div>
+          <button class="config-add-btn" type="button" onclick="addConfiguredToBasket()">Add to Basket</button>
+        </section>
+        <script>
+          window.NPUK_CONFIG_FORMAT_INDEX = ${activeFormatIndex};
+          window.NPUK_CONFIG_FORMATS = ${JSON.stringify(formats)};
+          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial add-on', price: 6.99 };
+        </script>`;
 }
 
 function listItems(items) {
@@ -140,6 +278,8 @@ function renderProductPage(slug, product) {
     ? product.longDescription
     : [product.summary];
   const category = product.category || (product.supply ? 'Research supplies' : 'Research compound');
+  const hasConfigurator = configuredFormats(slug, product).length > 1 || supportsBacWaterAddon(product);
+  const configScript = hasConfigurator ? PRODUCT_CONFIG_SCRIPT : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -191,10 +331,8 @@ ${jsonLd(slug, product)}
         <p class="eyebrow">${escapeHtml(category)}</p>
         <h1>${escapeHtml(product.name)}</h1>
         <p class="summary">${escapeHtml(product.summary)}</p>
-        <div class="price-line">${escapeHtml(priceLabel(product))}</div>
-        <div class="variant-list">
-${variantButtons(product)}
-        </div>
+${hasConfigurator ? '' : `        <div class="price-line">${escapeHtml(priceLabel(product))}</div>`}
+${buyInterface(slug, product)}
         <div class="research-note">
           <strong>Research use only.</strong> ${DISCLAIMER}
         </div>
@@ -223,6 +361,8 @@ ${lowerDescription.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n')}
   </main>
 
   ${basketDrawer()}
+
+${configScript}
 
   <footer class="footer">
     <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
@@ -265,6 +405,30 @@ const PRODUCT_CSS = `
     .variant-action { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .variant-price { font-family: Syne, sans-serif; font-size: 1.05rem; font-weight: 800; color: #10233F; }
     .variant-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 12px; border-radius: 6px; background: #1F6FEB; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
+    .config-box { display: grid; gap: 14px; border: 1px solid #D8E5F2; border-radius: 10px; background: #FCFDFF; padding: 16px; }
+    .config-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E7EFF7; padding-bottom: 12px; }
+    .config-head strong { color: #10233F; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1; text-align: right; }
+    .config-kicker { color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+    .config-control { display: grid; gap: 7px; }
+    .config-control label, .config-label-row label { margin: 0; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .config-label-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .config-label-row span { color: #40566C; font-family: 'DM Mono', monospace; font-size: 0.72rem; }
+    .config-size-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .config-size-btn, .config-format-btn, .config-toggle { min-height: 48px; border: 1px solid #CADAEA; border-radius: 8px; background: #fff; color: #172033; cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .config-size-btn, .config-format-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; text-align: left; }
+    .config-format-btn { align-items: flex-start; flex-direction: column; }
+    .config-size-btn span, .config-format-btn span { font-weight: 800; }
+    .config-size-btn small, .config-format-btn small { color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.67rem; }
+    .config-size-btn.active, .config-format-btn.active, .config-toggle.active { border-color: #1F6FEB; background: #1F6FEB; color: #fff; }
+    .config-size-btn.active small, .config-format-btn.active small { color: rgba(255,255,255,0.78); }
+    .config-toggle-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .config-toggle { padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 800; text-transform: none; letter-spacing: 0; }
+    .config-total-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #D8E5F2; border-radius: 9px; background: #fff; padding: 12px; }
+    .config-total-row small { display: block; margin-bottom: 4px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .config-total-row strong { display: block; color: #10233F; font-family: Syne, sans-serif; font-size: 1.75rem; line-height: 1; }
+    .config-total-row em { color: #40566C; font-size: 0.78rem; font-style: normal; text-align: right; }
+    .config-add-btn { width: 100%; min-height: 50px; border: 0; border-radius: 8px; background: #1F6FEB; color: #fff; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 10px 22px rgba(31,111,235,0.18); }
+    .config-add-btn:hover { background: #185ABC; }
     .research-note { margin-top: 18px; border: 1px solid #D8E5F2; border-radius: 8px; padding: 14px 15px; background: #F5F8FC; color: #4B5F75; font-size: 0.82rem; line-height: 1.65; }
     .research-note strong { color: #172033; }
     .content-grid { max-width: 1160px; margin: 0 auto; padding: 18px 40px 70px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
@@ -319,10 +483,112 @@ const PRODUCT_CSS = `
       .variant-row { align-items: stretch; flex-direction: column; }
       .variant-action { width: 100%; justify-content: space-between; }
       .variant-cta { min-width: 132px; }
+      .config-box { padding: 14px; }
+      .config-head { align-items: flex-start; flex-direction: column; }
+      .config-head strong { text-align: left; font-size: 1.2rem; }
+      .config-size-grid, .config-toggle-row { grid-template-columns: 1fr 1fr; }
+      .config-total-row { align-items: flex-start; flex-direction: column; }
+      .config-total-row em { text-align: left; }
       .side-card { position: static; }
       .basket-drawer { width: 100vw; }
       .footer { flex-direction: column; align-items: flex-start; padding: 24px 16px; }
     }
 `;
+
+const PRODUCT_CONFIG_SCRIPT = `
+  <script>
+    let configuredFormatIndex = Number(window.NPUK_CONFIG_FORMAT_INDEX || 0);
+    let configuredVariantIndex = 0;
+    let configuredBacWater = false;
+
+    function configMoney(value) {
+      return new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+        maximumFractionDigits: 2
+      }).format(value);
+    }
+
+    function configuredFormat() {
+      return window.NPUK_CONFIG_FORMATS[configuredFormatIndex];
+    }
+
+    function configuredVariant() {
+      return configuredFormat().variants[configuredVariantIndex];
+    }
+
+    function sizeButtonMarkup(variant, index) {
+      const active = index === configuredVariantIndex;
+      return '<button class="config-size-btn' + (active ? ' active' : '') + '" type="button" data-config-index="' + index + '" aria-pressed="' + (active ? 'true' : 'false') + '" onclick="selectConfiguredVariant(' + index + ')">' +
+        '<span>' + variant.label + '</span>' +
+        '<small>' + configMoney(variant.price) + '</small>' +
+        '</button>';
+    }
+
+    function refreshConfiguredOrder() {
+      const format = configuredFormat();
+      const variant = configuredVariant();
+      const canAddBacWater = Boolean(format.bacWater);
+      if (!canAddBacWater) configuredBacWater = false;
+      const total = variant.price + (configuredBacWater ? window.NPUK_CONFIG_ADDON.price : 0);
+      const name = document.getElementById('config-selection-name');
+      const totalEl = document.getElementById('config-total');
+      const note = document.getElementById('config-total-note');
+      const sizeGrid = document.getElementById('config-size-grid');
+      const bacControl = document.getElementById('config-bac-control');
+      if (name) name.textContent = format.productName + ' ' + variant.dose;
+      if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
+      if (totalEl) totalEl.textContent = configMoney(total);
+      if (note) note.textContent = format.type === 'pen' ? 'Pen vial' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');
+      if (bacControl) bacControl.hidden = !canAddBacWater;
+      document.querySelectorAll('[data-format-index]').forEach(button => {
+        const active = Number(button.dataset.formatIndex) === configuredFormatIndex;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      document.querySelectorAll('[data-config-index]').forEach(button => {
+        const active = Number(button.dataset.configIndex) === configuredVariantIndex;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      const yes = document.getElementById('bac-yes');
+      const no = document.getElementById('bac-no');
+      if (yes && no) {
+        yes.classList.toggle('active', configuredBacWater);
+        no.classList.toggle('active', !configuredBacWater);
+        yes.setAttribute('aria-pressed', configuredBacWater ? 'true' : 'false');
+        no.setAttribute('aria-pressed', configuredBacWater ? 'false' : 'true');
+      }
+    }
+
+    function selectConfiguredFormat(index) {
+      configuredFormatIndex = index;
+      configuredVariantIndex = 0;
+      refreshConfiguredOrder();
+    }
+
+    function selectConfiguredVariant(index) {
+      configuredVariantIndex = index;
+      refreshConfiguredOrder();
+    }
+
+    function setBacWater(included) {
+      configuredBacWater = Boolean(included);
+      refreshConfiguredOrder();
+    }
+
+    function addConfiguredToBasket() {
+      const format = configuredFormat();
+      const variant = configuredVariant();
+      addToBasket(format.productName, variant.price, variant.dose);
+      if (format.bacWater && configuredBacWater) {
+        addToBasket(window.NPUK_CONFIG_ADDON.name, window.NPUK_CONFIG_ADDON.price, window.NPUK_CONFIG_ADDON.dose);
+      }
+      showBasket();
+    }
+
+    refreshConfiguredOrder();
+  </script>`;
 
 module.exports = { renderProductPage };

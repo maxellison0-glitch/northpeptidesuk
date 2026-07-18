@@ -107,6 +107,30 @@
     .variant-action { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .variant-price { font-family: Syne, sans-serif; font-size: 1.05rem; font-weight: 800; color: #10233F; }
     .variant-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 12px; border-radius: 6px; background: #1F6FEB; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
+    .config-box { display: grid; gap: 14px; border: 1px solid #D8E5F2; border-radius: 10px; background: #FCFDFF; padding: 16px; }
+    .config-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E7EFF7; padding-bottom: 12px; }
+    .config-head strong { color: #10233F; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1; text-align: right; }
+    .config-kicker { color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+    .config-control { display: grid; gap: 7px; }
+    .config-control label, .config-label-row label { margin: 0; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .config-label-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .config-label-row span { color: #40566C; font-family: 'DM Mono', monospace; font-size: 0.72rem; }
+    .config-size-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .config-size-btn, .config-format-btn, .config-toggle { min-height: 48px; border: 1px solid #CADAEA; border-radius: 8px; background: #fff; color: #172033; cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .config-size-btn, .config-format-btn { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; text-align: left; }
+    .config-format-btn { align-items: flex-start; flex-direction: column; }
+    .config-size-btn span, .config-format-btn span { font-weight: 800; }
+    .config-size-btn small, .config-format-btn small { color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.67rem; }
+    .config-size-btn.active, .config-format-btn.active, .config-toggle.active { border-color: #1F6FEB; background: #1F6FEB; color: #fff; }
+    .config-size-btn.active small, .config-format-btn.active small { color: rgba(255,255,255,0.78); }
+    .config-toggle-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .config-toggle { padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 800; text-transform: none; letter-spacing: 0; }
+    .config-total-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #D8E5F2; border-radius: 9px; background: #fff; padding: 12px; }
+    .config-total-row small { display: block; margin-bottom: 4px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .config-total-row strong { display: block; color: #10233F; font-family: Syne, sans-serif; font-size: 1.75rem; line-height: 1; }
+    .config-total-row em { color: #40566C; font-size: 0.78rem; font-style: normal; text-align: right; }
+    .config-add-btn { width: 100%; min-height: 50px; border: 0; border-radius: 8px; background: #1F6FEB; color: #fff; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 10px 22px rgba(31,111,235,0.18); }
+    .config-add-btn:hover { background: #185ABC; }
     .research-note { margin-top: 18px; border: 1px solid #D8E5F2; border-radius: 8px; padding: 14px 15px; background: #F5F8FC; color: #4B5F75; font-size: 0.82rem; line-height: 1.65; }
     .research-note strong { color: #172033; }
     .content-grid { max-width: 1160px; margin: 0 auto; padding: 18px 40px 70px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
@@ -161,6 +185,12 @@
       .variant-row { align-items: stretch; flex-direction: column; }
       .variant-action { width: 100%; justify-content: space-between; }
       .variant-cta { min-width: 132px; }
+      .config-box { padding: 14px; }
+      .config-head { align-items: flex-start; flex-direction: column; }
+      .config-head strong { text-align: left; font-size: 1.2rem; }
+      .config-size-grid, .config-toggle-row { grid-template-columns: 1fr 1fr; }
+      .config-total-row { align-items: flex-start; flex-direction: column; }
+      .config-total-row em { text-align: left; }
       .side-card { position: static; }
       .basket-drawer { width: 100vw; }
       .footer { flex-direction: column; align-items: flex-start; padding: 24px 16px; }
@@ -188,6 +218,7 @@
         <h1>Alcohol Wipes</h1>
         <p class="summary">Single-use alcohol wipe pack for research preparation workflows.</p>
         <div class="price-line">£2.99</div>
+
         <div class="variant-list">
 
           <button class="variant-row" type="button" aria-label="Add Alcohol Wipes 10 pack to basket" onclick='addToBasket("Alcohol Wipes", 2.99, "10 pack")'>
@@ -242,6 +273,8 @@
       <button class="checkout-button" type="button" onclick="goToCheckout()">Checkout</button>
     </div>
   </div>
+
+
 
   <footer class="footer">
     <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
