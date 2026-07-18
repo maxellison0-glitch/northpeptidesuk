@@ -59,6 +59,31 @@ test('every sellable variant resolves in the server CATALOG at its shown price',
   }
 });
 
+test('comparable pen-vial strengths keep at least an eight-pound premium', () => {
+  for (const [slug, pen] of Object.entries(PRODUCTS)) {
+    if (!slug.endsWith('-pen') || !pen.sisterProduct) continue;
+    const vial = PRODUCTS[pen.sisterProduct.slug];
+    if (!vial) continue;
+
+    for (const penVariant of pen.variants) {
+      const penMg = Number(String(penVariant.dose).match(/^([\d.]+)mg/)?.[1]);
+      if (!penMg) continue;
+      const exactVial = vial.variants.find(variant =>
+        Number(String(variant.dose).match(/^([\d.]+)mg/)?.[1]) === penMg
+      );
+      const baseVial = exactVial || (vial.variants.length === 1 ? vial.variants[0] : null);
+      if (!baseVial) continue;
+      const baseMg = Number(String(baseVial.dose).match(/^([\d.]+)mg/)?.[1]);
+      const quantity = penMg / baseMg;
+      if (!Number.isInteger(quantity) || quantity < 1) continue;
+      const equivalentVialPrice = baseVial.price * quantity;
+      const premium = Number((penVariant.price - equivalentVialPrice).toFixed(2));
+      assert.ok(premium >= 8,
+        `${pen.name} ${penMg}mg has only a GBP ${premium} premium over equivalent standard vials`);
+    }
+  }
+});
+
 // Mirror of server resolveCatalogPrice()'s whitespace-normalised fallback: the
 // homepage sends doses without spaces ("10mg/3ml") while the catalogue stores them
 // spaced ("10mg / 3ml"). Both must resolve to the same price.

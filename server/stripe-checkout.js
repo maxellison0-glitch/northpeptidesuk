@@ -67,23 +67,23 @@ const CATALOG = {
   // The homepage sends the dose without spaces (e.g. "10mg/3ml"); the product page
   // sends it spaced ("10mg / 3ml"). The whitespace-normalising fallback in
   // resolveCatalogPrice() maps both forms onto these keys, so only one entry each.
-  "Retatrutide Pen Vial|10mg": 50,
-  "Retatrutide Pen Vial|20mg": 90,
-  "Retatrutide Pen Vial|50mg": 179.99,
+  "Retatrutide Pen Vial|10mg": 55,
+  "Retatrutide Pen Vial|20mg": 95,
+  "Retatrutide Pen Vial|50mg": 189.99,
   "Tirzepatide Pen Vial|15mg / 3ml": 78,
   "Tirzepatide Pen Vial|30mg / 3ml": 144,
-  "BPC-157 Pen Vial|10mg / 3ml": 29,
+  "BPC-157 Pen Vial|10mg / 3ml": 34,
   "BPC-157 Pen Vial|20mg / 3ml": 58,
   "TB-500 Pen Vial|10mg / 3ml": 59,
-  "GHK-Cu Pen Vial|50mg / 3ml": 32,
-  "KPV Pen Vial|10mg / 3ml": 36,
+  "GHK-Cu Pen Vial|50mg / 3ml": 37,
+  "KPV Pen Vial|10mg / 3ml": 40,
   "KLOW Stack Pen Vial|80mg / 3ml": 72,
-  "Ipamorelin Pen Vial|5mg / 3ml": 30,
-  "CJC-1295 Pen Vial|5mg / 3ml": 38,
+  "Ipamorelin Pen Vial|5mg / 3ml": 35,
+  "CJC-1295 Pen Vial|5mg / 3ml": 42,
   "NAD+ Pen Vial|1000mg / 3ml": 102,
-  "SS-31 Pen Vial|10mg / 3ml": 30,
-  "Epitalon Pen Vial|10mg / 3ml": 17,
-  "Pinealon Pen Vial|20mg / 3ml": 36
+  "SS-31 Pen Vial|10mg / 3ml": 35,
+  "Epitalon Pen Vial|10mg / 3ml": 24,
+  "Pinealon Pen Vial|20mg / 3ml": 40
 };
 
 // Whitespace-normalised view of CATALOG so "10mg / 3ml" and "10mg/3ml" (the product

@@ -195,7 +195,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
-  assert.equal(elements['config-total'].textContent, '£50');
+  assert.equal(elements['config-total'].textContent, '£55');
   assert.equal(elements['config-total-note'].textContent, 'Complete kit included');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
@@ -205,7 +205,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredVariant(1);
   context.addConfiguredToBasket();
-  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 90, dose: '20mg' }]);
+  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 95, dose: '20mg' }]);
   assert.equal(basketOpened, true);
 
   basket.length = 0;

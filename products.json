@@ -92,19 +92,19 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 50,
+          "price": 55,
           "currency": "GBP"
         },
         {
           "label": "1x20mg",
           "dose": "20mg",
-          "price": 90,
+          "price": 95,
           "currency": "GBP"
         },
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 179.99,
+          "price": 189.99,
           "currency": "GBP"
         }
       ],
@@ -344,7 +344,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 29,
+          "price": 34,
           "currency": "GBP"
         },
         {
@@ -582,7 +582,7 @@
         {
           "label": "1x50mg / 3ml",
           "dose": "50mg / 3ml",
-          "price": 32,
+          "price": 37,
           "currency": "GBP"
         }
       ],
@@ -698,7 +698,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 36,
+          "price": 40,
           "currency": "GBP"
         }
       ],
@@ -906,7 +906,7 @@
         {
           "label": "1x5mg / 3ml",
           "dose": "5mg / 3ml",
-          "price": 30,
+          "price": 35,
           "currency": "GBP"
         }
       ],
@@ -1018,7 +1018,7 @@
         {
           "label": "1x5mg / 3ml",
           "dose": "5mg / 3ml",
-          "price": 38,
+          "price": 42,
           "currency": "GBP"
         }
       ],
@@ -1242,7 +1242,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 30,
+          "price": 35,
           "currency": "GBP"
         }
       ],
@@ -1470,7 +1470,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 17,
+          "price": 24,
           "currency": "GBP"
         }
       ],
@@ -1586,7 +1586,7 @@
         {
           "label": "1x20mg / 3ml",
           "dose": "20mg / 3ml",
-          "price": 36,
+          "price": 40,
           "currency": "GBP"
         }
       ],
