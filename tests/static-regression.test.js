@@ -211,8 +211,8 @@ assert(
   "homepage hero should use the current research-use messaging"
 );
 assert(
-  checkout.includes("'AJ20':         0.20") &&
-    serverCheckout.includes('"AJ20":         0.20'),
+  /'AJ20':\s*0\.20/.test(checkout) &&
+    /"AJ20":\s*0\.20/.test(serverCheckout),
   "AJ20 should be enforced as a 20% discount by both checkout and Stripe"
 );
 assert(
@@ -285,6 +285,16 @@ assert(
   sitemap.includes("https://www.northpeptidesuk.com/reviews/"),
   "sitemap should include the reviews route"
 );
+for (const loc of sitemap.matchAll(/<loc>https:\/\/www\.northpeptidesuk\.com\/([^<]*)<\/loc>/g)) {
+  let file = loc[1] || "index.html";
+  if (file.endsWith("/")) file += "index.html";
+  if (!file.endsWith(".html")) continue;
+  if (!fs.existsSync(path.join(root, file))) continue;
+  assert(
+    !/<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(read(file)),
+    `sitemap page ${file} should not be noindex`
+  );
+}
 assert(
   !index.includes("onclick=\"adjustProductQty(") &&
     index.includes("function addBundleToBasket(selId, name)") &&
