@@ -16,6 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="preload" as="image" href="/bpc-157-pen-vial.png">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -247,7 +248,7 @@
   <main>
     <section class="product-hero">
       <div class="media-card">
-        <img src="/hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157" loading="eager">
+        <img id="product-image" src="/hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg" alt="BPC-157" loading="eager">
       </div>
       <div class="buy-card">
         <a class="back-link" href="/#products">Back to products</a>
@@ -307,7 +308,7 @@
         </section>
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = 0;
-          window.NPUK_CONFIG_FORMATS = [{"slug":"bpc-157","type":"vial","productName":"BPC-157","label":"Vial","meta":"You reconstitute","bacWater":true,"variants":[{"label":"1x10mg","dose":"10mg","price":23.99}]},{"slug":"bpc-157-pen","type":"pen","productName":"BPC-157 Pen Vial","label":"Pen","meta":"Pre-reconstituted","bacWater":false,"variants":[{"label":"1x10mg / 3ml","dose":"10mg / 3ml","price":29},{"label":"1x20mg / 3ml","dose":"20mg / 3ml","price":58}]}];
+          window.NPUK_CONFIG_FORMATS = [{"slug":"bpc-157","type":"vial","productName":"BPC-157","label":"Vial","meta":"You reconstitute","image":"hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg","bacWater":true,"variants":[{"label":"1x10mg","dose":"10mg","price":23.99}]},{"slug":"bpc-157-pen","type":"pen","productName":"BPC-157 Pen Vial","label":"Pen","meta":"Pre-reconstituted","image":"bpc-157-pen-vial.png","bacWater":false,"variants":[{"label":"1x10mg / 3ml","dose":"10mg / 3ml","price":29},{"label":"1x20mg / 3ml","dose":"20mg / 3ml","price":58}]}];
           window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial add-on', price: 6.99 };
         </script>
         <div class="research-note">
@@ -436,7 +437,12 @@
       const note = document.getElementById('config-total-note');
       const sizeGrid = document.getElementById('config-size-grid');
       const bacControl = document.getElementById('config-bac-control');
+      const productImage = document.getElementById('product-image');
       if (name) name.textContent = format.productName + ' ' + variant.dose;
+      if (productImage) {
+        productImage.setAttribute('src', '/' + format.image);
+        productImage.setAttribute('alt', format.productName);
+      }
       if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
       if (totalEl) totalEl.textContent = configMoney(total);
       if (note) note.textContent = format.type === 'pen' ? 'Pen vial' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');

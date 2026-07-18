@@ -16,6 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="preload" as="image" href="/ss-31-pen-vial.png">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -247,7 +248,7 @@
   <main>
     <section class="product-hero">
       <div class="media-card">
-        <img src="/ss-31.png" alt="SS-31" loading="eager">
+        <img id="product-image" src="/ss-31.png" alt="SS-31" loading="eager">
       </div>
       <div class="buy-card">
         <a class="back-link" href="/#products">Back to products</a>
@@ -307,7 +308,7 @@
         </section>
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = 0;
-          window.NPUK_CONFIG_FORMATS = [{"slug":"ss-31","type":"vial","productName":"SS-31","label":"Vial","meta":"You reconstitute","bacWater":true,"variants":[{"label":"1x10mg","dose":"10mg","price":24.99}]},{"slug":"ss-31-pen","type":"pen","productName":"SS-31 Pen Vial","label":"Pen","meta":"Pre-reconstituted","bacWater":false,"variants":[{"label":"1x10mg / 3ml","dose":"10mg / 3ml","price":30}]}];
+          window.NPUK_CONFIG_FORMATS = [{"slug":"ss-31","type":"vial","productName":"SS-31","label":"Vial","meta":"You reconstitute","image":"ss-31.png","bacWater":true,"variants":[{"label":"1x10mg","dose":"10mg","price":24.99}]},{"slug":"ss-31-pen","type":"pen","productName":"SS-31 Pen Vial","label":"Pen","meta":"Pre-reconstituted","image":"ss-31-pen-vial.png","bacWater":false,"variants":[{"label":"1x10mg / 3ml","dose":"10mg / 3ml","price":30}]}];
           window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial add-on', price: 6.99 };
         </script>
         <div class="research-note">
@@ -437,7 +438,12 @@
       const note = document.getElementById('config-total-note');
       const sizeGrid = document.getElementById('config-size-grid');
       const bacControl = document.getElementById('config-bac-control');
+      const productImage = document.getElementById('product-image');
       if (name) name.textContent = format.productName + ' ' + variant.dose;
+      if (productImage) {
+        productImage.setAttribute('src', '/' + format.image);
+        productImage.setAttribute('alt', format.productName);
+      }
       if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
       if (totalEl) totalEl.textContent = configMoney(total);
       if (note) note.textContent = format.type === 'pen' ? 'Pen vial' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');

@@ -44,6 +44,7 @@ function configuredFormats(slug, product) {
     productName: product.name,
     label: formatLabel(formatType(product)),
     meta: formatMeta(formatType(product)),
+    image: String(product.image),
     bacWater: supportsBacWaterAddon(product),
     variants: product.variants.map(variant => ({
       label: String(variant.label || variant.dose),
@@ -61,6 +62,7 @@ function configuredFormats(slug, product) {
       productName: sister.name,
       label: formatLabel(sisterType),
       meta: formatMeta(sisterType),
+      image: String(sister.image),
       bacWater: supportsBacWaterAddon(sister),
       variants: sister.variants.map(variant => ({
         label: String(variant.label || variant.dose),
@@ -278,8 +280,13 @@ function renderProductPage(slug, product) {
     ? product.longDescription
     : [product.summary];
   const category = product.category || (product.supply ? 'Research supplies' : 'Research compound');
-  const hasConfigurator = configuredFormats(slug, product).length > 1 || supportsBacWaterAddon(product);
+  const formats = configuredFormats(slug, product);
+  const hasConfigurator = formats.length > 1 || supportsBacWaterAddon(product);
   const configScript = hasConfigurator ? PRODUCT_CONFIG_SCRIPT : '';
+  const imagePreloads = formats
+    .filter(format => format.image !== product.image)
+    .map(format => `  <link rel="preload" as="image" href="/${escapeHtml(format.image)}">`)
+    .join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -299,6 +306,7 @@ function renderProductPage(slug, product) {
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
+${imagePreloads}
   <script type="application/ld+json">
 ${jsonLd(slug, product)}
   </script>
@@ -324,7 +332,7 @@ ${jsonLd(slug, product)}
   <main>
     <section class="product-hero">
       <div class="media-card">
-        <img src="/${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="eager">
+        <img id="product-image" src="/${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="eager">
       </div>
       <div class="buy-card">
         <a class="back-link" href="/#products">Back to products</a>
@@ -537,7 +545,12 @@ const PRODUCT_CONFIG_SCRIPT = `
       const note = document.getElementById('config-total-note');
       const sizeGrid = document.getElementById('config-size-grid');
       const bacControl = document.getElementById('config-bac-control');
+      const productImage = document.getElementById('product-image');
       if (name) name.textContent = format.productName + ' ' + variant.dose;
+      if (productImage) {
+        productImage.setAttribute('src', '/' + format.image);
+        productImage.setAttribute('alt', format.productName);
+      }
       if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
       if (totalEl) totalEl.textContent = configMoney(total);
       if (note) note.textContent = format.type === 'pen' ? 'Pen vial' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');

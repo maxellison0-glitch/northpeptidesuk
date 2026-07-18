@@ -16,6 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="preload" as="image" href="/ghk-cu-blue-powder.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -247,7 +248,7 @@
   <main>
     <section class="product-hero">
       <div class="media-card">
-        <img src="/ghk-cu-pen-vial.png" alt="GHK-Cu Pen Vial" loading="eager">
+        <img id="product-image" src="/ghk-cu-pen-vial.png" alt="GHK-Cu Pen Vial" loading="eager">
       </div>
       <div class="buy-card">
         <a class="back-link" href="/#products">Back to products</a>
@@ -307,7 +308,7 @@
         </section>
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = 1;
-          window.NPUK_CONFIG_FORMATS = [{"slug":"ghk-cu","type":"vial","productName":"GHK-Cu","label":"Vial","meta":"You reconstitute","bacWater":true,"variants":[{"label":"1x50mg","dose":"50mg","price":27}]},{"slug":"ghk-cu-pen","type":"pen","productName":"GHK-Cu Pen Vial","label":"Pen","meta":"Pre-reconstituted","bacWater":false,"variants":[{"label":"1x50mg / 3ml","dose":"50mg / 3ml","price":32}]}];
+          window.NPUK_CONFIG_FORMATS = [{"slug":"ghk-cu","type":"vial","productName":"GHK-Cu","label":"Vial","meta":"You reconstitute","image":"ghk-cu-blue-powder.webp","bacWater":true,"variants":[{"label":"1x50mg","dose":"50mg","price":27}]},{"slug":"ghk-cu-pen","type":"pen","productName":"GHK-Cu Pen Vial","label":"Pen","meta":"Pre-reconstituted","image":"ghk-cu-pen-vial.png","bacWater":false,"variants":[{"label":"1x50mg / 3ml","dose":"50mg / 3ml","price":32}]}];
           window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial add-on', price: 6.99 };
         </script>
         <div class="research-note">
@@ -437,7 +438,12 @@
       const note = document.getElementById('config-total-note');
       const sizeGrid = document.getElementById('config-size-grid');
       const bacControl = document.getElementById('config-bac-control');
+      const productImage = document.getElementById('product-image');
       if (name) name.textContent = format.productName + ' ' + variant.dose;
+      if (productImage) {
+        productImage.setAttribute('src', '/' + format.image);
+        productImage.setAttribute('alt', format.productName);
+      }
       if (sizeGrid) sizeGrid.innerHTML = format.variants.map(sizeButtonMarkup).join('');
       if (totalEl) totalEl.textContent = configMoney(total);
       if (note) note.textContent = format.type === 'pen' ? 'Pen vial' : (configuredBacWater ? 'Vial + BAC water' : 'Vial only');

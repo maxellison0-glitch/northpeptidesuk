@@ -78,7 +78,16 @@ test('paired vial and pen products share one live order builder', () => {
     assert.match(html, /Build your order/);
     assert.match(html, /aria-label="Choose product format"/);
     assert.match(html, new RegExp(`"slug":"${product.sisterProduct.slug}"`));
+    assert.match(html, new RegExp(`"image":"${PRODUCTS[product.sisterProduct.slug].image.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   }
+});
+
+test('homepage consolidates pen vials into their compound product pages', () => {
+  const homepage = read('index.html');
+  assert.doesNotMatch(homepage, /href="#cat-pen-vials"/);
+  assert.doesNotMatch(homepage, /<div class="product-category" id="cat-pen-vials">/);
+  assert.match(homepage, /<template id="legacy-pen-vial-cards">/);
+  assert.match(homepage, />21 products</);
 });
 
 test('retatrutide builder updates format, size, add-on price and basket lines', () => {
@@ -118,6 +127,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
     'config-total-note': makeElement(),
     'config-size-grid': makeElement(),
     'config-bac-control': makeElement(),
+    'product-image': makeElement(),
     'bac-yes': makeElement(),
     'bac-no': makeElement()
   };
@@ -150,6 +160,8 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
   assert.equal(elements['config-total'].textContent, '£45');
   assert.equal(elements['config-total-note'].textContent, 'Vial only');
+  assert.equal(elements['product-image'].attributes.src, '/reta-50mg.png');
+  assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
 
   context.setBacWater(true);
   assert.equal(elements['config-total'].textContent, '£51.99');
@@ -160,6 +172,8 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   assert.equal(elements['config-total'].textContent, '£50');
   assert.equal(elements['config-total-note'].textContent, 'Pen vial');
   assert.equal(elements['config-bac-control'].hidden, true);
+  assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.png');
+  assert.equal(elements['product-image'].attributes.alt, 'Retatrutide Pen Vial');
   assert.equal(sizeButtons.length, 3);
 
   context.selectConfiguredVariant(1);
