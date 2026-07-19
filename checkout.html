@@ -173,6 +173,18 @@
       gap: 8px;
       margin-bottom: 20px;
     }
+    .delivery-cutoff-note {
+      margin: -2px 0 10px;
+      padding: 10px 12px;
+      border: 1px solid #B8D6F0;
+      border-radius: 8px;
+      background: #EAF4FF;
+      color: #174EA6;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      line-height: 1.55;
+    }
+    .delivery-cutoff-note strong { color: #10233F; }
     .delivery-option {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -572,12 +584,16 @@
 
   <!-- DELIVERY -->
   <p class="sec-head">Delivery</p>
+  <div class="delivery-cutoff-note">
+    <strong>Dispatch cutoff: 1PM Monday&ndash;Friday.</strong>
+    Orders paid before 1PM dispatch the same day. Orders paid after 1PM dispatch the next working day.
+  </div>
   <div class="delivery-options">
     <label class="delivery-option selected" id="label-standard">
       <input type="radio" name="delivery" value="standard" data-price="3" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £50</span></div>
+        <div class="delivery-option-desc">Estimated 1&ndash;2 working days after dispatch · <span id="delivery-nudge">Free over £50</span></div>
       </div>
       <div class="delivery-option-price" id="standard-delivery-price">£3</div>
     </label>
@@ -585,7 +601,7 @@
       <input type="radio" name="delivery" value="express" data-price="7.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Special Delivery</div>
-        <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
+        <div class="delivery-option-desc">Guaranteed by 1PM on the next working day after dispatch</div>
       </div>
       <div class="delivery-option-price">£7.95</div>
     </label>

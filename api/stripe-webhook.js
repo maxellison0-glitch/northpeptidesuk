@@ -196,7 +196,7 @@ function buildCustomerEmailHtml(session, lineItems) {
           </tr>
         </table>
         <p>Hi ${escapeHtml(name)},</p>
-        <p>Thanks for your order with North Peptides UK. Payment's confirmed and your order will be dispatched within 24&ndash;48 hours on business days by Royal Mail Tracked 24 or Special Delivery — sent in plain, unmarked packaging with no product names visible on the outside. You'll get a tracking number by email once it's on its way.</p>
+        <p>Thanks for your order with North Peptides UK. Payment's confirmed. Orders paid before 1PM Monday&ndash;Friday dispatch the same day; orders paid after 1PM dispatch the next working day. Your order will travel by Royal Mail Tracked 24 or Special Delivery, sent in plain, unmarked packaging with no product names visible on the outside. You'll get a tracking number by email once it's on its way.</p>
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
           <thead><tr>
             <th style="text-align:left;border-bottom:2px solid #10233F;padding-bottom:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.03em;">Item</th>
@@ -231,7 +231,7 @@ function buildCustomerEmailText(session, lineItems) {
     : "";
   return `Order confirmed — thank you, ${name}
 
-Payment's confirmed and your order will be dispatched within 24-48 hours on business days by Royal Mail Tracked 24 or Special Delivery, sent in plain, unmarked packaging with no product names visible on the outside. You'll get a tracking number by email once it's on its way.
+Payment's confirmed. Orders paid before 1PM Monday-Friday dispatch the same day; orders paid after 1PM dispatch the next working day. Your order will travel by Royal Mail Tracked 24 or Special Delivery, sent in plain, unmarked packaging with no product names visible on the outside. You'll get a tracking number by email once it's on its way.
 
 ${items}
 
