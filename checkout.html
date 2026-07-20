@@ -370,76 +370,10 @@
     .cooling-add-btn { padding: 9px 18px; background: #1F6FEB; color: #fff; border: none; border-radius: 7px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
     .cooling-add-btn:hover { background: #185ABC; }
     .cooling-add-btn.added { background: var(--soft-neutral); cursor: default; }
-    /* RECONSTITUTION CALCULATOR */
-    .calc-card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
-    .calc-intro { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); padding: 14px 18px 0; line-height: 1.6; }
-    @keyframes calcSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .calc-item { padding: 18px; border-top: 1px solid #EAF0F7; animation: calcSlideIn 0.35s ease both; }
-    .calc-item:first-child { border-top: none; }
-    .calc-product-header { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
-    .calc-product-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: #10233F; flex: 1; }
-    .calc-product-mg { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #1F6FEB; background: rgba(31,111,235,0.09); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(31,111,235,0.18); }
-    .calc-pen-label { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #1F6FEB; background: rgba(31,111,235,0.07); border: 1px solid rgba(31,111,235,0.18); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-    .calc-water-row { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; flex-wrap: wrap; }
-    .calc-water-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-    .calc-water-btns { display: flex; gap: 5px; flex-wrap: wrap; }
-    .calc-water-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.16s; }
-    .calc-water-btn:hover { border-color: #1F6FEB; color: #1F6FEB; }
-    .calc-water-btn.active { background: #1F6FEB; color: #fff; border-color: #1F6FEB; }
-    /* Ask card — question, input and the live concentration reference all live in
-       one connected block instead of a separate stat box floating above an
-       unlabelled input further down the card. */
-    .calc-ask-card { background: #F5F8FC; border: 1px solid rgba(31,111,235,0.14); border-radius: 10px; padding: 18px; transition: opacity 0.15s, transform 0.15s; }
-    .calc-ask-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #10233F; margin-bottom: 12px; }
-    .calc-dose-input-wrap { display: flex; align-items: stretch; margin-bottom: 8px; }
-    .calc-dose-input { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; color: #10233F; background: #fff; border: 1px solid rgba(31,111,235,0.3); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; width: 140px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; -moz-appearance: textfield; }
-    .calc-dose-input::-webkit-outer-spin-button, .calc-dose-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .calc-dose-input:focus { border-color: #1F6FEB; box-shadow: 0 0 0 3px rgba(31,111,235,0.1); }
-    .calc-unit-toggle { display: flex; }
-    .calc-unit-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: #63758A; background: #fff; border: 1px solid rgba(31,111,235,0.3); border-left: none; padding: 0 12px; cursor: pointer; transition: background 0.15s, color 0.15s; }
-    .calc-unit-btn:first-child { border-left: 1px solid rgba(31,111,235,0.3); }
-    .calc-unit-btn:last-child { border-radius: 0 8px 8px 0; }
-    .calc-unit-btn.active { background: #1F6FEB; color: #fff; }
-    .calc-pen-note { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #96A3B3; line-height: 1.5; margin-top: 8px; }
-    .calc-dose-hint { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #96A3B3; margin-bottom: 12px; }
-    .calc-ref-line { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4B5F75; padding-top: 12px; border-top: 1px solid rgba(31,111,235,0.16); }
-    .calc-ref-line strong { color: #1F6FEB; font-size: 0.78rem; }
-    .order-line-dose-note { font-family: 'DM Mono', monospace; font-size: 0.61rem; color: #1F6FEB; margin-top: 4px; animation: calcSlideIn 0.25s ease both; }
-    .order-line-blend-detail { font-size: 0.58rem; color: #96A3B3; margin-top: 2px; }
-    /* Draw result */
-    /* This is the actual answer the visitor came for, so it gets the most visual
-       weight in the card — bigger number, clearer labelling than anything above it. */
-    .calc-draw { margin-top: 14px; }
-    .calc-draw-result { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; }
-    .calc-draw-top { display: flex; align-items: center; gap: 14px; }
-    .calc-draw-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: #1F6FEB; line-height: 1; flex-shrink: 0; }
-    .calc-draw-info { flex: 1; }
-    .calc-draw-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #63758A; }
-    .calc-draw-sub { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: #96A3B3; margin-top: 5px; }
-    /* Visual syringe fill — the single biggest gap found vs. paid calculation
-       tools in research: a real fill line the customer can pattern-match against
-       the physical syringe in their hand, not just a number in isolation. */
-    .calc-syringe-wrap { margin-top: 10px; padding-top: 14px; border-top: 1px solid #EAF0F7; }
-    .calc-syringe-svg { width: 100%; height: auto; display: block; }
-    .calc-syringe-overflow { margin-top: 6px; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #C2410C; }
-    .calc-draw-breakdown { margin-top: 8px; background: rgba(31,111,235,0.06); border: 1px solid rgba(31,111,235,0.14); border-radius: 8px; padding: 9px 12px; display: flex; flex-direction: column; gap: 4px; }
-    .calc-draw-comp { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #10233F; border-bottom: 1px solid rgba(31,111,235,0.08); padding-bottom: 4px; }
-    .calc-draw-comp:last-child { border-bottom: none; padding-bottom: 0; }
-    .calc-draw-comp span:last-child { color: #1F6FEB; font-weight: 600; }
-    /* Saved confirmation */
-    .calc-saved { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: #1F6FEB; display: flex; align-items: center; gap: 5px; margin-top: 9px; opacity: 0; transition: opacity 0.35s; }
-    /* Calculator toggle */
-    .calc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 0; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: #10233F; text-transform: uppercase; transition: border-color 0.15s, background 0.15s; }
-    .calc-toggle:hover { border-color: #1F6FEB; background: rgba(31,111,235,0.03); }
-    .calc-toggle-chevron { font-size: 0.75rem; color: #1F6FEB; transition: transform 0.22s; display: inline-block; }
-    .calc-toggle.open .calc-toggle-chevron { transform: rotate(90deg); }
-    .calc-card { margin-top: 10px; }
     @media (max-width: 480px) {
       .cooling-card { flex-direction: column; align-items: flex-start; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
       .cooling-price { flex: 1; }
-      .calc-dose-input { width: 110px; font-size: 1.1rem; }
-      .calc-draw-num { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -469,7 +403,7 @@
     </div>
   </div>
 
-  <!-- SMART SECTION: cold-chain add-on (regular vials) + reconstitution calculator -->
+  <!-- SMART SECTION: cold-chain add-on for regular vials -->
   <div id="smart-section" style="display:none">
 
     <!-- Cold-chain add-on — shown only when regular vials in basket, not pen vials -->
@@ -490,16 +424,6 @@
           <button type="button" class="cooling-add-btn" onclick="addCoolingPackaging(this)">Add</button>
         </div>
       </div>
-    </div>
-
-    <!-- Reconstitution calculator — hidden by default, tap to expand -->
-    <button type="button" class="calc-toggle" id="calc-toggle" onclick="toggleCalc()">
-      <span>Reconstitution calculator</span>
-      <span class="calc-toggle-chevron">&#9658;</span>
-    </button>
-    <div class="calc-card" id="calc-card" style="display:none">
-      <p class="calc-intro">Draw volumes based on the items in your basket.</p>
-      <div id="calc-items"></div>
     </div>
 
   </div>
@@ -621,7 +545,37 @@
       <textarea name="notes" placeholder="Anything we should know?"></textarea>
     </div>
 
-    <p class="checkout-next-note">Add your delivery address and pay by card, Apple Pay or Google Pay on the next step — secure checkout handled by Stripe. No account needed.</p>
+    <p class="sec-head">Delivery address</p>
+    <div class="form-group">
+      <label>Address Line 1</label>
+      <input type="text" name="address1" required placeholder="Street address">
+    </div>
+    <div class="form-group">
+      <label>Address Line 2 <span class="optional-label">(optional)</span></label>
+      <input type="text" name="address2" placeholder="Flat, building, etc.">
+    </div>
+    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="form-group">
+        <label>City / Town</label>
+        <input type="text" name="city" required placeholder="City or town">
+      </div>
+      <div class="form-group">
+        <label>County <span class="optional-label">(optional)</span></label>
+        <input type="text" name="county" placeholder="County">
+      </div>
+    </div>
+    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="form-group">
+        <label>Postcode</label>
+        <input type="text" name="postcode" required placeholder="e.g. FY1 1AA">
+      </div>
+      <div class="form-group">
+        <label>Phone <span class="optional-label">(optional)</span></label>
+        <input type="tel" name="phone" placeholder="07xxx xxxxxx">
+      </div>
+    </div>
+
+    <p class="checkout-next-note">After placing your order, you'll receive bank transfer details by email. Your order is confirmed once payment clears — usually within a few hours via Faster Payments.</p>
 
     <label class="research-confirm">
       <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
@@ -634,26 +588,11 @@
           <path d="M7 10V7a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="2"/>
           <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" fill="currentColor"/>
         </svg>
-        <span class="pay-secure-text">Secure checkout</span>
-      </div>
-      <div class="pay-cards" aria-label="Accepted cards: Visa, Mastercard, American Express">
-        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Visa">
-          <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#D8E5F2"/>
-          <text x="19" y="16" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-style="italic" font-size="9.5" fill="#1A1F71">VISA</text>
-        </svg>
-        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="Mastercard">
-          <rect width="38" height="24" rx="3.5" fill="#fff" stroke="#D8E5F2"/>
-          <circle cx="16" cy="12" r="6" fill="#EB001B"/>
-          <circle cx="23" cy="12" r="6" fill="#F79E1B" fill-opacity="0.85"/>
-        </svg>
-        <svg class="pay-card" viewBox="0 0 38 24" width="38" height="24" role="img" aria-label="American Express">
-          <rect width="38" height="24" rx="3.5" fill="#1F72CF"/>
-          <text x="19" y="15.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.8" fill="#fff" letter-spacing="0.5">AMEX</text>
-        </svg>
+        <span class="pay-secure-text">Bank transfer checkout</span>
       </div>
     </div>
 
-    <button type="submit" class="btn-place-order" id="submit-btn">Continue to payment</button>
+    <button type="submit" class="btn-place-order" id="submit-btn">Place order</button>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
@@ -661,326 +600,39 @@
 
 <!-- SUCCESS -->
 <div class="checkout-wrap success-page" id="success-page">
-  <div style="text-align:center;padding:60px 0;">
-    <div class="success-check">✓</div>
-    <h2>Order confirmed</h2>
-    <p style="margin-top:12px;">Thanks — your payment is complete. We'll email your confirmation and tracking, then prepare your order for dispatch.</p>
-    <p style="margin-top:8px;">Any questions? Email <strong style="color:#1F6FEB;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
-    <a href="index.html" style="display:inline-block;margin-top:32px;color:#1F6FEB;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to shop</a>
+  <div style="padding:40px 0;">
+    <div style="text-align:center;">
+      <div class="success-check">✓</div>
+      <h2>Order received</h2>
+      <p style="margin-top:12px;">Thanks — your order has been placed. Complete the bank transfer below to confirm it.</p>
+    </div>
+
+    <div id="bank-details-box" style="margin:28px 0;padding:20px;background:#F0F7FF;border:1px solid #B8D6F0;border-radius:12px;">
+      <p style="font-weight:700;color:#10233F;font-size:1rem;margin:0 0 14px;">Bank transfer details</p>
+      <table style="width:100%;font-size:0.88rem;">
+        <tr><td style="padding:6px 0;color:#4B5F75;width:40%;">Account name</td><td id="bank-name" style="padding:6px 0;font-weight:600;"></td></tr>
+        <tr><td style="padding:6px 0;color:#4B5F75;">Sort code</td><td id="bank-sort" style="padding:6px 0;font-weight:600;"></td></tr>
+        <tr><td style="padding:6px 0;color:#4B5F75;">Account number</td><td id="bank-acct" style="padding:6px 0;font-weight:600;"></td></tr>
+        <tr><td style="padding:6px 0;color:#4B5F75;">Amount</td><td id="bank-amount" style="padding:6px 0;font-weight:700;color:#1F6FEB;"></td></tr>
+        <tr><td style="padding:6px 0;color:#4B5F75;">Reference</td><td id="bank-ref" style="padding:6px 0;font-weight:700;color:#1F6FEB;"></td></tr>
+      </table>
+    </div>
+
+    <div style="padding:14px 18px;background:#FEF3C7;border:1px solid #F59E0B;border-radius:10px;margin-bottom:20px;">
+      <p style="margin:0;font-size:0.82rem;color:#92400E;line-height:1.6;"><strong>Important:</strong> Use your order reference as the payment reference so we can match your transfer. Once received (usually within a few hours via Faster Payments), we'll confirm by email and dispatch within 24–48 hours.</p>
+    </div>
+
+    <p style="text-align:center;font-size:0.85rem;color:#63758A;line-height:1.7;">We've also sent these details to your email.<br>Any questions? Email <strong style="color:#1F6FEB;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
+    <div style="text-align:center;">
+      <a href="index.html" style="display:inline-block;margin-top:24px;color:#1F6FEB;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to shop</a>
+    </div>
   </div>
 </div>
 
 <script>
-  // ── RECONSTITUTION CALCULATOR + COOLING UPSELL ──────────────────────────
-  const CALC_EXCLUDED = ['bacteriostatic water', 'bac water', 'insulin needle pack', 'alcohol wipes',
-    'pen-style research kit', 'sterile disposable pen tips', 'pen tips', 'thermal cooled', 'intranasal'];
-
-  // Blend composition: each entry maps a blend key → component breakdown (shares must sum to 1).
-  // KLOW Stack: GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg = 80mg (5:1:1:1 ratio)
-  const BLEND_COMPOSITIONS = {
-    klow: [
-      { name: 'GHK-Cu',  share: 50/80 },
-      { name: 'TB-500',  share: 10/80 },
-      { name: 'BPC-157', share: 10/80 },
-      { name: 'KPV',     share: 10/80 },
-    ],
-  };
-
-  // Suggested placeholder amount per compound (mcg). Keeps the input contextual without pre-filling.
-  function getSuggestedDose(name) {
-    const n = name.toLowerCase();
-    if (n.includes('retatrutide')) return 2000;
-    if (n.includes('tirzepatide')) return 2500;
-    if (n.includes('ipamorelin')) return 200;
-    if (n.includes('cjc')) return 200;
-    if (n.includes('bpc')) return 500;
-    if (n.includes('tb-500') || n.includes('tb500')) return 2500;
-    if (n.includes('klow')) return 2000;
-    if (n.includes('ghk')) return 1000;
-    if (n.includes('kpv')) return 1000;
-    if (n.includes('ss-31') || n.includes('ss31')) return 2500;
-    if (n.includes('semax')) return 200;
-    if (n.includes('selank')) return 200;
-    if (n.includes('epitalon')) return 10000;
-    if (n.includes('pinealon')) return 10000;
-    if (n.includes('nad')) return 500000;
-    return null;
-  }
-
-  function getBlendKey(name) {
-    const n = (name || '').toLowerCase();
-    if (n.includes('klow')) return 'klow';
-    return null;
-  }
-
-  const doseNotes    = {};  // { itemName: { mcg, units, mlVal, waterMl } }
-  const calcItemMeta = {};  // { 'ci0': { name, mg, waterMl } }
-
-  function toggleCalc() {
-    const toggle = document.getElementById('calc-toggle');
-    const card   = document.getElementById('calc-card');
-    const isOpen = toggle.classList.contains('open');
-    toggle.classList.toggle('open');
-    card.style.display = isOpen ? 'none' : '';
-  }
-
-  function calcUnitsFromDose(mcg, mg, waterMl) {
-    const units = Math.round((mcg / ((mg / waterMl) * 10)) * 10) / 10;
-    return { units, mlVal: (units * 0.01).toFixed(2) };
-  }
-
-  // A U-100 (100-unit) insulin syringe fill illustration, matching the standard
-  // this calculator's own unit math already assumes. The customer's actual task
-  // is "pull the plunger to this line" — this lets them pattern-match against
-  // the physical syringe rather than trust an isolated number.
-  function syringeVisualHTML(units) {
-    const CAP = 100;
-    const clamped = Math.max(0, Math.min(units, CAP));
-    const barrelX = 16, barrelW = 246, barrelY = 12, barrelH = 22;
-    const fillW = (clamped / CAP) * barrelW;
-    const ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(function (t) {
-      const x = barrelX + (t / CAP) * barrelW;
-      const major = t % 20 === 0;
-      const tickBottom = barrelY + barrelH + (major ? 7 : 4);
-      let svg = '<line x1="' + x + '" y1="' + barrelY + '" x2="' + x + '" y2="' + tickBottom + '" stroke="rgba(16,35,63,' + (major ? 0.4 : 0.2) + ')" stroke-width="1"/>';
-      if (major) svg += '<text x="' + x + '" y="' + (tickBottom + 9) + '" font-size="8" fill="rgba(16,35,63,0.45)" text-anchor="middle" font-family="DM Mono, monospace">' + t + '</text>';
-      return svg;
-    }).join('');
-    const drawLineX = barrelX + fillW;
-    const overflow = units > CAP;
-    return '<div class="calc-syringe-wrap">' +
-      '<svg class="calc-syringe-svg" viewBox="0 0 280 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' +
-        '<rect x="2" y="' + (barrelY - 2) + '" width="9" height="' + (barrelH + 4) + '" rx="2" fill="rgba(16,35,63,0.18)"/>' +
-        '<rect x="' + barrelX + '" y="' + barrelY + '" width="' + barrelW + '" height="' + barrelH + '" rx="4" fill="rgba(16,35,63,0.03)" stroke="rgba(16,35,63,0.28)" stroke-width="1.5"/>' +
-        (fillW > 0 ? '<rect x="' + barrelX + '" y="' + (barrelY + 2) + '" width="' + fillW + '" height="' + (barrelH - 4) + '" rx="2" fill="#1F6FEB" opacity="0.85"/>' : '') +
-        (fillW > 0 ? '<line x1="' + drawLineX + '" y1="4" x2="' + drawLineX + '" y2="' + (barrelY + barrelH + 3) + '" stroke="#1F6FEB" stroke-width="2"/>' : '') +
-        '<line x1="' + (barrelX + barrelW) + '" y1="' + (barrelY + barrelH / 2) + '" x2="272" y2="' + (barrelY + barrelH / 2) + '" stroke="rgba(16,35,63,0.4)" stroke-width="2"/>' +
-        ticks +
-      '</svg>' +
-      (overflow ? '<div class="calc-syringe-overflow">Exceeds one 100-unit syringe — split into ' + Math.ceil(units / CAP) + ' draws</div>' : '') +
-    '</div>';
-  }
-
-  function updateDrawEl(itemId) {
-    const meta = calcItemMeta[itemId];
-    const note = meta && doseNotes[meta.name];
-    const el = document.getElementById(itemId + '-draw');
-    if (!el) return;
-    if (!note) { el.innerHTML = ''; return; }
-    const blendKey = getBlendKey(meta.name);
-    let breakdownHTML = '';
-    if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
-      breakdownHTML = '<div class="calc-draw-breakdown">' +
-        BLEND_COMPOSITIONS[blendKey].map(function(c) {
-          return '<div class="calc-draw-comp"><span>' + c.name + '</span><span>' + fmtDose(note.mcg * c.share) + '</span></div>';
-        }).join('') + '</div>';
-    }
-    el.innerHTML = `<div class="calc-draw-result">
-      <div class="calc-draw-top">
-        <span class="calc-draw-num">${note.units}</span>
-        <div class="calc-draw-info">
-          <div class="calc-draw-label">units to draw</div>
-          <div class="calc-draw-sub">${note.mlVal}mL &nbsp;&middot;&nbsp; ${fmtDose(note.mcg)}</div>
-        </div>
-      </div>
-      ${syringeVisualHTML(note.units)}
-    </div>${breakdownHTML}`;
-  }
-
-  function doseInputChanged(itemId, inputEl) {
-    const raw = parseFloat(inputEl.value);
-    const meta = calcItemMeta[itemId];
-    if (!meta) return;
-    // The number field always holds whatever the visitor typed; the unit toggle
-    // says how to interpret it, so a value in mg gets converted to mcg here —
-    // all internal math and storage stays in mcg regardless of the toggle.
-    const mcg = meta.unit === 'mg' ? raw * 1000 : raw;
-    if (!raw || raw <= 0) {
-      delete doseNotes[meta.name];
-      document.getElementById(itemId + '-draw').innerHTML = '';
-      rebuildOrderSummary();
-      return;
-    }
-    const { units, mlVal } = calcUnitsFromDose(mcg, meta.mg, meta.waterMl);
-    doseNotes[meta.name] = { mcg, units, mlVal, waterMl: meta.waterMl };
-    updateDrawEl(itemId);
-    const savedEl = document.getElementById(itemId + '-saved');
-    if (savedEl) { savedEl.style.opacity = '1'; setTimeout(() => { savedEl.style.opacity = '0'; }, 3000); }
-    rebuildOrderSummary();
-  }
-
-  // Switches whether the typed number is interpreted as mcg or mg. Re-reads
-  // whatever is already in the input under the new unit so the result updates
-  // immediately, and swaps the placeholder to match.
-  function setCalcUnit(itemId, unit, btn) {
-    const meta = calcItemMeta[itemId];
-    if (!meta) return;
-    meta.unit = unit;
-    btn.closest('.calc-unit-toggle').querySelectorAll('.calc-unit-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const input = document.getElementById(itemId + '-dose-input');
-    if (input) {
-      const suggestedMcg = getSuggestedDose(meta.name);
-      input.placeholder = suggestedMcg ? (unit === 'mg' ? parseFloat((suggestedMcg / 1000).toFixed(2)) : suggestedMcg) : 'e.g. 500';
-      if (input.value) doseInputChanged(itemId, input);
-    }
-  }
-
-  function updateOrderDoseDisplay() {
-    document.querySelectorAll('.order-line[data-item-name]').forEach(function(lineEl) {
-      const name = lineEl.dataset.itemName;
-      const note = doseNotes[name];
-      let noteEl = lineEl.querySelector('.order-line-dose-note');
-      if (note) {
-        const blendKey = getBlendKey(name);
-        let html = '↳ ' + note.units + ' units \xB7 ' + note.mlVal + 'mL \xB7 ' + fmtDose(note.mcg);
-        if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
-          html += '<div class="order-line-blend-detail">' +
-            BLEND_COMPOSITIONS[blendKey].map(function(c) {
-              return c.name + '\xA0' + fmtDose(note.mcg * c.share);
-            }).join(' \xB7 ') + '</div>';
-        }
-        if (!noteEl) {
-          noteEl = document.createElement('div');
-          noteEl.className = 'order-line-dose-note';
-          const nameDiv = lineEl.querySelector('.order-line-name');
-          if (nameDiv) nameDiv.insertAdjacentElement('afterend', noteEl);
-        }
-        noteEl.innerHTML = html;
-      } else if (noteEl) {
-        noteEl.remove();
-      }
-    });
-  }
-
-  function rebuildOrderSummary() {
-    updateOrderDoseDisplay();
-  }
-
-  // The actual text sent to the server/email for whatever doses have been
-  // calculated — only items with a reference note, not the full basket (Stripe's
-  // own line items already itemize name/dose/price; this is just the extra
-  // part they don't capture).
-  function doseReferenceSummary() {
-    return Object.keys(doseNotes).map(function(name) {
-      const note = doseNotes[name];
-      let line = name + ': ' + fmtDose(note.mcg) + ' → ' + note.units + ' units (' + note.mlVal + 'mL), ' + note.waterMl + 'mL bac water';
-      const blendKey = getBlendKey(name);
-      if (blendKey && BLEND_COMPOSITIONS[blendKey]) {
-        line += ' [' + BLEND_COMPOSITIONS[blendKey].map(function(c) {
-          return c.name + ' ' + fmtDose(note.mcg * c.share);
-        }).join(', ') + ']';
-      }
-      return line;
-    }).join('\n');
-  }
-
+  // ── COOLING UPSELL ──────────────────────────────────────────────────────
   function isPenVial(item) {
     return /pen\s+vial/i.test(item.name || '') || /\/\s*3\s*ml/i.test(item.dose || '');
-  }
-
-  function isCalcEligible(item) {
-    if (item._kitFor) return false;
-    // Pen vials arrive pre-reconstituted — showing them a reconstitution
-    // calculator contradicts the "complete kit, nothing to mix" promise.
-    if (isPenVial(item)) return false;
-    const n = (item.name || '').toLowerCase();
-    if (CALC_EXCLUDED.some(x => n.includes(x))) return false;
-    if (!item.dose || item.dose === 'Accessory') return false;
-    return /\d+(\.\d+)?\s*mg/i.test(item.dose);
-  }
-
-  function parseMg(dose) {
-    const m = (dose || '').match(/(\d+(?:\.\d+)?)\s*mg/i);
-    return m ? parseFloat(m[1]) : null;
-  }
-
-  function fmtDose(mcg) {
-    if (mcg >= 1000) {
-      const mg = mcg / 1000;
-      return (mg % 1 === 0 ? mg : parseFloat(mg.toFixed(2))) + ' mg';
-    }
-    return (mcg % 1 === 0 ? mcg : parseFloat(mcg.toFixed(1))) + ' mcg';
-  }
-
-  // A small reference line living inside the same ask-card as the dose input,
-  // rather than a separate stat box shown before the visitor has done anything.
-  // It updates live as the water volume changes so it's always accurate for
-  // whatever dose they're about to type.
-  function calcRefLineHTML(mg, waterMl) {
-    const concMgMl = mg / waterMl;
-    const mcgPerUnit = concMgMl * 10; // 1 unit = 0.01mL on U-100 syringe → ×1000×0.01 = ×10
-    return `<div class="calc-ref-line">At ${waterMl}mL bac water, 1 unit on your syringe = <strong>${fmtDose(mcgPerUnit)}</strong></div>`;
-  }
-
-  function setCalcWater(itemId, mg, ml, btn) {
-    btn.closest('.calc-water-btns').querySelectorAll('.calc-water-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    if (calcItemMeta[itemId]) calcItemMeta[itemId].waterMl = ml;
-    const el = document.getElementById(itemId + '-result');
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(5px)';
-    setTimeout(() => {
-      el.innerHTML = calcRefLineHTML(mg, ml);
-      el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-      // Recalculate the volume reference if an amount was already selected
-      const meta = calcItemMeta[itemId];
-      if (meta && doseNotes[meta.name]) {
-        const { units, mlVal } = calcUnitsFromDose(doseNotes[meta.name].mcg, mg, ml);
-        doseNotes[meta.name] = { ...doseNotes[meta.name], units, mlVal, waterMl: ml };
-        updateDrawEl(itemId);
-        rebuildOrderSummary();
-      }
-    }, 130);
-  }
-
-  function renderCalcItem(item, idx) {
-    const mg = parseMg(item.dose);
-    if (!mg) return '';
-    const pen = isPenVial(item);
-    const defWater = 3;
-    const id = 'ci' + idx;
-    calcItemMeta[id] = { name: item.name, mg, waterMl: defWater, unit: 'mg' };
-    const suggestedMcg = getSuggestedDose(item.name);
-    const suggestedPlaceholder = suggestedMcg ? parseFloat((suggestedMcg / 1000).toFixed(2)) : 'e.g. 0.5';
-    const penNote = pen
-      ? `<div class="calc-pen-note">Working with a pen-style research cartridge? Follow your internal protocol for that format — this reference uses a standard syringe-style volume calculation.</div>`
-      : '';
-    const waterSel = pen
-      ? `<div class="calc-pen-label">&#9670; Pen vial &middot; 3mL cartridge</div>${penNote}`
-      : `<div class="calc-water-row">
-          <span class="calc-water-label">Bac water</span>
-          <div class="calc-water-btns">
-            ${[1, 2, 3, 5, 10].map(ml =>
-              `<button class="calc-water-btn${ml === defWater ? ' active' : ''}" onclick="setCalcWater('${id}',${mg},${ml},this)">${ml}mL</button>`
-            ).join('')}
-          </div>
-        </div>`;
-    return `<div class="calc-item">
-      <div class="calc-product-header">
-        <span class="calc-product-name">${item.name}</span>
-        <span class="calc-product-mg">${mg}mg</span>
-      </div>
-      ${waterSel}
-      <div class="calc-ask-card">
-        <div class="calc-ask-label">How much would you like?</div>
-        <div class="calc-dose-input-wrap">
-          <input type="number" class="calc-dose-input" id="${id}-dose-input"
-            placeholder="${suggestedPlaceholder}" min="0.001" step="any"
-            oninput="doseInputChanged('${id}', this)">
-          <div class="calc-unit-toggle">
-            <button type="button" class="calc-unit-btn" onclick="setCalcUnit('${id}','mcg',this)">mcg</button>
-            <button type="button" class="calc-unit-btn active" onclick="setCalcUnit('${id}','mg',this)">mg</button>
-          </div>
-        </div>
-        <div class="calc-dose-hint">1000mcg = 1mg — enter the target amount for this laboratory calculation</div>
-        <div id="${id}-result">${calcRefLineHTML(mg, defWater)}</div>
-      </div>
-      <div class="calc-draw" id="${id}-draw"></div>
-      <div class="calc-saved" id="${id}-saved">✓ Calculation reference added to your email confirmation</div>
-    </div>`;
   }
 
   function addCoolingPackaging(btn) {
@@ -994,17 +646,16 @@
   }
 
   function updateSmartSection() {
-    const eligible = basketData.filter(isCalcEligible);
-    const hasRegular = eligible.length > 0;
+    const hasRegular = basketData.some(item =>
+      !item._kitFor && !isPenVial(item) && /\d+(\.\d+)?\s*mg/i.test(item.dose || '')
+    );
     const section = document.getElementById('smart-section');
     const coolingHL = document.getElementById('cooling-highlight');
     if (!section) return;
-    if (eligible.length === 0) { section.style.display = 'none'; return; }
+    if (!hasRegular) { section.style.display = 'none'; return; }
     section.style.display = '';
     const coolingInBasket = basketData.some(i => (i.name || '').toLowerCase().includes('thermal cooled'));
     if (coolingHL) coolingHL.style.display = (hasRegular && !coolingInBasket) ? '' : 'none';
-    const calcEl = document.getElementById('calc-items');
-    if (calcEl) calcEl.innerHTML = eligible.map((item, i) => renderCalcItem(item, i)).join('');
   }
 
   let basketData = [];
@@ -1190,13 +841,16 @@
 
   function getCustomerPayload(form) {
     const data = new FormData(form);
-    // Address is collected by Stripe on the hosted checkout page, so it is no longer
-    // gathered here — only name, email (to prefill Stripe + send confirmations) and notes.
     return {
       name: String(data.get('name') || '').trim(),
       email: String(data.get('email') || '').trim(),
-      notes: String(data.get('notes') || '').trim(),
-      doseReference: doseReferenceSummary()
+      phone: String(data.get('phone') || '').trim(),
+      address1: String(data.get('address1') || '').trim(),
+      address2: String(data.get('address2') || '').trim(),
+      city: String(data.get('city') || '').trim(),
+      county: String(data.get('county') || '').trim(),
+      postcode: String(data.get('postcode') || '').trim(),
+      notes: String(data.get('notes') || '').trim()
     };
   }
 
@@ -1205,42 +859,20 @@
     return selected ? selected.value : 'standard';
   }
 
-  function showStripeSuccess() {
+  function showBankTransferSuccess(data) {
+    document.getElementById('bank-name').textContent = data.bankDetails.accountName;
+    document.getElementById('bank-sort').textContent = data.bankDetails.sortCode;
+    document.getElementById('bank-acct').textContent = data.bankDetails.accountNumber;
+    document.getElementById('bank-amount').textContent = '£' + Number(data.grandTotal).toFixed(2).replace('.00', '');
+    document.getElementById('bank-ref').textContent = data.orderRef;
     document.getElementById('main-checkout').style.display = 'none';
     document.getElementById('success-page').style.display = 'block';
     localStorage.removeItem('npuk_basket');
-    sessionStorage.removeItem('npuk_checkout_value');
-  }
-
-  function showStripeCancel() {
-    const msg = document.getElementById('discount-msg');
-    msg.textContent = 'Stripe checkout was cancelled. Your basket is still here.';
-    msg.className = 'discount-msg error';
   }
 
   window.addEventListener('load', () => {
     const saved = localStorage.getItem('npuk_basket');
     if (saved) basketData = JSON.parse(saved);
-    const paymentStatus = new URLSearchParams(window.location.search).get('payment');
-    if (paymentStatus === 'success') {
-      if (basketData.length > 0 && window.NPUKAnalytics) {
-        const storedValue = Number(sessionStorage.getItem('npuk_checkout_value'));
-        window.NPUKAnalytics.track('CompletePayment', {
-          contents: basketData.map(item => ({
-            content_id: item.name + ':' + item.dose,
-            content_name: item.name,
-            content_type: 'product',
-            quantity: item.qty,
-            price: Number(item.price)
-          })),
-          value: Number.isFinite(storedValue) && storedValue > 0 ? storedValue : getSubtotal(),
-          currency: 'GBP'
-        });
-      }
-      showStripeSuccess();
-      return;
-    }
-    if (paymentStatus === 'cancelled') showStripeCancel();
     renderOrder();
   });
 
@@ -1260,10 +892,10 @@
       return;
     }
 
-    btn.textContent = 'Opening Stripe...';
+    btn.textContent = 'Placing order...';
     btn.disabled = true;
     try {
-      const res = await fetch('/api/create-checkout-session', {
+      const res = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1275,10 +907,9 @@
         })
       });
       const data = await res.json();
-      if (!res.ok || !data.url) {
-        throw new Error(data.error || 'Stripe checkout failed.');
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Order could not be placed.');
       }
-      sessionStorage.setItem('npuk_checkout_value', String(getDiscountedSubtotal() + deliveryPrice));
       if (window.NPUKAnalytics) {
         window.NPUKAnalytics.track('InitiateCheckout', {
           contents: basketData.map(item => ({
@@ -1292,12 +923,12 @@
           currency: 'GBP'
         });
       }
-      window.location.href = data.url;
+      showBankTransferSuccess(data);
     } catch (error) {
       const msg = document.getElementById('discount-msg');
-      msg.textContent = error.message || 'Stripe checkout is not available yet.';
+      msg.textContent = error.message || 'Order could not be placed. Please try again.';
       msg.className = 'discount-msg error';
-      btn.textContent = 'Continue to payment';
+      btn.textContent = 'Place order';
       btn.disabled = false;
     }
   }, true);

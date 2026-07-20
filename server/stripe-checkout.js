@@ -101,15 +101,12 @@ for (const [key, value] of Object.entries(CATALOG)) {
   CATALOG_NORMALISED[normaliseKey(key)] = value;
 }
 
-const PEN_STYLE_KIT_PRICES = new Set([24.99, 19.99, 14.99]);
-
 // Public/legacy codes — already visible in this public repo. Kept hardcoded so
 // nothing breaks if the env var isn't set.
 const PUBLIC_DISCOUNT_CODES = {
   "WELCOME10":       0.10,
   "AJ":              0.10,
-  "AJ20":            0.20,
-  "FIRST40":         0.40
+  "AJ20":            0.20
 };
 
 // Private codes come from the DISCOUNT_CODES_JSON env var (set in Vercel/host,
@@ -173,7 +170,7 @@ function compactText(value, maxLength = 480) {
   return String(value || "").trim().slice(0, maxLength);
 }
 
-function resolveCatalogPrice(item, name, dose) {
+function resolveCatalogPrice(_item, name, dose) {
   const directPrice = CATALOG[`${name}|${dose}`];
   if (directPrice != null) return directPrice;
 
@@ -181,14 +178,6 @@ function resolveCatalogPrice(item, name, dose) {
   // "10mg/3ml" still resolves to the catalogue's "10mg / 3ml" entry.
   const normalisedPrice = CATALOG_NORMALISED[normaliseKey(`${name}|${dose}`)];
   if (normalisedPrice != null) return normalisedPrice;
-
-  if (name === "Pen-Style Research Kit" && item?._kitFor) {
-    const browserPrice = Number(item.price);
-    const volume = Number(item._kitVolume);
-    if (PEN_STYLE_KIT_PRICES.has(browserPrice) && [1, 2, 3].includes(volume)) {
-      return browserPrice;
-    }
-  }
 
   return null;
 }
@@ -241,10 +230,9 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("mode", "payment");
   params.append("success_url", `${siteUrl}/checkout.html?payment=success&session_id={CHECKOUT_SESSION_ID}`);
   params.append("cancel_url", `${siteUrl}/checkout.html?payment=cancelled`);
-  // Lets a real Stripe Promotion Code (with its own redemption limits/expiry, enforced
-  // by Stripe itself) be entered on Stripe's own hosted page, separate from the site's
-  // own on-page discount-code box above.
-  params.append("allow_promotion_codes", "true");
+  // Site codes are applied directly to line-item prices. Disable Stripe's separate
+  // promotion-code box in that case so two discounts cannot be stacked.
+  params.append("allow_promotion_codes", hasDiscount ? "false" : "true");
   // Deliberately NOT sending payment_method_types — omitting it entirely is how Stripe
   // Checkout Sessions render every eligible method (card, Apple Pay, Google Pay, Link)
   // instead of card-only. (automatic_payment_methods is a Payment Intents API param —
@@ -267,7 +255,6 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
   params.append("metadata[email]", compactText(payload.customer?.email, 160));
   params.append("metadata[address]", compactText(payload.customer?.address, 480));
   params.append("metadata[notes]", compactText(payload.customer?.notes, 480));
-  params.append("metadata[doseReference]", compactText(payload.customer?.doseReference, 480));
   params.append("metadata[delivery]", delivery.label);
   if (hasDiscount) params.append("metadata[discount]", discountCode);
   params.append("custom_text[submit][message]", "Products are supplied strictly for laboratory research use only and are not for human or animal consumption.");
@@ -296,6 +283,13 @@ async function createCheckoutSession(payload = {}, requestOrigin) {
 }
 
 module.exports = {
+  CATALOG,
+  CATALOG_NORMALISED,
+  DISCOUNT_CODES,
+  DELIVERY,
+  normaliseKey,
+  resolveCatalogPrice,
+  compactText,
   corsHeaders,
   isAllowedOrigin,
   createCheckoutSession

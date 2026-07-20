@@ -5,19 +5,12 @@
    (no `defer` - it injects its space-reservation CSS during head parse so the
     fixed bar causes zero layout shift / CLS.)
 
-   Dispatch policy: Monday-Friday, same-day dispatch on orders placed before
-   13:00 (1 PM) UK time. All times are computed in Europe/London regardless of
-   the visitor's own timezone, so the cut-off is always correct.
-
-   Behaviour (updates live, every second, no reload needed):
-   - Mon-Fri before 1 PM : live countdown to the 1 PM cut-off for same-day dispatch.
-   - Mon-Thu after 1 PM  : "dispatched first thing tomorrow morning".
-   - Fri after 1 PM / Sat / Sun : "dispatched first thing Monday morning".
+   Dispatch policy: orders are dispatched within 24-48 hours after confirmed
+   payment on business days. The bar rotates this with the delivery offer.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var CUTOFF_HOUR = 13;          // 1 PM UK time
   var BAR_ID = 'np-dispatch-bar';
 
   // --- Reserve space + style the bar before the page paints (anti-CLS) ------
@@ -54,66 +47,15 @@
   style.textContent = css;
   (document.head || document.documentElement).appendChild(style);
 
-  // --- UK-time helpers ------------------------------------------------------
-  var DAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-
-  function londonNow() {
-    var parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London',
-      weekday: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit',
-      hour12: false
-    }).formatToParts(new Date());
-    var o = {};
-    for (var i = 0; i < parts.length; i++) o[parts[i].type] = parts[i].value;
-    return {
-      day: DAY_INDEX[o.weekday],     // 0=Sun ... 6=Sat
-      h: (+o.hour) % 24,             // some engines emit "24" at midnight
-      m: +o.minute,
-      s: +o.second
-    };
-  }
-
-  function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-  function countdownText(t) {
-    // seconds remaining until 13:00 today (UK)
-    var rem = ((CUTOFF_HOUR - t.h) * 3600) - (t.m * 60) - t.s;
-    if (rem < 0) rem = 0;
-    var h = Math.floor(rem / 3600);
-    var m = Math.floor((rem % 3600) / 60);
-    var s = rem % 60;
-    if (h > 0) return h + 'h ' + pad(m) + 'm';
-    if (m > 0) return m + 'm ' + pad(s) + 's';
-    return s + 's';
-  }
-
-  // --- Build the message for the current UK moment --------------------------
-  function buildMessage(t) {
-    var isWeekday = t.day >= 1 && t.day <= 5;
-    var beforeCutoff = t.h < CUTOFF_HOUR;
-
-    if (isWeekday && beforeCutoff) {
-      return {
-        mode: 'sameday',
-        html: 'Order within <span class="npbar-hl">' + countdownText(t) +
-              '</span> for <strong>same-day dispatch</strong>'
-      };
-    }
-
-    // Otherwise work out the next dispatch day.
-    // Mon-Thu after cut-off -> tomorrow; Fri after cut-off / Sat / Sun -> Monday.
-    var nextLabel = (t.day >= 1 && t.day <= 4) ? 'tomorrow' : 'Monday';
-    return {
-      mode: 'next',
-      html: '<strong>Order today</strong> - dispatched first thing ' +
-            '<span class="npbar-hl">' + nextLabel + '</span> morning'
-    };
-  }
-
   // --- Slides: rotate the dispatch message with the free-delivery offer ------
   var SLIDE_SECONDS = 5;
   var slides = [
-    function () { return buildMessage(londonNow()); },
+    function () {
+      return {
+        mode: 'next',
+        html: '<strong>UK stocked</strong> - dispatched within <span class="npbar-hl">24-48 hours</span> of confirmed payment'
+      };
+    },
     function () {
       return {
         mode: 'ship',
