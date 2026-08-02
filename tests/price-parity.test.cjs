@@ -59,7 +59,7 @@ test('every sellable variant resolves in the server CATALOG at its shown price',
   }
 });
 
-test('comparable pen-vial strengths keep at least an eight-pound premium', () => {
+test('comparable pen-vial strengths keep at least a fifteen-pound premium', () => {
   for (const [slug, pen] of Object.entries(PRODUCTS)) {
     if (!slug.endsWith('-pen') || !pen.sisterProduct) continue;
     const vial = PRODUCTS[pen.sisterProduct.slug];
@@ -78,7 +78,7 @@ test('comparable pen-vial strengths keep at least an eight-pound premium', () =>
       if (!Number.isInteger(quantity) || quantity < 1) continue;
       const equivalentVialPrice = baseVial.price * quantity;
       const premium = Number((penVariant.price - equivalentVialPrice).toFixed(2));
-      assert.ok(premium >= 8,
+      assert.ok(premium >= 15,
         `${pen.name} ${penMg}mg has only a GBP ${premium} premium over equivalent standard vials`);
     }
   }

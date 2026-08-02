@@ -107,7 +107,7 @@ test('homepage surfaces the pen option with a crawlable link per paired compound
       new RegExp(`<a class="card-pen-link" href="products/${slug}/"`),
       `homepage should link to products/${slug}/ from its compound card`);
   }
-  assert.match(homepage, /from &pound;10 over the standard vial/);
+  assert.match(homepage, /at least &pound;15 over the equivalent standard vial/);
 });
 
 test('pen-vial orders consistently state that the disposable kit is included', () => {
@@ -212,9 +212,9 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
-  assert.equal(elements['config-total'].textContent, '£55');
-  // The premium is anchored against the same-strength vial (£55 pen vs £45 vial).
-  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£10 vs vial');
+  assert.equal(elements['config-total'].textContent, '£60');
+  // The premium is anchored against the same-strength vial (£60 pen vs £45 vial).
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£15 vs vial');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
   assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.png');
@@ -223,7 +223,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredVariant(1);
   context.addConfiguredToBasket();
-  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 95, dose: '20mg' }]);
+  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 100, dose: '20mg' }]);
   assert.equal(basketOpened, true);
 
   basket.length = 0;

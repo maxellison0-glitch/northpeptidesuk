@@ -100,9 +100,9 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 55 },
-      { label: "1x20mg", dose: "20mg", price: 95 },
-      { label: "1x50mg", dose: "50mg", price: 189.99 }
+      { label: "1x10mg", dose: "10mg", price: 60 },
+      { label: "1x20mg", dose: "20mg", price: 100 },
+      { label: "1x50mg", dose: "50mg", price: 194.99 }
     ],
     stripePaymentLink: ""
   },
@@ -205,7 +205,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 78 },
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 80 },
       { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 144 }
     ],
     stripePaymentLink: ""
@@ -309,8 +309,8 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 34 },
-      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 58 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 38.99 },
+      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 62.98 }
     ],
     stripePaymentLink: ""
   },
@@ -411,7 +411,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 59 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 64 }
     ],
     stripePaymentLink: ""
   },
@@ -512,7 +512,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 37 }
+      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 42 }
     ],
     stripePaymentLink: ""
   },
@@ -613,7 +613,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 40 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 45 }
     ],
     stripePaymentLink: ""
   },
@@ -708,7 +708,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 72 }
+      { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 75 }
     ],
     stripePaymentLink: ""
   },
@@ -809,7 +809,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 35 }
+      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 39.99 }
     ],
     stripePaymentLink: ""
   },
@@ -908,7 +908,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 42 }
+      { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 47 }
     ],
     stripePaymentLink: ""
   },
@@ -1109,7 +1109,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 35 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 39.99 }
     ],
     stripePaymentLink: ""
   },
@@ -1310,7 +1310,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 24 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 28.99 }
     ],
     stripePaymentLink: ""
   },
@@ -1411,7 +1411,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile tips and wipes included"
     ],
     variants: [
-      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 40 }
+      { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 44.99 }
     ],
     stripePaymentLink: ""
   },
