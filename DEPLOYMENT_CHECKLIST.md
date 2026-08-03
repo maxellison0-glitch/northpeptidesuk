@@ -1,34 +1,30 @@
 # Deployment Checklist
 
-Keep this short. Follow these steps when preparing changes that affect checkout or payments.
+Use this checklist for changes that affect orders, pricing or payment instructions.
 
-- **Never commit Stripe secrets**: do not add `STRIPE_SECRET_KEY` or any `sk_...` value to the repo. Remove any accidental commits and rotate keys immediately.
+## Secrets and hosting
 
-- **Use Vercel environment variables**: set `STRIPE_SECRET_KEY` in the Vercel project Environment Variables (Preview for branch testing, Production when ready). See Vercel dashboard steps in the README or project settings.
+- Never commit API keys or bank details. Keep real values in Vercel environment variables.
+- Required order variables: `RESEND_API_KEY`, `BANK_ACCOUNT_NAME`, `BANK_SORT_CODE` and `BANK_ACCOUNT_NUMBER`.
+- Recommended email variables: `ORDER_NOTIFY_EMAIL` and `ORDER_FROM_EMAIL`.
+- Optional variables: `DISCOUNT_CODES_JSON` and `RESEND_AUDIENCE_ID`.
+- Configure the same required variables for every Vercel environment that will accept test orders, then redeploy.
 
-- **Test mode vs Live mode**:
-  - Use Stripe test keys (`sk_test_...`) for preview and local testing.
-  - Switch to live keys (`sk_live_...`) only on Production once verified.
+## Branch and review
 
-- **Branch / PR workflow (recommended for risky edits)**:
-  1. Create a feature branch: `git switch -c feature/brief-description`.
-  2. Push branch and open a GitHub Pull Request.
-  3. Add `STRIPE_SECRET_KEY` to Vercel Preview env to test the Preview deployment.
-  4. Test checkout flow on the Vercel Preview URL.
-  5. Merge PR after review and testing.
+1. Create or use a feature branch.
+2. Run `node content-engine/build.js` after source catalogue or template changes.
+3. Run `npm test`, `npm run compliance` and `npm run verify-copy`.
+4. Push the branch and open a pull request.
+5. Review the Vercel Preview before merging.
 
-- **Direct `main` push workflow (for small edits only)**:
-  - Pull latest `main`, make small atomic changes, commit, and push.
-  - Be aware: pushing to `main` triggers a Production deploy on Vercel. Use sparingly.
+## Order verification
 
-- **Verify checkout after deploy**:
-  1. For Preview: check the Vercel Preview deployment URL after push/PR; run a test purchase with Stripe test card.
-  2. For Production: verify the live site `checkout.html` initiates a POST to `/api/create-checkout-session` and completes a test payment only after swapping to live keys if you intend to process real payments.
+1. Add a low-value product and confirm the basket price matches the product page.
+2. Submit a test order through `/checkout.html`.
+3. Confirm `/api/create-order` returns an order reference, total and bank details.
+4. Confirm both the shop notification and customer instruction emails arrive.
+5. Confirm the total, delivery charge, discount and bank reference agree across the page and email.
+6. Confirm the order remains awaiting payment until the bank transfer has actually cleared.
 
-- **Stripe test card reminder**: use Stripe test cards (e.g., `4242 4242 4242 4242`, any future expiry, any CVC, any 3‑digit ZIP) when testing in test mode.
-
-Minimal extras:
-- Keep `.env.example` as the template for local env keys; do not fill with real secrets.
-- If a secret is accidentally committed: rotate the key in Stripe, remove the secret from the repo, and update Vercel/GitHub secrets.
-
-File created on branch: `docs/deployment-checklist`
+If a secret is ever committed, rotate it immediately, remove it from repository history and update the hosting environment.

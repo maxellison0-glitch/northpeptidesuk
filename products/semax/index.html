@@ -127,8 +127,8 @@
     #basket-count { display: none; align-items: center; justify-content: center; min-width: 18px; height: 18px; margin-left: 5px; border-radius: 999px; background: #fff; color: #1F6FEB; }
     .product-hero { max-width: 1160px; margin: 0 auto; padding: 24px 40px 32px; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr); gap: 34px; align-items: start; }
     .media-card, .buy-card, .side-card { background: #fff; border: 1px solid #D8E5F2; border-radius: 10px; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
-    .media-card { overflow: hidden; }
-    .media-card img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #EDF4FA; }
+    .media-card { position: relative; overflow: hidden; }
+    #product-image { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #EDF4FA; }
     .buy-card { padding: 22px; }
     .back-link { display: inline-block; margin-bottom: 12px; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
     .eyebrow { margin: 0 0 10px; color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
@@ -136,6 +136,11 @@
     h2 { margin: 0 0 12px; font-family: Syne, sans-serif; font-size: 1.35rem; line-height: 1.15; color: #10233F; }
     p { color: #40566C; line-height: 1.75; }
     .summary { margin: 0 0 12px; font-size: 1rem; }
+    .coa-hero-badge { display: flex; align-items: flex-start; gap: 11px; margin: 0 0 16px; padding: 12px 13px; border: 1px solid #B9D7F8; border-radius: 9px; background: #EAF4FF; color: #334A63; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .coa-hero-badge:hover, .coa-hero-badge:focus-visible { border-color: #1F6FEB; box-shadow: 0 7px 18px rgba(31,111,235,0.13); }
+    .coa-hero-mark { flex-shrink: 0; margin-top: 2px; padding: 5px 8px; border-radius: 5px; background: #1F6FEB; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.52rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .coa-hero-copy { color: #40566C; font-size: 0.76rem; line-height: 1.55; }
+    .coa-hero-copy strong { display: block; margin-bottom: 2px; color: #10233F; font-size: 0.82rem; }
     .price-line { margin: 0 0 18px; font-family: Syne, sans-serif; font-size: 2rem; font-weight: 800; color: #10233F; }
     .variant-list { display: grid; gap: 10px; }
     .variant-row { width: 100%; min-height: 64px; border: 1px solid #CADAEA; border-radius: 8px; background: #FCFDFF; color: #172033; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; text-align: left; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
@@ -202,7 +207,14 @@
     .coa-page-cap { display: block; padding: 9px 12px; border-top: 1px solid #EDF3F9; font-size: 0.68rem; letter-spacing: 0.04em; color: #607086; }
     .coa-link { display: inline-block; margin-top: 16px; color: #1F6FEB; font-weight: 600; font-size: 0.88rem; }
     .coa-caveat { margin-top: 14px; font-size: 0.8rem; color: #7C8FA6; line-height: 1.7; }
-    .media-thumbs { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
+    .media-gallery-bar { display: flex; align-items: center; gap: 9px; min-height: 52px; padding: 8px 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
+    .media-gallery-button { width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #C5DAEC; border-radius: 999px; background: #fff; color: #174EA6; cursor: pointer; font-size: 0.88rem; }
+    .media-gallery-button:hover, .media-gallery-button:focus-visible { border-color: #1F6FEB; background: #EEF7FD; }
+    .media-gallery-copy { flex: 1; min-width: 0; }
+    .media-gallery-copy strong { display: block; overflow: hidden; color: #334A63; font-size: 0.7rem; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .media-gallery-copy small { display: block; margin-top: 2px; color: #738197; font-family: 'DM Mono', monospace; font-size: 0.54rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .media-gallery-count { flex-shrink: 0; color: #607086; font-family: 'DM Mono', monospace; font-size: 0.6rem; }
+    .media-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 0 10px 10px; background: #F5F9FC; scrollbar-width: thin; scrollbar-color: #B8D6F0 transparent; }
     .media-thumb { width: 54px; height: 54px; border-radius: 6px; overflow: hidden; border: 2px solid transparent; flex-shrink: 0; background: #fff; cursor: pointer; padding: 0; }
     .media-thumb.active { border-color: #1F6FEB; }
     .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: auto; }
@@ -253,7 +265,7 @@
       .product-hero, .content-grid { grid-template-columns: 1fr; padding-left: 16px; padding-right: 16px; }
       /* Shorter hero on phones: the square crop pushed the whole builder below
          the first screen. 3:2 contain keeps the full product image visible. */
-      .media-card img { aspect-ratio: 3 / 2; object-fit: contain; }
+      #product-image { aspect-ratio: 3 / 2; object-fit: contain; }
       body:has(.config-sticky-bar) { padding-bottom: 84px; }
       .config-sticky-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: #fff; border-top: 1px solid #D8E5F2; box-shadow: 0 -10px 26px rgba(15,31,54,0.10); }
       .config-sticky-bar small { display: block; color: #63758A; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -288,6 +300,7 @@
     <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
     <div class="nav-links">
       <a href="/#products">Products</a>
+      <a href="/lab-reports.html">Lab Reports</a>
       <a href="/blog/index.html">Guides</a>
       <button class="basket-nav" type="button" onclick="showBasket()">Basket <span id="basket-count"></span></button>
     </div>
@@ -295,24 +308,81 @@
 
   <main>
     <section class="product-hero">
-      <div class="media-card">
-        <img id="product-image" src="/semax.png" alt="Semax" loading="eager">
-        <div class="media-thumbs">
-          <button type="button" class="media-thumb active" onclick="showProductImage(this, '/semax.png', 'cover')" title="Semax">
-            <img src="/semax.png" alt="Semax" loading="lazy">
+      <div class="media-card" aria-label="Product image gallery">
+        <img id="product-image" src="/semax.png" alt="Semax" loading="eager" draggable="false">
+        <div class="media-gallery-bar">
+          <button type="button" class="media-gallery-button" onclick="stepProductImage(-1)" aria-label="Previous image">&larr;</button>
+          <div class="media-gallery-copy">
+            <strong id="media-gallery-caption">Semax</strong>
+            <small>Swipe image or tap a thumbnail</small>
+          </div>
+          <span class="media-gallery-count" id="media-gallery-count">1 / 2</span>
+          <button type="button" class="media-gallery-button" onclick="stepProductImage(1)" aria-label="Next image">&rarr;</button>
+        </div>
+        <div class="media-thumbs" aria-label="Product and laboratory report images">
+          <button type="button" class="media-thumb active" data-index="0" data-src="/semax.png" data-fit="cover" data-alt="Semax" onclick="showProductImage(this)" title="Semax" aria-label="Show Semax" aria-current="true">
+             <img src="/semax.png" alt="Semax" loading="lazy">
           </button>
-          <button type="button" class="media-thumb" onclick="showProductImage(this, '/research-intranasal-kit.jpg', 'cover')" title="Semax research kit">
-            <img src="/research-intranasal-kit.jpg" alt="Semax research kit" loading="lazy">
+          <button type="button" class="media-thumb" data-index="1" data-src="/research-intranasal-kit.jpg" data-fit="cover" data-alt="Semax research kit" onclick="showProductImage(this)" title="Semax research kit" aria-label="Show Semax research kit">
+             <img src="/research-intranasal-kit.jpg" alt="Semax research kit" loading="lazy">
           </button>
         </div>
         <script>
-          function showProductImage(button, src, fit) {
-            var main = document.getElementById('product-image');
-            main.src = src;
-            main.classList.toggle('is-document', fit === 'contain');
-            document.querySelectorAll('.media-thumb').forEach(function (t) { t.classList.remove('active'); });
-            button.classList.add('active');
+          function productGalleryButtons() {
+            return Array.prototype.slice.call(document.querySelectorAll('.media-thumb'));
           }
+          function showProductImage(button) {
+            var main = document.getElementById('product-image');
+            if (!main || !button) return;
+            main.src = button.dataset.src;
+            main.alt = button.dataset.alt;
+            main.classList.toggle('is-document', button.dataset.fit === 'contain');
+            var buttons = productGalleryButtons();
+            buttons.forEach(function (t) {
+              t.classList.remove('active');
+              t.removeAttribute('aria-current');
+            });
+            button.classList.add('active');
+            button.setAttribute('aria-current', 'true');
+            var index = buttons.indexOf(button);
+            var caption = document.getElementById('media-gallery-caption');
+            var count = document.getElementById('media-gallery-count');
+            if (caption) caption.textContent = button.dataset.alt;
+            if (count) count.textContent = String(index + 1) + ' / ' + String(buttons.length);
+            if (button.parentElement) {
+              button.parentElement.scrollTo({
+                left: button.offsetLeft - (button.parentElement.clientWidth - button.offsetWidth) / 2,
+                behavior: 'smooth'
+              });
+            }
+          }
+          function stepProductImage(direction) {
+            var buttons = productGalleryButtons();
+            if (!buttons.length) return;
+            var current = buttons.findIndex(function (button) { return button.classList.contains('active'); });
+            if (current < 0) current = 0;
+            var next = (current + direction + buttons.length) % buttons.length;
+            showProductImage(buttons[next]);
+          }
+          (function initProductImageSwipe() {
+            var main = document.getElementById('product-image');
+            if (!main || productGalleryButtons().length < 2) return;
+            var startX = 0;
+            var startY = 0;
+            main.addEventListener('touchstart', function (event) {
+              var touch = event.changedTouches[0];
+              startX = touch.clientX;
+              startY = touch.clientY;
+            }, { passive: true });
+            main.addEventListener('touchend', function (event) {
+              var touch = event.changedTouches[0];
+              var dx = touch.clientX - startX;
+              var dy = touch.clientY - startY;
+              if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+                stepProductImage(dx < 0 ? 1 : -1);
+              }
+            }, { passive: true });
+          }());
         </script>
       </div>
       <div class="buy-card">
@@ -320,6 +390,7 @@
         <p class="eyebrow">Nootropic research</p>
         <h1>Semax</h1>
         <p class="summary">Nootropic research peptide (ACTH(4-7) analogue) supplied as a 30mg lyophilised vial.</p>
+
 
 
         <section class="config-box" aria-label="Semax order builder">

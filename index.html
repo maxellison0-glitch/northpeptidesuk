@@ -196,6 +196,74 @@
       margin-bottom: 22px;
       background: rgba(255,255,255,0.7);
     }
+    .hero-lab-drop {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto 18px;
+      padding: 13px 15px;
+      border: 1px solid rgba(125,211,252,0.48);
+      border-radius: 13px;
+      background: linear-gradient(135deg, #10233F 0%, #174EA6 100%);
+      color: #fff;
+      text-align: left;
+      text-decoration: none;
+      box-shadow: 0 14px 34px rgba(15,35,63,0.22);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .hero-lab-drop:hover,
+    .hero-lab-drop:focus-visible {
+      border-color: #7DD3FC;
+      box-shadow: 0 17px 38px rgba(15,35,63,0.28);
+      transform: translateY(-1px);
+    }
+    .hero-lab-drop-new {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border-radius: 7px;
+      background: #F6C453;
+      color: #10233F;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.54rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .hero-lab-drop-copy { min-width: 0; }
+    .hero-lab-drop-title {
+      display: block;
+      margin-bottom: 3px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero-lab-drop-result {
+      display: block;
+      color: #CDEBFA;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+    .hero-lab-drop-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .hero-title {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2rem, 5.5vw, 3.35rem);
@@ -340,6 +408,249 @@
       letter-spacing: 0.08em;
       color: rgba(255,255,255,0.25);
       text-transform: uppercase;
+    }
+
+    /* ===== LATEST LAB RESULTS ===== */
+    .latest-labs {
+      position: relative;
+      overflow: hidden;
+      padding: 58px 40px 64px;
+      background:
+        radial-gradient(780px 340px at 8% 0%, rgba(56,189,248,0.14), transparent 72%),
+        linear-gradient(145deg, #0F223D 0%, #132F52 100%);
+      color: #fff;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .latest-labs-inner { max-width: 1180px; margin: 0 auto; }
+    .latest-labs-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 26px;
+    }
+    .latest-labs-kicker {
+      margin: 0 0 10px;
+      color: #7DD3FC;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .latest-labs-title {
+      margin: 0 0 10px;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .latest-labs-sub {
+      max-width: 720px;
+      margin: 0;
+      color: #C6D8EA;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .latest-labs-controls { display: flex; gap: 8px; flex-shrink: 0; }
+    .latest-labs-control {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .latest-labs-control:hover,
+    .latest-labs-control:focus-visible {
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.48);
+      transform: translateY(-1px);
+    }
+    .latest-labs-track {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 2px 0 12px;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(125,211,252,0.5) rgba(255,255,255,0.08);
+    }
+    .latest-lab-card {
+      flex: 0 0 min(760px, calc(100vw - 96px));
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+      min-height: 470px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 14px;
+      background: #fff;
+      color: #172033;
+      box-shadow: 0 22px 55px rgba(0,0,0,0.20);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    .latest-lab-preview {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      padding: 18px;
+      background: #EAF2F8;
+      text-decoration: none;
+    }
+    .latest-lab-preview img {
+      width: 100%;
+      height: 434px;
+      display: block;
+      object-fit: contain;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(15,31,54,0.16);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .latest-lab-preview:hover img,
+    .latest-lab-preview:focus-visible img {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(15,31,54,0.22);
+    }
+    .latest-lab-open {
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(15,34,61,0.9);
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.57rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .latest-lab-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px;
+    }
+    .latest-lab-meta {
+      margin-bottom: 14px;
+      color: #607086;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .latest-lab-name {
+      margin: 0 0 14px;
+      color: #10233F;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      line-height: 1.05;
+    }
+    .latest-lab-result { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+    .latest-lab-result strong {
+      color: #1F6FEB;
+      font-family: 'Syne', sans-serif;
+      font-size: 2.65rem;
+      line-height: 1;
+    }
+    .latest-lab-result span {
+      color: #4B5F75;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .latest-lab-copy { margin: 0 0 20px; color: #455A70; font-size: 0.86rem; line-height: 1.7; }
+    .latest-lab-facts { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+    .latest-lab-fact {
+      padding: 5px 8px;
+      border: 1px solid #D8E5F2;
+      border-radius: 999px;
+      background: #F5F9FC;
+      color: #4B5F75;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      letter-spacing: 0.04em;
+    }
+    .latest-lab-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: auto; }
+    .latest-lab-primary,
+    .latest-lab-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 7px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .latest-lab-primary { background: #1F6FEB; color: #fff; border: 1px solid #1F6FEB; }
+    .latest-lab-primary:hover { background: #174EA6; }
+    .latest-lab-secondary { background: #fff; color: #174EA6; border: 1px solid #B8D6F0; }
+    .latest-lab-secondary:hover { background: #EEF7FD; }
+    .latest-labs-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      color: #AFC6DA;
+      font-size: 0.76rem;
+      line-height: 1.6;
+    }
+    .latest-labs-all {
+      flex-shrink: 0;
+      color: #7DD3FC;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .latest-labs-all:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .hero-lab-drop { gap: 9px; padding: 11px 12px; margin-bottom: 14px; }
+      .hero-lab-drop-new { min-height: 27px; padding: 4px 7px; font-size: 0.48rem; }
+      .hero-lab-drop-title { font-size: 0.78rem; }
+      .hero-lab-drop-result { font-size: 0.52rem; }
+      .hero-lab-drop-action span { display: none; }
+      .hero-lab-drop-action { font-size: 0.82rem; }
+      .latest-labs { padding: 38px 16px 42px; }
+      .latest-labs-head { align-items: flex-start; margin-bottom: 20px; }
+      .latest-labs-controls { display: none; }
+      .latest-labs-sub { font-size: 0.84rem; }
+      .latest-labs-track {
+        gap: 12px;
+        margin: 0 -16px;
+        padding: 2px 16px 12px;
+        scrollbar-width: none;
+      }
+      .latest-labs-track::-webkit-scrollbar { display: none; }
+      .latest-lab-card {
+        flex-basis: 88%;
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+      .latest-lab-preview { padding: 12px; }
+      .latest-lab-preview img { height: 350px; }
+      .latest-lab-open { right: 20px; bottom: 20px; }
+      .latest-lab-body { padding: 22px; }
+      .latest-lab-result strong { font-size: 2.25rem; }
+      .latest-lab-actions { display: grid; grid-template-columns: 1fr; }
+      .latest-labs-foot { align-items: flex-start; flex-direction: column; }
     }
 
 
@@ -770,6 +1081,22 @@
     .card-pen-link { display: inline-block; margin-top: 3px; padding: 4px 0; color: #1F6FEB; font-family: 'DM Mono', monospace; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; }
     .card-pen-link::before { content: '¹3  '; font-weight: 800; }
     .card-pen-link:hover, .card-pen-link:focus-visible { text-decoration: underline; }
+    .card-lab-link {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 5px;
+      padding: 4px 0;
+      color: #174EA6;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .card-lab-link:hover,
+    .card-lab-link:focus-visible { text-decoration: underline; }
     .ctm-purity,
     .card-trust-chip {
       display: inline-flex;
@@ -953,18 +1280,14 @@
   <!-- TICKER BANNER -->
   <div class="ticker-bar" aria-hidden="true">
     <div class="ticker-track">
-      <span>Dispatch in 24–48 hours</span><span class="ticker-sep">·</span>
-      <span>Royal Mail Tracked 24</span><span class="ticker-sep">·</span>
-      <span>Special Delivery guaranteed</span><span class="ticker-sep">·</span>
-      <span>Thermal packaging available</span><span class="ticker-sep">·</span>
-      <span>Discreet, unmarked parcels</span><span class="ticker-sep">·</span>
-      <span>UK stocked &amp; ready to ship</span><span class="ticker-sep">·</span>
-      <span>Dispatch in 24–48 hours</span><span class="ticker-sep">·</span>
-      <span>Royal Mail Tracked 24</span><span class="ticker-sep">·</span>
-      <span>Special Delivery guaranteed</span><span class="ticker-sep">·</span>
-      <span>Thermal packaging available</span><span class="ticker-sep">·</span>
-      <span>Discreet, unmarked parcels</span><span class="ticker-sep">·</span>
-      <span>UK stocked &amp; ready to ship</span><span class="ticker-sep">·</span>
+      <span>New lab results</span><span class="ticker-sep">·</span>
+      <span>Reta — 99% HPLC</span><span class="ticker-sep">·</span>
+      <span>GHK-Cu — 99% HPLC</span><span class="ticker-sep">·</span>
+      <span>Original reports now live</span><span class="ticker-sep">·</span>
+      <span>New lab results</span><span class="ticker-sep">·</span>
+      <span>Reta — 99% HPLC</span><span class="ticker-sep">·</span>
+      <span>GHK-Cu — 99% HPLC</span><span class="ticker-sep">·</span>
+      <span>Original reports now live</span><span class="ticker-sep">·</span>
     </div>
   </div>
 
@@ -1029,7 +1352,7 @@
       <li><a href="#products">Products</a></li>
       <li><a href="#how-to-order">Order</a></li>
       <li><a href="why-us.html">Why Us</a></li>
-      <li><a href="lab-reports.html">Documentation</a></li>
+      <li><a href="lab-reports.html">Lab Reports</a></li>
     </ul>
     <div class="shop-nav-right">
       <button class="shop-basket-btn" onclick="showBasket()" id="nav-basket-btn">
@@ -1045,7 +1368,14 @@
     <div class="hero-aurora"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-tag">North Peptides UK</span>
+      <a class="hero-lab-drop" href="#latest-lab-results">
+        <span class="hero-lab-drop-new">Just in</span>
+        <span class="hero-lab-drop-copy">
+          <strong class="hero-lab-drop-title">New lab results: Reta + GHK-Cu</strong>
+          <span class="hero-lab-drop-result">Both 99% purity by independent HPLC · reports live</span>
+        </span>
+        <span class="hero-lab-drop-action"><span>View</span> <b aria-hidden="true">&rarr;</b></span>
+      </a>
       <div class="hero-dispatch-pill">
         <span class="dispatch-live-dot"></span>
         24–48 Hour UK Dispatch
@@ -1056,14 +1386,14 @@
         <span class="hero-title-dispatch">24–48 Hour Dispatch.</span><br>
         <em>Research Use Only.</em>
       </h1>
-      <p class="hero-sub">UK dispatch within 24–48 hours of confirmed payment. Lyophilised research peptides with purity stated on every product. UK stocked, frozen until dispatch, with direct support before you order.</p>
+      <p class="hero-sub">UK-stocked research compounds with dispatch within 24–48 hours of confirmed payment. Retatrutide and GHK-Cu are now independently HPLC tested at 99% purity, with the full report scans published below.</p>
       <div class="hero-cta-row">
         <a href="#products" class="hero-cta-primary">Shop Now</a>
-        <a href="why-us.html" class="hero-cta-secondary">Why North Peptides</a>
+        <a href="#latest-lab-results" class="hero-cta-secondary">View Lab Results</a>
       </div>
       <!-- STATS -->
       <div class="hero-stats">
-        <div class="hero-stat"><span class="hero-stat-num">99% Verified</span><span class="hero-stat-label">Reta &amp; GHK-Cu, Independently Tested</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">99% HPLC</span><span class="hero-stat-label">Reta &amp; GHK-Cu · Reports Live</span></div>
         <div class="hero-stat"><span class="hero-stat-num">UK</span><span class="hero-stat-label">Stocked</span></div>
         <div class="hero-stat"><span class="hero-stat-num">Frozen</span><span class="hero-stat-label">Until Dispatch</span></div>
         <div class="hero-stat"><span class="hero-stat-num accent">Same Day</span><span class="hero-stat-label">Dispatch</span></div>
@@ -1071,7 +1401,73 @@
     </div>
   </div>
 
+  <!-- NEW LAB RESULTS -->
+  <section class="latest-labs" id="latest-lab-results" aria-labelledby="latest-labs-title">
+    <div class="latest-labs-inner">
+      <div class="latest-labs-head">
+        <div>
+          <p class="latest-labs-kicker">New lab results · Published 30 July 2026</p>
+          <h2 class="latest-labs-title" id="latest-labs-title">Reta + GHK-Cu: both 99% HPLC.</h2>
+          <p class="latest-labs-sub">Two sealed samples were independently tested, and both measured above their label claim. The original report scans are below. On mobile, swipe between the two reports or open either one full size.</p>
+        </div>
+        <div class="latest-labs-controls" aria-label="Lab report controls">
+          <button class="latest-labs-control" type="button" onclick="scrollLatestLabs(-1)" aria-label="Previous lab report">&larr;</button>
+          <button class="latest-labs-control" type="button" onclick="scrollLatestLabs(1)" aria-label="Next lab report">&rarr;</button>
+        </div>
+      </div>
 
+      <div class="latest-labs-track" id="latest-labs-track" tabindex="0" aria-label="Latest independent lab reports. Swipe horizontally to view both.">
+        <article class="latest-lab-card">
+          <a class="latest-lab-preview" href="coa/retatrutide-100016392.html" aria-label="Open the full Retatrutide report">
+            <img src="coa-retatrutide-100016392-report.png" alt="Retatrutide independent laboratory report showing 99% purity and 16.49mg measured content" loading="eager">
+            <span class="latest-lab-open">Open full report</span>
+          </a>
+          <div class="latest-lab-body">
+            <div class="latest-lab-meta">Report 100016392 · Analysed 30 July 2026</div>
+            <h3 class="latest-lab-name">Retatrutide</h3>
+            <div class="latest-lab-result"><strong>99%</strong><span>HPLC purity</span></div>
+            <p class="latest-lab-copy">A sealed 15mg vial from UK stock measured 16.49mg against its 15mg label claim.</p>
+            <div class="latest-lab-facts">
+              <span class="latest-lab-fact">Independent lab</span>
+              <span class="latest-lab-fact">RP-HPLC</span>
+              <span class="latest-lab-fact">Password: 2W78KU6M</span>
+            </div>
+            <div class="latest-lab-actions">
+              <a class="latest-lab-primary" href="coa/retatrutide-100016392.html">View full report</a>
+              <a class="latest-lab-secondary" href="products/retatrutide/">View Retatrutide</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="latest-lab-card">
+          <a class="latest-lab-preview" href="coa/ghk-cu-100016393.html" aria-label="Open the full GHK-Cu report and chromatogram">
+            <img src="coa-ghk-cu-100016393-report.png" alt="GHK-Cu independent laboratory report showing 99% purity and 54.75mg measured content" loading="eager">
+            <span class="latest-lab-open">Open report + chromatogram</span>
+          </a>
+          <div class="latest-lab-body">
+            <div class="latest-lab-meta">Report 100016393 · Analysed 30 July 2026</div>
+            <h3 class="latest-lab-name">GHK-Cu</h3>
+            <div class="latest-lab-result"><strong>99%</strong><span>HPLC purity</span></div>
+            <p class="latest-lab-copy">A sealed 50mg vial from UK stock measured 54.75mg against its 50mg label claim.</p>
+            <div class="latest-lab-facts">
+              <span class="latest-lab-fact">Independent lab</span>
+              <span class="latest-lab-fact">Certificate + chromatogram</span>
+              <span class="latest-lab-fact">Password: 1W6J3DY2</span>
+            </div>
+            <div class="latest-lab-actions">
+              <a class="latest-lab-primary" href="coa/ghk-cu-100016393.html">View full report</a>
+              <a class="latest-lab-secondary" href="products/ghk-cu/">View GHK-Cu</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="latest-labs-foot">
+        <span>Testing by Analiza Białek sp. z o.o., Wrocław, Poland. Results describe the submitted samples only.</span>
+        <a class="latest-labs-all" href="lab-reports.html">See all lab reports &rarr;</a>
+      </div>
+    </div>
+  </section>
 
   <!-- PRODUCTS -->
   <section class="shop-section" id="products">
@@ -1106,7 +1502,8 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/ghk-cu/">GHK-Cu</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99% HPLC tested</span> · Independent report · Research Use</div>
+            <a class="card-lab-link" href="coa/ghk-cu-100016393.html">View lab report 100016393 &rarr;</a>
             <a class="card-pen-link" href="products/ghk-cu-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
               <option value="27|50mg">1x50mg — £27</option>
@@ -1126,7 +1523,8 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/retatrutide/">Retatrutide</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">99% HPLC tested</span> · Independent report · Research Use</div>
+            <a class="card-lab-link" href="coa/retatrutide-100016392.html">View lab report 100016392 &rarr;</a>
             <a class="card-pen-link" href="products/retatrutide-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png','50mg':'reta-50mg.png'})">
               <option value="45|10mg">1x10mg — £45</option>
@@ -1751,6 +2149,16 @@
       if (el) { setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'center'}), 10); }
     }
 
+    // Keep the report row native and swipeable; these buttons simply move
+    // one full report card at a time for mouse and keyboard visitors.
+    function scrollLatestLabs(direction) {
+      const track = document.getElementById('latest-labs-track');
+      const card = track && track.querySelector('.latest-lab-card');
+      if (!track || !card) return;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      track.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+    }
+
     // MODAL
     let _modalProduct = null;
     function openModal(name, dose, img, points, price, variant) {
@@ -1811,7 +2219,7 @@
           const chip = document.createElement('span');
           const lower = part.toLowerCase();
           chip.className = 'card-trust-chip';
-        if (part.toLowerCase().includes('supplier-stated')) chip.classList.add('is-purity');
+          if (lower.includes('supplier-stated') || lower.includes('99%') || lower.includes('hplc')) chip.classList.add('is-purity');
           if (lower.includes('uk')) chip.classList.add('is-uk');
           if (lower.includes('research')) chip.classList.add('is-research');
           if (lower.includes('pre-reconstituted')) chip.classList.add('is-ready');

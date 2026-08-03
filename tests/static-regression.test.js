@@ -8,12 +8,11 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const checkout = read("checkout.html");
 const basket = read("basket.js");
 const cssBasket = read(path.join("css", "basket.js"));
-const serverCheckout = read(path.join("server", "stripe-checkout.js"));
+const commerceCore = read(path.join("server", "commerce-core.js"));
 const index = read("index.html");
 const product = read("product.html");
 const productData = read("product-data.js");
-const webhook = read(path.join("api", "stripe-webhook.js"));
-const apiCheckout = read(path.join("api", "create-checkout-session.js"));
+const apiOrder = read(path.join("api", "create-order.js"));
 const vercelConfig = fs.existsSync(path.join(root, "vercel.json")) ? read("vercel.json") : "";
 const whyUs = read("why-us.html");
 const labReports = read("lab-reports.html");
@@ -43,8 +42,8 @@ for (const [name, dose, price] of expectedAccessoryPrices) {
     `${name} checkout add-on should use ${price}`
   );
   assert(
-    serverCheckout.includes(`"${name}|${dose}": ${price}`),
-    `${name} Stripe catalog should use ${price}`
+    commerceCore.includes(`"${name}|${dose}": ${price}`),
+    `${name} trusted server catalog should use ${price}`
   );
 }
 
@@ -81,22 +80,22 @@ assert(
 );
 
 assert(
-  serverCheckout.includes("const SITE_URL = \"https://northpeptidesuk.com\"") &&
-    serverCheckout.includes("function isAllowedOrigin(origin)") &&
-    !serverCheckout.includes("payload.origin ||"),
-  "checkout session return URLs should not trust arbitrary browser origins"
+  commerceCore.includes("const SITE_URL = \"https://northpeptidesuk.com\"") &&
+    commerceCore.includes("function isAllowedOrigin(origin)") &&
+    !commerceCore.includes("payload.origin ||"),
+  "order API CORS should not trust arbitrary browser origins"
 );
 assert(
-  !serverCheckout.includes('"Access-Control-Allow-Origin": "*"') &&
-    apiCheckout.includes("req.headers.origin") &&
-    apiCheckout.includes('req.method !== "POST"'),
-  "checkout API should restrict CORS and methods"
+  !commerceCore.includes('"Access-Control-Allow-Origin": "*"') &&
+    apiOrder.includes("req.headers.origin") &&
+    apiOrder.includes('req.method !== "POST"'),
+  "order API should restrict CORS and methods"
 );
 assert(
-  webhook.includes("function escapeHtml(value)") &&
-    webhook.includes("escapeHtml(metadata.notes)") &&
-    !webhook.includes('"Access-Control-Allow-Origin": "*"'),
-  "webhook emails should escape customer content and avoid wildcard CORS"
+  apiOrder.includes("function escapeHtml(value)") &&
+    apiOrder.includes("buildOwnerEmailHtml(order)") &&
+    apiOrder.includes("buildCustomerEmailHtml(order)"),
+  "order emails should escape customer content"
 );
 assert(
   vercelConfig.includes("Strict-Transport-Security") &&
@@ -145,11 +144,11 @@ assert(
   "product detail data should include research supplies"
 );
 assert(
-  serverCheckout.includes('"Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99') &&
-    serverCheckout.includes('"Sterile Disposable Pen Tips|6mm x5": 3.99') &&
-    serverCheckout.includes("function resolveCatalogPrice(item, name, dose)") &&
-    checkout.includes("'sterile disposable pen tips'"),
-  "checkout and Stripe catalog should accept pen-style research supplies"
+  commerceCore.includes('"Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99') &&
+    commerceCore.includes('"Sterile Disposable Pen Tips|6mm x5": 3.99') &&
+    commerceCore.includes("function resolveCatalogPrice(_item, name, dose)") &&
+    checkout.includes("'Sterile Disposable Pen Tips'"),
+  "checkout and trusted server catalog should accept pen-style research supplies"
 );
 
 if (false) {
@@ -207,20 +206,20 @@ assert(
   index.includes("Purity Stated.") &&
     index.includes("UK Stocked.") &&
     index.includes("Research Use Only.") &&
-    index.includes('href="why-us.html" class="hero-cta-secondary">Why North Peptides'),
-  "homepage hero should use the current research-use messaging"
+    index.includes('href="#latest-lab-results" class="hero-cta-secondary">View Lab Results'),
+  "homepage hero should use the current research-use messaging and lab-results CTA"
 );
 assert(
   /'AJ20':\s*0\.20/.test(checkout) &&
-    /"AJ20":\s*0\.20/.test(serverCheckout),
-  "AJ20 should be enforced as a 20% discount by both checkout and Stripe"
+    /AJ20:\s*0\.20/.test(commerceCore),
+  "AJ20 should be enforced as a 20% discount by both checkout and the order API"
 );
 assert(
   !checkout.includes("SHELLEY") &&
     !checkout.includes("Shelley Ellison") &&
     !checkout.includes("ADMININVALID") &&
-    !serverCheckout.includes("SHELLEY") &&
-    !serverCheckout.includes("ADMININVALID"),
+    !commerceCore.includes("SHELLEY") &&
+    !commerceCore.includes("ADMININVALID"),
   "checkout should not expose test-only discount codes or personal data"
 );
 assert(

@@ -54,8 +54,8 @@ test('homepage bottom avoids redundant proof and comparison blocks', () => {
 test('checkout and customer emails no longer reference Trustpilot', () => {
   const files = [
     'checkout.html',
-    'api/stripe-webhook.js',
-    'STRIPE_WEBHOOK_SETUP.md',
+    'api/create-order.js',
+    'SETUP_EMAIL_AND_REVIEWS.md',
   ];
   for (const file of files) {
     assert.doesNotMatch(read(file), /trustpilot/i, `${file} should not mention Trustpilot`);
@@ -228,7 +228,7 @@ test('high-risk administration and unsupported review phrases are absent', () =>
     'index.html',
     'checkout.html',
     'product-data.js',
-    'api/stripe-webhook.js',
+    'api/create-order.js',
     ...fs.readdirSync(path.join(ROOT, 'content-engine', 'articles'))
       .filter(file => file.endsWith('.js'))
       .map(file => `content-engine/articles/${file}`),

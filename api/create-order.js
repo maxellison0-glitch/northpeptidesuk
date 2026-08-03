@@ -1,15 +1,12 @@
 const crypto = require("node:crypto");
 const {
   DISCOUNT_CODES,
-  DELIVERY,
-  resolveCatalogPrice,
+  validateOrderItems,
+  calculateDelivery,
   compactText,
-  corsHeaders,
-  isAllowedOrigin
-} = require("../server/stripe-checkout.js");
+  corsHeaders
+} = require("../server/commerce-core.js");
 
-const SITE_URL = "https://northpeptidesuk.com";
-const FREE_DELIVERY_CODES = ["SUMMERSHIP", "AJ"];
 const ORDER_FROM_EMAIL = process.env.ORDER_FROM_EMAIL || "North Peptides UK <orders@northpeptidesuk.com>";
 
 function json(res, statusCode, body, origin) {
@@ -218,25 +215,12 @@ module.exports = async function handler(req, res) {
   const discountPct = DISCOUNT_CODES[discountCode] || 0;
   const hasDiscount = discountPct > 0;
 
-  const validatedItems = [];
-  for (const item of items) {
-    const itemName = compactText(item.name, 80);
-    const dose = compactText(item.dose, 80);
-    const price = resolveCatalogPrice(item, itemName, dose);
-    const qty = Math.max(1, Math.min(Number.parseInt(item.qty, 10) || 1, 12));
-
-    if (!price) return json(res, 400, { error: `Unavailable item: ${itemName} ${dose}` }, origin);
-
-    const discountedPrice = hasDiscount ? price * (1 - discountPct) : price;
-    validatedItems.push({ name: itemName, dose, qty, unitPrice: discountedPrice, lineTotal: discountedPrice * qty });
-  }
-
-  const delivery = DELIVERY[payload.deliveryMethod] || DELIVERY.standard;
-  const productSubtotal = validatedItems.reduce((sum, item) => sum + item.lineTotal, 0);
-  const isExpress = payload.deliveryMethod === "express";
-  const freeStandard = !isExpress && (FREE_DELIVERY_CODES.includes(discountCode) || productSubtotal >= 50);
-  const deliveryCharge = isExpress ? delivery.price : (freeStandard ? 0 : 3);
-  const grandTotal = productSubtotal + deliveryCharge;
+  const validation = validateOrderItems(items, hasDiscount ? discountPct : 0);
+  if (validation.error) return json(res, 400, { error: validation.error }, origin);
+  const validatedItems = validation.items;
+  const delivery = calculateDelivery(payload.deliveryMethod, discountCode, validation.productSubtotal);
+  const deliveryCharge = delivery.charge;
+  const grandTotal = validation.productSubtotal + deliveryCharge;
 
   const orderRef = generateOrderRef();
   const bankDetails = {

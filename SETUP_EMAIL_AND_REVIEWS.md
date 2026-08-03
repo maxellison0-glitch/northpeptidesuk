@@ -1,86 +1,51 @@
-# Setup: Order Emails, Newsletter, Wallets & Reviews
+# Setup: Bank Transfer Orders, Email, Newsletter and Reviews
 
-Everything below is a one-time setup in dashboards — no code changes needed. The site
-code is already built to use these once you switch them on.
+The storefront accepts orders by bank transfer. Vercel validates each basket against the server catalogue, creates an order reference and uses Resend to email the payment instructions.
 
----
+## 1. Order and email variables
 
-## 1. Email — send/receive as orders@northpeptidesuk.com (Resend)
+Keep `orders@northpeptidesuk.com` as the inbox used to read and answer customer messages. Use Resend for automated messages sent by the website.
 
-Your Google Workspace mailbox (`orders@northpeptidesuk.com`) is where you **read and
-reply** to customers. It is **not free** (~£5–6/user/month after the trial). That's fine —
-it's your inbox.
+1. Add and verify `northpeptidesuk.com` in Resend.
+2. Add the DNS records Resend provides alongside the existing Google Workspace records.
+3. Create a Resend API key.
+4. In Vercel Project Settings, add these environment variables:
 
-To let the **website** send automated emails (order confirmations to customers, order
-alerts to you, newsletter), we use **Resend** — free tier: 3,000 emails/month.
-
-### Steps
-1. Create a free account at <https://resend.com>.
-2. **Add & verify your domain** `northpeptidesuk.com`: Resend → Domains → Add Domain.
-   It gives you a few DNS records (SPF/DKIM/MX-like TXT + CNAME).
-3. Add those records in your domain's DNS (where `northpeptidesuk.com` is managed).
-   - These sit **alongside** your Google Workspace records — they don't clash. Google
-     handles receiving mail; Resend handles sending from the website. Both can send
-     "as" orders@ because each adds its own DKIM signature.
-4. Create an **API key**: Resend → API Keys → Create.
-5. In **Vercel → Project → Settings → Environment Variables**, add:
-
-   | Name | Value |
+   | Name | Purpose |
    |---|---|
-   | `RESEND_API_KEY` | the key from step 4 (starts `re_…`) |
-   | `ORDER_NOTIFY_EMAIL` | `orders@northpeptidesuk.com` (where order alerts go) |
-   | `ORDER_FROM_EMAIL` | `North Peptides UK <orders@northpeptidesuk.com>` (optional — this is the default) |
+   | `RESEND_API_KEY` | Authorises automated order and site emails |
+   | `ORDER_NOTIFY_EMAIL` | Receives new-order alerts; normally `orders@northpeptidesuk.com` |
+   | `ORDER_FROM_EMAIL` | Sender identity; normally `North Peptides UK <orders@northpeptidesuk.com>` |
+   | `BANK_ACCOUNT_NAME` | Account name shown after order submission and in the email |
+   | `BANK_SORT_CODE` | Sort code shown to the customer |
+   | `BANK_ACCOUNT_NUMBER` | Account number shown to the customer |
 
-6. **Redeploy** (Vercel → Deployments → Redeploy, or push any commit).
+5. Apply the variables only to the environments that should accept orders, then redeploy.
 
-Now every paid order:
-- emails **you** a full order breakdown (delivery address included, pulled from Stripe), and
-- emails the **customer** a branded confirmation from orders@ with direct reply support.
+Every submitted order now:
 
-Replies to either land in your Workspace inbox.
+- is recalculated from the server-side catalogue rather than trusting browser prices;
+- receives a unique order reference;
+- emails the shop an awaiting-payment order breakdown; and
+- emails the customer the matching total and bank-transfer instructions.
 
----
+Do not dispatch until the transfer appears in the bank account.
 
-## 2. Newsletter list (optional but recommended)
+## 2. Newsletter list
 
-The homepage signup forms already POST to `/api/subscribe`. To store subscribers as a real
-mailing list you can send to later:
+The homepage signup forms post to `/api/subscribe`.
 
-1. Resend → Audiences → create an audience (e.g. "Newsletter").
-2. Copy its **Audience ID**.
-3. In Vercel env vars add `RESEND_AUDIENCE_ID` = that ID. Redeploy.
+1. Create an Audience in Resend.
+2. Copy its Audience ID.
+3. Add `RESEND_AUDIENCE_ID` in Vercel and redeploy.
 
-Now signups are saved to that audience. **If you skip this**, signups are instead emailed to
-your `orders@` inbox (so none are lost) — the list option is just tidier.
+Without an Audience ID, signup notifications are emailed to the order inbox instead.
 
----
+## 3. Reviews
 
-## 3. Enable Apple Pay / Google Pay / Link (big conversion win)
+The live site must not show scores, stars, review counts or review schema until genuine customer feedback exists.
 
-The checkout code now asks Stripe to show **all** eligible payment methods (it no longer
-forces card-only). You just enable them in Stripe:
-
-1. Stripe Dashboard → **Settings → Payments → Payment methods**: turn on **Apple Pay**,
-   **Google Pay**, **Link**, and **Cards**.
-2. Apple Pay needs your domain verified — Stripe **auto-registers** the domain for hosted
-   Checkout, so this is usually automatic. If prompted, add `northpeptidesuk.com` under
-   Payment method domains.
-
-That's it — wallet buttons then appear at the top of the Stripe checkout page, letting
-mobile shoppers pay in one tap without typing an address.
-
----
-
-## 4. Reviews - rebuild cleanly
-
-The live site must not show rating scores, stars, review counts or review markup until the
-new review source contains real customer feedback.
-
-Recommended rebuild path:
-
-1. Keep the homepage in "review collection in progress" mode for now.
-2. Collect post-purchase feedback by asking customers to reply to the order email.
-3. When a new review platform is chosen, add only genuine verified reviews and keep the
-   visible page content aligned with any structured data.
-4. Do not add aggregate rating schema for the business itself. If product review feeds are
-   added later, keep them product-specific and policy-compliant.
+1. Collect feedback through the first-party review form or customer email replies.
+2. Moderate submissions for personal, medical and prohibited content before publishing.
+3. Publish only genuine feedback and keep visible reviews aligned with structured data.
+4. Do not add business-level aggregate rating schema. Any future product review feed must remain product-specific and policy-compliant.

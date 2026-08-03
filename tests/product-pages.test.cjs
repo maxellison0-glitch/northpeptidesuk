@@ -110,6 +110,99 @@ test('homepage surfaces the pen option with a crawlable link per paired compound
   assert.match(homepage, /at least &pound;15 over the equivalent standard vial/);
 });
 
+test('homepage makes the two new lab results unmistakable in the first journey', () => {
+  const homepage = read('index.html');
+  assert.match(homepage, /id="latest-lab-results"/);
+  assert.match(homepage, /New lab results: Reta \+ GHK-Cu/);
+  assert.match(homepage, /Reta \+ GHK-Cu: both 99% HPLC\./);
+  assert.match(homepage, /Both 99% purity by independent HPLC/);
+  assert.match(homepage, /class="latest-labs-track"[^>]*tabindex="0"/);
+  assert.match(homepage, /coa-retatrutide-100016392-report\.png/);
+  assert.match(homepage, /coa-ghk-cu-100016393-report\.png/);
+  assert.match(homepage, /href="coa\/retatrutide-100016392\.html"/);
+  assert.match(homepage, /href="coa\/ghk-cu-100016393\.html"/);
+  assert.match(homepage, /scroll-snap-type:\s*x mandatory/);
+  assert.doesNotMatch(homepage, /Lab report gallery controls/i);
+
+  function card(id) {
+    const start = homepage.indexOf(`id="${id}"`);
+    assert.notEqual(start, -1, `${id} card should exist`);
+    const next = homepage.indexOf('<div class="shop-card"', start + 1);
+    return homepage.slice(start, next === -1 ? homepage.length : next);
+  }
+
+  const reta = card('product-retatrutide');
+  const ghk = card('product-ghk-cu');
+  for (const [name, source] of [['Retatrutide', reta], ['GHK-Cu', ghk]]) {
+    assert.match(source, /99% HPLC tested/);
+    assert.match(source, /class="card-lab-link"/);
+    assert.doesNotMatch(source, /Verification pending/, `${name} card must not call a published report pending`);
+  }
+});
+
+test('published report claims cannot drift onto products without report data', () => {
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    const source = JSON.stringify(product);
+    if (/99%|HPLC analysis returned|independently verified/i.test(source)) {
+      assert.ok(product.coa, `${slug} makes a published-report claim but has no coa object`);
+    }
+    if (product.coa && product.coaScope !== 'component') {
+      assert.doesNotMatch(source, /verification pending|supplier-stated purity/i,
+        `${slug} must not contradict its published report with pending copy`);
+    }
+    if (product.coaScope === 'component') {
+      assert.match(product.coaScopeNote, /standalone/i, `${slug} must say the component was tested standalone`);
+      assert.match(product.coaScopeNote, /not as the finished blend/i, `${slug} must not imply the blend was tested`);
+      const purity = (product.specs || []).find(([label]) => /purity/i.test(label));
+      assert.ok(purity, `${slug} should retain a blend purity specification`);
+      assert.match(purity[1], /supplier stated/i, `${slug} blend purity must remain supplier stated`);
+    }
+  }
+});
+
+test('products with reports put the certificate one swipe after the product photo', () => {
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    if (!product.coa) continue;
+    const html = read(productPath(slug));
+    assert.match(html, /class="coa-hero-badge"/, `${slug} should surface its report beside the buy box`);
+    assert.match(html, new RegExp(`href="${product.coa.page.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+    if (product.coaScope === 'component') {
+      assert.match(html, /tested standalone, not as the finished blend/i);
+      continue;
+    }
+    assert.match(html, /Swipe once for the lab report/);
+    assert.match(html, /class="media-gallery-count" id="media-gallery-count">1 \/ 2<\/span>/,
+      `${slug} should present one product image followed by one report image`);
+    assert.match(html, /function stepProductImage/);
+    assert.match(html, /addEventListener\('touchstart'/);
+    assert.match(html, /#product-image\.is-document \{ object-fit: contain/);
+    assert.match(html, /href="\/lab-reports\.html">Lab Reports<\/a>/);
+    const galleryScript = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
+      .map(match => match[1])
+      .find(script => script.includes('function productGalleryButtons'));
+    assert.ok(galleryScript, `${slug} should embed gallery behaviour`);
+    assert.doesNotThrow(() => new vm.Script(galleryScript), `${slug} gallery script should parse`);
+    const thumbBlock = html.match(/<div class="media-thumbs"[^>]*>([\s\S]*?)<\/div>/);
+    assert.ok(thumbBlock, `${slug} should render image thumbnails`);
+    const reportImage = product.coa.images[0].src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.match(thumbBlock[1], new RegExp(`data-index="1" data-src="/${reportImage}"`),
+      `${slug} should make its report the immediate second image`);
+    if (product.coa.images[1]) {
+      assert.doesNotMatch(thumbBlock[1], new RegExp(product.coa.images[1].src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')),
+        `${slug} should keep extra analytical pages in the full report block`);
+    }
+    for (const image of product.coa.images) {
+      assert.match(html, new RegExp(image.src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')),
+        `${slug} report block should show ${image.src}`);
+    }
+  }
+
+  const dynamic = read('product.html');
+  assert.match(dynamic, /Swipe once for the lab report/);
+  assert.match(dynamic, /function stepProductImage/);
+  assert.match(dynamic, /addEventListener\("touchstart"/);
+});
+
 test('pen-vial orders consistently state that the disposable kit is included', () => {
   const productData = read('product-data.js');
   const checkout = read('checkout.html');

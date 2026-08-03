@@ -33,10 +33,17 @@
     .back { display: inline-block; margin-bottom: 24px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #63758A; text-decoration: none; }
     .back:hover { color: #1F6FEB; }
     .grid { display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.1fr); gap: 38px; align-items: start; }
-    .image-panel { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
+    .image-panel { position: relative; background: #ffffff; border: 1px solid #D8E5F2; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
     .main-product-img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; background: #F2F7FC; }
-    .img-thumbs { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
-    .img-thumb-wrap { width: 52px; height: 52px; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; transition: border-color 0.2s; }
+    .gallery-toolbar { display: flex; align-items: center; gap: 9px; min-height: 52px; padding: 8px 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
+    .gallery-nav { width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #C5DAEC; border-radius: 999px; background: #fff; color: #174EA6; cursor: pointer; font-size: 0.88rem; }
+    .gallery-nav:hover, .gallery-nav:focus-visible { border-color: #1F6FEB; background: #EEF7FD; }
+    .gallery-caption { flex: 1; min-width: 0; }
+    .gallery-caption strong { display: block; overflow: hidden; color: #334A63; font-size: 0.7rem; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .gallery-caption small { display: block; margin-top: 2px; color: #738197; font-family: "DM Mono", monospace; font-size: 0.54rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .gallery-count { flex-shrink: 0; color: #607086; font-family: "DM Mono", monospace; font-size: 0.6rem; }
+    .img-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 0 10px 10px; background: #F5F9FC; scrollbar-width: thin; scrollbar-color: #B8D6F0 transparent; }
+    .img-thumb-wrap { width: 52px; height: 52px; padding: 0; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; background: #fff; transition: border-color 0.2s; }
     .img-thumb-wrap.active { border-color: #1F6FEB; }
     .img-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     /* Report scans are portrait documents — show the whole page, never crop. */
@@ -204,6 +211,14 @@
       return "\u00A3" + value;
     }
 
+    function escapeAttr(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
     function getBasket() {
       try {
         return JSON.parse(localStorage.getItem("npuk_basket") || "[]");
@@ -288,15 +303,64 @@
       setTimeout(() => { button.textContent = "Add"; }, 1200);
     }
 
-    // Document scans (lab reports) are letter-shaped and must never be cropped,
-    // so they swap the main image into "contain" mode. Product shots stay
-    // cropped to the square frame.
-    function switchProductImg(wrap, src, fit) {
+    // Document scans are letter-shaped and must never be cropped. The same
+    // gallery can be changed by thumbnail, arrow button, or a horizontal swipe.
+    function productGalleryThumbs() {
+      return Array.from(document.querySelectorAll(".img-thumb-wrap"));
+    }
+
+    function switchProductImg(wrap) {
       const main = document.getElementById("main-product-img");
-      main.src = src;
-      main.classList.toggle("is-document", fit === "contain");
-      document.querySelectorAll(".img-thumb-wrap").forEach(t => t.classList.remove("active"));
+      if (!main || !wrap) return;
+      main.src = wrap.dataset.src;
+      main.alt = wrap.dataset.alt;
+      main.classList.toggle("is-document", wrap.dataset.fit === "contain");
+      const thumbs = productGalleryThumbs();
+      thumbs.forEach(t => {
+        t.classList.remove("active");
+        t.removeAttribute("aria-current");
+      });
       wrap.classList.add("active");
+      wrap.setAttribute("aria-current", "true");
+      const index = thumbs.indexOf(wrap);
+      const caption = document.getElementById("gallery-caption-text");
+      const count = document.getElementById("gallery-count");
+      if (caption) caption.textContent = wrap.dataset.alt;
+      if (count) count.textContent = `${index + 1} / ${thumbs.length}`;
+      if (wrap.parentElement) {
+        wrap.parentElement.scrollTo({
+          left: wrap.offsetLeft - (wrap.parentElement.clientWidth - wrap.offsetWidth) / 2,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    function stepProductImage(direction) {
+      const thumbs = productGalleryThumbs();
+      if (!thumbs.length) return;
+      const current = Math.max(0, thumbs.findIndex(t => t.classList.contains("active")));
+      const next = (current + direction + thumbs.length) % thumbs.length;
+      switchProductImg(thumbs[next]);
+    }
+
+    function initProductGallerySwipe() {
+      const main = document.getElementById("main-product-img");
+      if (!main || productGalleryThumbs().length < 2) return;
+      let startX = 0;
+      let startY = 0;
+      main.addEventListener("touchstart", event => {
+        const touch = event.changedTouches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+      }, { passive: true });
+      main.addEventListener("touchend", event => {
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          stepProductImage(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
     }
 
     function addIntranasalToBasket(btn) {
@@ -438,25 +502,41 @@
                 </div>
               </div>
             </div>`;
-      // Gallery = product shot, then any kit shot, then every page of the
-      // independent lab report. Report pages render uncropped.
+      // Product shot first, followed immediately by the certificate so one
+      // swipe reveals the evidence. Extra report pages remain in the full
+      // report block below. Document pages render uncropped.
       const galleryImages = [{ src: product.image, alt: product.name, fit: "cover" }];
+      if (product.coa && product.coa.images[0]) {
+        const report = product.coa.images[0];
+        galleryImages.push({
+          src: report.src,
+          alt: `${product.coa.compound} independent lab report — ${report.label}`,
+          fit: "contain"
+        });
+      }
       if (product.secondaryImage) {
         galleryImages.push({ src: product.secondaryImage, alt: `${product.name} research kit`, fit: "cover" });
       }
-      if (product.coa) {
-        product.coa.images.forEach(img => galleryImages.push({
-          src: img.src,
-          alt: `${product.coa.compound} independent lab report — ${img.label}`,
-          fit: "contain"
-        }));
-      }
+      const swipeHint = product.coa
+        ? (product.coaScope === "component"
+          ? `Swipe once for the ${product.coa.compound} component report`
+          : "Swipe once for the lab report")
+        : "Swipe image or tap a thumbnail";
       const thumbs = galleryImages.length > 1 ? `
-            <div class="img-thumbs">
+            <div class="gallery-toolbar">
+              <button class="gallery-nav" type="button" onclick="stepProductImage(-1)" aria-label="Previous image">&larr;</button>
+              <div class="gallery-caption">
+                <strong id="gallery-caption-text">${escapeAttr(galleryImages[0].alt)}</strong>
+                <small>${escapeAttr(swipeHint)}</small>
+              </div>
+              <span class="gallery-count" id="gallery-count">1 / ${galleryImages.length}</span>
+              <button class="gallery-nav" type="button" onclick="stepProductImage(1)" aria-label="Next image">&rarr;</button>
+            </div>
+            <div class="img-thumbs" aria-label="Product and lab report images">
               ${galleryImages.map((img, i) => `
-              <div class="img-thumb-wrap${i === 0 ? " active" : ""}${img.fit === "contain" ? " is-doc-thumb" : ""}" onclick="switchProductImg(this,'${img.src}','${img.fit}')" title="${img.alt}">
-                <img src="${img.src}" alt="${img.alt}" loading="lazy">
-              </div>`).join("")}
+              <button type="button" class="img-thumb-wrap${i === 0 ? " active" : ""}${img.fit === "contain" ? " is-doc-thumb" : ""}" data-src="${escapeAttr(img.src)}" data-fit="${img.fit}" data-alt="${escapeAttr(img.alt)}" onclick="switchProductImg(this)" title="${escapeAttr(img.alt)}" aria-label="Show ${escapeAttr(img.alt)}"${i === 0 ? ' aria-current="true"' : ''}>
+                <img src="${escapeAttr(img.src)}" alt="${escapeAttr(img.alt)}" loading="lazy">
+              </button>`).join("")}
             </div>` : "";
       const intranasalSection = product.intranasalAddon ? `
             <div class="intranasal-box">
@@ -551,7 +631,7 @@
               <span class="coa-badge-mark">Verified</span>
               <span class="coa-badge-text">
                 <strong>${product.coa.purity} purity${product.coaScope === "component" ? ` — ${product.coa.compound} component` : ""}</strong>
-                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. View the full report and chromatogram.
+                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. View the full report${product.coa.images.length > 1 ? " and chromatogram" : ""}.
               </span>
             </a>` : "";
 
@@ -599,7 +679,7 @@
         <a class="back" href="index.html#products">Back to products</a>
         <section class="grid">
           <div class="image-panel">
-            <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img">
+            <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img" draggable="false">
             ${thumbs}
           </div>
           <div class="info-panel">
@@ -638,6 +718,7 @@
         </section>
         ${lowerSection}
       `;
+      initProductGallerySwipe();
     }
 
     if (!product) {
