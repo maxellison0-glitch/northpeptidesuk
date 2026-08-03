@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Documentation | UK Dispatch | North Peptides UK</title>
-  <meta name="description" content="Product documentation and batch details for North Peptides UK research peptides. UK dispatch after confirmed payment. Purity stated on every product. Batch details available on request.">
+  <meta name="description" content="Independent laboratory reports for North Peptides UK research peptides. GHK-Cu independently tested at 99% purity by HPLC - full report and chromatogram published. Batch details available on request.">
   <link rel="canonical" href="https://www.northpeptidesuk.com/lab-reports.html">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="North Peptides UK">
   <meta property="og:title" content="Product Documentation | UK Dispatch | North Peptides UK">
-  <meta property="og:description" content="Product documentation and batch details for North Peptides UK research peptides. UK dispatch after confirmed payment. Purity stated on every product. Batch details available on request.">
+  <meta property="og:description" content="Independent laboratory reports for North Peptides UK research peptides. GHK-Cu independently tested at 99% purity by HPLC - full report and chromatogram published. Batch details available on request.">
   <meta property="og:image" content="https://www.northpeptidesuk.com/logo.png">
   <meta property="og:url" content="https://www.northpeptidesuk.com/lab-reports.html">
   <meta name="twitter:card" content="summary">
@@ -81,8 +81,29 @@
     .exp-title { font-family: Syne, sans-serif; font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 7px; }
     .exp-body { font-size: 0.82rem; color: #4B5F75; line-height: 1.65; }
 
+    /* PUBLISHED INDEPENDENT REPORTS */
+    .published-reports { background: #ffffff; padding: 52px 40px; border-bottom: 1px solid #D8E5F2; }
+    .published-inner { max-width: 1000px; margin: 0 auto; }
+    .report-feature { display: grid; grid-template-columns: 240px 1fr; gap: 28px; margin-top: 30px; padding: 26px; background: #F5F9FC; border: 1px solid #D8E5F2; border-radius: 14px; align-items: start; }
+    .report-thumb { display: block; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #fff; transition: box-shadow 0.2s, transform 0.2s; }
+    .report-thumb:hover { box-shadow: 0 12px 30px rgba(15,31,54,0.14); transform: translateY(-3px); }
+    .report-thumb img { width: 100%; display: block; }
+    .report-pill { display: inline-block; padding: 6px 13px; border-radius: 999px; background: #1F6FEB; color: #fff; font-family: "DM Mono", monospace; font-size: 0.55rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+    .report-name { font-family: Syne, sans-serif; font-size: 1.5rem; font-weight: 800; color: #10233F; line-height: 1.1; margin-bottom: 5px; }
+    .report-lab { font-family: "DM Mono", monospace; font-size: 0.62rem; letter-spacing: 0.05em; color: #7C8FA6; margin-bottom: 18px; }
+    .report-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .report-stat { background: #fff; border: 1px solid #D8E5F2; border-radius: 9px; padding: 12px 14px; }
+    .rs-val { display: block; font-family: Syne, sans-serif; font-size: 1.15rem; font-weight: 800; color: #1F6FEB; line-height: 1.1; }
+    .rs-label { display: block; font-family: "DM Mono", monospace; font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7C8FA6; margin-top: 5px; }
+    .report-body { font-size: 0.86rem; color: #465A70; line-height: 1.75; margin-bottom: 16px; }
+    .report-cta { display: inline-block; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; }
+    .report-cta:hover { text-decoration: underline; }
+    @media (max-width: 720px) { .report-feature { grid-template-columns: 1fr; gap: 20px; padding: 18px; } .report-thumb { max-width: 240px; } }
+
     /* INDEPENDENT TESTING STATUS */
     .testing-status { background: #F5F9FC; padding: 52px 40px; border-bottom: 1px solid #D8E5F2; }
+    .testing-card.is-published { border-color: #B9D7F8; box-shadow: 0 8px 24px rgba(31,111,235,0.10); }
+    .testing-label.is-done { background: #1F6FEB; border-color: #1F6FEB; color: #ffffff; }
     .testing-inner { max-width: 920px; margin: 0 auto; }
     .testing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
     .testing-card { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 10px; padding: 22px; box-shadow: 0 8px 24px rgba(15,31,54,0.04); }
@@ -237,9 +258,9 @@
     <div class="page-hero-inner">
       <span class="page-tag">Purity &amp; Batch Information</span>
       <h1 class="page-title">Product<br><em>Documentation</em></h1>
-      <p class="page-sub">Purity is stated on every product we stock. Batch details and supporting documentation are available on request - contact support with your product name at any point before or after ordering.</p>
+      <p class="page-sub">Our first independent laboratory report is published below in full. Purity is stated on every product we stock, and batch details are available on request - contact support with your product name at any point before or after ordering.</p>
       <div class="hero-chips">
-        <span class="h-chip h-chip-green">Purity Stated</span>
+        <span class="h-chip h-chip-green">GHK-Cu Independently Tested — 99%</span>
         <span class="h-chip">Batch Details on Request</span>
         <span class="h-chip">Stored Frozen</span>
         <span class="h-chip">UK Stocked</span>
@@ -252,7 +273,7 @@
   <div class="notice-bar">
     <div class="notice-inner">
       <span class="notice-icon">Info</span>
-      <p class="notice-text"><strong>How documentation works:</strong> The cards below summarise what we hold for each product in the current catalogue. Batch details, purity documentation and any supporting paperwork from our suppliers are provided by email on request - typically within one business day.</p>
+      <p class="notice-text"><strong>How documentation works:</strong> Where we hold an independent laboratory report, it is published on this page in full - we do not summarise results and withhold the document. For everything else, batch details, purity documentation and supporting paperwork from our suppliers are provided by email on request, typically within one business day.</p>
     </div>
   </div>
 
@@ -287,37 +308,65 @@
     </div>
   </div>
 
+  <!-- PUBLISHED INDEPENDENT REPORTS -->
+  <section class="published-reports">
+    <div class="published-inner">
+      <p class="section-tag">Published Independent Reports</p>
+      <h2 class="section-title">Our first third-party report is in.</h2>
+      <p style="font-size:0.9rem;color:#465A70;max-width:700px;line-height:1.75;margin-top:6px;">We sent samples from our own UK stock to an independent analytical laboratory in Poland and paid for HPLC analysis. Where a report has come back, it is published here in full — both pages, unedited, including the chromatogram.</p>
+
+      <article class="report-feature">
+        <a class="report-thumb" href="/coa/ghk-cu-100016393.html">
+          <img src="/coa-ghk-cu-100016393-report.png" alt="GHK-Cu certificate of analysis from Analiza Bialek showing 99% purity" loading="lazy">
+        </a>
+        <div class="report-detail">
+          <span class="report-pill">Independently Tested</span>
+          <h3 class="report-name">GHK-Cu 50mg</h3>
+          <p class="report-lab">Analiza Białek sp. z o.o. &middot; Wrocław, Poland &middot; Report 100016393</p>
+          <div class="report-stats">
+            <div class="report-stat"><span class="rs-val">99%</span><span class="rs-label">Purity (HPLC)</span></div>
+            <div class="report-stat"><span class="rs-val">54.75mg</span><span class="rs-label">Measured Content</span></div>
+            <div class="report-stat"><span class="rs-val">50mg</span><span class="rs-label">Label Claim</span></div>
+            <div class="report-stat"><span class="rs-val">Jul 2026</span><span class="rs-label">Analysed</span></div>
+          </div>
+          <p class="report-body">A sealed retail vial from our UK stock was analysed by reverse-phase HPLC on a BioBasic 8 column against a water/acetonitrile gradient. Purity came back at 99%, with vial content measured at 54.75mg against a 50mg label claim. The report also covers the GHK-Cu component of the KLOW Stack.</p>
+          <a class="report-cta" href="/coa/ghk-cu-100016393.html">Read the full report -&gt;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- INDEPENDENT TESTING STATUS -->
   <section class="testing-status">
     <div class="testing-inner">
       <p class="section-tag">Independent Testing Status</p>
-      <h2 class="section-title">Third-party COA testing is being prioritised.</h2>
-      <p style="font-size:0.9rem;color:#465A70;max-width:680px;line-height:1.75;margin-top:6px;">We are arranging independent COA testing for selected high-demand compounds. Results will be reviewed and added here once received. Until then, the current documentation status remains supplier batch details and purity documentation available on request.</p>
+      <h2 class="section-title">Where the rest of the catalogue stands.</h2>
+      <p style="font-size:0.9rem;color:#465A70;max-width:680px;line-height:1.75;margin-top:6px;">Independent testing is being rolled out compound by compound, funded out of our own margin. Nothing is described as independently verified on this site until the relevant report is in hand and published above.</p>
       <div class="testing-grid">
-        <article class="testing-card is-priority">
-          <span class="testing-label">Priority Test</span>
-          <h3 class="testing-title">BPC-157</h3>
-          <p class="testing-body">Independent COA testing is being arranged for BPC-157. The report will be published on this page once the sample has been tested and the document has been reviewed.</p>
+        <article class="testing-card is-published">
+          <span class="testing-label is-done">Published</span>
+          <h3 class="testing-title">GHK-Cu</h3>
+          <p class="testing-body">Tested and published. HPLC analysis returned 99% purity with content measured at 54.75mg against a 50mg label claim. <a href="/coa/ghk-cu-100016393.html" style="color:#1F6FEB;font-weight:600;">View the report</a>.</p>
         </article>
         <article class="testing-card is-priority">
-          <span class="testing-label">Priority Test</span>
+          <span class="testing-label">Report Received</span>
           <h3 class="testing-title">Retatrutide</h3>
-          <p class="testing-body">Independent COA testing is being arranged for Retatrutide. The report will be published on this page once the sample has been tested and the document has been reviewed.</p>
+          <p class="testing-body">Submitted to the same laboratory in the same shipment as the GHK-Cu sample. The report has been returned and is being reviewed ahead of publication here in full.</p>
         </article>
         <article class="testing-card">
-          <span class="testing-label">Under Review</span>
-          <h3 class="testing-title">GHK-Cu</h3>
-          <p class="testing-body">GHK-Cu is under review for the next testing round. We are prioritising the first two COAs before committing to additional independent tests.</p>
+          <span class="testing-label">Next Round</span>
+          <h3 class="testing-title">BPC-157</h3>
+          <p class="testing-body">Queued for the next round of independent testing. The report will be published on this page once the sample has been analysed and the document reviewed.</p>
         </article>
       </div>
-      <p class="testing-note">No product is described as independently verified until the relevant third-party report is received. All products remain strictly for laboratory research use only and are not for human or animal consumption.</p>
+      <p class="testing-note">A laboratory report describes the sample submitted to the laboratory. It is not a per-vial certificate, and it covers identity, purity and content only — not sterility, endotoxins or heavy metals. All products remain strictly for laboratory research use only and are not for human or animal consumption.</p>
     </div>
   </section>
 
   <!-- INFO BAR -->
   <div class="info-bar">
     <div class="info-inner">
-      <div class="info-item"><span class="info-val">Supplier stated; independent verification pending</span><span class="info-label">Purity Stated</span></div>
+      <div class="info-item"><span class="info-val">99%</span><span class="info-label">GHK-Cu, HPLC Verified</span></div>
       <span class="info-div">·</span>
       <div class="info-item"><span class="info-val">Batch</span><span class="info-label">Details on Request</span></div>
       <span class="info-div">·</span>
@@ -325,7 +374,7 @@
       <span class="info-div">·</span>
       <div class="info-item"><span class="info-val">UK</span><span class="info-label">Stocked &amp; Dispatched</span></div>
       <span class="info-div">·</span>
-      <div class="info-item"><span class="info-val">COA</span><span class="info-label">BPC &amp; Reta In Progress</span></div>
+      <div class="info-item"><span class="info-val">Reta</span><span class="info-label">Report In Review</span></div>
     </div>
   </div>
 
@@ -348,7 +397,8 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; report in review</span></div>
+            <div class="dc-row"><span class="dc-key">Testing</span><span class="dc-val">Independent report received</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -424,12 +474,13 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">99% - independently verified (HPLC)</span></div>
+            <div class="dc-row"><span class="dc-key">Content</span><span class="dc-val">54.75mg vs 50mg claim</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
-            <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
-            <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20GHK-Cu" class="dc-request-btn">Request Docs -></a>
+            <div class="dc-row"><span class="dc-key">Lab Report</span><span class="dc-val dc-val-green">Published in Full</span></div>          </div>          <div class="dc-footer">
+            <div class="dc-avail"><div class="dc-avail-dot"></div> Report Published</div>
+            <a href="/coa/ghk-cu-100016393.html" class="dc-request-btn">View Report -></a>
           </div>
         </div>
 
@@ -462,12 +513,13 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending (each component)</span></div>
+            <div class="dc-row"><span class="dc-key">GHK-Cu Part</span><span class="dc-val dc-val-green">99% - independently verified (HPLC)</span></div>
+            <div class="dc-row"><span class="dc-key">Other Parts</span><span class="dc-val">Supplier stated; testing pending</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Blend</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
-            <div class="dc-avail"><div class="dc-avail-dot"></div> Docs Available by Email</div>
-            <a href="mailto:orders@northpeptidesuk.com?subject=Documentation%20Request%3A%20KLOW%20Stack" class="dc-request-btn">Request Docs -></a>
+            <div class="dc-avail"><div class="dc-avail-dot"></div> GHK-Cu Report Published</div>
+            <a href="/coa/ghk-cu-100016393.html" class="dc-request-btn">View Report -></a>
           </div>
         </div>
 

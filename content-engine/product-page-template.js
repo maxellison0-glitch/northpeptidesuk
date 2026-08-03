@@ -234,6 +234,83 @@ ${product.specs.map(([label, value]) => `            <tr><th>${escapeHtml(label)
         </section>`;
 }
 
+// Hero thumbnail strip: product shot first, then each page of the independent
+// lab report. Report scans are portrait documents, so they swap the main image
+// into "contain" mode rather than being cropped to the square frame.
+function mediaThumbs(product) {
+  const images = [{ src: product.image, alt: product.name, fit: 'cover' }];
+  if (product.secondaryImage) {
+    images.push({ src: product.secondaryImage, alt: `${product.name} research kit`, fit: 'cover' });
+  }
+  if (product.coa) {
+    product.coa.images.forEach(img => images.push({
+      src: img.src,
+      alt: `${product.coa.compound} independent laboratory report - ${img.label}`,
+      fit: 'contain'
+    }));
+  }
+  if (images.length < 2) return '';
+  return `        <div class="media-thumbs">
+${images.map((img, i) => `          <button type="button" class="media-thumb${i === 0 ? ' active' : ''}${img.fit === 'contain' ? ' is-doc' : ''}" onclick="showProductImage(this, '/${escapeHtml(img.src)}', '${img.fit}')" title="${escapeHtml(img.alt)}">
+            <img src="/${escapeHtml(img.src)}" alt="${escapeHtml(img.alt)}" loading="lazy">
+          </button>`).join('\n')}
+        </div>
+        <script>
+          function showProductImage(button, src, fit) {
+            var main = document.getElementById('product-image');
+            main.src = src;
+            main.classList.toggle('is-document', fit === 'contain');
+            document.querySelectorAll('.media-thumb').forEach(function (t) { t.classList.remove('active'); });
+            button.classList.add('active');
+          }
+        </script>`;
+}
+
+// Independent laboratory report, where one exists for this product. The report
+// images double as the product page's secondary imagery.
+function coaBlock(product) {
+  const coa = product.coa;
+  if (!coa) return '';
+  const isComponent = product.coaScope === 'component';
+  return `
+        <section class="section-block coa-block">
+          <h2>Independent laboratory report</h2>
+          <p class="coa-lede">A sample of this material was submitted to <a href="${escapeHtml(coa.labUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(coa.lab)}</a>, an independent analytical laboratory in ${escapeHtml(coa.labLocation)}. We did not carry out this analysis ourselves.</p>
+${isComponent ? `          <p class="coa-scope">${escapeHtml(product.coaScopeNote)}</p>` : ''}
+          <table class="spec-table">
+            <tr><th>Purity result</th><td class="coa-result">${escapeHtml(coa.purity)}</td></tr>
+            <tr><th>Measured content</th><td>${escapeHtml(coa.content)} (label claim ${escapeHtml(coa.labelClaim)}, error ${escapeHtml(coa.measurementError)})</td></tr>
+            <tr><th>Method</th><td>${escapeHtml(coa.method)}</td></tr>
+            <tr><th>Laboratory</th><td>${escapeHtml(coa.lab)}, ${escapeHtml(coa.labLocation)}</td></tr>
+            <tr><th>Report number</th><td>${escapeHtml(coa.orderNumber)}</td></tr>
+            <tr><th>Analysis dates</th><td>${escapeHtml(coa.testStartDate)} to ${escapeHtml(coa.testEndDate)}</td></tr>
+          </table>
+          <div class="coa-pages">
+${coa.images.map(img => `            <a class="coa-page" href="/${escapeHtml(img.src)}" target="_blank" rel="noopener noreferrer">
+              <img src="/${escapeHtml(img.src)}" alt="${escapeHtml(coa.compound)} independent laboratory report - ${escapeHtml(img.label)}" loading="lazy">
+              <span class="coa-page-cap">${escapeHtml(img.label)}</span>
+            </a>`).join('\n')}
+          </div>
+          <p><a class="coa-link" href="${escapeHtml(coa.page)}">Read the full report, method and verification details -&gt;</a></p>
+          <!--compliance:ignore-start-->
+          <p class="coa-caveat">This report describes the sample submitted to the laboratory. It covers identity, purity and content only, and is not a statement of safety, efficacy or suitability for use in humans or animals.</p>
+          <!--compliance:ignore-end-->
+        </section>`;
+}
+
+// Testing commissioned but not yet published — shown as an honest in-progress
+// state so the page never implies a result it cannot show.
+function coaPendingBlock(product) {
+  if (product.coa || !product.coaPending) return '';
+  const p = product.coaPending;
+  return `
+        <section class="section-block coa-block is-pending">
+          <h2>Independent testing</h2>
+          <p class="coa-lede"><strong>${escapeHtml(p.status)}.</strong> ${escapeHtml(p.note)}</p>
+          <p><a class="coa-link" href="/lab-reports.html">See our published laboratory reports -&gt;</a></p>
+        </section>`;
+}
+
 function faqBlock(product) {
   const faqs = product.seo && Array.isArray(product.seo.faq) ? product.seo.faq : [];
   if (!faqs.length) return '';
@@ -378,6 +455,7 @@ ${jsonLd(slug, product)}
     <section class="product-hero">
       <div class="media-card">
         <img id="product-image" src="/${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="eager">
+${mediaThumbs(product)}
       </div>
       <div class="buy-card">
         <a class="back-link" href="/#products">Back to products</a>
@@ -402,6 +480,8 @@ ${lowerDescription.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n')}
         ${Array.isArray(product.researchAreas) && product.researchAreas.length ? `<section class="section-block">
           <h2>Research areas</h2>${listItems(product.researchAreas)}
         </section>` : ''}
+        ${coaBlock(product)}
+        ${coaPendingBlock(product)}
         ${specsTable(product)}
         ${faqBlock(product)}
       </div>
@@ -504,6 +584,25 @@ const PRODUCT_CSS = `
     .section-block p { margin: 0 0 14px; }
     .plain-list { margin: 0; padding-left: 20px; color: #40566C; line-height: 1.8; }
     .plain-list li { margin-bottom: 8px; }
+    /* INDEPENDENT LAB REPORT */
+    .coa-block .coa-lede { font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
+    .coa-block .coa-lede a { color: #1F6FEB; font-weight: 600; }
+    .coa-scope { font-size: 0.86rem; color: #8A6400; background: #FFF8E6; border: 1px solid #F5E0A0; border-radius: 8px; padding: 12px 14px; line-height: 1.7; margin-bottom: 14px; }
+    .coa-result { font-weight: 700; color: #1F6FEB; }
+    .coa-pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 18px; }
+    .coa-page { display: block; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #fff; text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
+    .coa-page:hover { box-shadow: 0 10px 26px rgba(15,31,54,0.12); transform: translateY(-2px); }
+    .coa-page img { width: 100%; display: block; background: #fff; }
+    .coa-page-cap { display: block; padding: 9px 12px; border-top: 1px solid #EDF3F9; font-size: 0.68rem; letter-spacing: 0.04em; color: #607086; }
+    .coa-link { display: inline-block; margin-top: 16px; color: #1F6FEB; font-weight: 600; font-size: 0.88rem; }
+    .coa-caveat { margin-top: 14px; font-size: 0.8rem; color: #7C8FA6; line-height: 1.7; }
+    .media-thumbs { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
+    .media-thumb { width: 54px; height: 54px; border-radius: 6px; overflow: hidden; border: 2px solid transparent; flex-shrink: 0; background: #fff; cursor: pointer; padding: 0; }
+    .media-thumb.active { border-color: #1F6FEB; }
+    .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: auto; }
+    .media-thumb.is-doc img { object-fit: contain; background: #fff; }
+    #product-image.is-document { object-fit: contain; background: #fff; }
+
     .spec-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #fff; }
     .spec-table th, .spec-table td { padding: 12px 14px; border-bottom: 1px solid #E7EFF7; vertical-align: top; }
     .spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: 0; }

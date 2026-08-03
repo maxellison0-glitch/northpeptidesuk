@@ -39,6 +39,31 @@
     .img-thumb-wrap { width: 52px; height: 52px; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; transition: border-color 0.2s; }
     .img-thumb-wrap.active { border-color: #1F6FEB; }
     .img-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Report scans are portrait documents — show the whole page, never crop. */
+    .main-product-img.is-document { object-fit: contain; background: #ffffff; }
+    .img-thumb-wrap.is-doc-thumb { border-color: #C5DAEC; background: #fff; }
+    .img-thumb-wrap.is-doc-thumb.active { border-color: #1F6FEB; }
+    .img-thumb-wrap.is-doc-thumb img { object-fit: contain; background: #fff; }
+
+    /* INDEPENDENT LAB REPORT */
+    .coa-badge { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 18px; padding: 14px 16px; border-radius: 10px; background: #EAF4FF; border: 1px solid #B9D7F8; transition: border-color 0.2s, box-shadow 0.2s; }
+    a.coa-badge:hover { border-color: #1F6FEB; box-shadow: 0 6px 18px rgba(31,111,235,0.14); }
+    .coa-badge.is-pending { background: #FFF8E6; border-color: #F5E0A0; }
+    .coa-badge-mark { flex-shrink: 0; font-family: "DM Mono", monospace; font-size: 0.54rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; background: #1F6FEB; color: #fff; margin-top: 2px; }
+    .coa-badge.is-pending .coa-badge-mark { background: #A16207; }
+    .coa-badge-text { font-size: 0.78rem; color: #3B5068; line-height: 1.6; }
+    .coa-badge-text strong { display: block; font-size: 0.86rem; color: #10233F; margin-bottom: 3px; }
+
+    .coa-lede { font-size: 0.9rem; color: #465A70; line-height: 1.75; margin-bottom: 14px; }
+    .coa-lede a { color: #1F6FEB; font-weight: 600; text-decoration: underline; }
+    .coa-scope-note { font-size: 0.82rem; color: #8A6400; background: #FFF8E6; border: 1px solid #F5E0A0; border-radius: 8px; padding: 12px 14px; line-height: 1.65; margin-bottom: 16px; }
+    .coa-pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px; }
+    .coa-page { display: block; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #fff; transition: box-shadow 0.2s, transform 0.2s; }
+    .coa-page:hover { box-shadow: 0 10px 26px rgba(15,31,54,0.12); transform: translateY(-2px); }
+    .coa-page img { width: 100%; display: block; background: #fff; }
+    .coa-page-cap { display: block; padding: 10px 12px; border-top: 1px solid #EDF3F9; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; color: #607086; }
+    .coa-full-link { display: inline-block; margin-top: 18px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; }
+    .coa-full-link:hover { text-decoration: underline; }
     .intranasal-box { margin-top: 16px; border: 1px solid #B8D6F0; border-radius: 10px; background: #EEF7FD; padding: 14px 16px; }
     .intranasal-box-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; margin-bottom: 4px; display: block; }
     .intranasal-box-heading { font-size: 0.9rem; font-weight: 700; color: #10233F; margin-bottom: 5px; }
@@ -263,8 +288,13 @@
       setTimeout(() => { button.textContent = "Add"; }, 1200);
     }
 
-    function switchProductImg(wrap, src) {
-      document.getElementById("main-product-img").src = src;
+    // Document scans (lab reports) are letter-shaped and must never be cropped,
+    // so they swap the main image into "contain" mode. Product shots stay
+    // cropped to the square frame.
+    function switchProductImg(wrap, src, fit) {
+      const main = document.getElementById("main-product-img");
+      main.src = src;
+      main.classList.toggle("is-document", fit === "contain");
       document.querySelectorAll(".img-thumb-wrap").forEach(t => t.classList.remove("active"));
       wrap.classList.add("active");
     }
@@ -408,14 +438,25 @@
                 </div>
               </div>
             </div>`;
-      const thumbs = product.secondaryImage ? `
+      // Gallery = product shot, then any kit shot, then every page of the
+      // independent lab report. Report pages render uncropped.
+      const galleryImages = [{ src: product.image, alt: product.name, fit: "cover" }];
+      if (product.secondaryImage) {
+        galleryImages.push({ src: product.secondaryImage, alt: `${product.name} research kit`, fit: "cover" });
+      }
+      if (product.coa) {
+        product.coa.images.forEach(img => galleryImages.push({
+          src: img.src,
+          alt: `${product.coa.compound} independent lab report — ${img.label}`,
+          fit: "contain"
+        }));
+      }
+      const thumbs = galleryImages.length > 1 ? `
             <div class="img-thumbs">
-              <div class="img-thumb-wrap active" onclick="switchProductImg(this,'${product.image}')">
-                <img src="${product.image}" alt="${product.name}">
-              </div>
-              <div class="img-thumb-wrap" onclick="switchProductImg(this,'${product.secondaryImage}')">
-                <img src="${product.secondaryImage}" alt="${product.name} research kit">
-              </div>
+              ${galleryImages.map((img, i) => `
+              <div class="img-thumb-wrap${i === 0 ? " active" : ""}${img.fit === "contain" ? " is-doc-thumb" : ""}" onclick="switchProductImg(this,'${img.src}','${img.fit}')" title="${img.alt}">
+                <img src="${img.src}" alt="${img.alt}" loading="lazy">
+              </div>`).join("")}
             </div>` : "";
       const intranasalSection = product.intranasalAddon ? `
             <div class="intranasal-box">
@@ -503,7 +544,55 @@
               ${(Array.isArray(product.storage) ? product.storage : [product.storage]).map(p => `<p>${p}</p>`).join("")}
             </div>` : "";
 
-      const lowerContent = [descSection, specsSection, researchAreasSection, storageSection, faqSection].filter(Boolean).join("");
+      // Compact badge sitting directly under the buy box — the claim plus a
+      // route to the evidence.
+      const coaBadge = product.coa ? `
+            <a class="coa-badge" href="${product.coa.page}">
+              <span class="coa-badge-mark">Verified</span>
+              <span class="coa-badge-text">
+                <strong>${product.coa.purity} purity${product.coaScope === "component" ? ` — ${product.coa.compound} component` : ""}</strong>
+                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. View the full report and chromatogram.
+              </span>
+            </a>` : "";
+
+      const coaPendingBadge = (!product.coa && product.coaPending) ? `
+            <div class="coa-badge is-pending">
+              <span class="coa-badge-mark">Testing</span>
+              <span class="coa-badge-text">
+                <strong>Independent testing complete</strong>
+                ${product.coaPending.status}. ${product.coaPending.note}
+              </span>
+            </div>` : "";
+
+      const coaSection = product.coa ? `
+            <div class="pd-section">
+              <div class="pd-eyebrow">Independent verification</div>
+              <h2 class="pd-h2">Third-party laboratory report</h2>
+              <p class="coa-lede">A sample of this material was submitted to <a href="${product.coa.labUrl}" target="_blank" rel="noopener noreferrer">${product.coa.lab}</a>, an independent analytical laboratory in ${product.coa.labLocation}. We did not carry out this analysis ourselves.</p>
+              ${product.coaScope === "component" ? `<p class="coa-scope-note">${product.coaScopeNote}</p>` : ""}
+              <table class="spec-table">
+                <tr><th>Result — purity</th><td class="spec-purity">${product.coa.purity}</td></tr>
+                <tr><th>Measured content</th><td>${product.coa.content} (label claim ${product.coa.labelClaim}, measurement error ${product.coa.measurementError})</td></tr>
+                <tr><th>Method</th><td>${product.coa.method}</td></tr>
+                <tr><th>Sample as submitted</th><td>${product.coa.sampleForm}</td></tr>
+                <tr><th>Laboratory</th><td>${product.coa.lab}, ${product.coa.labLocation}</td></tr>
+                <tr><th>Report number</th><td>${product.coa.orderNumber}</td></tr>
+                <tr><th>Analysis dates</th><td>${product.coa.testStartDate} to ${product.coa.testEndDate}</td></tr>
+              </table>
+              <div class="coa-pages">
+                ${product.coa.images.map(img => `
+                <a class="coa-page" href="/${img.src}" target="_blank" rel="noopener noreferrer">
+                  <img src="${img.src}" alt="${product.coa.compound} lab report — ${img.label}" loading="lazy">
+                  <span class="coa-page-cap">${img.label} — open full size</span>
+                </a>`).join("")}
+              </div>
+              <a class="coa-full-link" href="${product.coa.page}">Read the full report page -&gt;</a>
+              <!--compliance:ignore-start-->
+              <p class="pd-note">This report describes the sample submitted to the laboratory. It is provided as supporting documentation for laboratory research use only and is not a statement of safety, efficacy or suitability for use in humans or animals.</p>
+              <!--compliance:ignore-end-->
+            </div>` : "";
+
+      const lowerContent = [descSection, coaSection, specsSection, researchAreasSection, storageSection, faqSection].filter(Boolean).join("");
       const lowerSection = lowerContent ? `<section class="pd-lower">${lowerContent}</section>` : "";
 
       app.innerHTML = `
@@ -518,6 +607,7 @@
             <h1>${product.name}</h1>
             <p class="summary">${product.summary}</p>
             <ul class="details">${detailItems}</ul>
+            ${coaBadge}${coaPendingBadge}
             <div class="buy-box">
               <label for="variant">${isSupply ? "Choose option" : "Choose size"}</label>
               <select id="variant" onchange="updatePrice()">${options}</select>
