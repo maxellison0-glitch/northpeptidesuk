@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  const hosts = Array.from(document.querySelectorAll('[data-site-search]'));
-  if (!hosts.length) return;
+  const hosts = typeof document === 'undefined'
+    ? []
+    : Array.from(document.querySelectorAll('[data-site-search]'));
 
   const featuredOrder = [
     'retatrutide',
@@ -45,11 +46,22 @@
       .replace(/[^a-z0-9+]+/g, '');
   }
 
-  function productSearchText(product) {
+  function tokenise(value) {
+    return String(value || '')
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9+]+/g, ' ')
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+  }
+
+  function productSearchTokens(product) {
     const specs = Array.isArray(product.specs)
       ? product.specs.map(spec => `${spec.label || ''} ${spec.value || ''}`).join(' ')
       : '';
-    return normalise([
+    return tokenise([
       product.name,
       product.slug,
       product.category,
@@ -69,7 +81,7 @@
         .then(payload => (Array.isArray(payload.products) ? payload.products : []))
         .then(products => products.map(product => ({
           ...product,
-          searchText: productSearchText(product)
+          searchTokens: productSearchTokens(product)
         })));
     }
     return cataloguePromise;
@@ -95,6 +107,7 @@
 
   function rankedProducts(products, query) {
     const needle = normalise(query);
+    const queryTokens = tokenise(query);
     if (!needle) {
       return featuredOrder
         .map(slug => products.find(product => product.slug === slug))
@@ -105,10 +118,15 @@
       .map(product => {
         const name = normalise(product.name);
         const slug = normalise(product.slug);
+        const searchTokens = Array.isArray(product.searchTokens)
+          ? product.searchTokens
+          : productSearchTokens(product);
         let score = 0;
         if (name === needle || slug === needle) score = 120;
         else if (name.startsWith(needle) || slug.startsWith(needle)) score = 95;
-        else if (product.searchText.includes(needle)) score = 65;
+        else if (name.includes(needle) || slug.includes(needle)) score = 80;
+        else if (queryTokens.every(queryToken =>
+          searchTokens.some(productToken => productToken.startsWith(queryToken)))) score = 65;
         if (product.slug.endsWith('-pen')) score -= 2;
         if (product.supply) score -= 4;
         return { product, score };
@@ -264,6 +282,12 @@
       if (!host.contains(event.target)) closeResults();
     });
   }
+
+  if (typeof module === 'object' && module.exports) {
+    module.exports = { normalise, tokenise, productSearchTokens, rankedProducts };
+  }
+
+  if (!hosts.length) return;
 
   hosts.forEach(initialise);
 
