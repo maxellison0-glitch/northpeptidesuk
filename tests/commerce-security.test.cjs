@@ -2,90 +2,17 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const crypto = require('node:crypto');
-const { Readable } = require('node:stream');
 const fs = require('node:fs');
+const path = require('node:path');
 
-const checkoutSource = fs.readFileSync('server/stripe-checkout.js', 'utf8');
-const checkout = require('../server/stripe-checkout.js');
-const webhook = require('../api/stripe-webhook.js');
-
-function response(ok, data, status = ok ? 200 : 400) {
-  return { ok, status, async json() { return data; } };
-}
-
-async function createSession(payload) {
-  const previousKey = process.env.STRIPE_SECRET_KEY;
-  const previousFetch = global.fetch;
-  let request;
-  process.env.STRIPE_SECRET_KEY = 'sk_test_example';
-  global.fetch = async (url, options) => {
-    request = { url, options, params: new URLSearchParams(String(options.body)) };
-    return response(true, { url: 'https://checkout.stripe.test/session' });
-  };
-  try {
-    const result = await checkout.createCheckoutSession(payload, 'https://northpeptidesuk.com');
-    return { result, request };
-  } finally {
-    global.fetch = previousFetch;
-    if (previousKey === undefined) delete process.env.STRIPE_SECRET_KEY;
-    else process.env.STRIPE_SECRET_KEY = previousKey;
-  }
-}
-
-function publicDiscounts(source) {
-  const start = source.indexOf('const PUBLIC_DISCOUNT_CODES = {');
-  const block = source.slice(start, source.indexOf('};', start));
-  return Object.fromEntries([...block.matchAll(/"([^"]+)":\s*([\d.]+)/g)].map(match => [match[1], Number(match[2])]));
-}
+const ROOT = path.join(__dirname, '..');
+const core = require('../server/commerce-core.js');
+const createOrder = require('../api/create-order.js');
 
 function clientDiscounts(source) {
   const start = source.indexOf('const DISCOUNT_CODES = {');
   const block = source.slice(start, source.indexOf('};', start));
   return Object.fromEntries([...block.matchAll(/'([^']+)':\s*([\d.]+)/g)].map(match => [match[1], Number(match[2])]));
-}
-
-test('public site discount codes stay in parity and FIRST40 is removed', () => {
-  const checkoutHtml = fs.readFileSync('checkout.html', 'utf8');
-  assert.deepEqual(publicDiscounts(checkoutSource), clientDiscounts(checkoutHtml));
-  assert.doesNotMatch(checkoutSource, /FIRST40/);
-  assert.doesNotMatch(checkoutHtml, /FIRST40/);
-});
-
-test('site discounts disable Stripe promotion-code stacking', async () => {
-  const base = { items: [{ name: 'Pen-Style Research Kit', dose: '3ml cartridge + BAC water + x5 pen tips', price: 24.99, qty: 1 }] };
-  const discounted = await createSession({ ...base, discountCode: 'AJ20' });
-  assert.equal(discounted.result.statusCode, 200);
-  assert.equal(discounted.request.params.get('allow_promotion_codes'), 'false');
-  assert.equal(discounted.request.params.get('line_items[0][price_data][unit_amount]'), '1999');
-
-  const fullPrice = await createSession(base);
-  assert.equal(fullPrice.request.params.get('allow_promotion_codes'), 'true');
-  assert.equal(fullPrice.request.params.get('line_items[0][price_data][unit_amount]'), '2499');
-});
-
-test('crafted pen-kit metadata cannot select a browser-controlled tier price', async () => {
-  const crafted = await createSession({ items: [{
-    name: 'Pen-Style Research Kit',
-    dose: 'crafted variant',
-    price: 14.99,
-    qty: 1,
-    _kitFor: 'Retatrutide',
-    _kitVolume: 3
-  }] });
-  assert.equal(crafted.result.statusCode, 400);
-  assert.match(JSON.parse(crafted.result.body).error, /Unavailable item/);
-  assert.equal(crafted.request, undefined);
-});
-
-function signedRequest(event, secret) {
-  const raw = Buffer.from(JSON.stringify(event));
-  const timestamp = Math.floor(Date.now() / 1000);
-  const signature = crypto.createHmac('sha256', secret).update(`${timestamp}.${raw}`).digest('hex');
-  const req = Readable.from([raw]);
-  req.method = 'POST';
-  req.headers = { 'stripe-signature': `t=${timestamp},v1=${signature}` };
-  return req;
 }
 
 function mockResponse() {
@@ -99,76 +26,125 @@ function mockResponse() {
   };
 }
 
-async function deliver(event) {
-  const env = {
-    STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
-    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
-    ORDER_NOTIFY_EMAIL: process.env.ORDER_NOTIFY_EMAIL
-  };
+test('public site discount codes stay in parity and test-only codes are absent', () => {
+  const checkoutHtml = fs.readFileSync(path.join(ROOT, 'checkout.html'), 'utf8');
+  assert.deepEqual(core.PUBLIC_DISCOUNT_CODES, clientDiscounts(checkoutHtml));
+  assert.doesNotMatch(checkoutHtml, /FIRST40|ADMININVALID|SHELLEY/);
+  assert.equal(core.DISCOUNT_CODES.FIRST40, undefined);
+});
+
+test('trusted catalogue ignores browser prices, normalises doses and caps quantity', () => {
+  const result = core.validateOrderItems([{
+    name: 'GHK-Cu Pen Vial',
+    dose: '50mg/3ml',
+    price: 0.01,
+    qty: 99
+  }], 0.20);
+
+  assert.equal(result.error, undefined);
+  assert.equal(result.items[0].qty, 12);
+  assert.equal(result.items[0].unitPrice, 33.6);
+  assert.ok(Math.abs(result.productSubtotal - 403.2) < 1e-9);
+});
+
+test('crafted catalogue entries are rejected before an order is created', () => {
+  const result = core.validateOrderItems([{
+    name: 'Pen-Style Research Kit',
+    dose: 'crafted variant',
+    price: 1,
+    qty: 1,
+    _kitFor: 'Retatrutide'
+  }]);
+
+  assert.match(result.error, /Unavailable item/);
+  assert.equal(result.items, undefined);
+});
+
+test('delivery is calculated from server rules', () => {
+  assert.deepEqual(core.calculateDelivery('standard', '', 49.99), {
+    method: 'standard', label: 'Royal Mail Tracked 24', charge: 3
+  });
+  assert.equal(core.calculateDelivery('standard', '', 50).charge, 0);
+  assert.equal(core.calculateDelivery('standard', 'AJ', 10).charge, 0);
+  assert.equal(core.calculateDelivery('express', 'AJ', 100).charge, 7.95);
+});
+
+test('order API recalculates a tampered basket and sends both emails', async () => {
+  const envKeys = [
+    'RESEND_API_KEY', 'ORDER_NOTIFY_EMAIL', 'ORDER_FROM_EMAIL',
+    'BANK_ACCOUNT_NAME', 'BANK_SORT_CODE', 'BANK_ACCOUNT_NUMBER'
+  ];
+  const previousEnv = Object.fromEntries(envKeys.map(key => [key, process.env[key]]));
   const previousFetch = global.fetch;
   const calls = [];
-  process.env.STRIPE_WEBHOOK_SECRET = 'whsec_example';
-  process.env.STRIPE_SECRET_KEY = 'sk_test_example';
-  process.env.RESEND_API_KEY = 're_test_example';
-  process.env.ORDER_NOTIFY_EMAIL = 'owner@example.test';
-  global.fetch = async (url, options = {}) => {
+
+  Object.assign(process.env, {
+    RESEND_API_KEY: 're_test_example',
+    ORDER_NOTIFY_EMAIL: 'owner@example.test',
+    ORDER_FROM_EMAIL: 'North Peptides UK <orders@example.test>',
+    BANK_ACCOUNT_NAME: 'Example Research Ltd',
+    BANK_SORT_CODE: '00-00-00',
+    BANK_ACCOUNT_NUMBER: '00000000'
+  });
+  global.fetch = async (url, options) => {
     calls.push({ url: String(url), options });
-    if (String(url).includes('/line_items')) return response(true, { data: [] });
-    return response(true, { id: `email_${calls.length}` });
+    return { ok: true, async json() { return { id: `email_${calls.length}` }; } };
+  };
+
+  const req = {
+    method: 'POST',
+    headers: { origin: 'https://northpeptidesuk.com' },
+    body: {
+      items: [{ name: 'GHK-Cu', dose: '50mg', price: 0.01, qty: 2 }],
+      deliveryMethod: 'standard',
+      customer: {
+        name: 'Test Customer', email: 'customer@example.test',
+        address1: '1 Test Street', city: 'London', postcode: 'SW1A 1AA'
+      }
+    }
   };
   const res = mockResponse();
+
   try {
-    await webhook(signedRequest(event, process.env.STRIPE_WEBHOOK_SECRET), res);
-    return { res, calls, body: JSON.parse(res.body) };
+    await createOrder(req, res);
   } finally {
     global.fetch = previousFetch;
-    for (const [key, value] of Object.entries(env)) {
+    for (const [key, value] of Object.entries(previousEnv)) {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;
     }
   }
-}
 
-function session(paymentStatus = 'unpaid') {
-  return {
-    id: 'cs_test_delayed', payment_status: paymentStatus, amount_total: 2499, currency: 'gbp',
-    customer_details: { name: 'Test Customer', email: 'customer@example.test' }, metadata: {}
-  };
-}
-
-test('completed but unpaid Checkout sessions return 200 without fulfilment', async () => {
-  const delivery = await deliver({ id: 'evt_unpaid', type: 'checkout.session.completed', data: { object: session('unpaid') } });
-  assert.equal(delivery.res.statusCode, 200);
-  assert.equal(delivery.body.fulfilled, false);
-  assert.equal(delivery.calls.length, 0);
+  const body = JSON.parse(res.body);
+  assert.equal(res.statusCode, 200);
+  assert.equal(body.success, true);
+  assert.equal(body.grandTotal, '54.00');
+  assert.match(body.orderRef, /^NP-\d{8}-[A-F0-9]{4}$/);
+  assert.equal(calls.length, 2);
+  assert.ok(calls.every(call => call.url === 'https://api.resend.com/emails'));
+  assert.ok(calls.every(call => JSON.stringify(JSON.parse(call.options.body)).includes('54')));
 });
 
-test('completed and paid Checkout sessions fulfil normally', async () => {
-  const delivery = await deliver({ id: 'evt_paid', type: 'checkout.session.completed', data: { object: session('paid') } });
-  assert.equal(delivery.res.statusCode, 200);
-  assert.equal(delivery.calls.length, 3);
-  assert.equal(delivery.calls.filter(call => call.url.includes('api.resend.com')).length, 2);
+test('only allowlisted origins receive matching CORS headers', () => {
+  assert.equal(core.corsHeaders('https://www.northpeptidesuk.com/')['Access-Control-Allow-Origin'], 'https://www.northpeptidesuk.com');
+  assert.equal(core.corsHeaders('https://attacker.example')['Access-Control-Allow-Origin'], 'https://northpeptidesuk.com');
 });
 
-test('async payment success fulfils with stable per-session email idempotency keys', async () => {
-  const delivery = await deliver({ id: 'evt_success', type: 'checkout.session.async_payment_succeeded', data: { object: session('paid') } });
-  assert.equal(delivery.res.statusCode, 200);
-  assert.equal(delivery.calls.length, 3);
-  const emailCalls = delivery.calls.filter(call => call.url.includes('api.resend.com'));
-  assert.deepEqual(emailCalls.map(call => call.options.headers['Idempotency-Key']), [
-    'checkout-owner-cs_test_delayed',
-    'checkout-customer-cs_test_delayed'
-  ]);
-});
+test('legacy card-processor routes, webhook and secret placeholders stay removed', () => {
+  const removed = [
+    'api/create-checkout-session.js',
+    'api/stripe-webhook.js',
+    'server/stripe-checkout.js',
+    'netlify/functions/create-checkout-session.js',
+    'STRIPE_WEBHOOK_SETUP.md'
+  ];
+  for (const file of removed) {
+    assert.equal(fs.existsSync(path.join(ROOT, file)), false, `${file} must stay removed`);
+  }
 
-test('async payment failure notifies only the owner and does not fulfil', async () => {
-  const delivery = await deliver({ id: 'evt_failed', type: 'checkout.session.async_payment_failed', data: { object: session('unpaid') } });
-  assert.equal(delivery.res.statusCode, 200);
-  assert.equal(delivery.body.fulfilled, false);
-  assert.equal(delivery.calls.length, 1);
-  assert.equal(delivery.calls[0].options.headers['Idempotency-Key'], 'checkout-payment-failed-owner-cs_test_delayed');
-  const payload = JSON.parse(delivery.calls[0].options.body);
-  assert.deepEqual(payload.to, ['owner@example.test']);
-  assert.match(payload.subject, /Payment failed/);
+  const activeConfig = [
+    '.env.example', 'netlify.toml', 'vercel.json',
+    'api/create-order.js', 'server/commerce-core.js', 'checkout.html'
+  ].map(file => fs.readFileSync(path.join(ROOT, file), 'utf8')).join('\n');
+  assert.doesNotMatch(activeConfig, /STRIPE_|create-checkout-session|stripe-webhook/i);
 });

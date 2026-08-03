@@ -1,9 +1,9 @@
 {
   "site": "North Peptides UK",
   "baseUrl": "https://www.northpeptidesuk.com",
-  "generatedAt": "2026-07-18",
+  "generatedAt": "2026-08-03",
   "disclaimer": "Products are supplied for laboratory research use only and are not for human or animal consumption.",
-  "documentationStatus": "Supplier documentation is available on request where held. Independent COA testing is being arranged for selected products.",
+  "documentationStatus": "Supplier documentation is available on request where held. Independent laboratory reports are published on the site where held.",
   "products": [
     {
       "slug": "retatrutide",
@@ -67,7 +67,11 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
+        },
+        {
+          "label": "Measured content",
+          "value": "16.49mg against a 15mg label claim"
         },
         {
           "label": "Form",
@@ -77,7 +81,8 @@
           "label": "Storage",
           "value": "-20°C long-term; 2-8°C short-term"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/retatrutide-100016392.html"
     },
     {
       "slug": "retatrutide-pen",
@@ -135,7 +140,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
         },
         {
           "label": "Form",
@@ -145,7 +150,8 @@
           "label": "Storage",
           "value": "2–8°C; do not freeze once reconstituted"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/retatrutide-100016392.html"
     },
     {
       "slug": "tirzepatide",
@@ -197,7 +203,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -259,7 +265,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -319,7 +325,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -381,7 +387,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -441,7 +447,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -497,7 +503,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -557,7 +563,11 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
+        },
+        {
+          "label": "Measured content",
+          "value": "54.75mg against a 50mg label claim"
         },
         {
           "label": "Form",
@@ -567,7 +577,8 @@
           "label": "Storage",
           "value": "-20°C long-term; 2-8°C short-term"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/ghk-cu-100016393.html"
     },
     {
       "slug": "ghk-cu-pen",
@@ -613,7 +624,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
         },
         {
           "label": "Form",
@@ -627,7 +638,8 @@
           "label": "Storage",
           "value": "2–8°C; do not freeze once reconstituted"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/ghk-cu-100016393.html"
     },
     {
       "slug": "kpv",
@@ -673,7 +685,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -729,7 +741,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -777,7 +789,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
         },
         {
           "label": "Form",
@@ -787,7 +799,8 @@
           "label": "Storage",
           "value": "-20°C long-term; 2-8°C short-term"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/ghk-cu-100016393.html"
     },
     {
       "slug": "klow-stack-pen",
@@ -821,7 +834,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "99%"
         },
         {
           "label": "Form",
@@ -835,7 +848,8 @@
           "label": "Storage",
           "value": "2–8°C; do not freeze once reconstituted"
         }
-      ]
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa/ghk-cu-100016393.html"
     },
     {
       "slug": "ipamorelin",
@@ -881,7 +895,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -937,7 +951,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -993,7 +1007,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1045,7 +1059,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1101,7 +1115,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1153,7 +1167,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1217,7 +1231,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1273,7 +1287,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1333,7 +1347,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1389,7 +1403,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1445,7 +1459,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1501,7 +1515,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1561,7 +1575,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",
@@ -1617,7 +1631,7 @@
         },
         {
           "label": "Purity",
-          "value": "99%+"
+          "value": "Supplier stated; independent verification pending"
         },
         {
           "label": "Form",

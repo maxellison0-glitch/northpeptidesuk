@@ -5,7 +5,7 @@
  * charged something other than what they were shown (or items 400 at checkout):
  *   1. homepage product cards (index.html)
  *   2. the product catalogue (product-data.js)
- *   3. the server price map that Stripe actually charges (server/stripe-checkout.js CATALOG)
+ *   3. the trusted server price map used for bank-transfer orders (server/commerce-core.js)
  *
  * Run: npm test   (or: node --test tests/price-parity.test.cjs)
  */
@@ -17,16 +17,8 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const PRODUCTS = require(path.join(ROOT, 'product-data.js'));
 const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-const serverSrc = fs.readFileSync(path.join(ROOT, 'server', 'stripe-checkout.js'), 'utf8');
-
-function parseCatalog(src) {
-  const start = src.indexOf('const CATALOG = {');
-  const block = src.slice(start, src.indexOf('};', start));
-  const cat = {};
-  for (const m of block.matchAll(/"([^"]+)":\s*([\d.]+)/g)) cat[m[1]] = Number(m[2]);
-  return cat;
-}
-const CATALOG = parseCatalog(serverSrc);
+const commerceSource = fs.readFileSync(path.join(ROOT, 'server', 'commerce-core.js'), 'utf8');
+const { CATALOG, resolveCatalogPrice } = require(path.join(ROOT, 'server', 'commerce-core.js'));
 
 // Default price shown on each homepage card === product-data default (first variant).
 const CARD_TO_SLUG = {
@@ -48,7 +40,7 @@ test('homepage card prices match the product-data default price', () => {
   }
 });
 
-test('every sellable variant resolves in the server CATALOG at its shown price', () => {
+test('every sellable variant resolves in the trusted server CATALOG at its shown price', () => {
   for (const [slug, p] of Object.entries(PRODUCTS)) {
     for (const v of p.variants) {
       const key = `${p.name}|${v.dose}`;
@@ -84,17 +76,8 @@ test('comparable pen-vial strengths keep at least a fifteen-pound premium', () =
   }
 });
 
-// Mirror of server resolveCatalogPrice()'s whitespace-normalised fallback: the
-// homepage sends doses without spaces ("10mg/3ml") while the catalogue stores them
-// spaced ("10mg / 3ml"). Both must resolve to the same price.
-const normaliseKey = (s) => String(s || '').replace(/\s+/g, ' ').replace(/\s*\/\s*/g, '/').trim();
-const CATALOG_NORM = {};
-for (const [k, v] of Object.entries(CATALOG)) CATALOG_NORM[normaliseKey(k)] = v;
 const resolvePrice = (name, dose) => {
-  const key = `${name}|${dose}`;
-  if (key in CATALOG) return CATALOG[key];
-  const n = normaliseKey(key);
-  return n in CATALOG_NORM ? CATALOG_NORM[n] : null;
+  return resolveCatalogPrice(null, name, dose);
 };
 
 test('every homepage buy-widget option resolves in the CATALOG at its shown price', () => {
@@ -150,7 +133,7 @@ test('the intranasal +kit add-on resolves at its button price', () => {
 
 // The order builder embeds its own copy of names, doses and prices
 // (NPUK_CONFIG_FORMATS / NPUK_CONFIG_ADDON) into every generated product page,
-// and the basket sends those strings verbatim to Stripe. This is the surface
+// and the basket sends those strings verbatim to the order API. This is the surface
 // that shipped broken in 2026-07: the builder's BAC-water add-on used a dose
 // string ("10ml vial add-on") the CATALOG could not resolve, so every checkout
 // containing it 400'd. Parse the embedded config out of each generated page
@@ -193,5 +176,5 @@ test('every builder-embedded variant and add-on resolves in the CATALOG at its s
 
 test('no removed "Essentials Bundle" remnants remain', () => {
   assert.ok(!/Essentials Bundle/.test(indexHtml), 'index.html still references the removed Essentials Bundle');
-  assert.ok(!/Essentials Bundle/.test(serverSrc), 'server CATALOG still has the removed Essentials Bundle');
+  assert.ok(!/Essentials Bundle/.test(commerceSource), 'server CATALOG still has the removed Essentials Bundle');
 });

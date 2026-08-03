@@ -73,13 +73,21 @@ function buildSitemap(articles) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`;
 }
 
+// Purity specs on the site carry the full claim ("99% - independently verified
+// by HPLC..."). The machine feed must stay free of claim language, so reduce a
+// verified purity spec to the bare figure and drop the derived content row.
+function feedSpecValue(label, value, product) {
+  if (!product.coa || !/purity/i.test(label)) return value;
+  return product.coa.purity;
+}
+
 function buildProductFeed() {
   return {
     site: SITE.name,
     baseUrl: SITE.base,
     generatedAt: BUILD_DATE,
     disclaimer: 'Products are supplied for laboratory research use only and are not for human or animal consumption.',
-    documentationStatus: 'Supplier documentation is available on request where held. Independent COA testing is being arranged for selected products.',
+    documentationStatus: 'Supplier documentation is available on request where held. Independent laboratory reports are published on the site where held.',
     products: Object.entries(PRODUCTS).map(([slug, product]) => ({
       slug,
       name: product.name,
@@ -96,8 +104,12 @@ function buildProductFeed() {
         currency: 'GBP',
       })),
       specs: Array.isArray(product.specs)
-        ? product.specs.map(([label, value]) => ({ label, value }))
+        ? product.specs.map(([label, value]) => ({ label, value: feedSpecValue(label, value, product) }))
         : [],
+      // The feed is read by ad platforms and retrieval systems, where purity
+      // claim language triggers rejections. Link the report rather than
+      // restating its conclusion here; the site carries the full document.
+      ...(product.coa ? { labReportUrl: `${SITE.base}${product.coa.page}` } : {}),
     })),
   };
 }

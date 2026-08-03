@@ -33,12 +33,44 @@
     .back { display: inline-block; margin-bottom: 24px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #63758A; text-decoration: none; }
     .back:hover { color: #1F6FEB; }
     .grid { display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.1fr); gap: 38px; align-items: start; }
-    .image-panel { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
+    .image-panel { position: relative; background: #ffffff; border: 1px solid #D8E5F2; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15,31,54,0.06); }
     .main-product-img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; background: #F2F7FC; }
-    .img-thumbs { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
-    .img-thumb-wrap { width: 52px; height: 52px; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; transition: border-color 0.2s; }
+    .gallery-toolbar { display: flex; align-items: center; gap: 9px; min-height: 52px; padding: 8px 10px; border-top: 1px solid #D8E5F2; background: #F5F9FC; }
+    .gallery-nav { width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #C5DAEC; border-radius: 999px; background: #fff; color: #174EA6; cursor: pointer; font-size: 0.88rem; }
+    .gallery-nav:hover, .gallery-nav:focus-visible { border-color: #1F6FEB; background: #EEF7FD; }
+    .gallery-caption { flex: 1; min-width: 0; }
+    .gallery-caption strong { display: block; overflow: hidden; color: #334A63; font-size: 0.7rem; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .gallery-caption small { display: block; margin-top: 2px; color: #738197; font-family: "DM Mono", monospace; font-size: 0.54rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .gallery-count { flex-shrink: 0; color: #607086; font-family: "DM Mono", monospace; font-size: 0.6rem; }
+    .img-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 0 10px 10px; background: #F5F9FC; scrollbar-width: thin; scrollbar-color: #B8D6F0 transparent; }
+    .img-thumb-wrap { width: 52px; height: 52px; padding: 0; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; background: #fff; transition: border-color 0.2s; }
     .img-thumb-wrap.active { border-color: #1F6FEB; }
     .img-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Report scans are portrait documents — show the whole page, never crop. */
+    .main-product-img.is-document { object-fit: contain; background: #ffffff; }
+    .img-thumb-wrap.is-doc-thumb { border-color: #C5DAEC; background: #fff; }
+    .img-thumb-wrap.is-doc-thumb.active { border-color: #1F6FEB; }
+    .img-thumb-wrap.is-doc-thumb img { object-fit: contain; background: #fff; }
+
+    /* INDEPENDENT LAB REPORT */
+    .coa-badge { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 18px; padding: 14px 16px; border-radius: 10px; background: #EAF4FF; border: 1px solid #B9D7F8; transition: border-color 0.2s, box-shadow 0.2s; }
+    a.coa-badge:hover { border-color: #1F6FEB; box-shadow: 0 6px 18px rgba(31,111,235,0.14); }
+    .coa-badge.is-pending { background: #FFF8E6; border-color: #F5E0A0; }
+    .coa-badge-mark { flex-shrink: 0; font-family: "DM Mono", monospace; font-size: 0.54rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; background: #1F6FEB; color: #fff; margin-top: 2px; }
+    .coa-badge.is-pending .coa-badge-mark { background: #A16207; }
+    .coa-badge-text { font-size: 0.78rem; color: #3B5068; line-height: 1.6; }
+    .coa-badge-text strong { display: block; font-size: 0.86rem; color: #10233F; margin-bottom: 3px; }
+
+    .coa-lede { font-size: 0.9rem; color: #465A70; line-height: 1.75; margin-bottom: 14px; }
+    .coa-lede a { color: #1F6FEB; font-weight: 600; text-decoration: underline; }
+    .coa-scope-note { font-size: 0.82rem; color: #8A6400; background: #FFF8E6; border: 1px solid #F5E0A0; border-radius: 8px; padding: 12px 14px; line-height: 1.65; margin-bottom: 16px; }
+    .coa-pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px; }
+    .coa-page { display: block; border: 1px solid #D8E5F2; border-radius: 10px; overflow: hidden; background: #fff; transition: box-shadow 0.2s, transform 0.2s; }
+    .coa-page:hover { box-shadow: 0 10px 26px rgba(15,31,54,0.12); transform: translateY(-2px); }
+    .coa-page img { width: 100%; display: block; background: #fff; }
+    .coa-page-cap { display: block; padding: 10px 12px; border-top: 1px solid #EDF3F9; font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; color: #607086; }
+    .coa-full-link { display: inline-block; margin-top: 18px; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; }
+    .coa-full-link:hover { text-decoration: underline; }
     .intranasal-box { margin-top: 16px; border: 1px solid #B8D6F0; border-radius: 10px; background: #EEF7FD; padding: 14px 16px; }
     .intranasal-box-label { font-family: "DM Mono", monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; margin-bottom: 4px; display: block; }
     .intranasal-box-heading { font-size: 0.9rem; font-weight: 700; color: #10233F; margin-bottom: 5px; }
@@ -179,6 +211,14 @@
       return "\u00A3" + value;
     }
 
+    function escapeAttr(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
     function getBasket() {
       try {
         return JSON.parse(localStorage.getItem("npuk_basket") || "[]");
@@ -263,10 +303,64 @@
       setTimeout(() => { button.textContent = "Add"; }, 1200);
     }
 
-    function switchProductImg(wrap, src) {
-      document.getElementById("main-product-img").src = src;
-      document.querySelectorAll(".img-thumb-wrap").forEach(t => t.classList.remove("active"));
+    // Document scans are letter-shaped and must never be cropped. The same
+    // gallery can be changed by thumbnail, arrow button, or a horizontal swipe.
+    function productGalleryThumbs() {
+      return Array.from(document.querySelectorAll(".img-thumb-wrap"));
+    }
+
+    function switchProductImg(wrap) {
+      const main = document.getElementById("main-product-img");
+      if (!main || !wrap) return;
+      main.src = wrap.dataset.src;
+      main.alt = wrap.dataset.alt;
+      main.classList.toggle("is-document", wrap.dataset.fit === "contain");
+      const thumbs = productGalleryThumbs();
+      thumbs.forEach(t => {
+        t.classList.remove("active");
+        t.removeAttribute("aria-current");
+      });
       wrap.classList.add("active");
+      wrap.setAttribute("aria-current", "true");
+      const index = thumbs.indexOf(wrap);
+      const caption = document.getElementById("gallery-caption-text");
+      const count = document.getElementById("gallery-count");
+      if (caption) caption.textContent = wrap.dataset.alt;
+      if (count) count.textContent = `${index + 1} / ${thumbs.length}`;
+      if (wrap.parentElement) {
+        wrap.parentElement.scrollTo({
+          left: wrap.offsetLeft - (wrap.parentElement.clientWidth - wrap.offsetWidth) / 2,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    function stepProductImage(direction) {
+      const thumbs = productGalleryThumbs();
+      if (!thumbs.length) return;
+      const current = Math.max(0, thumbs.findIndex(t => t.classList.contains("active")));
+      const next = (current + direction + thumbs.length) % thumbs.length;
+      switchProductImg(thumbs[next]);
+    }
+
+    function initProductGallerySwipe() {
+      const main = document.getElementById("main-product-img");
+      if (!main || productGalleryThumbs().length < 2) return;
+      let startX = 0;
+      let startY = 0;
+      main.addEventListener("touchstart", event => {
+        const touch = event.changedTouches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+      }, { passive: true });
+      main.addEventListener("touchend", event => {
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          stepProductImage(dx < 0 ? 1 : -1);
+        }
+      }, { passive: true });
     }
 
     function addIntranasalToBasket(btn) {
@@ -408,14 +502,41 @@
                 </div>
               </div>
             </div>`;
-      const thumbs = product.secondaryImage ? `
-            <div class="img-thumbs">
-              <div class="img-thumb-wrap active" onclick="switchProductImg(this,'${product.image}')">
-                <img src="${product.image}" alt="${product.name}">
+      // Product shot first, followed immediately by the certificate so one
+      // swipe reveals the evidence. Extra report pages remain in the full
+      // report block below. Document pages render uncropped.
+      const galleryImages = [{ src: product.image, alt: product.name, fit: "cover" }];
+      if (product.coa && product.coa.images[0]) {
+        const report = product.coa.images[0];
+        galleryImages.push({
+          src: report.src,
+          alt: `${product.coa.compound} independent lab report — ${report.label}`,
+          fit: "contain"
+        });
+      }
+      if (product.secondaryImage) {
+        galleryImages.push({ src: product.secondaryImage, alt: `${product.name} research kit`, fit: "cover" });
+      }
+      const swipeHint = product.coa
+        ? (product.coaScope === "component"
+          ? `Swipe once for the ${product.coa.compound} component report`
+          : "Swipe once for the lab report")
+        : "Swipe image or tap a thumbnail";
+      const thumbs = galleryImages.length > 1 ? `
+            <div class="gallery-toolbar">
+              <button class="gallery-nav" type="button" onclick="stepProductImage(-1)" aria-label="Previous image">&larr;</button>
+              <div class="gallery-caption">
+                <strong id="gallery-caption-text">${escapeAttr(galleryImages[0].alt)}</strong>
+                <small>${escapeAttr(swipeHint)}</small>
               </div>
-              <div class="img-thumb-wrap" onclick="switchProductImg(this,'${product.secondaryImage}')">
-                <img src="${product.secondaryImage}" alt="${product.name} research kit">
-              </div>
+              <span class="gallery-count" id="gallery-count">1 / ${galleryImages.length}</span>
+              <button class="gallery-nav" type="button" onclick="stepProductImage(1)" aria-label="Next image">&rarr;</button>
+            </div>
+            <div class="img-thumbs" aria-label="Product and lab report images">
+              ${galleryImages.map((img, i) => `
+              <button type="button" class="img-thumb-wrap${i === 0 ? " active" : ""}${img.fit === "contain" ? " is-doc-thumb" : ""}" data-src="${escapeAttr(img.src)}" data-fit="${img.fit}" data-alt="${escapeAttr(img.alt)}" onclick="switchProductImg(this)" title="${escapeAttr(img.alt)}" aria-label="Show ${escapeAttr(img.alt)}"${i === 0 ? ' aria-current="true"' : ''}>
+                <img src="${escapeAttr(img.src)}" alt="${escapeAttr(img.alt)}" loading="lazy">
+              </button>`).join("")}
             </div>` : "";
       const intranasalSection = product.intranasalAddon ? `
             <div class="intranasal-box">
@@ -503,14 +624,62 @@
               ${(Array.isArray(product.storage) ? product.storage : [product.storage]).map(p => `<p>${p}</p>`).join("")}
             </div>` : "";
 
-      const lowerContent = [descSection, specsSection, researchAreasSection, storageSection, faqSection].filter(Boolean).join("");
+      // Compact badge sitting directly under the buy box — the claim plus a
+      // route to the evidence.
+      const coaBadge = product.coa ? `
+            <a class="coa-badge" href="${product.coa.page}">
+              <span class="coa-badge-mark">Verified</span>
+              <span class="coa-badge-text">
+                <strong>${product.coa.purity} purity${product.coaScope === "component" ? ` — ${product.coa.compound} component` : ""}</strong>
+                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. View the full report${product.coa.images.length > 1 ? " and chromatogram" : ""}.
+              </span>
+            </a>` : "";
+
+      const coaPendingBadge = (!product.coa && product.coaPending) ? `
+            <div class="coa-badge is-pending">
+              <span class="coa-badge-mark">Testing</span>
+              <span class="coa-badge-text">
+                <strong>Independent testing complete</strong>
+                ${product.coaPending.status}. ${product.coaPending.note}
+              </span>
+            </div>` : "";
+
+      const coaSection = product.coa ? `
+            <div class="pd-section">
+              <div class="pd-eyebrow">Independent verification</div>
+              <h2 class="pd-h2">Third-party laboratory report</h2>
+              <p class="coa-lede">A sample of this material was submitted to <a href="${product.coa.labUrl}" target="_blank" rel="noopener noreferrer">${product.coa.lab}</a>, an independent analytical laboratory in ${product.coa.labLocation}. We did not carry out this analysis ourselves.</p>
+              ${product.coaScope === "component" ? `<p class="coa-scope-note">${product.coaScopeNote}</p>` : ""}
+              <table class="spec-table">
+                <tr><th>Result — purity</th><td class="spec-purity">${product.coa.purity}</td></tr>
+                <tr><th>Measured content</th><td>${product.coa.content} (label claim ${product.coa.labelClaim}, measurement error ${product.coa.measurementError})</td></tr>
+                <tr><th>Method</th><td>${product.coa.method}</td></tr>
+                <tr><th>Sample as submitted</th><td>${product.coa.sampleForm}</td></tr>
+                <tr><th>Laboratory</th><td>${product.coa.lab}, ${product.coa.labLocation}</td></tr>
+                <tr><th>Report number</th><td>${product.coa.orderNumber}</td></tr>
+                <tr><th>Analysis dates</th><td>${product.coa.testStartDate} to ${product.coa.testEndDate}</td></tr>
+              </table>
+              <div class="coa-pages">
+                ${product.coa.images.map(img => `
+                <a class="coa-page" href="/${img.src}" target="_blank" rel="noopener noreferrer">
+                  <img src="${img.src}" alt="${product.coa.compound} lab report — ${img.label}" loading="lazy">
+                  <span class="coa-page-cap">${img.label} — open full size</span>
+                </a>`).join("")}
+              </div>
+              <a class="coa-full-link" href="${product.coa.page}">Read the full report page -&gt;</a>
+              <!--compliance:ignore-start-->
+              <p class="pd-note">This report describes the sample submitted to the laboratory. It is provided as supporting documentation for laboratory research use only and is not a statement of safety, efficacy or suitability for use in humans or animals.</p>
+              <!--compliance:ignore-end-->
+            </div>` : "";
+
+      const lowerContent = [descSection, coaSection, specsSection, researchAreasSection, storageSection, faqSection].filter(Boolean).join("");
       const lowerSection = lowerContent ? `<section class="pd-lower">${lowerContent}</section>` : "";
 
       app.innerHTML = `
         <a class="back" href="index.html#products">Back to products</a>
         <section class="grid">
           <div class="image-panel">
-            <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img">
+            <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img" draggable="false">
             ${thumbs}
           </div>
           <div class="info-panel">
@@ -518,6 +687,7 @@
             <h1>${product.name}</h1>
             <p class="summary">${product.summary}</p>
             <ul class="details">${detailItems}</ul>
+            ${coaBadge}${coaPendingBadge}
             <div class="buy-box">
               <label for="variant">${isSupply ? "Choose option" : "Choose size"}</label>
               <select id="variant" onchange="updatePrice()">${options}</select>
@@ -548,6 +718,7 @@
         </section>
         ${lowerSection}
       `;
+      initProductGallerySwipe();
     }
 
     if (!product) {

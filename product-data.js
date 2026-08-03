@@ -1,15 +1,80 @@
+// ---------------------------------------------------------------------------
+// INDEPENDENT LABORATORY REPORTS
+//
+// One entry per third-party report we hold. Products reference these by object
+// so a single report can be surfaced on every page it legitimately applies to
+// (e.g. the GHK-Cu report covers the standard vial, the pen vial, and the
+// GHK-Cu component of the KLOW Stack).
+//
+// Only add an entry here once the signed report is in hand. Anything still in
+// progress belongs in COA_PENDING below, not here.
+// ---------------------------------------------------------------------------
+const COA_REPORTS = {
+  "ghk-cu-100016393": {
+    id: "ghk-cu-100016393",
+    compound: "GHK-Cu",
+    lab: "Analiza Białek sp. z o.o.",
+    labLocation: "Wrocław, Poland",
+    labUrl: "https://www.analizabialek.com",
+    orderNumber: "100016393",
+    sampleName: "NORTH PEPTIDES UK GHK-CU 50MG",
+    sampleForm: "Blue powder in a glass vial",
+    purity: "99%",
+    content: "54.75mg",
+    labelClaim: "50mg",
+    measurementError: "±0.05mg",
+    method: "RP-HPLC — BioBasic 8 (Thermo Scientific) column, linear H₂O / acetonitrile gradient with 0.1% trifluoroacetic acid, 3µl injection",
+    receivedDate: "2026-07-20",
+    testStartDate: "2026-07-28",
+    testEndDate: "2026-07-30",
+    reportCode: "1W6J3DY2",
+    technician: "mgr Arkadiusz Zając",
+    page: "/coa/ghk-cu-100016393.html",
+    images: [
+      { src: "coa-ghk-cu-100016393-report.png", label: "Certificate of analysis — results & sample photo" },
+      { src: "coa-ghk-cu-100016393-chromatogram.png", label: "HPLC chromatogram & gradient method" }
+    ]
+  },
+  "retatrutide-100016392": {
+    id: "retatrutide-100016392",
+    compound: "Retatrutide",
+    lab: "Analiza Białek sp. z o.o.",
+    labLocation: "Wrocław, Poland",
+    labUrl: "https://www.analizabialek.com",
+    orderNumber: "100016392",
+    sampleName: "NORTH PEPTIDES UK RETATRUTIDE 15MG",
+    sampleForm: "White powder in a glass vial",
+    purity: "99%",
+    content: "16.49mg",
+    labelClaim: "15mg",
+    measurementError: "±0.05mg",
+    method: "RP-HPLC — BioBasic 8 (Thermo Scientific) column, linear H₂O / acetonitrile gradient with 0.1% trifluoroacetic acid, 3µl injection",
+    receivedDate: "2026-07-20",
+    testStartDate: "2026-07-28",
+    testEndDate: "2026-07-30",
+    reportCode: "2W78KU6M",
+    technician: "mgr Arkadiusz Zając",
+    page: "/coa/retatrutide-100016392.html",
+    images: [
+      { src: "coa-retatrutide-100016392-report.png", label: "Certificate of analysis — results & sample photo" }
+    ]
+  }
+};
+
 const PRODUCT_DATA = {
   retatrutide: {
     name: "Retatrutide",
     category: "Metabolic research",
     image: "reta-50mg.png",
+    coa: COA_REPORTS["retatrutide-100016392"],
     penAddon: true,
     sisterProduct: { slug: "retatrutide-pen", label: "Also available as", name: "Retatrutide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
-      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
-        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial with supplier-stated purity (independent verification pending) and stored frozen until dispatch. Supplier documentation is available on request, and independent COA testing is being arranged." },
+        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, stored frozen until dispatch. A sample from our UK stock was submitted to an independent analytical laboratory and returned 99% purity by HPLC. The full report is published on our documentation page." },
+        { q: "Has this Retatrutide been independently tested?", a: "Yes. A sealed 15mg vial was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 16.49mg against a 15mg label claim. The full certificate of analysis is published on the site." },
         { q: "What receptors does Retatrutide act on?", a: "It is described in the research literature as a triple receptor agonist with reported activity at the GLP-1, GIP and glucagon receptors. It is supplied only as a reference material for that research." },
         { q: "Do you stock Retatrutide in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Retatrutide for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
@@ -33,17 +98,18 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4731 g/mol"],
       ["CAS number", "2381089-83-2"],
       ["Synonyms", "LY3437943"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016392)"],
+      ["Measured content", "16.49mg against a 15mg label claim"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "99% purity — independently verified by HPLC",
+      "Measured at 16.49mg against a 15mg label claim",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
-      "Independent COA testing being arranged",
-      "Supplier documentation on request"
+      "Full lab report published on site"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 45 },
@@ -51,19 +117,20 @@ const PRODUCT_DATA = {
       { label: "1x20mg", dose: "20mg", price: 85 },
       { label: "1x50mg", dose: "50mg", price: 179.99 }
     ],
-    stripePaymentLink: ""
   },
   "retatrutide-pen": {
     name: "Retatrutide Pen Vial",
     category: "Metabolic research",
     image: "reta-pen-vial.png",
+    coa: COA_REPORTS["retatrutide-100016392"],
     penAddon: true,
     sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy Retatrutide Pen Vial UK | Pre-Reconstituted 10mg, 20mg, 50mg | North Peptides UK",
-      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Prepared in a pen-compatible research cartridge format. UK stocked, 24-48h dispatch after payment. Research use only.",
+      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
+        { q: "Has this Retatrutide been independently tested?", a: "Yes. A Retatrutide sample from our UK stock was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity. The full certificate of analysis is published on the site. The report was carried out on the lyophilised material used to prepare this pen vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
         { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
@@ -88,13 +155,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4731 g/mol"],
       ["CAS number", "2381089-83-2"],
       ["Synonyms", "LY3437943"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016392)"],
       ["Form", "Pre-reconstituted liquid"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "99% purity — independently verified by HPLC",
+      "Report covers the lyophilised material used to prepare this pen vial",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -104,7 +172,6 @@ const PRODUCT_DATA = {
       { label: "1x20mg", dose: "20mg", price: 100 },
       { label: "1x50mg", dose: "50mg", price: 194.99 }
     ],
-    stripePaymentLink: ""
   },
   tirzepatide: {
     name: "Tirzepatide",
@@ -155,7 +222,6 @@ const PRODUCT_DATA = {
       { label: "1x15mg", dose: "15mg", price: 65 },
       { label: "1x30mg", dose: "30mg", price: 120 }
     ],
-    stripePaymentLink: ""
   },
   "tirzepatide-pen": {
     name: "Tirzepatide Pen Vial",
@@ -208,7 +274,6 @@ const PRODUCT_DATA = {
       { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 80 },
       { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 144 }
     ],
-    stripePaymentLink: ""
   },
   "bpc-157": {
     name: "BPC-157",
@@ -259,7 +324,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 23.99 }
     ],
-    stripePaymentLink: ""
   },
   "bpc-157-pen": {
     name: "BPC-157 Pen Vial",
@@ -312,7 +376,6 @@ const PRODUCT_DATA = {
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 38.99 },
       { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 62.98 }
     ],
-    stripePaymentLink: ""
   },
   "tb-500": {
     name: "TB-500",
@@ -362,7 +425,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 49 }
     ],
-    stripePaymentLink: ""
   },
   "tb-500-pen": {
     name: "TB-500 Pen Vial",
@@ -413,20 +475,21 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 64 }
     ],
-    stripePaymentLink: ""
   },
   "ghk-cu": {
     name: "GHK-Cu",
     category: "Research peptide",
     image: "ghk-cu-blue-powder.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
     penAddon: true,
     sisterProduct: { slug: "ghk-cu-pen", label: "Also available as", name: "GHK-Cu Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy GHK-Cu UK | 50mg Copper Peptide Research Compound | North Peptides UK",
-      metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 50mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 50mg lyophilised vial, independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is GHK-Cu?", a: "The copper(II) complex of the tripeptide glycyl-L-histidyl-L-lysine (Gly-His-Lys), a naturally occurring copper-binding peptide, supplied as a 50mg lyophilised vial for research." },
-        { q: "What is GHK-Cu supplied as?", a: "A 50mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is GHK-Cu supplied as?", a: "A 50mg lyophilised vial, stored frozen until dispatch. A sample from our UK stock was submitted to an independent analytical laboratory and returned 99% purity by HPLC. The full report is published on our documentation page." },
+        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A sample was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 54.75mg against a 50mg label claim. The full certificate of analysis and chromatogram are published on the site." },
         { q: "Do you stock GHK-Cu in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is GHK-Cu for research use only?", a: "Yes. It is supplied strictly for laboratory research, is not a cosmetic, and is not for human or animal consumption." }
       ]
@@ -449,33 +512,36 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~401.9 g/mol"],
       ["CAS number", "89030-95-5"],
       ["Synonyms", "Copper peptide, prezatide copper"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016393)"],
+      ["Measured content", "54.75mg against a 50mg label claim"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "99% purity — independently verified by HPLC",
+      "Measured at 54.75mg against a 50mg label claim",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
-      "Supplier documentation on request"
+      "Full lab report published on site"
     ],
     variants: [
       { label: "1x50mg", dose: "50mg", price: 27 }
     ],
-    stripePaymentLink: ""
   },
   "ghk-cu-pen": {
     name: "GHK-Cu Pen Vial",
     category: "Research peptide",
     image: "ghk-cu-pen-vial.png",
+    coa: COA_REPORTS["ghk-cu-100016393"],
     penAddon: true,
     sisterProduct: { slug: "ghk-cu", label: "Also available as", name: "GHK-Cu Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy GHK-Cu Pen Vial UK | 50mg/3ml Pre-Reconstituted | North Peptides UK",
-      metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. UK stocked, 24-48h dispatch after payment. Research use only.",
+      metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the GHK-Cu Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 50mg/3ml liquid in a pen-compatible cartridge vial." },
+        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A GHK-Cu sample from our UK stock was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity. The full certificate of analysis and chromatogram are published on the site. The report was carried out on the lyophilised material used to prepare this pen vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
@@ -499,14 +565,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~401.9 g/mol"],
       ["CAS number", "89030-95-5"],
       ["Synonyms", "Copper peptide, prezatide copper"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016393)"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "99% purity — independently verified by HPLC",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -514,7 +580,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 42 }
     ],
-    stripePaymentLink: ""
   },
   kpv: {
     name: "KPV",
@@ -564,7 +629,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 30 }
     ],
-    stripePaymentLink: ""
   },
   "kpv-pen": {
     name: "KPV Pen Vial",
@@ -615,12 +679,14 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 45 }
     ],
-    stripePaymentLink: ""
   },
   "klow-stack": {
     name: "KLOW Stack",
     category: "Research blend",
     image: "klow-stack-blue-powder.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    coaScope: "component",
+    coaScopeNote: "This report covers the GHK-Cu component only — GHK-Cu is the largest single component of the KLOW Stack at 50mg of the 80mg total. It was tested as a standalone GHK-Cu sample, not as the finished blend. TB-500, BPC-157 and KPV have not yet been independently tested.",
     penAddon: true,
     sisterProduct: { slug: "klow-stack-pen", label: "Also available as", name: "KLOW Stack Pen Vial — Pre-Reconstituted" },
     seo: {
@@ -654,7 +720,8 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "GHK-Cu component independently verified at 99% purity",
+      "Remaining components: supplier stated, verification pending",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -662,12 +729,14 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x80mg", dose: "80mg", price: 60 }
     ],
-    stripePaymentLink: ""
   },
   "klow-stack-pen": {
     name: "KLOW Stack Pen Vial",
     category: "Research blend",
     image: "klow-stack-pen-vial.png",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    coaScope: "component",
+    coaScopeNote: "This report covers the GHK-Cu component only — GHK-Cu is the largest single component of the KLOW Stack at 50mg of the 80mg total. It was tested as a standalone GHK-Cu sample, not as the finished blend. TB-500, BPC-157 and KPV have not yet been independently tested.",
     penAddon: true,
     sisterProduct: { slug: "klow-stack", label: "Also available as", name: "KLOW Stack Standard Vial — Frozen / Lyophilised" },
     seo: {
@@ -702,7 +771,7 @@ const PRODUCT_DATA = {
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "GHK-Cu component independently verified at 99% purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -710,7 +779,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 75 }
     ],
-    stripePaymentLink: ""
   },
   ipamorelin: {
     name: "Ipamorelin",
@@ -760,7 +828,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x5mg", dose: "5mg", price: 24.99 }
     ],
-    stripePaymentLink: ""
   },
   "ipamorelin-pen": {
     name: "Ipamorelin Pen Vial",
@@ -811,7 +878,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 39.99 }
     ],
-    stripePaymentLink: ""
   },
   "cjc-1295": {
     name: "CJC-1295 (No DAC)",
@@ -860,7 +926,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x5mg", dose: "5mg", price: 32 }
     ],
-    stripePaymentLink: ""
   },
   "cjc-1295-pen": {
     name: "CJC-1295 Pen Vial",
@@ -910,7 +975,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x5mg / 3ml", dose: "5mg / 3ml", price: 47 }
     ],
-    stripePaymentLink: ""
   },
   "nad-plus": {
     name: "NAD+",
@@ -959,7 +1023,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x1000mg", dose: "1000mg", price: 84.99 }
     ],
-    stripePaymentLink: ""
   },
   "nad-plus-pen": {
     name: "NAD+ Pen Vial",
@@ -1009,7 +1072,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x1000mg / 3ml", dose: "1000mg / 3ml", price: 102 }
     ],
-    stripePaymentLink: ""
   },
   "ss-31": {
     name: "SS-31",
@@ -1060,7 +1122,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 24.99 }
     ],
-    stripePaymentLink: ""
   },
   "ss-31-pen": {
     name: "SS-31 Pen Vial",
@@ -1111,7 +1172,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 39.99 }
     ],
-    stripePaymentLink: ""
   },
   semax: {
     name: "Semax",
@@ -1161,7 +1221,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x30mg", dose: "30mg", price: 20.99 }
     ],
-    stripePaymentLink: ""
   },
   selank: {
     name: "Selank",
@@ -1211,7 +1270,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x30mg", dose: "30mg", price: 20.99 }
     ],
-    stripePaymentLink: ""
   },
   epitalon: {
     name: "Epitalon",
@@ -1261,7 +1319,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg", dose: "10mg", price: 13.99 }
     ],
-    stripePaymentLink: ""
   },
   "epitalon-pen": {
     name: "Epitalon Pen Vial",
@@ -1312,7 +1369,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 28.99 }
     ],
-    stripePaymentLink: ""
   },
   pinealon: {
     name: "Pinealon",
@@ -1362,7 +1418,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x20mg", dose: "20mg", price: 29.99 }
     ],
-    stripePaymentLink: ""
   },
   "pinealon-pen": {
     name: "Pinealon Pen Vial",
@@ -1413,7 +1468,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 44.99 }
     ],
-    stripePaymentLink: ""
   },
   "intranasal-research-kit": {
     name: "Intranasal Research Kit",
@@ -1444,7 +1498,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "Kit", dose: "10ml nasal spray + saline + syringe + adaptor + wipes + label", price: 6.99 }
     ],
-    stripePaymentLink: ""
   },
   "pen-style-research-kit": {
     name: "Pen-Style Research Kit",
@@ -1474,7 +1527,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "Kit", dose: "3ml cartridge + BAC water + x5 pen tips", price: 24.99 }
     ],
-    stripePaymentLink: ""
   },
   "pen-tips": {
     name: "Sterile Disposable Pen Tips",
@@ -1496,7 +1548,6 @@ const PRODUCT_DATA = {
       { label: "5 tips", dose: "6mm x5", price: 3.99 },
       { label: "10 tips", dose: "6mm x10", price: 6.99 }
     ],
-    stripePaymentLink: ""
   },
   "bacteriostatic-water": {
     name: "Bacteriostatic Water",
@@ -1518,7 +1569,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "10ml vial", dose: "10ml vial", price: 6.99 }
     ],
-    stripePaymentLink: ""
   },
   "syringe-kit": {
     name: "Insulin Needle Pack",
@@ -1539,7 +1589,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "10 pack", dose: "10 pack, 1ml insulin needles", price: 6.99 }
     ],
-    stripePaymentLink: ""
   },
   "alcohol-wipes": {
     name: "Alcohol Wipes",
@@ -1560,7 +1609,6 @@ const PRODUCT_DATA = {
     variants: [
       { label: "10 pack", dose: "10 pack", price: 2.99 }
     ],
-    stripePaymentLink: ""
   }
 };
 
