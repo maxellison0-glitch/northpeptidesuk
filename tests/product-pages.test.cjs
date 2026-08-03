@@ -6,6 +6,7 @@ const vm = require('node:vm');
 
 const ROOT = path.join(__dirname, '..');
 const PRODUCTS = require(path.join(ROOT, 'product-data.js'));
+const SEARCH = require(path.join(ROOT, 'site-search.js'));
 const slugs = Object.keys(PRODUCTS);
 const SITE = 'https://www.northpeptidesuk.com';
 
@@ -197,6 +198,17 @@ test('header search is catalogue-backed, keyboard accessible and shared across m
     assert.match(html, /data-site-search/, `${file} should reserve a header search slot`);
     assert.match(html, /\/site-search\.js/, `${file} should load the shared product search`);
   }
+});
+
+test('header search matches catalogue terms at token boundaries', () => {
+  const catalogue = JSON.parse(read('products.json')).products;
+  const retaResults = SEARCH.rankedProducts(catalogue, 'Reta').map(product => product.slug);
+  const ghkResults = SEARCH.rankedProducts(catalogue, 'GHKCU').map(product => product.slug);
+
+  assert.deepEqual(retaResults, ['retatrutide', 'retatrutide-pen']);
+  assert.deepEqual(ghkResults, ['ghk-cu', 'ghk-cu-pen']);
+  assert.ok(!retaResults.includes('ipamorelin'));
+  assert.ok(!retaResults.includes('ipamorelin-pen'));
 });
 
 test('products with reports put the certificate one swipe after the product photo', () => {
