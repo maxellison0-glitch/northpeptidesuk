@@ -29,15 +29,15 @@
       "itemListElement": [
         {"@type":"Offer","priceCurrency":"GBP","price":"45","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 10mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99% purity, independently verified by HPLC (report 100016392). UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"85","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Retatrutide 20mg","description":"Triple receptor GLP-1/GIP/Glucagon agonist. 99% purity, independently verified by HPLC (report 100016392). UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"65","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 15mg","description":"Dual GIP and GLP-1 receptor agonist. Supplier-stated purity; independent verification pending. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"120","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 30mg","description":"Dual GIP and GLP-1 receptor agonist. Supplier-stated purity; independent verification pending. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"23.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"BPC-157 10mg","description":"BPC-157 research peptide. Supplier-stated purity; independent verification pending. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"49","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"TB-500 10mg","description":"Thymosin Beta-4 fragment. Supplier-stated purity; independent verification pending. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"65","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 15mg","description":"Dual GIP and GLP-1 receptor agonist. Supplier-stated purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"120","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Tirzepatide 30mg","description":"Dual GIP and GLP-1 receptor agonist. Supplier-stated purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"23.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"BPC-157 10mg","description":"BPC-157 research peptide. Supplier-stated purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"49","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"TB-500 10mg","description":"Thymosin Beta-4 fragment. Supplier-stated purity. UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"60","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KLOW Stack 80mg","description":"GHK-Cu, TB-500, BPC-157, KPV blend. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"24.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Ipamorelin 5mg","description":"Selective GH secretagogue. Supplier-stated purity; independent verification pending. UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"32","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"CJC-1295 No DAC 5mg","description":"Modified GRF 1-29. Supplier-stated purity; independent verification pending. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"24.99","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"Ipamorelin 5mg","description":"Selective GH secretagogue. Supplier-stated purity. UK stocked."}},
+        {"@type":"Offer","priceCurrency":"GBP","price":"32","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"CJC-1295 No DAC 5mg","description":"Modified GRF 1-29. Supplier-stated purity. UK stocked."}},
         {"@type":"Offer","priceCurrency":"GBP","price":"27","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"GHK-Cu 50mg","description":"Copper peptide. 99% purity, independently verified by HPLC (report 100016393). UK stocked."}},
-        {"@type":"Offer","priceCurrency":"GBP","price":"30","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KPV 10mg","description":"KPV tripeptide research compound. Supplier-stated purity; independent verification pending. UK stocked."}}
+        {"@type":"Offer","priceCurrency":"GBP","price":"30","availability":"https://schema.org/InStock","itemOffered":{"@type":"Product","name":"KPV 10mg","description":"KPV tripeptide research compound. Supplier-stated purity. UK stocked."}}
       ]
     }
   }
@@ -1274,6 +1274,8 @@
     .foot-signup button:hover { background: #174EA6; }
     .foot-signup-ok { margin-top: 14px; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #1F6FEB; }
   </style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
 
@@ -1348,6 +1350,7 @@
   <!-- NAV: Logo left, category pills middle, basket right -->
   <nav class="shop-nav">
     <div class="shop-nav-logo">NORTH<span>PEPTIDES</span>UK</div>
+    <div data-site-search></div>
     <ul class="shop-nav-cats">
       <li><a href="#products">Products</a></li>
       <li><a href="#how-to-order">Order</a></li>
@@ -1418,9 +1421,9 @@
 
       <div class="latest-labs-track" id="latest-labs-track" tabindex="0" aria-label="Latest independent lab reports. Swipe horizontally to view both.">
         <article class="latest-lab-card">
-          <a class="latest-lab-preview" href="coa/retatrutide-100016392.html" aria-label="Open the full Retatrutide report">
+          <a class="latest-lab-preview" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Retatrutide report image">
             <img src="coa-retatrutide-100016392-report.png" alt="Retatrutide independent laboratory report showing 99% purity and 16.49mg measured content" loading="eager">
-            <span class="latest-lab-open">Open full report</span>
+            <span class="latest-lab-open">Tap to open full size</span>
           </a>
           <div class="latest-lab-body">
             <div class="latest-lab-meta">Report 100016392 · Analysed 30 July 2026</div>
@@ -1433,16 +1436,16 @@
               <span class="latest-lab-fact">Password: 2W78KU6M</span>
             </div>
             <div class="latest-lab-actions">
-              <a class="latest-lab-primary" href="coa/retatrutide-100016392.html">View full report</a>
+              <a class="latest-lab-primary" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer">Open full report</a>
               <a class="latest-lab-secondary" href="products/retatrutide/">View Retatrutide</a>
             </div>
           </div>
         </article>
 
         <article class="latest-lab-card">
-          <a class="latest-lab-preview" href="coa/ghk-cu-100016393.html" aria-label="Open the full GHK-Cu report and chromatogram">
+          <a class="latest-lab-preview" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size GHK-Cu report image">
             <img src="coa-ghk-cu-100016393-report.png" alt="GHK-Cu independent laboratory report showing 99% purity and 54.75mg measured content" loading="eager">
-            <span class="latest-lab-open">Open report + chromatogram</span>
+            <span class="latest-lab-open">Tap to open full size</span>
           </a>
           <div class="latest-lab-body">
             <div class="latest-lab-meta">Report 100016393 · Analysed 30 July 2026</div>
@@ -1451,11 +1454,11 @@
             <p class="latest-lab-copy">A sealed 50mg vial from UK stock measured 54.75mg against its 50mg label claim.</p>
             <div class="latest-lab-facts">
               <span class="latest-lab-fact">Independent lab</span>
-              <span class="latest-lab-fact">Certificate + chromatogram</span>
+              <span class="latest-lab-fact">Original report scan</span>
               <span class="latest-lab-fact">Password: 1W6J3DY2</span>
             </div>
             <div class="latest-lab-actions">
-              <a class="latest-lab-primary" href="coa/ghk-cu-100016393.html">View full report</a>
+              <a class="latest-lab-primary" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Open full report</a>
               <a class="latest-lab-secondary" href="products/ghk-cu/">View GHK-Cu</a>
             </div>
           </div>
@@ -1503,7 +1506,7 @@
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/ghk-cu/">GHK-Cu</a>
             <div class="card-trust-micro"><span class="ctm-purity">99% HPLC tested</span> · Independent report · Research Use</div>
-            <a class="card-lab-link" href="coa/ghk-cu-100016393.html">View lab report 100016393 &rarr;</a>
+            <a class="card-lab-link" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Open lab report 100016393 &rarr;</a>
             <a class="card-pen-link" href="products/ghk-cu-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="ghk-sel" onchange="updateBundlePrice('ghk-sel','ghk-p')">
               <option value="27|50mg">1x50mg — £27</option>
@@ -1524,7 +1527,7 @@
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/retatrutide/">Retatrutide</a>
             <div class="card-trust-micro"><span class="ctm-purity">99% HPLC tested</span> · Independent report · Research Use</div>
-            <a class="card-lab-link" href="coa/retatrutide-100016392.html">View lab report 100016392 &rarr;</a>
+            <a class="card-lab-link" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer">Open lab report 100016392 &rarr;</a>
             <a class="card-pen-link" href="products/retatrutide-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="reta-sel" onchange="updateRetaTirz('reta-sel','reta-p','reta-img',{'10mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','15mg':'hf_20260523_171709_476460c3-db51-4ebf-b0ce-dce6b2f29382.jpeg','20mg':'hf_20260523_170534_235f0034-3e32-4b11-98c3-5b357b41672b.png','50mg':'reta-50mg.png'})">
               <option value="45|10mg">1x10mg — £45</option>
@@ -1547,7 +1550,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/bpc-157/">BPC-157</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/bpc-157-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="bpc-sel" onchange="updateBundlePrice('bpc-sel','bpc-p')">
               <option value="23.99|10mg">1x10mg — £23.99</option>
@@ -1567,7 +1570,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/nad-plus/">NAD+</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/nad-plus-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="nad-sel" onchange="updateBundlePrice('nad-sel','nad-p')">
               <option value="84.99|1000mg">1x1000mg — £84.99</option>
@@ -1588,7 +1591,7 @@
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/klow-stack/">KLOW Stack</a>
             <span class="shop-card-dose">4 compound blend</span>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/klow-stack-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="klow-sel" onchange="updateBundlePrice('klow-sel','klow-p')">
               <option value="60|80mg">1x80mg — £60</option>
@@ -1607,7 +1610,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/tb-500/">TB-500</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/tb-500-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="tb-sel" onchange="updateBundlePrice('tb-sel','tb-p')">
               <option value="49|10mg">1x10mg — £49</option>
@@ -1626,7 +1629,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/kpv/">KPV</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/kpv-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="kpv-sel" onchange="updateBundlePrice('kpv-sel','kpv-p')">
               <option value="30|10mg">1x10mg — £30</option>
@@ -1646,7 +1649,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/tirzepatide/">Tirzepatide</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/tirzepatide-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="tirz-sel" onchange="updateRetaTirz('tirz-sel','tirz-p','tirz-img',{'10mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg','20mg':'hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg'})">
               <option value="65|15mg">1x15mg — £65</option>
@@ -1666,7 +1669,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/ipamorelin/">Ipamorelin</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/ipamorelin-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="ipa-sel" onchange="updateBundlePrice('ipa-sel','ipa-p')">
               <option value="24.99|5mg">1x5mg — £24.99</option>
@@ -1685,7 +1688,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/cjc-1295/">CJC-1295 (No DAC)</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/cjc-1295-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="cjc-sel" onchange="updateBundlePrice('cjc-sel','cjc-p')">
               <option value="32|5mg">1x5mg — £32</option>
@@ -1705,7 +1708,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/ss-31/">SS-31</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/ss-31-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="ss31-sel" onchange="updateBundlePrice('ss31-sel','ss31-p')">
               <option value="24.99|10mg">1x10mg — £24.99</option>
@@ -1725,7 +1728,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/semax/">Semax</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <select class="shop-card-select" id="semax-sel" onchange="updateBundlePrice('semax-sel','semax-p')">
               <option value="20.99|30mg">1x30mg — £20.99</option>
             </select>
@@ -1744,7 +1747,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/selank/">Selank</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <select class="shop-card-select" id="selank-sel" onchange="updateBundlePrice('selank-sel','selank-p')">
               <option value="20.99|30mg">1x30mg — £20.99</option>
             </select>
@@ -1763,7 +1766,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/epitalon/">Epitalon</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/epitalon-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="epitalon-sel" onchange="updateBundlePrice('epitalon-sel','epitalon-p')">
               <option value="13.99|10mg">1x10mg — £13.99</option>
@@ -1783,7 +1786,7 @@
           </div>
           <div class="shop-card-body">
             <a class="shop-card-name" href="products/pinealon/">Pinealon</a>
-            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Verification pending · Research Use</div>
+            <div class="card-trust-micro"><span class="ctm-purity">Supplier-stated purity</span> · Research Use</div>
             <a class="card-pen-link" href="products/pinealon-pen/">Pen vial available &mdash; kit included</a>
             <select class="shop-card-select" id="pinealon-sel" onchange="updateBundlePrice('pinealon-sel','pinealon-p')">
               <option value="29.99|20mg">1x20mg — £29.99</option>
@@ -1966,7 +1969,7 @@
         <h2 class="about-light-title">Purity stated.<br>UK stocked.<br><em>Research use only.</em></h2>
         <p>North Peptides UK supplies lyophilised research peptides with purity stated on every product, sourced from established manufacturers and stocked in the UK.</p>
         <p>All stock is held frozen from arrival through to dispatch. Products are not staged at room temperature before shipping.</p>
-        <p>Batch details and purity documentation are available on request. Our first two independent laboratory reports are published in full: samples of Retatrutide and GHK-Cu drawn from UK stock each returned 99% purity by HPLC, with both vials weighing in above their stated label claim. BPC-157 is queued next. <a href="lab-reports.html">See the reports</a>.</p>
+        <p>Batch details and purity documentation are available on request. Samples of Retatrutide and GHK-Cu drawn from UK stock each returned 99% purity by HPLC, with both vials weighing in above their stated label claim. <a href="lab-reports.html">See the reports</a>.</p>
         <p>The ordering process is straightforward by design. Choose your product, review your basket, and complete payment by bank transfer. Pre-order questions are answered directly.</p>
         <div class="about-light-sig">
           <span class="about-light-sig-name">— North Peptides UK</span>
@@ -1992,7 +1995,7 @@
         </div>
         <div class="faq-acc-item">
           <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">What purity are your peptides, and can I see documentation?</button>
-          <div class="faq-acc-a"><div class="faq-acc-a-inner">Retatrutide and GHK-Cu have both been independently tested: samples from UK stock each returned 99% purity by HPLC, and both full reports are published on our documentation page. Purity on remaining products is as stated by the supplier while independent testing is rolled out, with BPC-157 queued next. Certificate and batch details are available on request &mdash; contact support with your product name before or after ordering.</div></div>
+          <div class="faq-acc-a"><div class="faq-acc-a-inner">Retatrutide and GHK-Cu have both been independently tested: samples from UK stock each returned 99% purity by HPLC, and both full reports are published on our documentation page. Purity on remaining products is as stated by the supplier. Certificate and batch details are available on request &mdash; contact support with your product name before or after ordering.</div></div>
         </div>
         <div class="faq-acc-item">
           <button class="faq-acc-q" type="button" onclick="toggleFaq(this)">How should the products be stored?</button>
@@ -2016,7 +2019,7 @@
     "mainEntity": [
       {"@type":"Question","name":"Are these products legal to buy in the UK?","acceptedAnswer":{"@type":"Answer","text":"Products are supplied strictly for laboratory and scientific research use only. They are not sold as medicines, supplements, cosmetics, or products for human or animal use."}},
       {"@type":"Question","name":"How are orders dispatched?","acceptedAnswer":{"@type":"Answer","text":"Orders are dispatched from the UK by Royal Mail Tracked 24 or Special Delivery, typically within 24-48 hours of payment, in plain unmarked packaging."}},
-      {"@type":"Question","name":"What purity are your peptides, and can I see documentation?","acceptedAnswer":{"@type":"Answer","text":"Retatrutide and GHK-Cu have both been independently tested at 99% purity by HPLC, with both full reports published on our documentation page. Purity on remaining products is as stated by the supplier while independent testing is rolled out, with BPC-157 queued next. Certificate and batch details are available on request."}},
+      {"@type":"Question","name":"What purity are your peptides, and can I see documentation?","acceptedAnswer":{"@type":"Answer","text":"Retatrutide and GHK-Cu have both been independently tested at 99% purity by HPLC, with both full reports published on our documentation page. Purity on remaining products is as stated by the supplier. Certificate and batch details are available on request."}},
       {"@type":"Question","name":"How should the products be stored?","acceptedAnswer":{"@type":"Answer","text":"Lyophilised vials are kept frozen until dispatch; unopened vials at -20C long-term and 2-8C short-term, reconstituted vials refrigerated at 2-8C."}},
       {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Payment is by bank transfer. Place your order, transfer the total using your order reference, and we dispatch within 24-48 hours of confirmed payment."}},
       {"@type":"Question","name":"What does research use only mean?","acceptedAnswer":{"@type":"Answer","text":"These compounds are supplied for in-vitro laboratory and scientific research only. They are not medicines, are not for human or animal consumption, and no therapeutic claims are made."}}

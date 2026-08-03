@@ -262,7 +262,7 @@ test('homepage includes mobile overflow guards for paid-traffic viewports', () =
   assert.match(index, /\.about-light-grid \{ grid-template-columns: minmax\(0, 1fr\);/, 'about grid should shrink inside the mobile viewport');
 });
 
-test('unsupported verification claims are absent while independent COAs are pending', () => {
+test('unsupported verification claims are absent without published COAs', () => {
   const files = [
     'index.html',
     'why-us.html',

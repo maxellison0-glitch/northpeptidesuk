@@ -119,8 +119,14 @@ test('homepage makes the two new lab results unmistakable in the first journey',
   assert.match(homepage, /class="latest-labs-track"[^>]*tabindex="0"/);
   assert.match(homepage, /coa-retatrutide-100016392-report\.png/);
   assert.match(homepage, /coa-ghk-cu-100016393-report\.png/);
-  assert.match(homepage, /href="coa\/retatrutide-100016392\.html"/);
-  assert.match(homepage, /href="coa\/ghk-cu-100016393\.html"/);
+  assert.match(homepage, /href="\/coa-retatrutide-100016392-report\.png" target="_blank"/);
+  assert.match(homepage, /href="\/coa-ghk-cu-100016393-report\.png" target="_blank"/);
+  assert.match(homepage, /Tap to open full size/);
+  assert.doesNotMatch(homepage, /coa\/(?:retatrutide|ghk-cu)-\d+\.html/);
+  assert.doesNotMatch(homepage, /chromatogram/i);
+  assert.equal(fs.existsSync(path.join(ROOT, 'coa', 'retatrutide-100016392.html')), false);
+  assert.equal(fs.existsSync(path.join(ROOT, 'coa', 'ghk-cu-100016393.html')), false);
+  assert.equal(fs.existsSync(path.join(ROOT, 'coa-ghk-cu-100016393-chromatogram.png')), false);
   assert.match(homepage, /scroll-snap-type:\s*x mandatory/);
   assert.doesNotMatch(homepage, /Lab report gallery controls/i);
 
@@ -160,12 +166,49 @@ test('published report claims cannot drift onto products without report data', (
   }
 });
 
+test('public catalogue copy does not advertise pending verification', () => {
+  const sources = [
+    read('index.html'),
+    read('lab-reports.html'),
+    read('why-us.html'),
+    read('product.html'),
+    read('product-data.js')
+  ].join('\n');
+  assert.doesNotMatch(sources, /verification pending|testing pending|testing next|queued next|next round/i);
+});
+
+test('header search is catalogue-backed, keyboard accessible and shared across main pages', () => {
+  const searchScript = read('site-search.js');
+  assert.doesNotThrow(() => new vm.Script(searchScript));
+  assert.match(searchScript, /fetch\('\/products\.json'/);
+  assert.match(searchScript, /event\.key === 'ArrowDown'/);
+  assert.match(searchScript, /event\.key === 'Escape'/);
+  assert.match(searchScript, /'retatrutide': 'reta triple agonist'/);
+  assert.match(read('site-search.css'), /\.site-search-results/);
+  for (const file of [
+    'index.html',
+    'lab-reports.html',
+    'why-us.html',
+    'product.html',
+    'products/retatrutide/index.html',
+    'blog/index.html'
+  ]) {
+    const html = read(file);
+    assert.match(html, /data-site-search/, `${file} should reserve a header search slot`);
+    assert.match(html, /\/site-search\.js/, `${file} should load the shared product search`);
+  }
+});
+
 test('products with reports put the certificate one swipe after the product photo', () => {
   for (const [slug, product] of Object.entries(PRODUCTS)) {
     if (!product.coa) continue;
+    assert.equal(product.coa.images.length, 1, `${slug} should expose only the certificate scan`);
+    assert.equal(product.coa.page, `/${product.coa.images[0].src}`,
+      `${slug} full-report link should open the certificate image directly`);
     const html = read(productPath(slug));
     assert.match(html, /class="coa-hero-badge"/, `${slug} should surface its report beside the buy box`);
     assert.match(html, new RegExp(`href="${product.coa.page.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+    assert.match(html, new RegExp(`href="${product.coa.page.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" target="_blank"`));
     if (product.coaScope === 'component') {
       assert.match(html, /tested standalone, not as the finished blend/i);
       continue;

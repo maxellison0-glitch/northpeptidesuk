@@ -55,9 +55,7 @@
     /* INDEPENDENT LAB REPORT */
     .coa-badge { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 18px; padding: 14px 16px; border-radius: 10px; background: #EAF4FF; border: 1px solid #B9D7F8; transition: border-color 0.2s, box-shadow 0.2s; }
     a.coa-badge:hover { border-color: #1F6FEB; box-shadow: 0 6px 18px rgba(31,111,235,0.14); }
-    .coa-badge.is-pending { background: #FFF8E6; border-color: #F5E0A0; }
     .coa-badge-mark { flex-shrink: 0; font-family: "DM Mono", monospace; font-size: 0.54rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 9px; border-radius: 5px; background: #1F6FEB; color: #fff; margin-top: 2px; }
-    .coa-badge.is-pending .coa-badge-mark { background: #A16207; }
     .coa-badge-text { font-size: 0.78rem; color: #3B5068; line-height: 1.6; }
     .coa-badge-text strong { display: block; font-size: 0.86rem; color: #10233F; margin-bottom: 3px; }
 
@@ -183,11 +181,14 @@
       .toast { left: 12px; right: 12px; max-width: none; }
     }
   </style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
   <noscript>Research use only. Products are not for human or animal consumption.</noscript>
   <nav class="nav">
     <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div data-site-search></div>
     <div class="nav-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#how-to-order">Order</a>
@@ -503,8 +504,7 @@
               </div>
             </div>`;
       // Product shot first, followed immediately by the certificate so one
-      // swipe reveals the evidence. Extra report pages remain in the full
-      // report block below. Document pages render uncropped.
+      // swipe reveals the evidence. Document pages render uncropped.
       const galleryImages = [{ src: product.image, alt: product.name, fit: "cover" }];
       if (product.coa && product.coa.images[0]) {
         const report = product.coa.images[0];
@@ -627,22 +627,13 @@
       // Compact badge sitting directly under the buy box — the claim plus a
       // route to the evidence.
       const coaBadge = product.coa ? `
-            <a class="coa-badge" href="${product.coa.page}">
+            <a class="coa-badge" href="${product.coa.page}" target="_blank" rel="noopener noreferrer">
               <span class="coa-badge-mark">Verified</span>
               <span class="coa-badge-text">
                 <strong>${product.coa.purity} purity${product.coaScope === "component" ? ` — ${product.coa.compound} component` : ""}</strong>
-                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. View the full report${product.coa.images.length > 1 ? " and chromatogram" : ""}.
+                Independently tested by ${product.coa.lab}, ${product.coa.labLocation}. Open the original report at full size.
               </span>
             </a>` : "";
-
-      const coaPendingBadge = (!product.coa && product.coaPending) ? `
-            <div class="coa-badge is-pending">
-              <span class="coa-badge-mark">Testing</span>
-              <span class="coa-badge-text">
-                <strong>Independent testing complete</strong>
-                ${product.coaPending.status}. ${product.coaPending.note}
-              </span>
-            </div>` : "";
 
       const coaSection = product.coa ? `
             <div class="pd-section">
@@ -666,7 +657,7 @@
                   <span class="coa-page-cap">${img.label} — open full size</span>
                 </a>`).join("")}
               </div>
-              <a class="coa-full-link" href="${product.coa.page}">Read the full report page -&gt;</a>
+              <a class="coa-full-link" href="${product.coa.page}" target="_blank" rel="noopener noreferrer">Open full-size report -&gt;</a>
               <!--compliance:ignore-start-->
               <p class="pd-note">This report describes the sample submitted to the laboratory. It is provided as supporting documentation for laboratory research use only and is not a statement of safety, efficacy or suitability for use in humans or animals.</p>
               <!--compliance:ignore-end-->
@@ -687,7 +678,7 @@
             <h1>${product.name}</h1>
             <p class="summary">${product.summary}</p>
             <ul class="details">${detailItems}</ul>
-            ${coaBadge}${coaPendingBadge}
+            ${coaBadge}
             <div class="buy-box">
               <label for="variant">${isSupply ? "Choose option" : "Choose size"}</label>
               <select id="variant" onchange="updatePrice()">${options}</select>

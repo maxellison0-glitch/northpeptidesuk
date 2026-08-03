@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/coa/ghk-cu-100016393.html",
+      "destination": "/coa-ghk-cu-100016393-report.png",
+      "permanent": true
+    },
+    {
+      "source": "/coa/retatrutide-100016392.html",
+      "destination": "/coa-retatrutide-100016392-report.png",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
