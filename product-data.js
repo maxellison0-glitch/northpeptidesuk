@@ -6,8 +6,7 @@
 // (e.g. the GHK-Cu report covers the standard vial, the pen vial, and the
 // GHK-Cu component of the KLOW Stack).
 //
-// Only add an entry here once the signed report is in hand. Anything still in
-// progress belongs in COA_PENDING below, not here.
+// Only add an entry here once the signed report is in hand.
 // ---------------------------------------------------------------------------
 const COA_REPORTS = {
   "ghk-cu-100016393": {
@@ -29,10 +28,9 @@ const COA_REPORTS = {
     testEndDate: "2026-07-30",
     reportCode: "1W6J3DY2",
     technician: "mgr Arkadiusz Zając",
-    page: "/coa/ghk-cu-100016393.html",
+    page: "/coa-ghk-cu-100016393-report.png",
     images: [
-      { src: "coa-ghk-cu-100016393-report.png", label: "Certificate of analysis — results & sample photo" },
-      { src: "coa-ghk-cu-100016393-chromatogram.png", label: "HPLC chromatogram & gradient method" }
+      { src: "coa-ghk-cu-100016393-report.png", label: "Certificate of analysis — results & sample photo" }
     ]
   },
   "retatrutide-100016392": {
@@ -54,7 +52,7 @@ const COA_REPORTS = {
     testEndDate: "2026-07-30",
     reportCode: "2W78KU6M",
     technician: "mgr Arkadiusz Zając",
-    page: "/coa/retatrutide-100016392.html",
+    page: "/coa-retatrutide-100016392-report.png",
     images: [
       { src: "coa-retatrutide-100016392-report.png", label: "Certificate of analysis — results & sample photo" }
     ]
@@ -181,11 +179,11 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "tirzepatide-pen", label: "Also available as", name: "Tirzepatide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Tirzepatide UK | 15mg & 30mg Research Peptide | North Peptides UK",
-      metaDescription: "Tirzepatide research compound, UK stocked. 15mg & 30mg lyophilised vials. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Tirzepatide research compound, UK stocked. 15mg & 30mg lyophilised vials. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
-        { q: "What is Tirzepatide supplied as?", a: "A lyophilised powder in a sealed vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Tirzepatide supplied as?", a: "A lyophilised powder in a sealed vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "What receptors does Tirzepatide act on?", a: "It is described in the literature as a dual receptor agonist with reported activity at the GIP and GLP-1 receptors. It is supplied only as a reference material for research." },
-        { q: "What purity is your Tirzepatide?", a: "Each listing reflects supplier-stated purity; independent verification is pending. Supplier documentation available on request where held." },
+        { q: "What purity is your Tirzepatide?", a: "Each listing reflects supplier-stated purity. Supplier documentation available on request where held." },
         { q: "Is Tirzepatide for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
     },
@@ -207,13 +205,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4814 g/mol"],
       ["CAS number", "2023788-19-2"],
       ["Synonyms", "LY3298176"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -258,14 +256,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4814 g/mol"],
       ["CAS number", "2023788-19-2"],
       ["Synonyms", "LY3298176"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -283,9 +281,9 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "bpc-157-pen", label: "Also available as", name: "BPC-157 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy BPC-157 UK | 10mg Research Peptide | North Peptides UK",
-      metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "BPC-157 research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
-        { q: "What is BPC-157 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity (independent verification pending) and stored frozen until dispatch. Supplier documentation is available on request, and independent COA testing is being arranged." },
+        { q: "What is BPC-157 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "What is BPC-157?", a: "A synthetic pentadecapeptide (15 amino acids) based on a partial sequence of a protein found in gastric juice. It is one of the most frequently referenced peptides in tissue-research literature." },
         { q: "Do you stock BPC-157 in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is BPC-157 for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
@@ -309,16 +307,15 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~1419.5 g/mol"],
       ["CAS number", "137525-51-0"],
       ["Synonyms", "Body Protection Compound 157, PL-14736"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
-      "Independent COA testing being arranged",
       "Supplier documentation on request"
     ],
     variants: [
@@ -360,14 +357,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~1419.5 g/mol"],
       ["CAS number", "137525-51-0"],
       ["Synonyms", "Body Protection Compound 157, PL-14736"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -385,10 +382,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "tb-500-pen", label: "Also available as", name: "TB-500 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy TB-500 UK | 10mg Thymosin Beta-4 Fragment Research Peptide | North Peptides UK",
-      metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "TB-500 (Thymosin Beta-4 fragment) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
-        { q: "What is TB-500?", a: "The synthetic, N-acetylated heptapeptide fragment Ac-LKKTETQ, corresponding to the actin-binding region of the protein Thymosin Beta-4. It is supplied as a 10mg lyophilised vial with supplier-stated purity (independent verification pending)." },
-        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity (independent verification pending) and stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is TB-500?", a: "The synthetic, N-acetylated heptapeptide fragment Ac-LKKTETQ, corresponding to the actin-binding region of the protein Thymosin Beta-4. It is supplied as a 10mg lyophilised vial with supplier-stated purity." },
+        { q: "What is TB-500 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock TB-500 in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is TB-500 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -411,13 +408,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~889 g/mol"],
       ["CAS number", "885340-08-9"],
       ["Synonyms", "TB500, Tb4 (17-23)"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -460,14 +457,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~889 g/mol"],
       ["CAS number", "885340-08-9"],
       ["Synonyms", "TB500, Tb4 (17-23)"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -489,7 +486,7 @@ const PRODUCT_DATA = {
       faq: [
         { q: "What is GHK-Cu?", a: "The copper(II) complex of the tripeptide glycyl-L-histidyl-L-lysine (Gly-His-Lys), a naturally occurring copper-binding peptide, supplied as a 50mg lyophilised vial for research." },
         { q: "What is GHK-Cu supplied as?", a: "A 50mg lyophilised vial, stored frozen until dispatch. A sample from our UK stock was submitted to an independent analytical laboratory and returned 99% purity by HPLC. The full report is published on our documentation page." },
-        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A sample was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 54.75mg against a 50mg label claim. The full certificate of analysis and chromatogram are published on the site." },
+        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A sample was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 54.75mg against a 50mg label claim. The original certificate of analysis is published on the site and opens at full size." },
         { q: "Do you stock GHK-Cu in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is GHK-Cu for research use only?", a: "Yes. It is supplied strictly for laboratory research, is not a cosmetic, and is not for human or animal consumption." }
       ]
@@ -541,7 +538,7 @@ const PRODUCT_DATA = {
       metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the GHK-Cu Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 50mg/3ml liquid in a pen-compatible cartridge vial." },
-        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A GHK-Cu sample from our UK stock was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity. The full certificate of analysis and chromatogram are published on the site. The report was carried out on the lyophilised material used to prepare this pen vial." },
+        { q: "Has this GHK-Cu been independently tested?", a: "Yes. A GHK-Cu sample from our UK stock was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity. The original certificate of analysis is published on the site and opens at full size. The report was carried out on the lyophilised material used to prepare this pen vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
@@ -589,10 +586,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "kpv-pen", label: "Also available as", name: "KPV Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy KPV UK | 10mg Research Peptide | North Peptides UK",
-      metaDescription: "KPV (Lys-Pro-Val) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "KPV (Lys-Pro-Val) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is KPV?", a: "The tripeptide lysine-proline-valine (Lys-Pro-Val), corresponding to the C-terminal fragment of the hormone alpha-MSH, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is KPV supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is KPV supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock KPV in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is KPV for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -615,13 +612,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~342.4 g/mol"],
       ["CAS number", "67727-97-3"],
       ["Synonyms", "Lysyl-prolyl-valine"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -664,14 +661,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~342.4 g/mol"],
       ["CAS number", "67727-97-3"],
       ["Synonyms", "Lysyl-prolyl-valine"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -686,15 +683,15 @@ const PRODUCT_DATA = {
     image: "klow-stack-blue-powder.webp",
     coa: COA_REPORTS["ghk-cu-100016393"],
     coaScope: "component",
-    coaScopeNote: "This report covers the GHK-Cu component only — GHK-Cu is the largest single component of the KLOW Stack at 50mg of the 80mg total. It was tested as a standalone GHK-Cu sample, not as the finished blend. TB-500, BPC-157 and KPV have not yet been independently tested.",
+    coaScopeNote: "This report covers the 50mg GHK-Cu component only. It was tested standalone, not as the finished blend. The report does not test the KLOW Stack's TB-500, BPC-157 or KPV components.",
     penAddon: true,
     sisterProduct: { slug: "klow-stack-pen", label: "Also available as", name: "KLOW Stack Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy KLOW Stack UK | 80mg 4-Peptide Research Blend | North Peptides UK",
-      metaDescription: "KLOW Stack research blend (GHK-Cu, TB-500, BPC-157, KPV), UK stocked. 80mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "KLOW Stack research blend (GHK-Cu, TB-500, BPC-157, KPV), UK stocked. 80mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is in the KLOW Stack?", a: "A single lyophilised vial combining GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — 80mg of peptide in total, at a fixed research ratio." },
-        { q: "What is the KLOW Stack supplied as?", a: "An 80mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is the KLOW Stack supplied as?", a: "An 80mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock the KLOW Stack in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is the KLOW Stack for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -714,14 +711,14 @@ const PRODUCT_DATA = {
       ["Composition", "GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg"],
       ["Total peptide", "80mg per vial"],
       ["Blend type", "Four-compound tissue-research blend"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
       "GHK-Cu component independently verified at 99% purity",
-      "Remaining components: supplier stated, verification pending",
+      "Remaining components: supplier stated",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -736,7 +733,7 @@ const PRODUCT_DATA = {
     image: "klow-stack-pen-vial.png",
     coa: COA_REPORTS["ghk-cu-100016393"],
     coaScope: "component",
-    coaScopeNote: "This report covers the GHK-Cu component only — GHK-Cu is the largest single component of the KLOW Stack at 50mg of the 80mg total. It was tested as a standalone GHK-Cu sample, not as the finished blend. TB-500, BPC-157 and KPV have not yet been independently tested.",
+    coaScopeNote: "This report covers the 50mg GHK-Cu component only. It was tested standalone, not as the finished blend. The report does not test the KLOW Stack's TB-500, BPC-157 or KPV components.",
     penAddon: true,
     sisterProduct: { slug: "klow-stack", label: "Also available as", name: "KLOW Stack Standard Vial — Frozen / Lyophilised" },
     seo: {
@@ -764,7 +761,7 @@ const PRODUCT_DATA = {
       ["Composition", "GHK-Cu 50mg + TB-500 10mg + BPC-157 10mg + KPV 10mg"],
       ["Total peptide", "80mg per vial"],
       ["Blend type", "Four-compound tissue-research blend"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
@@ -788,10 +785,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "ipamorelin-pen", label: "Also available as", name: "Ipamorelin Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Ipamorelin UK | 5mg Research Peptide | North Peptides UK",
-      metaDescription: "Ipamorelin research peptide, UK stocked. 5mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Ipamorelin research peptide, UK stocked. 5mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is Ipamorelin?", a: "A synthetic pentapeptide and selective growth-hormone secretagogue acting at the ghrelin/GHS receptor, supplied as a 5mg lyophilised vial for research." },
-        { q: "What is Ipamorelin supplied as?", a: "A 5mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Ipamorelin supplied as?", a: "A 5mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Ipamorelin in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Ipamorelin for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -814,13 +811,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~711.9 g/mol"],
       ["CAS number", "170851-70-4"],
       ["Synonyms", "NNC 26-0161"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -863,14 +860,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~711.9 g/mol"],
       ["CAS number", "170851-70-4"],
       ["Synonyms", "NNC 26-0161"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -887,7 +884,7 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "cjc-1295-pen", label: "Also available as", name: "CJC-1295 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy CJC-1295 No DAC UK | 5mg Mod GRF 1-29 Research Peptide | North Peptides UK",
-      metaDescription: "CJC-1295 No DAC (Mod GRF 1-29) research peptide, UK stocked. 5mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "CJC-1295 No DAC (Mod GRF 1-29) research peptide, UK stocked. 5mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is CJC-1295 (No DAC)?", a: "A synthetic 29-amino-acid analogue of growth-hormone-releasing hormone (GHRH), also known as Modified GRF (1-29), supplied as a 5mg lyophilised vial for research." },
         { q: "How does the No DAC form differ from the DAC version?", a: "Without the drug-affinity complex (DAC), it is characterised in research for shorter, more defined growth-hormone pulses and a comparatively brief half-life. Both are supplied only as reference materials." },
@@ -912,13 +909,13 @@ const PRODUCT_DATA = {
       ["Molecular formula", "C152H252N44O42"],
       ["Molecular weight", "~3368 g/mol"],
       ["Synonyms", "Modified GRF 1-29, CJC-1295 without DAC"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -960,14 +957,14 @@ const PRODUCT_DATA = {
       ["Molecular formula", "C152H252N44O42"],
       ["Molecular weight", "~3368 g/mol"],
       ["Synonyms", "Modified GRF 1-29, CJC-1295 without DAC"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -984,10 +981,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "nad-plus-pen", label: "Also available as", name: "NAD+ Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy NAD+ UK | 1000mg Research Compound | North Peptides UK",
-      metaDescription: "NAD+ (nicotinamide adenine dinucleotide) research compound, UK stocked. 1000mg lyophilised powder. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "NAD+ (nicotinamide adenine dinucleotide) research compound, UK stocked. 1000mg lyophilised powder. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is NAD+?", a: "Nicotinamide adenine dinucleotide, a coenzyme central to hundreds of enzymatic reactions including cellular energy metabolism, supplied as a 1000mg lyophilised powder for research." },
-        { q: "What is NAD+ supplied as?", a: "A 1000mg lyophilised powder with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is NAD+ supplied as?", a: "A 1000mg lyophilised powder with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock NAD+ in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is NAD+ for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1009,13 +1006,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~663.4 g/mol"],
       ["CAS number", "53-84-9"],
       ["Synonyms", "beta-NAD, Coenzyme I, nadide"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, solutions are generally kept refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1057,14 +1054,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~663.4 g/mol"],
       ["CAS number", "53-84-9"],
       ["Synonyms", "beta-NAD, Coenzyme I, nadide"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -1081,10 +1078,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "ss-31-pen", label: "Also available as", name: "SS-31 Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy SS-31 UK | 10mg Elamipretide Research Peptide | North Peptides UK",
-      metaDescription: "SS-31 (elamipretide) mitochondria-targeted research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "SS-31 (elamipretide) mitochondria-targeted research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is SS-31?", a: "A synthetic, mitochondria-targeting tetrapeptide (elamipretide) that selectively associates with cardiolipin on the inner mitochondrial membrane, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is SS-31 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is SS-31 supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock SS-31 in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is SS-31 for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1108,13 +1105,13 @@ const PRODUCT_DATA = {
       ["CAS number", "736992-21-5"],
       ["Synonyms", "Elamipretide, MTP-131, Bendavia"],
       ["Salt form", "Commonly supplied as acetate"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1157,14 +1154,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~639.8 g/mol"],
       ["CAS number", "736992-21-5"],
       ["Synonyms", "Elamipretide, MTP-131, Bendavia"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -1179,10 +1176,10 @@ const PRODUCT_DATA = {
     image: "semax.png",
     seo: {
       title: "Buy Semax UK | 30mg Nootropic Research Peptide | North Peptides UK",
-      metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
+      metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Semax?", a: "A synthetic heptapeptide derived from a fragment of ACTH (4-7) with a Pro-Gly-Pro extension that increases stability, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity (independent verification pending) and stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Semax in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1207,13 +1204,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~813.9 g/mol"],
       ["CAS number", "80714-61-0"],
       ["Synonyms", "Semax"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1228,10 +1225,10 @@ const PRODUCT_DATA = {
     image: "selank.png",
     seo: {
       title: "Buy Selank UK | 30mg Nootropic Research Peptide | North Peptides UK",
-      metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
+      metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
       faq: [
         { q: "What is Selank?", a: "A synthetic heptapeptide analogue of the immunomodulatory peptide tuftsin, supplied as a 30mg lyophilised vial for research." },
-        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity (independent verification pending) and stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Selank in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1256,13 +1253,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~751.9 g/mol"],
       ["CAS number", "129954-34-3"],
       ["Synonyms", "TP-7"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1279,10 +1276,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "epitalon-pen", label: "Also available as", name: "Epitalon Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Epitalon UK | 10mg Research Peptide | North Peptides UK",
-      metaDescription: "Epitalon (Epithalon, AEDG) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Epitalon (Epithalon, AEDG) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is Epitalon?", a: "A synthetic tetrapeptide (Ala-Glu-Asp-Gly, AEDG) modelled on a fragment of the pineal-gland peptide epithalamin, supplied as a 10mg lyophilised vial for research." },
-        { q: "What is Epitalon supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Epitalon supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Epitalon in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Epitalon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1305,13 +1302,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~390.4 g/mol"],
       ["CAS number", "307297-39-8"],
       ["Synonyms", "Epithalon, AEDG"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1354,14 +1351,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~390.4 g/mol"],
       ["CAS number", "307297-39-8"],
       ["Synonyms", "Epithalon, AEDG"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"
@@ -1378,10 +1375,10 @@ const PRODUCT_DATA = {
     sisterProduct: { slug: "pinealon-pen", label: "Also available as", name: "Pinealon Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Pinealon UK | 20mg Research Peptide | North Peptides UK",
-      metaDescription: "Pinealon (Glu-Asp-Arg) research peptide, UK stocked. 20mg lyophilised vial. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Pinealon (Glu-Asp-Arg) research peptide, UK stocked. 20mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is Pinealon?", a: "A synthetic tripeptide (Glu-Asp-Arg, EDR) belonging to the family of short regulatory peptides studied in neurobiology, supplied as a 20mg lyophilised vial for research." },
-        { q: "What is Pinealon supplied as?", a: "A 20mg lyophilised vial with supplier-stated purity (independent verification pending), stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "What is Pinealon supplied as?", a: "A 20mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Pinealon in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Pinealon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
       ]
@@ -1404,13 +1401,13 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~418.4 g/mol"],
       ["CAS number", "175175-23-2"],
       ["Synonyms", "Pinealon"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
       "Supplier documentation on request"
@@ -1453,14 +1450,14 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~418.4 g/mol"],
       ["CAS number", "175175-23-2"],
       ["Synonyms", "Pinealon"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "supplier-stated purity",
       "Pre-reconstituted research liquid",
       "UK stocked, 24-48h dispatch after payment",
       "Disposable pen, sterile tips and wipes included"

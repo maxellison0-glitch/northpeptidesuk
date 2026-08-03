@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -99,19 +99,6 @@
     .report-cta { display: inline-block; font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: #1F6FEB; font-weight: 600; }
     .report-cta:hover { text-decoration: underline; }
     @media (max-width: 720px) { .report-feature { grid-template-columns: 1fr; gap: 20px; padding: 18px; } .report-thumb { max-width: 240px; } }
-
-    /* INDEPENDENT TESTING STATUS */
-    .testing-status { background: #F5F9FC; padding: 52px 40px; border-bottom: 1px solid #D8E5F2; }
-    .testing-card.is-published { border-color: #B9D7F8; box-shadow: 0 8px 24px rgba(31,111,235,0.10); }
-    .testing-label.is-done { background: #1F6FEB; border-color: #1F6FEB; color: #ffffff; }
-    .testing-inner { max-width: 920px; margin: 0 auto; }
-    .testing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
-    .testing-card { background: #ffffff; border: 1px solid #D8E5F2; border-radius: 10px; padding: 22px; box-shadow: 0 8px 24px rgba(15,31,54,0.04); }
-    .testing-card.is-priority { border-color: #BFD9CE; }
-    .testing-label { display: inline-flex; align-items: center; min-height: 24px; padding: 4px 9px; border-radius: 999px; background: #EAF4FF; border: 1px solid #C5DAEC; color: #185ABC; font-size: 0.66rem; font-weight: 700; margin-bottom: 12px; }
-    .testing-title { font-family: Syne, sans-serif; font-size: 1rem; font-weight: 800; color: #10233F; margin-bottom: 7px; }
-    .testing-body { font-size: 0.84rem; color: #4B5F75; line-height: 1.65; }
-    .testing-note { margin-top: 18px; font-size: 0.78rem; color: #6B7B72; line-height: 1.65; max-width: 720px; }
 
     /* INFO BAR */
     .info-bar { background: #10233F; padding: 18px 40px; }
@@ -238,12 +225,15 @@
       .page-tag { font-size: 0.54rem; letter-spacing: 0.14em; padding: 6px 12px; }
     }
   </style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav">
     <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div data-site-search></div>
     <div class="nav-links">
       <a href="index.html#products">Products</a>
       <a href="why-us.html">Why Us</a>
@@ -316,7 +306,7 @@
       <p style="font-size:0.9rem;color:#465A70;max-width:700px;line-height:1.75;margin-top:6px;">We sent samples from our own UK stock to an independent analytical laboratory in Poland and paid for HPLC analysis. Every report we hold is published here in full and unedited - including the vial photographs the laboratory took.</p>
 
       <article class="report-feature">
-        <a class="report-thumb" href="/coa/retatrutide-100016392.html">
+        <a class="report-thumb" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size Retatrutide report image">
           <img src="/coa-retatrutide-100016392-report.png" alt="Retatrutide certificate of analysis from Analiza Bialek showing 99% purity" loading="lazy">
         </a>
         <div class="report-detail">
@@ -330,12 +320,12 @@
             <div class="report-stat"><span class="rs-val">Jul 2026</span><span class="rs-label">Analysed</span></div>
           </div>
           <p class="report-body">A sealed 15mg retail vial from our UK stock was analysed by reverse-phase HPLC on a BioBasic 8 column against a water/acetonitrile gradient. Purity came back at 99%, with vial content measured at 16.49mg against a 15mg label claim - over the stated weight, not under. All Retatrutide vial sizes are filled from the same material.</p>
-          <a class="report-cta" href="/coa/retatrutide-100016392.html">Read the full report -&gt;</a>
+          <a class="report-cta" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer">Open full-size report -&gt;</a>
         </div>
       </article>
 
       <article class="report-feature">
-        <a class="report-thumb" href="/coa/ghk-cu-100016393.html">
+        <a class="report-thumb" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size GHK-Cu report image">
           <img src="/coa-ghk-cu-100016393-report.png" alt="GHK-Cu certificate of analysis from Analiza Bialek showing 99% purity" loading="lazy">
         </a>
         <div class="report-detail">
@@ -349,36 +339,9 @@
             <div class="report-stat"><span class="rs-val">Jul 2026</span><span class="rs-label">Analysed</span></div>
           </div>
           <p class="report-body">A sealed retail vial from our UK stock was analysed by reverse-phase HPLC on a BioBasic 8 column against a water/acetonitrile gradient. Purity came back at 99%, with vial content measured at 54.75mg against a 50mg label claim. The report also covers the GHK-Cu component of the KLOW Stack.</p>
-          <a class="report-cta" href="/coa/ghk-cu-100016393.html">Read the full report -&gt;</a>
+          <a class="report-cta" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Open full-size report -&gt;</a>
         </div>
       </article>
-    </div>
-  </section>
-
-  <!-- INDEPENDENT TESTING STATUS -->
-  <section class="testing-status">
-    <div class="testing-inner">
-      <p class="section-tag">Independent Testing Status</p>
-      <h2 class="section-title">Where the rest of the catalogue stands.</h2>
-      <p style="font-size:0.9rem;color:#465A70;max-width:680px;line-height:1.75;margin-top:6px;">Independent testing is being rolled out compound by compound, funded out of our own margin. Nothing is described as independently verified on this site until the relevant report is in hand and published above.</p>
-      <div class="testing-grid">
-        <article class="testing-card is-published">
-          <span class="testing-label is-done">Published</span>
-          <h3 class="testing-title">GHK-Cu</h3>
-          <p class="testing-body">Tested and published. HPLC analysis returned 99% purity with content measured at 54.75mg against a 50mg label claim. <a href="/coa/ghk-cu-100016393.html" style="color:#1F6FEB;font-weight:600;">View the report</a>.</p>
-        </article>
-        <article class="testing-card is-published">
-          <span class="testing-label is-done">Published</span>
-          <h3 class="testing-title">Retatrutide</h3>
-          <p class="testing-body">Tested and published. HPLC analysis returned 99% purity with content measured at 16.49mg against a 15mg label claim. <a href="/coa/retatrutide-100016392.html" style="color:#1F6FEB;font-weight:600;">View the report</a>.</p>
-        </article>
-        <article class="testing-card">
-          <span class="testing-label">Next Round</span>
-          <h3 class="testing-title">BPC-157</h3>
-          <p class="testing-body">Queued for the next round of independent testing. The report will be published on this page once the sample has been analysed and the document reviewed.</p>
-        </article>
-      </div>
-      <p class="testing-note">A laboratory report describes the sample submitted to the laboratory. It is not a per-vial certificate, and it covers identity, purity and content only — not sterility, endotoxins or heavy metals. All products remain strictly for laboratory research use only and are not for human or animal consumption.</p>
     </div>
   </section>
 
@@ -392,8 +355,6 @@
       <div class="info-item"><span class="info-val">Frozen</span><span class="info-label">Until Dispatch</span></div>
       <span class="info-div">·</span>
       <div class="info-item"><span class="info-val">UK</span><span class="info-label">Stocked &amp; Dispatched</span></div>
-      <span class="info-div">·</span>
-      <div class="info-item"><span class="info-val">BPC-157</span><span class="info-label">Testing Next</span></div>
     </div>
   </div>
 
@@ -422,7 +383,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Lab Report</span><span class="dc-val dc-val-green">Published in Full</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Report Published</div>
-            <a href="/coa/retatrutide-100016392.html" class="dc-request-btn">View Report -></a>
+            <a href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer" class="dc-request-btn">Open Report -></a>
           </div>
         </div>
 
@@ -436,7 +397,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -455,7 +416,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -474,7 +435,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><spa…25504 tokens truncated…ent verification pending, 24h dispatch. Research use only — not for human consumption.">
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -499,7 +460,7 @@
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Lab Report</span><span class="dc-val dc-val-green">Published in Full</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> Report Published</div>
-            <a href="/coa/ghk-cu-100016393.html" class="dc-request-btn">View Report -></a>
+            <a href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer" class="dc-request-btn">Open Report -></a>
           </div>
         </div>
 
@@ -513,7 +474,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -533,12 +494,12 @@
           </div>
           <div class="dc-body">
             <div class="dc-row"><span class="dc-key">GHK-Cu Part</span><span class="dc-val dc-val-green">99% - independently verified (HPLC)</span></div>
-            <div class="dc-row"><span class="dc-key">Other Parts</span><span class="dc-val">Supplier stated; testing pending</span></div>
+            <div class="dc-row"><span class="dc-key">Other Parts</span><span class="dc-val">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Blend</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
             <div class="dc-avail"><div class="dc-avail-dot"></div> GHK-Cu Report Published</div>
-            <a href="/coa/ghk-cu-100016393.html" class="dc-request-btn">View Report -></a>
+            <a href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer" class="dc-request-btn">Open Report -></a>
           </div>
         </div>
 
@@ -552,7 +513,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -571,7 +532,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>          </div>          <div class="dc-footer">
@@ -590,7 +551,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>
@@ -611,7 +572,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>
@@ -632,7 +593,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>
@@ -653,7 +614,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>
@@ -674,7 +635,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>
@@ -695,7 +656,7 @@
             <span class="dc-status-badge">In Stock</span>
           </div>
           <div class="dc-body">
-            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated; independent verification pending</span></div>
+            <div class="dc-row"><span class="dc-key">Purity</span><span class="dc-val dc-val-green">Supplier stated</span></div>
             <div class="dc-row"><span class="dc-key">Form</span><span class="dc-val">Lyophilised Powder</span></div>
             <div class="dc-row"><span class="dc-key">Storage</span><span class="dc-val">Frozen Until Dispatch</span></div>
             <div class="dc-row"><span class="dc-key">Batch Details</span><span class="dc-val">Available on Request</span></div>

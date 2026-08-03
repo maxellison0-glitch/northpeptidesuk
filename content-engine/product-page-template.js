@@ -235,9 +235,8 @@ ${product.specs.map(([label, value]) => `            <tr><th>${escapeHtml(label)
 }
 
 // Product shot first, then the certificate as the immediate next swipe. Any
-// supporting product image follows it; additional report pages remain visible
-// in the full report block below. Report scans use "contain" so the document is
-// never cropped.
+// supporting product image follows it. Report scans use "contain" so the
+// document is never cropped.
 function mediaThumbs(product) {
   const images = [{ src: product.image, alt: product.name, fit: 'cover' }];
   if (product.coa && product.coa.images[0]) {
@@ -340,7 +339,7 @@ function coaHeroBadge(product) {
   const detail = isComponent
     ? `${coa.compound} was tested standalone, not as the finished blend.`
     : `Report ${coa.orderNumber} is published with the original scan.`;
-  return `        <a class="coa-hero-badge" href="${escapeHtml(coa.page)}">
+  return `        <a class="coa-hero-badge" href="${escapeHtml(coa.page)}" target="_blank" rel="noopener noreferrer">
           <span class="coa-hero-mark">Lab report</span>
           <span class="coa-hero-copy">
             <strong>${escapeHtml(headline)}</strong>
@@ -374,23 +373,10 @@ ${coa.images.map(img => `            <a class="coa-page" href="/${escapeHtml(img
               <span class="coa-page-cap">${escapeHtml(img.label)}</span>
             </a>`).join('\n')}
           </div>
-          <p><a class="coa-link" href="${escapeHtml(coa.page)}">Read the full report, method and verification details -&gt;</a></p>
+          <p><a class="coa-link" href="${escapeHtml(coa.page)}" target="_blank" rel="noopener noreferrer">Open full-size report -&gt;</a></p>
           <!--compliance:ignore-start-->
           <p class="coa-caveat">This report describes the sample submitted to the laboratory. It covers identity, purity and content only, and is not a statement of safety, efficacy or suitability for use in humans or animals.</p>
           <!--compliance:ignore-end-->
-        </section>`;
-}
-
-// Testing commissioned but not yet published — shown as an honest in-progress
-// state so the page never implies a result it cannot show.
-function coaPendingBlock(product) {
-  if (product.coa || !product.coaPending) return '';
-  const p = product.coaPending;
-  return `
-        <section class="section-block coa-block is-pending">
-          <h2>Independent testing</h2>
-          <p class="coa-lede"><strong>${escapeHtml(p.status)}.</strong> ${escapeHtml(p.note)}</p>
-          <p><a class="coa-link" href="/lab-reports.html">See our published laboratory reports -&gt;</a></p>
         </section>`;
 }
 
@@ -523,10 +509,13 @@ ${jsonLd(slug, product)}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>${PRODUCT_CSS}</style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
   <nav class="nav">
     <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div data-site-search></div>
     <div class="nav-links">
       <a href="/#products">Products</a>
       <a href="/lab-reports.html">Lab Reports</a>
@@ -566,7 +555,6 @@ ${lowerDescription.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n')}
           <h2>Research areas</h2>${listItems(product.researchAreas)}
         </section>` : ''}
         ${coaBlock(product)}
-        ${coaPendingBlock(product)}
         ${specsTable(product)}
         ${faqBlock(product)}
       </div>

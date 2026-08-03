@@ -173,11 +173,14 @@ ${jsonLd(article)}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>${ARTICLE_CSS}</style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
 
   <nav class="nav">
     <a href="/" class="nav-logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div data-site-search></div>
     <div class="nav-right">
       <a href="/#products" class="nav-link">Products</a>
       <a href="/blog/index.html" class="nav-link">Guides</a>
@@ -261,10 +264,13 @@ function renderBlogIndex(articles) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>${INDEX_CSS}</style>
+  <link rel="stylesheet" href="/site-search.css">
+  <script src="/site-search.js" defer></script>
 </head>
 <body>
   <nav class="nav">
     <a href="../index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+    <div data-site-search></div>
     <div class="nav-links">
       <a href="../index.html#products">Products</a>
       <a href="../lab-reports.html">Lab Reports</a>
