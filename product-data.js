@@ -34,18 +34,30 @@ const COA_REPORTS = {
       { src: "coa-ghk-cu-100016393-report.png", label: "Certificate of analysis — results & sample photo" },
       { src: "coa-ghk-cu-100016393-chromatogram.png", label: "HPLC chromatogram & gradient method" }
     ]
-  }
-};
-
-// Reports commissioned and paid for, but not yet published on the site.
-// Surfaced as an honest "in progress" state rather than an implied result.
-const COA_PENDING = {
-  retatrutide: {
+  },
+  "retatrutide-100016392": {
+    id: "retatrutide-100016392",
     compound: "Retatrutide",
     lab: "Analiza Białek sp. z o.o.",
     labLocation: "Wrocław, Poland",
-    status: "Report received — under review ahead of publication",
-    note: "The Retatrutide sample was submitted to the same laboratory in the same shipment as the GHK-Cu sample. The report will be published here in full once reviewed."
+    labUrl: "https://www.analizabialek.com",
+    orderNumber: "100016392",
+    sampleName: "NORTH PEPTIDES UK RETATRUTIDE 15MG",
+    sampleForm: "White powder in a glass vial",
+    purity: "99%",
+    content: "16.49mg",
+    labelClaim: "15mg",
+    measurementError: "±0.05mg",
+    method: "RP-HPLC — BioBasic 8 (Thermo Scientific) column, linear H₂O / acetonitrile gradient with 0.1% trifluoroacetic acid, 3µl injection",
+    receivedDate: "2026-07-20",
+    testStartDate: "2026-07-28",
+    testEndDate: "2026-07-30",
+    reportCode: "2W78KU6M",
+    technician: "mgr Arkadiusz Zając",
+    page: "/coa/retatrutide-100016392.html",
+    images: [
+      { src: "coa-retatrutide-100016392-report.png", label: "Certificate of analysis — results & sample photo" }
+    ]
   }
 };
 
@@ -54,14 +66,15 @@ const PRODUCT_DATA = {
     name: "Retatrutide",
     category: "Metabolic research",
     image: "reta-50mg.png",
-    coaPending: COA_PENDING.retatrutide,
+    coa: COA_REPORTS["retatrutide-100016392"],
     penAddon: true,
     sisterProduct: { slug: "retatrutide-pen", label: "Also available as", name: "Retatrutide Pen Vial — Pre-Reconstituted" },
     seo: {
       title: "Buy Retatrutide UK | 10mg, 15mg, 20mg Research Peptide | North Peptides UK",
-      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials. Supplier-stated purity; independent verification pending. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
-        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, stored frozen until dispatch. A sample was submitted to an independent analytical laboratory alongside our GHK-Cu sample; that report has been returned and is being reviewed ahead of publication on our documentation page." },
+        { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, stored frozen until dispatch. A sample from our UK stock was submitted to an independent analytical laboratory and returned 99% purity by HPLC. The full report is published on our documentation page." },
+        { q: "Has this Retatrutide been independently tested?", a: "Yes. A sealed 15mg vial was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 16.49mg against a 15mg label claim. The full certificate of analysis is published on the site." },
         { q: "What receptors does Retatrutide act on?", a: "It is described in the research literature as a triple receptor agonist with reported activity at the GLP-1, GIP and glucagon receptors. It is supplied only as a reference material for that research." },
         { q: "Do you stock Retatrutide in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
         { q: "Is Retatrutide for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
@@ -85,17 +98,18 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4731 g/mol"],
       ["CAS number", "2381089-83-2"],
       ["Synonyms", "LY3437943"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016392)"],
+      ["Measured content", "16.49mg against a 15mg label claim"],
       ["Form", "Lyophilised powder"],
       ["Storage", "-20°C long-term; 2-8°C short-term"]
     ],
     storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
     details: [
-      "supplier-stated purity; independent verification pending",
+      "99% purity — independently verified by HPLC",
+      "Measured at 16.49mg against a 15mg label claim",
       "UK stocked, 24-48h dispatch after payment",
       "Stored frozen until dispatch",
-      "Independent report received; publication pending",
-      "Supplier documentation on request"
+      "Full lab report published on site"
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 45 },
@@ -109,14 +123,15 @@ const PRODUCT_DATA = {
     name: "Retatrutide Pen Vial",
     category: "Metabolic research",
     image: "reta-pen-vial.png",
-    coaPending: COA_PENDING.retatrutide,
+    coa: COA_REPORTS["retatrutide-100016392"],
     penAddon: true,
     sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial — Frozen / Lyophilised" },
     seo: {
       title: "Buy Retatrutide Pen Vial UK | Pre-Reconstituted 10mg, 20mg, 50mg | North Peptides UK",
-      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Prepared in a pen-compatible research cartridge format. UK stocked, 24-48h dispatch after payment. Research use only.",
+      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
+        { q: "Has this Retatrutide been independently tested?", a: "Yes. A Retatrutide sample from our UK stock was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity. The full certificate of analysis is published on the site. The report was carried out on the lyophilised material used to prepare this pen vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
         { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
         { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile disposable needle tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
@@ -141,7 +156,7 @@ const PRODUCT_DATA = {
       ["Molecular weight", "~4731 g/mol"],
       ["CAS number", "2381089-83-2"],
       ["Synonyms", "LY3437943"],
-      ["Purity", "Supplier stated; independent verification pending"],
+      ["Purity", "99% — independently verified by HPLC (report 100016392)"],
       ["Form", "Pre-reconstituted liquid"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
