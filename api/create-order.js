@@ -25,11 +25,24 @@ function json(res, statusCode, body, origin) {
   return res.status(statusCode).send(JSON.stringify(body));
 }
 
-function generateOrderRef() {
+// Legacy globally-unique format — the safe fallback when the sequential
+// counter (Vercel Blob) is unavailable. Orders must never fail over a ref.
+function generateLegacyOrderRef() {
   const d = new Date();
   const date = d.toISOString().slice(0, 10).replace(/-/g, "");
   const rand = crypto.randomBytes(3).toString("hex").toUpperCase().slice(0, 4);
   return `NP-${date}-${rand}`;
+}
+
+async function generateOrderRef() {
+  try {
+    const { list, put } = require("@vercel/blob");
+    const { nextSequentialRef } = require("../server/order-ref.js");
+    return await nextSequentialRef({ list, put });
+  } catch (err) {
+    console.error(`[create-order] sequential ref unavailable, using legacy format: ${err.message}`);
+    return generateLegacyOrderRef();
+  }
 }
 
 function escapeHtml(value) {
@@ -245,7 +258,7 @@ module.exports = async function handler(req, res) {
   const deliveryCharge = delivery.charge;
   const grandTotal = validation.productSubtotal + deliveryCharge;
 
-  const orderRef = generateOrderRef();
+  const orderRef = await generateOrderRef();
   const bankDetails = {
     accountName: bankAccountName,
     sortCode: bankSortCode,
