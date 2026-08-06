@@ -64,7 +64,8 @@ test('delivery is calculated from server rules', () => {
   assert.deepEqual(core.calculateDelivery('standard', '', 49.99), {
     method: 'standard', label: 'Royal Mail Tracked 24', charge: 3.99
   });
-  assert.equal(core.calculateDelivery('standard', '', 50).charge, 0);
+  assert.equal(core.calculateDelivery('standard', '', 99.99).charge, 3.99);
+  assert.equal(core.calculateDelivery('standard', '', 100).charge, 0);
   assert.equal(core.calculateDelivery('standard', 'AJ', 10).charge, 0);
   assert.equal(core.calculateDelivery('express', 'AJ', 100).charge, 9.99);
 });
@@ -118,7 +119,8 @@ test('order API recalculates a tampered basket and sends both emails', async () 
   const body = JSON.parse(res.body);
   assert.equal(res.statusCode, 200);
   assert.equal(body.success, true);
-  assert.equal(body.grandTotal, '54.00');
+  // £54 basket is under the £100 free-delivery threshold: 54 + 3.99 standard.
+  assert.equal(body.grandTotal, '57.99');
   assert.match(body.orderRef, /^NP-\d{8}-[A-F0-9]{4}$/);
   assert.equal(calls.length, 2);
   assert.ok(calls.every(call => call.url === 'https://api.resend.com/emails'));

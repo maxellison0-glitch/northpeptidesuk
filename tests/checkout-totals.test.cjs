@@ -70,7 +70,7 @@ function bootCheckout(basket) {
 test('checkout renders subtotal and total for a loaded basket', () => {
   const app = bootCheckout([{ name: 'Retatrutide Pen Vial', price: 100, dose: '20mg', qty: 1 }]);
   assert.equal(app.byId('subtotal').textContent, '£100');
-  // ≥ £50 qualifies for free standard delivery.
+  // ≥ £100 qualifies for free standard delivery.
   assert.equal(app.byId('grand-total').textContent, '£100');
   assert.equal(app.byId('standard-delivery-price').textContent, 'FREE');
 });

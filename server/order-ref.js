@@ -1,4 +1,4 @@
-// Sequential order references (np1747, np1748, ...) backed by Vercel Blob.
+// Sequential order references (NP-1747, NP-1748, ...) backed by Vercel Blob.
 //
 // Serverless functions are stateless, so the "last used number" lives in Blob
 // storage as one tiny file per claimed reference: orders/refs/00001747, ...
@@ -7,7 +7,7 @@
 // for the same number, the loser throws and the caller falls back to the legacy
 // globally-unique reference instead of ever issuing a duplicate.
 
-const START_AT = 1747; // Max's chosen starting reference — np1747
+const START_AT = 1747; // Max's chosen starting reference — NP-1747
 
 function refNumberFromPathname(pathname) {
   const n = Number.parseInt(String(pathname).split("/").pop(), 10);
@@ -44,7 +44,7 @@ async function claimRef(put, next) {
 async function nextSequentialRef({ list, put }) {
   const next = (await highestClaimedRef(list)) + 1;
   await claimRef(put, next);
-  return `np${next}`;
+  return `NP-${next}`;
 }
 
 module.exports = { nextSequentialRef, START_AT };

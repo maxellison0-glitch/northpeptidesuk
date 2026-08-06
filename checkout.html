@@ -501,7 +501,7 @@
       <input type="radio" name="delivery" value="standard" data-price="3.99" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £50</span></div>
+        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £100</span></div>
       </div>
       <div class="delivery-option-price" id="standard-delivery-price">£3.99</div>
     </label>
@@ -688,14 +688,14 @@
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 50;
+      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 100;
       deliveryPrice = freeDelivery ? 0 : 3.99;
       document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3.99';
       const nudge = document.getElementById('delivery-nudge');
       if (freeDelivery) {
         nudge.textContent = 'Free delivery applied';
       } else {
-        const needed = (50 - discSub).toFixed(2);
+        const needed = (100 - discSub).toFixed(2);
         nudge.textContent = 'Add £' + needed + ' more for free delivery';
       }
     }

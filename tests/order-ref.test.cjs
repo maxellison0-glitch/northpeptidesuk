@@ -14,16 +14,16 @@ function makeStore(existing = []) {
   };
 }
 
-test('first ever reference is np1747', async () => {
+test('first ever reference is NP-1747', async () => {
   const store = makeStore();
-  assert.equal(await nextSequentialRef(store), `np${START_AT}`);
+  assert.equal(await nextSequentialRef(store), `NP-${START_AT}`);
   assert.equal(store.puts[0].pathname, 'orders/refs/00001747');
   assert.equal(store.puts[0].options.allowOverwrite, false);
 });
 
 test('continues from the highest claimed reference', async () => {
   const store = makeStore([1747, 1748, 1752]);
-  assert.equal(await nextSequentialRef(store), 'np1753');
+  assert.equal(await nextSequentialRef(store), 'NP-1753');
 });
 
 test('ignores junk pathnames and paginates with cursors', async () => {
@@ -38,7 +38,7 @@ test('ignores junk pathnames and paginates with cursors', async () => {
     list: async ({ cursor }) => { calls.push(cursor); return cursor ? pageTwo : pageOne; },
     put: async () => {}
   };
-  assert.equal(await nextSequentialRef(store), 'np1902');
+  assert.equal(await nextSequentialRef(store), 'NP-1902');
   assert.deepEqual(calls, [undefined, 'next-page']);
 });
 
@@ -59,6 +59,6 @@ test('retries with public access when the store rejects private access', async (
       if (options.access === 'private') throw new Error('invalid access value');
     }
   };
-  assert.equal(await nextSequentialRef(store), `np${START_AT}`);
+  assert.equal(await nextSequentialRef(store), `NP-${START_AT}`);
   assert.deepEqual(attempts, ['private', 'public']);
 });

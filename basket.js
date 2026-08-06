@@ -7,7 +7,7 @@ function fmt(v) { return Number(v).toFixed(2).replace(/\.00$/, ''); }
 // Persist the basket in localStorage so it survives navigation to checkout.html AND
 // a tab/browser close (returning visitors keep their cart). Shared key with
 // product.html and checkout.html.
-const FREE_SHIP_THRESHOLD = 50;
+const FREE_SHIP_THRESHOLD = 100;
 function loadBasket() {
   try { return JSON.parse(localStorage.getItem('npuk_basket') || '[]'); } catch (e) { return []; }
 }

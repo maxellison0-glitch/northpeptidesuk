@@ -180,7 +180,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   const method = deliveryMethod === "express" ? "express" : "standard";
   const delivery = DELIVERY[method];
   const code = String(discountCode || "").trim().toUpperCase();
-  const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 50);
+  const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100);
   const charge = method === "express" ? delivery.price : (freeStandard ? 0 : delivery.price);
   return { method, label: delivery.label, charge };
 }
