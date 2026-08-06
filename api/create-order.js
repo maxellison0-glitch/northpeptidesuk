@@ -9,6 +9,14 @@ const {
 
 const ORDER_FROM_EMAIL = process.env.ORDER_FROM_EMAIL || "North Peptides UK <orders@northpeptidesuk.com>";
 
+// Comma-separated list supported, e.g. "orders@northpeptidesuk.com,backup@example.com"
+function ownerNotifyRecipients() {
+  return String(process.env.ORDER_NOTIFY_EMAIL || "orders@northpeptidesuk.com")
+    .split(",")
+    .map(address => address.trim())
+    .filter(Boolean);
+}
+
 function json(res, statusCode, body, origin) {
   const headers = corsHeaders(origin);
   Object.entries({ ...headers, "Content-Type": "application/json" }).forEach(([key, value]) => {
@@ -51,6 +59,21 @@ async function resendSend(payload) {
   return data;
 }
 
+// One retry so a transient Resend/network blip can't silently lose an order email.
+async function resendSendWithRetry(payload) {
+  try {
+    return await resendSend(payload);
+  } catch (firstError) {
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      return await resendSend(payload);
+    } catch (secondError) {
+      secondError.firstAttempt = firstError.message;
+      throw secondError;
+    }
+  }
+}
+
 function buildOwnerEmailHtml(order) {
   const rows = order.items.map(item => `
     <tr>
@@ -69,7 +92,7 @@ function buildOwnerEmailHtml(order) {
       <p><strong>Phone:</strong> ${escapeHtml(order.customer.phone || "Not supplied")}</p>
       <p><strong>Delivery:</strong> ${escapeHtml(order.delivery.label)} (${formatMoney(order.delivery.charge)})</p>
       <p><strong>Address:</strong><br>${[order.customer.address1, order.customer.address2, order.customer.city, order.customer.county, order.customer.postcode].filter(Boolean).map(escapeHtml).join("<br>")}</p>
-      ${order.customer.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(order.customer.notes)}</p>` : ""}
+      ${order.customer.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(order.customer.notes).replace(/\n/g, "<br>")}</p>` : ""}
       ${order.discountCode ? `<p><strong>Discount:</strong> ${escapeHtml(order.discountCode)} (${Math.round(order.discountPct * 100)}% off)</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
@@ -244,45 +267,49 @@ module.exports = async function handler(req, res) {
       address2: compactText(customer.address2, 200),
       city,
       county: compactText(customer.county, 100),
-      postcode
+      postcode,
+      notes: compactText(customer.notes, 1000)
     },
     bankDetails
   };
 
-  let ownerEmail = { skipped: true };
-  let customerEmail = { skipped: true };
+  const notifyRecipients = ownerNotifyRecipients();
+  const emails = { owner: "failed", customer: "failed" };
 
   try {
-    ownerEmail = await resendSend({
+    const ownerEmail = await resendSendWithRetry({
       from: ORDER_FROM_EMAIL,
-      to: [process.env.ORDER_NOTIFY_EMAIL || "orders@northpeptidesuk.com"],
+      to: notifyRecipients,
       reply_to: email,
       subject: `Bank transfer order ${orderRef} — ${formatMoney(grandTotal)}`,
       html: buildOwnerEmailHtml(order)
     });
-    console.log(`[create-order] owner email sent for ${orderRef}: ${JSON.stringify(ownerEmail)}`);
+    emails.owner = "sent";
+    console.log(`[create-order] owner email sent for ${orderRef} to ${notifyRecipients.join(", ")}: ${JSON.stringify(ownerEmail)}`);
   } catch (err) {
-    console.error(`[create-order] owner email FAILED for ${orderRef}: ${err.message}`);
+    console.error(`[create-order] owner email FAILED for ${orderRef} to ${notifyRecipients.join(", ")}: ${err.message}${err.firstAttempt ? ` (first attempt: ${err.firstAttempt})` : ""}`);
   }
 
   try {
-    customerEmail = await resendSend({
+    const customerEmail = await resendSendWithRetry({
       from: ORDER_FROM_EMAIL,
       to: [email],
-      reply_to: process.env.ORDER_NOTIFY_EMAIL || "orders@northpeptidesuk.com",
+      reply_to: notifyRecipients[0],
       subject: `Your North Peptides UK order — ${orderRef}`,
       html: buildCustomerEmailHtml(order),
       text: buildCustomerEmailText(order)
     });
+    emails.customer = "sent";
     console.log(`[create-order] customer email sent for ${orderRef} to ${email}: ${JSON.stringify(customerEmail)}`);
   } catch (err) {
-    console.error(`[create-order] customer email FAILED for ${orderRef}: ${err.message}`);
+    console.error(`[create-order] customer email FAILED for ${orderRef} to ${email}: ${err.message}${err.firstAttempt ? ` (first attempt: ${err.firstAttempt})` : ""}`);
   }
 
   return json(res, 200, {
     success: true,
     orderRef,
     bankDetails,
-    grandTotal: grandTotal.toFixed(2)
+    grandTotal: grandTotal.toFixed(2),
+    emails
   }, origin);
 };

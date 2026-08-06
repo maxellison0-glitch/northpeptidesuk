@@ -12,6 +12,9 @@ tools/.cache/
 .netlify/
 .vercel/
 
+# Local agent/tooling config
+.claude/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db

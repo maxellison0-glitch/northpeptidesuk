@@ -62,11 +62,11 @@ test('crafted catalogue entries are rejected before an order is created', () => 
 
 test('delivery is calculated from server rules', () => {
   assert.deepEqual(core.calculateDelivery('standard', '', 49.99), {
-    method: 'standard', label: 'Royal Mail Tracked 24', charge: 3
+    method: 'standard', label: 'Royal Mail Tracked 24', charge: 3.99
   });
   assert.equal(core.calculateDelivery('standard', '', 50).charge, 0);
   assert.equal(core.calculateDelivery('standard', 'AJ', 10).charge, 0);
-  assert.equal(core.calculateDelivery('express', 'AJ', 100).charge, 7.95);
+  assert.equal(core.calculateDelivery('express', 'AJ', 100).charge, 9.99);
 });
 
 test('order API recalculates a tampered basket and sends both emails', async () => {

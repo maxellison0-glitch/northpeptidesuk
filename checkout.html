@@ -498,20 +498,20 @@
   <p class="sec-head">Delivery</p>
   <div class="delivery-options">
     <label class="delivery-option selected" id="label-standard">
-      <input type="radio" name="delivery" value="standard" data-price="3" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="standard" data-price="3.99" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Tracked 24</div>
         <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £50</span></div>
       </div>
-      <div class="delivery-option-price" id="standard-delivery-price">£3</div>
+      <div class="delivery-option-price" id="standard-delivery-price">£3.99</div>
     </label>
     <label class="delivery-option" id="label-express">
-      <input type="radio" name="delivery" value="express" data-price="7.95" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
+      <input type="radio" name="delivery" value="express" data-price="9.99" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
       <div class="delivery-option-info">
         <div class="delivery-option-name">Royal Mail Special Delivery</div>
         <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
       </div>
-      <div class="delivery-option-price">£7.95</div>
+      <div class="delivery-option-price">£9.99</div>
     </label>
   </div>
 
@@ -622,7 +622,7 @@
       <p style="margin:0;font-size:0.82rem;color:#92400E;line-height:1.6;"><strong>Important:</strong> Use your order reference as the payment reference so we can match your transfer. Once received (usually within a few hours via Faster Payments), we'll confirm by email and dispatch within 24–48 hours.</p>
     </div>
 
-    <p style="text-align:center;font-size:0.85rem;color:#63758A;line-height:1.7;">We've also sent these details to your email.<br>Any questions? Email <strong style="color:#1F6FEB;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
+    <p style="text-align:center;font-size:0.85rem;color:#63758A;line-height:1.7;"><span id="email-sent-note">We've also sent these details to your email.</span><br>Any questions? Email <strong style="color:#1F6FEB;">orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;">WhatsApp us →</a></p>
     <div style="text-align:center;">
       <a href="index.html" style="display:inline-block;margin-top:24px;color:#1F6FEB;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;">← Back to shop</a>
     </div>
@@ -659,7 +659,7 @@
   }
 
   let basketData = [];
-  let deliveryPrice = 3;
+  let deliveryPrice = 3.99;
   let deliveryLabel = 'Royal Mail Tracked 24';
   let discountApplied = false;
   let appliedDiscountPct = 0;
@@ -689,8 +689,8 @@
     const discSub = getDiscountedSubtotal();
     if (selectedDeliveryMethod() === 'standard') {
       const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 50;
-      deliveryPrice = freeDelivery ? 0 : 3;
-      document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3';
+      deliveryPrice = freeDelivery ? 0 : 3.99;
+      document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3.99';
       const nudge = document.getElementById('delivery-nudge');
       if (freeDelivery) {
         nudge.textContent = 'Free delivery applied';
@@ -833,7 +833,6 @@
         + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'
         + '</div>';
     }).join('');
-    rebuildOrderSummary();
     document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateTotals();
     updateSmartSection();
@@ -865,6 +864,14 @@
     document.getElementById('bank-acct').textContent = data.bankDetails.accountNumber;
     document.getElementById('bank-amount').textContent = '£' + Number(data.grandTotal).toFixed(2).replace('.00', '');
     document.getElementById('bank-ref').textContent = data.orderRef;
+    if (data.emails && data.emails.customer !== 'sent') {
+      const note = document.getElementById('email-sent-note');
+      if (note) {
+        note.textContent = 'We could not send the confirmation email — please screenshot or note down the details above before leaving this page.';
+        note.style.color = '#B45309';
+        note.style.fontWeight = '600';
+      }
+    }
     document.getElementById('main-checkout').style.display = 'none';
     document.getElementById('success-page').style.display = 'block';
     localStorage.removeItem('npuk_basket');

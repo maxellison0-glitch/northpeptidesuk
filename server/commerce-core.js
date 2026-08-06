@@ -116,8 +116,8 @@ const DISCOUNT_CODES = { ...PUBLIC_DISCOUNT_CODES, ...loadPrivateDiscountCodes()
 const FREE_DELIVERY_CODES = new Set(["SUMMERSHIP", "AJ"]);
 
 const DELIVERY = {
-  standard: { label: "Royal Mail Tracked 24", price: 3 },
-  express: { label: "Royal Mail Special Delivery", price: 7.95 }
+  standard: { label: "Royal Mail Tracked 24", price: 3.99 },
+  express: { label: "Royal Mail Special Delivery", price: 9.99 }
 };
 
 const SITE_URL = "https://northpeptidesuk.com";
