@@ -727,6 +727,36 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 520px) { .basket-drawer { width: 100vw; right: -100vw; } }
 
+/* ------------------------------------------------- injected chrome (cookie UI)
+   tiktok-analytics.js injects its own styles at runtime (later in the cascade),
+   so these brand harmonisations need !important. The settings pill is pushed
+   below the basket drawer (401), overlay (400) and sticky bar (350) so it can
+   never sit on top of a checkout CTA. */
+#npuk-cookie-settings {
+  z-index: 300 !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-pill) !important;
+  background: rgba(255,255,255,.94) !important;
+  color: var(--muted) !important;
+  font: 500 .6rem var(--font-mono) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-1) !important;
+}
+#npuk-cookie-settings:hover { color: var(--action) !important; border-color: var(--action) !important; }
+
+#npuk-cookie-banner {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-card) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-lift) !important;
+  font-family: var(--font-body) !important;
+}
+#npuk-cookie-banner button {
+  border-radius: var(--r-ctl) !important;
+  font: 600 .76rem var(--font-body) !important;
+}
+
 /* ---------------------------------------------------------------- toast */
 .toast {
   position: fixed;
