@@ -1,11 +1,12 @@
 .site-search-host {
   position: relative;
   z-index: 180;
-  flex: 1 1 270px;
+  flex: 1 1 210px;
   width: 100%;
-  min-width: 190px;
-  max-width: 360px;
-  min-height: 40px;
+  min-width: 170px;
+  max-width: 280px;
+  min-height: 36px;
+  transition: max-width .2s ease;
   font-family: var(--font-body, "Inter", sans-serif);
   letter-spacing: normal;
   text-align: left;
@@ -26,26 +27,28 @@
 .site-search-icon {
   position: absolute;
   top: 50%;
-  left: 13px;
-  width: 17px;
-  height: 17px;
+  left: 11px;
+  width: 15px;
+  height: 15px;
   color: var(--faint, #8395A9);
   pointer-events: none;
   transform: translateY(-50%);
 }
 
+.site-search-host:focus-within { max-width: 360px; }
+
 .site-search-input {
   width: 100%;
-  height: 40px;
+  height: 36px;
   margin: 0;
-  padding: 0 42px 0 40px;
+  padding: 0 38px 0 36px;
   border: 1px solid var(--line, #D5E2EE);
   border-radius: 999px;
   outline: 0;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 1px 2px rgba(14, 31, 56, 0.05);
   color: var(--ink, #0E1F38);
-  font: 500 16px/1 var(--font-body, "Inter", sans-serif);
+  font: 500 14px/1 var(--font-body, "Inter", sans-serif);
   letter-spacing: 0;
   text-transform: none;
   transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
@@ -68,10 +71,10 @@
 .site-search-shortcut {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 8px;
   display: inline-flex;
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line, #D5E2EE);
@@ -219,8 +222,11 @@
   }
 
   .shop-nav {
-    min-height: 108px;
+    min-height: 104px;
   }
+
+  .shop-nav.scrolled { min-height: 56px; }
+  .shop-nav.scrolled .site-search-host { display: none; }
 
   .shop-nav-logo,
   .nav > .logo,

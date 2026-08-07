@@ -822,18 +822,45 @@
     .shop-card:has(.card-lab-link) .card-trust-chip.is-purity { color: var(--verify); border-color: rgba(14,159,110,.28); background: var(--verify-tint); }
     .card-trust-chip.is-uk { color: var(--action-deep); border-color: rgba(31,111,235,.22); background: var(--action-tint); }
 
-    .card-lab-link, .card-pen-link {
+    .card-lab-link {
       font-family: var(--font-mono);
       font-size: .58rem;
       font-weight: 500;
       letter-spacing: .05em;
-      color: var(--action);
+      color: var(--verify);
       text-decoration: none;
       line-height: 1.5;
     }
-    .card-lab-link:hover, .card-pen-link:hover { color: var(--action-deep); text-decoration: underline; }
-    .card-lab-link { color: var(--verify); }
-    .card-lab-link:hover { color: #0B8259; }
+    .card-lab-link:hover { color: #0B8259; text-decoration: underline; }
+    /* Pen-vial availability is a selling point — give it a visible pill, not a text link */
+    .card-pen-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: .56rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--action-deep);
+      background: var(--action-tint);
+      border: 1px solid rgba(31,111,235,.3);
+      border-radius: var(--r-pill);
+      padding: 6px 11px;
+      text-decoration: none;
+      line-height: 1.4;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .card-pen-link::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--action);
+      flex-shrink: 0;
+    }
+    .card-pen-link:hover { background: var(--action); border-color: var(--action); color: #fff; }
+    .card-pen-link:hover::before { background: #fff; }
 
     .shop-card-select {
       width: 100%;

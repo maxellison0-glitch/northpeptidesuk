@@ -434,6 +434,12 @@ img { max-width: 100%; display: block; }
   .nav-links { display: none; }
 }
 
+/* On phones the sub-page header scrolls with the page instead of pinning —
+   a sticky logo + search row costs too much viewport to carry everywhere. */
+@media (max-width: 820px) {
+  .nav { position: static; }
+}
+
 /* --- Footer (shared) ------------------------------------------------------ */
 .np-footer, .footer, .footer-light {
   background: var(--ink);
