@@ -1551,9 +1551,9 @@ const PRODUCT_DATA = {
     category: "Research supplies",
     supply: true,
     image: "research-bac-water.png",
-    summary: "10ml sealed bacteriostatic mixing water for research preparation workflows.",
+    summary: "Sealed bacteriostatic mixing water for research preparation workflows, in 10ml and compact 3ml vials.",
     details: [
-      "10ml vial",
+      "10ml or 3ml vial",
       "Supplied sealed",
       "0.9% benzyl alcohol",
       "Preparation supply",
@@ -1564,7 +1564,8 @@ const PRODUCT_DATA = {
       chips: ["10ml Vial", "Sealed", "Research Supply"]
     },
     variants: [
-      { label: "10ml vial", dose: "10ml vial", price: 6.99 }
+      { label: "10ml vial", dose: "10ml vial", price: 6.99 },
+      { label: "3ml vial", dose: "3ml vial", price: 4.99 }
     ],
   },
   "syringe-kit": {

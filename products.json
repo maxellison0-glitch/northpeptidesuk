@@ -1716,7 +1716,7 @@
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/bacteriostatic-water/",
       "image": "https://www.northpeptidesuk.com/research-bac-water.png",
-      "summary": "10ml sealed bacteriostatic mixing water for research preparation workflows.",
+      "summary": "Sealed bacteriostatic mixing water for research preparation workflows, in 10ml and compact 3ml vials.",
       "researchUseOnly": true,
       "supply": true,
       "variants": [
@@ -1724,6 +1724,12 @@
           "label": "10ml vial",
           "dose": "10ml vial",
           "price": 6.99,
+          "currency": "GBP"
+        },
+        {
+          "label": "3ml vial",
+          "dose": "3ml vial",
+          "price": 4.99,
           "currency": "GBP"
         }
       ],

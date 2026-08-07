@@ -39,6 +39,7 @@ const CATALOG = {
   "CJC-1295 No DAC|2x 5mg": 58,
   "CJC-1295 No DAC|3x 5mg": 77,
   "Bacteriostatic Water|10ml vial": 6.99,
+  "Bacteriostatic Water|3ml vial": 4.99,
   "Bacteriostatic Water|Accessory": 6.99,
   // Cached product pages and saved baskets may still send this older dose string.
   "Bacteriostatic Water|10ml vial add-on": 6.99,
