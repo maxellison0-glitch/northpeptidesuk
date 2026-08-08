@@ -1,12 +1,13 @@
 .site-search-host {
   position: relative;
   z-index: 180;
-  flex: 1 1 270px;
+  flex: 1 1 210px;
   width: 100%;
-  min-width: 190px;
-  max-width: 360px;
-  min-height: 40px;
-  font-family: "DM Sans", sans-serif;
+  min-width: 170px;
+  max-width: 280px;
+  min-height: 36px;
+  transition: max-width .2s ease;
+  font-family: var(--font-body, "Inter", sans-serif);
   letter-spacing: normal;
   text-align: left;
   text-transform: none;
@@ -26,26 +27,28 @@
 .site-search-icon {
   position: absolute;
   top: 50%;
-  left: 13px;
-  width: 17px;
-  height: 17px;
-  color: #607086;
+  left: 11px;
+  width: 15px;
+  height: 15px;
+  color: var(--faint, #8395A9);
   pointer-events: none;
   transform: translateY(-50%);
 }
 
+.site-search-host:focus-within { max-width: 360px; }
+
 .site-search-input {
   width: 100%;
-  height: 40px;
+  height: 36px;
   margin: 0;
-  padding: 0 42px 0 40px;
-  border: 1px solid rgba(154, 184, 211, 0.72);
+  padding: 0 38px 0 36px;
+  border: 1px solid var(--line, #D5E2EE);
   border-radius: 999px;
   outline: 0;
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 7px 22px rgba(15, 31, 54, 0.08);
-  color: #132a46;
-  font: 600 16px/1 "DM Sans", sans-serif;
+  box-shadow: 0 1px 2px rgba(14, 31, 56, 0.05);
+  color: var(--ink, #0E1F38);
+  font: 500 14px/1 var(--font-body, "Inter", sans-serif);
   letter-spacing: 0;
   text-transform: none;
   transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
@@ -54,13 +57,13 @@
 }
 
 .site-search-input::placeholder {
-  color: #778ba0;
+  color: var(--faint, #8395A9);
   font-weight: 500;
   opacity: 1;
 }
 
 .site-search-input:focus {
-  border-color: #1f6feb;
+  border-color: var(--action, #1F6FEB);
   background: #fff;
   box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.14), 0 10px 28px rgba(15, 31, 54, 0.12);
 }
@@ -68,16 +71,16 @@
 .site-search-shortcut {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 8px;
   display: inline-flex;
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #d1dfea;
+  border: 1px solid var(--line, #D5E2EE);
   border-radius: 7px;
-  background: #f5f9fc;
-  color: #718399;
+  background: var(--frost, #F5F9FC);
+  color: var(--faint, #8395A9);
   font: 700 12px/1 "DM Mono", monospace;
   pointer-events: none;
   transform: translateY(-50%);
@@ -91,10 +94,10 @@
   min-width: 100%;
   max-height: min(430px, 68vh);
   overflow-y: auto;
-  border: 1px solid #d1dfea;
+  border: 1px solid var(--line, #D5E2EE);
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 22px 56px rgba(15, 31, 54, 0.2);
+  box-shadow: 0 22px 56px rgba(14, 31, 56, 0.18);
   overscroll-behavior: contain;
 }
 
@@ -104,8 +107,8 @@
 
 .site-search-heading {
   padding: 12px 14px 8px;
-  color: #7c8fa6;
-  font: 700 10px/1 "DM Mono", monospace;
+  color: var(--faint, #8395A9);
+  font: 500 10px/1 "DM Mono", monospace;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -117,8 +120,8 @@
   align-items: center;
   min-height: 64px;
   padding: 9px 13px;
-  border-top: 1px solid #edf3f8;
-  color: #172033;
+  border-top: 1px solid var(--line-soft, #E3ECF4);
+  color: var(--body, #2A3B52);
   text-decoration: none;
 }
 
@@ -126,15 +129,15 @@
 .site-search-result:focus-visible,
 .site-search-result[aria-selected="true"] {
   outline: 0;
-  background: #eef7fd;
+  background: var(--action-tint, #EAF2FE);
 }
 
 .site-search-result-image {
   width: 46px;
   height: 46px;
-  border: 1px solid #e0eaf3;
+  border: 1px solid var(--line-soft, #E3ECF4);
   border-radius: 9px;
-  background: #f5f9fc;
+  background: var(--frost-2, #EDF3F9);
   object-fit: cover;
 }
 
@@ -145,8 +148,8 @@
 .site-search-result-name {
   display: block;
   overflow: hidden;
-  color: #10233f;
-  font: 800 14px/1.25 "Syne", sans-serif;
+  color: var(--ink, #0E1F38);
+  font: 600 14px/1.25 var(--font-display, "Space Grotesk", sans-serif);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -155,8 +158,8 @@
   display: block;
   overflow: hidden;
   margin-top: 4px;
-  color: #718399;
-  font: 600 10px/1.2 "DM Mono", monospace;
+  color: var(--faint, #8395A9);
+  font: 500 10px/1.2 "DM Mono", monospace;
   letter-spacing: 0.05em;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -164,14 +167,14 @@
 }
 
 .site-search-result-price {
-  color: #1f6feb;
-  font: 800 12px/1 "DM Mono", monospace;
+  color: var(--action-deep, #174EA6);
+  font: 500 12px/1 "DM Mono", monospace;
   white-space: nowrap;
 }
 
 .site-search-empty {
   padding: 24px 18px;
-  color: #607086;
+  color: var(--muted, #5B6B7E);
   font-size: 14px;
   line-height: 1.5;
   text-align: center;
@@ -219,8 +222,11 @@
   }
 
   .shop-nav {
-    min-height: 108px;
+    min-height: 104px;
   }
+
+  .shop-nav.scrolled { min-height: 56px; }
+  .shop-nav.scrolled .site-search-host { display: none; }
 
   .shop-nav-logo,
   .nav > .logo,

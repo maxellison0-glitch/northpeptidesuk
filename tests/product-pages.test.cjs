@@ -355,7 +355,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
 
   context.setBacWater(true);
-  assert.equal(elements['config-total'].textContent, '£51.99');
+  assert.equal(elements['config-total'].textContent, '£48.99');
   assert.equal(elements['config-total-note'].textContent, 'Vial + BAC water');
 
   context.selectConfiguredFormat(1);
@@ -383,6 +383,6 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
     { name: 'Retatrutide', price: 85, dose: '20mg' },
     // Must stay a key the server CATALOG resolves — "10ml vial add-on" shipped
     // once and 400'd every checkout that included the builder's BAC water.
-    { name: 'Bacteriostatic Water', price: 6.99, dose: '10ml vial' }
+    { name: 'Bacteriostatic Water', price: 3.99, dose: '3ml vial' }
   ]);
 });
