@@ -61,12 +61,6 @@
         mode: 'ship',
         html: 'Free UK delivery on orders over <span class="npbar-hl">&pound;100</span>'
       };
-    },
-    function () {
-      return {
-        mode: 'sameday',
-        html: '<strong>Free 3ml BAC water vial</strong> with <span class="npbar-hl">every order</span> - claim at checkout'
-      };
     }
   ];
 

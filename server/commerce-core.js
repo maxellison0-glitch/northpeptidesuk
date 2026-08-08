@@ -40,8 +40,7 @@ const CATALOG = {
   "CJC-1295 No DAC|3x 5mg": 77,
   "Bacteriostatic Water|10ml vial": 9.99,
   "Bacteriostatic Water|3ml vial": 3.99,
-  "Bacteriostatic Water|3ml vial - free": 0,
-  "Bacteriostatic Water|Accessory": 9.99,
+  "Bacteriostatic Water|Accessory": 3.99,
   // Cached product pages and saved baskets may still send this older dose string.
   "Bacteriostatic Water|10ml vial add-on": 9.99,
   "Insulin Needle Pack|10 pack, 1ml insulin needles": 6.99,

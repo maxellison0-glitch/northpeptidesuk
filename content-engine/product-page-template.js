@@ -184,8 +184,8 @@ ${configuredVariantButtons(activeFormat.variants)}
           </div>
           <div class="config-control" id="config-bac-control"${activeFormat.bacWater ? '' : ' hidden'}>
             <div class="config-label-row">
-              <label>Bacteriostatic water</label>
-              <span>+&pound;6.99</span>
+              <label>Add your 3ml bacteriostatic water</label>
+              <span>+&pound;3.99</span>
             </div>
             <div class="config-toggle-row" role="group" aria-label="Add bacteriostatic water">
               <button class="config-toggle" id="bac-yes" type="button" aria-pressed="false" onclick="setBacWater(true)">Yes, include</button>
@@ -211,7 +211,7 @@ ${configuredVariantButtons(activeFormat.variants)}
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = ${activeFormatIndex};
           window.NPUK_CONFIG_FORMATS = ${JSON.stringify(formats)};
-          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial', price: 9.99 };
+          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '3ml vial', price: 3.99 };
         </script>`;
 }
 
