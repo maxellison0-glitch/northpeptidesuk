@@ -26,6 +26,12 @@ const SOCIAL_FORBIDDEN = [
     pattern: /\bglp[-\s]?1s?\b/i },
   { id: 'social-discount-dm', message: 'DM/code-word selling pattern (moderation trigger)',
     pattern: /\b(dm\s+(me|us)|link\s+below|check\s+my\s+bio\s+for\s+(code|discount))\b/i },
+  { id: 'social-stock-language', message: 'stock or availability language',
+    pattern: /\b(uk\s+stock(?:ed)?|in\s+stock|stock\s+available|our\s+stock)\b/i },
+  { id: 'social-site-route', message: 'route-to-purchase or on-site document language',
+    pattern: /\b(coa\s+on\s+our\s+(site|website)|our\s+(site|website)|shop\s+now|buy\s+now)\b/i },
+  { id: 'social-purity-marketing', message: 'purity-as-marketing language',
+    pattern: /\b(purity\s+(verified|guaranteed)|independently\s+tested\s+at\s+\d{2,3}(?:\.\d+)?%|\d{2,3}(?:\.\d+)?%\s+pure)\b/i },
 ];
 
 function gate(text) {

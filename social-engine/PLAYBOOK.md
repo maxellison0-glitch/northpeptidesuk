@@ -1,4 +1,4 @@
-# North Peptides UK — Social Playbook (TikTok-first)
+# North Peptides UK — Social Playbook (four-platform)
 
 The strategy behind every automated short-form post. Read this before generating
 or scheduling anything. Companion files: `README.md` (the automated pipeline),
@@ -23,8 +23,9 @@ problem, not (only) a suppression problem — but suppression is real too:
 - **YouTube Shorts** is the sleeper: search-indexed forever, so explainer
   content compounds. Same videos, near-zero extra cost.
 
-**Platform priority: TikTok (primary) → YouTube Shorts (secondary) →
-Instagram Reels (syndication only).**
+**Delivery requirement: TikTok + Instagram Reels + YouTube Shorts + X.** The
+creative can prioritise TikTok retention, but a finished asset is not complete
+until four independent OneUp records are verified.
 
 ## 2. The compliant-viral matrix
 
@@ -83,12 +84,12 @@ Every queue entry names one format. Hold the format constant, vary the hook.
 - **Why**: the swirling blue GHK-Cu, frost on a −20°C vial, bac-water droplets
   — genuinely satisfying macro footage. Cheapest to produce, best for volume,
   and rides trending audio. This is the upgrade of what was already being
-  posted — same assets, plus the two missing ingredients: a native text hook
-  and a trending sound.
+  posted — same assets, plus the two missing ingredients: an immediate text
+  hook and an intentional sound bed.
 - **Recipe**: single Higgsfield image-to-video from a real product photo
-  (see `prompts.md`). Text hook + trending audio added natively at publish —
-  never baked in; native text is read by TikTok as creator content, baked
-  graphics read as an ad.
+  (see `prompts.md`). Unattended runs bake a centre-safe editorial hook with
+  `assemble-lab-loop.mjs`, because the OneUp API does not expose native text.
+  TikTok trending audio is attached when its OneUp endpoint is healthy.
 - **Hook pattern (overlay)**: "Why is this the only blue peptide in the lab?" /
   "Straight out of the −20°C freezer."
 
@@ -165,7 +166,8 @@ Judge on (in order): 3-second hold rate, completion rate, saves+shares,
 follows per post, comments. **Raw views are the last metric that matters** —
 a 500-view post with 12 saves beats a 2,000-view post with none.
 
-Weekly review (automatable): pull per-post stats, kill the bottom format,
+Weekly review (automatable): pull per-post stats from platform-native analytics
+or Windsor.ai (OneUp Basic blocks analytics), kill the bottom format,
 double the top format's slots, refresh hooks on survivors. Log every post and
 its 7-day numbers in `log.csv` so the review has data.
 
@@ -175,8 +177,9 @@ its 7-day numbers in `log.csv` so the review has data.
   get burned fast. Organic + SEO only.
 - **No engagement pods / bought views**: poisons the retention signal the whole
   experiment depends on.
-- **No IG-first strategy**: account-suspension risk; IG is a mirror, nothing
-  more.
+- **No single-platform output**: each approved asset ships to TikTok, Instagram,
+  YouTube Shorts and X. Platform-specific failures are retried without
+  duplicating destinations that already succeeded.
 - **No trend-hopping outside the niche**: a viral dance sound on a vial video
   attracts the wrong test pool and tanks watch time. Trending *audio* yes
   (F4/F6), trending *formats* only if they can carry research framing.

@@ -1,0 +1,29 @@
+{
+  "duration": 8,
+  "eyebrow": "LAB VARIABLES / 01",
+  "footer": "FOR LABORATORY RESEARCH USE ONLY · NOT FOR HUMAN CONSUMPTION",
+  "panel": {
+    "x": 60,
+    "y": 300,
+    "width": 960,
+    "height": 1320,
+    "opacity": 0.70
+  },
+  "segments": [
+    {
+      "start": 0,
+      "end": 2.7,
+      "text": "WHY THE\n−20°C FREEZER?"
+    },
+    {
+      "start": 2.7,
+      "end": 5.5,
+      "text": "TEMPERATURE.\nLIGHT. TIME."
+    },
+    {
+      "start": 5.5,
+      "end": 8,
+      "text": "WHAT COMES\nOUT NEXT?"
+    }
+  ]
+}

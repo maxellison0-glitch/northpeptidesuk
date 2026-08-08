@@ -1,6 +1,8 @@
-# Social Engine — automated short-form pipeline
+# Social Engine — autonomous four-platform short-form pipeline
 
-Turns the playbook into 2–3 gated posts per day with no human production work.
+Turns the playbook into at least one gated four-platform post per day with no
+human production work. A second daily post is allowed only after 4/4 delivery
+for the first unit is verified.
 Strategy lives in `PLAYBOOK.md`; this file is the operating manual for whichever
 agent (Claude Code routine or Codex) runs the daily cycle.
 
@@ -23,8 +25,11 @@ queue.md (next unposted slot)
    │         Source images: real product photos in the repo root, or new
    │         stills generated from them (never invent products or people).
    ▼
-4. PUBLISH   At the slot's UK time, TikTok first (native text overlay + trending
-   │         audio for F4/F6), then cross-post YouTube Shorts + IG Reels.
+4. PUBLISH   At the slot's UK time, create and verify four independent OneUp
+   │         API records: TikTok, Instagram Reel, YouTube Short and X video.
+   │         Use a baked, centre-safe overlay for unattended runs. Add TikTok
+   │         trending audio when the OneUp endpoint is healthy; log a 500 and
+   │         keep the post moving when it is not.
    ▼
 5. LOG       Append a row to log.csv (see header below) with post URL + format.
 ```
@@ -39,30 +44,41 @@ with the next week of slots.
 date,platform,format,compound,hook,post_url,views_7d,hold_3s_pct,completion_pct,saves,shares,comments,follows
 ```
 
-Metrics come from the platform analytics (TikTok Studio / YT Studio). Fill what
-is available; blank beats guessed.
+OneUp's Basic plan does not expose analytics or comments. Metrics therefore come
+from platform-native analytics or Windsor.ai. Fill what is available; blank
+beats guessed.
 
 ## Publishing paths
 
-- **TikTok**: Higgsfield `tiktok_prepare_publish` / `tiktok_publish` (account
-  already connected), or the existing Codex API connector. Native text overlays
-  and sounds must be added at publish time — see PLAYBOOK F4.
-- **YouTube Shorts / Instagram**: Codex API connector (existing setup). Same
-  video file, same gated caption, drop TikTok-specific hashtags.
+- **All four destinations**: the OneUp API connector is the delivery layer.
+  Target the explicit connected account ID and create one record per platform so
+  captions, the YouTube title, TikTok disclosure/music and retries remain
+  independently auditable.
+- **TikTok audio**: select the best suitable UK / 7-day / dance-electronic sound
+  autonomously. If OneUp's sound endpoint fails, keep the baked audio and record
+  the endpoint failure; do not switch to TikTok Studio or another account.
+- **Media**: OneUp's Basic plan cannot ingest a local file through the Upload
+  Media endpoint. Host the final MP4 at a durable public URL before scheduling.
 
 ## Hard rules for the automation
 
 1. Nothing publishes without a `caption-gate.js` pass in the same run.
 2. VO scripts are gated too, not just captions.
 3. No AI humans presented as customers/reviewers; no depiction of human use.
-4. One video = one format = one queue slot. No improvised extra posts.
+4. One video = one format = one queue slot = four platform records. A run is not
+   complete until all four succeed or each remaining failure is logged for retry.
 5. If a generation fails twice, skip the slot and log it — never publish a
    degraded video to hit cadence.
-6. Credits guard: stop producing (not posting) if Higgsfield balance < 50.
+6. Credits guard: total Higgsfield generation spend must not exceed 30 credits in
+   a UK calendar day. Check transactions, reuse completed generations first and
+   switch to the zero-credit ffmpeg/HTML fallback before crossing the limit.
+7. Before every OneUp write, check published, scheduled and failed records for a
+   duplicate. Never retry a platform that already succeeded.
 
 ## Setting up the recurring run
 
-A Claude Code routine (or cron for Codex) should fire twice daily at ~06:00 and
-~16:30 UK time to produce and schedule that day's slots, plus the Sunday review
-run. Keep production runs and publish times decoupled: produce in the morning,
-publish at the slot times.
+A Claude Code routine (or Codex recurring task) should run at 06:00 to produce,
+09:00 to schedule, after the publish window to verify all four destinations, and
+21:00 to capture yesterday's native metrics. The Sunday run performs the 7-day
+review and refills the queue. Full details are in
+`AUTONOMOUS_DAILY_RUNBOOK.md`.
