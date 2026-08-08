@@ -48,8 +48,27 @@
   (document.head || document.documentElement).appendChild(style);
 
   // --- Slides: rotate the dispatch message with the free-delivery offer ------
+  // Summer break 2026: last pre-break order Mon 10 Aug 23:59 UK, dispatch
+  // resumes 1 Sept. Slides switch automatically; delete the block after.
+  var HB_CUTOFF = Date.parse('2026-08-10T22:59:00Z');
+  var HB_RESUME = Date.parse('2026-08-31T23:00:00Z');
+  function hbPhase() {
+    var now = Date.now();
+    if (now < HB_CUTOFF) return 'pre';
+    if (now < HB_RESUME) return 'break';
+    return 'normal';
+  }
+  function hbCountdown() {
+    var ms = HB_CUTOFF - Date.now();
+    if (ms < 0) ms = 0;
+    var d = Math.floor(ms / 86400000);
+    var h = Math.floor((ms % 86400000) / 3600000);
+    var m = Math.floor((ms % 3600000) / 60000);
+    return (d > 0 ? d + 'd ' : '') + h + 'h ' + ('0' + m).slice(-2) + 'm';
+  }
+
   var SLIDE_SECONDS = 5;
-  var slides = [
+  var normalSlides = [
     function () {
       return {
         mode: 'next',
@@ -63,6 +82,43 @@
       };
     }
   ];
+  var slides;
+  if (hbPhase() === 'pre') {
+    slides = [
+      function () {
+        return {
+          mode: 'sameday',
+          html: '<strong>Final dispatch before summer break: Tue 11 Aug</strong> - order within <span class="npbar-hl">' + hbCountdown() + '</span>'
+        };
+      },
+      normalSlides[0],
+      function () {
+        return {
+          mode: 'ship',
+          html: 'From 11 Aug: <span class="npbar-hl">10% off pre-orders</span> - dispatched from 1 September'
+        };
+      },
+      normalSlides[1]
+    ];
+  } else if (hbPhase() === 'break') {
+    slides = [
+      function () {
+        return {
+          mode: 'sameday',
+          html: '<strong>Summer pre-orders open</strong> - <span class="npbar-hl">10% off everything</span> with code SUMMER10'
+        };
+      },
+      function () {
+        return {
+          mode: 'next',
+          html: 'Items reserved on order - <span class="npbar-hl">dispatched from 1 September</span>'
+        };
+      },
+      normalSlides[1]
+    ];
+  } else {
+    slides = normalSlides;
+  }
 
   // --- Mount + live update ---------------------------------------------------
   var bar, innerEl, textEl, idx = 0, secondsOnSlide = 0, lastMode;

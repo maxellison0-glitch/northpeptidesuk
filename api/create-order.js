@@ -45,6 +45,15 @@ async function generateOrderRef() {
   }
 }
 
+// Summer break 2026: pre-orders taken 11 Aug - 31 Aug dispatch from 1 Sept.
+// Returns false again automatically from 1 September; safe to delete after.
+const HOLIDAY_CUTOFF_UTC = Date.parse("2026-08-10T22:59:00Z");
+const HOLIDAY_RESUME_UTC = Date.parse("2026-08-31T23:00:00Z");
+function holidayBreakActive() {
+  const now = Date.now();
+  return now >= HOLIDAY_CUTOFF_UTC && now < HOLIDAY_RESUME_UTC;
+}
+
 function escapeHtml(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -196,7 +205,7 @@ Reference: ${order.ref}
 
 Please use your order reference (${order.ref}) as the payment reference.
 
-Once we receive payment, we'll confirm and dispatch within 24-48 hours.
+Once we receive payment, we'll confirm by email. ${holidayBreakActive() ? "Your summer pre-order is reserved and dispatched from 1 September." : "We dispatch within 24-48 hours."}
 
 ${items}
 

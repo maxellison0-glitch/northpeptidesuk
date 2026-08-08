@@ -92,7 +92,8 @@ for (const [key, value] of Object.entries(CATALOG)) {
 const PUBLIC_DISCOUNT_CODES = {
   WELCOME10: 0.10,
   AJ: 0.10,
-  AJ20: 0.20
+  AJ20: 0.20,
+  SUMMER10: 0.10
 };
 
 function loadPrivateDiscountCodes() {
