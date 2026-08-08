@@ -10,7 +10,7 @@ Standard footer (append to every caption):
 
 | # | Day | Time | Format | Compound | Hook / overlay | Asset source |
 |---|-----|------|--------|----------|----------------|--------------|
-| 1 | Mon | 18:30 | F4 Lab Loop | GHK-Cu | [Why is this the only blue peptide in the lab?] | ghk-cu-reconstituted.png → I2V |
+| 1 | Mon | 18:30 | F4 Lab Loop | GHK-Cu | [Why is this the only blue peptide in the lab?] | ghk-cu-swirl-v01.mp4 (edited master) — posted |
 | 2 | Mon | 12:30 | F1 Peptide File #001 | BPC-157 | VO: "The most talked-about research peptide in the UK…" | faceless explainer |
 | 3 | Tue | 18:30 | F4 Lab Loop | Retatrutide | [Straight out of the −20°C freezer] | reta-50mg-frozen.png → I2V |
 | 4 | Tue | 07:30 | F2 Lab Verdict | GHK-Cu | VO: "We paid an independent UK lab to test our own stock." | COA report + vial macro |
