@@ -1723,13 +1723,13 @@
         {
           "label": "10ml vial",
           "dose": "10ml vial",
-          "price": 6.99,
+          "price": 9.99,
           "currency": "GBP"
         },
         {
           "label": "3ml vial",
           "dose": "3ml vial",
-          "price": 4.99,
+          "price": 3.99,
           "currency": "GBP"
         }
       ],

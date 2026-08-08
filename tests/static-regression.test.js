@@ -23,7 +23,7 @@ const sitemap = read("sitemap.xml");
 const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
 const expectedAccessoryPrices = [
-  ["Bacteriostatic Water", "10ml vial", "6.99"],
+  ["Bacteriostatic Water", "10ml vial", "9.99"],
   ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "6.99"],
   ["Sterile Disposable Pen Tips", "6mm x5", "3.99"],
   ["Alcohol Wipes", "10 pack", "2.99"],

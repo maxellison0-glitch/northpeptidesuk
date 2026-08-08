@@ -211,7 +211,7 @@ ${configuredVariantButtons(activeFormat.variants)}
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = ${activeFormatIndex};
           window.NPUK_CONFIG_FORMATS = ${JSON.stringify(formats)};
-          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial', price: 6.99 };
+          window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '10ml vial', price: 9.99 };
         </script>`;
 }
 

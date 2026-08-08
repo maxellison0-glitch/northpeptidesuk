@@ -1564,8 +1564,8 @@ const PRODUCT_DATA = {
       chips: ["10ml Vial", "Sealed", "Research Supply"]
     },
     variants: [
-      { label: "10ml vial", dose: "10ml vial", price: 6.99 },
-      { label: "3ml vial", dose: "3ml vial", price: 4.99 }
+      { label: "10ml vial", dose: "10ml vial", price: 9.99 },
+      { label: "3ml vial", dose: "3ml vial", price: 3.99 }
     ],
   },
   "syringe-kit": {

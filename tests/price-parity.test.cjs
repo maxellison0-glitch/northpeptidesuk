@@ -112,8 +112,9 @@ test('every homepage literal Add button resolves at its shown price', () => {
 test('every checkout/product add-on button resolves at its shown price', () => {
   // Hardcoded add-on emits in product.html (accessory/intranasal/pen) and checkout.html (thermal).
   const addons = [
-    ['Bacteriostatic Water', 6.99, 'Accessory'],
-    ['Bacteriostatic Water', 6.99, '10ml vial'],
+    ['Bacteriostatic Water', 9.99, 'Accessory'],
+    ['Bacteriostatic Water', 9.99, '10ml vial'],
+    ['Bacteriostatic Water', 0, '3ml vial - free'],
     ['Insulin Needle Pack', 6.99, 'Accessory'],
     ['Intranasal Research Kit', 4.99, 'Kit add-on'],
     ['Disposable Research Pen Kit', 9.99, 'Kit add-on'],
