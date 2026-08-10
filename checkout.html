@@ -561,6 +561,21 @@
     .btn-place-order:hover { background: var(--action-deep); transform: translateY(-1px); box-shadow: 0 14px 34px rgba(31,111,235,.28); }
     .btn-place-order:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
 
+    .checkout-error {
+      display: none;
+      margin: 0 0 14px;
+      padding: 12px 15px;
+      background: #FDF0EE;
+      border: 1px solid rgba(192,57,43,.25);
+      border-radius: var(--r-ctl);
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .03em;
+      line-height: 1.6;
+      color: var(--danger);
+    }
+    .checkout-error.show { display: block; }
+
     .checkout-fine-print {
       margin: 0;
       font-size: .72rem;
@@ -825,8 +840,6 @@
     </div>
   </div>
 
-  </div>
-
   <!-- SMART SECTION: cold-chain add-on for regular vials -->
   <div id="smart-section" style="display:none">
 
@@ -1019,6 +1032,7 @@
     </div>
 
     <button type="submit" class="btn-place-order" id="submit-btn">Place order</button>
+    <div class="checkout-error" id="checkout-error" role="alert"></div>
     <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
 
@@ -1315,6 +1329,19 @@
     document.getElementById('main-checkout').style.display = 'none';
     document.getElementById('success-page').style.display = 'block';
     localStorage.removeItem('npuk_basket');
+    window.scrollTo(0, 0);
+  }
+
+  function showCheckoutError(text) {
+    const box = document.getElementById('checkout-error');
+    box.textContent = text;
+    box.classList.add('show');
+  }
+
+  function clearCheckoutError() {
+    const box = document.getElementById('checkout-error');
+    box.textContent = '';
+    box.classList.remove('show');
   }
 
   window.addEventListener('load', () => {
@@ -1333,12 +1360,11 @@
       return;
     }
     if (basketData.length === 0) {
-      const msg = document.getElementById('discount-msg');
-      msg.textContent = 'Add at least one item before checkout.';
-      msg.className = 'discount-msg error';
+      showCheckoutError('Your basket is empty — add at least one item before placing an order.');
       return;
     }
 
+    clearCheckoutError();
     btn.textContent = 'Placing order...';
     btn.disabled = true;
     try {
@@ -1372,9 +1398,7 @@
       }
       showBankTransferSuccess(data);
     } catch (error) {
-      const msg = document.getElementById('discount-msg');
-      msg.textContent = error.message || 'Order could not be placed. Please try again.';
-      msg.className = 'discount-msg error';
+      showCheckoutError(error.message || 'Order could not be placed. Please try again.');
       btn.textContent = 'Place order';
       btn.disabled = false;
     }
