@@ -1,0 +1,85 @@
+{
+  "episode_id": "NP-072",
+  "duration_s": 9,
+  "reference": "original digital group-chat meme using the established fast meme control",
+  "evidence_path": "social-engine/assets/NP-072-gym-group-chat/evidence.md",
+  "hook": "Say “BPC-157” in the gym chat…",
+  "script": "Say BPC-157 in the gym chat and eight peptide professors spawn.",
+  "payoff": "The authentic product reveal lands the joke before asking which peptide starts the biggest argument.",
+  "opening_visual_job": "personify",
+  "first_meaningful_motion_ms": 0,
+  "ai_asset_policy_checked": true,
+  "shots": [
+    {
+      "asset_id": "animated-chat-setup",
+      "source_kind": "screen_recording",
+      "duration_s": 2,
+      "visual_job": "Make the gym-group-chat premise instantly recognisable.",
+      "product_visible": false,
+      "label_verified": false
+    },
+    {
+      "asset_id": "animated-message-storm-a",
+      "source_kind": "screen_recording",
+      "duration_s": 2.2,
+      "visual_job": "Escalate the joke through rapid replies and endless typing.",
+      "product_visible": false,
+      "label_verified": false
+    },
+    {
+      "asset_id": "authentic-bpc-vial",
+      "source_kind": "product_still",
+      "duration_s": 1.3,
+      "visual_job": "Land the punchline on the authentic North Peptides product.",
+      "product_visible": true,
+      "label_verified": true
+    },
+    {
+      "asset_id": "animated-message-storm-b",
+      "source_kind": "screen_recording",
+      "duration_s": 2,
+      "visual_job": "Continue the escalating chat over the authentic product without resetting the scene.",
+      "product_visible": true,
+      "label_verified": true
+    },
+    {
+      "asset_id": "animated-comment-prompt",
+      "source_kind": "screen_recording",
+      "duration_s": 1.5,
+      "visual_job": "Turn recognition into a natural comment prompt while the authentic product remains in motion.",
+      "product_visible": true,
+      "label_verified": true
+    }
+  ],
+  "critic_scores": {
+    "stop_power": 8,
+    "clarity": 9,
+    "hook_visual_causality": 9,
+    "human_voice": 8,
+    "payoff": 8,
+    "asset_feasibility": 9
+  },
+  "full_speed_watch": {
+    "passed": true,
+    "reviewer": "Codex full-speed plus 18-frame contact-sheet review",
+    "notes": "Final 9-second render reviewed after revision. Product label remains BPC-157 and unobscured; no blank reset, frozen opening, black frame, or clipped safe-area copy was observed."
+  },
+  "client_approval": {
+    "status": "approved",
+    "reviewer": "Max",
+    "date": "2026-08-09",
+    "verbatim_signal": "Absolutely approved by Max.",
+    "next_edit_calibration": "Keep the animated message format; give each beat slightly more breathing room and reduce simultaneous motion."
+  },
+  "delivery": {
+    "status": "published",
+    "scheduled_date_time_uk": "2026-08-10 07:45",
+    "hosted_video_url": "https://www.northpeptidesuk.com/social-engine/assets/NP-072-gym-group-chat/NP-072-gym-group-chat.mp4",
+    "oneup_posts": {
+      "tiktok": 51048792,
+      "instagram": 51048793,
+      "youtube": 51048794,
+      "x": 51048795
+    }
+  }
+}

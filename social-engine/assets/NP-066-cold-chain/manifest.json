@@ -1,0 +1,25 @@
+{
+  "id": "NP-066",
+  "format": "F4 Lab Loop",
+  "working_title": "Why the −20°C freezer?",
+  "source_generation_id": "697144e3-d32b-489b-bd1a-b192a87a3214",
+  "final_asset": "NP-066-final.mp4",
+  "platforms": [
+    "TikTok",
+    "Instagram",
+    "YouTube",
+    "X"
+  ],
+  "status": "posted",
+  "higgsfield_credits_used_this_run": 0,
+  "oneup": {
+    "published_at_utc": "2026-08-08 13:28",
+    "tiktok_post_id": 50999583,
+    "instagram_post_id": 50999585,
+    "youtube_post_id": 50999586,
+    "x_post_id": 50999588,
+    "tiktok_sound": "OneUp trending-sound endpoint returned HTTP 500; retained baked Higgsfield audio",
+    "scheduled_match_after_publish": 0,
+    "failed_match_after_publish": 0
+  }
+}

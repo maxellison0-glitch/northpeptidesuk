@@ -1,0 +1,93 @@
+{
+  "episode_id": "NP-073",
+  "duration_s": 15.8,
+  "reference": "fast ecommerce basket-escalation story adapted to North Peptides UK products",
+  "evidence_path": "social-engine/assets/NP-073-chaotic-batch/evidence.md",
+  "hook": "POV: you only came for one vial",
+  "script": "A one-vial basket escalates product by product, hits exactly £99.99 against a £100 free-delivery threshold, then spills into a five-product lineup.",
+  "payoff": "The mathematically exact one-penny-short beat triggers the escalation before the final website and comment prompt.",
+  "opening_visual_job": "demonstrate",
+  "first_meaningful_motion_ms": 0,
+  "ai_asset_policy_checked": true,
+  "shots": [
+    {
+      "asset_id": "bpc-basket-open",
+      "source_kind": "screen_recording",
+      "duration_s": 2,
+      "visual_job": "Establish the one-vial premise on a clearly branded BPC-157 product.",
+      "product_visible": true,
+      "label_verified": true
+    },
+    {
+      "asset_id": "delivery-meter",
+      "source_kind": "screen_recording",
+      "duration_s": 2,
+      "visual_job": "Introduce the £100 threshold that causes the basket escalation.",
+      "product_visible": false,
+      "label_verified": false
+    },
+    {
+      "asset_id": "tb-and-ghk-escalation",
+      "source_kind": "screen_recording",
+      "duration_s": 4,
+      "visual_job": "Add TB-500 and GHK-Cu while moving the subtotal to exactly £99.99.",
+      "product_visible": true,
+      "label_verified": true
+    },
+    {
+      "asset_id": "one-penny-punchline",
+      "source_kind": "screen_recording",
+      "duration_s": 1.8,
+      "visual_job": "Land the one-penny-short punchline with a full progress meter.",
+      "product_visible": false,
+      "label_verified": false
+    },
+    {
+      "asset_id": "klow-reta-overflow",
+      "source_kind": "screen_recording",
+      "duration_s": 3.8,
+      "visual_job": "Escalate beyond the original goal with two more clearly labelled products.",
+      "product_visible": true,
+      "label_verified": true
+    },
+    {
+      "asset_id": "five-product-lineup",
+      "source_kind": "screen_recording",
+      "duration_s": 2.2,
+      "visual_job": "Resolve the story with five products, a comment prompt and the North Peptides UK URL.",
+      "product_visible": true,
+      "label_verified": true
+    }
+  ],
+  "critic_scores": {
+    "stop_power": 8,
+    "clarity": 9,
+    "hook_visual_causality": 9,
+    "human_voice": 8,
+    "payoff": 9,
+    "asset_feasibility": 9
+  },
+  "full_speed_watch": {
+    "passed": true,
+    "reviewer": "Codex 32-frame full-timeline visual review",
+    "notes": "Reviewed 32 evenly spaced frames from frame 0 through frame 473 after transition revision. The hook is readable on frame one; all story beats are legible; all five product labels remain visible; no blank transition, blur, clipped hook or black frame was observed."
+  },
+  "client_approval": {
+    "status": "approved",
+    "reviewer": "Max",
+    "date": "2026-08-09",
+    "verbatim_signal": "I like the ideas btw much better, act on them and get the content scheduled",
+    "next_edit_calibration": "Keep complete, logical stories with immediate hooks, pace, animation and an explicit North Peptides website plug."
+  },
+  "delivery": {
+    "status": "scheduled",
+    "scheduled_date_time_uk": "2026-08-10 12:30",
+    "hosted_video_url": "https://www.northpeptidesuk.com/social-engine/assets/NP-073-chaotic-batch/NP-073-basket-story.mp4",
+    "oneup_posts": {
+      "tiktok": 51048796,
+      "instagram": 51048797,
+      "youtube": 51048798,
+      "x": 51048800
+    }
+  }
+}
