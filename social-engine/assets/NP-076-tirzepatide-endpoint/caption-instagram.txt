@@ -1,0 +1,13 @@
+20.9% is the number everyone quotes. Here is what it actually was:
+
+In SURMOUNT-1, a phase 3 randomised trial of 2,539 adults with obesity or overweight plus a weight-related condition (without diabetes), the 15 mg tirzepatide group had a mean body-weight change of −20.9% at week 72. The placebo group was −3.1% in the same treatment-regimen analysis.
+
+The part social media usually skips: this was a 72-week endpoint, with a 20-week dose-escalation period. It is not a four-week hack, a before/after promise, or a prediction for every person.
+
+The number is real. The context is the point.
+
+What trial endpoint should we break down next?
+
+Research context only. Not medical advice. For laboratory research use only. Not for human consumption.
+
+Source: https://www.nejm.org/doi/full/10.1056/NEJMoa2206038

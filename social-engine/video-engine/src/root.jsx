@@ -3,6 +3,7 @@ import {Composition} from 'remotion';
 import {BpcGroupChat} from './BpcGroupChat';
 import {BasketStory} from './BasketStory';
 import {PeptideSignalsCarousel} from './PeptideSignalsCarousel';
+import {TirzepatideCarousel} from './TirzepatideCarousel';
 
 export const Root = () => (
   <>
@@ -26,6 +27,14 @@ export const Root = () => (
       id="PeptideSignalsCarousel"
       component={PeptideSignalsCarousel}
       durationInFrames={180}
+      fps={30}
+      width={1080}
+      height={1350}
+    />
+    <Composition
+      id="TirzepatideCarousel"
+      component={TirzepatideCarousel}
+      durationInFrames={225}
       fps={30}
       width={1080}
       height={1350}
