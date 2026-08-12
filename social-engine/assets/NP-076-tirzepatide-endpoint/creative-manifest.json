@@ -1,0 +1,16 @@
+{
+  "id": "NP-076-tirzepatide-endpoint",
+  "title": "20.9% is not a before / after",
+  "format": "five-slide evidence-led carousel + slideshow derivative",
+  "created_date": "2026-08-12",
+  "scheduled_date": "2026-08-12 18:30",
+  "timezone": "Europe/London",
+  "dimensions": {"instagram": "1080x1350", "tiktok_derivative": "1080x1920"},
+  "assets": {
+    "slides": ["slide-01.png", "slide-02.png", "slide-03.png", "slide-04.png", "slide-05.png"],
+    "video_derivative": "NP-076-tirzepatide-endpoint.mp4"
+  },
+  "evidence_file": "evidence.md",
+  "status": "produced_pending_schedule",
+  "oneup_posts": {}
+}
