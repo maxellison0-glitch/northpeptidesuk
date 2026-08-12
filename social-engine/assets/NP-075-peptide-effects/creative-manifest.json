@@ -12,6 +12,11 @@
   },
   "palette": ["#171613", "#F3EFE7", "#C57B49", "#A7B58B"],
   "evidence_file": "evidence.md",
-  "status": "produced_pending_schedule",
-  "oneup_posts": {}
+  "status": "scheduled_partial",
+  "oneup_posts": {
+    "instagram": 51125210,
+    "tiktok": 51125211,
+    "x": 51125212
+  },
+  "schedule_note": "Scheduled 2026-08-13 18:30 Europe/London to northpeptidesuk Instagram and TikTok; X video 18:35. YouTube intentionally not scheduled because the connected channel is the deleted/incorrect Max Ellison destination."
 }
