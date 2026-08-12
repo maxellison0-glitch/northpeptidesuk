@@ -32,6 +32,8 @@ simple. It repeats the best evidenced mechanics before opening a new format.
 | 14 Aug | 18:30 | Carousel / saveable list | [TOP 5 PEPTIDES FOR SKIN RESEARCH] | Mirrors the recurring “top 5” and saveable checklist grammar in the live niche | 5–7 clean cards; one evidence line per card | 0 | queued |
 | 15 Aug | 18:30 | Q&A / comment reply | [COMMENT “BRAIN” FOR THE PAPER.] | Live Semax results explicitly use the comment-keyword loop; measure comments and profile taps | Reply-style 30–45s video or source card | 0 | queued |
 
+| 12 Aug | 18:30 | Evidence-led carousel / tirzepatide endpoint | [20.9% IS NOT A BEFORE / AFTER.] | Bold number first, then trial population, endpoint, timeline and maths context; gives the audience a real claim to debate without turning a trial mean into a promise | `assets/NP-076-tirzepatide-endpoint/slide-01.png` … `slide-05.png` (slideshow MP4 derivative also rendered) | 0 | scheduled_partial — Instagram 51125492; TikTok 51125494; X video 51125493. YouTube skipped: connected destination is the deleted/incorrect channel. |
+
 After each 24-hour read, a ≥2× median save-plus-comment rate earns three close
 variants. Three below-median executions retire the format at Sunday review.
 Blank metrics never become invented evidence.

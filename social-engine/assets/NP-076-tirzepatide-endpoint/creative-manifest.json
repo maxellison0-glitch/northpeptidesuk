@@ -11,6 +11,11 @@
     "video_derivative": "NP-076-tirzepatide-endpoint.mp4"
   },
   "evidence_file": "evidence.md",
-  "status": "produced_pending_schedule",
-  "oneup_posts": {}
+  "status": "scheduled_partial",
+  "oneup_posts": {
+    "instagram": 51125492,
+    "tiktok": 51125494,
+    "x": 51125493
+  },
+  "schedule_note": "Scheduled 2026-08-12 18:30 Europe/London to northpeptidesuk Instagram and TikTok; X video 18:35. YouTube intentionally not scheduled because the connected channel is the deleted/incorrect Max Ellison destination."
 }
