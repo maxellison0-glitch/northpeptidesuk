@@ -1,0 +1,17 @@
+{
+  "id": "NP-075-peptide-effects",
+  "title": "The peptide effects people actually measure",
+  "format": "six-slide educational carousel + slideshow derivative",
+  "created_date": "2026-08-12",
+  "scheduled_date": "2026-08-13 18:30",
+  "timezone": "Europe/London",
+  "dimensions": {"instagram": "1080x1350", "tiktok_derivative": "1080x1920"},
+  "assets": {
+    "slides": ["slide-01.png", "slide-02.png", "slide-03.png", "slide-04.png", "slide-05.png", "slide-06.png"],
+    "video_derivative": "NP-075-peptide-effects.mp4"
+  },
+  "palette": ["#171613", "#F3EFE7", "#C57B49", "#A7B58B"],
+  "evidence_file": "evidence.md",
+  "status": "produced_pending_schedule",
+  "oneup_posts": {}
+}
