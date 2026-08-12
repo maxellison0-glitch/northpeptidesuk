@@ -1,0 +1,17 @@
+The peptide effects people actually measure:
+
+1. Retatrutide: −24.2% mean body-weight change at 48 weeks in one phase 2 obesity trial (12 mg group). That is a trial endpoint, not a promise for every person.
+
+2. Semaglutide: in SELECT, the composite of cardiovascular death, nonfatal heart attack or nonfatal stroke occurred in 6.5% vs 8.0% with placebo — a 20% relative risk reduction in that study population.
+
+3. GHK-Cu: reviews report lower circulating GHK with age. The oft-cited range is about 200 ng/mL in young adults and around 80 ng/mL in older adults. That does not prove that adding GHK-Cu restores youth.
+
+4. GHK-Cu: in a rat wound model, the copper tripeptide increased collagen, DNA, total protein and glycosaminoglycan content. Interesting biology; not human injectable proof.
+
+5. GHRH: deep sleep is associated with the major natural growth-hormone pulse, and GH output declines with age. Physiology is not the same thing as age reversal.
+
+Which result should we deep-dive next?
+
+Research context only. Not medical advice. For laboratory research use only. Not for human consumption.
+
+Sources: https://pubmed.ncbi.nlm.nih.gov/37366315/ · https://pubmed.ncbi.nlm.nih.gov/37952131/ · https://pmc.ncbi.nlm.nih.gov/articles/PMC3359723/ · https://pubmed.ncbi.nlm.nih.gov/8227353/ · https://pubmed.ncbi.nlm.nih.gov/8627466/

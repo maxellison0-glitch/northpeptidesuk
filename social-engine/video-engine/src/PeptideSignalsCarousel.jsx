@@ -4,44 +4,44 @@ import {Img, staticFile, useCurrentFrame} from 'remotion';
 const slides = [
   {
     kicker: 'THE BODY\'S SIGNAL LANGUAGE',
-    title: 'WHAT CAN\nPEPTIDES ACTUALLY DO?',
-    body: 'MOVE SUGAR  ·  SLOW DIGESTION  ·  HOLD WATER  ·  SIGNAL COLLAGEN  ·  TRIGGER HORMONE PULSES',
+    title: 'THE PEPTIDE\nEFFECTS PEOPLE\nACTUALLY MEASURE',
+    body: 'BODY WEIGHT  ·  CARDIOVASCULAR EVENTS  ·  COLLAGEN SIGNALS  ·  HORMONE AXES',
     type: 'cover',
   },
   {
-    kicker: '01 / INSULIN',
-    title: 'GLUT4\n→ GLUCOSE\nINTO CELLS',
-    body: 'Insulin signals muscle and fat cells to pull glucose out of the bloodstream.',
-    type: 'insulin',
-    tag: 'PEPTIDE HORMONE  /  PANCREAS',
+    kicker: '01 / RETATRUTIDE',
+    title: '-24.2%\nBODY WEIGHT',
+    body: 'At 48 weeks in a phase 2 trial of adults with obesity. Retatrutide activates GIP, GLP-1 and glucagon receptors.',
+    type: 'retatrutide',
+    tag: 'N=338  ·  PHASE 2  ·  NOT A GUARANTEE',
   },
   {
-    kicker: '02 / GLP-1',
-    title: 'THE\nINCRETIN\nEFFECT',
-    body: 'Insulin ↑   ·   Glucagon ↓   ·   Gastric emptying ↓',
-    type: 'glp1',
-    tag: 'RECEPTOR SIGNAL  /  GUT–PANCREAS AXIS',
+    kicker: '02 / SEMAGLUTIDE',
+    title: '20% FEWER\nMAJOR CV\nEVENTS',
+    body: 'In SELECT, semaglutide reduced the composite risk of cardiovascular death, heart attack or stroke versus placebo.',
+    type: 'sema',
+    tag: 'N=17,604  ·  HR 0.80  ·  CLINICAL TRIAL',
   },
   {
     kicker: '03 / GHK-Cu',
-    title: 'COPPER\nTRIPEPTIDE\nSIGNALLING',
-    body: 'Studied around fibroblasts, collagen expression and extracellular-matrix remodelling.',
-    type: 'ghk',
-    tag: 'PRECLINICAL CONNECTIVE-TISSUE RESEARCH',
+    title: 'GHK-Cu\n200 → 80\nng/mL',
+    body: 'A review reports lower circulating GHK with age — roughly age 20 to 60–80. That is a biology signal, not proof of restored youth.',
+    type: 'ghk-age',
+    tag: 'ENDOGENOUS PEPTIDE  ·  REPORTED RANGE',
   },
   {
-    kicker: '04 / VASOPRESSIN',
-    title: 'V2 RECEPTOR\n→ AQUAPORIN-2\n→ WATER RETENTION',
-    body: 'A peptide signal that tells the kidneys to conserve water.',
-    type: 'vasopressin',
-    tag: 'ANTIDIURETIC HORMONE  /  KIDNEY',
+    kicker: '04 / GHK-Cu',
+    title: 'MORE COLLAGEN.\nMORE MATRIX.\nIN A WOUND MODEL.',
+    body: 'GHK-Cu increased collagen, DNA, protein and glycosaminoglycans in a rat wound model.',
+    type: 'ghk-matrix',
+    tag: 'PRECLINICAL  ·  NOT HUMAN INJECTABLE PROOF',
   },
   {
-    kicker: '05 / GHRH',
-    title: 'PITUITARY\nPULSE\n→ GH → IGF-1',
-    body: 'A peptide signal involved in pulsatile growth-hormone release, including the sleep-associated pulse.',
+    kicker: '05 / GHRH → GH',
+    title: 'SLEEP → GH\n→ IGF-1',
+    body: 'Deep sleep carries the major natural GH pulse. GH output also declines with age — not the same as proving age reversal.',
     type: 'ghrh',
-    tag: 'NEUROENDOCRINE SIGNAL  /  SLEEP PHYSIOLOGY',
+    tag: 'PHYSIOLOGY  ·  NOT AN AGE-REVERSAL CLAIM',
   },
 ];
 
@@ -65,6 +65,27 @@ function Glow({x, y, color, size, opacity = 0.35}) {
 
 function Diagram({type}) {
   const common = {position: 'absolute', inset: 0, pointerEvents: 'none'};
+  if (type === 'retatrutide') return <div style={common}>
+    <div style={{position: 'absolute', right: 80, top: 350, width: 330, height: 330, border: `2px solid ${colors.copper}`, borderRadius: '50%', boxShadow: `0 0 55px rgba(197,123,73,.38)`}} />
+    <div style={{position: 'absolute', right: 132, top: 402, width: 226, height: 226, border: `8px solid ${colors.green}`, borderRightColor: 'transparent', borderBottomColor: 'transparent', borderRadius: '50%', transform: 'rotate(-35deg)'}} />
+    <div style={{position: 'absolute', right: 165, top: 485, color: colors.cream, fontFamily: 'Arial, sans-serif', fontSize: 42, fontWeight: 700, letterSpacing: -1}}>−24.2%</div>
+    <div style={{position: 'absolute', right: 134, bottom: 280, fontFamily: 'Arial, sans-serif', fontSize: 16, letterSpacing: 3, color: colors.green}}>48-WEEK BODY-WEIGHT ENDPOINT</div>
+  </div>;
+  if (type === 'sema') return <div style={common}>
+    <div style={{position: 'absolute', right: 65, top: 470, width: 430, height: 150, borderTop: `3px solid ${colors.rust}`, borderRadius: '50%', transform: 'rotate(-3deg)', boxShadow: `0 0 28px rgba(169,75,44,.6)`}} />
+    <div style={{position: 'absolute', right: 240, top: 400, width: 4, height: 280, background: colors.cream, opacity: .75}} />
+    <div style={{position: 'absolute', right: 95, bottom: 280, fontFamily: 'Arial, sans-serif', fontSize: 16, letterSpacing: 3, color: colors.green}}>CV DEATH · MI · STROKE</div>
+  </div>;
+  if (type === 'ghk-age') return <div style={common}>
+    <div style={{position: 'absolute', right: 90, top: 385, width: 300, height: 300, border: `1px solid ${colors.green}`, borderRadius: '50%', opacity: .6}} />
+    <div style={{position: 'absolute', right: 152, top: 428, width: 150, height: 210, background: `linear-gradient(to top, ${colors.rust} 0%, ${colors.rust} 100%)`, opacity: .75, borderRadius: '8px 8px 0 0'}} />
+    <div style={{position: 'absolute', right: 152, top: 428, width: 150, height: 210, border: `2px solid ${colors.copper}`, borderRadius: '8px 8px 0 0', boxSizing: 'border-box'}} />
+    <div style={{position: 'absolute', right: 178, top: 660, fontFamily: 'Arial, sans-serif', fontSize: 16, letterSpacing: 3, color: colors.green}}>REPORTED PLASMA RANGE</div>
+  </div>;
+  if (type === 'ghk-matrix') return <div style={common}>
+    {[0,1,2,3,4,5].map((i) => <div key={i} style={{position: 'absolute', right: 50 + i * 42, top: 300 + (i % 3) * 120, width: 420, height: 3, background: i % 2 ? colors.copper : colors.green, transform: `rotate(${i % 2 ? 18 : -14}deg)`, opacity: .65, boxShadow: `0 0 18px ${i % 2 ? colors.copper : colors.green}`}} />)}
+    <div style={{position: 'absolute', right: 122, bottom: 270, fontFamily: 'Arial, sans-serif', fontSize: 16, letterSpacing: 3, color: colors.green}}>COLLAGEN · DNA · ECM</div>
+  </div>;
   if (type === 'insulin') return <div style={common}>
     <div style={{position: 'absolute', right: 90, top: 470, width: 290, height: 290, border: `2px solid ${colors.green}`, borderRadius: '50%', opacity: 0.35}} />
     <div style={{position: 'absolute', right: 145, top: 525, width: 180, height: 180, border: `1px solid ${colors.copper}`, borderRadius: '50%', opacity: 0.65}} />
@@ -97,8 +118,8 @@ function Diagram({type}) {
 function Vial({type}) {
   const fade = {maskImage: 'radial-gradient(ellipse at 52% 52%, black 22%, rgba(0,0,0,.78) 58%, transparent 84%)', WebkitMaskImage: 'radial-gradient(ellipse at 52% 52%, black 22%, rgba(0,0,0,.78) 58%, transparent 84%)', mixBlendMode: 'screen'};
   if (type === 'cover') return <Img src={staticFile('peptide-signals/vial-editorial.jpeg')} style={{position: 'absolute', right: -80, bottom: -30, width: 640, height: 820, objectFit: 'cover', objectPosition: 'center', opacity: 0.27, filter: 'sepia(0.6) saturate(0.55) contrast(1.08)', ...fade}} />;
-  if (type === 'ghk') return <Img src={staticFile('peptide-signals/ghk-cu-vial.png')} style={{position: 'absolute', right: -40, bottom: -30, width: 600, height: 780, objectFit: 'cover', objectPosition: 'center', opacity: 0.23, filter: 'sepia(0.6) saturate(0.55) contrast(1.12)', ...fade}} />;
-  return null;
+  if (type === 'ghk' || type === 'ghk-age' || type === 'ghk-matrix') return <Img src={staticFile('peptide-signals/ghk-cu-vial.png')} style={{position: 'absolute', right: -40, bottom: -30, width: 600, height: 780, objectFit: 'cover', objectPosition: 'center', opacity: 0.23, filter: 'sepia(0.6) saturate(0.55) contrast(1.12)', ...fade}} />;
+  return <Img src={staticFile('peptide-signals/vial-editorial.jpeg')} style={{position: 'absolute', right: -90, bottom: -60, width: 560, height: 740, objectFit: 'cover', objectPosition: 'center', opacity: 0.13, filter: 'grayscale(0.9) sepia(0.45) contrast(1.12)', ...fade}} />;
 }
 
 export const PeptideSignalsCarousel = () => {
