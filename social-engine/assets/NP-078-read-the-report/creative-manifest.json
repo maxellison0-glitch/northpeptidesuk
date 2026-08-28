@@ -1,0 +1,24 @@
+{
+  "id": "NP-078-read-the-report",
+  "title": "What 99% purity actually tells you",
+  "format": "10-second vertical educational proof video",
+  "created_date": "2026-08-28",
+  "timezone": "Europe/London",
+  "dimensions": "1080x1920",
+  "duration_seconds": 10,
+  "motion_sources": [
+    "NP-066-cold-chain/NP-066-higgsfield-source.mp4",
+    "ghk-cu-swirl-v01.mp4",
+    "animated lab-report proof cards"
+  ],
+  "video": "NP-078-read-the-report.mp4",
+  "qa": {
+    "render_decode": "passed",
+    "visual_samples": 7,
+    "opening_hook_readable": true,
+    "safe_zones_checked": true,
+    "report_numbers_checked": true
+  },
+  "status": "rendered_qa_passed",
+  "oneup_posts": {}
+}
