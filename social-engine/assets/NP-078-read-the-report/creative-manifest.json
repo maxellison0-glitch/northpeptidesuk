@@ -19,6 +19,12 @@
     "safe_zones_checked": true,
     "report_numbers_checked": true
   },
-  "status": "rendered_qa_passed",
-  "oneup_posts": {}
+  "scheduled_date": "2026-08-28 20:45",
+  "status": "scheduled",
+  "oneup_posts": {
+    "instagram": 51694997,
+    "tiktok": 51694999,
+    "youtube": 51695000,
+    "x": 51695002
+  }
 }
