@@ -93,7 +93,12 @@ const PUBLIC_DISCOUNT_CODES = {
   WELCOME10: 0.10,
   AJ: 0.10,
   AJ20: 0.20,
-  SUMMER10: 0.10
+  SUMMER10: 0.10,
+  MO25: 0.25,
+  SAHAR25: 0.25,
+  CHRIS25: 0.25,
+  KURT25: 0.25,
+  JAN25: 0.25
 };
 
 function loadPrivateDiscountCodes() {
