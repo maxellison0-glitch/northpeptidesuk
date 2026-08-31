@@ -37,9 +37,9 @@ Reject does not merely hide the banner: it guarantees that `analytics.tiktok.com
 - `PageView`: exactly once per real storefront page load after consent and Pixel initialization. Reopening Cookie settings or pressing Accept again on the same page must not emit another PageView.
 - `AddToCart`: successful additions through the shared basket function, with product name, variant, price, quantity, value, and GBP currency where available.
 - `InitiateCheckout`: when the visitor proceeds from the basket to checkout, including basket value and GBP currency.
-- `CompletePayment`: only after the existing Stripe return flow reports `payment=success`; it is not emitted merely when the checkout form is submitted.
+- `CompletePayment`: only after the order endpoint reports a successfully created order; it is not emitted merely when the checkout form is submitted.
 
-Commerce payloads use TikTok's standard structure: `contents` is an array with one object per line item containing `content_id`, `content_name`, `content_type`, `quantity`, and numeric unit `price`; event-level `value` is numeric and `currency` is `GBP`. The checkout value sent to Stripe is retained across the redirect so `CompletePayment` uses the completed checkout total rather than reconstructing an incomplete total on return.
+Commerce payloads use TikTok's standard structure: `contents` is an array with one object per line item containing `content_id`, `content_name`, `content_type`, `quantity`, and numeric unit `price`; event-level `value` is numeric and `currency` is `GBP`. The completed order total is retained until the bank-transfer confirmation screen so `CompletePayment` uses the completed order total rather than reconstructing an incomplete total.
 
 Event calls made before consent are discarded rather than queued. This prevents actions taken before acceptance from being sent retroactively.
 

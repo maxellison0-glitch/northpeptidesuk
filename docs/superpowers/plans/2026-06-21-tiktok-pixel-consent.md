@@ -4,7 +4,7 @@
 
 **Goal:** Add consent-gated TikTok Pixel `D8RU9FBC77UATVQ6JIUG` and guarded commerce events to every North Peptides UK storefront page.
 
-**Architecture:** A single deferred browser script owns consent state, renders the shared banner/settings control, injects TikTok's official base script once, and exposes a no-op-until-consented tracking API. Existing basket and checkout functions call that API at the moments already authoritative for AddToCart, InitiateCheckout, and successful Stripe return.
+**Architecture:** A single deferred browser script owns consent state, renders the shared banner/settings control, injects TikTok's official base script once, and exposes a no-op-until-consented tracking API. Existing basket and checkout functions call that API at the moments already authoritative for AddToCart, InitiateCheckout, and successful order creation.
 
 **Tech Stack:** Static HTML/CSS/JavaScript, TikTok Pixel browser SDK, Node.js built-in `node:test` and `vm` modules.
 
@@ -204,7 +204,7 @@ test('basket emits AddToCart and InitiateCheckout', () => {
   assert.match(source, /NPUKAnalytics\.track\('InitiateCheckout'/);
 });
 
-test('checkout emits add-on and successful Stripe events', () => {
+test('checkout emits add-on and successful order events', () => {
   const source = read('checkout.html');
   assert.match(source, /NPUKAnalytics\.track\('AddToCart'/);
   assert.match(source, /NPUKAnalytics\.track\('CompletePayment'/);
@@ -259,7 +259,7 @@ if (window.NPUKAnalytics) {
 
 - [ ] **Step 5: Add guarded checkout events**
 
-After a checkout add-on is saved, emit AddToCart with its name, dose, one unit, price/value, and GBP. In the `paymentStatus === 'success'` branch, recover the saved basket total before `showStripeSuccess()` clears it and emit:
+After a checkout add-on is saved, emit AddToCart with its name, dose, one unit, price/value, and GBP. In the successful order branch, recover the saved basket total before `showBankTransferSuccess()` clears it and emit:
 
 ```js
 if (window.NPUKAnalytics) {

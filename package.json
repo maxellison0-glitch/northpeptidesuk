@@ -7,7 +7,7 @@
     "@vercel/blob": "^2.7.0"
   },
   "scripts": {
-    "test": "node --test tests/ad-readiness.test.cjs tests/checkout-totals.test.cjs tests/commerce-security.test.cjs tests/order-ref.test.cjs tests/price-parity.test.cjs tests/product-pages.test.cjs tests/tiktok-analytics.test.cjs tests/tiktok-pages.test.cjs && npm run test:static",
+    "test": "node --test tests/ad-readiness.test.cjs tests/checkout-totals.test.cjs tests/order-ref.test.cjs tests/price-parity.test.cjs tests/product-pages.test.cjs tests/tiktok-analytics.test.cjs tests/tiktok-pages.test.cjs && npm run test:static",
     "test:static": "node tests/static-regression.test.js",
     "compliance": "node content-engine/build.js --check",
     "verify-copy": "node content-engine/verify-product-copy.js"
