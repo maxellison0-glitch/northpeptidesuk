@@ -259,8 +259,6 @@ const PRODUCT_DATA = {
       ["Purity", "Supplier stated"],
       ["Form", "Pre-reconstituted liquid"],
       ["Volume", "3ml"],
-      ["Laboratory reference — 6 clicks", "GHK-Cu 1mg · TB-500 0.2mg · BPC-157 0.2mg · KPV 0.2mg"],
-      ["Laboratory reference — 12 clicks", "GHK-Cu 2mg · TB-500 0.4mg · BPC-157 0.4mg · KPV 0.4mg"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
