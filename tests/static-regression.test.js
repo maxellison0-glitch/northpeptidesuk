@@ -223,6 +223,18 @@ assert(
   "checkout should not expose test-only discount codes or personal data"
 );
 assert(
+  !fs.existsSync(path.join(root, "holiday-mode.js")) &&
+    !index.includes("holiday-mode.js") &&
+    !checkout.includes("holiday-mode.js") &&
+    !checkout.includes("SUMMER10") &&
+    !commerceCore.includes("SUMMER10") &&
+    !apiOrder.includes("holidayBreakActive") &&
+    checkout.includes("Order before 12pm Mon–Fri and we aim to dispatch the next working day") &&
+    read("dispatch-bar.js").includes("CUTOFF_HOUR = 12") &&
+    !read("dispatch-bar.js").includes("SUMMER10"),
+  "summer break mode should be retired and checkout should state the 12pm next-working-day dispatch policy"
+);
+assert(
   compliance.includes("Research Use &amp; Compliance") &&
     compliance.includes("Not for human or animal consumption") &&
     compliance.includes("not intended for any medical, therapeutic, diagnostic, or preventative purpose") &&
