@@ -1,7 +1,7 @@
 {
   "site": "North Peptides UK",
   "baseUrl": "https://www.northpeptidesuk.com",
-  "generatedAt": "2026-08-08",
+  "generatedAt": "2026-09-02",
   "disclaimer": "Products are supplied for laboratory research use only and are not for human or animal consumption.",
   "documentationStatus": "Supplier documentation is available on request where held. Independent laboratory reports are published on the site where held.",
   "products": [
@@ -10,7 +10,7 @@
       "name": "Retatrutide",
       "category": "Metabolic research",
       "url": "https://www.northpeptidesuk.com/products/retatrutide/",
-      "image": "https://www.northpeptidesuk.com/reta-50mg.png",
+      "image": "https://www.northpeptidesuk.com/reta-50mg.webp",
       "summary": "GLP-1, GIP and glucagon receptor triple-agonist research compound supplied as a lyophilised powder.",
       "researchUseOnly": true,
       "supply": false,
@@ -18,25 +18,25 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 45,
+          "price": 50,
           "currency": "GBP"
         },
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 65,
+          "price": 70,
           "currency": "GBP"
         },
         {
           "label": "1x20mg",
           "dose": "20mg",
-          "price": 85,
+          "price": 90,
           "currency": "GBP"
         },
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 179.99,
+          "price": 180,
           "currency": "GBP"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "Retatrutide Pen Vial",
       "category": "Metabolic research",
       "url": "https://www.northpeptidesuk.com/products/retatrutide-pen/",
-      "image": "https://www.northpeptidesuk.com/reta-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/reta-pen-vial.webp",
       "summary": "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
       "researchUseOnly": true,
       "supply": false,
@@ -97,19 +97,19 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 60,
+          "price": 70,
           "currency": "GBP"
         },
         {
           "label": "1x20mg",
           "dose": "20mg",
-          "price": 100,
+          "price": 110,
           "currency": "GBP"
         },
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 194.99,
+          "price": 200,
           "currency": "GBP"
         }
       ],
@@ -158,7 +158,7 @@
       "name": "Tirzepatide",
       "category": "Metabolic research",
       "url": "https://www.northpeptidesuk.com/products/tirzepatide/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171735_79bb55e1-312b-40bf-93f2-59afdd43de09.jpeg",
+      "image": "https://www.northpeptidesuk.com/tirzepatide-vial.webp",
       "summary": "Dual GIP and GLP-1 receptor agonist research compound supplied as a lyophilised powder.",
       "researchUseOnly": true,
       "supply": false,
@@ -166,7 +166,7 @@
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 65,
+          "price": 70,
           "currency": "GBP"
         },
         {
@@ -220,7 +220,7 @@
       "name": "Tirzepatide Pen Vial",
       "category": "Metabolic research",
       "url": "https://www.northpeptidesuk.com/products/tirzepatide-pen/",
-      "image": "https://www.northpeptidesuk.com/tirzepatide-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/tirzepatide-pen-vial.webp",
       "summary": "Tirzepatide dual GIP/GLP-1 receptor agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 15mg and 30mg.",
       "researchUseOnly": true,
       "supply": false,
@@ -228,13 +228,13 @@
         {
           "label": "1x15mg / 3ml",
           "dose": "15mg / 3ml",
-          "price": 80,
+          "price": 90,
           "currency": "GBP"
         },
         {
           "label": "1x30mg / 3ml",
           "dose": "30mg / 3ml",
-          "price": 144,
+          "price": 140,
           "currency": "GBP"
         }
       ],
@@ -286,7 +286,7 @@
       "name": "BPC-157",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/bpc-157/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171828_c517069f-2388-4215-bec5-f0516a7554b1.jpeg",
+      "image": "https://www.northpeptidesuk.com/bpc-157-vial.webp",
       "summary": "Synthetic pentadecapeptide research compound supplied as a 10mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -294,7 +294,7 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 23.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -342,7 +342,7 @@
       "name": "BPC-157 Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/bpc-157-pen/",
-      "image": "https://www.northpeptidesuk.com/bpc-157-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/bpc-157-pen-vial.webp",
       "summary": "BPC-157 pentadecapeptide research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg and 20mg.",
       "researchUseOnly": true,
       "supply": false,
@@ -350,13 +350,13 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 38.99,
+          "price": 40,
           "currency": "GBP"
         },
         {
           "label": "1x20mg / 3ml",
           "dose": "20mg / 3ml",
-          "price": 62.98,
+          "price": 70,
           "currency": "GBP"
         }
       ],
@@ -408,7 +408,7 @@
       "name": "TB-500",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/tb-500/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171838_139029e0-0fb2-4778-9db6-5f0470e836ae.jpeg",
+      "image": "https://www.northpeptidesuk.com/tb-500-vial.webp",
       "summary": "Thymosin Beta-4 fragment (Ac-LKKTETQ) research compound supplied as a 10mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -416,7 +416,7 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 49,
+          "price": 50,
           "currency": "GBP"
         }
       ],
@@ -464,7 +464,7 @@
       "name": "TB-500 Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/tb-500-pen/",
-      "image": "https://www.northpeptidesuk.com/tb-500-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/tb-500-pen-vial.webp",
       "summary": "TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -472,7 +472,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 64,
+          "price": 70,
           "currency": "GBP"
         }
       ],
@@ -524,7 +524,7 @@
       "name": "GHK-Cu",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ghk-cu/",
-      "image": "https://www.northpeptidesuk.com/ghk-cu-blue-powder.webp",
+      "image": "https://www.northpeptidesuk.com/ghk-cu-blue-powder-1200.webp",
       "summary": "Copper(II) tripeptide research compound supplied as a 50mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -532,7 +532,7 @@
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 27,
+          "price": 30,
           "currency": "GBP"
         }
       ],
@@ -585,7 +585,7 @@
       "name": "GHK-Cu Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ghk-cu-pen/",
-      "image": "https://www.northpeptidesuk.com/ghk-cu-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/ghk-cu-pen-vial.webp",
       "summary": "GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -593,7 +593,7 @@
         {
           "label": "1x50mg / 3ml",
           "dose": "50mg / 3ml",
-          "price": 42,
+          "price": 45,
           "currency": "GBP"
         }
       ],
@@ -646,7 +646,7 @@
       "name": "KPV",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/kpv/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171852_e8a239be-4a76-4958-930e-b68b87cbc701.png",
+      "image": "https://www.northpeptidesuk.com/kpv-vial.webp",
       "summary": "Alpha-MSH fragment tripeptide research compound supplied as a 10mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -702,7 +702,7 @@
       "name": "KPV Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/kpv-pen/",
-      "image": "https://www.northpeptidesuk.com/kpv-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/kpv-pen-vial.webp",
       "summary": "KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -762,7 +762,7 @@
       "name": "KLOW Stack",
       "category": "Research blend",
       "url": "https://www.northpeptidesuk.com/products/klow-stack/",
-      "image": "https://www.northpeptidesuk.com/klow-stack-blue-powder.webp",
+      "image": "https://www.northpeptidesuk.com/klow-stack-blue-powder-1200.webp",
       "summary": "Four-compound research blend containing GHK-Cu, TB-500, BPC-157 and KPV in a single 80mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -807,7 +807,7 @@
       "name": "KLOW Stack Pen Vial",
       "category": "Research blend",
       "url": "https://www.northpeptidesuk.com/products/klow-stack-pen/",
-      "image": "https://www.northpeptidesuk.com/klow-stack-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/klow-stack-pen-vial.webp",
       "summary": "KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -815,7 +815,7 @@
         {
           "label": "1x80mg / 3ml",
           "dose": "80mg / 3ml",
-          "price": 75,
+          "price": 80,
           "currency": "GBP"
         }
       ],
@@ -856,7 +856,7 @@
       "name": "Ipamorelin",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ipamorelin/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171904_baaf1708-79ff-4396-8a78-76018f3acdc4.jpeg",
+      "image": "https://www.northpeptidesuk.com/ipamorelin-vial.webp",
       "summary": "Selective growth-hormone secretagogue research compound supplied as a 5mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -864,7 +864,7 @@
         {
           "label": "1x5mg",
           "dose": "5mg",
-          "price": 24.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -912,7 +912,7 @@
       "name": "Ipamorelin Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ipamorelin-pen/",
-      "image": "https://www.northpeptidesuk.com/ipamorelin-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/ipamorelin-pen-vial.webp",
       "summary": "Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -920,7 +920,7 @@
         {
           "label": "1x5mg / 3ml",
           "dose": "5mg / 3ml",
-          "price": 39.99,
+          "price": 40,
           "currency": "GBP"
         }
       ],
@@ -972,7 +972,7 @@
       "name": "CJC-1295 (No DAC)",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/cjc-1295/",
-      "image": "https://www.northpeptidesuk.com/hf_20260523_171921_abfd9afd-aa38-48a9-bba3-538df7508dd2.jpeg",
+      "image": "https://www.northpeptidesuk.com/cjc-1295-vial.webp",
       "summary": "GHRH (1-29) analogue research compound (Mod GRF 1-29) supplied as a 5mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -980,7 +980,7 @@
         {
           "label": "1x5mg",
           "dose": "5mg",
-          "price": 32,
+          "price": 35,
           "currency": "GBP"
         }
       ],
@@ -1024,7 +1024,7 @@
       "name": "CJC-1295 Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/cjc-1295-pen/",
-      "image": "https://www.northpeptidesuk.com/cjc-1295-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/cjc-1295-pen-vial.webp",
       "summary": "CJC-1295 (No DAC) GHRH analogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1032,7 +1032,7 @@
         {
           "label": "1x5mg / 3ml",
           "dose": "5mg / 3ml",
-          "price": 47,
+          "price": 50,
           "currency": "GBP"
         }
       ],
@@ -1080,7 +1080,7 @@
       "name": "NAD+",
       "category": "Cellular research",
       "url": "https://www.northpeptidesuk.com/products/nad-plus/",
-      "image": "https://www.northpeptidesuk.com/nad-plus.png",
+      "image": "https://www.northpeptidesuk.com/nad-plus.webp",
       "summary": "Nicotinamide Adenine Dinucleotide coenzyme research compound supplied as a 1000mg lyophilised powder.",
       "researchUseOnly": true,
       "supply": false,
@@ -1088,7 +1088,7 @@
         {
           "label": "1x1000mg",
           "dose": "1000mg",
-          "price": 84.99,
+          "price": 90,
           "currency": "GBP"
         }
       ],
@@ -1132,7 +1132,7 @@
       "name": "NAD+ Pen Vial",
       "category": "Cellular research",
       "url": "https://www.northpeptidesuk.com/products/nad-plus-pen/",
-      "image": "https://www.northpeptidesuk.com/nad-plus-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/nad-plus-pen-vial.webp",
       "summary": "NAD+ nicotinamide adenine dinucleotide coenzyme pre-reconstituted as a 1000mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1140,7 +1140,7 @@
         {
           "label": "1x1000mg / 3ml",
           "dose": "1000mg / 3ml",
-          "price": 102,
+          "price": 110,
           "currency": "GBP"
         }
       ],
@@ -1188,7 +1188,7 @@
       "name": "SS-31",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ss-31/",
-      "image": "https://www.northpeptidesuk.com/ss-31.png",
+      "image": "https://www.northpeptidesuk.com/ss-31.webp",
       "summary": "Mitochondria-targeted tetrapeptide research compound (elamipretide) supplied as a 10mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1196,7 +1196,7 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 24.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -1248,7 +1248,7 @@
       "name": "SS-31 Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/ss-31-pen/",
-      "image": "https://www.northpeptidesuk.com/ss-31-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/ss-31-pen-vial.webp",
       "summary": "SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1256,7 +1256,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 39.99,
+          "price": 40,
           "currency": "GBP"
         }
       ],
@@ -1308,7 +1308,7 @@
       "name": "Semax",
       "category": "Nootropic research",
       "url": "https://www.northpeptidesuk.com/products/semax/",
-      "image": "https://www.northpeptidesuk.com/semax.png",
+      "image": "https://www.northpeptidesuk.com/semax.webp",
       "summary": "Nootropic research peptide (ACTH(4-7) analogue) supplied as a 30mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1316,7 +1316,7 @@
         {
           "label": "1x30mg",
           "dose": "30mg",
-          "price": 20.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -1364,7 +1364,7 @@
       "name": "Selank",
       "category": "Nootropic research",
       "url": "https://www.northpeptidesuk.com/products/selank/",
-      "image": "https://www.northpeptidesuk.com/selank.png",
+      "image": "https://www.northpeptidesuk.com/selank.webp",
       "summary": "Anxiolytic nootropic research peptide (tuftsin analogue) supplied as a 30mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1372,7 +1372,7 @@
         {
           "label": "1x30mg",
           "dose": "30mg",
-          "price": 20.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -1420,7 +1420,7 @@
       "name": "Epitalon",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/epitalon/",
-      "image": "https://www.northpeptidesuk.com/epitalon.png",
+      "image": "https://www.northpeptidesuk.com/epitalon.webp",
       "summary": "Pineal tetrapeptide research compound (AEDG) supplied as a 10mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1428,7 +1428,7 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 13.99,
+          "price": 15,
           "currency": "GBP"
         }
       ],
@@ -1476,7 +1476,7 @@
       "name": "Epitalon Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/epitalon-pen/",
-      "image": "https://www.northpeptidesuk.com/epitalon-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/epitalon-pen-vial.webp",
       "summary": "Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1484,7 +1484,7 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 28.99,
+          "price": 30,
           "currency": "GBP"
         }
       ],
@@ -1536,7 +1536,7 @@
       "name": "Pinealon",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/pinealon/",
-      "image": "https://www.northpeptidesuk.com/pinealon.png",
+      "image": "https://www.northpeptidesuk.com/pinealon.webp",
       "summary": "Short regulatory tripeptide research compound (EDR) supplied as a 20mg lyophilised vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1544,7 +1544,7 @@
         {
           "label": "1x20mg",
           "dose": "20mg",
-          "price": 29.99,
+          "price": 30,
           "currency": "GBP"
         }
       ],
@@ -1592,7 +1592,7 @@
       "name": "Pinealon Pen Vial",
       "category": "Research peptide",
       "url": "https://www.northpeptidesuk.com/products/pinealon-pen/",
-      "image": "https://www.northpeptidesuk.com/pinealon-pen-vial.png",
+      "image": "https://www.northpeptidesuk.com/pinealon-pen-vial.webp",
       "summary": "Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.",
       "researchUseOnly": true,
       "supply": false,
@@ -1600,7 +1600,7 @@
         {
           "label": "1x20mg / 3ml",
           "dose": "20mg / 3ml",
-          "price": 44.99,
+          "price": 45,
           "currency": "GBP"
         }
       ],
@@ -1652,7 +1652,7 @@
       "name": "Intranasal Research Kit",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/intranasal-research-kit/",
-      "image": "https://www.northpeptidesuk.com/research-intranasal-kit.jpg",
+      "image": "https://www.northpeptidesuk.com/research-intranasal-kit.webp",
       "summary": "A compact intranasal research preparation kit designed for use alongside compatible research compounds. Includes a 10ml nasal spray bottle, sterile 0.9% saline ampoule, transfer syringe, transfer adaptor, alcohol wipes, and blank label.",
       "researchUseOnly": true,
       "supply": true,
@@ -1660,7 +1660,7 @@
         {
           "label": "Kit",
           "dose": "10ml nasal spray + saline + syringe + adaptor + wipes + label",
-          "price": 6.99,
+          "price": 7,
           "currency": "GBP"
         }
       ],
@@ -1671,15 +1671,15 @@
       "name": "Pen-Style Research Kit",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/pen-style-research-kit/",
-      "image": "https://www.northpeptidesuk.com/research-pen-kit-style.png",
-      "summary": "A cleaner pen-style setup for repeatable measured research handling, supplied with the cartridge, BAC water and sterile pen tips needed to build the setup.",
+      "image": "https://www.northpeptidesuk.com/research-pen-kit-style.webp",
+      "summary": "Converts a standard vial into a pen-style research setup: 3ml cartridge, bacteriostatic water and five sterile pen tips.",
       "researchUseOnly": true,
       "supply": true,
       "variants": [
         {
           "label": "Kit",
           "dose": "3ml cartridge + BAC water + x5 pen tips",
-          "price": 24.99,
+          "price": 25,
           "currency": "GBP"
         }
       ],
@@ -1690,8 +1690,8 @@
       "name": "Sterile Disposable Pen Tips",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/pen-tips/",
-      "image": "https://www.northpeptidesuk.com/research-pen-tips.png",
-      "summary": "Disposable pen tips for compatible pen-style research kits.",
+      "image": "https://www.northpeptidesuk.com/research-pen-tips.webp",
+      "summary": "Sterile 6mm disposable pen tips, sealed, in packs of 5 or 10. The same tips supplied in our pen-vial kit — sold as a spare pack.",
       "researchUseOnly": true,
       "supply": true,
       "variants": [
@@ -1704,7 +1704,7 @@
         {
           "label": "10 tips",
           "dose": "6mm x10",
-          "price": 6.99,
+          "price": 4.99,
           "currency": "GBP"
         }
       ],
@@ -1715,7 +1715,7 @@
       "name": "Bacteriostatic Water",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/bacteriostatic-water/",
-      "image": "https://www.northpeptidesuk.com/research-bac-water.png",
+      "image": "https://www.northpeptidesuk.com/research-bac-water.webp",
       "summary": "Sealed bacteriostatic mixing water for research preparation workflows, in 10ml and compact 3ml vials.",
       "researchUseOnly": true,
       "supply": true,
@@ -1723,13 +1723,13 @@
         {
           "label": "10ml vial",
           "dose": "10ml vial",
-          "price": 9.99,
+          "price": 10,
           "currency": "GBP"
         },
         {
           "label": "3ml vial",
           "dose": "3ml vial",
-          "price": 3.99,
+          "price": 4,
           "currency": "GBP"
         }
       ],
@@ -1740,7 +1740,7 @@
       "name": "Insulin Needle Pack",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/syringe-kit/",
-      "image": "https://www.northpeptidesuk.com/research-insulin-needles.png",
+      "image": "https://www.northpeptidesuk.com/research-insulin-needles.webp",
       "summary": "Pack of 1ml sterile disposable insulin needles for research preparation use.",
       "researchUseOnly": true,
       "supply": true,
@@ -1748,7 +1748,7 @@
         {
           "label": "10 pack",
           "dose": "10 pack, 1ml insulin needles",
-          "price": 6.99,
+          "price": 7,
           "currency": "GBP"
         }
       ],
@@ -1759,7 +1759,7 @@
       "name": "Alcohol Wipes",
       "category": "Research supplies",
       "url": "https://www.northpeptidesuk.com/products/alcohol-wipes/",
-      "image": "https://www.northpeptidesuk.com/research-alcohol-wipes.png",
+      "image": "https://www.northpeptidesuk.com/research-alcohol-wipes.webp",
       "summary": "Single-use alcohol wipe pack for research preparation workflows.",
       "researchUseOnly": true,
       "supply": true,
@@ -1767,7 +1767,7 @@
         {
           "label": "10 pack",
           "dose": "10 pack",
-          "price": 2.99,
+          "price": 3,
           "currency": "GBP"
         }
       ],

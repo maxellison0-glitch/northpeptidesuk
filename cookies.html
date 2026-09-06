@@ -1,8 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Cookie and analytics notice for North Peptides UK.">
   <title>Cookie Notice | North Peptides UK</title><link rel="canonical" href="https://www.northpeptidesuk.com/cookies.html"><link rel="icon" type="image/png" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="North Peptides UK">
+  <meta property="og:title" content="Cookie Notice | North Peptides UK">
+  <meta property="og:description" content="Cookie and analytics notice for North Peptides UK.">
+  <meta property="og:url" content="https://www.northpeptidesuk.com/cookies.html">
+  <meta property="og:image" content="https://www.northpeptidesuk.com/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="North Peptides UK">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cookie Notice | North Peptides UK">
+  <meta name="twitter:description" content="Cookie and analytics notice for North Peptides UK.">
+  <meta name="twitter:image" content="https://www.northpeptidesuk.com/og-default.jpg">
   <script src="/site-config.js" defer></script><script src="/tiktok-analytics.js" defer></script><script src="/age-gate.js"></script><script src="/dispatch-bar.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;family=Syne:wght@800&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/np.css">
   <style>
@@ -68,12 +81,19 @@
     .card p { margin: 0; font-size: .86rem; }
     .contact { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line-soft); }
 
-    footer {
-      padding: 26px 24px; background: var(--ink); border-top: none; color: #8FA3BC;
-      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em; text-align: center; line-height: 1.9;
-    }
-    footer a { margin: 0 7px; color: #B9C7DA; text-decoration: none; }
-    footer a:hover { color: var(--sky); }
+    /* --- Footer (shared partial: content-engine/footer.js) --- */
+    /* shared footer — legibility floor for the ink band */
+    .np-footer-logo { font-family: var(--font-wordmark); font-weight: 800; font-size: 1rem; letter-spacing: .08em; color: #fff; text-decoration: none; }
+    .np-footer-logo span { color: var(--sky); }
+    .np-footer-brand p { color: #B9C7DA; }
+    .np-footer-pay { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; color: #8FA3BC; }
+    .np-footer-col h4 { color: #8FA3BC; font-size: .64rem; }
+    .np-footer-col a { font-size: .86rem; }
+    .np-footer-bottom { font-size: .7rem; color: #8FA3BC; }
+    .np-footer-bottom p { margin: 0; color: inherit; font-size: inherit; }
+    .np-footer-col li { margin-bottom: 10px; color: inherit; }
+    .np-footer-ruo { font-size: .72rem; color: #8FA3BC; }
+    @media (max-width: 600px) { .np-footer { padding: 48px 20px 32px; } }
 
     @media (max-width: 640px) {
       .nav-links a:not(:last-child) { display: none; }
@@ -84,17 +104,81 @@
   </style>
 </head>
 <body>
-  <nav class="nav"><a class="brand" href="index.html">NORTH<span>PEPTIDES</span>UK</a><div class="nav-links"><a href="index.html#products">Products</a><a href="why-us.html">Why Us</a><a href="lab-reports.html">Documentation</a><a href="checkout.html">Basket</a></div></nav>
+  <nav class="nav" aria-label="Primary navigation"><a class="brand" href="/">NORTH<span>PEPTIDES</span>UK</a><div class="nav-links"><a href="/#products">Products</a><a href="/lab-reports.html">Lab Reports</a><a href="/why-us.html">Why Us</a><a href="/blog/index.html">Guides</a><a href="/checkout.html">Basket</a></div></nav>
   <main>
     <div class="eyebrow">Your choices</div><h1>Cookie and analytics notice</h1><p class="intro">This notice explains the browser storage and analytics used on this site. Last updated: 20 July 2026.</p>
-    <div class="fill-in">Controller: [FILL IN: registered company name]
-[FILL IN: full trading address]</div>
+    <p><strong>Controller:</strong> North Peptides UK &middot; <a href="mailto:orders@northpeptidesuk.com">orders@northpeptidesuk.com</a></p>
     <section><h2>How consent works</h2><p>On your first visit, the site offers <strong>Accept analytics</strong> and <strong>Reject non-essential</strong>. TikTok Pixel and configured Google Analytics or Google Tag Manager scripts do not load before you accept. Rejection keeps them blocked. Your choice is stored in your browser so the site can respect it on later visits.</p><p>You can change or withdraw your choice at any time. Withdrawal does not make earlier consent-based processing unlawful.</p><button type="button" onclick="window.NPUKAnalytics &amp;&amp; window.NPUKAnalytics.openSettings()">Cookie settings</button></section>
     <section><h2>Technologies used</h2><table><thead><tr><th>Technology</th><th>Purpose</th><th>When used</th></tr></thead><tbody><tr><td><code>npuk_analytics_consent</code> (local storage)</td><td>Records “accepted” or “rejected” so the consent banner and analytics behave according to your choice.</td><td>Necessary to remember your privacy choice; remains until you change it or clear site data.</td></tr><tr><td>TikTok Pixel</td><td>Measures page views and shopping events such as add to cart, checkout and successful payment for advertising performance.</td><td>Only after acceptance. TikTok may then set or access its own identifiers/cookies under its policies.</td></tr><tr><td>Google Analytics / Google Tag Manager</td><td>Measures visits and shopping events when a valid Google measurement or container ID is configured.</td><td>Only after acceptance. Google consent defaults to denied and is updated to granted only on acceptance.</td></tr><tr><td>Basket and checkout storage</td><td>Keeps basket contents and checkout state in your browser so you can return to the checkout page.</td><td>Used to provide the shopping service rather than for analytics.</td></tr></tbody></table></section>
     <section><h2>Providers and transfers</h2><p>Consent-based information may be sent to TikTok and Google. These providers may process data outside the UK using the safeguards described in our <a href="privacy.html">Privacy Notice</a>. Their own retention periods and controls may also apply.</p></section>
     <section><h2>Browser controls</h2><p>You can also delete or block cookies and local storage using browser settings. Blocking necessary storage may stop the basket or consent preference from being retained. Browser deletion does not by itself erase data already received by an analytics provider; use the rights and contact routes in our Privacy Notice where applicable.</p></section>
     <section><h2>More information</h2><p>For questions, email <a href="mailto:orders@northpeptidesuk.com">orders@northpeptidesuk.com</a>. See our <a href="privacy.html">Privacy Notice</a> for lawful bases, recipients, transfers, retention and your rights.</p></section>
   </main>
-  <footer><a href="terms.html">Terms</a><a href="refunds.html">Refunds</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><br>All products are for laboratory research use only. Not for human or animal consumption.</footer>
+  <footer class="np-footer">
+    <div class="np-footer-grid">
+      <div class="np-footer-brand">
+        <a href="/" class="np-footer-logo">NORTH<span>PEPTIDES</span>UK</a>
+        <p>Research peptides with purity stated on every product. UK stocked, stored frozen until dispatch, with independent lab reports published where held.</p>
+        <p class="np-footer-pay">Payment by UK bank transfer · Royal Mail tracked delivery</p>
+      </div>
+      <div class="np-footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="/products/">All products</a></li>
+          <li><a href="/products/retatrutide/">Retatrutide</a></li>
+          <li><a href="/products/tirzepatide/">Tirzepatide</a></li>
+          <li><a href="/products/bpc-157/">BPC-157</a></li>
+          <li><a href="/products/tb-500/">TB-500</a></li>
+          <li><a href="/products/ghk-cu/">GHK-Cu</a></li>
+          <li><a href="/products/kpv/">KPV</a></li>
+          <li><a href="/products/klow-stack/">KLOW Stack</a></li>
+          <li><a href="/products/ipamorelin/">Ipamorelin</a></li>
+          <li><a href="/products/cjc-1295/">CJC-1295</a></li>
+          <li><a href="/products/nad-plus/">NAD+</a></li>
+          <li><a href="/products/ss-31/">SS-31</a></li>
+          <li><a href="/products/semax/">Semax</a></li>
+          <li><a href="/products/selank/">Selank</a></li>
+          <li><a href="/products/epitalon/">Epitalon</a></li>
+          <li><a href="/products/pinealon/">Pinealon</a></li>
+          <li><a href="/products/#supplies">Research supplies</a></li>
+        </ul>
+      </div>
+      <div class="np-footer-col">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/blog/index.html">All research guides</a></li>
+          <li><a href="/blog/how-to-reconstitute-peptides.html">How to reconstitute peptides</a></li>
+          <li><a href="/blog/how-to-store-peptides.html">How to store peptides</a></li>
+          <li><a href="/blog/bacteriostatic-water-vs-sterile-water.html">Bacteriostatic vs sterile water</a></li>
+          <li><a href="/blog/buy-research-peptides-uk.html">Buying research peptides in the UK</a></li>
+          <li><a href="/blog/retatrutide-vs-tirzepatide.html">Retatrutide vs Tirzepatide</a></li>
+        </ul>
+      </div>
+      <div class="np-footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/why-us.html">Why North Peptides</a></li>
+          <li><a href="/lab-reports.html">Lab Reports</a></li>
+          <li><a href="/reviews/">Order reviews</a></li>
+          <li><a href="/compliance.html">Research Use Policy</a></li>
+          <li><a href="/terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="/refunds.html">Refunds &amp; Returns</a></li>
+          <li><a href="/privacy.html">Privacy Notice</a></li>
+          <li><a href="/cookies.html">Cookie Notice</a></li>
+          <li><a href="mailto:orders@northpeptidesuk.com">Email support</a></li>
+          <li><a href="https://www.instagram.com/northpeptidesuk/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://t.me/NORTHPEPTIDESUK" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li><a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="np-footer-bottom">
+      <p>© 2026 North Peptides UK. All rights reserved.</p>
+      <p>Orders before 12pm Mon–Fri aimed at next-working-day dispatch</p>
+    </div>
+    <!--compliance:ignore-start-->
+    <p class="np-footer-ruo">All products are supplied for laboratory research use only and are not for human or animal consumption. They are not medicines and nothing on this site is medical advice.</p>
+    <!--compliance:ignore-end-->
+  </footer>
 </body>
 </html>

@@ -28,12 +28,12 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How TB-500 Is Supplied',
-      html: `      <p><a href="/product.html?product=tb-500">TB-500</a> is stocked as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days. It is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
+      html: `      <p><a href="/products/tb-500/">TB-500</a> is stocked as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched on business days; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch. It is also one of the four compounds in the <a href="/products/klow-stack/">KLOW Stack</a> research blend.</p>`,
     },
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>TB-500 is reconstituted with <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a>. It is highly soluble; the solution may look slightly cloudy at first but clears with gentle swirling. Add the solvent down the inside wall of the vial, swirl rather than shake, and label the vial with the preparation date. See our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> for the full procedure.</p>`,
+      html: `      <p>TB-500 is reconstituted with <a href="/products/bacteriostatic-water/">bacteriostatic water</a>. It is highly soluble; the solution may look slightly cloudy at first but clears with gentle swirling. Add the solvent down the inside wall of the vial, swirl rather than shake, and label the vial with the preparation date. See our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> for the full procedure.</p>`,
     },
     {
       id: 'storage',

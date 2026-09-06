@@ -45,15 +45,6 @@ async function generateOrderRef() {
   }
 }
 
-// Summer break 2026: pre-orders taken 11 Aug - 31 Aug dispatch from 1 Sept.
-// Returns false again automatically from 1 September; safe to delete after.
-const HOLIDAY_CUTOFF_UTC = Date.parse("2026-08-10T22:59:00Z");
-const HOLIDAY_RESUME_UTC = Date.parse("2026-08-31T23:00:00Z");
-function holidayBreakActive() {
-  const now = Date.now();
-  return now >= HOLIDAY_CUTOFF_UTC && now < HOLIDAY_RESUME_UTC;
-}
-
 function escapeHtml(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -65,6 +56,18 @@ function escapeHtml(value) {
 
 function formatMoney(value) {
   return "£" + Number(value).toFixed(2).replace(/\.00$/, "");
+}
+
+function addressLines(customer) {
+  return [customer.address1, customer.address2, customer.city, customer.county, customer.postcode].filter(Boolean);
+}
+
+function deliveryChargeLabel(charge) {
+  return charge > 0 ? formatMoney(charge) : "Free";
+}
+
+function discountLabel(order) {
+  return `Discount (${order.discountCode}, ${Math.round(order.discountPct * 100)}% off)`;
 }
 
 async function resendSend(payload) {
@@ -101,7 +104,7 @@ function buildOwnerEmailHtml(order) {
     <tr>
       <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">${escapeHtml(item.name)} ${escapeHtml(item.dose)}</td>
       <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:center;">${item.qty}</td>
-      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:right;">${formatMoney(item.lineTotal)}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;text-align:right;">${formatMoney(item.listTotal)}</td>
     </tr>`).join("");
 
   return `
@@ -112,10 +115,11 @@ function buildOwnerEmailHtml(order) {
       <p><strong>Customer:</strong> ${escapeHtml(order.customer.name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(order.customer.email)}</p>
       <p><strong>Phone:</strong> ${escapeHtml(order.customer.phone || "Not supplied")}</p>
-      <p><strong>Delivery:</strong> ${escapeHtml(order.delivery.label)} (${formatMoney(order.delivery.charge)})</p>
-      <p><strong>Address:</strong><br>${[order.customer.address1, order.customer.address2, order.customer.city, order.customer.county, order.customer.postcode].filter(Boolean).map(escapeHtml).join("<br>")}</p>
+      <p><strong>Subtotal:</strong> ${formatMoney(order.grossSubtotal)}</p>
+      <p><strong>Delivery:</strong> ${escapeHtml(order.delivery.label)} (${deliveryChargeLabel(order.delivery.charge)})</p>
+      <p><strong>Address:</strong><br>${addressLines(order.customer).map(escapeHtml).join("<br>")}</p>
       ${order.customer.notes ? `<p><strong>Notes:</strong><br>${escapeHtml(order.customer.notes).replace(/\n/g, "<br>")}</p>` : ""}
-      ${order.discountCode ? `<p><strong>Discount:</strong> ${escapeHtml(order.discountCode)} (${Math.round(order.discountPct * 100)}% off)</p>` : ""}
+      ${order.discountCode ? `<p><strong>Discount:</strong> ${escapeHtml(order.discountCode)} (${Math.round(order.discountPct * 100)}% off, &minus;${formatMoney(order.discountAmount)})</p>` : ""}
       <h3>Items</h3>
       <table style="width:100%;border-collapse:collapse;">
         <thead><tr>
@@ -133,7 +137,7 @@ function buildCustomerEmailHtml(order) {
     <tr>
       <td style="padding:10px 0;border-bottom:1px solid #e5e7eb;font-size:14px;">${escapeHtml(item.name)} ${escapeHtml(item.dose)}</td>
       <td style="padding:10px 0;border-bottom:1px solid #e5e7eb;text-align:center;font-size:14px;">${item.qty}</td>
-      <td style="padding:10px 0;border-bottom:1px solid #e5e7eb;text-align:right;font-size:14px;white-space:nowrap;">${formatMoney(item.lineTotal)}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #e5e7eb;text-align:right;font-size:14px;white-space:nowrap;">${formatMoney(item.listTotal)}</td>
     </tr>`).join("");
 
   return `
@@ -164,7 +168,13 @@ function buildCustomerEmailHtml(order) {
 
         <p style="font-size:13px;color:#B45309;font-weight:600;">Please use your order reference (${escapeHtml(order.ref)}) as the payment reference so we can match your transfer.</p>
 
-        <p>Once we receive your payment (usually within a few hours via Faster Payments), we'll confirm by email and dispatch within 24&ndash;48 hours on business days by ${escapeHtml(order.delivery.label)}, sent in plain, unmarked packaging.</p>
+        <p>Once we receive your payment (usually within a few hours via Faster Payments), we'll confirm by email. Orders placed before 12pm Mon&ndash;Fri are aimed to be dispatched the next working day by ${escapeHtml(order.delivery.label)}, sent in plain, unmarked packaging.</p>
+
+        <div style="margin:18px 0;padding:14px 16px;background:#F8FBFF;border:1px solid #CFE0F1;border-radius:10px;">
+          <p style="margin:0 0 4px;font-weight:700;color:#10233F;font-size:14px;">Delivering to</p>
+          <p style="margin:0;font-size:14px;color:#132A46;line-height:1.5;">${addressLines(order.customer).map(escapeHtml).join("<br>")}</p>
+          <p style="margin:8px 0 0;font-size:13px;color:#4B5F75;">${escapeHtml(order.delivery.label)} &middot; ${deliveryChargeLabel(order.delivery.charge)}</p>
+        </div>
 
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
           <thead><tr>
@@ -174,6 +184,11 @@ function buildCustomerEmailHtml(order) {
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin:0 0 6px;">
+          <tr><td style="padding:4px 0;color:#4B5F75;">Subtotal</td><td style="padding:4px 0;text-align:right;white-space:nowrap;">${formatMoney(order.grossSubtotal)}</td></tr>
+          ${order.discountCode ? `<tr><td style="padding:4px 0;color:#4B5F75;">${escapeHtml(discountLabel(order))}</td><td style="padding:4px 0;text-align:right;white-space:nowrap;">&minus;${formatMoney(order.discountAmount)}</td></tr>` : ""}
+          <tr><td style="padding:4px 0;color:#4B5F75;">Delivery (${escapeHtml(order.delivery.label)})</td><td style="padding:4px 0;text-align:right;white-space:nowrap;">${deliveryChargeLabel(order.delivery.charge)}</td></tr>
+        </table>
         <p style="text-align:right;font-size:16px;"><strong>Total to transfer: ${formatMoney(order.grandTotal)}</strong></p>
         <p style="font-size:13px;color:#6B7280;">Order reference: ${escapeHtml(order.ref)}</p>
 
@@ -181,6 +196,7 @@ function buildCustomerEmailHtml(order) {
           <p style="margin:0 0 6px;font-weight:700;color:#10233F;">Share your order experience</p>
           <p style="margin:0;font-size:14px;color:#4B5F75;">After your order has arrived, you can leave honest feedback about ordering, delivery, packaging or support.</p>
           <p style="margin:12px 0 0;"><a href="https://www.feedbackplatform.com/review/northpeptidesuk.com" style="display:inline-block;background:#1F6FEB;color:#ffffff;text-decoration:none;padding:10px 14px;border-radius:7px;font-size:14px;font-weight:700;">Leave feedback</a></p>
+          <p style="margin:10px 0 0;font-size:13px;color:#4B5F75;">Or use our own moderated review form: <a href="https://www.northpeptidesuk.com/reviews/" style="color:#1F6FEB;">northpeptidesuk.com/reviews</a></p>
         </div>
 
         <div style="margin:22px 0;padding:16px;background:#EEF7FD;border:1px solid #CFE0F1;border-radius:10px;">
@@ -194,7 +210,7 @@ function buildCustomerEmailHtml(order) {
 
 function buildCustomerEmailText(order) {
   const items = order.items.map(item =>
-    `- ${item.name} ${item.dose} x${item.qty} — ${formatMoney(item.lineTotal)}`
+    `- ${item.name} ${item.dose} x${item.qty} — ${formatMoney(item.listTotal)}`
   ).join("\n");
 
   return `Order received — pay by bank transfer
@@ -211,15 +227,22 @@ Reference: ${order.ref}
 
 Please use your order reference (${order.ref}) as the payment reference.
 
-Once we receive payment, we'll confirm by email. ${holidayBreakActive() ? "Your summer pre-order is reserved and dispatched from 1 September." : "We dispatch within 24-48 hours."}
+Once we receive payment, we'll confirm by email. Orders placed before 12pm Mon–Fri are aimed to be dispatched the next working day.
+
+Delivering to:
+${addressLines(order.customer).join("\n")}
+${order.delivery.label}
 
 ${items}
 
+Subtotal: ${formatMoney(order.grossSubtotal)}${order.discountCode ? `\n${discountLabel(order)}: -${formatMoney(order.discountAmount)}` : ""}
+Delivery (${order.delivery.label}): ${deliveryChargeLabel(order.delivery.charge)}
 Total to transfer: ${formatMoney(order.grandTotal)}
 Order reference: ${order.ref}
 
 After your order has arrived, you can leave honest feedback about ordering, delivery, packaging or support:
 https://www.feedbackplatform.com/review/northpeptidesuk.com
+Or use our own moderated review form: https://www.northpeptidesuk.com/reviews/
 
 Questions? Reply to this email — it reaches us at orders@northpeptidesuk.com.
 
@@ -272,9 +295,15 @@ module.exports = async function handler(req, res) {
   const validation = validateOrderItems(items, hasDiscount ? discountPct : 0);
   if (validation.error) return json(res, 400, { error: validation.error }, origin);
   const validatedItems = validation.items;
-  const delivery = calculateDelivery(payload.deliveryMethod, discountCode, validation.productSubtotal);
+  // Free UK delivery (>= £100) is judged on the PRE-DISCOUNT product subtotal —
+  // the "Subtotal" figure the customer sees at checkout — so a percentage code
+  // such as WELCOME10 on an exact £100 basket keeps its free delivery. The
+  // discount is still applied to every item line and to the grand total below.
+  // Free-delivery codes (SUMMERSHIP, AJ) continue to force free standard delivery.
+  const delivery = calculateDelivery(payload.deliveryMethod, discountCode, validation.grossSubtotal);
   const deliveryCharge = delivery.charge;
   const grandTotal = validation.productSubtotal + deliveryCharge;
+  const discountAmount = validation.grossSubtotal - validation.productSubtotal;
 
   const orderRef = await generateOrderRef();
   const bankDetails = {
@@ -286,6 +315,9 @@ module.exports = async function handler(req, res) {
   const order = {
     ref: orderRef,
     items: validatedItems,
+    grossSubtotal: validation.grossSubtotal,
+    productSubtotal: validation.productSubtotal,
+    discountAmount,
     grandTotal,
     delivery: { label: delivery.label, charge: deliveryCharge },
     discountCode: hasDiscount ? discountCode : null,

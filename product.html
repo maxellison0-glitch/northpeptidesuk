@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product | North Peptides UK</title>
-  <meta name="google-site-verification" content="">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
@@ -72,16 +71,13 @@
     .coa-full-link:hover { color: var(--action-deep); text-decoration: underline; }
 
     /* --- Add-on boxes --- */
-    .intranasal-box, .pen-box { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
-    .intranasal-box-label, .pen-box-label { display: inline-block; font-family: var(--font-mono); font-size: .54rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--action); background: var(--action-tint); border: 1px solid rgba(31,111,235,.2); border-radius: 999px; padding: 4px 10px; margin-bottom: 10px; }
-    .intranasal-box-heading, .pen-box-heading { font-family: var(--font-display); font-weight: 600; font-size: .95rem; color: var(--ink); margin-bottom: 4px; }
-    .intranasal-box-desc, .pen-box-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
-    .intranasal-box-btn, .pen-box-btn { font-family: var(--font-mono); font-size: .6rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--action); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
-    .intranasal-box-btn:hover, .pen-box-btn:hover { border-color: var(--action); background: var(--action-tint); }
-    .intranasal-box-btn.added, .pen-box-btn.added { border-color: rgba(14,159,110,.4); background: var(--verify-tint); color: var(--verify); }
-    .pen-box-inner { display: flex; gap: 14px; align-items: flex-start; }
-    .pen-box-img { width: 72px; height: 72px; border-radius: 10px; object-fit: cover; flex-shrink: 0; border: 1px solid var(--line-soft); background: var(--frost-2); }
-    .pen-box-body { flex: 1; min-width: 0; }
+    .intranasal-box { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .intranasal-box-label { display: inline-block; font-family: var(--font-mono); font-size: .54rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--action); background: var(--action-tint); border: 1px solid rgba(31,111,235,.2); border-radius: 999px; padding: 4px 10px; margin-bottom: 10px; }
+    .intranasal-box-heading { font-family: var(--font-display); font-weight: 600; font-size: .95rem; color: var(--ink); margin-bottom: 4px; }
+    .intranasal-box-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+    .intranasal-box-btn { font-family: var(--font-mono); font-size: .6rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--action); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
+    .intranasal-box-btn:hover { border-color: var(--action); background: var(--action-tint); }
+    .intranasal-box-btn.added { border-color: rgba(14,159,110,.4); background: var(--verify-tint); color: var(--verify); }
 
     .sister-link { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--frost); text-decoration: none; transition: border-color .15s, background .15s; }
     .sister-link:hover { border-color: var(--action); background: var(--action-tint); }
@@ -195,16 +191,15 @@
 </head>
 <body>
   <noscript>Research use only. Products are not for human or animal consumption.</noscript>
-  <nav class="nav">
-    <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
     <div data-site-search></div>
     <div class="nav-links">
-      <a href="index.html#products">Products</a>
-      <a href="index.html#how-to-order">Order</a>
-      <a href="lab-reports.html">Lab Reports</a>
-      <a href="why-us.html">Why Us</a>
-      <a href="mailto:orders@northpeptidesuk.com">Support</a>
-      <a href="checkout.html" class="nav-basket"><span class="nav-basket-label">Basket </span><span class="nav-basket-count" id="nav-basket-count">0</span></a>
+      <a href="/#products" class="active" aria-current="page">Products</a>
+      <a href="/lab-reports.html">Lab Reports</a>
+      <a href="/why-us.html">Why Us</a>
+      <a href="/blog/index.html">Guides</a>
+      <a href="/checkout.html" class="nav-basket"><span class="nav-basket-label">Basket </span><span class="nav-basket-count" id="nav-basket-count">0</span></a>
     </div>
   </nav>
 
@@ -374,17 +369,10 @@
     }
 
     function addIntranasalToBasket(btn) {
-      addItemToBasket("Intranasal Research Kit", 4.99, "Kit add-on");
+      addItemToBasket("Intranasal Research Kit", 5, "Kit add-on");
       btn.textContent = "Added ✓";
       btn.classList.add("added");
       showToast("Intranasal Research Kit added to basket");
-    }
-
-    function addPenToBasket(btn) {
-      addItemToBasket("Disposable Research Pen Kit", 9.99, "Kit add-on");
-      btn.textContent = "Added ✓";
-      btn.classList.add("added");
-      showToast("Research Pen Kit added to basket");
     }
 
     function renderMissing() {
@@ -392,7 +380,7 @@
         <div class="missing">
           <h1>Product not found</h1>
           <p class="summary">This product page does not exist yet.</p>
-          <a class="button primary" href="index.html#products">Back to products</a>
+          <a class="button primary" href="/#products">Back to products</a>
         </div>
       `;
     }
@@ -415,7 +403,7 @@
       const title = seo.title || `${product.name} | UK Research Peptide | North Peptides UK`;
       const lowestPrice = Math.min(...product.variants.map(v => v.price));
       const desc = (seo.metaDescription
-        || `${product.summary} UK stocked, 99%+ purity, 24h dispatch. From £${lowestPrice}. Research use only.`).slice(0, 158);
+        || `${product.summary} UK stocked, 99%+ purity, tracked UK dispatch. From £${lowestPrice}. Research use only.`).slice(0, 158);
       const imageUrl = `${SITE_ORIGIN}/${product.image}`;
 
       document.title = title;
@@ -503,12 +491,12 @@
               <div class="also-need-title">You may also need</div>
               <div class="addon-row">
                 <div class="addon-card">
-                  <div><span class="addon-name">Bacteriostatic Water &middot; 3ml</span><span class="addon-price">${money(3.99)}</span></div>
-                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Bacteriostatic Water', 3.99)">Add</button>
+                  <div><span class="addon-name">Bacteriostatic Water &middot; 3ml</span><span class="addon-price">${money(4)}</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Bacteriostatic Water', 4)">Add</button>
                 </div>
                 <div class="addon-card">
-                  <div><span class="addon-name">Insulin Needle Pack</span><span class="addon-price">${money(6.99)}</span></div>
-                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Insulin Needle Pack', 6.99)">Add</button>
+                  <div><span class="addon-name">Insulin Needle Pack</span><span class="addon-price">${money(7)}</span></div>
+                  <button class="addon-btn" type="button" onclick="addAddonToBasket(this, 'Insulin Needle Pack', 7)">Add</button>
                 </div>
               </div>
             </div>`;
@@ -552,7 +540,7 @@
               <span class="intranasal-box-label">Research Kit Add-on</span>
               <div class="intranasal-box-heading">Make this a research kit</div>
               <p class="intranasal-box-desc">Add an Intranasal Research Kit with sterile saline, 10ml nasal spray bottle, transfer syringe, alcohol wipes, and label.</p>
-              <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit +${money(4.99)}</button>
+              <button class="intranasal-box-btn" type="button" onclick="addIntranasalToBasket(this)">Add Intranasal Research Kit +${money(5)}</button>
             </div>` : "";
       const sisterSection = product.sisterProduct ? (
         product.sisterProduct.slug.endsWith('-pen')
@@ -574,18 +562,6 @@
               <span class="sister-link-arrow">&rarr;</span>
             </a>`
       ) : "";
-      const penSection = slug.endsWith('-pen') ? `
-            <div class="pen-box">
-              <span class="pen-box-label">Compatible Add-on</span>
-              <div class="pen-box-inner">
-                <img class="pen-box-img" src="research-pen-kit-style.png" alt="Disposable research pen kit">
-                <div class="pen-box-body">
-                  <div class="pen-box-heading">Compatible research pen device</div>
-                  <p class="pen-box-desc">For compatible research setups, add a disposable single-use research pen with 10 sterile pen tips to your order.</p>
-                  <button class="pen-box-btn" type="button" onclick="addPenToBasket(this)">Add Disposable Research Pen Kit +${money(9.99)}</button>
-                </div>
-              </div>
-            </div>` : "";
       const faqSection = (product.seo && Array.isArray(product.seo.faq) && product.seo.faq.length) ? `
             <div class="pd-section faq-section">
               <div class="pd-eyebrow">Questions</div>
@@ -676,7 +652,7 @@
       const lowerSection = lowerContent ? `<section class="pd-lower">${lowerContent}</section>` : "";
 
       app.innerHTML = `
-        <a class="back" href="index.html#products">Back to products</a>
+        <a class="back" href="/#products">Back to products</a>
         <section class="grid">
           <div class="image-panel">
             <img src="${product.image}" alt="${product.name}" id="main-product-img" class="main-product-img" draggable="false">
@@ -708,7 +684,6 @@
               </div>
             </div>
             ${intranasalSection}
-            ${penSection}
             ${sisterSection}
             <div class="research-box">
               <strong>Research use only.</strong> Products are not medicines, are not for human or animal consumption, and are supplied strictly for laboratory research purposes.

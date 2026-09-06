@@ -114,8 +114,9 @@ test('homepage surfaces the pen option with a crawlable link per paired compound
 test('homepage makes the two new lab results unmistakable in the first journey', () => {
   const homepage = read('index.html');
   assert.match(homepage, /id="latest-lab-results"/);
-  assert.match(homepage, /New lab results: Reta \+ GHK-Cu/);
-  assert.match(homepage, /Reta \+ GHK-Cu: both 99% HPLC\./);
+  assert.match(homepage, /Independent lab results: Retatrutide and GHK-Cu/);
+  assert.match(homepage, /Retatrutide — 99% HPLC/);
+  assert.match(homepage, /GHK-Cu — 99% HPLC/);
   assert.match(homepage, /Both 99% purity by independent HPLC/);
   assert.match(homepage, /class="latest-labs-track"[^>]*tabindex="0"/);
   assert.match(homepage, /coa-retatrutide-100016392-report\.png/);
@@ -348,30 +349,30 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   vm.runInContext(behaviourScript, context);
 
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
-  assert.equal(elements['config-total'].textContent, '£45');
+  assert.equal(elements['config-total'].textContent, '£50');
   assert.equal(elements['config-total-note'].textContent, 'Standard vial');
   assert.equal(elements['config-pen-kit'].hidden, true);
-  assert.equal(elements['product-image'].attributes.src, '/reta-50mg.png');
+  assert.equal(elements['product-image'].attributes.src, '/reta-50mg.webp');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
 
   context.setBacWater(true);
-  assert.equal(elements['config-total'].textContent, '£48.99');
+  assert.equal(elements['config-total'].textContent, '£54');
   assert.equal(elements['config-total-note'].textContent, 'Vial + BAC water');
 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg');
-  assert.equal(elements['config-total'].textContent, '£60');
-  // The premium is anchored against the same-strength vial (£60 pen vs £45 vial).
-  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£15 vs vial');
+  assert.equal(elements['config-total'].textContent, '£70');
+  // The premium is anchored against the same-strength vial (£70 pen vs £50 vial).
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£20 vs vial');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
-  assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.png');
+  assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.webp');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide Pen Vial');
   assert.equal(sizeButtons.length, 3);
 
   context.selectConfiguredVariant(1);
   context.addConfiguredToBasket();
-  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 100, dose: '20mg' }]);
+  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 110, dose: '20mg' }]);
   assert.equal(basketOpened, true);
 
   basket.length = 0;
@@ -380,9 +381,9 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   context.setBacWater(true);
   context.addConfiguredToBasket();
   assert.deepEqual(basket, [
-    { name: 'Retatrutide', price: 85, dose: '20mg' },
+    { name: 'Retatrutide', price: 90, dose: '20mg' },
     // Must stay a key the server CATALOG resolves — "10ml vial add-on" shipped
     // once and 400'd every checkout that included the builder's BAC water.
-    { name: 'Bacteriostatic Water', price: 3.99, dose: '3ml vial' }
+    { name: 'Bacteriostatic Water', price: 4, dose: '3ml vial' }
   ]);
 });

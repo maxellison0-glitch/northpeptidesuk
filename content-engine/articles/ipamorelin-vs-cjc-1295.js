@@ -43,12 +43,12 @@ module.exports = {
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>Both reconstitute the same way, in <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a>. As 5mg vials, a 1–2ml solvent volume is a common choice for a clean working concentration. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the concentration arithmetic.</p>`,
+      html: `      <p>Both reconstitute the same way, in <a href="/products/bacteriostatic-water/">bacteriostatic water</a>. As 5mg vials, a 1–2ml solvent volume is a common choice for a clean working concentration. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the concentration arithmetic.</p>`,
     },
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>Both <a href="/product.html?product=ipamorelin">Ipamorelin</a> and <a href="/product.html?product=cjc-1295">CJC-1295 (No DAC)</a> are UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>Both <a href="/products/ipamorelin/">Ipamorelin</a> and <a href="/products/cjc-1295/">CJC-1295 (No DAC)</a> are UK stocked and dispatched on business days (orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch), listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 

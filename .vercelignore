@@ -1,0 +1,11 @@
+# Repo internals that must never be deployed or crawled.
+# Keep server/ (api/create-order.js requires ../server/commerce-core.js) and
+# product-data.js (loaded by product.html) — do not add them here.
+docs/
+social-engine/
+content-engine/
+tests/
+*.md
+.env.example
+netlify.toml
+package-lock.json

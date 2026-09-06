@@ -84,10 +84,12 @@ test('checkout adds the standard delivery charge below the free-delivery thresho
 
 test('client delivery prices stay in parity with server rules', () => {
   const standard = checkoutHtml.match(/value="standard" data-price="([\d.]+)"/);
-  const express = checkoutHtml.match(/value="express" data-price="([\d.]+)"/);
-  assert.ok(standard && express, 'both delivery radios must declare data-price');
+  const tracked24 = checkoutHtml.match(/value="tracked24" data-price="([\d.]+)"/);
+  const dhl = checkoutHtml.match(/value="dhl" data-price="([\d.]+)"/);
+  assert.ok(standard && tracked24 && dhl, 'all three delivery radios must declare data-price');
   assert.equal(Number(standard[1]), core.DELIVERY.standard.price);
-  assert.equal(Number(express[1]), core.DELIVERY.express.price);
+  assert.equal(Number(tracked24[1]), core.DELIVERY.tracked24.price);
+  assert.equal(Number(dhl[1]), core.DELIVERY.dhl.price);
   // updateTotals() re-applies the standard charge from its own constant — keep it in sync too.
   const fallback = checkoutHtml.match(/deliveryPrice = freeDelivery \? 0 : ([\d.]+);/);
   assert.ok(fallback, 'updateTotals must set the standard delivery fallback price');

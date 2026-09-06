@@ -52,15 +52,15 @@ module.exports = {
       heading: 'How Each Is Supplied',
       html: `      <p>Both are supplied as lyophilised powder, the most stable format for transport and storage. North Peptides UK stocks the following vial sizes:</p>
       <ul>
-        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
-        <li><strong><a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/products/retatrutide/">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/products/tirzepatide/">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
       </ul>
-      <p>Each batch is stored frozen until dispatch and shipped from the UK with tracked delivery, typically within 24 hours on business days. The larger vial sizes are usually selected where a research protocol calls for a higher total quantity of material per vial.</p>`,
+      <p>Each batch is stored frozen until dispatch and shipped from the UK with tracked delivery on business days; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch. The larger vial sizes are usually selected where a research protocol calls for a higher total quantity of material per vial.</p>`,
     },
     {
       id: 'handling-reconstitution',
       heading: 'Handling and Reconstitution',
-      html: `      <p>Both compounds are handled in the same way in the laboratory. As lyophilised powders they are reconstituted with <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a> before use in a research preparation. Both dissolve readily; a 2ml to 4ml volume of solvent per vial is a common working dilution when preparing material for laboratory use.</p>
+      html: `      <p>Both compounds are handled in the same way in the laboratory. As lyophilised powders they are reconstituted with <a href="/products/bacteriostatic-water/">bacteriostatic water</a> before use in a research preparation. Both dissolve readily; a 2ml to 4ml volume of solvent per vial is a common working dilution when preparing material for laboratory use.</p>
       <p>The handling principles are identical to any peptide of this class: direct the solvent down the inside wall of the vial rather than onto the powder, swirl gently rather than shake, and label the vial with the preparation date. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure and the concentration arithmetic for each vial size.</p>
       <div class="callout callout-green">
         <div class="callout-title">Same Consumables for Both</div>
@@ -93,7 +93,7 @@ module.exports = {
       id: 'sourcing-uk',
       heading: 'Sourcing Both in the UK',
       html: `      <p>North Peptides UK stocks both compounds domestically, so there are no import delays or customs handling for UK-based researchers. Every batch is listed with supplier-stated 99%+ purity, stored frozen until dispatch, and documented with supplier paperwork available on request where held.</p>
-      <p>Orders are dispatched within 24 hours on business days with tracked delivery. If you need help confirming vial sizes or purity documentation before ordering, you can reach the team directly on Telegram at ${'@NORTHPEPTIDESUK'}.</p>`,
+      <p>Orders are dispatched on business days with tracked delivery; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch. If you need help confirming vial sizes or purity documentation before ordering, you can reach the team directly on Telegram at ${'@NORTHPEPTIDESUK'}.</p>`,
     },
   ],
 
@@ -101,7 +101,7 @@ module.exports = {
     { q: 'What is the main difference between Retatrutide and Tirzepatide?',
       a: 'Their receptor targets. Tirzepatide is a dual agonist acting on the GIP and GLP-1 receptors, while Retatrutide is a triple agonist that also acts on the glucagon receptor. Both are supplied as lyophilised research compounds.' },
     { q: 'Are Retatrutide and Tirzepatide available in the UK?',
-      a: 'Yes. Both are UK stocked by North Peptides UK and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held.' },
+      a: 'Yes. Both are UK stocked by North Peptides UK and dispatched on business days (orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch), listed with supplier-stated 99%+ purity with supplier documentation available on request where held.' },
     { q: 'How are these research compounds supplied?',
       a: 'As lyophilised (freeze-dried) powder in sealed vials, stored frozen until dispatch. Retatrutide is stocked in 10mg, 15mg and 20mg vials; Tirzepatide in 15mg and 30mg vials.' },
     { q: 'Can these research compounds be used in humans?',

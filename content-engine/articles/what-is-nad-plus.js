@@ -28,12 +28,12 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How NAD+ Is Supplied',
-      html: `      <p><a href="/product.html?product=nad-plus">NAD+</a> is stocked as a 1000mg lyophilised powder, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days. The larger quantity per vial suits research protocols that call for more material.</p>`,
+      html: `      <p><a href="/products/nad-plus/">NAD+</a> is stocked as a 1000mg lyophilised powder, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched on business days; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch. The larger quantity per vial suits research protocols that call for more material.</p>`,
     },
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>NAD+ dissolves in <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a>. Because the vial holds a larger quantity than most peptides, choose the solvent volume that gives the concentration your work requires — our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the concentration arithmetic. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution.</p>`,
+      html: `      <p>NAD+ dissolves in <a href="/products/bacteriostatic-water/">bacteriostatic water</a>. Because the vial holds a larger quantity than most peptides, choose the solvent volume that gives the concentration your work requires — our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the concentration arithmetic. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution.</p>`,
     },
     {
       id: 'storage',

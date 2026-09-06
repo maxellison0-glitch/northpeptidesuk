@@ -50,7 +50,7 @@ module.exports = {
     {
       id: 'how-to-use',
       heading: 'How to Use It',
-      html: `      <p>The technique is the same regardless of solvent. Clean both vial tops with an <a href="/product.html?product=alcohol-wipes">alcohol wipe</a>, draw the chosen volume of <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a> with a sterile <a href="/product.html?product=syringe-kit">needle</a>, and add it slowly down the inside wall of the peptide vial rather than directly onto the powder. Swirl gently until dissolved. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> walks through the full process and the concentration arithmetic.</p>`,
+      html: `      <p>The technique is the same regardless of solvent. Clean both vial tops with an <a href="/products/alcohol-wipes/">alcohol wipe</a>, draw the chosen volume of <a href="/products/bacteriostatic-water/">bacteriostatic water</a> with a sterile <a href="/products/syringe-kit/">needle</a>, and add it slowly down the inside wall of the peptide vial rather than directly onto the powder. Swirl gently until dissolved. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> walks through the full process and the concentration arithmetic.</p>`,
     },
     {
       id: 'common-mistakes',

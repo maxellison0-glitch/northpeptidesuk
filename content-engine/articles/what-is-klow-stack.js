@@ -17,16 +17,16 @@ module.exports = {
     {
       id: 'what-it-is',
       heading: 'What Is the KLOW Stack?',
-      html: `      <p>The <a href="/product.html?product=klow-stack">KLOW Stack</a> is a research blend that brings four separate research peptides together into one lyophilised vial. Instead of reconstituting and storing four individual compounds, a researcher working with all four prepares a single vial. North Peptides UK supplies it as an 80mg vial, listed with supplier-stated 99%+ purity.</p>`,
+      html: `      <p>The <a href="/products/klow-stack/">KLOW Stack</a> is a research blend that brings four separate research peptides together into one lyophilised vial. Instead of reconstituting and storing four individual compounds, a researcher working with all four prepares a single vial. North Peptides UK supplies it as an 80mg vial, listed with supplier-stated 99%+ purity.</p>`,
     },
     {
       id: 'whats-in-it',
       heading: 'The Four Compounds',
       html: `      <p>The blend contains the following research compounds, each also stocked individually:</p>
       <ul>
-        <li><strong><a href="/product.html?product=ghk-cu">GHK-Cu</a></strong> — a copper peptide research compound. Its solutions carry a characteristic faint blue-green tint from the copper.</li>
-        <li><strong><a href="/product.html?product=tb-500">TB-500</a></strong> — a Thymosin Beta-4 fragment research compound, studied in tissue-repair research models.</li>
-        <li><strong><a href="/product.html?product=bpc-157">BPC-157</a></strong> — a synthetic 15-amino-acid peptide and a frequent subject of tissue-repair and gastrointestinal research.</li>
+        <li><strong><a href="/products/ghk-cu/">GHK-Cu</a></strong> — a copper peptide research compound. Its solutions carry a characteristic faint blue-green tint from the copper.</li>
+        <li><strong><a href="/products/tb-500/">TB-500</a></strong> — a Thymosin Beta-4 fragment research compound, studied in tissue-repair research models.</li>
+        <li><strong><a href="/products/bpc-157/">BPC-157</a></strong> — a synthetic 15-amino-acid peptide and a frequent subject of tissue-repair and gastrointestinal research.</li>
         <li><strong>KPV</strong> — a short tripeptide research compound studied in inflammation-related research models.</li>
       </ul>
       <table class="compare-table">
@@ -48,12 +48,12 @@ module.exports = {
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>The KLOW Stack reconstitutes the same way as any single peptide. All four compounds are water soluble, so they dissolve together in <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a>; around 2ml per vial is a common starting volume. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure.</p>`,
+      html: `      <p>The KLOW Stack reconstitutes the same way as any single peptide. All four compounds are water soluble, so they dissolve together in <a href="/products/bacteriostatic-water/">bacteriostatic water</a>; around 2ml per vial is a common starting volume. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure.</p>`,
     },
     {
       id: 'sourcing-uk',
       heading: 'Sourcing in the UK',
-      html: `      <p>The KLOW Stack is UK stocked and dispatched within 24 hours on business days, listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about the blend before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
+      html: `      <p>The KLOW Stack is UK stocked and dispatched on business days (orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch), listed with supplier-stated 99%+ purity with supplier documentation available on request where held. For questions about the blend before ordering, reach the team directly on Telegram at @NORTHPEPTIDESUK.</p>`,
     },
   ],
 
