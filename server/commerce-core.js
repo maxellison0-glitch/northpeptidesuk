@@ -6,8 +6,10 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
     : "standard";
   const delivery = DELIVERY[method];
   const code = String(discountCode || "").trim().toUpperCase();
-  const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100);
-  const charge = freeStandard ? 0 : delivery.price;
+  const qualifiesFree = FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100;
+  const freeStandard = method === "standard" && qualifiesFree;
+  let charge = freeStandard ? 0 : delivery.price;
+  if (method === "tracked24" && qualifiesFree) charge = delivery.freeOrderPrice;
   return { method, label: delivery.label, charge };
 }const CATALOG = {
   "Retatrutide|10mg": 50,
@@ -109,7 +111,7 @@ const FREE_DELIVERY_CODES = new Set(["SUMMERSHIP", "AJ"]);
 
 const DELIVERY = {
   standard: { label: "Royal Mail Tracked 48", price: 3.99 },
-  tracked24: { label: "Royal Mail Tracked 24", price: 6.99 },
+  tracked24: { label: "Royal Mail Tracked 24", price: 6.99, freeOrderPrice: 4.99 },
   dhl: { label: "DHL Express", price: 11.99 }
 };
 
@@ -188,8 +190,10 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   const method = deliveryMethod === "dhl" ? "dhl" : (deliveryMethod === "tracked24" || deliveryMethod === "express") ? "tracked24" : "standard";
   const delivery = DELIVERY[method];
   const code = String(discountCode || "").trim().toUpperCase();
-  const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100);
-  const charge = freeStandard ? 0 : delivery.price;
+  const qualifiesFree = FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100;
+  const freeStandard = method === "standard" && qualifiesFree;
+  let charge = freeStandard ? 0 : delivery.price;
+  if (method === "tracked24" && qualifiesFree) charge = delivery.freeOrderPrice;
   return { method, label: delivery.label, charge };
 }
 

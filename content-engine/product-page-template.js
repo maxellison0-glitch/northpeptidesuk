@@ -892,7 +892,7 @@ function sideCard(slug, product) {
         <p>${escapeHtml(DISPATCH_LINE)} Packed from UK stock and handed to Royal Mail or DHL on business days.</p>
         <table class="spec-table side-table">
           <tr><th>Tracked 48</th><td>${escapeHtml(formatGBP(DELIVERY.standard.price))} &middot; free over ${escapeHtml(formatGBP(FREE_FROM))}</td></tr>
-          <tr><th>Tracked 24</th><td>${escapeHtml(formatGBP(DELIVERY.tracked24.price))} &middot; premium, 1&ndash;2 working days</td></tr>
+          <tr><th>Tracked 24</th><td>${escapeHtml(formatGBP(DELIVERY.tracked24.price))} &middot; ${escapeHtml(formatGBP(DELIVERY.tracked24.freeOrderPrice))} on £100+ orders</td></tr>
           <tr><th>DHL Express</th><td>${escapeHtml(formatGBP(DELIVERY.dhl.price))} &middot; next working day</td></tr>
           <tr><th>Dispatch</th><td>Order by 12pm Mon&ndash;Fri for next working day</td></tr>
           <tr><th>Packed</th><td>Sealed, discreet, from UK stock</td></tr>

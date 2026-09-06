@@ -1784,6 +1784,48 @@
       .ticker-track { animation: none; }
     }
 
+    /* ===== DELIVERY PROMISE STRIP (below hero) ===== */
+    .ship-facts { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .ship-facts-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px 26px;
+    }
+    .ship-fact { display: flex; align-items: flex-start; gap: 12px; min-width: 0; text-decoration: none; }
+    .ship-fact-icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: var(--action-tint);
+      border: 1px solid rgba(31,111,235,.22);
+      display: grid;
+      place-items: center;
+      color: var(--action);
+    }
+    .ship-fact-body { min-width: 0; }
+    .ship-fact-title {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .ship-fact-sub {
+      display: block;
+      margin-top: 4px;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    a.ship-fact:hover .ship-fact-title { color: var(--action); }
+    a.ship-fact:focus-visible { outline: 2px solid var(--action); outline-offset: 4px; border-radius: 8px; }
+
     /* ==================================================================
        RESPONSIVE
        ================================================================== */
@@ -1815,10 +1857,18 @@
       .hero-lab-drop-result { display: none; }
       .hero-title { font-size: clamp(2.1rem, 9.4vw, 2.7rem); }
       .hero-title em { margin-top: 18px; letter-spacing: .2em; }
-      .hero-sub { font-size: .93rem; }
+      /* Mobile-first hero: CTAs before the paragraph, tighter copy. */
+      .hero-content { display: flex; flex-direction: column; }
+      .hero-lab-drop { order: 0; }
+      .hero-dispatch-pill { order: 1; }
+      .hero-title { order: 2; }
+      .hero-cta-row { order: 3; margin-top: 26px; }
+      .hero-sub { order: 4; margin-top: 20px; font-size: .88rem; color: var(--muted); }
+      .hero-stats { order: 5; }
       .hero-cta-row { flex-direction: column; }
       .hero-cta-primary, .hero-cta-secondary { width: 100%; }
-      .hero-stats { margin-top: 48px; }
+      .hero-stats { margin-top: 40px; }
+      .ship-facts-inner { padding: 18px 16px; gap: 14px; }
       .hero-stat-num { font-size: 1.1rem; white-space: normal; }
       .hero-aurora::after { bottom: 60px; height: 100px; }
 
@@ -2036,6 +2086,28 @@
       </div>
     </div>
   </div>
+
+  <!-- DELIVERY PROMISE -->
+  <section class="ship-facts" aria-label="Delivery and ordering facts">
+    <div class="ship-facts-inner">
+      <div class="ship-fact">
+        <span class="ship-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6.5h12v11h-12z"/><path d="M13.5 10h4l3 3v4.5h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
+        <span class="ship-fact-body"><strong class="ship-fact-title">Free UK delivery over £100</strong><span class="ship-fact-sub">Royal Mail Tracked 48 · no code needed</span></span>
+      </div>
+      <div class="ship-fact">
+        <span class="ship-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <span class="ship-fact-body"><strong class="ship-fact-title">Next-working-day dispatch</strong><span class="ship-fact-sub">Order by 12pm Mon–Fri · 24–48h after confirmed payment</span></span>
+      </div>
+      <div class="ship-fact">
+        <span class="ship-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5h6L11 22l8.5-11.5h-6z"/></svg></span>
+        <span class="ship-fact-body"><strong class="ship-fact-title">Premium delivery upgrades</strong><span class="ship-fact-sub">Tracked 24 £6.99 · £4.99 on £100+ orders · DHL Express £11.99</span></span>
+      </div>
+      <a class="ship-fact" href="#latest-lab-results">
+        <span class="ship-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7.5 3v6c0 4.8-3.2 8.6-7.5 10-4.3-1.4-7.5-5.2-7.5-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg></span>
+        <span class="ship-fact-body"><strong class="ship-fact-title">Independent lab reports</strong><span class="ship-fact-sub">Retatrutide &amp; GHK-Cu · 99% HPLC · view the scans</span></span>
+      </a>
+    </div>
+  </section>
 
   <!-- INDEPENDENT LAB RESULTS -->
   <section class="latest-labs" id="latest-lab-results" aria-labelledby="latest-labs-title">
