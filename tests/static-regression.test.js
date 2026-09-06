@@ -56,7 +56,7 @@ assert(
   "mobile product cards should use compact image/detail columns"
 );
 assert(
-  index.includes(".shop-card-img { aspect-ratio: 1 / 1; min-height: 148px; height: auto;"),
+  index.includes(".shop-card-img { aspect-ratio: auto; min-height: 148px; height: 100%;"),
   "mobile product images should be compact thumbnails"
 );
 assert(
