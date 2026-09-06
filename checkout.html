@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10233F">
   <title>Checkout — North Peptides UK</title>
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
@@ -20,15 +21,17 @@
     /* ==================================================================
        CHECKOUT — North Clinical. Builds on css/np.css tokens.
        One 760px column of white section cards on frost; numbered mono
-       eyebrows; ink totals band; blue is the only action colour.
+       eyebrows; ink totals band; blue is the only action colour except
+       the sanctioned green "reach free delivery" buttons.
        ================================================================== */
 
-    html, body { max-width: 100%; overflow-x: hidden; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    [hidden] { display: none !important; }
 
     /* NAV (shared sub-page chrome from np.css; back link is local) */
     .back-link {
       font-family: var(--font-mono);
-      font-size: .64rem;
+      font-size: .7rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -42,6 +45,35 @@
       transition: color .15s var(--ease), border-color .15s var(--ease);
     }
     .back-link:hover { color: var(--action); border-color: var(--action); }
+
+    /* STICKY FREE-DELIVERY BAR — mobile only, fixed under the dispatch bar */
+    .ship-bar { display: none; }
+    @media (max-width: 820px) {
+      .ship-bar {
+        position: fixed;
+        top: var(--npbar-h, 36px);
+        left: 0; right: 0;
+        z-index: 290;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 9px 16px 8px;
+        background: rgba(255,255,255,.96);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 6px 20px rgba(14,31,56,.08);
+      }
+      .ship-bar-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+      .ship-bar-text { font-family: var(--font-body); font-size: .88rem; font-weight: 500; color: var(--ink); line-height: 1.3; }
+      .ship-bar-text strong { color: var(--action-deep); font-weight: 600; }
+      .ship-bar-amt { font-family: var(--font-mono); font-size: .74rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .ship-bar-track { height: 5px; border-radius: var(--r-pill); background: var(--frost-2); overflow: hidden; }
+      .ship-bar-fill { display: block; height: 100%; width: 0; background: var(--action); border-radius: var(--r-pill); transition: width .35s var(--ease); }
+      .ship-bar.unlocked .ship-bar-text { color: var(--verify-text); }
+      .ship-bar.unlocked .ship-bar-fill { background: var(--verify); }
+      body.has-ship-bar { padding-top: calc(var(--npbar-h, 36px) + 54px) !important; }
+    }
 
     /* PAGE COLUMN */
     .checkout-wrap {
@@ -68,19 +100,24 @@
       align-items: center;
       gap: 10px;
       font-family: var(--font-mono);
-      font-size: .64rem;
+      font-size: .72rem;
       font-weight: 500;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--action);
+      line-height: 1.4;
       margin: 0 0 12px;
+      padding: 0;
     }
     .sec-head::before {
       content: counter(sec, decimal-leading-zero);
-      color: var(--faint);
+      color: var(--muted);
       letter-spacing: .06em;
     }
     .sec-head::after { content: ''; flex: 1; height: 1px; background: var(--line-soft); }
+    .sec-lede { font-size: .88rem; color: var(--body); line-height: 1.55; margin: -4px 0 14px; }
+    fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+    legend.sec-head { width: 100%; }
 
     /* ORDER SUMMARY */
     .order-box {
@@ -95,10 +132,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
       padding: 14px 18px;
       border-bottom: 1px solid var(--line-soft);
     }
     .order-line:last-child { border-bottom: none; }
+    .order-line-main { flex: 1; min-width: 0; }
     .order-line-name {
       font-family: var(--font-display);
       font-size: .95rem;
@@ -108,38 +147,60 @@
     }
     .order-line-dose {
       font-family: var(--font-mono);
-      font-size: .62rem;
-      letter-spacing: .07em;
+      font-size: .7rem;
+      letter-spacing: .06em;
       text-transform: uppercase;
       color: var(--muted);
       margin-top: 3px;
     }
     .order-line-included {
-      font-size: .7rem;
+      font-size: .76rem;
       font-weight: 500;
-      color: var(--verify);
+      color: var(--verify-text);
       line-height: 1.45;
       margin-top: 5px;
     }
+    .order-line-tools { margin-top: 7px; }
     .order-kit-remove {
       font-family: var(--font-mono);
-      font-size: .58rem;
+      font-size: .7rem;
       letter-spacing: .06em;
       text-transform: uppercase;
-      color: var(--faint);
-      margin-left: 10px;
-      padding: 2px 8px;
+      color: var(--muted);
+      padding: 4px 10px;
+      min-height: 28px;
       border: 1px solid var(--line);
       border-radius: var(--r-pill);
-      vertical-align: 2px;
       transition: color .15s, border-color .15s;
     }
     .order-kit-remove:hover { color: var(--danger); border-color: var(--danger); }
+    .order-line-ctl {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--r-pill);
+      padding: 2px;
+      font-family: var(--font-mono);
+      font-size: .84rem;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .order-line-ctl button {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .order-line-ctl button:hover { background: var(--action-tint); color: var(--action); }
+    .order-line-ctl span { min-width: 24px; text-align: center; font-variant-numeric: tabular-nums; }
     .order-line-qty {
       font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--faint);
-      margin: 0 14px;
+      font-size: .76rem;
+      color: var(--muted);
+      margin: 0 8px;
       flex-shrink: 0;
     }
     .order-line-price {
@@ -148,14 +209,17 @@
       font-weight: 500;
       color: var(--ink);
       white-space: nowrap;
+      min-width: 64px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
     }
     .order-empty {
       padding: 26px 18px;
-      font-family: var(--font-mono);
-      font-size: .76rem;
-      letter-spacing: .04em;
-      color: var(--faint);
+      font-family: var(--font-body);
+      font-size: .92rem;
+      color: var(--muted);
       text-align: center;
+      margin: 0;
     }
     .order-subtotal-row {
       display: flex;
@@ -167,7 +231,7 @@
     }
     .order-subtotal-row span:first-child {
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -178,9 +242,25 @@
       font-size: .98rem;
       font-weight: 500;
       color: var(--ink);
+      font-variant-numeric: tabular-nums;
     }
 
-    /* COOLING UPSELL CARD */
+    /* EMPTY BASKET STATE */
+    .empty-state { margin-bottom: 30px; }
+    .empty-cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: -10px 0 26px; }
+    .empty-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 22px;
+      background: var(--action); color: #fff;
+      border-radius: var(--r-ctl);
+      font-family: var(--font-mono); font-size: .74rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .18s var(--ease), transform .18s var(--ease);
+    }
+    .empty-cta:hover { background: var(--action-deep); color: #fff; transform: translateY(-1px); }
+    .empty-note { font-size: .86rem; color: var(--muted); margin: 0; }
+
+    /* COOLING (THERMAL) CARD */
     .cooling-card {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -195,7 +275,7 @@
     }
     .cooling-card-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
     .cooling-icon-wrap {
-      width: 48px; height: 48px;
+      width: 52px; height: 52px;
       border-radius: 12px;
       border: 1px solid rgba(31,111,235,.24);
       background: var(--action-tint);
@@ -211,16 +291,17 @@
       color: var(--ink);
       margin-bottom: 3px;
     }
-    .cooling-card-desc { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+    .cooling-card-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
     .cooling-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
-    .cooling-price { font-family: var(--font-mono); font-size: .98rem; font-weight: 500; color: var(--ink); }
+    .cooling-price { font-family: var(--font-mono); font-size: .98rem; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
     .cooling-add-btn {
+      min-height: 44px;
       padding: 10px 20px;
       background: var(--action);
       color: #fff;
       border-radius: var(--r-ctl);
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -229,8 +310,63 @@
     }
     .cooling-add-btn:hover { background: var(--action-deep); transform: translateY(-1px); }
     .cooling-add-btn.added { background: var(--ink); cursor: default; transform: none; }
+    .cooling-added { display: none; }
+    .cooling-card.in-order { border-color: rgba(14,159,110,.4); }
+    .cooling-card.in-order .cooling-add-btn, .cooling-card.in-order .cooling-price { display: none; }
+    .cooling-card.in-order .cooling-added { display: inline-flex; }
 
-    /* CHECKOUT ADD-ONS */
+    /* REACH FREE DELIVERY — the one sanctioned green action */
+    .reach {
+      background: var(--paper);
+      border: 1px solid rgba(31,111,235,.35);
+      border-radius: var(--r-card);
+      box-shadow: var(--shadow-2);
+      padding: 20px 18px 16px;
+      margin-bottom: 30px;
+    }
+    .reach-eyebrow { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--action); }
+    .reach-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); margin: 6px 0 4px; letter-spacing: -.01em; line-height: 1.3; }
+    .reach-title strong { color: var(--action-deep); }
+    .reach-sub { font-size: .88rem; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }
+    .reach-grid { display: grid; gap: 10px; }
+    .reach-item {
+      display: grid;
+      grid-template-columns: 76px minmax(0,1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--frost);
+    }
+    .reach-img { width: 76px; height: 76px; border-radius: 12px; object-fit: cover; border: 1px solid var(--line); background: #fff; }
+    .reach-icon { display: grid; place-items: center; color: var(--action); background: var(--action-tint); border-color: rgba(31,111,235,.24); }
+    .reach-name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.3; }
+    .reach-dose { font-family: var(--font-mono); font-size: .74rem; font-weight: 500; color: var(--muted); margin-left: 4px; text-transform: none; letter-spacing: 0; }
+    .reach-meta { font-size: .8rem; color: var(--muted); margin: 2px 0 4px; line-height: 1.45; }
+    .reach-effect { font-family: var(--font-mono); font-size: .74rem; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
+    .reach-effect.is-unlock { color: var(--verify-text); font-weight: 500; }
+    .reach-action { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .reach-price { font-family: var(--font-mono); font-size: 1rem; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .reach-btn {
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: var(--r-ctl);
+      background: #0A7A54;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: .74rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(10,122,84,.28);
+      transition: background .18s var(--ease), transform .18s var(--ease);
+    }
+    .reach-btn:hover { background: #08634A; transform: translateY(-1px); }
+    .reach-btn.added { background: var(--ink); box-shadow: none; transform: none; }
+
+    /* CHECKOUT ADD-ONS (research supplies) */
     .addon-box {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -239,6 +375,16 @@
       margin-bottom: 30px;
       overflow: hidden;
     }
+    .supply-prompt {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 18px;
+      background: var(--action-tint);
+      border-bottom: 1px solid rgba(31,111,235,.22);
+    }
+    .supply-prompt strong { font-family: var(--font-display); font-size: .98rem; color: var(--ink); }
+    .supply-prompt span { font-size: .84rem; color: var(--body); line-height: 1.5; }
     .addon-list { display: flex; flex-direction: column; }
     .addon-row {
       display: grid;
@@ -251,36 +397,21 @@
     }
     .addon-row:hover { background: var(--frost); }
     .addon-row:last-child { border-bottom: none; }
+    .addon-row.needed { box-shadow: inset 3px 0 0 var(--action); background: #F7FAFE; }
     .addon-info { display: flex; align-items: center; gap: 13px; min-width: 0; }
     .addon-info > div:last-child { min-width: 0; }
     .addon-visual {
-      width: 46px; height: 46px;
+      width: 60px; height: 60px;
       border-radius: 12px;
       border: 1px solid var(--line);
-      background: linear-gradient(135deg, var(--paper) 0%, var(--frost-2) 100%);
+      background: #fff;
       flex-shrink: 0;
-      position: relative;
-      display: grid;
-      place-items: center;
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
     }
-    .addon-visual::after { content: none; }
-    .addon-symbol { position: relative; z-index: 1; display: block; color: var(--faint); }
-    .addon-symbol.vial { width: 16px; height: 25px; border: 2px solid currentColor; border-radius: 4px 4px 7px 7px; background: rgba(131,149,169,.16); }
-    .addon-symbol.vial::before { content: ""; position: absolute; left: 3px; right: 3px; top: -7px; height: 6px; border-radius: 3px 3px 1px 1px; background: var(--ink); opacity: .85; }
-    .addon-symbol.vial::after { content: ""; position: absolute; left: 3px; right: 3px; bottom: 5px; height: 5px; border-radius: 8px; background: currentColor; opacity: .35; }
-    .addon-symbol.syringe { width: 30px; height: 12px; border: 2px solid currentColor; border-radius: 5px; transform: rotate(-24deg); background: rgba(255,255,255,.65); }
-    .addon-symbol.syringe::before { content: ""; position: absolute; left: -8px; top: 3px; width: 8px; height: 2px; background: currentColor; box-shadow: -5px 0 0 var(--ink); }
-    .addon-symbol.syringe::after { content: ""; position: absolute; right: -11px; top: 4px; width: 12px; height: 2px; background: var(--ink); }
-    .addon-symbol.wipes { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 5px; background: rgba(131,149,169,.14); transform: rotate(-4deg); }
-    .addon-symbol.wipes::before { content: ""; position: absolute; left: 5px; right: 5px; top: 6px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(131,149,169,.5); }
-    .addon-symbol.wipes::after { content: ""; position: absolute; right: -4px; top: 3px; width: 9px; height: 9px; border-radius: 2px; background: var(--paper); border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(8deg); }
-    .addon-symbol.kit { width: 30px; height: 23px; border: 2px solid currentColor; border-radius: 7px; background: rgba(131,149,169,.14); }
-    .addon-symbol.kit::before { content: ""; position: absolute; left: 6px; right: 6px; top: -7px; height: 7px; border: 2px solid currentColor; border-bottom: 0; border-radius: 6px 6px 0 0; opacity: .75; }
-    .addon-symbol.kit::after { content: ""; position: absolute; left: 7px; right: 7px; top: 9px; height: 2px; background: currentColor; box-shadow: 0 -5px 0 rgba(131,149,169,.5), 0 5px 0 rgba(131,149,169,.5); }
-    .addon-symbol.cool { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 7px; background: rgba(131,149,169,.14); }
-    .addon-symbol.cool::before { content: ""; position: absolute; left: 6px; right: 6px; top: 5px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(131,149,169,.55), 0 10px 0 rgba(131,149,169,.35); }
+    .addon-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .addon-symbol { position: relative; z-index: 1; display: block; color: var(--action); }
+    .addon-symbol.cool { width: 29px; height: 22px; border: 2px solid currentColor; border-radius: 7px; background: rgba(31,111,235,.08); }
+    .addon-symbol.cool::before { content: ""; position: absolute; left: 6px; right: 6px; top: 5px; height: 2px; background: currentColor; box-shadow: 0 5px 0 rgba(31,111,235,.55), 0 10px 0 rgba(31,111,235,.35); }
     .addon-symbol.cool::after { content: ""; position: absolute; right: -6px; top: -6px; width: 13px; height: 13px; border-radius: 50%; border: 2px solid currentColor; background: var(--paper); }
     .addon-name {
       font-family: var(--font-display);
@@ -288,32 +419,36 @@
       font-weight: 600;
       color: var(--ink);
       letter-spacing: -0.005em;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
     }
+    .addon-need-pill { font-size: .7rem; }
     .addon-desc {
-      font-family: var(--font-mono);
-      font-size: .6rem;
-      letter-spacing: .03em;
+      font-family: var(--font-body);
+      font-size: .82rem;
+      letter-spacing: 0;
       color: var(--muted);
       margin-top: 3px;
-      line-height: 1.55;
+      line-height: 1.5;
       overflow-wrap: anywhere;
     }
     .addon-action { display: flex; align-items: center; gap: 12px; }
     .addon-price {
       font-family: var(--font-mono);
-      font-size: .9rem;
+      font-size: .92rem;
       font-weight: 500;
       color: var(--ink);
       white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
     .addon-btn {
       min-width: 84px;
+      min-height: 44px;
       padding: 10px 14px;
       background: var(--action);
       color: #fff;
       border-radius: var(--r-ctl);
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -326,26 +461,28 @@
     .discount-row { display: flex; gap: 8px; margin-bottom: 12px; }
     .discount-input {
       flex: 1;
+      min-width: 0;
       background: var(--paper);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--r-ctl);
       padding: 12px 15px;
       font-family: var(--font-mono);
-      font-size: .8rem;
+      font-size: .84rem;
       color: var(--ink);
       letter-spacing: .05em;
       text-transform: uppercase;
       transition: border-color .15s var(--ease), box-shadow .15s var(--ease);
     }
-    .discount-input::placeholder { text-transform: none; color: var(--faint); }
-    .discount-input:focus { outline: none; border-color: var(--action); box-shadow: 0 0 0 3px rgba(31,111,235,.14); }
+    .discount-input::placeholder { text-transform: none; color: var(--faint); letter-spacing: 0; }
+    .discount-input:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; border-color: var(--action); box-shadow: 0 0 0 4px rgba(31,111,235,.18); }
     .discount-btn {
+      min-height: 44px;
       padding: 12px 22px;
       background: var(--paper);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       color: var(--action);
       font-family: var(--font-mono);
-      font-size: .68rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -354,17 +491,33 @@
       transition: background .15s var(--ease), border-color .15s var(--ease);
     }
     .discount-btn:hover { background: var(--action-tint); border-color: var(--action); }
+    .discount-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 8px 6px 12px;
+      border: 1px solid rgba(14,159,110,.35);
+      border-radius: var(--r-pill);
+      background: var(--verify-tint);
+      color: var(--verify-text);
+      font-family: var(--font-mono); font-size: .74rem; font-weight: 500; letter-spacing: .04em;
+    }
+    .discount-chip button {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--verify-text); font-size: 1rem; line-height: 1;
+    }
+    .discount-chip button:hover { background: rgba(14,159,110,.15); }
     .discount-msg {
-      font-family: var(--font-mono);
-      font-size: .66rem;
-      letter-spacing: .03em;
+      font-family: var(--font-body);
+      font-size: .84rem;
+      letter-spacing: 0;
       line-height: 1.6;
       margin-bottom: 12px;
       padding: 10px 14px;
       border-radius: var(--r-ctl);
       display: none;
     }
-    .discount-msg.success { background: var(--verify-tint); color: var(--verify); border: 1px solid rgba(14,159,110,.3); display: block; }
+    .discount-msg.success { background: var(--verify-tint); color: var(--verify-text); border: 1px solid rgba(14,159,110,.3); display: block; }
     .discount-msg.error { background: #FDF0EE; color: var(--danger); border: 1px solid rgba(192,57,43,.25); display: block; }
 
     /* PAYMENT / DELIVERY REASSURANCE */
@@ -373,17 +526,18 @@
       border: 1px solid rgba(31,111,235,.22);
       border-radius: var(--r-ctl);
       padding: 12px 16px;
-      font-size: .82rem;
+      font-size: .86rem;
       line-height: 1.6;
       color: var(--body);
-      margin: 18px 0 30px;
+      margin: 0 0 16px;
     }
+    .checkout-reassure a { color: var(--action-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
 
     /* DELIVERY */
-    .delivery-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+    .delivery-options { display: flex; flex-direction: column; gap: 10px; }
     .delivery-option {
       background: var(--paper);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--r-ctl);
       box-shadow: var(--shadow-1);
       padding: 15px 17px;
@@ -393,13 +547,14 @@
       cursor: pointer;
       transition: border-color .18s var(--ease), background .18s var(--ease);
     }
-    .delivery-option:hover { border-color: #BFD3E6; }
+    .delivery-option:hover { border-color: var(--action); }
+    .delivery-option:focus-within { border-color: var(--action); box-shadow: 0 0 0 3px rgba(31,111,235,.25); }
     .delivery-option.selected {
       border-color: var(--action);
       background: var(--action-tint);
       box-shadow: 0 0 0 1px var(--action) inset;
     }
-    .delivery-option input[type="radio"] { accent-color: var(--action); width: 16px; height: 16px; flex-shrink: 0; margin: 0; }
+    .delivery-option input[type="radio"] { accent-color: var(--action); width: 18px; height: 18px; flex-shrink: 0; margin: 0; }
     .delivery-option-info { flex: 1; min-width: 0; }
     .delivery-option-name {
       font-family: var(--font-display);
@@ -409,19 +564,25 @@
       margin-bottom: 3px;
     }
     .delivery-option-desc {
-      font-family: var(--font-mono);
-      font-size: .62rem;
-      letter-spacing: .03em;
+      font-family: var(--font-body);
+      font-size: .82rem;
+      letter-spacing: 0;
       color: var(--muted);
       line-height: 1.5;
     }
+    #delivery-nudge { font-weight: 600; color: var(--action-deep); }
+    #delivery-nudge.unlocked { color: var(--verify-text); }
     .delivery-option-price {
       font-family: var(--font-mono);
       font-size: .92rem;
       font-weight: 500;
       color: var(--ink);
       white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
+    .delivery-was { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); text-decoration: line-through; margin-right: 6px; }
+    .delivery-note { font-size: .84rem; color: var(--body); margin: 12px 0 0; line-height: 1.5; }
+    .delivery-spacer { margin-bottom: 30px; }
 
     /* TOTAL — the one dark band on the page */
     .total-box {
@@ -429,27 +590,22 @@
       border-radius: var(--r-card);
       box-shadow: var(--shadow-2);
       padding: 20px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
+      display: block;
       margin-bottom: 34px;
     }
-    .total-box-left { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .total-rows { display: flex; flex-direction: column; gap: 7px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--ink-3); }
+    .total-row { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: .8rem; color: #B9C7DA; font-variant-numeric: tabular-nums; }
+    .total-row s { color: #7DA6C9; margin-right: 6px; }
+    .total-row.is-discount { color: #9FE0C5; }
+    .total-main { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
     .total-label {
       font-family: var(--font-mono);
-      font-size: .6rem;
+      font-size: .72rem;
       font-weight: 500;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: #7DA6C9;
-    }
-    .discount-applied-line {
-      font-family: var(--font-mono);
-      font-size: .62rem;
-      letter-spacing: .05em;
-      color: var(--sky);
-      display: none;
+      color: #A9C4E0;
+      line-height: 1.4;
     }
     .total-amount {
       font-family: var(--font-mono);
@@ -458,6 +614,7 @@
       letter-spacing: -0.01em;
       color: #fff;
       white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
 
     /* DETAILS FORM — one white card */
@@ -473,18 +630,18 @@
     .form-group label {
       display: block;
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .74rem;
       font-weight: 500;
-      letter-spacing: .14em;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 7px;
+      color: var(--body);
+      margin-bottom: 8px;
     }
     .form-group input,
     .form-group textarea {
       width: 100%;
       background: var(--paper);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--r-ctl);
       color: var(--ink);
       padding: 13px 15px;
@@ -494,14 +651,14 @@
     }
     .form-group input::placeholder,
     .form-group textarea::placeholder { color: var(--faint); }
-    .form-group input:focus,
-    .form-group textarea:focus { outline: none; border-color: var(--action); box-shadow: 0 0 0 3px rgba(31,111,235,.14); }
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; border-color: var(--action); box-shadow: 0 0 0 4px rgba(31,111,235,.18); }
+    .form-group input:user-invalid,
+    .form-group textarea:user-invalid { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(192,57,43,.12); }
     .form-group textarea { resize: vertical; min-height: 74px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .optional-label { color: var(--faint); font-size: .55rem; letter-spacing: .08em; margin-left: 4px; text-transform: none; }
-    .field-hint { display: block; margin-top: 6px; font-size: .74rem; color: var(--muted); letter-spacing: .01em; }
-
-    .checkout-next-note { margin: 6px 0 16px; font-size: .8rem; line-height: 1.65; color: var(--muted); }
+    .optional-label { color: var(--muted); font-size: .7rem; letter-spacing: .06em; margin-left: 4px; text-transform: none; }
+    .field-hint { display: block; margin-top: 6px; font-size: .8rem; color: var(--muted); letter-spacing: 0; }
 
     .research-confirm {
       display: flex;
@@ -509,15 +666,16 @@
       gap: 11px;
       margin: 4px 0 16px;
       padding: 13px 15px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--r-ctl);
       background: var(--frost);
-      font-size: .82rem;
+      font-size: .84rem;
       line-height: 1.55;
       color: var(--body);
       cursor: pointer;
     }
-    .research-confirm input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: var(--action); cursor: pointer; }
+    .research-confirm:focus-within { border-color: var(--action); box-shadow: 0 0 0 3px rgba(31,111,235,.25); }
+    .research-confirm input { margin-top: 2px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--action); cursor: pointer; }
 
     .payment-methods {
       display: flex;
@@ -532,14 +690,12 @@
     .pay-lock { color: var(--action); flex-shrink: 0; }
     .pay-secure-text {
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .7rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--muted);
     }
-    .pay-cards { display: flex; gap: 6px; align-items: center; margin-left: auto; }
-    .pay-card { display: block; }
 
     /* PLACE ORDER */
     .btn-place-order {
@@ -549,16 +705,18 @@
       background: var(--action);
       color: #fff;
       font-family: var(--font-mono);
-      font-size: .76rem;
+      font-size: .84rem;
       font-weight: 500;
       letter-spacing: .12em;
       text-transform: uppercase;
       border-radius: var(--r-ctl);
       margin-bottom: 14px;
+      scroll-margin-bottom: 80px;
       transition: background .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
     }
     .btn-place-order:hover { background: var(--action-deep); transform: translateY(-1px); box-shadow: 0 14px 34px rgba(31,111,235,.28); }
     .btn-place-order:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+    .submit-amt { opacity: .85; margin-left: 6px; font-variant-numeric: tabular-nums; }
 
     .checkout-error {
       display: none;
@@ -567,9 +725,10 @@
       background: #FDF0EE;
       border: 1px solid rgba(192,57,43,.25);
       border-radius: var(--r-ctl);
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      letter-spacing: .03em;
+      font-family: var(--font-body);
+      font-size: .86rem;
+      font-weight: 500;
+      letter-spacing: 0;
       line-height: 1.6;
       color: var(--danger);
     }
@@ -577,11 +736,12 @@
 
     .checkout-fine-print {
       margin: 0;
-      font-size: .72rem;
-      color: var(--faint);
+      font-size: .78rem;
+      color: var(--muted);
       line-height: 1.6;
       text-align: center;
     }
+    .checkout-fine-print a { color: var(--action-deep); text-decoration: underline; text-underline-offset: 2px; }
 
     /* ==================================================================
        SUCCESS — post-order screen
@@ -609,11 +769,26 @@
     }
     .success-lede {
       margin: 12px auto 0;
-      max-width: 400px;
-      font-size: .92rem;
+      max-width: 420px;
+      font-size: .94rem;
       color: var(--muted);
       line-height: 1.7;
     }
+
+    .success-summary {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--r-card);
+      box-shadow: var(--shadow-1);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .success-summary-head { padding: 15px 22px; border-bottom: 1px solid var(--line-soft); background: var(--frost); }
+    .success-summary-line { display: flex; justify-content: space-between; gap: 12px; padding: 11px 22px; border-bottom: 1px solid var(--line-soft); font-size: .9rem; color: var(--ink); }
+    .success-summary-line span:last-child { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .success-summary-line small { display: block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .success-summary-line.is-meta { color: var(--body); font-size: .86rem; }
+    .success-summary-line.is-total { background: var(--frost-2); font-weight: 600; border-bottom: none; }
 
     .bank-card {
       background: var(--paper);
@@ -627,27 +802,28 @@
       padding: 15px 22px;
       border-bottom: 1px solid var(--line-soft);
       background: var(--frost);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
     .bank-card-title {
       font-family: var(--font-mono);
-      font-size: .64rem;
+      font-size: .72rem;
       font-weight: 500;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--action);
       margin: 0;
     }
     .bank-table { width: 100%; border-collapse: collapse; }
-    .bank-table td { padding: 13px 22px; border-bottom: 1px solid var(--line-soft); }
+    .bank-table td { padding: 13px 22px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
     .bank-table tr:last-child td { border-bottom: none; }
     .bank-label {
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--muted);
-      width: 40%;
+      width: 36%;
       white-space: nowrap;
     }
     .bank-value {
@@ -658,8 +834,27 @@
       color: var(--ink);
       text-align: right;
       overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
     }
     .bank-value-key { color: var(--action-deep); font-size: 1rem; }
+    .bank-copy {
+      margin-left: 10px;
+      min-height: 30px;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--action);
+      border: 1px solid rgba(31,111,235,.3);
+      border-radius: var(--r-pill);
+      padding: 4px 10px;
+      vertical-align: middle;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .bank-copy:hover { border-color: var(--action); }
+    .bank-copy.done { color: var(--verify-text); border-color: rgba(14,159,110,.35); }
+    .bank-copy-all { margin-left: 0; }
 
     .next-steps {
       list-style: none;
@@ -681,19 +876,19 @@
     .next-step:last-child { border-bottom: none; }
     .next-step-num {
       font-family: var(--font-mono);
-      font-size: .62rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .08em;
       color: var(--action);
       flex-shrink: 0;
       padding-top: 4px;
     }
-    .next-step-body { font-size: .86rem; color: var(--body); line-height: 1.65; margin: 0; }
+    .next-step-body { font-size: .88rem; color: var(--body); line-height: 1.65; margin: 0; }
     .next-step-body strong { color: var(--amber); font-weight: 600; }
 
     .success-help {
       text-align: center;
-      font-size: .88rem;
+      font-size: .9rem;
       color: var(--muted);
       line-height: 1.7;
       margin: 0;
@@ -705,13 +900,13 @@
     .success-back {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: .66rem;
+      font-size: .72rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
-      padding: 11px 22px;
+      padding: 12px 22px;
       border: 1px solid var(--line);
       border-radius: var(--r-pill);
       background: var(--paper);
@@ -744,7 +939,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--font-mono);
-      font-size: .64rem;
+      font-size: .7rem;
       letter-spacing: .04em;
       padding: 8px 14px;
       border-radius: var(--r-pill);
@@ -761,27 +956,42 @@
     /* ==================================================================
        RESPONSIVE
        ================================================================== */
+    @media (max-width: 820px) {
+      /* On phones the bubble stays out of the way of Add buttons and prices
+         until the customer reaches the details form (IntersectionObserver). */
+      .wa-float { display: none; }
+      .wa-float.is-visible { display: flex; bottom: 14px; right: 12px; }
+      .wa-bubble { width: 46px; height: 46px; }
+      .wa-tip { display: none; }
+    }
+
     @media (max-width: 768px) {
-      .checkout-wrap { padding: 30px 18px 104px; }
-      .success-page { padding: 40px 18px 104px; }
+      .checkout-wrap { padding: 30px 18px 120px; }
+      .success-page { padding: 40px 18px 120px; }
     }
 
     @media (max-width: 480px) {
-      .checkout-wrap { padding: 24px 14px 98px; }
+      .checkout-wrap { padding: 24px 14px 120px; }
       .checkout-title { font-size: 1.5rem; margin-bottom: 24px; }
 
-      .order-line { padding: 13px 14px; }
-      .order-line-qty { margin: 0 10px; }
+      .order-line { padding: 13px 14px; flex-wrap: wrap; }
+      .order-line-main { flex-basis: 100%; }
+      .order-line-ctl { margin-right: auto; }
+      .order-line-ctl button { width: 40px; height: 40px; }
       .order-subtotal-row { padding: 12px 14px; }
+
+      .reach { padding: 16px 14px 14px; }
+      .reach-item { grid-template-columns: 64px minmax(0,1fr); }
+      .reach-img { width: 64px; height: 64px; }
+      .reach-action { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; }
+      .reach-btn { flex: 1; margin-left: 14px; }
 
       .addon-row { grid-template-columns: 1fr; gap: 10px; padding: 14px; }
       .addon-info { gap: 12px; align-items: flex-start; }
-      .addon-action { width: 100%; justify-content: flex-start; padding-left: 58px; gap: 16px; }
+      .addon-action { width: 100%; justify-content: flex-start; padding-left: 68px; gap: 16px; }
       .addon-price { flex: 1; font-size: 1rem; }
-      .addon-btn { min-width: 96px; min-height: 42px; }
-      .addon-visual { width: 42px; height: 42px; border-radius: 10px; }
-      .addon-symbol.syringe { width: 27px; }
-      .addon-action { padding-left: 54px; }
+      .addon-btn { min-width: 96px; }
+      .addon-visual { width: 56px; height: 56px; border-radius: 10px; }
 
       .cooling-card { flex-direction: column; align-items: stretch; }
       .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
@@ -792,228 +1002,301 @@
       .total-amount { font-size: 1.32rem; }
 
       #checkout-form { padding: 20px 16px; }
-      .form-row { grid-template-columns: 1fr !important; }
+      .form-row { grid-template-columns: 1fr; }
 
-      .success-page { padding: 34px 14px 98px; }
+      .success-page { padding: 34px 14px 120px; }
       .bank-card-head { padding: 13px 16px; }
       .bank-table td { padding: 12px 16px; }
       .bank-value { font-size: .86rem; }
       .bank-value-key { font-size: .92rem; }
+      .bank-copy { display: inline-block; margin: 6px 0 0; }
       .next-step { padding: 14px 16px; }
-
-      .wa-float { bottom: 18px; right: 14px; }
-      .wa-tip { display: none; }
-      .wa-bubble { width: 48px; height: 48px; }
     }
 
     @media (max-width: 380px) {
       .nav .logo { font-size: .84rem; letter-spacing: .05em; }
-      .back-link { font-size: .56rem; padding: 7px 11px; }
+      .back-link { font-size: .7rem; padding: 7px 10px; }
     }
 
   </style>
 </head>
 <body>
-
-
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="logo">NORTH<span>PEPTIDES</span>UK</a>
-  <a href="index.html" class="back-link">← Shop</a>
+  <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
+  <a href="/" class="back-link">← Shop</a>
 </nav>
 
+<!-- STICKY FREE-DELIVERY PROGRESS (mobile only) -->
+<div class="ship-bar" id="ship-bar" role="status" aria-live="polite" hidden>
+  <div class="ship-bar-row"><span class="ship-bar-text" id="ship-bar-text"></span><span class="ship-bar-amt" id="ship-bar-amt"></span></div>
+  <div class="ship-bar-track" aria-hidden="true"><span class="ship-bar-fill" id="ship-bar-fill"></span></div>
+</div>
+
+<main id="main">
 <div class="checkout-wrap" id="main-checkout">
 
   <h1 class="checkout-title">Checkout</h1>
 
   <!-- ORDER SUMMARY -->
-  <p class="sec-head">Your order</p>
+  <h2 class="sec-head">Your order</h2>
   <div class="order-box">
     <div id="checkout-lines">
-      <p class="order-empty">Your basket is empty. <a href="index.html" style="color:#1F6FEB;">Continue shopping →</a></p>
+      <p class="order-empty">Your basket is empty.</p>
     </div>
-    <div class="order-subtotal-row">
+    <div class="order-subtotal-row" aria-live="polite" aria-atomic="true">
       <span>Subtotal</span>
       <span id="subtotal">£0</span>
     </div>
   </div>
 
-  <!-- SMART SECTION: cold-chain add-on for regular vials -->
-  <div id="smart-section" style="display:none">
+  <!-- EMPTY BASKET STATE -->
+  <section class="empty-state" id="empty-state" hidden aria-labelledby="popular-title">
+    <div class="empty-cta-row">
+      <a href="/" class="empty-cta">Continue shopping</a>
+      <p class="empty-note">Free UK delivery on orders of £100 or more.</p>
+    </div>
+    <div class="reach">
+      <div class="reach-head">
+        <span class="reach-eyebrow">Popular compounds</span>
+        <h2 class="reach-title" id="popular-title">Start your order</h2>
+        <p class="reach-sub">Add a compound here or browse the full catalogue. Independent lab results are published for GHK-Cu and Retatrutide.</p>
+      </div>
+      <div class="reach-grid" id="popular-grid"></div>
+    </div>
+  </section>
 
-    <!-- Cold-chain add-on — shown only when regular vials in basket, not pen vials -->
-    <div id="cooling-highlight" style="display:none">
-      <p class="sec-head">Cold-chain packaging</p>
-      <div class="cooling-card">
+  <div id="checkout-body">
+
+  <!-- SMART SECTION: thermal packaging for standard vials -->
+  <div id="smart-section" style="display:none">
+    <div id="cooling-highlight">
+      <h2 class="sec-head">Thermal packaging (optional)</h2>
+      <div class="cooling-card" id="cooling-card">
         <div class="cooling-card-left">
           <div class="cooling-icon-wrap" aria-hidden="true">
-            <span class="addon-symbol cool" style="color:#1F6FEB"></span>
+            <span class="addon-symbol cool"></span>
           </div>
           <div>
             <div class="cooling-card-title">Thermal Cooled Packaging</div>
-            <div class="cooling-card-desc">Insulated foil pouch and gel packs to keep vials cold in transit.</div>
+            <div class="cooling-card-desc">Insulated foil pouch and gel packs to keep vials cold in transit. Lyophilised vials are shipped frozen; the pouch and gel packs keep them cold in transit.</div>
           </div>
         </div>
         <div class="cooling-card-right">
-          <span class="cooling-price">£4.99</span>
+          <span class="cooling-price">£5</span>
+          <span class="np-chip np-chip-verify cooling-added">In your order</span>
           <button type="button" class="cooling-add-btn" onclick="addCoolingPackaging(this)">Add</button>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- CHECKOUT ADD-ONS -->
-  <p class="sec-head">Optional research supplies</p>
+  <!-- REACH FREE DELIVERY -->
+  <section class="reach" id="reach-module" hidden aria-labelledby="reach-title">
+    <div class="reach-head">
+      <span class="reach-eyebrow">Complete your order</span>
+      <h2 class="reach-title" id="reach-title">You are <strong id="reach-gap">£0</strong> from free UK delivery</h2>
+      <p class="reach-sub">Add one of these and Royal Mail Tracked 48 delivery is free instead of £3.99.</p>
+    </div>
+    <div class="reach-grid" id="reach-grid"></div>
+  </section>
+
+  <!-- RESEARCH SUPPLIES -->
+  <h2 class="sec-head" id="supplies-head">Research supplies</h2>
+  <p class="sec-lede" id="supplies-lede" hidden></p>
   <div class="addon-box">
+    <div class="supply-prompt" id="supply-prompt" hidden>
+      <strong>Standard vials in your order — do you have these?</strong>
+      <span>Lyophilised vials are reconstituted in the lab with bacteriostatic water and drawn with insulin needles. If you do not have these, you need them.</span>
+    </div>
     <div class="addon-list">
-      <div class="addon-row">
+      <div class="addon-row" id="addon-row-bac3">
         <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol kit"></span></div>
+          <div class="addon-visual" aria-hidden="true"><img src="/research-bac-water-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
           <div>
-          <div class="addon-name">Intranasal Research Kit</div>
-          <div class="addon-desc">10ml spray bottle + sterile saline + syringe + wipes + label</div>
+          <div class="addon-name">Bacteriostatic Water <span class="np-chip np-chip-action addon-need-pill" id="bac3-need-pill" hidden>Needed for standard vials</span></div>
+          <div class="addon-desc" id="bac3-addon-desc">3ml sealed vial · enough for one vial</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Intranasal Research Kit',6.99,'10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£4</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',4,'3ml vial')">Add</button></div>
       </div>
-      <div class="addon-row">
+      <div class="addon-row" id="addon-row-bac">
         <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol vial"></span></div>
+          <div class="addon-visual" aria-hidden="true"><img src="/research-bac-water-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
           <div>
-          <div class="addon-name">Bacteriostatic Water</div>
-          <div class="addon-desc" id="bac-addon-desc">10ml vial</div>
+          <div class="addon-name">Bacteriostatic Water <span class="np-chip np-chip-action addon-need-pill" id="bac-need-pill" hidden>Needed for standard vials</span></div>
+          <div class="addon-desc" id="bac-addon-desc">10ml sealed vial · enough for several vials</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£9.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',9.99,'10ml vial')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£10</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Bacteriostatic Water',10,'10ml vial')">Add</button></div>
       </div>
-      <div class="addon-row">
+      <div class="addon-row" id="addon-row-needles">
         <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
+          <div class="addon-visual" aria-hidden="true"><img src="/research-insulin-needles-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
           <div>
-          <div class="addon-name">Insulin Needle Pack</div>
-          <div class="addon-desc" id="needles-addon-desc">1ml sterile insulin needles x10</div>
+          <div class="addon-name">Insulin Needle Pack <span class="np-chip np-chip-action addon-need-pill" id="needles-need-pill" hidden>Needed for standard vials</span></div>
+          <div class="addon-desc" id="needles-addon-desc">10 × 1ml, 31G, sterile</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£6.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Insulin Needle Pack',6.99,'10 pack, 1ml insulin needles')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£7</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Insulin Needle Pack',7,'10 pack, 1ml insulin needles')">Add</button></div>
       </div>
-      <div class="addon-row">
+      <div class="addon-row" id="addon-row-wipes">
         <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol syringe"></span></div>
+          <div class="addon-visual" aria-hidden="true"><img src="/research-alcohol-wipes-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
+          <div>
+          <div class="addon-name">Alcohol Wipes</div>
+          <div class="addon-desc" id="wipes-addon-desc">Pack of 10, 70% isopropyl</div>
+          </div>
+        </div>
+        <div class="addon-action"><span class="addon-price">£3</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',3,'10 pack')">Add</button></div>
+      </div>
+      <div class="addon-row" id="addon-row-tips5">
+        <div class="addon-info">
+          <div class="addon-visual" aria-hidden="true"><img src="/research-pen-tips-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
           <div>
           <div class="addon-name">Sterile Disposable Pen Tips</div>
-          <div class="addon-desc" id="pen-tips-addon-desc">Universal-fit 6mm x5</div>
+          <div class="addon-desc" id="pen-tips-addon-desc">6mm sterile pen tips, pack of 5 · for pen vials and pen-style kits</div>
           </div>
         </div>
         <div class="addon-action"><span class="addon-price">£3.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Sterile Disposable Pen Tips',3.99,'6mm x5')">Add</button></div>
       </div>
-      <div class="addon-row">
+      <div class="addon-row" id="addon-row-tips10" hidden>
         <div class="addon-info">
-          <div class="addon-visual" aria-hidden="true"><span class="addon-symbol wipes"></span></div>
+          <div class="addon-visual" aria-hidden="true"><img src="/research-pen-tips-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
           <div>
-          <div class="addon-name">Alcohol Wipes</div>
-          <div class="addon-desc" id="wipes-addon-desc">10 pack, sterile</div>
+          <div class="addon-name">Sterile Disposable Pen Tips — 10 pack</div>
+          <div class="addon-desc" id="pen-tips10-addon-desc">6mm sterile pen tips, pack of 10 — under 50p a tip. Optional spare pack — your pen kit already includes sterile tips.</div>
           </div>
         </div>
-        <div class="addon-action"><span class="addon-price">£2.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Alcohol Wipes',2.99,'10 pack')">Add</button></div>
+        <div class="addon-action"><span class="addon-price">£4.99</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Sterile Disposable Pen Tips',4.99,'6mm x10')">Add</button></div>
+      </div>
+      <div class="addon-row" id="addon-row-intranasal">
+        <div class="addon-info">
+          <div class="addon-visual" aria-hidden="true"><img src="/research-intranasal-kit-600.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
+          <div>
+          <div class="addon-name">Intranasal Research Kit</div>
+          <div class="addon-desc">10ml spray bottle, sterile saline, transfer syringe, wipes and label</div>
+          </div>
+        </div>
+        <div class="addon-action"><span class="addon-price">£7</span><button type="button" class="addon-btn" onclick="addCheckoutAddon(this,'Intranasal Research Kit',7,'10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label')">Add</button></div>
       </div>
     </div>
   </div>
 
 
   <!-- DISCOUNT CODE -->
-  <p class="sec-head">Discount code</p>
+  <h2 class="sec-head">Discount code</h2>
   <div class="discount-row">
-    <input type="text" class="discount-input" id="discount-input" placeholder="Enter discount code">
-    <button class="discount-btn" onclick="applyDiscount()">Apply</button>
+    <label for="discount-input" class="sr-only">Discount code</label>
+    <input type="text" class="discount-input" id="discount-input" placeholder="Enter discount code" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go" onkeydown="if(event.key==='Enter'){event.preventDefault();applyDiscount();}">
+    <button type="button" class="discount-btn" onclick="applyDiscount()">Apply</button>
   </div>
-  <div class="discount-msg" id="discount-msg"></div>
-
-  <p class="checkout-reassure">Payment is by bank transfer (Faster Payments — usually clears within hours). We confirm by email. Order before 12pm Mon–Fri and we aim to dispatch the next working day.</p>
+  <div class="discount-chip" id="discount-chip" hidden><span id="discount-chip-text"></span><button type="button" aria-label="Remove discount code" onclick="clearDiscount()">×</button></div>
+  <div class="discount-msg" id="discount-msg" role="status" aria-live="polite"></div>
 
   <!-- DELIVERY -->
-  <p class="sec-head">Delivery</p>
-  <div class="delivery-options">
-    <label class="delivery-option selected" id="label-standard">
-      <input type="radio" name="delivery" value="standard" data-price="3.99" data-label="Royal Mail Tracked 24" checked onchange="updateDelivery(this)">
-      <div class="delivery-option-info">
-        <div class="delivery-option-name">Royal Mail Tracked 24</div>
-        <div class="delivery-option-desc">Estimated 1–2 working days · <span id="delivery-nudge">Free over £100</span></div>
-      </div>
-      <div class="delivery-option-price" id="standard-delivery-price">£3.99</div>
-    </label>
-    <label class="delivery-option" id="label-express">
-      <input type="radio" name="delivery" value="express" data-price="9.99" data-label="Royal Mail Special Delivery" onchange="updateDelivery(this)">
-      <div class="delivery-option-info">
-        <div class="delivery-option-name">Royal Mail Special Delivery</div>
-        <div class="delivery-option-desc">Guaranteed by 1PM next working day</div>
-      </div>
-      <div class="delivery-option-price">£9.99</div>
-    </label>
-  </div>
+  <fieldset class="delivery-spacer">
+    <legend class="sec-head">Delivery</legend>
+    <div class="delivery-options">
+      <label class="delivery-option selected" id="label-standard">
+        <input type="radio" id="delivery-standard" name="delivery" value="standard" data-price="3.99" data-label="Royal Mail Tracked 48" aria-describedby="delivery-standard-desc" checked onchange="updateDelivery(this)">
+        <div class="delivery-option-info">
+          <div class="delivery-option-name">Royal Mail Tracked 48</div>
+          <div class="delivery-option-desc" id="delivery-standard-desc">2–3 working days after dispatch · <span id="delivery-nudge" role="status" aria-live="polite">Free over £100</span></div>
+        </div>
+        <div class="delivery-option-price"><span id="standard-delivery-was" class="delivery-was" hidden>£3.99</span><span id="standard-delivery-price">£3.99</span></div>
+      </label>
+      <label class="delivery-option" id="label-tracked24">
+        <input type="radio" id="delivery-tracked24" name="delivery" value="tracked24" data-price="6.99" data-label="Royal Mail Tracked 24" aria-describedby="delivery-tracked24-desc" onchange="updateDelivery(this)">
+        <div class="delivery-option-info">
+          <div class="delivery-option-name">Royal Mail Tracked 24 · Premium</div>
+          <div class="delivery-option-desc" id="delivery-tracked24-desc">Our premium service · 1–2 working days after dispatch, fully tracked</div>
+        </div>
+        <div class="delivery-option-price">£6.99</div>
+      </label>
+      <label class="delivery-option" id="label-dhl">
+        <input type="radio" id="delivery-dhl" name="delivery" value="dhl" data-price="11.99" data-label="DHL Express" aria-describedby="delivery-dhl-desc" onchange="updateDelivery(this)">
+        <div class="delivery-option-info">
+          <div class="delivery-option-name">DHL Express</div>
+          <div class="delivery-option-desc" id="delivery-dhl-desc">Fastest option · next working day after dispatch by DHL courier</div>
+        </div>
+        <div class="delivery-option-price">£11.99</div>
+      </label>
+    </div>
+    <p class="delivery-note" id="delivery-express-note" hidden>Royal Mail Tracked 48 is free at your basket total — Tracked 24 and DHL Express are paid upgrades.</p>
+  </fieldset>
 
   <!-- TOTAL -->
-  <div class="total-box">
-    <div class="total-box-left">
-      <span class="total-label">Total inc. delivery</span>
-      <span class="discount-applied-line" id="discount-applied-line">Discount applied</span>
+  <div class="total-box" role="status" aria-live="polite" aria-atomic="true">
+    <div class="total-rows">
+      <div class="total-row"><span>Subtotal</span><span id="tb-sub">£0</span></div>
+      <div class="total-row is-discount" id="tb-disc-row" hidden><span id="tb-disc-label">Discount</span><span id="tb-disc">−£0</span></div>
+      <div class="total-row"><span>Delivery · <span id="tb-del-name">Tracked 24</span></span><span id="tb-del">£3.99</span></div>
     </div>
-    <span class="total-amount" id="grand-total">£0</span>
+    <div class="total-main">
+      <span class="total-label">Total to pay by bank transfer</span>
+      <span class="total-amount" id="grand-total">£0</span>
+    </div>
   </div>
 
   <!-- FORM -->
-  <p class="sec-head">Your details</p>
+  <h2 class="sec-head">Your details</h2>
   <form id="checkout-form">
     <input type="hidden" name="delivery_method" id="delivery-method-hidden">
     <input type="hidden" name="total" id="total-hidden">
     <input type="hidden" name="discount_code" id="discount-code-hidden">
 
     <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" name="name" required placeholder="Your full name">
+      <label for="co-name">Full name</label>
+      <input id="co-name" type="text" name="name" required autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="e.g. Sam Taylor">
     </div>
     <div class="form-group">
-      <label>Email Address</label>
-      <input type="email" name="email" required placeholder="your@email.com">
-      <span class="field-hint">Order confirmation &amp; tracking are sent here.</span>
-    </div>
-    <div class="form-group">
-      <label>Notes <span class="optional-label">(optional)</span></label>
-      <textarea name="notes" placeholder="Anything we should know?"></textarea>
+      <label for="co-email">Email address</label>
+      <input id="co-email" type="email" name="email" required autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-describedby="co-email-hint" placeholder="you@example.com">
+      <span class="field-hint" id="co-email-hint">We send your bank details, order confirmation and tracking here.</span>
     </div>
 
-    <p class="sec-head">Delivery address</p>
+    <fieldset>
+      <legend class="sec-head">Delivery address</legend>
+      <div class="form-group">
+        <label for="co-addr1">Address line 1</label>
+        <input id="co-addr1" type="text" name="address1" required autocomplete="address-line1" enterkeyhint="next" placeholder="Street address">
+      </div>
+      <div class="form-group">
+        <label for="co-addr2">Address line 2 <span class="optional-label">(optional)</span></label>
+        <input id="co-addr2" type="text" name="address2" autocomplete="address-line2" enterkeyhint="next" placeholder="Flat, building, etc.">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="co-city">City / town</label>
+          <input id="co-city" type="text" name="city" required autocomplete="address-level2" enterkeyhint="next" placeholder="City or town">
+        </div>
+        <div class="form-group">
+          <label for="co-county">County <span class="optional-label">(optional)</span></label>
+          <input id="co-county" type="text" name="county" autocomplete="address-level1" enterkeyhint="next" placeholder="County">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="co-postcode">Postcode</label>
+          <input id="co-postcode" type="text" name="postcode" required autocomplete="postal-code" autocapitalize="characters" spellcheck="false" enterkeyhint="next" maxlength="8" placeholder="e.g. SW1A 1AA">
+        </div>
+        <div class="form-group">
+          <label for="co-phone">Phone <span class="optional-label">(optional)</span></label>
+          <input id="co-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" enterkeyhint="done" placeholder="07xxx xxxxxx" aria-describedby="co-phone-hint">
+          <span class="field-hint" id="co-phone-hint">For delivery updates only.</span>
+        </div>
+      </div>
+    </fieldset>
+
     <div class="form-group">
-      <label>Address Line 1</label>
-      <input type="text" name="address1" required placeholder="Street address">
-    </div>
-    <div class="form-group">
-      <label>Address Line 2 <span class="optional-label">(optional)</span></label>
-      <input type="text" name="address2" placeholder="Flat, building, etc.">
-    </div>
-    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div class="form-group">
-        <label>City / Town</label>
-        <input type="text" name="city" required placeholder="City or town">
-      </div>
-      <div class="form-group">
-        <label>County <span class="optional-label">(optional)</span></label>
-        <input type="text" name="county" placeholder="County">
-      </div>
-    </div>
-    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div class="form-group">
-        <label>Postcode</label>
-        <input type="text" name="postcode" required placeholder="e.g. SW1A 1AA">
-      </div>
-      <div class="form-group">
-        <label>Phone <span class="optional-label">(optional)</span></label>
-        <input type="tel" name="phone" placeholder="07xxx xxxxxx">
-      </div>
+      <label for="co-notes">Order notes <span class="optional-label">(optional)</span></label>
+      <textarea id="co-notes" name="notes" autocomplete="off" rows="3" placeholder="Delivery instructions or anything we should know"></textarea>
     </div>
 
-    <p class="checkout-next-note">After placing your order, you'll receive bank transfer details by email. Your order is confirmed once payment clears — usually within a few hours via Faster Payments.</p>
+    <p class="checkout-reassure">Payment is by bank transfer. You will receive our bank details by email as soon as you place the order. Your order is confirmed once payment clears — usually within a few hours via Faster Payments. Order before 12pm Mon–Fri and we aim to dispatch the next working day. Questions before you pay? <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer">WhatsApp us</a>.</p>
 
     <label class="research-confirm">
       <input type="checkbox" id="research-use-confirm" name="research-use-confirm" required>
@@ -1026,14 +1309,16 @@
           <path d="M7 10V7a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="2"/>
           <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" fill="currentColor"/>
         </svg>
-        <span class="pay-secure-text">Bank transfer checkout</span>
+        <span class="pay-secure-text">UK bank transfer · Faster Payments</span>
       </div>
     </div>
 
-    <button type="submit" class="btn-place-order" id="submit-btn">Place order</button>
-    <div class="checkout-error" id="checkout-error" role="alert"></div>
-    <p class="checkout-fine-print">Products are supplied for laboratory research only and are not for human or animal consumption.</p>
+    <div class="checkout-error" id="checkout-error" role="alert" tabindex="-1"></div>
+    <button type="submit" class="btn-place-order" id="submit-btn">Place order <span class="submit-amt" id="submit-amt"></span></button>
+    <p class="checkout-fine-print">By placing your order you agree to our <a href="/terms.html">Terms &amp; Conditions</a> and <a href="/refunds.html">Refunds &amp; Returns</a> policy. Products are supplied for laboratory research only and are not for human or animal consumption.</p>
   </form>
+
+  </div><!-- /checkout-body -->
 
 </div>
 
@@ -1044,19 +1329,25 @@
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true"><path d="M4.5 12.5l5 5L19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h2>Order received</h2>
-    <p class="success-lede">Thanks — your order has been placed. Complete the bank transfer below to confirm it.</p>
+    <p class="success-lede">Thanks — your order has been placed. Complete the bank transfer below to confirm it. We will email you as soon as payment arrives.</p>
+  </div>
+
+  <div class="success-summary" id="success-summary">
+    <div class="success-summary-head"><p class="bank-card-title">Order summary</p></div>
+    <div id="success-summary-lines"></div>
   </div>
 
   <div class="bank-card" id="bank-details-box">
     <div class="bank-card-head">
       <p class="bank-card-title">Bank transfer details</p>
+      <button type="button" class="bank-copy bank-copy-all" data-copy-all="1" aria-label="Copy all bank transfer details">Copy all details</button>
     </div>
     <table class="bank-table">
-      <tr><td class="bank-label">Account name</td><td class="bank-value" id="bank-name"></td></tr>
-      <tr><td class="bank-label">Sort code</td><td class="bank-value" id="bank-sort"></td></tr>
-      <tr><td class="bank-label">Account number</td><td class="bank-value" id="bank-acct"></td></tr>
-      <tr><td class="bank-label">Amount</td><td class="bank-value bank-value-key" id="bank-amount"></td></tr>
-      <tr><td class="bank-label">Reference</td><td class="bank-value bank-value-key" id="bank-ref"></td></tr>
+      <tr><td class="bank-label">Account name</td><td class="bank-value"><span id="bank-name"></span><button type="button" class="bank-copy" data-copy-target="bank-name" aria-label="Copy account name">Copy</button></td></tr>
+      <tr><td class="bank-label">Sort code</td><td class="bank-value"><span id="bank-sort"></span><button type="button" class="bank-copy" data-copy-target="bank-sort" aria-label="Copy sort code">Copy</button></td></tr>
+      <tr><td class="bank-label">Account number</td><td class="bank-value"><span id="bank-acct"></span><button type="button" class="bank-copy" data-copy-target="bank-acct" aria-label="Copy account number">Copy</button></td></tr>
+      <tr><td class="bank-label">Amount</td><td class="bank-value bank-value-key"><span id="bank-amount"></span><button type="button" class="bank-copy" data-copy-target="bank-amount" aria-label="Copy amount">Copy</button></td></tr>
+      <tr><td class="bank-label">Reference</td><td class="bank-value bank-value-key"><span id="bank-ref"></span><button type="button" class="bank-copy" data-copy-target="bank-ref" aria-label="Copy payment reference">Copy</button></td></tr>
     </table>
   </div>
 
@@ -1067,52 +1358,26 @@
     </li>
     <li class="next-step">
       <span class="next-step-num" aria-hidden="true">02</span>
-      <p class="next-step-body">Once received (usually within a few hours via Faster Payments), we'll confirm by email. Orders placed before 12pm Mon–Fri are aimed to be dispatched the next working day.</p>
+      <p class="next-step-body">Once payment is received (usually within a few hours via Faster Payments) we confirm by email. Orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch.</p>
     </li>
     <li class="next-step">
       <span class="next-step-num" aria-hidden="true">03</span>
-      <p class="next-step-body"><span id="email-sent-note">We've also sent these details to your email.</span></p>
+      <p class="next-step-body"><span id="email-sent-note">We have also emailed these details to you.</span></p>
     </li>
   </ol>
 
-  <p class="success-help">Any questions? Email <strong>orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer">WhatsApp us →</a></p>
+  <p class="success-help">Any questions? Email <strong>orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer">WhatsApp us &rarr;</a></p>
   <div class="success-back-row">
-    <a href="index.html" class="success-back">← Back to shop</a>
+    <a href="/" class="success-back">← Back to shop</a>
   </div>
 </div>
+</main>
 
 <script>
-  // ── COOLING UPSELL ──────────────────────────────────────────────────────
-  function isPenVial(item) {
-    return /pen\s+vial/i.test(item.name || '') || /\/\s*3\s*ml/i.test(item.dose || '');
-  }
-
-  function addCoolingPackaging(btn) {
-    if (btn.classList.contains('added')) return;
-    addCheckoutAddon(btn, 'Thermal Cooled Packaging', 4.99, 'Insulated foil pouch + gel packs');
-  }
-
-  function removeKitItem(key) {
-    const idx = basketData.findIndex(i => i._kitFor === key);
-    if (idx !== -1) { basketData.splice(idx, 1); saveCheckoutBasket(); renderOrder(); }
-  }
-
-  function updateSmartSection() {
-    const hasRegular = basketData.some(item =>
-      !item._kitFor && !isPenVial(item) && /\d+(\.\d+)?\s*mg/i.test(item.dose || '')
-    );
-    const section = document.getElementById('smart-section');
-    const coolingHL = document.getElementById('cooling-highlight');
-    if (!section) return;
-    if (!hasRegular) { section.style.display = 'none'; return; }
-    section.style.display = '';
-    const coolingInBasket = basketData.some(i => (i.name || '').toLowerCase().includes('thermal cooled'));
-    if (coolingHL) coolingHL.style.display = (hasRegular && !coolingInBasket) ? '' : 'none';
-  }
-
+  // ── STATE ───────────────────────────────────────────────────────────────
   let basketData = [];
   let deliveryPrice = 3.99;
-  let deliveryLabel = 'Royal Mail Tracked 24';
+  let deliveryLabel = 'Royal Mail Tracked 48';
   let discountApplied = false;
   let appliedDiscountPct = 0;
   let appliedDiscountCode = '';
@@ -1127,6 +1392,49 @@
     'JAN25':        0.25
   };
   const FREE_DELIVERY_CODES = ['SUMMERSHIP', 'AJ'];
+  const FREE_DELIVERY_THRESHOLD = 100;
+
+  // "Reach free delivery" candidates in the owner's priority order. Prices
+  // must match server/commerce-core.js CATALOG (name|dose keys).
+  const REACH_CANDIDATES = [
+    { name: 'GHK-Cu',      dose: '50mg', price: 30, img: '/ghk-cu-blue-powder-600.webp',     alt: 'GHK-Cu 50mg lyophilised research vial',      meta: 'Standard vial · lab tested, 99% HPLC' },
+    { name: 'Retatrutide', dose: '10mg', price: 50, img: '/retatrutide-vial-600.webp',       alt: 'Retatrutide 10mg lyophilised research vial', meta: 'Standard vial · lab tested, 99% HPLC' },
+    { name: 'BPC-157',     dose: '10mg', price: 25, img: '/bpc-157-vial-600.webp',           alt: 'BPC-157 10mg lyophilised research vial',     meta: 'Standard vial · supplier-stated purity' },
+    { name: 'KLOW Stack',  dose: '80mg', price: 60, img: '/klow-stack-blue-powder-600.webp', alt: 'KLOW Stack 80mg lyophilised research vial', meta: '4-in-1 blend · supplier-stated purity' }
+  ];
+  // Whole-pound supplies that can close a small gap exactly. Never pen tips
+  // (£3.99 / £4.99 are the only prices that can leave a basket 1p short).
+  const REACH_SUPPLIES = [
+    { name: 'Alcohol Wipes',            dose: '10 pack',                          price: 3,  img: '/research-alcohol-wipes-600.webp',   alt: 'Alcohol wipes, pack of 10',              meta: 'Pack of 10, 70% isopropyl' },
+    { name: 'Bacteriostatic Water',     dose: '3ml vial',                         price: 4,  img: '/research-bac-water-600.webp',       alt: 'Bacteriostatic water 3ml vial',          meta: '3ml sealed vial' },
+    { name: 'Thermal Cooled Packaging', dose: 'Insulated foil pouch + gel packs', price: 5,  img: '',                                   alt: '',                                       meta: 'Insulated foil pouch and gel packs' },
+    { name: 'Insulin Needle Pack',      dose: '10 pack, 1ml insulin needles',     price: 7,  img: '/research-insulin-needles-600.webp', alt: 'Insulin needle pack, 10 x 1ml',          meta: '10 × 1ml, 31G, sterile' },
+    { name: 'Bacteriostatic Water',     dose: '10ml vial',                        price: 10, img: '/research-bac-water-600.webp',       alt: 'Bacteriostatic water 10ml vial',         meta: '10ml sealed vial' }
+  ];
+
+  // ── HELPERS ─────────────────────────────────────────────────────────────
+  function byId(id) { return document.getElementById(id); }
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function isPenVial(item) {
+    return /pen\s+vial/i.test(item.name || '') || /\/\s*3\s*ml/i.test(item.dose || '');
+  }
+
+  function isCompound(item) {
+    return !item._kitFor && /\d+(\.\d+)?\s*mg/i.test(item.dose || '');
+  }
+
+  function baseCompound(name) {
+    return String(name || '').replace(/\s+pen\s+vial$/i, '').trim().toLowerCase();
+  }
+
+  function hasItem(name, dose) {
+    return basketData.some(i => i.name === name && i.dose === dose);
+  }
 
   function getSubtotal() {
     return basketData.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -1141,37 +1449,202 @@
     return discountApplied ? sub * (1 - appliedDiscountPct) : sub;
   }
 
+  // Free delivery is evaluated on the PRE-DISCOUNT product subtotal (the
+  // server does the same), so WELCOME10 on an exact £100 basket keeps it.
+  function freeDeliveryGap() {
+    if (FREE_DELIVERY_CODES.includes(appliedDiscountCode)) return 0;
+    return Math.max(0, FREE_DELIVERY_THRESHOLD - getSubtotal());
+  }
+
+  function selectedDeliveryMethod() {
+    const selected = document.querySelector('input[name="delivery"]:checked');
+    return selected ? selected.value : 'standard';
+  }
+
+  function setBodyClass(name, on) {
+    if (document.body && document.body.classList) {
+      if (on) document.body.classList.add(name); else document.body.classList.remove(name);
+    }
+  }
+
+  function saveCheckoutBasket() {
+    localStorage.setItem('npuk_basket', JSON.stringify(basketData));
+  }
+
+  // ── TOTALS ──────────────────────────────────────────────────────────────
   function updateTotals() {
     const sub = getSubtotal();
     const discSub = getDiscountedSubtotal();
-    if (selectedDeliveryMethod() === 'standard') {
-      const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || discSub >= 100;
-      deliveryPrice = freeDelivery ? 0 : 3.99;
-      document.getElementById('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3.99';
-      const nudge = document.getElementById('delivery-nudge');
-      if (freeDelivery) {
-        nudge.textContent = 'Free delivery applied';
-      } else {
-        const needed = (100 - discSub).toFixed(2);
-        nudge.textContent = 'Add £' + needed + ' more for free delivery';
-      }
+    const freeDelivery = FREE_DELIVERY_CODES.includes(appliedDiscountCode) || sub >= FREE_DELIVERY_THRESHOLD;
+    const gap = freeDeliveryGap();
+
+    // Tracked 24 card is always kept current, whichever method is selected.
+    byId('standard-delivery-price').textContent = freeDelivery ? 'FREE' : '£3.99';
+    byId('standard-delivery-was').hidden = !freeDelivery;
+    const nudge = byId('delivery-nudge');
+    if (freeDelivery) {
+      nudge.textContent = 'Free UK delivery unlocked';
+      nudge.classList.add('unlocked');
+    } else {
+      nudge.textContent = basketData.length ? 'Add £' + formatMoney(gap) + ' more for free UK delivery' : 'Free over £100';
+      nudge.classList.remove('unlocked');
     }
-    const grand = discSub + deliveryPrice;
-    document.getElementById('subtotal').textContent = '£' + formatMoney(sub);
-    document.getElementById('grand-total').textContent = '£' + formatMoney(grand);
-    document.getElementById('total-hidden').value = '£' + grand.toFixed(2);
-    const discLine = document.getElementById('discount-applied-line');
-    discLine.style.display = discountApplied ? 'block' : 'none';
+
+    const method = selectedDeliveryMethod();
+    if (method === 'standard') {
+      deliveryPrice = freeDelivery ? 0 : 3.99;
+    } else {
+      const sel = document.querySelector('input[name="delivery"]:checked');
+      deliveryPrice = sel && sel.dataset && sel.dataset.price ? parseFloat(sel.dataset.price) : 9.99;
+    }
+    byId('delivery-express-note').hidden = !(method !== 'standard' && freeDelivery && basketData.length > 0);
+
+    const grand = basketData.length ? discSub + deliveryPrice : 0;
+    byId('subtotal').textContent = '£' + formatMoney(sub);
+    byId('grand-total').textContent = '£' + formatMoney(grand);
+    byId('total-hidden').value = '£' + grand.toFixed(2);
+    byId('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+
+    // Totals band maths
+    byId('tb-sub').textContent = '£' + formatMoney(sub);
+    const discRow = byId('tb-disc-row');
+    if (discountApplied && appliedDiscountPct > 0) {
+      discRow.hidden = false;
+      byId('tb-disc-label').textContent = 'Discount · ' + appliedDiscountCode + ' (' + Math.round(appliedDiscountPct * 100) + '% off)';
+      byId('tb-disc').textContent = '−£' + formatMoney(sub - discSub);
+    } else {
+      discRow.hidden = true;
+    }
+    byId('tb-del-name').textContent = String(deliveryLabel).replace('Royal Mail ', '');
+    byId('tb-del').innerHTML = !basketData.length ? '£0' : (deliveryPrice === 0 ? '<s>£3.99</s> FREE' : '£' + formatMoney(deliveryPrice));
+    const amt = byId('submit-amt');
+    if (amt) amt.textContent = basketData.length ? '· £' + formatMoney(grand) : '';
+
+    renderDiscountChip();
+    renderShipBar();
+    renderReachModule();
+  }
+
+  // ── STICKY FREE-DELIVERY BAR (mobile) ───────────────────────────────────
+  function renderShipBar() {
+    const bar = byId('ship-bar');
+    if (!bar) return;
+    const show = basketData.length > 0;
+    bar.hidden = !show;
+    setBodyClass('has-ship-bar', show);
+    if (!show) return;
+    const sub = getSubtotal();
+    const gap = freeDeliveryGap();
+    const pct = Math.max(0, Math.min(100, Math.round((sub / FREE_DELIVERY_THRESHOLD) * 100)));
+    byId('ship-bar-fill').style.width = (gap <= 0 ? 100 : pct) + '%';
+    byId('ship-bar-amt').textContent = gap <= 0 ? 'Order £' + formatMoney(sub) : '£' + formatMoney(sub) + ' of £100';
+    if (gap <= 0) {
+      bar.classList.add('unlocked');
+      byId('ship-bar-text').textContent = 'Free UK delivery unlocked';
+    } else {
+      bar.classList.remove('unlocked');
+      byId('ship-bar-text').innerHTML = 'Add <strong>£' + formatMoney(gap) + '</strong> more for free UK delivery';
+    }
+  }
+
+  // ── REACH FREE DELIVERY MODULE ──────────────────────────────────────────
+  function reachSuggestions() {
+    const gap = freeDeliveryGap();
+    if (!basketData.length || gap <= 0) return [];
+    const have = basketData.map(i => baseCompound(i.name));
+    const pool = REACH_CANDIDATES.filter(c => have.indexOf(baseCompound(c.name)) === -1);
+    const picks = [];
+    const push = c => { if (c && picks.indexOf(c) === -1 && picks.length < 3) picks.push(c); };
+    // Small gaps: the exact whole-pound supply first, else the cheapest supply that clears it.
+    if (gap <= 10.005) {
+      const supplies = REACH_SUPPLIES.filter(s => !hasItem(s.name, s.dose));
+      push(supplies.find(s => Math.abs(s.price - gap) < 0.005) || supplies.find(s => s.price >= gap - 0.005));
+    }
+    // One-tap closers only (exact match first, then owner order); if nothing
+    // closes the gap alone, show the pool with how much is still to go.
+    const closers = pool.filter(c => c.price >= gap - 0.005);
+    if (closers.length) {
+      push(closers.find(c => Math.abs(c.price - gap) < 0.005));
+      closers.forEach(push);
+    } else {
+      pool.forEach(push);
+    }
+    return picks;
+  }
+
+  function reachCardMarkup(c, gap) {
+    const price = Number(c.price);
+    let effect = '';
+    if (gap == null) {
+      effect = 'Free UK delivery on orders of £100 or more';
+    } else if (price >= gap - 0.005) {
+      effect = 'Adds £' + formatMoney(price) + ' · unlocks free UK delivery';
+    } else {
+      effect = 'Adds £' + formatMoney(price) + ' · £' + formatMoney(gap - price) + ' still to go';
+    }
+    const unlocks = gap != null && price >= gap - 0.005;
+    const visual = c.img
+      ? '<img class="reach-img" src="' + c.img + '" width="600" height="600" alt="' + escapeHtml(c.alt) + '" loading="lazy" decoding="async">'
+      : '<div class="reach-img reach-icon" aria-hidden="true"><span class="addon-symbol cool"></span></div>';
+    return '<article class="reach-item">' + visual
+      + '<div class="reach-body"><h3 class="reach-name">' + escapeHtml(c.name) + ' <span class="reach-dose">' + escapeHtml(c.dose.length > 24 ? '' : c.dose) + '</span></h3>'
+      + '<p class="reach-meta">' + escapeHtml(c.meta) + '</p>'
+      + '<p class="reach-effect' + (unlocks ? ' is-unlock' : '') + '">' + effect + '</p></div>'
+      + '<div class="reach-action"><span class="reach-price">£' + formatMoney(price) + '</span>'
+      + '<button type="button" class="reach-btn" onclick="addReachItem(this,\'' + c.name + '\',' + price + ',\'' + c.dose + '\')">Add to basket</button></div>'
+      + '</article>';
+  }
+
+  function renderReachModule() {
+    const mod = byId('reach-module');
+    const grid = byId('reach-grid');
+    const popular = byId('popular-grid');
+    if (!mod || !grid) return;
+    if (!basketData.length) {
+      mod.hidden = true;
+      grid.innerHTML = '';
+      if (popular) popular.innerHTML = REACH_CANDIDATES.map(c => reachCardMarkup(c, null)).join('');
+      return;
+    }
+    if (popular) popular.innerHTML = '';
+    const picks = reachSuggestions();
+    mod.hidden = picks.length === 0;
+    if (!picks.length) { grid.innerHTML = ''; return; }
+    const gap = freeDeliveryGap();
+    byId('reach-gap').textContent = '£' + formatMoney(gap);
+    grid.innerHTML = picks.map(c => reachCardMarkup(c, gap)).join('');
+  }
+
+  function addReachItem(btn, name, price, dose) {
+    if (btn && btn.classList && btn.classList.contains('added')) return;
+    addCheckoutAddon(btn, name, price, dose);
+  }
+
+  // ── DISCOUNT CODES ──────────────────────────────────────────────────────
+  function discountLabel(code, pct) {
+    if (pct > 0) {
+      return FREE_DELIVERY_CODES.includes(code)
+        ? Math.round(pct * 100) + '% off + free delivery'
+        : Math.round(pct * 100) + '% off';
+    }
+    return 'free delivery';
+  }
+
+  function renderDiscountChip() {
+    const chip = byId('discount-chip');
+    if (!chip) return;
+    chip.hidden = !discountApplied;
+    if (discountApplied) byId('discount-chip-text').textContent = appliedDiscountCode + ' · ' + discountLabel(appliedDiscountCode, appliedDiscountPct);
   }
 
   function applyDiscount() {
-    const code = document.getElementById('discount-input').value.trim().toUpperCase();
-    const msg = document.getElementById('discount-msg');
+    const code = String(byId('discount-input').value || '').trim().toUpperCase();
+    const msg = byId('discount-msg');
     if (FREE_DELIVERY_CODES.includes(code) && DISCOUNT_CODES[code] === undefined) {
       discountApplied = true;
       appliedDiscountPct = 0;
       appliedDiscountCode = code;
-      document.getElementById('discount-code-hidden').value = code + ' (free delivery)';
+      byId('discount-code-hidden').value = code + ' (free delivery)';
       msg.textContent = 'Free delivery applied.';
       msg.className = 'discount-msg success';
       updateTotals();
@@ -1181,17 +1654,20 @@
         discountApplied = true;
         appliedDiscountPct = pct;
         appliedDiscountCode = code;
-        const label = FREE_DELIVERY_CODES.includes(code)
-          ? Math.round(pct * 100) + '% off + free delivery'
-          : Math.round(pct * 100) + '% off';
-        document.getElementById('discount-code-hidden').value = code + ' (' + label + ')';
+        const label = discountLabel(code, pct);
+        byId('discount-code-hidden').value = code + ' (' + label + ')';
         msg.textContent = 'Discount applied — ' + label + '.';
         msg.className = 'discount-msg success';
         updateTotals();
+      } else if (discountApplied) {
+        // Keep the code that already works; just say the new one is not valid.
+        msg.textContent = 'That code is not valid — ' + appliedDiscountCode + ' is still applied.';
+        msg.className = 'discount-msg error';
       } else {
         discountApplied = false;
         appliedDiscountPct = 0;
         appliedDiscountCode = '';
+        byId('discount-code-hidden').value = '';
         msg.textContent = 'Invalid code. Please check it and try again.';
         msg.className = 'discount-msg error';
         updateTotals();
@@ -1199,19 +1675,30 @@
     }
   }
 
-  function updateDelivery(radio) {
-    deliveryPrice = parseFloat(radio.dataset.price);
-    deliveryLabel = radio.dataset.label;
-    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
-    document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
-    radio.closest('.delivery-option').classList.add('selected');
+  function clearDiscount() {
+    discountApplied = false;
+    appliedDiscountPct = 0;
+    appliedDiscountCode = '';
+    byId('discount-code-hidden').value = '';
+    byId('discount-input').value = '';
+    const msg = byId('discount-msg');
+    msg.textContent = '';
+    msg.className = 'discount-msg';
     updateTotals();
   }
 
-  function saveCheckoutBasket() {
-    localStorage.setItem('npuk_basket', JSON.stringify(basketData));
+  // ── DELIVERY ────────────────────────────────────────────────────────────
+  function updateDelivery(radio) {
+    deliveryPrice = parseFloat(radio.dataset.price);
+    deliveryLabel = radio.dataset.label;
+    byId('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
+    document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
+    const card = radio.closest('.delivery-option');
+    if (card && card.classList) card.classList.add('selected');
+    updateTotals();
   }
 
+  // ── BASKET MUTATIONS ────────────────────────────────────────────────────
   function addCheckoutAddon(button, name, price, dose) {
     const existing = basketData.find(item => item.name === name && item.dose === dose);
     if (existing) {
@@ -1234,65 +1721,167 @@
         currency: 'GBP'
       });
     }
+    if (!button) return;
+    const idle = button.textContent;
     button.textContent = 'Added';
     button.classList.add('added');
     setTimeout(() => {
-      button.textContent = 'Add';
+      button.textContent = idle;
       button.classList.remove('added');
     }, 1400);
   }
 
+  function addCoolingPackaging(btn) {
+    if (hasItem('Thermal Cooled Packaging', 'Insulated foil pouch + gel packs')) return;
+    if (btn && btn.classList && btn.classList.contains('added')) return;
+    addCheckoutAddon(btn, 'Thermal Cooled Packaging', 5, 'Insulated foil pouch + gel packs');
+  }
+
+  function changeCheckoutQty(index, delta) {
+    const item = basketData[index];
+    if (!item) return;
+    item.qty = Math.max(0, Math.min(12, (Number(item.qty) || 1) + delta));
+    if (item.qty === 0) basketData.splice(index, 1);
+    saveCheckoutBasket();
+    renderOrder();
+  }
+
+  function removeCheckoutItem(index) {
+    if (!basketData[index]) return;
+    basketData.splice(index, 1);
+    saveCheckoutBasket();
+    renderOrder();
+  }
+
+  function removeKitItem(key) {
+    const idx = basketData.findIndex(i => i._kitFor === key);
+    if (idx !== -1) removeCheckoutItem(idx);
+  }
+
+  // ── SMART SECTIONS ──────────────────────────────────────────────────────
+  function updateSmartSection() {
+    const hasRegular = basketData.some(item => isCompound(item) && !isPenVial(item));
+    const section = byId('smart-section');
+    const card = byId('cooling-card');
+    if (!section) return;
+    if (!hasRegular) { section.style.display = 'none'; return; }
+    section.style.display = '';
+    const coolingInBasket = hasItem('Thermal Cooled Packaging', 'Insulated foil pouch + gel packs');
+    if (card && card.classList) {
+      if (coolingInBasket) card.classList.add('in-order'); else card.classList.remove('in-order');
+    }
+  }
+
   function updateAddonSupplyCopy() {
     const hasPenKit = basketData.some(isPenVial);
-    // Compound lines only (mg-dosed, not kit add-ons): when every compound in
-    // the basket is a pen vial, reconstitution supplies are irrelevant and
-    // offering them unannotated contradicts "complete kit included".
-    const compounds = basketData.filter(i => !i._kitFor && /\d+(\.\d+)?\s*mg/i.test(i.dose || ''));
+    const compounds = basketData.filter(isCompound);
+    const hasRegular = compounds.some(c => !isPenVial(c));
     const penOnly = compounds.length > 0 && compounds.every(isPenVial);
-    const tips = document.getElementById('pen-tips-addon-desc');
-    const wipes = document.getElementById('wipes-addon-desc');
-    const bac = document.getElementById('bac-addon-desc');
-    const needles = document.getElementById('needles-addon-desc');
+    const hasBac = basketData.some(i => /bacteriostatic/i.test(i.name || ''));
+    const hasNeedles = basketData.some(i => /insulin needle/i.test(i.name || ''));
+
+    // Section heading + lede
+    const head = byId('supplies-head');
+    const lede = byId('supplies-lede');
+    if (hasRegular) {
+      head.textContent = 'Research supplies — check you have these';
+      lede.textContent = 'Standard vials are lyophilised powder. Reconstituting them needs bacteriostatic water and sterile insulin needles. If you do not have them, add them here.';
+      lede.hidden = false;
+    } else if (penOnly) {
+      head.textContent = 'Optional extras for your pen kit';
+      lede.textContent = 'Your pen vial ships as a complete kit. Spare pen tips and wipes are optional.';
+      lede.hidden = false;
+    } else {
+      head.textContent = 'Research supplies';
+      lede.hidden = true;
+    }
+
+    // Owner's prompt for standard vials without water/needles
+    const prompt = byId('supply-prompt');
+    if (prompt) prompt.hidden = !(hasRegular && (!hasBac || !hasNeedles));
+
+    // "Needed" flags on the water and needle rows
+    const needBac = hasRegular && !hasBac;
+    const needNeedles = hasRegular && !hasNeedles;
+    [['addon-row-bac3', 'bac3-need-pill', needBac], ['addon-row-bac', 'bac-need-pill', needBac], ['addon-row-needles', 'needles-need-pill', needNeedles]].forEach(([rowId, pillId, on]) => {
+      const row = byId(rowId), pill = byId(pillId);
+      if (row && row.classList) { if (on) row.classList.add('needed'); else row.classList.remove('needed'); }
+      if (pill) pill.hidden = !on;
+    });
+
+    // Pen tips: 10-pack for pen orders, 5-pack otherwise
+    const tips5 = byId('addon-row-tips5');
+    const tips10 = byId('addon-row-tips10');
+    if (tips5) tips5.hidden = hasPenKit;
+    if (tips10) tips10.hidden = !hasPenKit;
+
+    const tips = byId('pen-tips-addon-desc');
+    const wipes = byId('wipes-addon-desc');
+    const bac = byId('bac-addon-desc');
+    const bac3 = byId('bac3-addon-desc');
+    const needles = byId('needles-addon-desc');
     if (tips) tips.textContent = hasPenKit
-      ? 'Optional extra 5-pack - your pen kit already includes sterile tips'
-      : 'Universal-fit 6mm x5';
+      ? 'Optional spare pack — your pen kit already includes sterile tips'
+      : '6mm sterile pen tips, pack of 5 · for pen vials and pen-style kits';
     if (wipes) wipes.textContent = hasPenKit
-      ? 'Optional extra 10-pack - your pen kit already includes alcohol wipes'
-      : '10 pack, sterile';
+      ? 'Optional spare pack — your pen kit already includes alcohol wipes. Pack of 10, 70% isopropyl.'
+      : 'Pack of 10, 70% isopropyl';
     if (bac) bac.textContent = penOnly
-      ? 'Only needed for standard vials - your pen vials arrive pre-filled'
-      : '10ml vial';
+      ? 'For standard vials only — your pen vials arrive pre-filled'
+      : '10ml sealed vial · enough for several vials';
+    if (bac3) bac3.textContent = penOnly
+      ? 'For standard vials only — your pen vials arrive pre-filled'
+      : '3ml sealed vial · enough for one vial';
     if (needles) needles.textContent = penOnly
-      ? 'Only needed for standard vials - your pen kit already includes needle tips'
-      : '1ml sterile insulin needles x10';
+      ? 'For standard vials only — your pen kit already includes pen tips'
+      : '10 × 1ml, 31G, sterile';
+  }
+
+  // ── ORDER LINES ─────────────────────────────────────────────────────────
+  function orderLineMarkup(item, index) {
+    const isKit = Boolean(item._kitFor);
+    const name = escapeHtml(item.name);
+    const dose = escapeHtml(item.dose);
+    const qty = Number(item.qty) || 1;
+    const removeBtn = '<div class="order-line-tools"><button type="button" class="order-kit-remove" aria-label="Remove ' + name + ' ' + dose + ' from your order" onclick="removeCheckoutItem(' + index + ')">× Remove</button></div>';
+    const qtyCtl = isKit
+      ? '<span class="order-line-qty">x' + qty + '</span>'
+      : '<div class="order-line-ctl" role="group" aria-label="Quantity of ' + name + '">'
+        + '<button type="button" aria-label="Decrease quantity of ' + name + '" onclick="changeCheckoutQty(' + index + ',-1)">−</button>'
+        + '<span aria-live="polite">' + qty + '</span>'
+        + '<button type="button" aria-label="Increase quantity of ' + name + '" onclick="changeCheckoutQty(' + index + ',1)">+</button>'
+        + '</div>';
+    return '<div class="order-line" data-item-name="' + name + '">'
+      + '<div class="order-line-main">'
+      + '<div class="order-line-name">' + name + '</div>'
+      + '<div class="order-line-dose">' + dose + '</div>'
+      + (isPenVial(item) ? '<div class="order-line-included">Disposable pen, sterile needle tips and alcohol wipes included</div>' : '')
+      + removeBtn
+      + '</div>'
+      + qtyCtl
+      + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'
+      + '</div>';
   }
 
   function renderOrder() {
-    const container = document.getElementById('checkout-lines');
+    const container = byId('checkout-lines');
+    const body = byId('checkout-body');
+    const empty = byId('empty-state');
     updateAddonSupplyCopy();
     if (basketData.length === 0) {
-      container.innerHTML = '<p class="order-empty">Your basket is empty. <a href="index.html" style="color:#1F6FEB;">Continue shopping →</a></p>';
-      return;
+      container.innerHTML = '<p class="order-empty">Your basket is empty.</p>';
+      if (body) body.style.display = 'none';
+      if (empty) empty.hidden = false;
+    } else {
+      container.innerHTML = basketData.map(orderLineMarkup).join('');
+      if (body) body.style.display = '';
+      if (empty) empty.hidden = true;
     }
-    container.innerHTML = basketData.map(item => {
-      const isKit = Boolean(item._kitFor);
-      const safeKey = isKit ? item._kitFor.replace(/&/g, '&amp;').replace(/"/g, '&quot;') : '';
-      const removeBtn = isKit
-        ? '<button class="order-kit-remove" data-kitfor="' + safeKey + '" onclick="removeKitItem(this.dataset.kitfor)">× Remove</button>'
-        : '';
-      return '<div class="order-line" data-item-name="' + item.name.replace(/"/g, '&quot;') + '">'
-        + '<div style="flex:1;min-width:0">'
-        + '<div class="order-line-name">' + item.name + removeBtn + '</div>'
-        + '<div class="order-line-dose">' + item.dose + '</div>'
-        + (isPenVial(item) ? '<div class="order-line-included">Disposable pen, sterile needle tips and alcohol wipes included</div>' : '')
-        + '</div>'
-        + '<span class="order-line-qty">x' + item.qty + '</span>'
-        + '<span class="order-line-price">' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span>'
-        + '</div>';
-    }).join('');
-    document.getElementById('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
-    updateTotals();
+    byId('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateSmartSection();
+    // Always falls through so the totals, sticky bar and suggestion module
+    // reflect an empty basket too (£0, bar hidden, popular cards shown).
+    updateTotals();
   }
 
   function getCustomerPayload(form) {
@@ -1305,59 +1894,147 @@
       address2: String(data.get('address2') || '').trim(),
       city: String(data.get('city') || '').trim(),
       county: String(data.get('county') || '').trim(),
-      postcode: String(data.get('postcode') || '').trim(),
+      postcode: String(data.get('postcode') || '').trim().toUpperCase(),
       notes: String(data.get('notes') || '').trim()
     };
   }
 
-  function selectedDeliveryMethod() {
-    const selected = document.querySelector('input[name="delivery"]:checked');
-    return selected ? selected.value : 'standard';
+  // ── SUCCESS ─────────────────────────────────────────────────────────────
+  function successSummaryMarkup(data) {
+    const sub = getSubtotal();
+    const discSub = getDiscountedSubtotal();
+    const lines = basketData.map(item => '<div class="success-summary-line"><span>' + escapeHtml(item.name) + ' × ' + (Number(item.qty) || 1) + '<small>' + escapeHtml(item.dose) + '</small></span><span>' + (item.price === 0 ? 'FREE' : '£' + formatMoney(item.price * item.qty)) + '</span></div>').join('');
+    const discount = (discountApplied && appliedDiscountPct > 0)
+      ? '<div class="success-summary-line is-meta"><span>Discount · ' + escapeHtml(appliedDiscountCode) + ' (' + Math.round(appliedDiscountPct * 100) + '% off)</span><span>−£' + formatMoney(sub - discSub) + '</span></div>'
+      : '';
+    const delivery = '<div class="success-summary-line is-meta"><span>Delivery · ' + escapeHtml(deliveryLabel) + '</span><span>' + (deliveryPrice === 0 ? 'FREE' : '£' + formatMoney(deliveryPrice)) + '</span></div>';
+    const total = '<div class="success-summary-line is-total"><span>Total to transfer</span><span>£' + Number(data.grandTotal).toFixed(2) + '</span></div>';
+    return lines + discount + delivery + total;
   }
 
   function showBankTransferSuccess(data) {
-    document.getElementById('bank-name').textContent = data.bankDetails.accountName;
-    document.getElementById('bank-sort').textContent = data.bankDetails.sortCode;
-    document.getElementById('bank-acct').textContent = data.bankDetails.accountNumber;
-    document.getElementById('bank-amount').textContent = '£' + Number(data.grandTotal).toFixed(2).replace('.00', '');
-    document.getElementById('bank-ref').textContent = data.orderRef;
+    const summary = byId('success-summary-lines');
+    if (summary) summary.innerHTML = successSummaryMarkup(data);
+    byId('bank-name').textContent = data.bankDetails.accountName;
+    byId('bank-sort').textContent = data.bankDetails.sortCode;
+    byId('bank-acct').textContent = data.bankDetails.accountNumber;
+    byId('bank-amount').textContent = '£' + Number(data.grandTotal).toFixed(2);
+    byId('bank-ref').textContent = data.orderRef;
     if (data.emails && data.emails.customer !== 'sent') {
-      const note = document.getElementById('email-sent-note');
+      const note = byId('email-sent-note');
       if (note) {
         note.textContent = 'We could not send the confirmation email — please screenshot or note down the details above before leaving this page.';
         note.style.color = '#B45309';
         note.style.fontWeight = '600';
       }
     }
-    document.getElementById('main-checkout').style.display = 'none';
-    document.getElementById('success-page').style.display = 'block';
+    byId('main-checkout').style.display = 'none';
+    byId('success-page').style.display = 'block';
+    // Clear the basket everywhere: storage, state, sticky bar, suggestions.
     localStorage.removeItem('npuk_basket');
-    window.scrollTo(0, 0);
+    basketData = [];
+    setBodyClass('has-ship-bar', false);
+    const bar = byId('ship-bar');
+    if (bar) bar.hidden = true;
+    const mod = byId('reach-module');
+    if (mod) mod.hidden = true;
+    if (typeof window.scrollTo === 'function') window.scrollTo(0, 0);
   }
 
   function showCheckoutError(text) {
-    const box = document.getElementById('checkout-error');
+    const box = byId('checkout-error');
     box.textContent = text;
     box.classList.add('show');
+    if (typeof box.scrollIntoView === 'function') box.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    if (typeof box.focus === 'function') box.focus();
   }
 
   function clearCheckoutError() {
-    const box = document.getElementById('checkout-error');
+    const box = byId('checkout-error');
     box.textContent = '';
     box.classList.remove('show');
   }
 
-  window.addEventListener('load', () => {
-    const saved = localStorage.getItem('npuk_basket');
-    if (saved) basketData = JSON.parse(saved);
-    renderOrder();
+  function setSubmitLabel(text) {
+    const btn = byId('submit-btn');
+    if (!btn) return;
+    btn.innerHTML = text + ' <span class="submit-amt" id="submit-amt"></span>';
+    const amt = byId('submit-amt');
+    if (amt && basketData.length) amt.textContent = '· £' + formatMoney(getDiscountedSubtotal() + deliveryPrice);
+  }
+
+  // Copy buttons on the success page (outside the render path).
+  function copyText(text) {
+    if (typeof navigator === 'undefined' || !navigator.clipboard || !navigator.clipboard.writeText) return Promise.reject(new Error('Clipboard unavailable'));
+    return navigator.clipboard.writeText(text);
+  }
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target && e.target.closest ? e.target.closest('.bank-copy') : null;
+    if (!btn) return;
+    let text = '';
+    if (btn.dataset && btn.dataset.copyAll) {
+      text = [
+        'Account name: ' + byId('bank-name').textContent.trim(),
+        'Sort code: ' + byId('bank-sort').textContent.trim(),
+        'Account number: ' + byId('bank-acct').textContent.trim(),
+        'Amount: ' + byId('bank-amount').textContent.trim(),
+        'Reference: ' + byId('bank-ref').textContent.trim()
+      ].join('\n');
+    } else if (btn.dataset && btn.dataset.copyTarget) {
+      const target = byId(btn.dataset.copyTarget);
+      text = target ? String(target.textContent || '').trim() : '';
+    }
+    if (!text) return;
+    const idle = btn.textContent;
+    copyText(text).then(function () {
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function () { btn.textContent = idle; btn.classList.remove('done'); }, 1600);
+    }).catch(function () {});
   });
 
-  document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+  // WhatsApp bubble on phones: only once the details form is in view, so it
+  // never sits on an Add button or a price while the customer scrolls.
+  function initWhatsAppFloat() {
+    const form = byId('checkout-form');
+    const float = document.querySelector('.wa-float');
+    if (typeof IntersectionObserver !== 'function' || !form || !float || !float.classList) return;
+    new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) float.classList.add('is-visible'); else float.classList.remove('is-visible');
+      });
+    }, { rootMargin: '0px 0px -30% 0px' }).observe(form);
+  }
+
+  // ── BOOT ────────────────────────────────────────────────────────────────
+  let checkoutBooted = false;
+  function bootCheckout() {
+    if (checkoutBooted) return;
+    checkoutBooted = true;
+    try {
+      const saved = localStorage.getItem('npuk_basket');
+      if (saved) basketData = JSON.parse(saved);
+    } catch (err) {
+      basketData = [];
+    }
+    if (!Array.isArray(basketData)) basketData = [];
+    renderOrder();
+    initWhatsAppFloat();
+    const postcode = byId('co-postcode');
+    if (postcode && postcode.addEventListener) {
+      postcode.addEventListener('blur', () => { postcode.value = String(postcode.value || '').trim().toUpperCase(); });
+    }
+  }
+  if (document.readyState !== 'loading') bootCheckout();
+  else document.addEventListener('DOMContentLoaded', bootCheckout);
+  window.addEventListener('load', bootCheckout);
+
+  byId('checkout-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
-    const btn = document.getElementById('submit-btn');
-    const researchConfirm = document.getElementById('research-use-confirm');
+    const btn = byId('submit-btn');
+    const researchConfirm = byId('research-use-confirm');
     if (researchConfirm && !researchConfirm.checked) {
       if (researchConfirm.reportValidity) researchConfirm.reportValidity();
       return;
@@ -1368,7 +2045,7 @@
     }
 
     clearCheckoutError();
-    btn.textContent = 'Placing order...';
+    setSubmitLabel('Placing order...');
     btn.disabled = true;
     try {
       const res = await fetch('/api/create-order', {
@@ -1402,7 +2079,7 @@
       showBankTransferSuccess(data);
     } catch (error) {
       showCheckoutError(error.message || 'Order could not be placed. Please try again.');
-      btn.textContent = 'Place order';
+      setSubmitLabel('Place order');
       btn.disabled = false;
     }
   }, true);
@@ -1413,7 +2090,7 @@
   <!-- WhatsApp float -->
   <a class="wa-float" href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <span class="wa-tip">Chat on WhatsApp</span>
-    <div class="wa-bubble"><svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16.004 0C7.164 0 0 7.164 0 16.004c0 2.822.74 5.47 2.034 7.77L.07 31.93l8.376-2.196a15.96 15.96 0 007.558 1.902C24.844 31.636 32 24.472 32 15.632 32 6.792 24.844.004 16.004.004zm0 29.066a13.32 13.32 0 01-6.798-1.856l-.486-.292-5.048 1.322 1.346-4.918-.32-.508a13.362 13.362 0 01-2.05-7.01c0-7.374 5.99-13.364 13.356-13.364 7.366 0 13.356 5.99 13.356 13.364 0 7.374-5.99 13.362-13.356 13.362zm7.336-10.006c-.4-.2-2.368-1.168-2.736-1.302-.368-.134-.636-.2-.904.2-.268.4-1.03 1.302-1.264 1.568-.232.266-.464.3-.864.1-.4-.2-1.688-.622-3.216-1.984-1.188-1.06-1.99-2.37-2.224-2.77-.234-.402-.024-.618.176-.818.18-.18.4-.468.6-.7.2-.232.266-.4.4-.666.134-.268.066-.502-.034-.702-.1-.2-.906-2.186-1.238-2.99-.326-.786-.66-.678-.906-.692-.232-.012-.5-.016-.768-.016s-.7.1-1.066.502c-.366.402-1.4 1.368-1.4 3.334 0 1.966 1.434 3.866 1.634 4.132.2.268 2.82 4.304 6.83 6.034.954.41 1.698.658 2.28.842.958.308 1.83.264 2.52.16.768-.114 2.368-.966 2.702-1.9.334-.934.334-1.734.234-1.9-.1-.166-.368-.266-.768-.468z"/></svg></div>
+    <div class="wa-bubble"><svg width="28" height="28" viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16.004 0C7.164 0 0 7.164 0 16.004c0 2.822.74 5.47 2.034 7.77L.07 31.93l8.376-2.196a15.96 15.96 0 007.558 1.902C24.844 31.636 32 24.472 32 15.632 32 6.792 24.844.004 16.004.004zm0 29.066a13.32 13.32 0 01-6.798-1.856l-.486-.292-5.048 1.322 1.346-4.918-.32-.508a13.362 13.362 0 01-2.05-7.01c0-7.374 5.99-13.364 13.356-13.364 7.366 0 13.356 5.99 13.356 13.364 0 7.374-5.99 13.362-13.356 13.362zm7.336-10.006c-.4-.2-2.368-1.168-2.736-1.302-.368-.134-.636-.2-.904.2-.268.4-1.03 1.302-1.264 1.568-.232.266-.464.3-.864.1-.4-.2-1.688-.622-3.216-1.984-1.188-1.06-1.99-2.37-2.224-2.77-.234-.402-.024-.618.176-.818.18-.18.4-.468.6-.7.2-.232.266-.4.4-.666.134-.268.066-.502-.034-.702-.1-.2-.906-2.186-1.238-2.99-.326-.786-.66-.678-.906-.692-.232-.012-.5-.016-.768-.016s-.7.1-1.066.502c-.366.402-1.4 1.368-1.4 3.334 0 1.966 1.434 3.866 1.634 4.132.2.268 2.82 4.304 6.83 6.034.954.41 1.698.658 2.28.842.958.308 1.83.264 2.52.16.768-.114 2.368-.966 2.702-1.9.334-.934.334-1.734.234-1.9-.1-.166-.368-.266-.768-.468z"/></svg></div>
   </a>
 </body>
 </html>

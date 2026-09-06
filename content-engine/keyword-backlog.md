@@ -38,9 +38,9 @@ Status: `done` = built & gated · `next` = queued · `idea` = candidate
 ## Tier 4 — Trust / buyer-intent (high conversion)
 | Status | Working title | Target keyword | Links to |
 |---|---|---|---|
-| idea | Are Research Peptides Legal in the UK? | research peptides legal uk | compliance page |
-| idea | How to Read a Certificate of Analysis (COA) | peptide certificate of analysis | lab-reports |
-| idea | How Peptide Purity Is Verified (99%+, HPLC) | peptide purity / hplc | lab-reports |
+| done | Are Research Peptides Legal in the UK? | research peptides legal uk | compliance page |
+| done | How to Read a Certificate of Analysis (COA) | peptide certificate of analysis | lab-reports |
+| done | How Peptide Purity Is Verified (99%+, HPLC) | peptide purity / hplc | lab-reports |
 
 ## Notes
 - Tier 1 first: each maps to a flagship product and a query with clear buyer intent.

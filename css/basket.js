@@ -76,12 +76,12 @@ function renderBasketItems() {
         <span class="basket-item-dose">${item.dose}</span>
       </div>
       <div class="basket-item-controls">
-        <button onclick="changeQty(${i}, -1)">−</button>
-        <span>${item.qty}</span>
-        <button onclick="changeQty(${i}, 1)">+</button>
+        <button type="button" aria-label="Decrease quantity of ${item.name}" onclick="changeQty(${i}, -1)">−</button>
+        <span aria-live="polite">${item.qty}</span>
+        <button type="button" aria-label="Increase quantity of ${item.name}" onclick="changeQty(${i}, 1)">+</button>
       </div>
       <div class="basket-item-price">£${item.price * item.qty}</div>
-      <button class="basket-item-remove" onclick="removeFromBasket(${i})">✕</button>
+      <button class="basket-item-remove" type="button" aria-label="Remove ${item.name} ${item.dose} from basket" onclick="removeFromBasket(${i})">✕</button>
     </div>
   `).join('');
 

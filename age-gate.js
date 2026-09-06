@@ -33,7 +33,7 @@
     'html.' + LOCK_CLASS + '{overflow:hidden!important;}' +
     'html.' + LOCK_CLASS + '::before{content:"";position:fixed;inset:0;background:#0c2016;z-index:2147483640;}' +
     '.npag-overlay{position:fixed;inset:0;z-index:2147483646;display:flex;align-items:center;justify-content:center;' +
-      'padding:24px;box-sizing:border-box;font-family:"DM Sans",sans-serif;opacity:0;transition:opacity .28s ease;' +
+      'padding:24px;box-sizing:border-box;font-family:"Inter",sans-serif;opacity:0;transition:opacity .28s ease;' +
       'background:radial-gradient(120% 120% at 50% 0%,rgba(15,31,54,.86),rgba(7,18,38,.95));' +
       '-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}' +
     '.npag-overlay.is-visible{opacity:1;}' +
@@ -46,7 +46,7 @@
     '.npag-logo span{color:#1F6FEB;}' +
     '.npag-eyebrow{font-family:"DM Mono",monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#1F6FEB;margin-bottom:14px;}' +
     '.npag-title{font-family:"Syne",sans-serif;font-weight:800;font-size:1.5rem;line-height:1.15;color:#10233F;margin:0 0 12px;}' +
-    '.npag-body{font-family:"DM Sans",sans-serif;font-size:.86rem;line-height:1.6;color:#53677D;margin:0 0 24px;}' +
+    '.npag-body{font-family:"Inter",sans-serif;font-size:.86rem;line-height:1.6;color:#53677D;margin:0 0 24px;}' +
     '.npag-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}' +
     '.npag-btn{width:100%;padding:14px;border-radius:11px;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.14em;' +
       'text-transform:uppercase;font-weight:600;cursor:pointer;box-sizing:border-box;' +
@@ -55,7 +55,7 @@
     '.npag-btn-primary:hover{background:#174EA6;border-color:#174EA6;}' +
     '.npag-btn-secondary{background:transparent;color:#53677D;border:1px solid #D8E5F2;}' +
     '.npag-btn-secondary:hover{border-color:#AFC4DA;color:#10233F;}' +
-    '.npag-fine{font-family:"DM Mono",monospace;font-size:.58rem;line-height:1.7;color:#9AACA2;border-top:1px solid #EAF0F7;padding-top:16px;margin:0;}' +
+    '.npag-fine{font-family:"DM Mono",monospace;font-size:.72rem;line-height:1.7;color:#5B6B7E;border-top:1px solid #EAF0F7;padding-top:16px;margin:0;}' +
     '@media(max-width:420px){.npag-card{padding:32px 22px 24px;}.npag-title{font-size:1.32rem;}}';
 
   var style = document.createElement('style');

@@ -38,7 +38,7 @@ module.exports = {
     {
       id: 'why-uk-stock',
       heading: 'Why UK Stock Makes a Difference',
-      html: `      <p>Buying from a UK-stocked supplier avoids the two biggest sources of friction with overseas orders: customs delays and uncertain handling in transit. Domestic stock means tracked dispatch, usually within 24 hours, and material that has been stored correctly up to the point it ships.</p>`,
+      html: `      <p>Buying from a UK-stocked supplier avoids the two biggest sources of friction with overseas orders: customs delays and uncertain handling in transit. Domestic stock means tracked dispatch on business days — orders before 12pm Mon–Fri are aimed at next-working-day dispatch — and material that has been stored correctly up to the point it ships.</p>`,
     },
     {
       id: 'how-we-meet',
@@ -46,11 +46,11 @@ module.exports = {
       html: `      <p>North Peptides UK is built around exactly this checklist:</p>
       <ul>
         <li>Every compound lists <strong>supplier-stated 99%+ purity</strong>, with supplier documentation available on request where held - see our <a href="/lab-reports.html">lab reports</a>.</li>
-        <li>Stock is held in the UK and dispatched within <strong>24 hours</strong> on business days with tracked delivery.</li>
+        <li>Stock is held in the UK and dispatched on business days with tracked delivery — orders placed before <strong>12pm Mon–Fri</strong> are aimed at next-working-day dispatch.</li>
         <li>Compounds are supplied lyophilised and stored frozen until dispatch.</li>
         <li>Everything is positioned strictly for research use - our <a href="/compliance.html">research use policy</a> sets out the terms.</li>
       </ul>
-      <p>You can browse the full range, from <a href="/product.html?product=retatrutide">Retatrutide</a> and <a href="/product.html?product=bpc-157">BPC-157</a> to the <a href="/product.html?product=klow-stack">KLOW Stack</a> blend and preparation supplies, on the <a href="/#products">product page</a>.</p>`,
+      <p>You can browse the full range, from <a href="/products/retatrutide/">Retatrutide</a> and <a href="/products/bpc-157/">BPC-157</a> to the <a href="/products/klow-stack/">KLOW Stack</a> blend and preparation supplies, on the <a href="/#products">product page</a>.</p>`,
     },
     {
       id: 'red-flags',

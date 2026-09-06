@@ -30,13 +30,13 @@ module.exports = {
         </thead>
         <tbody>
           <tr>
-            <td><a href="/product.html?product=semax">Semax</a></td>
+            <td><a href="/products/semax/">Semax</a></td>
             <td>ACTH(4-7) analogue heptapeptide</td>
             <td>Neurotrophic signalling (BDNF/NGF expression), neuroprotection in oxidative-stress models</td>
             <td>30mg</td>
           </tr>
           <tr>
-            <td><a href="/product.html?product=selank">Selank</a></td>
+            <td><a href="/products/selank/">Selank</a></td>
             <td>Tuftsin-analogue heptapeptide</td>
             <td>GABAergic and serotonergic signalling, anxiolytic activity in preclinical models</td>
             <td>30mg</td>
@@ -48,7 +48,7 @@ module.exports = {
     {
       id: 'equipment',
       heading: 'Equipment: The Intranasal Research Kit',
-      html: `      <p>The <a href="/product.html?product=intranasal-research-kit">Intranasal Research Kit</a> from North Peptides UK includes the components needed to prepare a research compound as an intranasal spray preparation:</p>
+      html: `      <p>The <a href="/products/intranasal-research-kit/">Intranasal Research Kit</a> from North Peptides UK includes the components needed to prepare a research compound as an intranasal spray preparation:</p>
       <ul>
         <li><strong>10ml nasal spray bottle</strong> — calibrated spray mechanism for repeatable volumes in research preparations</li>
         <li><strong>Sterile 0.9% saline ampoule</strong> — the standard solvent used in intranasal preclinical research preparations</li>
@@ -56,7 +56,7 @@ module.exports = {
         <li><strong>Alcohol wipes</strong> — for wiping vial stoppers and working surfaces before preparation</li>
         <li><strong>Blank label</strong> — for recording the compound name, concentration and preparation date</li>
       </ul>
-      <p>The lyophilised peptide vial is required separately. <a href="/product.html?product=semax">Semax</a> and <a href="/product.html?product=selank">Selank</a> are the compounds most commonly prepared in this format from the North Peptides UK range.</p>`,
+      <p>The lyophilised peptide vial is required separately. <a href="/products/semax/">Semax</a> and <a href="/products/selank/">Selank</a> are the compounds most commonly prepared in this format from the North Peptides UK range.</p>`,
     },
     {
       id: 'preparation-steps',
@@ -108,7 +108,7 @@ module.exports = {
             <td>Included in the intranasal research kit. Suitable for single-session preparations.</td>
           </tr>
           <tr>
-            <td><a href="/product.html?product=bacteriostatic-water">Bacteriostatic water</a> (0.9% benzyl alcohol)</td>
+            <td><a href="/products/bacteriostatic-water/">Bacteriostatic water</a> (0.9% benzyl alcohol)</td>
             <td>Benzyl alcohol 0.9%</td>
             <td>Up to 28 days</td>
             <td>Extends the usable research window. Available separately from North Peptides UK.</td>

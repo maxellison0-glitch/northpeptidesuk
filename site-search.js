@@ -145,11 +145,16 @@
     link.setAttribute('role', 'option');
     link.setAttribute('aria-selected', 'false');
 
+    // Prefer the 600px WebP thumb from products.json when the feed carries
+    // one; fall back to the main image so older feeds still render.
     const image = document.createElement('img');
     image.className = 'site-search-result-image';
-    image.src = imagePath(product.image);
+    image.src = imagePath(product.thumb || product.image);
     image.alt = '';
+    image.width = 48;
+    image.height = 48;
     image.loading = 'lazy';
+    image.decoding = 'async';
 
     const copy = document.createElement('span');
     copy.className = 'site-search-result-copy';

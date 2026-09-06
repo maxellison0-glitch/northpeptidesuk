@@ -2,5 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /checkout.html
 Disallow: /api/
+Disallow: /product.html
+Disallow: /docs/
+Disallow: /content-engine/
+Disallow: /tests/
+Disallow: /social-engine/
+Disallow: /server/
 
 Sitemap: https://www.northpeptidesuk.com/sitemap.xml

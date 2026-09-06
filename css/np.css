@@ -10,7 +10,9 @@
    · Hairline borders over shadows. One badge per card. No urgency theatre.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap');
+/* Fonts are loaded once per page via the <link rel="stylesheet"> + preconnects
+   in every <head>; no @import here (it would serialise the font CSS behind
+   this stylesheet). */
 
 /* ---------------------------------------------------------------- tokens */
 :root {
@@ -24,12 +26,15 @@
   --frost: #F5F9FC;        /* page background */
   --frost-2: #EDF3F9;      /* alt sections, wells, input fills */
   --paper: #FFFFFF;        /* cards */
-  --line: #D5E2EE;         /* hairlines */
+  --line: #D5E2EE;         /* hairlines (dividers, cards) */
   --line-soft: #E3ECF4;    /* subtle dividers */
+  --line-strong: #7B8FA8;  /* form-field borders (3.3:1 on white) */
   --body: #2A3B52;         /* prose */
   --muted: #5B6B7E;        /* meta text */
-  --faint: #8395A9;        /* placeholders, fine print */
-  --verify: #0E9F6E;       /* verification only */
+  --faint: #5F7189;        /* placeholders, fine print (AA on paper/frost; use --muted on frost-2/action-tint) */
+  --hairline-ink: #8395A9; /* non-text art only: icon strokes, decorative rules — never text */
+  --verify: #0E9F6E;       /* verification fills, dots, borders, large figures only */
+  --verify-text: #0A7A54;  /* green TEXT and white-on-green badges (5.35:1) */
   --verify-tint: #E7F6F0;
   --amber: #B45309;        /* stock / status only */
   --amber-tint: #FCF3E8;
@@ -109,6 +114,40 @@ img { max-width: 100%; display: block; }
   html { scroll-behavior: auto; }
 }
 
+/* iOS Safari zooms the page on focus when a form control renders under 16px.
+   Page-level rules are more specific, hence !important. */
+@media (max-width: 768px) {
+  input:not([type=checkbox]):not([type=radio]), select, textarea { font-size: 16px !important; }
+}
+
+/* ---------------------------------------------------------------- a11y utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--action);
+  color: #fff;
+  border-radius: var(--r-ctl);
+  font: 500 .8rem var(--font-mono);
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+.skip-link:focus { top: calc(var(--npbar-h, 36px) + 8px); color: #fff; }
+
 /* ---------------------------------------------------------------- text roles */
 .np-eyebrow {
   font-family: var(--font-mono);
@@ -136,7 +175,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: .72rem;
+  font-size: .8rem;
   font-weight: 500;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -185,7 +224,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 7px;
   font-family: var(--font-mono);
-  font-size: .6rem;
+  font-size: .64rem;
   font-weight: 500;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -200,7 +239,7 @@ img { max-width: 100%; display: block; }
 .np-chip-verify {
   border-color: rgba(14,159,110,.35);
   background: var(--verify-tint);
-  color: var(--verify);
+  color: var(--verify-text);
 }
 
 .np-chip-action {
@@ -272,7 +311,7 @@ img { max-width: 100%; display: block; }
 .np-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: .62rem;
+  font-size: .72rem;
   font-weight: 500;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -288,7 +327,7 @@ img { max-width: 100%; display: block; }
   font-size: .95rem;
   color: var(--ink);
   background: var(--paper);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: var(--r-ctl);
   padding: 13px 15px;
   transition: border-color .15s var(--ease), box-shadow .15s var(--ease);
@@ -297,10 +336,11 @@ img { max-width: 100%; display: block; }
 
 .np-input::placeholder, .np-textarea::placeholder { color: var(--faint); }
 
-.np-input:focus, .np-select:focus, .np-textarea:focus {
-  outline: none;
+.np-input:focus-visible, .np-select:focus-visible, .np-textarea:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
   border-color: var(--action);
-  box-shadow: 0 0 0 3px rgba(31,111,235,.14);
+  box-shadow: 0 0 0 4px rgba(31,111,235,.18);
 }
 
 .np-select {
@@ -399,6 +439,7 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 40px;
   padding: 9px 16px;
   border-radius: var(--r-pill);
   background: var(--ink);
@@ -419,13 +460,13 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
+  min-width: 20px;
+  height: 20px;
   padding: 0 5px;
   border-radius: var(--r-pill);
   background: #fff;
   color: var(--action-deep);
-  font-size: .58rem;
+  font-size: .66rem;
   font-weight: 700;
 }
 
@@ -467,7 +508,7 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #62778F;
+  color: #7B8FA8;
   margin: 0 0 16px;
 }
 
@@ -487,7 +528,7 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-mono);
   font-size: .62rem;
   letter-spacing: .06em;
-  color: #62778F;
+  color: #7B8FA8;
 }
 
 .np-footer-ruo {
@@ -496,10 +537,10 @@ img { max-width: 100%; display: block; }
   padding-top: 16px;
   border-top: 1px solid var(--ink-3);
   font-family: var(--font-mono);
-  font-size: .6rem;
+  font-size: .7rem;
   letter-spacing: .04em;
   line-height: 1.7;
-  color: #62778F;
+  color: #8FA3BC;
 }
 
 @media (max-width: 900px) { .np-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
@@ -535,11 +576,12 @@ img { max-width: 100%; display: block; }
   z-index: 401;
   display: flex;
   flex-direction: column;
-  transition: right .32s var(--ease);
+  visibility: hidden;                       /* out of the tab order while closed */
+  transition: right .32s var(--ease), visibility 0s .32s;
   border-left: 1px solid var(--line);
   box-shadow: -24px 0 60px rgba(14,31,56,.14);
 }
-.basket-drawer.active { right: 0; }
+.basket-drawer.active { right: 0; visibility: visible; transition-delay: 0s; }
 
 #basket-view { display: flex; flex-direction: column; flex: 1; min-height: 0; }
 
@@ -579,7 +621,7 @@ img { max-width: 100%; display: block; }
 
 .basket-empty {
   font-family: var(--font-mono);
-  font-size: .74rem;
+  font-size: .84rem;
   letter-spacing: .06em;
   color: var(--muted);
   text-align: center;
@@ -605,7 +647,7 @@ img { max-width: 100%; display: block; }
 
 .basket-item-dose {
   font-family: var(--font-mono);
-  font-size: .62rem;
+  font-size: .68rem;
   letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--muted);
@@ -624,7 +666,7 @@ img { max-width: 100%; display: block; }
 }
 
 .basket-item-controls button {
-  width: 26px; height: 26px;
+  width: 36px; height: 36px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--muted);
@@ -633,6 +675,7 @@ img { max-width: 100%; display: block; }
 }
 .basket-item-controls button:hover { background: var(--action-tint); color: var(--action); }
 .basket-item-controls span { min-width: 20px; text-align: center; }
+@media (max-width: 768px) { .basket-item-controls button { width: 44px; height: 44px; } }
 
 .basket-item-price {
   font-family: var(--font-mono);
@@ -644,8 +687,13 @@ img { max-width: 100%; display: block; }
 }
 
 .basket-item-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
   color: var(--faint);
-  font-size: .72rem;
+  font-size: .9rem;
   padding: 6px;
   border-radius: 6px;
   transition: color .15s;
@@ -660,7 +708,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.5;
 }
 .basket-ship-note strong { color: var(--ink); }
-.basket-ship-note.unlocked { color: var(--verify); font-weight: 500; }
+.basket-ship-note.unlocked { color: var(--verify-text); font-weight: 500; }
 
 .basket-ship-bar {
   height: 4px;
@@ -708,7 +756,7 @@ img { max-width: 100%; display: block; }
 
 .basket-pay-note {
   font-family: var(--font-mono);
-  font-size: .58rem;
+  font-size: .66rem;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--faint);
@@ -744,12 +792,19 @@ img { max-width: 100%; display: block; }
   border-radius: var(--r-pill) !important;
   background: rgba(255,255,255,.94) !important;
   color: var(--muted) !important;
-  font: 500 .6rem var(--font-mono) !important;
+  font: 500 .66rem var(--font-mono) !important;
   letter-spacing: .08em !important;
   text-transform: uppercase;
   box-shadow: var(--shadow-1) !important;
 }
 #npuk-cookie-settings:hover { color: var(--action) !important; border-color: var(--action) !important; }
+
+/* Keep the pill clear of any fixed bottom bar. Pages toggle these body classes
+   while a sticky add bar (product pages), sticky basket (index) or the checkout
+   free-delivery progress bar is on screen. */
+body.has-sticky-bar #npuk-cookie-settings,
+body.has-sticky-basket #npuk-cookie-settings,
+body.has-ship-bar #npuk-cookie-settings { bottom: 92px !important; }
 
 #npuk-cookie-banner {
   border: 1px solid var(--line) !important;

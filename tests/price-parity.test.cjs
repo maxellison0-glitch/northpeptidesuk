@@ -112,12 +112,12 @@ test('every homepage literal Add button resolves at its shown price', () => {
 test('every checkout/product add-on button resolves at its shown price', () => {
   // Hardcoded add-on emits in product.html (accessory/intranasal/pen) and checkout.html (thermal).
   const addons = [
-    ['Bacteriostatic Water', 3.99, 'Accessory'],
-    ['Bacteriostatic Water', 9.99, '10ml vial'],
-    ['Insulin Needle Pack', 6.99, 'Accessory'],
-    ['Intranasal Research Kit', 4.99, 'Kit add-on'],
-    ['Disposable Research Pen Kit', 9.99, 'Kit add-on'],
-    ['Thermal Cooled Packaging', 4.99, 'Insulated foil pouch + gel packs'],
+    ['Bacteriostatic Water', 4, 'Accessory'],
+    ['Bacteriostatic Water', 10, '10ml vial'],
+    ['Insulin Needle Pack', 7, 'Accessory'],
+    ['Intranasal Research Kit', 5, 'Kit add-on'],
+    ['Disposable Research Pen Kit', 10, 'Kit add-on'],
+    ['Thermal Cooled Packaging', 5, 'Insulated foil pouch + gel packs'],
   ];
   for (const [name, shown, dose] of addons) {
     const price = resolvePrice(name, dose);
@@ -127,8 +127,8 @@ test('every checkout/product add-on button resolves at its shown price', () => {
 });
 
 test('the intranasal +kit add-on resolves at its button price', () => {
-  assert.strictEqual(CATALOG['Intranasal Research Kit|Kit add-on'], 4.99,
-    'product.html adds the intranasal add-on at £4.99 — CATALOG must match');
+  assert.strictEqual(CATALOG['Intranasal Research Kit|Kit add-on'], 5,
+    'product.html adds the intranasal add-on at £5 — CATALOG must match');
 });
 
 // The order builder embeds its own copy of names, doses and prices

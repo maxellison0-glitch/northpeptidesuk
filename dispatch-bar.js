@@ -10,11 +10,17 @@
    Europe/London regardless of the visitor's own timezone.
 
    Behaviour (updates live, every second, no reload needed):
-   - Mon-Fri before 12 PM : live countdown to the cut-off ("dispatch tomorrow",
-                            or "dispatch Monday" on a Friday).
+   - Mon-Fri before 12 PM : live countdown to the real operational cut-off
+                            ("dispatch tomorrow", or "dispatch Monday" on a
+                            Friday). This is the one approved deadline on the
+                            site - it is not a marketing timer.
    - Otherwise            : reminder that orders before 12pm Mon-Fri are aimed
                             at next-working-day dispatch.
-   The bar rotates the dispatch message with the free-delivery offer.
+   The bar rotates the dispatch message with the free-delivery offer. Rotation
+   pauses while the bar is hovered or focused, and under
+   prefers-reduced-motion it never rotates (dispatch message only, no fades).
+   The bar is role="status" aria-live="off" so screen readers do not read
+   every tick.
    ========================================================================== */
 (function () {
   'use strict';
@@ -34,7 +40,7 @@
     '.npbar{position:fixed;top:0;left:0;right:0;height:var(--npbar-h);z-index:300;' +
       'display:flex;align-items:center;justify-content:center;gap:9px;' +
       'background:#10233F;color:#E6EFEA;font-family:"DM Mono",monospace;' +
-      'font-size:.7rem;letter-spacing:.03em;padding:0 16px;box-sizing:border-box;' +
+      'font-size:.74rem;letter-spacing:.03em;padding:0 16px;box-sizing:border-box;' +
       'white-space:nowrap;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08);}' +
     '.npbar-inner{display:flex;align-items:center;gap:9px;max-width:100%;overflow:hidden;transition:opacity .26s ease;}' +
     '.npbar-inner.is-swapping{opacity:0;}' +
@@ -47,8 +53,9 @@
     '.npbar.is-ship .npbar-dot{background:#7DD3FC;animation:none;}' +
     '@keyframes npbar-pulse{0%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}' +
       '70%{box-shadow:0 0 0 6px rgba(56,189,248,0)}100%{box-shadow:0 0 0 0 rgba(56,189,248,0)}}' +
-    '@media(max-width:768px){.npbar{font-size:.6rem;gap:7px;}}' +
-    '@media(max-width:380px){.npbar{font-size:.55rem;}}';
+    '@media(max-width:768px){.npbar{font-size:.7rem;gap:7px;}}' +
+    // never below .68rem on any viewport; no separate <=380px rule.
+    '@media(prefers-reduced-motion:reduce){.npbar-inner{transition:none;}.npbar-dot{animation:none!important;}}';
 
   var style = document.createElement('style');
   style.setAttribute('data-dispatch-bar', '');
@@ -110,18 +117,26 @@
 
   // --- Slides: rotate the dispatch message with the free-delivery offer ------
   var SLIDE_SECONDS = 5;
+  var reduceMotion = false;
+  try {
+    reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  } catch (e) { reduceMotion = false; }
+
   var slides = [
-    function () { return buildMessage(londonNow()); },
-    function () {
+    function () { return buildMessage(londonNow()); }
+  ];
+  if (!reduceMotion) {
+    slides.push(function () {
       return {
         mode: 'ship',
         html: 'Free UK delivery on orders over <span class="npbar-hl">&pound;100</span>'
       };
-    }
-  ];
+    });
+  }
 
   // --- Mount + live update ---------------------------------------------------
   var bar, innerEl, textEl, idx = 0, secondsOnSlide = 0, lastMode;
+  var paused = false;                    // hover / focus-within pauses rotation
 
   function apply(content) {
     if (textEl.innerHTML !== content.html) textEl.innerHTML = content.html;
@@ -133,8 +148,8 @@
   }
 
   function tick() {
-    secondsOnSlide++;
-    if (slides.length > 1 && secondsOnSlide >= SLIDE_SECONDS) {
+    if (!paused) secondsOnSlide++;
+    if (!paused && slides.length > 1 && secondsOnSlide >= SLIDE_SECONDS) {
       secondsOnSlide = 0;
       idx = (idx + 1) % slides.length;
       innerEl.classList.add('is-swapping');              // fade out
@@ -151,10 +166,20 @@
     bar = document.createElement('div');
     bar.className = 'npbar';
     bar.id = BAR_ID;
-    bar.innerHTML = '<div class="npbar-inner"><span class="npbar-dot"></span><span class="npbar-text"></span></div>';
+    bar.setAttribute('role', 'status');
+    bar.setAttribute('aria-live', 'off');
+    bar.innerHTML = '<div class="npbar-inner"><span class="npbar-dot" aria-hidden="true"></span><span class="npbar-text"></span></div>';
     document.body.appendChild(bar);
     innerEl = bar.querySelector('.npbar-inner');
     textEl = bar.querySelector('.npbar-text');
+    // Pause the slide rotation while the bar is hovered or holds focus
+    // (WCAG 2.2.2). The countdown itself keeps ticking - it is a real deadline.
+    function pause() { paused = true; }
+    function resume() { paused = false; }
+    bar.addEventListener('mouseenter', pause);
+    bar.addEventListener('mouseleave', resume);
+    bar.addEventListener('focusin', pause);
+    bar.addEventListener('focusout', resume);
     apply(slides[idx]());
     setInterval(tick, 1000);
   }

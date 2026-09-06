@@ -1,83 +1,69 @@
-const CATALOG = {
-  "Retatrutide|10mg": 45,
-  "Retatrutide|15mg": 65,
-  "Retatrutide|20mg": 85,
-  "Retatrutide|2x 10mg": 82,
-  "Retatrutide|2x 15mg": 118,
-  "Retatrutide|2x 20mg": 154,
-  "Retatrutide|3x 10mg": 109,
-  "Retatrutide|3x 15mg": 157,
-  "Retatrutide|3x 20mg": 206,
-  "Tirzepatide|15mg": 65,
+function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
+  // "express" is the legacy value from cached checkout pages (Special Delivery,
+  // now retired) — mapped to Tracked 24 so a stale tab is never overcharged.
+  const method = deliveryMethod === "dhl" ? "dhl"
+    : (deliveryMethod === "tracked24" || deliveryMethod === "express") ? "tracked24"
+    : "standard";
+  const delivery = DELIVERY[method];
+  const code = String(discountCode || "").trim().toUpperCase();
+  const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100);
+  const charge = freeStandard ? 0 : delivery.price;
+  return { method, label: delivery.label, charge };
+}const CATALOG = {
+  "Retatrutide|10mg": 50,
+  "Retatrutide|15mg": 70,
+  "Retatrutide|20mg": 90,
+  "Tirzepatide|15mg": 70,
   "Tirzepatide|30mg": 120,
-  "Tirzepatide|2x 15mg": 118,
-  "Tirzepatide|2x 30mg": 218,
-  "Tirzepatide|3x 15mg": 157,
-  "Tirzepatide|3x 30mg": 291,
-  "BPC-157|10mg": 23.99,
-  "BPC-157|2x 10mg": 44,
-  "BPC-157|3x 10mg": 59,
-  "TB-500|10mg": 49,
-  "TB-500|2x 10mg": 89,
-  "TB-500|3x 10mg": 119,
-  "GHK-Cu|50mg": 27,
-  "GHK-Cu|2x 50mg": 50,
-  "GHK-Cu|3x 50mg": 68,
+  "BPC-157|10mg": 25,
+  "TB-500|10mg": 50,
+  "GHK-Cu|50mg": 30,
   "KPV|10mg": 30,
-  "KPV|2x 10mg": 56,
-  "KPV|3x 10mg": 75,
   "KLOW Stack|80mg": 60,
-  "KLOW Stack|2x 80mg": 109,
-  "KLOW Stack|3x 80mg": 145,
-  "Ipamorelin|5mg": 24.99,
-  "Ipamorelin|2x 5mg": 46,
-  "Ipamorelin|3x 5mg": 62,
-  "CJC-1295 (No DAC)|5mg": 32,
-  "CJC-1295 (No DAC)|2x 5mg": 58,
-  "CJC-1295 (No DAC)|3x 5mg": 77,
-  "CJC-1295 No DAC|5mg": 32,
-  "CJC-1295 No DAC|2x 5mg": 58,
-  "CJC-1295 No DAC|3x 5mg": 77,
-  "Bacteriostatic Water|10ml vial": 9.99,
-  "Bacteriostatic Water|3ml vial": 3.99,
-  "Bacteriostatic Water|Accessory": 3.99,
+  "Ipamorelin|5mg": 25,
+  "CJC-1295 (No DAC)|5mg": 35,
+  "CJC-1295 No DAC|5mg": 35,
+  "Bacteriostatic Water|10ml vial": 10,
+  "Bacteriostatic Water|3ml vial": 4,
+  // Legacy product.html add-on button sends the 3ml vial as "Accessory".
+  "Bacteriostatic Water|Accessory": 4,
   // Cached product pages and saved baskets may still send this older dose string.
-  "Bacteriostatic Water|10ml vial add-on": 9.99,
-  "Insulin Needle Pack|10 pack, 1ml insulin needles": 6.99,
-  "Insulin Needle Pack|Accessory": 6.99,
-  "Alcohol Wipes|10 pack": 2.99,
-  "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99,
+  "Bacteriostatic Water|10ml vial add-on": 10,
+  "Insulin Needle Pack|10 pack, 1ml insulin needles": 7,
+  "Insulin Needle Pack|Accessory": 7,
+  "Alcohol Wipes|10 pack": 3,
+  "Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 25,
   "Sterile Disposable Pen Tips|6mm x5": 3.99,
-  "Sterile Disposable Pen Tips|6mm x10": 6.99,
-  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 4.99,
-  "Retatrutide|50mg": 179.99,
-  "NAD+|1000mg": 84.99,
-  "SS-31|10mg": 24.99,
-  "Semax|30mg": 20.99,
-  "Selank|30mg": 20.99,
-  "Epitalon|10mg": 13.99,
-  "Pinealon|20mg": 29.99,
-  "Intranasal Research Kit|Kit add-on": 4.99,
-  "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 6.99,
-  "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 6.99,
-  "Disposable Research Pen Kit|Kit add-on": 9.99,
-  "Retatrutide Pen Vial|10mg": 60,
-  "Retatrutide Pen Vial|20mg": 100,
-  "Retatrutide Pen Vial|50mg": 194.99,
-  "Tirzepatide Pen Vial|15mg / 3ml": 80,
-  "Tirzepatide Pen Vial|30mg / 3ml": 144,
-  "BPC-157 Pen Vial|10mg / 3ml": 38.99,
-  "BPC-157 Pen Vial|20mg / 3ml": 62.98,
-  "TB-500 Pen Vial|10mg / 3ml": 64,
-  "GHK-Cu Pen Vial|50mg / 3ml": 42,
+  "Sterile Disposable Pen Tips|6mm x10": 4.99,
+  "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 5,
+  "Retatrutide|50mg": 180,
+  "NAD+|1000mg": 90,
+  "SS-31|10mg": 25,
+  "Semax|30mg": 25,
+  "Selank|30mg": 25,
+  "Epitalon|10mg": 15,
+  "Pinealon|20mg": 30,
+  "Intranasal Research Kit|Kit add-on": 5,
+  "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 7,
+  "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 7,
+  "Disposable Research Pen Kit|Kit add-on": 10,
+  "Retatrutide Pen Vial|10mg": 70,
+  "Retatrutide Pen Vial|20mg": 110,
+  "Retatrutide Pen Vial|50mg": 200,
+  "Tirzepatide Pen Vial|15mg / 3ml": 90,
+  "Tirzepatide Pen Vial|30mg / 3ml": 140,
+  "BPC-157 Pen Vial|10mg / 3ml": 40,
+  "BPC-157 Pen Vial|20mg / 3ml": 70,
+  "TB-500 Pen Vial|10mg / 3ml": 70,
+  "GHK-Cu Pen Vial|50mg / 3ml": 45,
   "KPV Pen Vial|10mg / 3ml": 45,
-  "KLOW Stack Pen Vial|80mg / 3ml": 75,
-  "Ipamorelin Pen Vial|5mg / 3ml": 39.99,
-  "CJC-1295 Pen Vial|5mg / 3ml": 47,
-  "NAD+ Pen Vial|1000mg / 3ml": 102,
-  "SS-31 Pen Vial|10mg / 3ml": 39.99,
-  "Epitalon Pen Vial|10mg / 3ml": 28.99,
-  "Pinealon Pen Vial|20mg / 3ml": 44.99
+  "KLOW Stack Pen Vial|80mg / 3ml": 80,
+  "Ipamorelin Pen Vial|5mg / 3ml": 40,
+  "CJC-1295 Pen Vial|5mg / 3ml": 50,
+  "NAD+ Pen Vial|1000mg / 3ml": 110,
+  "SS-31 Pen Vial|10mg / 3ml": 40,
+  "Epitalon Pen Vial|10mg / 3ml": 30,
+  "Pinealon Pen Vial|20mg / 3ml": 45
 };
 
 function normaliseKey(value) {
@@ -122,8 +108,9 @@ const DISCOUNT_CODES = { ...PUBLIC_DISCOUNT_CODES, ...loadPrivateDiscountCodes()
 const FREE_DELIVERY_CODES = new Set(["SUMMERSHIP", "AJ"]);
 
 const DELIVERY = {
-  standard: { label: "Royal Mail Tracked 24", price: 3.99 },
-  express: { label: "Royal Mail Special Delivery", price: 9.99 }
+  standard: { label: "Royal Mail Tracked 48", price: 3.99 },
+  tracked24: { label: "Royal Mail Tracked 24", price: 6.99 },
+  dhl: { label: "DHL Express", price: 11.99 }
 };
 
 const SITE_URL = "https://northpeptidesuk.com";
@@ -173,21 +160,36 @@ function validateOrderItems(items, discountPct = 0) {
     if (price == null) return { error: `Unavailable item: ${name} ${dose}` };
 
     const unitPrice = price * (1 - discountPct);
-    validatedItems.push({ name, dose, qty, unitPrice, lineTotal: unitPrice * qty });
+    validatedItems.push({
+      name,
+      dose,
+      qty,
+      listPrice: price,
+      listTotal: price * qty,
+      unitPrice,
+      lineTotal: unitPrice * qty
+    });
   }
 
   return {
     items: validatedItems,
-    productSubtotal: validatedItems.reduce((sum, item) => sum + item.lineTotal, 0)
+    // Discounted product total — what the customer actually pays for the items.
+    productSubtotal: validatedItems.reduce((sum, item) => sum + item.lineTotal, 0),
+    // Undiscounted (list-price) product total. The free-delivery threshold is
+    // judged on this figure so a percentage code never costs a customer the
+    // free delivery their basket earned (WELCOME10 on an exact £100 basket).
+    grossSubtotal: validatedItems.reduce((sum, item) => sum + item.listTotal, 0)
   };
 }
 
+// productSubtotal must be the PRE-DISCOUNT product subtotal (grossSubtotal from
+// validateOrderItems); free-delivery codes still force free standard delivery.
 function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
-  const method = deliveryMethod === "express" ? "express" : "standard";
+  const method = deliveryMethod === "dhl" ? "dhl" : (deliveryMethod === "tracked24" || deliveryMethod === "express") ? "tracked24" : "standard";
   const delivery = DELIVERY[method];
   const code = String(discountCode || "").trim().toUpperCase();
   const freeStandard = method === "standard" && (FREE_DELIVERY_CODES.has(code) || productSubtotal >= 100);
-  const charge = method === "express" ? delivery.price : (freeStandard ? 0 : delivery.price);
+  const charge = freeStandard ? 0 : delivery.price;
   return { method, label: delivery.label, charge };
 }
 

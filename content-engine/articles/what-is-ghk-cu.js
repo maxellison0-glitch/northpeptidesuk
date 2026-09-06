@@ -28,12 +28,12 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How GHK-Cu Is Supplied',
-      html: `      <p><a href="/product.html?product=ghk-cu">GHK-Cu</a> is stocked as a 50mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days, and is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend.</p>`,
+      html: `      <p><a href="/products/ghk-cu/">GHK-Cu</a> is stocked as a 50mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched on business days (orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch), and is also one of the four compounds in the <a href="/products/klow-stack/">KLOW Stack</a> research blend.</p>`,
     },
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>GHK-Cu dissolves well in <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a>. Expect the slight blue-green tint from the copper once reconstituted — this is normal and not a sign of contamination. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure.</p>`,
+      html: `      <p>GHK-Cu dissolves well in <a href="/products/bacteriostatic-water/">bacteriostatic water</a>. Expect the slight blue-green tint from the copper once reconstituted — this is normal and not a sign of contamination. Add the solvent down the side of the vial, swirl gently, and refrigerate the prepared solution. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure.</p>`,
     },
     {
       id: 'storage',

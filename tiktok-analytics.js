@@ -212,7 +212,7 @@
     if (document.getElementById('npuk-cookie-banner')) return;
 
     const style = document.createElement('style');
-    style.textContent = '#npuk-cookie-banner{position:fixed;z-index:10000;right:18px;bottom:18px;left:18px;display:flex;align-items:center;gap:18px;max-width:1080px;margin:auto;padding:18px 20px;border:1px solid #CFE0F1;border-radius:10px;background:#fff;color:#132A46;box-shadow:0 12px 40px rgba(15,31,54,.16);font-family:"DM Sans",Arial,sans-serif}#npuk-cookie-banner[hidden]{display:none}#npuk-cookie-banner p{flex:1;margin:0;font-size:.86rem;line-height:1.55}#npuk-cookie-banner a{color:#1F6FEB}#npuk-cookie-banner button,#npuk-cookie-settings{min-height:42px;padding:10px 17px;border:1px solid #1F6FEB;border-radius:6px;background:#fff;color:#1F6FEB;font:600 .76rem "DM Sans",Arial,sans-serif;cursor:pointer}#npuk-cookie-banner button:last-child{background:#1F6FEB;color:#fff}#npuk-cookie-banner button:focus-visible,#npuk-cookie-settings:focus-visible{outline:3px solid #A7D8F4;outline-offset:2px}#npuk-cookie-settings{position:fixed;z-index:9999;left:14px;bottom:24px;min-height:34px;padding:7px 10px;border-color:#CFE0F1;background:#fff;color:#4B5F75;font-size:.68rem}#npuk-cookie-settings[hidden]{display:none}@media(max-width:640px){#npuk-cookie-banner{align-items:stretch;flex-wrap:wrap;gap:10px;right:10px;bottom:10px;left:10px;padding:16px}#npuk-cookie-banner p{flex-basis:100%}#npuk-cookie-banner button{flex:1}}';
+    style.textContent = '#npuk-cookie-banner{position:fixed;z-index:10000;right:18px;bottom:18px;left:18px;display:flex;align-items:center;gap:18px;max-width:1080px;margin:auto;padding:18px 20px;border:1px solid #CFE0F1;border-radius:10px;background:#fff;color:#132A46;box-shadow:0 12px 40px rgba(15,31,54,.16);font-family:"DM Sans",Arial,sans-serif}#npuk-cookie-banner[hidden]{display:none}#npuk-cookie-banner p{flex:1;margin:0;font-size:.86rem;line-height:1.55}#npuk-cookie-banner a{color:#1F6FEB}#npuk-cookie-banner button,#npuk-cookie-settings{min-height:42px;padding:10px 17px;border:1px solid #1F6FEB;border-radius:6px;background:#fff;color:#1F6FEB;font:600 .76rem "DM Sans",Arial,sans-serif;cursor:pointer}#npuk-cookie-banner button:last-child{background:#1F6FEB;color:#fff}#npuk-cookie-banner button:focus-visible,#npuk-cookie-settings:focus-visible{outline:3px solid #A7D8F4;outline-offset:2px}#npuk-cookie-settings{position:fixed;z-index:9999;left:14px;bottom:24px;min-height:34px;padding:7px 10px;border-color:#CFE0F1;background:#fff;color:#4B5F75;font-size:.66rem}#npuk-cookie-settings[hidden]{display:none}@media(max-width:640px){#npuk-cookie-banner{align-items:stretch;flex-wrap:wrap;gap:10px;right:10px;bottom:10px;left:10px;padding:16px}#npuk-cookie-banner p{flex-basis:100%}#npuk-cookie-banner button{flex:1}}';
     document.head.appendChild(style);
 
     const banner = document.createElement('section');
@@ -234,8 +234,11 @@
     );
     document.body.appendChild(banner);
 
-    const settings = createButton('Cookie settings', openSettings);
+    // Short visible label keeps the pill small on phones; the title carries the
+    // fuller name the cookie policy refers to.
+    const settings = createButton('Cookies', openSettings);
     settings.id = 'npuk-cookie-settings';
+    settings.title = 'Cookie settings';
     document.body.appendChild(settings);
 
     setBannerVisible(getConsent() === null);

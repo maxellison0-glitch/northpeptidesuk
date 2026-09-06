@@ -31,9 +31,9 @@ module.exports = {
       heading: 'What You Need',
       html: `      <p>Before starting, make sure you have the following to hand:</p>
       <ul>
-        <li><strong><a href="/product.html?product=bacteriostatic-water">Bacteriostatic water (BAC water)</a></strong> — the preferred solvent for most peptides. It contains 0.9% benzyl alcohol, which suppresses bacterial growth and extends the usable life of a reconstituted solution.</li>
-        <li><strong><a href="/product.html?product=syringe-kit">Sterile transfer needles</a></strong> — 1ml needles are ideal for measuring the solvent accurately and transferring it gently into the vial.</li>
-        <li><strong><a href="/product.html?product=alcohol-wipes">Alcohol wipes</a></strong> — to clean the rubber stoppers of both the BAC water vial and the peptide vial before drawing or transferring.</li>
+        <li><strong><a href="/products/bacteriostatic-water/">Bacteriostatic water (BAC water)</a></strong> — the preferred solvent for most peptides. It contains 0.9% benzyl alcohol, which suppresses bacterial growth and extends the usable life of a reconstituted solution.</li>
+        <li><strong><a href="/products/syringe-kit/">Sterile transfer needles</a></strong> — 1ml needles are ideal for measuring the solvent accurately and transferring it gently into the vial.</li>
+        <li><strong><a href="/products/alcohol-wipes/">Alcohol wipes</a></strong> — to clean the rubber stoppers of both the BAC water vial and the peptide vial before drawing or transferring.</li>
         <li><strong>The lyophilised peptide vial</strong> — kept at the correct storage temperature until use.</li>
       </ul>
       <div class="callout callout-green">
@@ -102,11 +102,11 @@ module.exports = {
       heading: 'Notes on Specific Compounds',
       html: `      <p>Most peptides reconstitute cleanly in BAC water at room temperature. A few notes on compounds available from North Peptides UK:</p>
       <ul>
-        <li><strong><a href="/product.html?product=retatrutide">Retatrutide</a> and <a href="/product.html?product=tirzepatide">Tirzepatide</a></strong> — dissolve readily. A 2–4ml dilution is common for working concentrations used in research models.</li>
-        <li><strong><a href="/product.html?product=bpc-157">BPC-157</a></strong> — highly soluble. Dissolves quickly and cleanly; 1ml of BAC water per 10mg vial is typical.</li>
-        <li><strong><a href="/product.html?product=tb-500">TB-500</a></strong> — also highly soluble. May look slightly cloudy at first but clears with gentle swirling.</li>
-        <li><strong><a href="/product.html?product=ghk-cu">GHK-Cu</a></strong> — dissolves well. The solution carries a slight blue-green tint from the copper, which is normal.</li>
-        <li><strong><a href="/product.html?product=klow-stack">KLOW Stack</a></strong> — four compounds in one vial, all water soluble. Treat it the same as any single peptide; 2ml of BAC water is a good starting volume.</li>
+        <li><strong><a href="/products/retatrutide/">Retatrutide</a> and <a href="/products/tirzepatide/">Tirzepatide</a></strong> — dissolve readily. A 2–4ml dilution is common for working concentrations used in research models.</li>
+        <li><strong><a href="/products/bpc-157/">BPC-157</a></strong> — highly soluble. Dissolves quickly and cleanly; 1ml of BAC water per 10mg vial is typical.</li>
+        <li><strong><a href="/products/tb-500/">TB-500</a></strong> — also highly soluble. May look slightly cloudy at first but clears with gentle swirling.</li>
+        <li><strong><a href="/products/ghk-cu/">GHK-Cu</a></strong> — dissolves well. The solution carries a slight blue-green tint from the copper, which is normal.</li>
+        <li><strong><a href="/products/klow-stack/">KLOW Stack</a></strong> — four compounds in one vial, all water soluble. Treat it the same as any single peptide; 2ml of BAC water is a good starting volume.</li>
       </ul>
       <div class="callout callout-dark">
         <div class="callout-title">// Questions?</div>

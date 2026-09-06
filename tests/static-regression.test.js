@@ -23,11 +23,11 @@ const sitemap = read("sitemap.xml");
 const sitePages = [index, product, checkout, whyUs, labReports, compliance];
 
 const expectedAccessoryPrices = [
-  ["Bacteriostatic Water", "10ml vial", "9.99"],
-  ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "6.99"],
+  ["Bacteriostatic Water", "10ml vial", "10"],
+  ["Insulin Needle Pack", "10 pack, 1ml insulin needles", "7"],
   ["Sterile Disposable Pen Tips", "6mm x5", "3.99"],
-  ["Alcohol Wipes", "10 pack", "2.99"],
-  ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "4.99"]
+  ["Alcohol Wipes", "10 pack", "3"],
+  ["Thermal Cooled Packaging", "Insulated foil pouch + gel packs", "5"]
 ];
 
 const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -56,11 +56,11 @@ assert(
   "mobile product cards should use compact image/detail columns"
 );
 assert(
-  index.includes(".shop-card-img { aspect-ratio: auto; min-height: 148px; height: 100%;"),
+  index.includes(".shop-card-img { aspect-ratio: 1 / 1; min-height: 148px; height: auto;"),
   "mobile product images should be compact thumbnails"
 );
 assert(
-  index.includes(".shop-add-btn { min-height: 40px;"),
+  index.includes(".shop-add-btn { min-height: 44px;"),
   "mobile add buttons should keep a reliable touch target"
 );
 
@@ -127,9 +127,9 @@ assert(
 assert(
   index.includes("Research Supplies") &&
     index.includes("Pen-Style Research Kit") &&
-    index.includes("research-pen-kit-style.png") &&
-    index.includes("research-bac-water.png") &&
-    index.includes("research-insulin-needles.png") &&
+    index.includes("research-pen-kit-style-600.webp") &&
+    index.includes("research-bac-water-600.webp") &&
+    index.includes("research-insulin-needles-600.webp") &&
     index.includes("Sterile Disposable Pen Tips") &&
     index.includes("Bacteriostatic Water") &&
     index.includes("Insulin Needle Pack"),
@@ -137,14 +137,14 @@ assert(
 );
 assert(
   productData.includes('"pen-style-research-kit"') &&
-    productData.includes('image: "research-pen-kit-style.png"') &&
+    productData.includes('image: "research-pen-kit-style.webp"') &&
     productData.includes('"pen-tips"') &&
     productData.includes('"bacteriostatic-water"') &&
     productData.includes('"syringe-kit"'),
   "product detail data should include research supplies"
 );
 assert(
-  commerceCore.includes('"Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 24.99') &&
+  commerceCore.includes('"Pen-Style Research Kit|3ml cartridge + BAC water + x5 pen tips": 25') &&
     commerceCore.includes('"Sterile Disposable Pen Tips|6mm x5": 3.99') &&
     commerceCore.includes("function resolveCatalogPrice(_item, name, dose)") &&
     checkout.includes("'Sterile Disposable Pen Tips'"),

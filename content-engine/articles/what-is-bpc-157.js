@@ -29,13 +29,13 @@ module.exports = {
     {
       id: 'how-supplied',
       heading: 'How BPC-157 Is Supplied',
-      html: `      <p><a href="/product.html?product=bpc-157">BPC-157</a> is stocked by North Peptides UK as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched within 24 hours on business days.</p>
-      <p>It is also one of the four compounds in the <a href="/product.html?product=klow-stack">KLOW Stack</a> research blend, alongside GHK-Cu, TB-500 and KPV.</p>`,
+      html: `      <p><a href="/products/bpc-157/">BPC-157</a> is stocked by North Peptides UK as a 10mg lyophilised vial, listed with supplier-stated 99%+ purity and stored frozen until dispatch, with supplier documentation available on request where held. It is UK stocked and dispatched on business days; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch.</p>
+      <p>It is also one of the four compounds in the <a href="/products/klow-stack/">KLOW Stack</a> research blend, alongside GHK-Cu, TB-500 and KPV.</p>`,
     },
     {
       id: 'handling',
       heading: 'Handling and Reconstitution',
-      html: `      <p>BPC-157 is reconstituted with <a href="/product.html?product=bacteriostatic-water">bacteriostatic water</a> before use in a research preparation. It is highly soluble and dissolves quickly and cleanly; 1ml of bacteriostatic water per 10mg vial is a typical volume for preparing a working concentration.</p>
+      html: `      <p>BPC-157 is reconstituted with <a href="/products/bacteriostatic-water/">bacteriostatic water</a> before use in a research preparation. It is highly soluble and dissolves quickly and cleanly; 1ml of bacteriostatic water per 10mg vial is a typical volume for preparing a working concentration.</p>
       <p>The standard handling rules apply: run the solvent down the inside wall of the vial, swirl gently rather than shake, and label the vial with the preparation date. Our <a href="/blog/how-to-reconstitute-peptides.html">reconstitution guide</a> covers the full procedure and the concentration arithmetic.</p>`,
     },
     {
