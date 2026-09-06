@@ -1885,10 +1885,10 @@
 
       .acc-grid { grid-template-columns: 1fr; gap: 10px; }
       .shop-card { display: grid; grid-template-columns: 118px minmax(0, 1fr); border-radius: 14px; }
-      /* Square thumbnail that shows the whole vial instead of a cropped vertical sliver */
-      .shop-card-img { aspect-ratio: 1 / 1; min-height: 148px; height: auto; align-self: start; border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+      /* Full-height 118px column; object-fit: contain still shows the whole vial uncropped */
+      .shop-card-img { aspect-ratio: auto; min-height: 148px; height: 100%; border-right: 1px solid var(--line-soft); }
       .shop-card-img img { object-fit: contain; padding: 6px; background: var(--frost-2); }
-      .supply-card .shop-card-img { aspect-ratio: 1 / 1; }
+      .supply-card .shop-card-img { aspect-ratio: auto; }
       .shop-card-img-overlay { display: none; }
       /* Badge moves into the text column so it never overflows the 118px thumbnail */
       .shop-badge, .supply-addon-badge { position: static; align-self: flex-start; font-size: .6rem; padding: 4px 9px; }
