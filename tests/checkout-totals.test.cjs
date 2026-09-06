@@ -95,3 +95,12 @@ test('client delivery prices stay in parity with server rules', () => {
   assert.ok(fallback, 'updateTotals must set the standard delivery fallback price');
   assert.equal(Number(fallback[1]), core.DELIVERY.standard.price);
 });
+
+test('tracked24 drops to £4.99 once the order qualifies for free delivery', () => {
+  assert.equal(core.calculateDelivery('tracked24', '', 150).charge, 4.99);
+  assert.equal(core.calculateDelivery('tracked24', '', 90).charge, core.DELIVERY.tracked24.price);
+  assert.equal(core.calculateDelivery('tracked24', 'SUMMERSHIP', 20).charge, 4.99);
+  assert.equal(core.calculateDelivery('dhl', '', 150).charge, core.DELIVERY.dhl.price);
+  assert.equal(core.DELIVERY.tracked24.freeOrderPrice, 4.99);
+  assert.ok(checkoutHtml.includes('deliveryPrice = freeDelivery ? 4.99 : 6.99;'), 'client must mirror the tracked24 discount rule');
+});

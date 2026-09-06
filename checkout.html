@@ -1214,7 +1214,7 @@
           <div class="delivery-option-name">Royal Mail Tracked 24 · Premium</div>
           <div class="delivery-option-desc" id="delivery-tracked24-desc">Our premium service · 1–2 working days after dispatch, fully tracked</div>
         </div>
-        <div class="delivery-option-price">£6.99</div>
+        <div class="delivery-option-price"><span id="tracked24-delivery-was" class="delivery-was" hidden>£6.99</span><span id="tracked24-delivery-price">£6.99</span></div>
       </label>
       <label class="delivery-option" id="label-dhl">
         <input type="radio" id="delivery-dhl" name="delivery" value="dhl" data-price="11.99" data-label="DHL Express" aria-describedby="delivery-dhl-desc" onchange="updateDelivery(this)">
@@ -1225,7 +1225,7 @@
         <div class="delivery-option-price">£11.99</div>
       </label>
     </div>
-    <p class="delivery-note" id="delivery-express-note" hidden>Royal Mail Tracked 48 is free at your basket total — Tracked 24 and DHL Express are paid upgrades.</p>
+    <p class="delivery-note" id="delivery-express-note" hidden>Royal Mail Tracked 48 is free at your basket total, and Tracked 24 drops from £6.99 to £4.99.</p>
   </fieldset>
 
   <!-- TOTAL -->
@@ -1490,12 +1490,18 @@
       nudge.classList.remove('unlocked');
     }
 
+    // Tracked 24 rewards a qualifying basket too: £6.99 drops to £4.99.
+    byId('tracked24-delivery-price').textContent = freeDelivery ? '£4.99' : '£6.99';
+    byId('tracked24-delivery-was').hidden = !freeDelivery;
+
     const method = selectedDeliveryMethod();
     if (method === 'standard') {
       deliveryPrice = freeDelivery ? 0 : 3.99;
+    } else if (method === 'tracked24') {
+      deliveryPrice = freeDelivery ? 4.99 : 6.99;
     } else {
       const sel = document.querySelector('input[name="delivery"]:checked');
-      deliveryPrice = sel && sel.dataset && sel.dataset.price ? parseFloat(sel.dataset.price) : 9.99;
+      deliveryPrice = sel && sel.dataset && sel.dataset.price ? parseFloat(sel.dataset.price) : 11.99;
     }
     byId('delivery-express-note').hidden = !(method !== 'standard' && freeDelivery && basketData.length > 0);
 

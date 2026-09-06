@@ -26,7 +26,7 @@ const DELIVERY = (() => {
     if (core && core.DELIVERY && core.DELIVERY.standard && core.DELIVERY.tracked24 && core.DELIVERY.dhl) {
       return {
         standard: { label: core.DELIVERY.standard.label, price: Number(core.DELIVERY.standard.price) },
-        tracked24: { label: core.DELIVERY.tracked24.label, price: Number(core.DELIVERY.tracked24.price) },
+        tracked24: { label: core.DELIVERY.tracked24.label, price: Number(core.DELIVERY.tracked24.price), freeOrderPrice: Number(core.DELIVERY.tracked24.freeOrderPrice || 4.99) },
         dhl: { label: core.DELIVERY.dhl.label, price: Number(core.DELIVERY.dhl.price) },
         freeFrom: 100,
       };
@@ -34,7 +34,7 @@ const DELIVERY = (() => {
   } catch { /* fall through to the documented defaults */ }
   return {
     standard: { label: 'Royal Mail Tracked 48', price: 3.99 },
-    tracked24: { label: 'Royal Mail Tracked 24', price: 6.99 },
+    tracked24: { label: 'Royal Mail Tracked 24', price: 6.99, freeOrderPrice: 4.99 },
     dhl: { label: 'DHL Express', price: 11.99 },
     freeFrom: 100,
   };
