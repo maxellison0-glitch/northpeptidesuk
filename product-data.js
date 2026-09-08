@@ -578,6 +578,56 @@ const PRODUCT_DATA = {
       { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 45 }
     ],
   },
+  "ghk-cu-100mg": {
+    name: "GHK-Cu 100mg",
+    category: "Research peptide",
+    image: "ghk-cu-100mg.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    seo: {
+      title: "Buy GHK-Cu 100mg UK | Copper Peptide, 99% HPLC | North Peptides UK",
+      metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 100mg lyophilised vial — the same GHK-Cu independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is GHK-Cu 100mg?", a: "The copper(II) complex of the tripeptide glycyl-L-histidyl-L-lysine (Gly-His-Lys), supplied as a 100mg lyophilised vial for research — the same compound as our 50mg GHK-Cu, at double the fill." },
+        { q: "Has this GHK-Cu been independently tested?", a: "The GHK-Cu compound was sent to Analiza Białek sp. z o.o., an independent laboratory in Wrocław, Poland, and returned 99% purity by HPLC. That report was run on our 50mg vial; this 100mg vial is the same compound at a larger fill. The full certificate is published on the site." },
+        { q: "What is GHK-Cu 100mg supplied as?", a: "A 100mg lyophilised vial, stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "Do you stock GHK-Cu 100mg in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
+        { q: "Is GHK-Cu for research use only?", a: "Yes. It is supplied strictly for laboratory research, is not a cosmetic, and is not for human or animal consumption." }
+      ]
+    },
+    summary: "Copper(II) tripeptide research compound supplied as a 100mg lyophilised vial — the same GHK-Cu as our 50mg, at double the fill.",
+    longDescription: [
+      "GHK-Cu is the copper(II) complex of the tripeptide glycyl-L-histidyl-L-lysine (Gly-His-Lys), a naturally occurring copper-binding peptide. This is our larger 100mg lyophilised vial, supplied as a powder for laboratory use.",
+      "As a research compound it is studied in vitro for its copper-binding chemistry and its role in collagen- and extracellular-matrix research. It is supplied strictly as a research reference material; it is not a cosmetic and is not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Copper(II) coordination chemistry of the GHK tripeptide, studied in vitro",
+      "Collagen-synthesis and extracellular-matrix research models",
+      "Fibroblast and skin-cell research models",
+      "Comparative studies of copper-peptide complexes"
+    ],
+    specs: [
+      ["Compound type", "Copper(II) tripeptide complex (Copper Tripeptide-1)"],
+      ["Sequence", "Gly-His-Lys (Cu2+-chelated)"],
+      ["Molecular formula", "C14H22CuN6O4"],
+      ["Molecular weight", "~401.9 g/mol"],
+      ["CAS number", "89030-95-5"],
+      ["Synonyms", "Copper peptide, prezatide copper"],
+      ["Purity", "99% — GHK-Cu independently verified by HPLC (report 100016393, run on the 50mg vial)"],
+      ["Form", "Lyophilised powder"],
+      ["Fill", "100mg per vial"],
+      ["Storage", "-20°C long-term; 2-8°C short-term"]
+    ],
+    storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
+    details: [
+      "Same GHK-Cu compound — 99% HPLC-verified (report run on the 50mg vial)",
+      "100mg lyophilised vial — double the 50mg fill",
+      "UK stocked, 24–48h dispatch after payment",
+      "Stored frozen until dispatch"
+    ],
+    variants: [
+      { label: "1x100mg", dose: "100mg", price: 50 }
+    ],
+  },
   kpv: {
     name: "KPV",
     category: "Research peptide",
