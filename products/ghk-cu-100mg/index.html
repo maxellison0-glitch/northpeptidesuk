@@ -25,6 +25,7 @@
   <meta name="twitter:description" content="GHK-Cu (copper tripeptide) research compound, UK stocked. 100mg lyophilised vial — the same GHK-Cu independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.">
   <meta name="twitter:image" content="https://www.northpeptidesuk.com/ghk-cu-100mg-og.jpg">
   <meta name="twitter:image:alt" content="GHK-Cu 100mg 100mg research peptide vial, UK stocked">
+  <link rel="prefetch" as="image" href="/ghk-cu-100mg-pen-vial.webp">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -115,6 +116,29 @@
           "@type": "PropertyValue",
           "name": "CAS number",
           "value": "89030-95-5"
+        }
+      ],
+      "isVariantOf": {
+        "@id": "https://www.northpeptidesuk.com/products/ghk-cu-100mg/#group"
+      }
+    },
+    {
+      "@type": "ProductGroup",
+      "@id": "https://www.northpeptidesuk.com/products/ghk-cu-100mg/#group",
+      "name": "GHK-Cu 100mg",
+      "productGroupID": "ghk-cu-100mg",
+      "url": "https://www.northpeptidesuk.com/products/ghk-cu-100mg/",
+      "brand": {
+        "@type": "Brand",
+        "name": "North Peptides UK"
+      },
+      "variesBy": "format",
+      "hasVariant": [
+        {
+          "@id": "https://www.northpeptidesuk.com/products/ghk-cu-100mg/#product"
+        },
+        {
+          "@id": "https://www.northpeptidesuk.com/products/ghk-cu-100mg-pen/#product"
         }
       ]
     },
@@ -603,6 +627,20 @@
           </div>
 
           <div class="config-control">
+            <span class="config-label" id="format-label">Format</span>
+            <div class="config-toggle-row config-format-row" role="group" aria-label="Choose product format">
+
+              <button class="config-format-btn active" type="button" data-format-index="0" aria-pressed="true" onclick="selectConfiguredFormat(0)">
+                <span>Vial</span>
+                <small>Lyophilised · you reconstitute · from £50</small>
+              </button>
+              <button class="config-format-btn" type="button" data-format-index="1" aria-pressed="false" onclick="selectConfiguredFormat(1)">
+                <span>Pen vial</span>
+                <small>Pre-filled · pen, tips &amp; wipes included · from £65</small>
+              </button>
+            </div>
+          </div>
+          <div class="config-control">
             <span class="config-label" id="size-label">Size</span>
             <div class="config-size-grid" id="config-size-grid" role="group" aria-labelledby="size-label">
 
@@ -670,7 +708,7 @@
         </div>
         <script>
           window.NPUK_CONFIG_FORMAT_INDEX = 0;
-          window.NPUK_CONFIG_FORMATS = [{"slug":"ghk-cu-100mg","type":"vial","productName":"GHK-Cu 100mg","label":"Vial","meta":"Lyophilised · you reconstitute","image":"ghk-cu-100mg.webp","bacWater":true,"supplies":["bac","needles","wipes"],"variants":[{"label":"1x100mg","dose":"100mg","price":50}]}];
+          window.NPUK_CONFIG_FORMATS = [{"slug":"ghk-cu-100mg","type":"vial","productName":"GHK-Cu 100mg","label":"Vial","meta":"Lyophilised · you reconstitute","image":"ghk-cu-100mg.webp","bacWater":true,"supplies":["bac","needles","wipes"],"variants":[{"label":"1x100mg","dose":"100mg","price":50}]},{"slug":"ghk-cu-100mg-pen","type":"pen","productName":"GHK-Cu 100mg Pen Vial","label":"Pen vial","meta":"Pre-filled · pen, tips & wipes included","image":"ghk-cu-100mg-pen-vial.webp","bacWater":false,"supplies":[],"variants":[{"label":"1x100mg / 3ml","dose":"100mg / 3ml","price":65}]}];
           window.NPUK_CONFIG_ADDON = { name: 'Bacteriostatic Water', dose: '3ml vial', price: 4 };
           window.NPUK_CONFIG_SUPPLIES = [{"key":"bac","name":"Bacteriostatic Water","dose":"3ml vial","price":4,"label":"BAC water"},{"key":"needles","name":"Insulin Needle Pack","dose":"10 pack, 1ml insulin needles","price":7,"label":"needles"},{"key":"wipes","name":"Alcohol Wipes","dose":"10 pack","price":3,"label":"wipes"}];
           window.NPUK_PEN_TIPS_OFFER = { name: 'Sterile Disposable Pen Tips', dose: '6mm x10', price: 4.99 };
@@ -682,7 +720,7 @@
           <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Order by 12pm Mon&ndash;Fri for next-working-day dispatch</span>
           <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Research use only</span>
         </div>
-
+        <p class="format-alt">Also available as: <a href="/products/ghk-cu-100mg-pen/">GHK-Cu 100mg Pen Vial (pre-filled kit)</a></p>
 
         <div class="research-note">
           <strong>Research use only.</strong> Products are supplied strictly for laboratory and scientific research use only. They are not medicines, are not for human or animal consumption, and no therapeutic claims are made.
@@ -833,6 +871,19 @@
     </div>
   </div>
 
+  <div class="np-sheet" id="np-pen-tips-sheet" role="dialog" aria-modal="true" aria-labelledby="np-sheet-title" hidden>
+    <div class="np-sheet-backdrop" onclick="closePenTipsSheet(true)"></div>
+    <div class="np-sheet-panel">
+      <span class="config-kicker">Added to basket</span>
+      <h2 id="np-sheet-title">Would you like to add 10 disposable pen tips for £4.99?</h2>
+      <div class="np-sheet-row">
+        <img src="/research-pen-tips-600.webp" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <p>Your pen kit already includes sterile pen tips. This is a spare pack of 10 sterile disposable pen tips (6mm) that fit the disposable research pen supplied with your order — under 50p per tip.</p>
+      </div>
+      <button class="np-sheet-primary" type="button" onclick="acceptPenTips()">Add 10 tips · £4.99</button>
+      <button class="np-sheet-secondary" type="button" onclick="closePenTipsSheet(true)">No thanks, continue</button>
+    </div>
+  </div>
 
 
   <script>

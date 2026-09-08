@@ -583,6 +583,8 @@ const PRODUCT_DATA = {
     category: "Research peptide",
     image: "ghk-cu-100mg.webp",
     coa: COA_REPORTS["ghk-cu-100016393"],
+    penAddon: true,
+    sisterProduct: { slug: "ghk-cu-100mg-pen", label: "Also available as", name: "GHK-Cu 100mg Pen Vial (pre-filled kit)" },
     seo: {
       title: "Buy GHK-Cu 100mg UK | Copper Peptide, 99% HPLC | North Peptides UK",
       metaDescription: "GHK-Cu (copper tripeptide) research compound, UK stocked. 100mg lyophilised vial — the same GHK-Cu independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
@@ -626,6 +628,58 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x100mg", dose: "100mg", price: 50 }
+    ],
+  },
+  "ghk-cu-100mg-pen": {
+    name: "GHK-Cu 100mg Pen Vial",
+    category: "Research peptide",
+    image: "ghk-cu-100mg-pen-vial.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    penAddon: true,
+    sisterProduct: { slug: "ghk-cu-100mg", label: "Also available as", name: "GHK-Cu 100mg Standard Vial (lyophilised)" },
+    seo: {
+      title: "GHK-Cu 100mg Pen Vial UK | 100mg/3ml Pre-Filled | North Peptides UK",
+      metaDescription: "GHK-Cu copper tripeptide pre-reconstituted as a 100mg/3ml liquid in a pen-compatible vial. The same GHK-Cu independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
+      faq: [
+        { q: "What is the GHK-Cu 100mg Pen Vial?", a: "The same GHK-Cu copper tripeptide research compound, supplied pre-reconstituted as a 100mg/3ml liquid in a pen-compatible cartridge vial." },
+        { q: "How should the pen vial be stored in the laboratory?", a: "Store at 2–8°C, protected from light, and do not freeze once reconstituted." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied lyophilised (frozen powder). This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile pen tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "GHK-Cu copper tripeptide pre-reconstituted as a 100mg/3ml liquid in a pen-compatible vial — the same GHK-Cu as our 50mg, at double the fill.",
+    longDescription: [
+      "GHK-Cu 100mg Pen Vial contains the same copper(II) tripeptide research compound as our standard vial, supplied pre-reconstituted in a pen-compatible cartridge format: 100mg dissolved in 3ml solution.",
+      "Supplied as a complete disposable pen kit with sterile pen tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Copper(II) coordination chemistry of the GHK tripeptide, studied in vitro",
+      "Collagen-synthesis and extracellular-matrix research models",
+      "Fibroblast and skin-cell research models",
+      "Comparative studies of copper-peptide complexes"
+    ],
+    specs: [
+      ["Compound type", "Copper(II) tripeptide complex (Copper Tripeptide-1)"],
+      ["Sequence", "Gly-His-Lys (Cu2+-chelated)"],
+      ["Molecular formula", "C14H22CuN6O4"],
+      ["Molecular weight", "~401.9 g/mol"],
+      ["CAS number", "89030-95-5"],
+      ["Synonyms", "Copper peptide, prezatide copper"],
+      ["Purity", "99% — GHK-Cu independently verified by HPLC (report 100016393, run on the 50mg vial)"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "Same GHK-Cu compound — 99% HPLC-verified (report run on the 50mg vial)",
+      "Pre-reconstituted research liquid",
+      "UK stocked, 24–48h dispatch after payment",
+      "Disposable pen, sterile pen tips and wipes included"
+    ],
+    variants: [
+      { label: "1x100mg / 3ml", dose: "100mg / 3ml", price: 65 }
     ],
   },
   kpv: {
@@ -834,6 +888,8 @@ const PRODUCT_DATA = {
     coa: COA_REPORTS["ghk-cu-100016393"],
     coaScope: "component",
     coaScopeNote: "This report covers the 50mg GHK-Cu component only. It was tested standalone, not as the finished blend. The report does not test the GLOW Stack's TB-500 or BPC-157 components.",
+    penAddon: true,
+    sisterProduct: { slug: "glow-stack-pen", label: "Also available as", name: "GLOW Stack Pen Vial (pre-filled kit)" },
     seo: {
       title: "Buy GLOW Stack UK | 70mg 3-Peptide Research Blend | North Peptides UK",
       metaDescription: "GLOW Stack research blend (GHK-Cu, BPC-157, TB-500), UK stocked. 70mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
@@ -874,6 +930,56 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x70mg", dose: "70mg", price: 50 }
+    ],
+  },
+  "glow-stack-pen": {
+    name: "GLOW Stack Pen Vial",
+    category: "Research blend",
+    image: "glow-stack-pen-vial.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    coaScope: "component",
+    coaScopeNote: "This report covers the 50mg GHK-Cu component only. It was tested standalone, not as the finished blend. The report does not test the GLOW Stack's TB-500 or BPC-157 components.",
+    penAddon: true,
+    sisterProduct: { slug: "glow-stack", label: "Also available as", name: "GLOW Stack Standard Vial (lyophilised)" },
+    seo: {
+      title: "GLOW Stack Pen Vial UK | 70mg/3ml Pre-Filled | North Peptides UK",
+      metaDescription: "GLOW Stack 3-peptide research blend (GHK-Cu, BPC-157, TB-500) pre-reconstituted as a 70mg/3ml liquid in a pen-compatible vial. UK stocked, 24-48h dispatch after payment. Research use only.",
+      faq: [
+        { q: "What is in the GLOW Stack Pen Vial?", a: "The same three-compound blend — GHK-Cu, BPC-157 and TB-500, 70mg in total — pre-reconstituted as a 70mg/3ml liquid in a pen-compatible vial." },
+        { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
+        { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile pen tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
+        { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
+      ]
+    },
+    summary: "GLOW Stack three-compound research blend pre-reconstituted as a 70mg/3ml liquid in a pen-compatible vial.",
+    longDescription: [
+      "GLOW Stack Pen Vial contains the same three-compound research blend — GHK-Cu, BPC-157 and TB-500 at a fixed ratio — as our standard lyophilised vial, supplied pre-reconstituted in a pen-compatible cartridge format: 70mg dissolved in 3ml solution.",
+      "Supplied as a complete disposable pen kit with sterile pen tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Combined collagen, extracellular-matrix and cell-migration research models",
+      "Comparative study of single compounds versus a fixed-ratio blend",
+      "Angiogenesis and tissue-research endpoints across the three components",
+      "Skin, wound and connective-tissue research models"
+    ],
+    specs: [
+      ["Composition", "GHK-Cu 50mg + BPC-157 10mg + TB-500 10mg"],
+      ["Total peptide", "70mg per vial"],
+      ["Blend type", "Three-compound tissue-research blend"],
+      ["Purity", "Supplier stated"],
+      ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
+      ["Storage", "2–8°C; do not freeze once reconstituted"]
+    ],
+    storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
+    details: [
+      "GHK-Cu component independently verified at 99% purity",
+      "Pre-reconstituted research liquid",
+      "UK stocked, 24–48h dispatch after payment",
+      "Disposable pen, sterile pen tips and wipes included"
+    ],
+    variants: [
+      { label: "1x70mg / 3ml", dose: "70mg / 3ml", price: 70 }
     ],
   },
   ipamorelin: {

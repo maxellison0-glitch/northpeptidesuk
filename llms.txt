@@ -13,10 +13,14 @@
 - [TB-500 Pen Vial](https://www.northpeptidesuk.com/products/tb-500-pen/): TB-500 Thymosin Beta-4 fragment research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.
 - [GHK-Cu](https://www.northpeptidesuk.com/products/ghk-cu/): Copper(II) tripeptide research compound supplied as a 50mg lyophilised vial.
 - [GHK-Cu Pen Vial](https://www.northpeptidesuk.com/products/ghk-cu-pen/): GHK-Cu copper tripeptide pre-reconstituted as a 50mg/3ml liquid in a pen-compatible vial.
+- [GHK-Cu 100mg](https://www.northpeptidesuk.com/products/ghk-cu-100mg/): Copper(II) tripeptide research compound supplied as a 100mg lyophilised vial — the same GHK-Cu as our 50mg, at double the fill.
+- [GHK-Cu 100mg Pen Vial](https://www.northpeptidesuk.com/products/ghk-cu-100mg-pen/): GHK-Cu copper tripeptide pre-reconstituted as a 100mg/3ml liquid in a pen-compatible vial — the same GHK-Cu as our 50mg, at double the fill.
 - [KPV](https://www.northpeptidesuk.com/products/kpv/): Alpha-MSH fragment tripeptide research compound supplied as a 10mg lyophilised vial.
 - [KPV Pen Vial](https://www.northpeptidesuk.com/products/kpv-pen/): KPV alpha-MSH fragment tripeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.
 - [KLOW Stack](https://www.northpeptidesuk.com/products/klow-stack/): Four-compound research blend containing GHK-Cu, TB-500, BPC-157 and KPV in a single 80mg lyophilised vial.
 - [KLOW Stack Pen Vial](https://www.northpeptidesuk.com/products/klow-stack-pen/): KLOW Stack four-compound research blend pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial.
+- [GLOW Stack](https://www.northpeptidesuk.com/products/glow-stack/): Three-compound research blend containing GHK-Cu, BPC-157 and TB-500 in a single 70mg lyophilised vial — the KLOW Stack without KPV.
+- [GLOW Stack Pen Vial](https://www.northpeptidesuk.com/products/glow-stack-pen/): GLOW Stack three-compound research blend pre-reconstituted as a 70mg/3ml liquid in a pen-compatible vial.
 - [Ipamorelin](https://www.northpeptidesuk.com/products/ipamorelin/): Selective growth-hormone secretagogue research compound supplied as a 5mg lyophilised vial.
 - [Ipamorelin Pen Vial](https://www.northpeptidesuk.com/products/ipamorelin-pen/): Ipamorelin selective GH secretagogue research compound pre-reconstituted as a 5mg/3ml liquid in a pen-compatible vial.
 - [CJC-1295 (No DAC)](https://www.northpeptidesuk.com/products/cjc-1295/): GHRH (1-29) analogue research compound (Mod GRF 1-29) supplied as a 5mg lyophilised vial.
@@ -27,10 +31,13 @@
 - [SS-31 Pen Vial](https://www.northpeptidesuk.com/products/ss-31-pen/): SS-31 (elamipretide) mitochondria-targeted tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.
 - [Semax](https://www.northpeptidesuk.com/products/semax/): Nootropic research peptide (ACTH(4-7) analogue) supplied as a 30mg lyophilised vial.
 - [Selank](https://www.northpeptidesuk.com/products/selank/): Anxiolytic nootropic research peptide (tuftsin analogue) supplied as a 30mg lyophilised vial.
+- [SLU-PP-332](https://www.northpeptidesuk.com/products/slu-pp-332/): SLU-PP-332 research compound — an estrogen-related receptor (ERRα) agonist studied as an 'exercise mimetic' — supplied as a pack of 50 x 5mg compressed tablets.
+- [Methylene Blue](https://www.northpeptidesuk.com/products/methylene-blue/): Methylene Blue (methylthioninium chloride) research compound supplied as a pack of 50 x 20mg compressed tablets.
 - [Epitalon](https://www.northpeptidesuk.com/products/epitalon/): Pineal tetrapeptide research compound (AEDG) supplied as a 10mg lyophilised vial.
 - [Epitalon Pen Vial](https://www.northpeptidesuk.com/products/epitalon-pen/): Epitalon (AEDG) pineal tetrapeptide research compound pre-reconstituted as a 10mg/3ml liquid in a pen-compatible vial.
 - [Pinealon](https://www.northpeptidesuk.com/products/pinealon/): Short regulatory tripeptide research compound (EDR) supplied as a 20mg lyophilised vial.
 - [Pinealon Pen Vial](https://www.northpeptidesuk.com/products/pinealon-pen/): Pinealon EDR regulatory tripeptide research compound pre-reconstituted as a 20mg/3ml liquid in a pen-compatible vial.
+- [L-Carnitine](https://www.northpeptidesuk.com/products/l-carnitine/): L-Carnitine (levocarnitine) research reference material supplied as a ready-to-use 50mg/ml sterile solution — 500mg in a 10ml vial.
 - [Intranasal Research Kit](https://www.northpeptidesuk.com/products/intranasal-research-kit/): A compact intranasal research preparation kit designed for use alongside compatible research compounds. Includes a 10ml nasal spray bottle, sterile 0.9% saline ampoule, transfer syringe, transfer adaptor, alcohol wipes, and blank label.
 - [Pen-Style Research Kit](https://www.northpeptidesuk.com/products/pen-style-research-kit/): Converts a standard vial into a pen-style research setup: 3ml cartridge, bacteriostatic water and five sterile pen tips.
 - [Sterile Disposable Pen Tips](https://www.northpeptidesuk.com/products/pen-tips/): Sterile 6mm disposable pen tips, sealed, in packs of 5 or 10. The same tips supplied in our pen-vial kit — sold as a spare pack.
