@@ -9,4 +9,29 @@ Disallow: /tests/
 Disallow: /social-engine/
 Disallow: /server/
 
+# AI answer engines and search assistants are welcome to crawl and cite our
+# research content. A structured site summary is published at /llms.txt.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://www.northpeptidesuk.com/sitemap.xml
