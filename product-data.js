@@ -1270,6 +1270,101 @@ const PRODUCT_DATA = {
       { label: "1x30mg", dose: "30mg", price: 25 }
     ],
   },
+  "slu-pp-332": {
+    name: "SLU-PP-332",
+    category: "Metabolic research",
+    image: "slu-pp-332.webp",
+    seo: {
+      title: "Buy SLU-PP-332 UK | 5mg Research Tablets | North Peptides UK",
+      metaDescription: "SLU-PP-332 research compound, UK stocked. Pack of 50 x 5mg compressed tablets. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is SLU-PP-332?", a: "A synthetic estrogen-related receptor (ERRα) agonist described in the research literature as an 'exercise mimetic', studied in preclinical models of energy metabolism. It is supplied as a research reference material in compressed-tablet form." },
+        { q: "What is SLU-PP-332 supplied as?", a: "A pack of 50 compressed tablets, each containing 5mg, with supplier-stated purity. Supplier documentation is available on request where held." },
+        { q: "Has SLU-PP-332 been studied in humans?", a: "No. The published literature is preclinical — it has been characterised in cell and animal models only. It is supplied strictly as a laboratory research reference material." },
+        { q: "Do you stock SLU-PP-332 in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
+        { q: "Is SLU-PP-332 for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
+      ]
+    },
+    summary: "SLU-PP-332 research compound — an estrogen-related receptor (ERRα) agonist studied as an 'exercise mimetic' — supplied as a pack of 50 x 5mg compressed tablets.",
+    longDescription: [
+      "SLU-PP-332 is a synthetic estrogen-related receptor (ERRα) agonist described in the research literature as an 'exercise mimetic'. It is supplied here as a research reference material in compressed-tablet form — a pack of 50 tablets, each 5mg.",
+      "It is studied in vitro and in preclinical animal models for its effect on the estrogen-related receptor pathway, mitochondrial function and energy-expenditure endpoints. The published work to date is preclinical only. It is supplied as a research reference material and is not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Estrogen-related receptor (ERRα) signalling, studied in vitro",
+      "Mitochondrial function and cellular respiration in research models",
+      "Energy-expenditure and endurance endpoints in preclinical animal studies",
+      "Comparative metabolic-research studies of exercise-mimetic compounds"
+    ],
+    specs: [
+      ["Compound type", "Synthetic ERRα (estrogen-related receptor) agonist"],
+      ["Synonyms", "SLU-PP-332"],
+      ["Format", "Compressed tablet"],
+      ["Pack size", "50 tablets"],
+      ["Strength", "5mg per tablet"],
+      ["Purity", "Supplier stated"],
+      ["Storage", "Room temperature, dry, away from light"]
+    ],
+    storage: "Supplied as compressed tablets in a sealed container. Store at room temperature in a dry place, away from direct light. Keep sealed until use in the laboratory.",
+    details: [
+      "Supplier-stated purity",
+      "Pack of 50 compressed tablets (5mg each)",
+      "Preclinical research reference material",
+      "UK stocked, 24–48h dispatch after payment"
+    ],
+    variants: [
+      { label: "50 tablets (5mg each)", dose: "50 x 5mg tablets", price: 55 }
+    ],
+  },
+  "methylene-blue": {
+    name: "Methylene Blue",
+    category: "Nootropic research",
+    image: "methylene-blue.webp",
+    seo: {
+      title: "Buy Methylene Blue UK | 20mg Research Tablets | North Peptides UK",
+      metaDescription: "Methylene Blue (methylthioninium chloride) research compound, UK stocked. Pack of 50 x 20mg compressed tablets. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is Methylene Blue?", a: "A synthetic phenothiazine compound (methylthioninium chloride) with well-characterised redox chemistry, long used as a laboratory stain and studied as an electron cycler in the mitochondrial respiratory chain. It is supplied as a research reference material in compressed-tablet form." },
+        { q: "What is Methylene Blue supplied as?", a: "A pack of 50 compressed tablets, each containing 20mg, with supplier-stated purity. Supplier documentation is available on request where held." },
+        { q: "What is Methylene Blue studied for?", a: "In the research literature it is described as an electron cycler in the mitochondrial respiratory chain and features in cellular-energy, redox and histology research. It is supplied only as a reference material for that research." },
+        { q: "Do you stock Methylene Blue in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
+        { q: "Is Methylene Blue for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
+      ]
+    },
+    summary: "Methylene Blue (methylthioninium chloride) research compound supplied as a pack of 50 x 20mg compressed tablets.",
+    longDescription: [
+      "Methylene Blue (methylthioninium chloride) is a synthetic phenothiazine compound with well-characterised redox chemistry, long used as a laboratory stain and studied as an electron cycler in the mitochondrial respiratory chain. It is supplied here as a research reference material in compressed-tablet form — a pack of 50 tablets, each 20mg.",
+      "It is studied in vitro and in preclinical models for mitochondrial electron transport, cellular energy metabolism and redox behaviour, and is widely used as a histological and microbiological stain. It is supplied as a research reference material and is not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Mitochondrial electron transport and cellular respiration, studied in vitro",
+      "Redox cycling and antioxidant-defence research models",
+      "Cellular-energy metabolism in preclinical research",
+      "Use as a histological and microbiological laboratory stain"
+    ],
+    specs: [
+      ["Compound type", "Synthetic phenothiazine (methylthioninium chloride)"],
+      ["Molecular formula", "C16H18ClN3S"],
+      ["Molecular weight", "~319.85 g/mol"],
+      ["CAS number", "61-73-4"],
+      ["Synonyms", "Methylthioninium chloride, MB"],
+      ["Format", "Compressed tablet"],
+      ["Pack size", "50 tablets"],
+      ["Strength", "20mg per tablet"],
+      ["Purity", "Supplier stated"],
+      ["Storage", "Room temperature, dry, away from light"]
+    ],
+    storage: "Supplied as compressed tablets in a sealed container. Store at room temperature in a dry place, away from direct light. Keep sealed until use in the laboratory.",
+    details: [
+      "Supplier-stated purity",
+      "Pack of 50 compressed tablets (20mg each)",
+      "Well-characterised redox research compound",
+      "UK stocked, 24–48h dispatch after payment"
+    ],
+    variants: [
+      { label: "50 tablets (20mg each)", dose: "50 x 20mg tablets", price: 25 }
+    ],
+  },
   epitalon: {
     name: "Epitalon",
     category: "Research peptide",

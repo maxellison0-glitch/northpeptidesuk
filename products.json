@@ -1416,6 +1416,114 @@
       ]
     },
     {
+      "slug": "slu-pp-332",
+      "name": "SLU-PP-332",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/products/slu-pp-332/",
+      "image": "https://www.northpeptidesuk.com/slu-pp-332.webp",
+      "summary": "SLU-PP-332 research compound — an estrogen-related receptor (ERRα) agonist studied as an 'exercise mimetic' — supplied as a pack of 50 x 5mg compressed tablets.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "50 tablets (5mg each)",
+          "dose": "50 x 5mg tablets",
+          "price": 55,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic ERRα (estrogen-related receptor) agonist"
+        },
+        {
+          "label": "Synonyms",
+          "value": "SLU-PP-332"
+        },
+        {
+          "label": "Format",
+          "value": "Compressed tablet"
+        },
+        {
+          "label": "Pack size",
+          "value": "50 tablets"
+        },
+        {
+          "label": "Strength",
+          "value": "5mg per tablet"
+        },
+        {
+          "label": "Purity",
+          "value": "Supplier stated"
+        },
+        {
+          "label": "Storage",
+          "value": "Room temperature, dry, away from light"
+        }
+      ]
+    },
+    {
+      "slug": "methylene-blue",
+      "name": "Methylene Blue",
+      "category": "Nootropic research",
+      "url": "https://www.northpeptidesuk.com/products/methylene-blue/",
+      "image": "https://www.northpeptidesuk.com/methylene-blue.webp",
+      "summary": "Methylene Blue (methylthioninium chloride) research compound supplied as a pack of 50 x 20mg compressed tablets.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "50 tablets (20mg each)",
+          "dose": "50 x 20mg tablets",
+          "price": 25,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Synthetic phenothiazine (methylthioninium chloride)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C16H18ClN3S"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~319.85 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "61-73-4"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Methylthioninium chloride, MB"
+        },
+        {
+          "label": "Format",
+          "value": "Compressed tablet"
+        },
+        {
+          "label": "Pack size",
+          "value": "50 tablets"
+        },
+        {
+          "label": "Strength",
+          "value": "20mg per tablet"
+        },
+        {
+          "label": "Purity",
+          "value": "Supplier stated"
+        },
+        {
+          "label": "Storage",
+          "value": "Room temperature, dry, away from light"
+        }
+      ]
+    },
+    {
       "slug": "epitalon",
       "name": "Epitalon",
       "category": "Research peptide",
