@@ -21,6 +21,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "TB-500|10mg": 50,
   "GHK-Cu|50mg": 30,
   "GHK-Cu 100mg|100mg": 50,
+  "GHK-Cu 100mg Pen Vial|100mg / 3ml": 65,
   "KPV|10mg": 30,
   "KLOW Stack|80mg": 60,
   "GLOW Stack|70mg": 50,
