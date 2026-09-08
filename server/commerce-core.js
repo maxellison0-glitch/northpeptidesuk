@@ -23,6 +23,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "KPV|10mg": 30,
   "KLOW Stack|80mg": 60,
   "GLOW Stack|70mg": 50,
+  "GLOW Stack Pen Vial|70mg / 3ml": 70,
   "Ipamorelin|5mg": 25,
   "CJC-1295 (No DAC)|5mg": 35,
   "CJC-1295 No DAC|5mg": 35,
