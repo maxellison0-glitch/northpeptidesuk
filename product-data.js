@@ -777,6 +777,55 @@ const PRODUCT_DATA = {
       { label: "1x80mg / 3ml", dose: "80mg / 3ml", price: 80 }
     ],
   },
+  "glow-stack": {
+    name: "GLOW Stack",
+    category: "Research blend",
+    image: "glow-stack.webp",
+    coa: COA_REPORTS["ghk-cu-100016393"],
+    coaScope: "component",
+    coaScopeNote: "This report covers the 50mg GHK-Cu component only. It was tested standalone, not as the finished blend. The report does not test the GLOW Stack's TB-500 or BPC-157 components.",
+    seo: {
+      title: "Buy GLOW Stack UK | 70mg 3-Peptide Research Blend | North Peptides UK",
+      metaDescription: "GLOW Stack research blend (GHK-Cu, BPC-157, TB-500), UK stocked. 70mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is in the GLOW Stack?", a: "A single lyophilised vial combining GHK-Cu 50mg, BPC-157 10mg and TB-500 10mg — 70mg of peptide in total, at a fixed research ratio. It is the KLOW Stack blend without the KPV component." },
+        { q: "How is the GLOW Stack different from the KLOW Stack?", a: "The GLOW Stack is the same tissue-research blend as the KLOW Stack but without the KPV component — GHK-Cu, BPC-157 and TB-500 only, 70mg per vial instead of 80mg." },
+        { q: "What is the GLOW Stack supplied as?", a: "A 70mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
+        { q: "Do you stock the GLOW Stack in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
+        { q: "Is the GLOW Stack for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+      ]
+    },
+    summary: "Three-compound research blend containing GHK-Cu, BPC-157 and TB-500 in a single 70mg lyophilised vial — the KLOW Stack without KPV.",
+    longDescription: [
+      "The GLOW Stack is a pre-blended, three-compound research vial combining GHK-Cu, BPC-157 and TB-500 at a fixed, single-vial ratio. It is the KLOW Stack blend without the KPV component, bringing three of the most frequently studied tissue-research peptides together in one lyophilised preparation for laboratory use.",
+      "Each component carries its own independent body of research. Combination preparations such as this are studied in preclinical models for whether complementary mechanisms produce additive effects. The blend is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Combined collagen, extracellular-matrix and cell-migration research models",
+      "Comparative study of single compounds versus a fixed-ratio blend",
+      "Angiogenesis and tissue-research endpoints across the three components",
+      "Skin, wound and connective-tissue research models"
+    ],
+    specs: [
+      ["Composition", "GHK-Cu 50mg + BPC-157 10mg + TB-500 10mg"],
+      ["Total peptide", "70mg per vial"],
+      ["Blend type", "Three-compound tissue-research blend"],
+      ["Purity", "Supplier stated"],
+      ["Form", "Lyophilised powder"],
+      ["Storage", "-20°C long-term; 2-8°C short-term"]
+    ],
+    storage: "Supplied as a lyophilised powder in a sealed vial and kept frozen until dispatch. Unopened vials are typically stored at -20°C for the long term and 2-8°C for short periods. After reconstitution with bacteriostatic water, vials are generally refrigerated at 2-8°C, protected from light, and not subjected to repeated freeze-thaw cycles.",
+    details: [
+      "GHK-Cu component independently verified at 99% purity",
+      "Remaining components: supplier stated",
+      "UK stocked, 24–48h dispatch after payment",
+      "Stored frozen until dispatch",
+      "Supplier documentation on request"
+    ],
+    variants: [
+      { label: "1x70mg", dose: "70mg", price: 50 }
+    ],
+  },
   ipamorelin: {
     name: "Ipamorelin",
     category: "Research peptide",

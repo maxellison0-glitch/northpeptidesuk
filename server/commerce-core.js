@@ -22,6 +22,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "GHK-Cu|50mg": 30,
   "KPV|10mg": 30,
   "KLOW Stack|80mg": 60,
+  "GLOW Stack|70mg": 50,
   "Ipamorelin|5mg": 25,
   "CJC-1295 (No DAC)|5mg": 35,
   "CJC-1295 No DAC|5mg": 35,
