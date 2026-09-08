@@ -642,6 +642,67 @@
       "labReportUrl": "https://www.northpeptidesuk.com/coa-ghk-cu-100016393-report.png"
     },
     {
+      "slug": "ghk-cu-100mg",
+      "name": "GHK-Cu 100mg",
+      "category": "Research peptide",
+      "url": "https://www.northpeptidesuk.com/products/ghk-cu-100mg/",
+      "image": "https://www.northpeptidesuk.com/ghk-cu-100mg.webp",
+      "summary": "Copper(II) tripeptide research compound supplied as a 100mg lyophilised vial — the same GHK-Cu as our 50mg, at double the fill.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x100mg",
+          "dose": "100mg",
+          "price": 50,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Copper(II) tripeptide complex (Copper Tripeptide-1)"
+        },
+        {
+          "label": "Sequence",
+          "value": "Gly-His-Lys (Cu2+-chelated)"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C14H22CuN6O4"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~401.9 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "89030-95-5"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Copper peptide, prezatide copper"
+        },
+        {
+          "label": "Purity",
+          "value": "99%"
+        },
+        {
+          "label": "Form",
+          "value": "Lyophilised powder"
+        },
+        {
+          "label": "Fill",
+          "value": "100mg per vial"
+        },
+        {
+          "label": "Storage",
+          "value": "-20°C long-term; 2-8°C short-term"
+        }
+      ],
+      "labReportUrl": "https://www.northpeptidesuk.com/coa-ghk-cu-100016393-report.png"
+    },
+    {
       "slug": "kpv",
       "name": "KPV",
       "category": "Research peptide",

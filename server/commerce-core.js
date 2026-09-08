@@ -20,6 +20,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "BPC-157|10mg": 25,
   "TB-500|10mg": 50,
   "GHK-Cu|50mg": 30,
+  "GHK-Cu 100mg|100mg": 50,
   "KPV|10mg": 30,
   "KLOW Stack|80mg": 60,
   "GLOW Stack|70mg": 50,
