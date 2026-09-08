@@ -41,6 +41,8 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Retatrutide|50mg": 180,
   "NAD+|1000mg": 90,
   "SS-31|10mg": 25,
+  "SLU-PP-332|50 x 5mg tablets": 55,
+  "Methylene Blue|50 x 20mg tablets": 25,
   "Semax|30mg": 25,
   "Selank|30mg": 25,
   "Epitalon|10mg": 15,
