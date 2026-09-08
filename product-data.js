@@ -1662,6 +1662,54 @@ const PRODUCT_DATA = {
       { label: "1x20mg / 3ml", dose: "20mg / 3ml", price: 45 }
     ],
   },
+  "l-carnitine": {
+    name: "L-Carnitine",
+    category: "Metabolic research",
+    image: "l-carnitine.webp",
+    seo: {
+      title: "Buy L-Carnitine UK | 500mg/10ml Solution | North Peptides UK",
+      metaDescription: "L-Carnitine (levocarnitine) research solution, UK stocked. 500mg in a 10ml vial (50mg/ml), ready to use — no reconstitution. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      faq: [
+        { q: "What is L-Carnitine supplied as?", a: "A ready-to-use sterile aqueous solution — 500mg of L-carnitine (levocarnitine) in a 10ml vial, at 50mg/ml. No reconstitution is required. Supplier documentation is available on request where held." },
+        { q: "Does the L-Carnitine solution need reconstitution or freezing?", a: "No. It is supplied pre-mixed at 50mg/ml, ready to use. Store the sealed vial at 2–8°C, protected from light, and do not freeze." },
+        { q: "What is L-Carnitine studied for?", a: "In the research literature it is described as a carrier that shuttles long-chain fatty acids into the mitochondria for β-oxidation, and it appears in cellular energy-metabolism, oxidative-stress and exercise-metabolism research. It is supplied only as a reference material for that research." },
+        { q: "Do you stock L-Carnitine in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
+        { q: "Is L-Carnitine for research use only?", a: "Yes. It is supplied strictly for laboratory and scientific research and is not for human or animal consumption." }
+      ]
+    },
+    summary: "L-Carnitine (levocarnitine) research reference material supplied as a ready-to-use 50mg/ml sterile solution — 500mg in a 10ml vial.",
+    longDescription: [
+      "L-Carnitine (levocarnitine) is a naturally occurring quaternary ammonium amino-acid derivative with a central role in mitochondrial energy metabolism, where it shuttles long-chain fatty acids across the inner mitochondrial membrane for β-oxidation. It is supplied here as a ready-to-use sterile aqueous solution for laboratory research — 500mg dissolved in a 10ml vial (50mg/ml), requiring no reconstitution.",
+      "It is studied in vitro and in preclinical models for mitochondrial fatty-acid transport, cellular energy metabolism, oxidative-stress buffering and exercise-metabolism endpoints. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    researchAreas: [
+      "Mitochondrial long-chain fatty-acid transport and β-oxidation, studied in vitro",
+      "Cellular energy metabolism in preclinical research models",
+      "Oxidative-stress and antioxidant-defence research models",
+      "Exercise-metabolism and muscle-recovery endpoints in animal studies"
+    ],
+    specs: [
+      ["Compound type", "Quaternary ammonium amino-acid derivative"],
+      ["Molecular formula", "C7H15NO3"],
+      ["Molecular weight", "~161.2 g/mol"],
+      ["CAS number", "541-15-1"],
+      ["Synonyms", "Levocarnitine, Vitamin BT"],
+      ["Concentration", "50mg/ml (500mg in 10ml)"],
+      ["Purity", "Supplier stated"],
+      ["Form", "Sterile aqueous solution"],
+      ["Storage", "2–8°C; protect from light; do not freeze"]
+    ],
+    storage: "Supplied as a ready-to-use sterile aqueous solution (50mg/ml) in a sealed 10ml vial — no reconstitution required. Store at 2–8°C, protected from light, and do not freeze. Once opened, use within the period indicated on the label.",
+    details: [
+      "Supplier-stated purity",
+      "Pre-mixed sterile solution — no reconstitution required",
+      "500mg in a 10ml vial (50mg/ml)",
+      "UK stocked, 24–48h dispatch after payment"
+    ],
+    variants: [
+      { label: "1x500mg / 10ml", dose: "500mg / 10ml", price: 20 }
+    ],
+  },
   "intranasal-research-kit": {
     name: "Intranasal Research Kit",
     category: "Research supplies",

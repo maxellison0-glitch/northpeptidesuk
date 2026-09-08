@@ -1862,6 +1862,62 @@
       ]
     },
     {
+      "slug": "l-carnitine",
+      "name": "L-Carnitine",
+      "category": "Metabolic research",
+      "url": "https://www.northpeptidesuk.com/products/l-carnitine/",
+      "image": "https://www.northpeptidesuk.com/l-carnitine.webp",
+      "summary": "L-Carnitine (levocarnitine) research reference material supplied as a ready-to-use 50mg/ml sterile solution — 500mg in a 10ml vial.",
+      "researchUseOnly": true,
+      "supply": false,
+      "variants": [
+        {
+          "label": "1x500mg / 10ml",
+          "dose": "500mg / 10ml",
+          "price": 20,
+          "currency": "GBP"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Compound type",
+          "value": "Quaternary ammonium amino-acid derivative"
+        },
+        {
+          "label": "Molecular formula",
+          "value": "C7H15NO3"
+        },
+        {
+          "label": "Molecular weight",
+          "value": "~161.2 g/mol"
+        },
+        {
+          "label": "CAS number",
+          "value": "541-15-1"
+        },
+        {
+          "label": "Synonyms",
+          "value": "Levocarnitine, Vitamin BT"
+        },
+        {
+          "label": "Concentration",
+          "value": "50mg/ml (500mg in 10ml)"
+        },
+        {
+          "label": "Purity",
+          "value": "Supplier stated"
+        },
+        {
+          "label": "Form",
+          "value": "Sterile aqueous solution"
+        },
+        {
+          "label": "Storage",
+          "value": "2–8°C; protect from light; do not freeze"
+        }
+      ]
+    },
+    {
       "slug": "intranasal-research-kit",
       "name": "Intranasal Research Kit",
       "category": "Research supplies",
