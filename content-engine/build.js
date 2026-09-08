@@ -114,6 +114,35 @@ function buildProductFeed() {
   };
 }
 
+// llms.txt — the emerging convention AI answer engines (ChatGPT, Claude,
+// Perplexity, Google AI overviews) read to understand a site. A clean,
+// research-framed map of the catalogue and guides so LLMs cite us accurately.
+function buildLlmsTxt(articles) {
+  const oneLine = s => String(s || '').replace(/\s+/g, ' ').trim();
+  const lines = [];
+  lines.push(`# ${SITE.name}`);
+  lines.push('');
+  lines.push('> UK-stocked research peptides and reference compounds, supplied strictly for laboratory and scientific research use only — not for human or animal consumption. Selected compounds are independently HPLC-tested with certificates published on-site. Orders dispatch within 24–48h of confirmed payment via tracked UK delivery.');
+  lines.push('');
+  lines.push('## Products');
+  for (const [slug, p] of Object.entries(PRODUCTS)) {
+    lines.push(`- [${p.name}](${productUrl(slug)}): ${oneLine(p.summary)}`);
+  }
+  lines.push('');
+  lines.push('## Research guides');
+  for (const a of articles) {
+    lines.push(`- [${a.title}](${SITE.base}/blog/${a.slug}.html): ${oneLine(a.description)}`);
+  }
+  lines.push('');
+  lines.push('## Key pages');
+  lines.push(`- [Product catalogue](${SITE.base}/products/)`);
+  lines.push(`- [Independent lab reports](${SITE.base}/lab-reports.html)`);
+  lines.push(`- [Why North Peptides UK](${SITE.base}/why-us.html)`);
+  lines.push(`- [Compliance & research-use policy](${SITE.base}/compliance.html)`);
+  lines.push('');
+  return lines.join('\n');
+}
+
 function updateRobots() {
   const robotsPath = path.join(ROOT, 'robots.txt');
   let txt = fs.readFileSync(robotsPath, 'utf8');
@@ -171,13 +200,14 @@ function main() {
   fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), renderBlogIndex(articles));
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(articles));
   fs.writeFileSync(path.join(ROOT, 'products.json'), JSON.stringify(buildProductFeed(), null, 2) + '\n');
+  fs.writeFileSync(path.join(ROOT, 'llms.txt'), buildLlmsTxt(articles) + '\n');
   updateRobots();
 
   console.log(`\nBuilt ${articles.length} article(s):`);
   for (const a of articles) console.log(`  · blog/${a.slug}.html  — "${a.title}"`);
   console.log(`Built ${renderedProducts.length} static product page(s) under products/`);
-  console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, robots.txt`);
+  console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, llms.txt, robots.txt`);
 }
 
 if (require.main === module) main();
-module.exports = { loadArticles, buildSitemap, buildProductFeed, productPageFile };
+module.exports = { loadArticles, buildSitemap, buildProductFeed, buildLlmsTxt, productPageFile };
