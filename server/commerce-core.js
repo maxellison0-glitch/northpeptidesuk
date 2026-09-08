@@ -45,6 +45,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Selank|30mg": 25,
   "Epitalon|10mg": 15,
   "Pinealon|20mg": 30,
+  "L-Carnitine|500mg / 10ml": 20,
   "Intranasal Research Kit|Kit add-on": 5,
   "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 7,
   "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 7,
