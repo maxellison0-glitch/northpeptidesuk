@@ -207,7 +207,7 @@ test('header search matches catalogue terms at token boundaries', () => {
   const ghkResults = SEARCH.rankedProducts(catalogue, 'GHKCU').map(product => product.slug);
 
   assert.deepEqual(retaResults, ['retatrutide', 'retatrutide-pen']);
-  assert.deepEqual(ghkResults, ['ghk-cu', 'ghk-cu-100mg', 'ghk-cu-pen']);
+  assert.deepEqual(ghkResults, ['ghk-cu', 'ghk-cu-100mg', 'ghk-cu-100mg-pen', 'ghk-cu-pen']);
   assert.ok(!retaResults.includes('ipamorelin'));
   assert.ok(!retaResults.includes('ipamorelin-pen'));
 });
