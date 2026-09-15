@@ -102,7 +102,7 @@
 
     /* --- Buy box --- */
     .buy-box { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-card); padding: 22px; box-shadow: var(--shadow-1); }
-    .buy-box label { display: block; font-family: var(--font-mono); font-size: .6rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .buy-box label, #quantity-label { display: block; font-family: var(--font-mono); font-size: .6rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
     select { width: 100%; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .03em; color: var(--ink); background: var(--frost); border: 1px solid var(--line); border-radius: 10px; padding: 12px 36px 12px 14px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%235B6B7E' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
     select:focus { outline: none; border-color: var(--action); box-shadow: 0 0 0 3px rgba(31,111,235,.13); }
     .price-row { display: flex; align-items: baseline; gap: 10px; margin: 16px 0; }
@@ -111,7 +111,7 @@
     .price-save { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; color: var(--verify); background: var(--verify-tint); border: 1px solid rgba(14,159,110,.3); border-radius: 999px; padding: 4px 10px; }
     .qty-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
     .qty-control { display: flex; align-items: center; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
-    .qty-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: none; color: var(--muted); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, color .15s; }
+    .qty-btn { width: 44px; height: 44px; border-radius: 50%; border: none; background: none; color: var(--muted); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, color .15s; }
     .qty-btn:hover { background: var(--action-tint); color: var(--action); }
     .qty-value { min-width: 28px; text-align: center; font-family: var(--font-mono); font-size: .9rem; color: var(--ink); }
     .actions { display: flex; flex-direction: column; gap: 10px; }
@@ -121,6 +121,8 @@
     .checkout-followup, .actions button.checkout-followup { display: none; }
     .checkout-followup.visible, .actions button.checkout-followup.visible { display: block; background: var(--ink); border-color: var(--ink); color: #fff; }
     .checkout-followup.visible:hover { background: var(--action); border-color: var(--action); }
+    .packaging-note { margin: 14px 0 0; font-size: .8rem; line-height: 1.6; color: var(--muted); }
+    .packaging-note a { color: var(--action-deep); text-underline-offset: 3px; }
 
     .research-box { margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: var(--frost-2); border: 1px solid var(--line-soft); font-size: .78rem; color: var(--muted); line-height: 1.65; }
     .research-box strong { color: var(--ink); }
@@ -671,17 +673,18 @@
                 <span class="price-now" id="price-now">${money(firstVariant.price)}</span>
               </div>
               <div class="qty-row">
-                <label>Quantity</label>
-                <div class="qty-control">
-                  <button class="qty-btn" type="button" onclick="adjustDetailQty(-1)">-</button>
-                  <span class="qty-value" id="detail-qty">1</span>
-                  <button class="qty-btn" type="button" onclick="adjustDetailQty(1)">+</button>
+                <span id="quantity-label">Quantity</span>
+                <div class="qty-control" role="group" aria-labelledby="quantity-label">
+                  <button class="qty-btn" type="button" aria-label="Decrease quantity" onclick="adjustDetailQty(-1)">−</button>
+                  <span class="qty-value" id="detail-qty" role="status" aria-live="polite">1</span>
+                  <button class="qty-btn" type="button" aria-label="Increase quantity" onclick="adjustDetailQty(1)">+</button>
                 </div>
               </div>
               <div class="actions">
                 <button class="primary" id="add-button" onclick="addDetailToBasket(false)">Add to Basket</button>
                 <a class="button checkout-followup" id="checkout-followup" href="/checkout.html">Continue to Checkout</a>
               </div>
+              <p class="packaging-note">Optional chilled packaging: &pound;5 per order. <a href="/checkout.html#chilled-packaging">Add at checkout</a>.</p>
             </div>
             ${intranasalSection}
             ${sisterSection}

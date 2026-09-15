@@ -30,6 +30,11 @@
 
     /* NAV (shared sub-page chrome from np.css; back link is local) */
     .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      min-height: 44px;
       font-family: var(--font-mono);
       font-size: .7rem;
       font-weight: 500;
@@ -260,7 +265,50 @@
     .empty-cta:hover { background: var(--action-deep); color: #fff; transform: translateY(-1px); }
     .empty-note { font-size: .86rem; color: var(--muted); margin: 0; }
 
+    /* OPTIONAL EXTRAS — one compact, native disclosure before delivery */
+    .checkout-extras {
+      margin-bottom: 30px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--r-card);
+      background: var(--paper);
+      box-shadow: var(--shadow-1);
+    }
+    .extras-summary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 88px;
+      padding: 18px;
+      border-radius: inherit;
+      list-style: none;
+      cursor: pointer;
+    }
+    .extras-summary::-webkit-details-marker { display: none; }
+    .extras-summary::marker { content: ''; }
+    .extras-summary::after {
+      content: '';
+      width: 9px;
+      height: 9px;
+      margin: 0 4px 4px auto;
+      border-right: 2px solid var(--action);
+      border-bottom: 2px solid var(--action);
+      transform: rotate(45deg);
+      flex: 0 0 auto;
+    }
+    .checkout-extras[open] > .extras-summary::after { transform: rotate(225deg); margin-bottom: -4px; }
+    .extras-summary:hover { background: var(--action-tint); }
+    .extras-summary:focus-visible { outline: 3px solid var(--action); outline-offset: 3px; }
+    .extras-summary-copy { min-width: 0; }
+    .extras-summary-title { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--ink); }
+    .extras-summary-sub { display: block; margin-top: 4px; font-size: .82rem; line-height: 1.5; color: var(--muted); }
+    .extras-selection { display: block; margin-top: 5px; font-size: .78rem; line-height: 1.45; font-weight: 500; color: var(--verify-text); }
+    .extras-content { padding: 6px 18px 18px; }
+    .extras-content .sec-head { counter-increment: none; }
+    .extras-content .sec-head::before { display: none; }
+    .extras-content .addon-box { margin-bottom: 0; }
+
     /* COOLING (THERMAL) CARD */
+    #chilled-packaging { scroll-margin-top: calc(var(--npbar-h, 36px) + 100px); }
     .cooling-card {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -293,7 +341,8 @@
     }
     .cooling-card-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
     .cooling-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
-    .cooling-price { font-family: var(--font-mono); font-size: .98rem; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .cooling-price { font-family: var(--font-mono); font-size: .98rem; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .cooling-price small { font-family: var(--font-body); font-size: .75rem; font-weight: 400; color: var(--muted); }
     .cooling-add-btn {
       min-height: 44px;
       padding: 10px 20px;
@@ -309,11 +358,10 @@
       transition: background .18s var(--ease), transform .18s var(--ease);
     }
     .cooling-add-btn:hover { background: var(--action-deep); transform: translateY(-1px); }
-    .cooling-add-btn.added { background: var(--ink); cursor: default; transform: none; }
-    .cooling-added { display: none; }
+    .cooling-added { display: block; margin-top: 6px; color: var(--verify-text); font-size: .78rem; font-weight: 500; }
     .cooling-card.in-order { border-color: rgba(14,159,110,.4); }
-    .cooling-card.in-order .cooling-add-btn, .cooling-card.in-order .cooling-price { display: none; }
-    .cooling-card.in-order .cooling-added { display: inline-flex; }
+    .cooling-card.in-order .cooling-add-btn { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+    .cooling-card.in-order .cooling-add-btn:hover { background: var(--frost-2); }
 
     /* REACH FREE DELIVERY — the one sanctioned green action */
     .reach {
@@ -421,7 +469,7 @@
       letter-spacing: -0.005em;
       display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
     }
-    .addon-need-pill { font-size: .7rem; }
+    .addon-need-pill { max-width: 100%; min-width: 0; white-space: normal; font-size: .7rem; line-height: 1.4; }
     .addon-desc {
       font-family: var(--font-body);
       font-size: .82rem;
@@ -970,9 +1018,17 @@
       .success-page { padding: 40px 18px 120px; }
     }
 
+    @media (max-width: 600px) {
+      .checkout-nav { gap: 10px; padding-inline: 14px; }
+      .checkout-nav .logo { font-size: clamp(.70rem, 3.4vw, .95rem); letter-spacing: .04em; }
+      .back-link { padding-inline: 12px; letter-spacing: .06em; }
+    }
+
     @media (max-width: 480px) {
       .checkout-wrap { padding: 24px 14px 120px; }
       .checkout-title { font-size: 1.5rem; margin-bottom: 24px; }
+      .extras-summary { gap: 12px; padding: 16px 14px; }
+      .extras-content { padding: 4px 10px 12px; }
 
       .order-line { padding: 13px 14px; flex-wrap: wrap; }
       .order-line-main { flex-basis: 100%; }
@@ -994,7 +1050,7 @@
       .addon-visual { width: 56px; height: 56px; border-radius: 10px; }
 
       .cooling-card { flex-direction: column; align-items: stretch; }
-      .cooling-card-right { flex-direction: row; align-items: center; width: 100%; }
+      .cooling-card-right { flex-direction: row; flex-wrap: wrap; align-items: center; width: 100%; }
       .cooling-price { flex: 1; }
 
       .delivery-option { padding: 13px 14px; }
@@ -1013,9 +1069,9 @@
       .next-step { padding: 14px 16px; }
     }
 
-    @media (max-width: 380px) {
-      .nav .logo { font-size: .84rem; letter-spacing: .05em; }
-      .back-link { font-size: .7rem; padding: 7px 10px; }
+    @media (max-width: 360px) {
+      .checkout-nav .logo { letter-spacing: .02em; }
+      .addon-action { padding-left: 0; }
     }
 
   </style>
@@ -1024,7 +1080,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav checkout-nav" aria-label="Checkout navigation">
   <a href="/" class="logo">NORTH<span>PEPTIDES</span>UK</a>
   <a href="/" class="back-link">← Shop</a>
 </nav>
@@ -1070,24 +1126,34 @@
 
   <div id="checkout-body">
 
-  <!-- SMART SECTION: thermal packaging for standard vials -->
+  <details class="checkout-extras" id="checkout-extras">
+    <summary class="extras-summary">
+      <span class="extras-summary-copy">
+        <span class="extras-summary-title">Optional extras</span>
+        <span class="extras-summary-sub">Chilled packaging £5 · research supplies</span>
+        <span class="extras-selection" id="extras-selection" role="status" aria-live="polite" hidden></span>
+      </span>
+    </summary>
+    <div class="extras-content">
+
+  <!-- OPTIONAL CHILLED PACKAGING: available for every order -->
   <div id="smart-section" style="display:none">
-    <div id="cooling-highlight">
-      <h2 class="sec-head">Thermal packaging (optional)</h2>
+    <div id="chilled-packaging">
+      <h2 class="sec-head">Chilled packaging · optional</h2>
       <div class="cooling-card" id="cooling-card">
         <div class="cooling-card-left">
           <div class="cooling-icon-wrap" aria-hidden="true">
             <span class="addon-symbol cool"></span>
           </div>
           <div>
-            <div class="cooling-card-title">Thermal Cooled Packaging</div>
-            <div class="cooling-card-desc">Insulated foil pouch and gel packs to keep vials cold in transit. Lyophilised vials are shipped frozen; the pouch and gel packs keep them cold in transit.</div>
+            <div class="cooling-card-title">Add chilled packaging</div>
+            <div class="cooling-card-desc">An insulated foil pouch and gel packs for your order. Optional, £5 once per order. Add it here or continue without it.</div>
+            <span class="cooling-added" id="cooling-status" role="status" hidden>Added to your order</span>
           </div>
         </div>
         <div class="cooling-card-right">
-          <span class="cooling-price">£5</span>
-          <span class="np-chip np-chip-verify cooling-added">In your order</span>
-          <button type="button" class="cooling-add-btn" onclick="addCoolingPackaging(this)">Add</button>
+          <span class="cooling-price">£5 <small>per order</small></span>
+          <button type="button" class="cooling-add-btn" id="cooling-toggle" aria-label="Add chilled packaging to your order" onclick="toggleCoolingPackaging(this)">Add to order</button>
         </div>
       </div>
     </div>
@@ -1098,7 +1164,7 @@
     <div class="reach-head">
       <span class="reach-eyebrow">Complete your order</span>
       <h2 class="reach-title" id="reach-title">You are <strong id="reach-gap">£0</strong> from free UK delivery</h2>
-      <p class="reach-sub">Add one of these and Royal Mail Tracked 48 delivery is free instead of £3.99.</p>
+      <p class="reach-sub">Free Royal Mail Tracked 48 delivery starts at £100. These extras count towards your order total.</p>
     </div>
     <div class="reach-grid" id="reach-grid"></div>
   </section>
@@ -1185,6 +1251,9 @@
     </div>
   </div>
 
+
+    </div><!-- /extras-content -->
+  </details>
 
   <!-- DISCOUNT CODE -->
   <h2 class="sec-head">Discount code</h2>
@@ -1434,6 +1503,27 @@
 
   function hasItem(name, dose) {
     return basketData.some(i => i.name === name && i.dose === dose);
+  }
+
+  function isCoolingPackaging(item) {
+    return item.name === 'Thermal Cooled Packaging' && item.dose === 'Insulated foil pouch + gel packs';
+  }
+
+  // Packaging covers the whole order. Repair older saved baskets that allowed
+  // several packs, so the checkout and submitted order both charge it once.
+  function normaliseCoolingPackaging() {
+    let found = false;
+    let changed = false;
+    basketData = basketData.filter(item => {
+      if (!isCoolingPackaging(item)) return true;
+      if (found) { changed = true; return false; }
+      found = true;
+      if (item.qty !== 1 || item.price !== 5) changed = true;
+      item.qty = 1;
+      item.price = 5;
+      return true;
+    });
+    if (changed) saveCheckoutBasket();
   }
 
   function getSubtotal() {
@@ -1707,6 +1797,10 @@
   // ── BASKET MUTATIONS ────────────────────────────────────────────────────
   function addCheckoutAddon(button, name, price, dose) {
     const existing = basketData.find(item => item.name === name && item.dose === dose);
+    // All entry points, including the free-delivery suggestions, share this
+    // guard so rapid clicks can never add a second order-level packaging fee.
+    const isCooling = isCoolingPackaging({ name, dose });
+    if (isCooling && existing) return;
     if (existing) {
       existing.qty += 1;
     } else {
@@ -1727,7 +1821,7 @@
         currency: 'GBP'
       });
     }
-    if (!button) return;
+    if (!button || isCooling) return;
     const idle = button.textContent;
     button.textContent = 'Added';
     button.classList.add('added');
@@ -1743,10 +1837,16 @@
     addCheckoutAddon(btn, 'Thermal Cooled Packaging', 5, 'Insulated foil pouch + gel packs');
   }
 
+  function toggleCoolingPackaging(btn) {
+    const index = basketData.findIndex(isCoolingPackaging);
+    if (index === -1) addCoolingPackaging(btn);
+    else removeCheckoutItem(index);
+  }
+
   function changeCheckoutQty(index, delta) {
     const item = basketData[index];
     if (!item) return;
-    item.qty = Math.max(0, Math.min(12, (Number(item.qty) || 1) + delta));
+    item.qty = Math.max(0, Math.min(isCoolingPackaging(item) ? 1 : 12, (Number(item.qty) || 1) + delta));
     if (item.qty === 0) basketData.splice(index, 1);
     saveCheckoutBasket();
     renderOrder();
@@ -1766,16 +1866,45 @@
 
   // ── SMART SECTIONS ──────────────────────────────────────────────────────
   function updateSmartSection() {
-    const hasRegular = basketData.some(item => isCompound(item) && !isPenVial(item));
     const section = byId('smart-section');
     const card = byId('cooling-card');
     if (!section) return;
-    if (!hasRegular) { section.style.display = 'none'; return; }
+    if (!basketData.length) { section.style.display = 'none'; return; }
     section.style.display = '';
     const coolingInBasket = hasItem('Thermal Cooled Packaging', 'Insulated foil pouch + gel packs');
     if (card && card.classList) {
       if (coolingInBasket) card.classList.add('in-order'); else card.classList.remove('in-order');
     }
+    const toggle = byId('cooling-toggle');
+    if (toggle) {
+      toggle.textContent = coolingInBasket ? 'Remove' : 'Add to order';
+      toggle.setAttribute('aria-label', coolingInBasket ? 'Remove chilled packaging from your order' : 'Add chilled packaging to your order');
+    }
+    const status = byId('cooling-status');
+    if (status) status.hidden = !coolingInBasket;
+  }
+
+  function updateExtrasSummary() {
+    const status = byId('extras-selection');
+    if (!status) return;
+    const supplyNames = ['Bacteriostatic Water', 'Insulin Needle Pack', 'Alcohol Wipes', 'Sterile Disposable Pen Tips', 'Intranasal Research Kit'];
+    const supplyQty = basketData.reduce((count, item) => count + (!item._kitFor && item.price > 0 && supplyNames.includes(item.name) ? (Number(item.qty) || 1) : 0), 0);
+    const selected = [];
+    if (basketData.some(isCoolingPackaging)) selected.push('Chilled packaging added');
+    if (supplyQty) selected.push(supplyQty + (supplyQty === 1 ? ' supply item' : ' supply items') + ' in your order');
+    status.textContent = selected.join(' · ');
+    status.hidden = selected.length === 0;
+  }
+
+  // A packaging link expresses intent to inspect the extra. Basket updates do
+  // not change the disclosure state, so a closed checkout stays compact.
+  function openExtrasFromHash() {
+    if (window.location.hash !== '#chilled-packaging') return;
+    const extras = byId('checkout-extras');
+    if (!extras) return;
+    extras.open = true;
+    const target = byId('chilled-packaging');
+    if (target && typeof target.scrollIntoView === 'function') target.scrollIntoView({ block: 'start' });
   }
 
   function updateAddonSupplyCopy() {
@@ -1850,7 +1979,9 @@
     const dose = escapeHtml(item.dose);
     const qty = Number(item.qty) || 1;
     const removeBtn = '<div class="order-line-tools"><button type="button" class="order-kit-remove" aria-label="Remove ' + name + ' ' + dose + ' from your order" onclick="removeCheckoutItem(' + index + ')">× Remove</button></div>';
-    const qtyCtl = isKit
+    const qtyCtl = isCoolingPackaging(item)
+      ? '<span class="order-line-qty">Per order</span>'
+      : isKit
       ? '<span class="order-line-qty">x' + qty + '</span>'
       : '<div class="order-line-ctl" role="group" aria-label="Quantity of ' + name + '">'
         + '<button type="button" aria-label="Decrease quantity of ' + name + '" onclick="changeCheckoutQty(' + index + ',-1)">−</button>'
@@ -1885,6 +2016,7 @@
     }
     byId('delivery-method-hidden').value = deliveryLabel + ' £' + deliveryPrice;
     updateSmartSection();
+    updateExtrasSummary();
     // Always falls through so the totals, sticky bar and suggestion module
     // reflect an empty basket too (£0, bar hidden, popular cards shown).
     updateTotals();
@@ -2025,7 +2157,9 @@
       basketData = [];
     }
     if (!Array.isArray(basketData)) basketData = [];
+    normaliseCoolingPackaging();
     renderOrder();
+    openExtrasFromHash();
     initWhatsAppFloat();
     const postcode = byId('co-postcode');
     if (postcode && postcode.addEventListener) {
@@ -2035,6 +2169,7 @@
   if (document.readyState !== 'loading') bootCheckout();
   else document.addEventListener('DOMContentLoaded', bootCheckout);
   window.addEventListener('load', bootCheckout);
+  window.addEventListener('hashchange', openExtrasFromHash);
 
   byId('checkout-form').addEventListener('submit', async (e) => {
     e.preventDefault();

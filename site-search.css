@@ -300,3 +300,58 @@
     height: 42px;
   }
 }
+
+/* Keep the wordmark and shopping controls on one row on phones. Search gets
+   its own full-width row; the controls never shrink or spill past the edge. */
+@media (max-width: 560px) {
+  .shop-nav,
+  .nav {
+    column-gap: 8px;
+    row-gap: 8px;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .shop-nav .shop-nav-logo,
+  .nav > .logo,
+  .nav > .nav-logo {
+    flex: 0 1 auto;
+    font-size: clamp(.60rem, 2.8vw, .84rem);
+    letter-spacing: .025em;
+  }
+
+  .shop-nav .shop-nav-right { gap: 6px; }
+
+  .shop-nav .shop-nav-menu,
+  .shop-nav .shop-basket-btn {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .shop-nav .shop-nav-menu { font-size: 0; gap: 0; }
+  .shop-nav .shop-basket-btn svg { flex: 0 0 auto; }
+  .shop-nav .shop-basket-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    border: 1px solid var(--line);
+    font-size: .6rem;
+  }
+  .nav .basket-nav,
+  .nav .nav-basket,
+  .nav .basket-btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+
+  .nav > .basket-nav { order: 2; margin-left: auto; }
+  .site-search-input { height: 44px; }
+}

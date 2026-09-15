@@ -891,11 +891,12 @@ function sideCard(slug, product) {
         <h2>Dispatch &amp; delivery</h2>
         <p>${escapeHtml(DISPATCH_LINE)} Packed from UK stock and handed to Royal Mail or DHL on business days.</p>
         <table class="spec-table side-table">
-          <tr><th>Tracked 48</th><td>${escapeHtml(formatGBP(DELIVERY.standard.price))} &middot; free over ${escapeHtml(formatGBP(FREE_FROM))}</td></tr>
+          <tr><th>Tracked 48</th><td>${escapeHtml(formatGBP(DELIVERY.standard.price))} &middot; free from ${escapeHtml(formatGBP(FREE_FROM))}</td></tr>
           <tr><th>Tracked 24</th><td>${escapeHtml(formatGBP(DELIVERY.tracked24.price))} &middot; ${escapeHtml(formatGBP(DELIVERY.tracked24.freeOrderPrice))} on £100+ orders</td></tr>
           <tr><th>DHL Express</th><td>${escapeHtml(formatGBP(DELIVERY.dhl.price))} &middot; next working day</td></tr>
           <tr><th>Dispatch</th><td>Order by 12pm Mon&ndash;Fri for next working day</td></tr>
           <tr><th>Packed</th><td>Sealed, discreet, from UK stock</td></tr>
+          <tr><th>Chilled packaging</th><td>Optional &middot; &pound;5 per order<br>Insulated foil pouch + gel packs. <a href="/checkout.html#chilled-packaging">Add at checkout</a>.</td></tr>
         </table>
 ${setup.length ? `        <p class="eyebrow side-eyebrow">Complete your setup</p>
         <ul class="side-links">
@@ -1002,7 +1003,7 @@ ${coaHeroBadge(product)}${documentationLine(product)}
 ${hasConfigurator ? '' : `        <div class="price-line">${escapeHtml(product.variants.length > 1 ? `From ${formatGBP(priceFrom(slug))}` : formatGBP(priceFrom(slug)))}</div>`}
 ${buyInterface(slug, product)}
         <div class="np-trust-strip buy-trust" aria-label="Order assurances">
-          <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free UK delivery over ${escapeHtml(formatGBP(FREE_FROM))}</span>
+          <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free UK delivery from ${escapeHtml(formatGBP(FREE_FROM))}</span>
           <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>${escapeHtml(DELIVERY.standard.label)} ${escapeHtml(formatGBP(DELIVERY.standard.price))} &middot; DHL Express ${escapeHtml(formatGBP(DELIVERY.dhl.price))}</span>
           <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Order by 12pm Mon&ndash;Fri for next-working-day dispatch</span>
           <span class="np-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Research use only</span>
@@ -1171,13 +1172,14 @@ ${siteNav('products')}
       </nav>
       <p class="eyebrow">Catalogue</p>
       <h1>Research peptide catalogue</h1>
-      <p class="hub-lede">Every compound is UK stocked and stored frozen until dispatch. Standard vials are lyophilised powder you reconstitute; pen vials arrive pre-filled as a complete kit with disposable pen, sterile pen tips and alcohol wipes. Independent lab reports are published where held.</p>
-      <p class="hub-note">Payment by UK bank transfer &middot; ${escapeHtml(DELIVERY.standard.label)} ${escapeHtml(formatGBP(DELIVERY.standard.price))}, free over ${escapeHtml(formatGBP(FREE_FROM))} &middot; ${escapeHtml(DISPATCH_LINE)}</p>
+      <p class="hub-lede">Browse UK-stocked research compounds and supplies. Check each product for its format and handling details. Pen vials arrive pre-filled as a complete kit with disposable pen, sterile pen tips and alcohol wipes. Independent lab reports are published where held.</p>
+      <p class="hub-note">Payment by UK bank transfer &middot; ${escapeHtml(DELIVERY.standard.label)} ${escapeHtml(formatGBP(DELIVERY.standard.price))}, free from ${escapeHtml(formatGBP(FREE_FROM))} &middot; ${escapeHtml(DISPATCH_LINE)}</p>
+      <p class="hub-note">Optional chilled packaging &middot; &pound;5 per order &middot; <a href="/checkout.html#chilled-packaging">Add at checkout</a>.</p>
     </header>
 
     <section class="hub-section" id="compounds" aria-labelledby="compounds-title">
       <div class="hub-section-head">
-        <h2 id="compounds-title">Standard vials &amp; pen vials</h2>
+        <h2 id="compounds-title">Research compounds</h2>
         <p>${compoundSlugs.length} compounds. Choose the format on each product page.</p>
       </div>
       <div class="hub-grid">
@@ -1205,7 +1207,7 @@ ${supplySlugs.map(slug => hubCard(slug, products[slug])).join('\n')}
 ${renderFooter()}
 </body>
 </html>
-`;
+`.replace(/[ \t]+$/gm, '');
 }
 
 // ---------------------------------------------------------------------------
@@ -1409,6 +1411,7 @@ ${NAV_CSS}
     .side-table { margin-bottom: 4px; }
     .side-table th { width: 42%; padding: 9px 0; font-size: 0.62rem; }
     .side-table td { padding: 9px 0 9px 10px; font-size: 0.76rem; }
+    .side-table a { color: var(--action-deep); text-decoration: underline; text-underline-offset: 3px; }
     .side-links { list-style: none; margin: 0 0 6px; padding: 0; }
     .side-links li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: 0.86rem; }
     .side-links li:last-child { border-bottom: 0; }
@@ -1492,6 +1495,7 @@ const HUB_CSS = `
     h1 { margin: 0 0 12px; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); }
     .hub-lede { margin: 0; max-width: 68ch; color: var(--body); font-size: 1rem; line-height: 1.7; }
     .hub-note { margin: 14px 0 0; color: var(--muted); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; line-height: 1.6; }
+    .hub-note a { color: var(--action-deep); text-decoration: underline; text-underline-offset: 3px; }
     .hub-section { max-width: var(--wrap); margin: 0 auto; padding: 26px 40px 10px; }
     .hub-section-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 16px; }
     .hub-section-head h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; letter-spacing: -0.015em; color: var(--ink); }
