@@ -133,11 +133,11 @@ function headCommon() {
   return `  <link rel="icon" href="/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="/logo.png">
   <script src="/site-config.js" defer></script>
-  <script src="/tiktok-analytics.js" defer></script>
+  <script src="/tiktok-analytics.js?v=20260915-design" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/np.css">`;
+  <link rel="stylesheet" href="/css/np.css?v=20260915-design">`;
 }
 
 function nav(active) {
@@ -255,8 +255,9 @@ ${jsonLd(article)}
   </script>
 ${headCommon()}
   <style>${NAV_CSS}${ARTICLE_CSS}${FOOTER_CSS}</style>
-  <link rel="stylesheet" href="/site-search.css">
+  <link rel="stylesheet" href="/site-search.css?v=20260915-design">
   <script src="/site-search.js" defer></script>
+  <link rel="stylesheet" href="/css/refinement.css?v=20260915-design">
 </head>
 <body>
 
@@ -352,8 +353,9 @@ function renderBlogIndex(articles) {
   </script>
 ${headCommon()}
   <style>${NAV_CSS}${INDEX_CSS}${FOOTER_CSS}</style>
-  <link rel="stylesheet" href="/site-search.css">
+  <link rel="stylesheet" href="/site-search.css?v=20260915-design">
   <script src="/site-search.js" defer></script>
+  <link rel="stylesheet" href="/css/refinement.css?v=20260915-design">
 </head>
 <body>
 ${nav('guides')}

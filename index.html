@@ -94,9 +94,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/np.css">
+  <link rel="stylesheet" href="/css/np.css?v=20260915-design">
   <script src="/site-config.js" defer></script>
-  <script src="/tiktok-analytics.js" defer></script>
+  <script src="/tiktok-analytics.js?v=20260915-design" defer></script>
   <script src="/age-gate.js"></script>
   <script src="/dispatch-bar.js"></script>
   <style>
@@ -1952,8 +1952,10 @@
       .shop-card { grid-template-columns: 104px minmax(0, 1fr); }
     }
   </style>
-  <link rel="stylesheet" href="/site-search.css">
+  <link rel="stylesheet" href="/site-search.css?v=20260915-design">
   <script src="/site-search.js" defer></script>
+  <link rel="stylesheet" href="/css/refinement.css?v=20260915-design">
+  <link rel="stylesheet" href="/css/catalogue.css?v=20260915-design">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -2202,9 +2204,12 @@
     <div class="product-category" id="cat-standard-vials">
       <div class="category-heading-block">
         <div class="category-heading-text">
-          <span class="category-heading-eyebrow">Category 1 of 2</span>
           <h3 class="category-heading-title">Research Compounds</h3>
-          <p class="category-heading-desc">Standard vials, research tablets and liquid compounds. Check each product page for its format and handling details. Lyophilised vials require reconstitution with bacteriostatic water before laboratory use &mdash; see the reconstitution calculator below. Most compounds are also available as a pre-filled pen vial supplied as a complete kit (disposable pen, sterile pen tips and alcohol wipes), at least &pound;15 over the equivalent standard vial. Choose the format on the product page.</p>
+          <p class="category-heading-desc">Standard vials, research tablets and liquid compounds. Check each product page for its format and handling details.</p>
+          <details class="category-format-details">
+            <summary>Formats and laboratory preparation</summary>
+            <p class="category-heading-desc">Lyophilised vials require reconstitution with bacteriostatic water before laboratory use &mdash; see the reconstitution calculator below. Most compounds are also available as a pre-filled pen vial supplied as a complete kit (disposable pen, sterile pen tips and alcohol wipes), at least &pound;15 over the equivalent standard vial. Choose the format on the product page.</p>
+          </details>
         </div>
         <span class="category-heading-count">20 products</span>
       </div>
@@ -2216,22 +2221,21 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-verified">Lab Tested · 99% HPLC</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/retatrutide/">Retatrutide</a>
               <span class="shop-card-price-wrap"><span class="shop-card-from">from</span><span class="shop-card-price" id="reta-p">£50</span></span>
             </div>
             <span class="shop-card-dose">10mg &ndash; 50mg · Standard vial</span>
-            <div class="card-trust-micro">Most ordered · 99% HPLC tested · Independent report</div>
-            <a class="card-lab-link" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer">Open lab report 100016392 &rarr;</a>
-            <a class="card-pen-link" href="products/retatrutide-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <div class="card-trust-micro">99% HPLC tested</div>
+            <a class="card-lab-link" href="/coa-retatrutide-100016392-report.png" target="_blank" rel="noopener noreferrer">Independent lab report</a>
+            <a class="card-pen-link" href="products/retatrutide-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="reta-sel" aria-label="Retatrutide size" onchange="updateBundlePrice('reta-sel','reta-p','reta-img',{'10mg':'retatrutide-vial-600.webp','15mg':'retatrutide-vial-600.webp','20mg':'retatrutide-20mg-vial-600.webp','50mg':'reta-50mg-600.webp'})">
-              <option value="50|10mg">1x10mg — £50</option>
-              <option value="70|15mg">1x15mg — £70</option>
-              <option value="90|20mg">1x20mg — £90</option>
-              <option value="180|50mg">1x50mg — £180</option>
+              <option value="50|10mg">10mg — £50</option>
+              <option value="70|15mg">15mg — £70</option>
+              <option value="90|20mg">20mg — £90</option>
+              <option value="180|50mg">50mg — £180</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Retatrutide to basket" onclick="addBundleToBasket('reta-sel','Retatrutide')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Retatrutide to basket" onclick="addBundleToBasket('reta-sel','Retatrutide')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2241,19 +2245,18 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-verified">Lab Tested · 99% HPLC</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/ghk-cu/">GHK-Cu</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="ghk-p">£30</span></span>
             </div>
             <span class="shop-card-dose">50mg · Standard vial</span>
-            <div class="card-trust-micro">Most ordered · 99% HPLC tested · Independent report</div>
-            <a class="card-lab-link" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Open lab report 100016393 &rarr;</a>
-            <a class="card-pen-link" href="products/ghk-cu-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <div class="card-trust-micro">99% HPLC tested</div>
+            <a class="card-lab-link" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Independent lab report</a>
+            <a class="card-pen-link" href="products/ghk-cu-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="ghk-sel" data-single aria-label="GHK-Cu size" tabindex="-1">
-              <option value="30|50mg">1x50mg — £30</option>
+              <option value="30|50mg">50mg — £30</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GHK-Cu to basket" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GHK-Cu to basket" onclick="addBundleToBasket('ghk-sel','GHK-Cu')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2263,19 +2266,18 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-verified">Lab Tested · 99% HPLC</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/ghk-cu-100mg/">GHK-Cu 100mg</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="ghk100-p">£50</span></span>
             </div>
             <span class="shop-card-dose">100mg · Standard vial</span>
-            <div class="card-trust-micro">Larger fill · 99% HPLC compound · Independent report</div>
-            <a class="card-lab-link" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Open lab report 100016393 &rarr;</a>
-            <a class="card-pen-link" href="products/ghk-cu-100mg-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <div class="card-trust-micro">99% HPLC compound</div>
+            <a class="card-lab-link" href="/coa-ghk-cu-100016393-report.png" target="_blank" rel="noopener noreferrer">Independent lab report</a>
+            <a class="card-pen-link" href="products/ghk-cu-100mg-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="ghk100-sel" data-single aria-label="GHK-Cu 100mg size" tabindex="-1">
-              <option value="50|100mg">1x100mg — £50</option>
+              <option value="50|100mg">100mg — £50</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GHK-Cu 100mg to basket" onclick="addBundleToBasket('ghk100-sel','GHK-Cu 100mg')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GHK-Cu 100mg to basket" onclick="addBundleToBasket('ghk100-sel','GHK-Cu 100mg')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2285,19 +2287,18 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Dual GIP/GLP-1 Agonist</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/tirzepatide/">Tirzepatide</a>
               <span class="shop-card-price-wrap"><span class="shop-card-from">from</span><span class="shop-card-price" id="tirz-p">£70</span></span>
             </div>
             <span class="shop-card-dose">15mg or 30mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/tirzepatide-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/tirzepatide-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="tirz-sel" aria-label="Tirzepatide size" onchange="updateBundlePrice('tirz-sel','tirz-p')">
-              <option value="70|15mg">1x15mg — £70</option>
-              <option value="120|30mg">1x30mg — £120</option>
+              <option value="70|15mg">15mg — £70</option>
+              <option value="120|30mg">30mg — £120</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Tirzepatide to basket" onclick="addBundleToBasket('tirz-sel','Tirzepatide')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Tirzepatide to basket" onclick="addBundleToBasket('tirz-sel','Tirzepatide')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2307,18 +2308,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Pentadecapeptide</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/bpc-157/">BPC-157</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="bpc-p">£25</span></span>
             </div>
             <span class="shop-card-dose">10mg · Standard vial</span>
-            <div class="card-trust-micro">Most ordered · Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/bpc-157-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <div class="card-trust-micro">Supplier-stated purity</div>
+            <a class="card-pen-link" href="products/bpc-157-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="bpc-sel" data-single aria-label="BPC-157 size" tabindex="-1">
-              <option value="25|10mg">1x10mg — £25</option>
+              <option value="25|10mg">10mg — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add BPC-157 to basket" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add BPC-157 to basket" onclick="addBundleToBasket('bpc-sel','BPC-157')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2328,18 +2328,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-blend">4-in-1 Blend</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/klow-stack/">KLOW Stack</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="klow-p">£60</span></span>
             </div>
             <span class="shop-card-dose">80mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/klow-stack-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/klow-stack-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="klow-sel" data-single aria-label="KLOW Stack size" tabindex="-1">
-              <option value="60|80mg">1x80mg — £60</option>
+              <option value="60|80mg">80mg — £60</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add KLOW Stack to basket" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add KLOW Stack to basket" onclick="addBundleToBasket('klow-sel','KLOW Stack')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2349,18 +2348,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-blend">3-in-1 Blend</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/glow-stack/">GLOW Stack</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="glow-p">£50</span></span>
             </div>
             <span class="shop-card-dose">70mg · Standard vial</span>
             <div class="card-trust-micro">GHK-Cu component 99% HPLC · KLOW without KPV</div>
-            <a class="card-pen-link" href="products/glow-stack-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/glow-stack-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="glow-sel" data-single aria-label="GLOW Stack size" tabindex="-1">
-              <option value="50|70mg">1x70mg — £50</option>
+              <option value="50|70mg">70mg — £50</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GLOW Stack to basket" onclick="addBundleToBasket('glow-sel','GLOW Stack')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add GLOW Stack to basket" onclick="addBundleToBasket('glow-sel','GLOW Stack')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2370,18 +2368,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Tβ4 Fragment</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/tb-500/">TB-500</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="tb-p">£50</span></span>
             </div>
             <span class="shop-card-dose">10mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/tb-500-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/tb-500-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="tb-sel" data-single aria-label="TB-500 size" tabindex="-1">
-              <option value="50|10mg">1x10mg — £50</option>
+              <option value="50|10mg">10mg — £50</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add TB-500 to basket" onclick="addBundleToBasket('tb-sel','TB-500')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add TB-500 to basket" onclick="addBundleToBasket('tb-sel','TB-500')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2391,18 +2388,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Coenzyme · 1000mg</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/nad-plus/">NAD+</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="nad-p">£90</span></span>
             </div>
             <span class="shop-card-dose">1000mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/nad-plus-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/nad-plus-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="nad-sel" data-single aria-label="NAD+ size" tabindex="-1">
-              <option value="90|1000mg">1x1000mg — £90</option>
+              <option value="90|1000mg">1000mg — £90</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add NAD+ to basket" onclick="addBundleToBasket('nad-sel','NAD+')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add NAD+ to basket" onclick="addBundleToBasket('nad-sel','NAD+')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2412,18 +2408,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Lys-Pro-Val Tripeptide</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/kpv/">KPV</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="kpv-p">£30</span></span>
             </div>
             <span class="shop-card-dose">10mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/kpv-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/kpv-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="kpv-sel" data-single aria-label="KPV size" tabindex="-1">
-              <option value="30|10mg">1x10mg — £30</option>
+              <option value="30|10mg">10mg — £30</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add KPV to basket" onclick="addBundleToBasket('kpv-sel','KPV')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add KPV to basket" onclick="addBundleToBasket('kpv-sel','KPV')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2433,18 +2428,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">GH Secretagogue</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/ipamorelin/">Ipamorelin</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="ipa-p">£25</span></span>
             </div>
             <span class="shop-card-dose">5mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/ipamorelin-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/ipamorelin-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="ipa-sel" data-single aria-label="Ipamorelin size" tabindex="-1">
-              <option value="25|5mg">1x5mg — £25</option>
+              <option value="25|5mg">5mg — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Ipamorelin to basket" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Ipamorelin to basket" onclick="addBundleToBasket('ipa-sel','Ipamorelin')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2454,18 +2448,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">GHRH Analogue</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/cjc-1295/">CJC-1295 (No DAC)</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="cjc-p">£35</span></span>
             </div>
             <span class="shop-card-dose">5mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/cjc-1295-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/cjc-1295-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="cjc-sel" data-single aria-label="CJC-1295 (No DAC) size" tabindex="-1">
-              <option value="35|5mg">1x5mg — £35</option>
+              <option value="35|5mg">5mg — £35</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add CJC-1295 (No DAC) to basket" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add CJC-1295 (No DAC) to basket" onclick="addBundleToBasket('cjc-sel','CJC-1295 No DAC')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2475,18 +2468,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Mitochondria-Targeted</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/ss-31/">SS-31</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="ss31-p">£25</span></span>
             </div>
             <span class="shop-card-dose">10mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/ss-31-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/ss-31-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="ss31-sel" data-single aria-label="SS-31 size" tabindex="-1">
-              <option value="25|10mg">1x10mg — £25</option>
+              <option value="25|10mg">10mg — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add SS-31 to basket" onclick="addBundleToBasket('ss31-sel','SS-31')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add SS-31 to basket" onclick="addBundleToBasket('ss31-sel','SS-31')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2496,7 +2488,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Research Tablets</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/slu-pp-332/">SLU-PP-332</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="slupp-p">£55</span></span>
@@ -2506,7 +2497,7 @@
             <select class="shop-card-select" id="slupp-sel" data-single aria-label="SLU-PP-332 pack" tabindex="-1">
               <option value="55|50 x 5mg tablets">50 tablets (5mg) — £55</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add SLU-PP-332 to basket" onclick="addBundleToBasket('slupp-sel','SLU-PP-332')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add SLU-PP-332 to basket" onclick="addBundleToBasket('slupp-sel','SLU-PP-332')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2516,7 +2507,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Research Tablets</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/methylene-blue/">Methylene Blue</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="mb-p">£25</span></span>
@@ -2526,7 +2516,7 @@
             <select class="shop-card-select" id="mb-sel" data-single aria-label="Methylene Blue pack" tabindex="-1">
               <option value="25|50 x 20mg tablets">50 tablets (20mg) — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Methylene Blue to basket" onclick="addBundleToBasket('mb-sel','Methylene Blue')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Methylene Blue to basket" onclick="addBundleToBasket('mb-sel','Methylene Blue')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2536,7 +2526,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Nootropic Research</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/semax/">Semax</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="semax-p">£25</span></span>
@@ -2544,9 +2533,9 @@
             <span class="shop-card-dose">30mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
             <select class="shop-card-select" id="semax-sel" data-single aria-label="Semax size" tabindex="-1">
-              <option value="25|30mg">1x30mg — £25</option>
+              <option value="25|30mg">30mg — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Semax to basket" onclick="addBundleToBasket('semax-sel','Semax')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Semax to basket" onclick="addBundleToBasket('semax-sel','Semax')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2556,7 +2545,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Nootropic Research</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/selank/">Selank</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="selank-p">£25</span></span>
@@ -2564,9 +2552,9 @@
             <span class="shop-card-dose">30mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
             <select class="shop-card-select" id="selank-sel" data-single aria-label="Selank size" tabindex="-1">
-              <option value="25|30mg">1x30mg — £25</option>
+              <option value="25|30mg">30mg — £25</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Selank to basket" onclick="addBundleToBasket('selank-sel','Selank')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Selank to basket" onclick="addBundleToBasket('selank-sel','Selank')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2576,18 +2564,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Pineal Tetrapeptide</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/epitalon/">Epitalon</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="epitalon-p">£15</span></span>
             </div>
             <span class="shop-card-dose">10mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/epitalon-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/epitalon-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="epitalon-sel" data-single aria-label="Epitalon size" tabindex="-1">
-              <option value="15|10mg">1x10mg — £15</option>
+              <option value="15|10mg">10mg — £15</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Epitalon to basket" onclick="addBundleToBasket('epitalon-sel','Epitalon')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Epitalon to basket" onclick="addBundleToBasket('epitalon-sel','Epitalon')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2597,18 +2584,17 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Bioregulator Tripeptide</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/pinealon/">Pinealon</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="pinealon-p">£30</span></span>
             </div>
             <span class="shop-card-dose">20mg · Standard vial</span>
             <div class="card-trust-micro">Supplier-stated purity</div>
-            <a class="card-pen-link" href="products/pinealon-pen/">Pen vial available<span class="card-pen-link-long"> &mdash; kit included</span></a>
+            <a class="card-pen-link" href="products/pinealon-pen/">Pen vial<span class="card-pen-link-long"> with complete kit</span></a>
             <select class="shop-card-select" id="pinealon-sel" data-single aria-label="Pinealon size" tabindex="-1">
-              <option value="30|20mg">1x20mg — £30</option>
+              <option value="30|20mg">20mg — £30</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Pinealon to basket" onclick="addBundleToBasket('pinealon-sel','Pinealon')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Pinealon to basket" onclick="addBundleToBasket('pinealon-sel','Pinealon')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2618,7 +2604,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Metabolic Research</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/l-carnitine/">L-Carnitine</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="lcar-p">£20</span></span>
@@ -2626,9 +2611,9 @@
             <span class="shop-card-dose">500mg / 10ml · Ready-to-use solution</span>
             <div class="card-trust-micro">Supplier-stated purity · no reconstitution</div>
             <select class="shop-card-select" id="lcar-sel" data-single aria-label="L-Carnitine size" tabindex="-1">
-              <option value="20|500mg / 10ml">1x500mg / 10ml — £20</option>
+              <option value="20|500mg / 10ml">500mg / 10ml — £20</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add L-Carnitine to basket" onclick="addBundleToBasket('lcar-sel','L-Carnitine')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add L-Carnitine to basket" onclick="addBundleToBasket('lcar-sel','L-Carnitine')">Add to basket</button></div>
           </div>
         </div>
     </div>
@@ -2637,7 +2622,6 @@
     <div class="product-category" id="cat-research-supplies">
       <div class="category-heading-block is-supplies">
         <div class="category-heading-text">
-          <span class="category-heading-eyebrow">Category 2 of 2</span>
           <h3 class="category-heading-title">Research Supplies</h3>
           <p class="category-heading-desc">Accessories and prep supplies: reconstitution kits, bacteriostatic water, pen tips, insulin needles and wipes. Not peptide compounds.</p>
         </div>
@@ -2651,14 +2635,13 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Research Kit</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/intranasal-research-kit/">Intranasal Research Kit</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="intranasal-p">£7</span></span>
             </div>
             <span class="shop-card-dose">Kit · 10ml spray bottle</span>
             <div class="supply-card-note">10ml nasal spray, sterile saline, transfer syringe, alcohol wipes and label.</div>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Intranasal Research Kit to basket" onclick="addToBasket('Intranasal Research Kit',7,'10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Intranasal Research Kit to basket" onclick="addToBasket('Intranasal Research Kit',7,'10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2668,7 +2651,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="supply-addon-badge">Add-on</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/bacteriostatic-water/">Bacteriostatic Water</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="bac-p">£10</span></span>
@@ -2676,10 +2658,10 @@
             <span class="shop-card-dose">10ml or 3ml vial</span>
             <div class="supply-card-note">10ml sealed vial for laboratory preparation workflows &mdash; compact 3ml vial also available.</div>
             <select class="shop-card-select" id="bacw-sel" aria-label="Bacteriostatic Water size" onchange="updateBundlePrice('bacw-sel','bac-p')">
-              <option value="10|10ml vial">1x10ml — £10</option>
-              <option value="4|3ml vial">1x3ml — £4</option>
+              <option value="10|10ml vial">10ml — £10</option>
+              <option value="4|3ml vial">3ml — £4</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Bacteriostatic Water to basket" onclick="addBundleToBasket('bacw-sel','Bacteriostatic Water')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Bacteriostatic Water to basket" onclick="addBundleToBasket('bacw-sel','Bacteriostatic Water')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2689,14 +2671,13 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="shop-badge badge-class">Setup Kit</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/pen-style-research-kit/">Pen-Style Research Kit</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="penkit-p">£25</span></span>
             </div>
             <span class="shop-card-dose">Kit · cartridge + BAC water + 5 tips</span>
             <div class="supply-card-note">For running standard vials in a pen-style setup: 3ml cartridge, BAC water and 5 pen tips. Pen vials already ship as complete pre-filled kits.</div>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Pen-Style Research Kit to basket" onclick="addToBasket('Pen-Style Research Kit',25,'3ml cartridge + BAC water + x5 pen tips')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Pen-Style Research Kit to basket" onclick="addToBasket('Pen-Style Research Kit',25,'3ml cartridge + BAC water + x5 pen tips')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2706,7 +2687,6 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="supply-addon-badge">Add-on</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/pen-tips/">Sterile Disposable Pen Tips</a>
               <span class="shop-card-price-wrap"><span class="shop-card-from">from</span><span class="shop-card-price" id="pentips-p">£3.99</span></span>
@@ -2717,7 +2697,7 @@
               <option value="3.99|6mm x5">5 tips — £3.99</option>
               <option value="4.99|6mm x10">10 tips — £4.99</option>
             </select>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Sterile Disposable Pen Tips to basket" onclick="addBundleToBasket('pentips-sel','Sterile Disposable Pen Tips')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Sterile Disposable Pen Tips to basket" onclick="addBundleToBasket('pentips-sel','Sterile Disposable Pen Tips')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2727,14 +2707,13 @@
             <div class="shop-card-img-overlay"><div class="shop-card-info-icon">View</div></div>
           </a>
           <div class="shop-card-body">
-            <span class="supply-addon-badge">Add-on</span>
             <div class="shop-card-head">
               <a class="shop-card-name" href="products/syringe-kit/">Insulin Needle Pack</a>
               <span class="shop-card-price-wrap"><span class="shop-card-price" id="syringe-p">£7</span></span>
             </div>
             <span class="shop-card-dose">10 pack · 1ml</span>
             <div class="supply-card-note">10 x 1ml insulin needles in a sealed pack.</div>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Insulin Needle Pack to basket" onclick="addToBasket('Insulin Needle Pack',7,'10 pack, 1ml insulin needles')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Insulin Needle Pack to basket" onclick="addToBasket('Insulin Needle Pack',7,'10 pack, 1ml insulin needles')">Add to basket</button></div>
           </div>
         </div>
 
@@ -2750,7 +2729,7 @@
             </div>
             <span class="shop-card-dose">10 pack · 70% isopropyl</span>
             <div class="supply-card-note">10 single-use preparation wipes, 70% isopropyl alcohol.</div>
-            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Alcohol Wipes to basket" onclick="addToBasket('Alcohol Wipes',3,'10 pack')">Add to Basket</button></div>
+            <div class="shop-card-footer"><button class="shop-add-btn" type="button" aria-label="Add Alcohol Wipes to basket" onclick="addToBasket('Alcohol Wipes',3,'10 pack')">Add to basket</button></div>
           </div>
         </div>
     </div>
@@ -3117,27 +3096,6 @@
     }
 
     function enhanceProductCards() {
-      document.querySelectorAll('.card-trust-micro').forEach(row => {
-        if (row.dataset.enhanced === 'true') return;
-        const text = row.textContent.replace(/\s+/g, ' ').trim();
-        const parts = text.split('·').map(part => part.trim()).filter(Boolean);
-        if (!parts.length) return;
-        row.textContent = '';
-        parts.forEach(part => {
-          const chip = document.createElement('span');
-          const lower = part.toLowerCase();
-          chip.className = 'card-trust-chip';
-          if (lower.includes('supplier-stated') || lower.includes('99%') || lower.includes('hplc')) chip.classList.add('is-purity');
-          if (lower.includes('most ordered')) chip.classList.add('is-popular');
-          if (lower.includes('uk')) chip.classList.add('is-uk');
-          if (lower.includes('research')) chip.classList.add('is-research');
-          if (lower.includes('pre-reconstituted')) chip.classList.add('is-ready');
-          chip.textContent = part;
-          row.appendChild(chip);
-        });
-        row.dataset.enhanced = 'true';
-      });
-
       document.querySelectorAll('.shop-add-btn').forEach(btn => {
         if (btn.textContent.trim().toLowerCase() === 'add') btn.textContent = 'Add to Basket';
       });

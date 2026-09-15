@@ -5,10 +5,12 @@ const vm = require('node:vm');
 
 const source = fs.readFileSync('tiktok-analytics.js', 'utf8');
 
-function boot(savedConsent, googleConfig = {}) {
-  const store = new Map(savedConsent ? [['npuk_analytics_consent', savedConsent]] : []);
+function boot(savedConsent, googleConfig = {}, options = {}) {
+  const store = options.store || new Map(savedConsent ? [['npuk_analytics_consent', savedConsent]] : []);
   const appendedScripts = [];
   const elements = new Map();
+  const windowEvents = new Map();
+  const storageReads = [];
 
   const makeElement = tag => {
     const element = {
@@ -17,11 +19,31 @@ function boot(savedConsent, googleConfig = {}) {
       dataset: {},
       children: [],
       hidden: false,
+      attributes: {},
       classList: { add() {}, remove() {} },
-      append(...children) { this.children.push(...children); },
-      appendChild(child) { this.children.push(child); },
+      append(...children) { children.forEach(child => this.appendChild(child)); },
+      appendChild(child) {
+        this.children.push(child);
+        if (typeof child === 'object') child.parentNode = this;
+        return child;
+      },
+      insertAdjacentElement(position, child) {
+        assert.equal(position, 'afterend');
+        const siblings = this.parentNode.children;
+        siblings.splice(siblings.indexOf(this) + 1, 0, child);
+        child.parentNode = this.parentNode;
+      },
+      closest(selector) {
+        if (this.tagName.toLowerCase() === selector) return this;
+        return this.parentNode ? this.parentNode.closest(selector) : null;
+      },
+      querySelector(selector) {
+        return this.children.find(child => child.tagName === 'A' && selector === 'a[href$="cookies.html"]' && child.href.endsWith('cookies.html')) ||
+          this.children.map(child => typeof child.querySelector === 'function' ? child.querySelector(selector) : null).find(Boolean) || null;
+      },
+      focus(options) { document.activeElement = this; this.focusOptions = options; },
       addEventListener(type, fn) { this[`on${type}`] = fn; },
-      setAttribute() {}
+      setAttribute(name, value) { this.attributes[name] = value; }
     };
     Object.defineProperty(element, 'id', {
       get() { return this._id || ''; },
@@ -40,24 +62,50 @@ function boot(savedConsent, googleConfig = {}) {
     body: makeElement('body'),
     head: makeElement('head'),
     createElement: makeElement,
+    querySelector(selector) { return this.body.children.find(child => child.tagName.toLowerCase() === selector) || null; },
     getElementById(id) { return elements.get(id) || null; },
     getElementsByTagName(tag) { return tag === 'script' ? [firstScript] : []; },
     addEventListener() {}
   };
+  const main = makeElement('main');
+  document.body.appendChild(main);
+  let footer;
+  if (options.footer) {
+    footer = makeElement('footer');
+    const list = makeElement('ul');
+    const item = makeElement('li');
+    const policy = makeElement('a');
+    policy.href = '/cookies.html';
+    item.appendChild(policy);
+    list.appendChild(item);
+    footer.appendChild(list);
+    document.body.appendChild(footer);
+  }
   const localStorage = {
-    getItem(key) { return store.has(key) ? store.get(key) : null; },
-    setItem(key, value) { store.set(key, value); },
+    getItem(key) {
+      storageReads.push(key);
+      if (options.storageUnavailable) throw new Error('Storage unavailable');
+      return store.has(key) ? store.get(key) : null;
+    },
+    setItem(key, value) {
+      if (options.storageUnavailable || options.storageWriteUnavailable) throw new Error('Storage unavailable');
+      store.set(key, value);
+    },
     removeItem(key) { store.delete(key); }
   };
   const window = {
     document,
     localStorage,
+    addEventListener(type, fn) { windowEvents.set(type, fn); },
     location: { pathname: '/' },
     NPUK_GOOGLE_CONFIG: googleConfig
   };
   const sandbox = { window, document, localStorage, console, setTimeout, clearTimeout };
   vm.runInNewContext(source, sandbox);
-  return { window, store, appendedScripts, elements };
+  function storageEvent(key, newValue, storageArea = localStorage) {
+    windowEvents.get('storage')({ key, newValue, storageArea });
+  }
+  return { window, document, main, footer, store, appendedScripts, elements, storageReads, storageEvent };
 }
 
 test('shows consent UI without loading TikTok before a choice', () => {
@@ -159,7 +207,125 @@ test('cookie settings reopens the banner after a saved choice', () => {
   app.window.NPUKAnalytics.openSettings();
   assert.equal(app.elements.get('npuk-cookie-banner').hidden, false);
   assert.equal(app.elements.get('npuk-cookie-settings').hidden, true);
+  assert.equal(app.document.activeElement, app.elements.get('npuk-cookie-banner'));
   app.window.NPUKAnalytics.reject();
   assert.equal(app.elements.get('npuk-cookie-settings').hidden, false);
+  assert.equal(app.document.activeElement, app.elements.get('npuk-cookie-settings'));
+  assert.equal(app.document.activeElement.focusOptions.preventScroll, true);
   assert.equal(app.appendedScripts.length, 0);
+});
+
+test('saved-choice control is placed beside the existing footer policy links', () => {
+  const app = boot('accepted', {}, { footer: true });
+  const settings = app.elements.get('npuk-cookie-settings');
+  assert.equal(settings.closest('footer'), app.footer);
+  assert.equal(settings.parentNode.tagName, 'LI');
+  assert.equal(settings.parentNode.parentNode.children[0].children[0].href, '/cookies.html');
+  assert.equal(app.elements.has('npuk-cookie-utility'), false);
+  assert.equal(app.elements.get('npuk-cookie-banner').hidden, true);
+});
+
+test('checkout gets a small settings footer directly after main content', () => {
+  const app = boot('rejected');
+  const utility = app.elements.get('npuk-cookie-utility');
+  assert.equal(app.document.body.children.indexOf(utility), app.document.body.children.indexOf(app.main) + 1);
+  assert.equal(utility.children[0], app.elements.get('npuk-cookie-settings'));
+  assert.equal(utility.hidden, false);
+  app.window.NPUKAnalytics.openSettings();
+  assert.equal(utility.hidden, true);
+  app.window.NPUKAnalytics.reject();
+  assert.equal(utility.hidden, false);
+});
+
+test('acceptance still applies for the current page when browser storage is unavailable', () => {
+  const app = boot(null, { ga4MeasurementId: 'G-TEST12345' }, { storageUnavailable: true });
+  assert.equal(app.appendedScripts.length, 0);
+  app.window.NPUKAnalytics.accept();
+  assert.equal(app.window.NPUKAnalytics.getConsent(), 'accepted');
+  assert.equal(app.elements.get('npuk-cookie-banner').hidden, true);
+  assert.equal(app.window.NPUKAnalytics.track('AddToCart', { value: 10 }), true);
+  app.window.NPUKAnalytics.reject();
+  assert.equal(app.window.NPUKAnalytics.getConsent(), 'rejected');
+  assert.equal(app.window.NPUKAnalytics.track('AddToCart', { value: 10 }), false);
+});
+
+test('reopening settings and rejecting saved acceptance blocks subsequent events', () => {
+  const app = boot('accepted', { ga4MeasurementId: 'G-TEST12345' });
+  app.window.NPUKAnalytics.openSettings();
+  app.window.NPUKAnalytics.reject();
+  assert.equal(app.window.NPUKAnalytics.track('AddToCart', { value: 10 }), false);
+  assert.equal(app.window.ttq.at(-1)[0], 'revokeConsent');
+  assert.equal(app.window.dataLayer.at(-1)[2].analytics_storage, 'denied');
+  app.window.NPUKAnalytics.accept();
+  assert.equal(app.window.ttq.at(-1)[0], 'grantConsent');
+  assert.equal(app.window.dataLayer.at(-1)[2].analytics_storage, 'granted');
+  assert.equal(app.appendedScripts.length, 2, 'changing choices must not duplicate analytics scripts');
+});
+
+test('unrecognized stored consent asks for a choice and never loads analytics', () => {
+  const app = boot('unexpected');
+  assert.equal(app.elements.get('npuk-cookie-banner').hidden, false);
+  assert.equal(app.appendedScripts.length, 0);
+});
+
+test('a rejection in another tab blocks commerce tracking before its storage event arrives', () => {
+  const store = new Map();
+  const first = boot(null, {}, { store });
+  const second = boot(null, {}, { store });
+  first.window.NPUKAnalytics.accept();
+  second.window.NPUKAnalytics.reject();
+  assert.equal(first.window.NPUKAnalytics.getConsent(), 'rejected');
+  assert.equal(first.window.NPUKAnalytics.track('AddToCart', { value: 10 }), false);
+});
+
+test('cross-tab rejection revokes loaded SDKs and later acceptance restores them without reloading', () => {
+  const store = new Map();
+  const first = boot(null, { ga4MeasurementId: 'G-TEST12345' }, { store });
+  const second = boot(null, {}, { store });
+  first.window.NPUKAnalytics.accept();
+  second.window.NPUKAnalytics.reject();
+  first.storageEvent('npuk_analytics_consent', 'rejected');
+  assert.equal(first.window.ttq.at(-1)[0], 'revokeConsent');
+  assert.equal(first.window.dataLayer.at(-1)[2].analytics_storage, 'denied');
+  assert.equal(first.elements.get('npuk-cookie-banner').hidden, true);
+  second.window.NPUKAnalytics.accept();
+  first.storageEvent('npuk_analytics_consent', 'accepted');
+  assert.equal(first.window.ttq.at(-1)[0], 'grantConsent');
+  assert.equal(first.window.dataLayer.at(-1)[2].analytics_storage, 'granted');
+  assert.equal(first.window.NPUKAnalytics.track('AddToCart', { value: 10 }), true);
+  assert.equal(first.appendedScripts.length, 2);
+});
+
+test('clearing consent in another tab revokes analytics and requests a new choice', () => {
+  const app = boot('accepted', { ga4MeasurementId: 'G-TEST12345' });
+  app.store.delete('npuk_analytics_consent');
+  app.storageEvent(null, null);
+  assert.equal(app.window.ttq.at(-1)[0], 'revokeConsent');
+  assert.equal(app.window.dataLayer.at(-1)[2].analytics_storage, 'denied');
+  assert.equal(app.elements.get('npuk-cookie-banner').hidden, false);
+  assert.equal(app.window.NPUKAnalytics.track('AddToCart', { value: 10 }), false);
+});
+
+test('unrelated storage events are ignored without reading storage', () => {
+  const app = boot('accepted');
+  const reads = app.storageReads.length;
+  const calls = app.window.ttq.length;
+  app.storageEvent('basket', 'rejected');
+  app.storageEvent('npuk_analytics_consent', 'rejected', {});
+  assert.equal(app.storageReads.length, reads);
+  assert.equal(app.window.ttq.length, calls);
+  assert.deepEqual([...new Set(app.storageReads)], ['npuk_analytics_consent']);
+});
+
+test('failed consent writes preserve the current rejection despite an older stored acceptance', () => {
+  const options = { storageWriteUnavailable: true };
+  const app = boot('accepted', {}, options);
+  app.window.NPUKAnalytics.reject();
+  assert.equal(app.store.get('npuk_analytics_consent'), 'accepted');
+  assert.equal(app.window.NPUKAnalytics.getConsent(), 'rejected');
+  assert.equal(app.window.NPUKAnalytics.track('AddToCart', { value: 10 }), false);
+  options.storageWriteUnavailable = false;
+  app.window.NPUKAnalytics.accept();
+  app.store.set('npuk_analytics_consent', 'rejected');
+  assert.equal(app.window.NPUKAnalytics.getConsent(), 'rejected');
 });

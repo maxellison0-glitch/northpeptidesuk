@@ -16,7 +16,7 @@ test('all storefront pages include the shared analytics script', () => {
   ];
   for (const file of pages) {
     assert.match(read(file), /<script src="\/site-config\.js" defer><\/script>/, file);
-    assert.match(read(file), /<script src="\/tiktok-analytics\.js" defer><\/script>/, file);
+    assert.match(read(file), /<script src="\/tiktok-analytics\.js(?:\?v=[\w-]+)?" defer><\/script>/, file);
   }
 });
 

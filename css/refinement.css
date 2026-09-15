@@ -1,0 +1,80 @@
+/* North: restrained lab-supply storefront. Product photography carries the
+   visual weight; controls use small corners, metadata stays out of boxes. */
+:root {
+  --r-card: 8px;
+  --r-ctl: 4px;
+  --r-pill: 4px;
+  --shadow-1: none;
+  --shadow-2: 0 4px 16px rgba(14,31,56,.06);
+}
+
+.site-search-input { border-radius: 4px; box-shadow: none; }
+.site-search-results { border-radius: 6px; }
+.site-search-input:focus { box-shadow: 0 0 0 2px var(--action-tint); }
+.shop-nav-menu, .shop-basket-btn, .basket-nav, .nav-basket, .back-link { border-radius: 4px; }
+.shop-nav.scrolled { border-radius: 0; box-shadow: 0 1px 0 var(--line); }
+
+.np-chip { border-radius: 3px; box-shadow: none; }
+.hero-lab-drop {
+  border-radius: 4px;
+  box-shadow: none;
+  background: var(--paper);
+  border-color: var(--line);
+  gap: 14px;
+}
+.hero-lab-drop-new { border-radius: 2px; padding: 5px 7px; }
+.hero-lab-drop-title { white-space: normal; font-family: var(--font-body); letter-spacing: 0; }
+.hero-aurora::before, .hero-aurora::after { display: none; }
+.hero-content { background: transparent; }
+.hero-cta-primary, .hero-cta-secondary, .checkout-button, .config-add-btn,
+.config-sticky-bar button, .sticky-basket-btn, .cooling-add-btn, .addon-btn,
+.reach-btn, .submit-btn, .empty-cta, .discount-btn {
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+}
+.hero-cta-primary:hover, .hero-cta-secondary:hover, .reach-btn:hover,
+.empty-cta:hover, .cooling-add-btn:hover { transform: none; box-shadow: none; }
+
+.latest-lab-meta span, .latest-lab-chip, .coa-hero-mark { border-radius: 3px; }
+.how-light-step { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding-left: 0; padding-right: 18px; }
+.how-light-num { border: 0; background: transparent; padding-left: 0; }
+.signup-form { border-radius: 4px; }
+.signup-form button, .signup-form input { border-radius: 4px; }
+.faq-q { border-radius: 0; }
+
+.media-card { border-radius: 6px; box-shadow: none; }
+.media-card #product-image { aspect-ratio: 1; object-fit: cover; }
+.media-card #product-image.is-document { object-fit: contain; }
+.media-gallery-button, .media-thumb { border-radius: 4px; }
+.coa-hero-badge { background: var(--paper); border: 0; border-left: 3px solid var(--verify-text); border-radius: 0; padding: 8px 12px; }
+.config-box { border-radius: 6px; box-shadow: none; }
+.config-size-btn, .config-format-btn, .variant-row, .supply-opt { border-radius: 4px; box-shadow: none; }
+.research-note, .doc-line { border-radius: 0; border: 0; border-left: 2px solid var(--line); background: transparent; }
+.section-block { border-radius: 0; border: 0; border-top: 1px solid var(--line); background: transparent; padding-left: 0; padding-right: 0; }
+
+.order-box, .checkout-extras, .addon-box, .cooling-card, .reach, .total-box,
+#checkout-form, .delivery-option { border-radius: 6px; box-shadow: none; }
+.checkout-extras { border-color: var(--line-strong); }
+.checkout-extras > .extras-summary { border-radius: 5px; }
+.order-line-ctl, .order-line-ctl button, .order-kit-remove, .basket-item-controls,
+.basket-item-controls button, .basket-close { border-radius: 3px; }
+.order-kit-remove { border: 0; padding-left: 0; text-transform: none; font-family: var(--font-body); letter-spacing: 0; text-decoration: underline; text-underline-offset: 3px; }
+.basket-drawer, .config-sticky-bar, .sticky-basket { box-shadow: 0 -2px 12px rgba(14,31,56,.06); }
+.sticky-basket { border-radius: 6px; }
+.reach { background: var(--frost); border-color: var(--line); }
+.reach-btn { background: var(--action); }
+.reach-btn:hover { background: var(--action-deep); }
+
+@media (max-width: 768px) {
+  .hero-lab-drop { padding: 12px; gap: 10px; align-items: flex-start; }
+  .hero-lab-drop-new { font-size: .6rem; }
+  .hero-lab-drop-title { font-size: .8rem; line-height: 1.45; }
+  .hero-lab-drop-action { align-self: center; }
+  .hero-cta-primary, .hero-cta-secondary { min-height: 48px; }
+  /* Footer and checkout support links remain available without covering cards. */
+  .wa-float { display: none; }
+}
