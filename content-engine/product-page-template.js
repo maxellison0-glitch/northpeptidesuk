@@ -1207,7 +1207,7 @@ ${supplySlugs.map(slug => hubCard(slug, products[slug])).join('\n')}
 ${renderFooter()}
 </body>
 </html>
-`;
+`.replace(/[ \t]+$/gm, '');
 }
 
 // ---------------------------------------------------------------------------
