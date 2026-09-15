@@ -24,6 +24,9 @@
   let pixelLoaded = false;
   let gtagLoaded = false;
   let gtmLoaded = false;
+  let pageConsent;
+  let consentWriteFailed = false;
+  let settingsOpened = false;
 
   function validGa4Id(value) {
     return /^G-[A-Z0-9]+$/i.test(value);
@@ -42,28 +45,42 @@
   window.gtag('consent', 'default', GOOGLE_DENIED);
 
   function getConsent() {
+    // A failed write must not undo the choice just made on this page. Otherwise
+    // read storage afresh so choices made in another tab are respected.
+    if (consentWriteFailed) return pageConsent;
     try {
-      return window.localStorage.getItem(CONSENT_KEY);
+      const saved = window.localStorage.getItem(CONSENT_KEY);
+      pageConsent = saved === 'accepted' || saved === 'rejected' ? saved : null;
+      return pageConsent;
     } catch (_error) {
-      return null;
+      return pageConsent === undefined ? null : pageConsent;
     }
   }
 
   function saveConsent(value) {
+    pageConsent = value;
     try {
       window.localStorage.setItem(CONSENT_KEY, value);
+      consentWriteFailed = false;
     } catch (_error) {
       // Consent still applies to this page even if storage is unavailable.
+      consentWriteFailed = true;
     }
   }
 
   function setBannerVisible(visible) {
     const banner = document.getElementById('npuk-cookie-banner');
     if (banner) banner.hidden = !visible;
+    const utility = document.getElementById('npuk-cookie-utility');
+    if (utility) utility.hidden = visible;
     const settings = document.getElementById('npuk-cookie-settings');
     if (settings) {
       settings.hidden = visible;
       settings.setAttribute('aria-expanded', String(visible));
+      if (!visible && settingsOpened) {
+        settings.focus({ preventScroll: true });
+        settingsOpened = false;
+      }
     }
   }
 
@@ -170,22 +187,48 @@
     return out;
   }
 
+  function applyConsent(value) {
+    setBannerVisible(value === null);
+    if (value === 'accepted') {
+      if (pixelLoaded && window.ttq) window.ttq.grantConsent();
+      if (gtagLoaded || gtmLoaded) window.gtag('consent', 'update', GOOGLE_GRANTED);
+      loadPixel();
+      loadGoogle();
+    } else {
+      if (pixelLoaded && window.ttq) window.ttq.revokeConsent();
+      revokeGoogleConsent();
+    }
+  }
+
   function accept() {
     saveConsent('accepted');
-    setBannerVisible(false);
-    loadPixel();
-    loadGoogle();
+    applyConsent('accepted');
   }
 
   function reject() {
     saveConsent('rejected');
-    setBannerVisible(false);
-    if (pixelLoaded && window.ttq) window.ttq.revokeConsent();
-    revokeGoogleConsent();
+    applyConsent('rejected');
   }
 
+  window.addEventListener('storage', function (event) {
+    if (event.key !== CONSENT_KEY && event.key !== null) return;
+    try {
+      if (event.storageArea && event.storageArea !== window.localStorage) return;
+    } catch (_error) {
+      // The consent event remains usable if access to storage has been blocked.
+    }
+    pageConsent = event.newValue === 'accepted' || event.newValue === 'rejected' ? event.newValue : null;
+    consentWriteFailed = false;
+    // Revoke loaded SDKs too, including their automatic events. Reading this
+    // specific key avoids applying a stale event when several tabs change it.
+    applyConsent(getConsent());
+  });
+
   function openSettings() {
+    settingsOpened = true;
     setBannerVisible(true);
+    const banner = document.getElementById('npuk-cookie-banner');
+    if (banner) banner.focus({ preventScroll: true });
   }
 
   function track(eventName, payload) {
@@ -217,35 +260,55 @@
     if (document.getElementById('npuk-cookie-banner')) return;
 
     const style = document.createElement('style');
-    style.textContent = '#npuk-cookie-banner{position:fixed;z-index:10000;right:18px;bottom:18px;left:18px;display:flex;align-items:center;gap:18px;max-width:1080px;margin:auto;padding:18px 20px;border:1px solid #CFE0F1;border-radius:10px;background:#fff;color:#132A46;box-shadow:0 12px 40px rgba(15,31,54,.16);font-family:"DM Sans",Arial,sans-serif}#npuk-cookie-banner[hidden]{display:none}#npuk-cookie-banner p{flex:1;margin:0;font-size:.86rem;line-height:1.55}#npuk-cookie-banner a{color:#1F6FEB}#npuk-cookie-banner button,#npuk-cookie-settings{min-height:42px;padding:10px 17px;border:1px solid #1F6FEB;border-radius:6px;background:#fff;color:#1F6FEB;font:600 .76rem "DM Sans",Arial,sans-serif;cursor:pointer}#npuk-cookie-banner button:last-child{background:#1F6FEB;color:#fff}#npuk-cookie-banner button:focus-visible,#npuk-cookie-settings:focus-visible{outline:3px solid #A7D8F4;outline-offset:2px}#npuk-cookie-settings{position:fixed;z-index:9999;left:14px;bottom:24px;min-height:34px;padding:7px 10px;border-color:#CFE0F1;background:#fff;color:#4B5F75;font-size:.66rem}#npuk-cookie-settings[hidden]{display:none}@media(max-width:640px){#npuk-cookie-banner{align-items:stretch;flex-wrap:wrap;gap:10px;right:10px;bottom:10px;left:10px;padding:16px}#npuk-cookie-banner p{flex-basis:100%}#npuk-cookie-banner button{flex:1}}';
+    style.textContent = '#npuk-cookie-banner{position:fixed;z-index:10000;right:16px;bottom:max(12px,env(safe-area-inset-bottom,0px));left:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;max-width:720px;margin:auto;padding:14px 16px;border:1px solid #CFE0F1;border-radius:4px;background:#fff;color:#132A46;box-shadow:0 4px 20px rgba(15,31,54,.12);font-family:"DM Sans",Arial,sans-serif}#npuk-cookie-banner[hidden],#npuk-cookie-settings[hidden],#npuk-cookie-utility[hidden]{display:none}#npuk-cookie-banner p{margin:0;font-size:.78rem;line-height:1.45}#npuk-cookie-banner a{color:#1F6FEB;text-underline-offset:3px}#npuk-cookie-actions{display:flex;gap:8px}#npuk-cookie-banner button{min-height:44px;min-width:82px;padding:10px 14px;border:1px solid #132A46;border-radius:3px;background:#fff;color:#132A46;font:600 .76rem "DM Sans",Arial,sans-serif;cursor:pointer}#npuk-cookie-banner button:hover{background:#EDF4FA}#npuk-cookie-banner button:focus-visible,#npuk-cookie-settings:focus-visible{outline:3px solid #A7D8F4;outline-offset:3px}#npuk-cookie-settings{position:static;display:inline-block;min-height:44px;margin:0;padding:8px 0;border:0;border-radius:0;background:transparent;box-shadow:none;color:inherit;font:inherit;font-size:.78rem;letter-spacing:normal;text-transform:none;text-decoration:underline;text-underline-offset:3px;cursor:pointer}#npuk-cookie-utility{position:static;display:flex;justify-content:center;padding:4px 20px calc(8px + env(safe-area-inset-bottom,0px));background:transparent;color:#4B5F75}@media(max-width:560px){#npuk-cookie-banner{grid-template-columns:1fr;gap:10px;right:10px;left:10px;padding:12px 14px}#npuk-cookie-banner button{flex:1}}';
     document.head.appendChild(style);
 
     const banner = document.createElement('section');
     banner.id = 'npuk-cookie-banner';
     banner.setAttribute('aria-label', 'Cookie consent');
     banner.setAttribute('role', 'dialog');
+    banner.tabIndex = -1;
 
     const message = document.createElement('p');
-    message.append('We use analytics cookies to understand site traffic and improve advertising. ');
+    message.append('Optional cookies help us measure visits and advertising. ');
     const policyLink = document.createElement('a');
     policyLink.href = '/cookies.html';
     policyLink.textContent = 'Learn more';
     message.appendChild(policyLink);
 
-    banner.append(
-      message,
+    const actions = document.createElement('div');
+    actions.id = 'npuk-cookie-actions';
+    actions.append(
       createButton('Reject', reject),
       createButton('Accept', accept)
     );
+    banner.append(message, actions);
     document.body.appendChild(banner);
 
-    // A persistent settings control lets visitors revisit either saved choice.
-    // On mobile this sits at the end of the page, clear of shopping controls.
+    // Keep the saved-choice control in the footer at every viewport width.
+    // It must never float over products, basket buttons or checkout controls.
     const settings = createButton('Cookie settings', openSettings);
     settings.id = 'npuk-cookie-settings';
     settings.title = 'Cookie settings';
     settings.setAttribute('aria-controls', 'npuk-cookie-banner');
-    document.body.appendChild(settings);
+    const footer = document.querySelector('footer');
+    const policy = footer && footer.querySelector('a[href$="cookies.html"]');
+    const policyItem = policy && policy.closest('li');
+    if (policyItem) {
+      const item = document.createElement('li');
+      item.appendChild(settings);
+      policyItem.insertAdjacentElement('afterend', item);
+    } else if (footer) {
+      footer.appendChild(settings);
+    } else {
+      const utility = document.createElement('footer');
+      utility.id = 'npuk-cookie-utility';
+      utility.setAttribute('aria-label', 'Cookie preferences');
+      utility.appendChild(settings);
+      const main = document.querySelector('main');
+      if (main) main.insertAdjacentElement('afterend', utility);
+      else document.body.appendChild(utility);
+    }
 
     setBannerVisible(getConsent() === null);
   }

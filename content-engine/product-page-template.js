@@ -857,14 +857,14 @@ function headCommon() {
   return `  <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
   <script src="/site-config.js" defer></script>
-  <script src="/tiktok-analytics.js" defer></script>
+  <script src="/tiktok-analytics.js?v=20260915-design" defer></script>
   <script src="/age-gate.js"></script>
   <script src="/dispatch-bar.js"></script>
   <script src="/basket.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/np.css">`;
+  <link rel="stylesheet" href="/css/np.css?v=20260915-design">`;
 }
 
 function sideCard(slug, product) {
@@ -975,8 +975,9 @@ ${jsonLd(slug, product)}
   </script>
 ${headCommon()}
   <style>${PRODUCT_CSS}${FOOTER_CSS}</style>
-  <link rel="stylesheet" href="/site-search.css">
+  <link rel="stylesheet" href="/site-search.css?v=20260915-design">
   <script src="/site-search.js" defer></script>
+  <link rel="stylesheet" href="/css/refinement.css?v=20260915-design">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1155,8 +1156,10 @@ ${JSON.stringify(itemList, null, 2)}
   </script>
 ${headCommon()}
   <style>${NAV_CSS}${HUB_CSS}${FOOTER_CSS}</style>
-  <link rel="stylesheet" href="/site-search.css">
+  <link rel="stylesheet" href="/site-search.css?v=20260915-design">
   <script src="/site-search.js" defer></script>
+  <link rel="stylesheet" href="/css/refinement.css?v=20260915-design">
+  <link rel="stylesheet" href="/css/catalogue.css?v=20260915-design">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

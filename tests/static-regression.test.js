@@ -47,22 +47,14 @@ for (const [name, dose, price] of expectedAccessoryPrices) {
   );
 }
 
-assert(
-  index.includes(".acc-grid { grid-template-columns: 1fr; gap: 10px;"),
-  "mobile product grid should use one tight column"
-);
-assert(
-  index.includes(".shop-card { display: grid; grid-template-columns: 118px minmax(0, 1fr);"),
-  "mobile product cards should use compact image/detail columns"
-);
-assert(
-  index.includes(".shop-card-img { aspect-ratio: auto; min-height: 148px; height: 100%;"),
-  "mobile product images should be compact thumbnails"
-);
-assert(
-  index.includes(".shop-add-btn { min-height: 44px;"),
-  "mobile add buttons should keep a reliable touch target"
-);
+for (const page of [index, read("products/index.html")]) {
+  const styles = [...page.matchAll(/<link[^>]+href="(\/css\/[^\"]+)"/g)].map(match => match[1]);
+  assert(styles.some(href => href.startsWith("/css/refinement.css?")), "shared visual styles should load");
+  assert(styles.at(-1).startsWith("/css/catalogue.css?"), "catalogue layout should load after page and shared styles");
+  for (const href of styles) {
+    assert(fs.existsSync(path.join(root, href.split("?")[0])), `published stylesheet should exist: ${href}`);
+  }
+}
 
 assert(
   checkout.includes("function formatMoney(value)") &&
@@ -109,7 +101,7 @@ for (const staleLabel of ["1x 10mg", "2x 10mg", "3x 10mg", "2x 15mg", "3x 15mg"]
   assert(!index.includes(`>${staleLabel} —`), `homepage dropdown should not show spaced/bundled label ${staleLabel}`);
 }
 for (const compactLabel of ["1x10mg", "1x15mg", "1x20mg", "1x30mg", "1x50mg", "1x80mg", "1x5mg"]) {
-  assert(index.includes(`>${compactLabel} —`), `homepage dropdown should show compact single-size label ${compactLabel}`);
+  assert(index.includes(`>${compactLabel.slice(2)} —`), `homepage dropdown should show a single size ${compactLabel.slice(2)}`);
   assert(productData.includes(`label: "${compactLabel}"`), `product detail data should show compact label ${compactLabel}`);
 }
 assert(
