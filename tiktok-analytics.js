@@ -60,6 +60,11 @@
   function setBannerVisible(visible) {
     const banner = document.getElementById('npuk-cookie-banner');
     if (banner) banner.hidden = !visible;
+    const settings = document.getElementById('npuk-cookie-settings');
+    if (settings) {
+      settings.hidden = visible;
+      settings.setAttribute('aria-expanded', String(visible));
+    }
   }
 
   function insertScript(src) {
@@ -234,11 +239,12 @@
     );
     document.body.appendChild(banner);
 
-    // Short visible label keeps the pill small on phones; the title carries the
-    // fuller name the cookie policy refers to.
-    const settings = createButton('Cookies', openSettings);
+    // A persistent settings control lets visitors revisit either saved choice.
+    // On mobile this sits at the end of the page, clear of shopping controls.
+    const settings = createButton('Cookie settings', openSettings);
     settings.id = 'npuk-cookie-settings';
     settings.title = 'Cookie settings';
+    settings.setAttribute('aria-controls', 'npuk-cookie-banner');
     document.body.appendChild(settings);
 
     setBannerVisible(getConsent() === null);

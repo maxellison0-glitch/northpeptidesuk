@@ -16,6 +16,17 @@ function productPath(slug) {
   return `products/${slug}/index.html`;
 }
 
+test('the catalogue navigation opens a generated hub with all compound and supply links', () => {
+  const hub = read('products/index.html');
+  assert.match(hub, /<link rel="canonical" href="https:\/\/www\.northpeptidesuk\.com\/products\/">/);
+  assert.match(hub, /<h1>Research peptide catalogue<\/h1>/);
+  for (const [slug, product] of Object.entries(PRODUCTS)) {
+    if (/-pen$/.test(slug) && product.sisterProduct) continue;
+    assert.ok(hub.includes(`href="/products/${slug}/"`), `catalogue should link to ${slug}`);
+  }
+  assert.match(hub, /href="\/checkout\.html#chilled-packaging"/);
+});
+
 test('every catalogue item has a static product landing page', () => {
   assert.ok(slugs.length >= 30, 'catalogue should expose the full product range');
 
@@ -97,7 +108,17 @@ test('homepage consolidates pen vials into their compound product pages', () => 
   // The dead legacy markup is gone for good — it was rendered nowhere but
   // still had to be price-maintained because tests scan raw HTML.
   assert.doesNotMatch(homepage, /<template id="legacy-pen-vial-cards">/);
-  assert.match(homepage, />21 products</);
+  const visibleCards = [...homepage.matchAll(/<div class="shop-card(?: supply-card)?" id="product-[^"]+">/g)];
+  assert.match(homepage, new RegExp(`class="shop-section-tag">${visibleCards.length} products<`));
+  for (const category of ['cat-standard-vials', 'cat-research-supplies']) {
+    const start = homepage.indexOf(`<div class="product-category" id="${category}">`);
+    const end = homepage.indexOf(`</div><!-- /.product-category#${category} -->`, start);
+    assert.ok(start >= 0 && end > start, `${category} should have a complete category section`);
+    const section = homepage.slice(start, end);
+    const count = [...section.matchAll(/<div class="shop-card(?: supply-card)?" id="product-[^"]+">/g)].length;
+    assert.match(section, new RegExp(`class="category-heading-count">${count} products<`));
+    assert.match(homepage, new RegExp(`href="#${category}">[^<]+<span class="cat-jump-count">\\(${count}\\)</span>`));
+  }
 });
 
 test('homepage surfaces the pen option with a crawlable link per paired compound', () => {

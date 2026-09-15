@@ -16,7 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const { lint, formatReport } = require('./compliance.js');
 const { renderArticle, renderBlogIndex } = require('./template.js');
-const { renderProductPage } = require('./product-page-template.js');
+const { renderProductPage, renderProductIndex } = require('./product-page-template.js');
 const { SITE, STATIC_PAGES, PRODUCTS, productPriority, productUrl, productPath } = require('./site.js');
 
 const ROOT = path.join(__dirname, '..');
@@ -178,11 +178,16 @@ function main() {
     if (!result.ok) failed++;
     renderedProducts.push({ slug, html });
   }
+  const productIndex = renderProductIndex(PRODUCTS);
+  const indexResult = lint(productIndex);
+  console.log(formatReport('products/index.html', indexResult));
+  if (!indexResult.ok) failed++;
   if (failed) {
     console.error(`\nCOMPLIANCE GATE FAILED - ${failed} generated page(s) blocked. Nothing written.`);
     process.exit(1);
   }
-  console.log(`\nCompliance gate: ${articles.length + renderedProducts.length}/${articles.length + renderedProducts.length} passed.`);
+  const pageCount = articles.length + renderedProducts.length + 1;
+  console.log(`\nCompliance gate: ${pageCount}/${pageCount} passed.`);
 
   if (checkOnly) { console.log('--check: no files written.'); return; }
 
@@ -197,6 +202,7 @@ function main() {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, html);
   }
+  fs.writeFileSync(path.join(PRODUCTS_DIR, 'index.html'), productIndex);
   fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), renderBlogIndex(articles));
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(articles));
   fs.writeFileSync(path.join(ROOT, 'products.json'), JSON.stringify(buildProductFeed(), null, 2) + '\n');
@@ -206,7 +212,7 @@ function main() {
   console.log(`\nBuilt ${articles.length} article(s):`);
   for (const a of articles) console.log(`  · blog/${a.slug}.html  — "${a.title}"`);
   console.log(`Built ${renderedProducts.length} static product page(s) under products/`);
-  console.log(`Regenerated: blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, llms.txt, robots.txt`);
+  console.log(`Regenerated: products/index.html, blog/index.html, sitemap.xml (${STATIC_PAGES.length} pages + ${Object.keys(PRODUCTS).length} products + ${articles.length} articles), products.json, llms.txt, robots.txt`);
 }
 
 if (require.main === module) main();

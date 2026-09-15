@@ -64,6 +64,7 @@ test('shows consent UI without loading TikTok before a choice', () => {
   const app = boot();
   assert.equal(app.appendedScripts.length, 0);
   assert.equal(app.elements.get('npuk-cookie-banner').hidden, false);
+  assert.equal(app.elements.get('npuk-cookie-settings').hidden, true);
   assert.ok(app.window.NPUKAnalytics);
 });
 
@@ -154,6 +155,11 @@ test('events before consent are discarded rather than queued', () => {
 test('cookie settings reopens the banner after a saved choice', () => {
   const app = boot('rejected');
   assert.equal(app.elements.get('npuk-cookie-banner').hidden, true);
+  assert.equal(app.elements.get('npuk-cookie-settings').hidden, false);
   app.window.NPUKAnalytics.openSettings();
   assert.equal(app.elements.get('npuk-cookie-banner').hidden, false);
+  assert.equal(app.elements.get('npuk-cookie-settings').hidden, true);
+  app.window.NPUKAnalytics.reject();
+  assert.equal(app.elements.get('npuk-cookie-settings').hidden, false);
+  assert.equal(app.appendedScripts.length, 0);
 });
