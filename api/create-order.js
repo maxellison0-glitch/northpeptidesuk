@@ -45,6 +45,19 @@ async function generateOrderRef() {
   }
 }
 
+// The saved record powers the dispatch page (/admin/) and the review email
+// sent after dispatch. Like the ref counter, it must never cost an order.
+async function saveOrderRecord(order) {
+  try {
+    const { openOrderStore, orderRecordFrom } = require("../server/order-store.js");
+    await openOrderStore().saveOrder(orderRecordFrom(order));
+    return true;
+  } catch (err) {
+    console.error(`[create-order] order record NOT saved for ${order.ref}: ${err.message}`);
+    return false;
+  }
+}
+
 function escapeHtml(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -336,6 +349,9 @@ module.exports = async function handler(req, res) {
     bankDetails
   };
 
+  // Saved while the emails send, so storage adds no wait for the customer.
+  const recordSaved = saveOrderRecord(order);
+
   const notifyRecipients = ownerNotifyRecipients();
   const emails = { owner: "failed", customer: "failed" };
 
@@ -367,6 +383,8 @@ module.exports = async function handler(req, res) {
   } catch (err) {
     console.error(`[create-order] customer email FAILED for ${orderRef} to ${email}: ${err.message}${err.firstAttempt ? ` (first attempt: ${err.firstAttempt})` : ""}`);
   }
+
+  await recordSaved;
 
   return json(res, 200, {
     success: true,

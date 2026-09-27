@@ -49,3 +49,20 @@ The live site must not show scores, stars, review counts or review schema until 
 2. Moderate submissions for personal, medical and prohibited content before publishing.
 3. Publish only genuine feedback and keep visible reviews aligned with structured data.
 4. Do not add business-level aggregate rating schema. Any future product review feed must remain product-specific and policy-compliant.
+
+## 4. Saved orders, dispatch and review emails
+
+Every order is saved (encrypted) in Vercel Blob when it is placed. The owner-only page at `/admin/` lists recent orders; tick the ones you have sent and tap **Mark as dispatched**. Three working days later (Monday dispatch → Thursday, Friday → Wednesday) the customer gets one "How was your order?" email linking to `/reviews/` with their order reference filled in. Nobody is ever asked twice.
+
+1. In Vercel Project Settings → Environment Variables, add three long random strings (16+ characters each, e.g. from a password generator):
+
+   | Name | Purpose |
+   |---|---|
+   | `ORDER_DATA_KEY` | Encrypts saved orders. Set once and **never change it** — older orders become unreadable |
+   | `ADMIN_KEY` | Password for the `/admin/` orders page |
+   | `CRON_SECRET` | Lets Vercel's daily job (09:00 UTC, see `crons` in `vercel.json`) send the review emails |
+
+2. Add them before the deploy that ships this feature (or redeploy after adding them). Orders placed while `ORDER_DATA_KEY` is missing are not saved; the order emails still send as normal.
+3. Open `/admin/`, enter the `ADMIN_KEY`, and check no warnings show.
+
+The page can also send one order's review email straight away (useful for a test order) and run the daily job by hand. Orders dispatched more than 21 days ago are never asked.

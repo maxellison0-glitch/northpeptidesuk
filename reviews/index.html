@@ -358,6 +358,15 @@
       var submit = document.getElementById('review-submit');
       if (!form) return;
 
+      // Links in the post-dispatch review email carry ?ref=NP-1760, plus
+      // &rating=1-5 when a star was tapped, so the reviewer starts half done.
+      var params = new URLSearchParams(window.location.search);
+      var linkedRef = (params.get('ref') || '').trim().toUpperCase();
+      var linkedRating = params.get('rating') || '';
+      if (/^NP-[0-9A-Z-]{4,20}$/.test(linkedRef)) form.elements.orderReference.value = linkedRef;
+      if (/^[1-5]$/.test(linkedRating)) document.getElementById('rating-' + linkedRating).checked = true;
+      if (linkedRef || linkedRating) form.scrollIntoView({ block: 'start' });
+
       function setStatus(message, type) {
         status.textContent = message || '';
         status.className = 'status' + (type ? ' ' + type : '');
