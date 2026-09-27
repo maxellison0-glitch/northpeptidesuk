@@ -34,7 +34,7 @@ async function storeWithDispatched(dispatches) {
   for (const [ref, dispatchedAt, overrides] of dispatches) {
     await store.saveOrder(order(ref, overrides));
     if (dispatchedAt) {
-      await store.markDispatched(ref);
+      await store.claim('dispatched', ref);
       blob.setUploadedAt(`orders/dispatched/${ref}`, new Date(dispatchedAt));
     }
   }

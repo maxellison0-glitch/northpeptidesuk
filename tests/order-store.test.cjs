@@ -85,29 +85,42 @@ test('a fresh instance reads from a public store without being told its access',
   assert.equal(await fresh.readOrder('NP-9999'), null);
 });
 
-test('dispatch and review markers are claimed once and listed with their times', async () => {
+test('progress markers are claimed once and listed with their times', async () => {
   const blob = createFakeBlob({ pageSize: 2 });
   const store = createOrderStore({ blob, secret: SECRET });
   for (const ref of ['NP-1760', 'NP-1761', 'NP-1762']) await store.saveOrder(orderRecordFrom(sampleOrder(ref)));
   blob.files.set('orders/data/not-an-order.json', { body: '{}', uploadedAt: new Date() });
 
-  assert.equal(await store.markDispatched('NP-1760'), true);
-  assert.equal(await store.markDispatched('NP-1760'), false);
-  assert.equal(await store.claimReviewRequest('NP-1760'), true);
-  assert.equal(await store.claimReviewRequest('NP-1760'), false);
+  for (const kind of ['paid', 'paymentEmailed', 'dispatched', 'reviewRequested']) {
+    assert.equal(await store.claim(kind, 'NP-1760'), true, kind);
+    assert.equal(await store.claim(kind, 'NP-1760'), false, `${kind} again`);
+  }
+  assert.ok(blob.files.has('orders/paid/NP-1760'));
+  assert.ok(blob.files.has('orders/payment-emailed/NP-1760'));
   blob.setUploadedAt('orders/dispatched/NP-1760', new Date('2026-09-28T09:30:00Z'));
 
   const state = await store.listState();
   assert.deepEqual([...state.orders.keys()].sort(), ['NP-1760', 'NP-1761', 'NP-1762']);
   assert.equal(state.dispatched.get('NP-1760').toISOString(), '2026-09-28T09:30:00.000Z');
-  assert.ok(state.reviewRequested.has('NP-1760'));
-  assert.equal(state.dispatched.has('NP-1761'), false);
+  for (const kind of ['paid', 'paymentEmailed', 'reviewRequested']) assert.ok(state[kind].has('NP-1760'), kind);
+  assert.equal(state.paid.has('NP-1761'), false);
 
-  await store.clearDispatched('NP-1760');
-  await store.releaseReviewRequest('NP-1760');
+  for (const kind of ['paid', 'paymentEmailed', 'dispatched', 'reviewRequested']) await store.release(kind, 'NP-1760');
   const after = await store.listState();
-  assert.equal(after.dispatched.size, 0);
-  assert.equal(after.reviewRequested.size, 0);
+  for (const kind of ['paid', 'paymentEmailed', 'dispatched', 'reviewRequested']) assert.equal(after[kind].size, 0, kind);
+});
+
+test('listState lists only what is asked for, to save Blob operations', async () => {
+  const blob = createFakeBlob();
+  const store = createOrderStore({ blob, secret: SECRET });
+  await store.saveOrder(orderRecordFrom(sampleOrder()));
+  await store.claim('dispatched', 'NP-1760');
+  const before = blob.calls.list;
+  const state = await store.listState({ orders: false, markers: ['dispatched'] });
+  assert.equal(blob.calls.list - before, 1);
+  assert.deepEqual(Object.keys(state), ['dispatched']);
+  assert.ok(state.dispatched.has('NP-1760'));
+  await assert.rejects(() => store.claim('shipped', 'NP-1760'), /unknown order marker/);
 });
 
 test('saving refuses refs that could escape the orders folder', async () => {

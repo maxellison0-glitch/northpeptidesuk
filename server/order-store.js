@@ -1,12 +1,16 @@
-// Order records and dispatch state in Vercel Blob.
+// Order records and their progress (paid, dispatched, emailed) in Vercel Blob.
 //
 // One small file per fact, so a state change never rewrites an order record
-// and a listing alone shows what has been dispatched or already emailed:
+// and a listing alone shows where every order is:
 //
-//   orders/data/NP-1760.json          encrypted order record, written once at checkout
-//   orders/dispatched/NP-1760         marker; its upload time is the dispatch time
-//   orders/review-requested/NP-1760   marker, claimed BEFORE the review email is sent,
-//                                     so a customer is never asked twice
+//   orders/data/NP-1760.json            encrypted order record, written once at checkout
+//   orders/paid/NP-1760                 marker; its upload time is when payment was confirmed
+//   orders/payment-emailed/NP-1760      marker, claimed BEFORE the payment email is sent
+//   orders/dispatched/NP-1760           marker; its upload time is the dispatch time
+//   orders/review-requested/NP-1760     marker, claimed BEFORE the review email is sent
+//
+// Claiming an email's marker before sending it means no customer ever gets
+// the same email twice.
 //
 // Records hold names, addresses and phone numbers, and the store may be a
 // public one (any blob URL is readable by whoever has it), so every record is
@@ -16,8 +20,12 @@
 const crypto = require("node:crypto");
 
 const DATA_PREFIX = "orders/data/";
-const DISPATCHED_PREFIX = "orders/dispatched/";
-const REVIEW_PREFIX = "orders/review-requested/";
+const MARKERS = {
+  paid: "orders/paid/",
+  paymentEmailed: "orders/payment-emailed/",
+  dispatched: "orders/dispatched/",
+  reviewRequested: "orders/review-requested/"
+};
 
 // NP-1760 (sequential) or NP-20260926-A1B2 (legacy fallback from create-order).
 const REF_PATTERN = /^NP-(?:\d{4,8}|\d{8}-[0-9A-F]{4})$/;
@@ -84,6 +92,11 @@ function refFromPathname(pathname, prefix) {
   return isValidRef(ref) ? ref : null;
 }
 
+function markerPrefix(kind) {
+  if (!Object.prototype.hasOwnProperty.call(MARKERS, kind)) throw new Error(`unknown order marker "${kind}"`);
+  return MARKERS[kind];
+}
+
 // blob: { list, put, get, del } from @vercel/blob (or an in-memory fake in tests).
 function createOrderStore({ blob, secret }) {
   if (!hasUsableSecret(secret)) {
@@ -140,15 +153,13 @@ function createOrderStore({ blob, secret }) {
     return blobs;
   }
 
-  // Creates a marker file; false if it already existed.
-  async function claim(pathname, at) {
-    try {
-      await write(pathname, at.toISOString(), { contentType: "text/plain" });
-      return true;
-    } catch (err) {
-      if (isAlreadyExists(err)) return false;
-      throw err;
+  function toTimes(items, prefix) {
+    const times = new Map();
+    for (const item of items) {
+      const ref = refFromPathname(item.pathname, prefix);
+      if (ref) times.set(ref, new Date(item.uploadedAt));
     }
+    return times;
   }
 
   return {
@@ -164,48 +175,39 @@ function createOrderStore({ blob, secret }) {
       return text == null ? null : decryptRecord(text, key, ref);
     },
 
-    // Three listings, no record reads: every order with its created time and
-    // URL, plus when each was dispatched and review-requested.
-    async listState() {
-      const [data, dispatched, requested] = await Promise.all([
-        listAll(DATA_PREFIX),
-        listAll(DISPATCHED_PREFIX),
-        listAll(REVIEW_PREFIX)
+    // Listings only, no record reads. `orders` maps each ref to its created
+    // time and URL; each requested marker kind maps refs to when it was set.
+    // Every listing is a billed Blob operation, so ask only for what you use.
+    async listState({ orders = true, markers = Object.keys(MARKERS) } = {}) {
+      const [data, ...lists] = await Promise.all([
+        orders ? listAll(DATA_PREFIX) : null,
+        ...markers.map(kind => listAll(markerPrefix(kind)))
       ]);
-      const orders = new Map();
-      for (const item of data) {
-        const ref = refFromPathname(item.pathname, DATA_PREFIX);
-        if (ref) orders.set(ref, { createdAt: new Date(item.uploadedAt), url: item.url });
-      }
-      const toTimes = (items, prefix) => {
-        const times = new Map();
-        for (const item of items) {
-          const ref = refFromPathname(item.pathname, prefix);
-          if (ref) times.set(ref, new Date(item.uploadedAt));
+      const state = {};
+      if (orders) {
+        state.orders = new Map();
+        for (const item of data) {
+          const ref = refFromPathname(item.pathname, DATA_PREFIX);
+          if (ref) state.orders.set(ref, { createdAt: new Date(item.uploadedAt), url: item.url });
         }
-        return times;
-      };
-      return {
-        orders,
-        dispatched: toTimes(dispatched, DISPATCHED_PREFIX),
-        reviewRequested: toTimes(requested, REVIEW_PREFIX)
-      };
+      }
+      markers.forEach((kind, index) => { state[kind] = toTimes(lists[index], MARKERS[kind]); });
+      return state;
     },
 
-    markDispatched(ref, at = new Date()) {
-      return claim(`${DISPATCHED_PREFIX}${ref}`, at);
+    // Sets a marker (paid, dispatched, or an email's claim); false if it was already set.
+    async claim(kind, ref, at = new Date()) {
+      try {
+        await write(`${markerPrefix(kind)}${ref}`, at.toISOString(), { contentType: "text/plain" });
+        return true;
+      } catch (err) {
+        if (isAlreadyExists(err)) return false;
+        throw err;
+      }
     },
 
-    clearDispatched(ref) {
-      return blob.del(`${DISPATCHED_PREFIX}${ref}`);
-    },
-
-    claimReviewRequest(ref, at = new Date()) {
-      return claim(`${REVIEW_PREFIX}${ref}`, at);
-    },
-
-    releaseReviewRequest(ref) {
-      return blob.del(`${REVIEW_PREFIX}${ref}`);
+    release(kind, ref) {
+      return blob.del(`${markerPrefix(kind)}${ref}`);
     }
   };
 }
@@ -227,6 +229,5 @@ module.exports = {
   deriveKey,
   accessFromUrl,
   DATA_PREFIX,
-  DISPATCHED_PREFIX,
-  REVIEW_PREFIX
+  MARKERS
 };

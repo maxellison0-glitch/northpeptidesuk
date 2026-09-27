@@ -4,7 +4,8 @@
 
 const { openOrderStore } = require("../server/order-store.js");
 const { authorize } = require("../server/admin-auth.js");
-const { sendDueReviewRequests, resendEmail } = require("../server/review-requests.js");
+const { resendEmail } = require("../server/email.js");
+const { sendDueReviewRequests } = require("../server/review-requests.js");
 
 function send(res, status, body) {
   res.setHeader("Content-Type", "application/json");

@@ -157,7 +157,11 @@ test('orders API reports a missing ORDER_DATA_KEY instead of failing silently', 
   });
 });
 
-test('checkout saves the order; dispatch, review email and undo work through the API', async () => {
+function post(body) {
+  return invoke(orders, { method: 'POST', headers: asAdmin, body });
+}
+
+test('checkout saves the order; paid, dispatch, both emails and undo work through the API', async () => {
   await withFakes({}, async ({ blob, emails }) => {
     const placed = await placeOrder();
     assert.equal(placed.statusCode, 200);
@@ -171,15 +175,40 @@ test('checkout saves the order; dispatch, review email and undo work through the
     assert.equal(order.name, 'Sam Smith');
     assert.equal(order.town, 'Leeds');
     assert.deepEqual(order.items, [{ name: 'BPC-157 10mg', qty: 2 }]);
+    assert.equal(order.paidAt, null);
     assert.equal(order.dispatchedAt, null);
     const listing = JSON.stringify(listed.body);
     for (const hidden of ['sam@example.com', '07700900123', '1 High Street', '12345678']) {
       assert.equal(listing.includes(hidden), false, `${hidden} should not reach the dispatch page`);
     }
 
-    assert.equal((await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'dispatch', refs: ['NP-9999'] } })).statusCode, 400);
-    assert.equal((await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'dispatch', refs: ['../x'] } })).statusCode, 400);
-    const tooEarly = await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'send-review-request', ref: 'NP-1747' } });
+    assert.equal((await post({ action: 'paid', refs: ['NP-9999'] })).statusCode, 400);
+    assert.equal((await post({ action: 'dispatch', refs: ['../x'] })).statusCode, 400);
+    const unpaid = await post({ action: 'dispatch', refs: ['NP-1747'] });
+    assert.equal(unpaid.statusCode, 409);
+    assert.match(unpaid.body.error, /Mark NP-1747 as paid first/);
+    assert.equal((await post({ action: 'send-payment-email', ref: 'NP-1747' })).statusCode, 409);
+
+    // Paid: the customer gets their payment confirmation straight away, once.
+    const emailsBeforePaid = emails.length;
+    const paid = await post({ action: 'paid', refs: ['np-1747'] });
+    assert.equal(paid.statusCode, 200);
+    assert.deepEqual(paid.body.results, [{ ref: 'NP-1747', status: 'paid', email: 'sent' }]);
+    const confirmation = emails[emails.length - 1];
+    assert.equal(emails.length, emailsBeforePaid + 1);
+    assert.deepEqual(confirmation.body.to, ['sam@example.com']);
+    assert.equal(confirmation.body.subject, 'Payment received — your order NP-1747 is being prepared');
+    assert.equal(confirmation.headers['Idempotency-Key'], 'payment-confirmed-NP-1747');
+
+    const paidAgain = await post({ action: 'paid', refs: ['NP-1747'] });
+    assert.deepEqual(paidAgain.body.results, [{ ref: 'NP-1747', status: 'already paid', email: 'skipped', reason: 'already sent' }]);
+    assert.equal((await post({ action: 'send-payment-email', ref: 'NP-1747' })).statusCode, 409);
+    assert.equal(emails.length, emailsBeforePaid + 1, 'payment email never sent twice');
+    const afterPaid = (await invoke(orders, { headers: asAdmin })).body.orders[0];
+    assert.ok(afterPaid.paidAt);
+    assert.ok(afterPaid.paymentEmailedAt);
+
+    const tooEarly = await post({ action: 'send-review-request', ref: 'NP-1747' });
     assert.equal(tooEarly.statusCode, 409);
 
     const dispatched = await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'dispatch', refs: ['np-1747'] } });
@@ -203,6 +232,7 @@ test('checkout saves the order; dispatch, review email and undo work through the
 
     const undo = await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'undo-dispatch', ref: 'NP-1747' } });
     assert.equal(undo.statusCode, 409, 'no undo once the email has gone');
+    assert.equal((await post({ action: 'undo-paid', ref: 'NP-1747' })).statusCode, 409, 'no undo-paid while dispatched');
 
     const after = (await invoke(orders, { headers: asAdmin })).body.orders[0];
     assert.ok(after.dispatchedAt);
@@ -210,13 +240,34 @@ test('checkout saves the order; dispatch, review email and undo work through the
   });
 });
 
-test('undo moves an order back before its review email goes', async () => {
-  await withFakes({}, async () => {
+test('undo steps an order back: dispatched to paid, then paid to awaiting payment', async () => {
+  await withFakes({}, async ({ emails }) => {
     await placeOrder();
-    await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'dispatch', refs: ['NP-1747'] } });
-    const undo = await invoke(orders, { method: 'POST', headers: asAdmin, body: { action: 'undo-dispatch', ref: 'NP-1747' } });
-    assert.equal(undo.statusCode, 200);
+    await post({ action: 'paid', refs: ['NP-1747'] });
+    await post({ action: 'dispatch', refs: ['NP-1747'] });
+    assert.equal((await post({ action: 'undo-dispatch', ref: 'NP-1747' })).statusCode, 200);
     assert.equal((await invoke(orders, { headers: asAdmin })).body.orders[0].dispatchedAt, null);
+
+    assert.equal((await post({ action: 'undo-paid', ref: 'NP-1747' })).statusCode, 200);
+    const back = (await invoke(orders, { headers: asAdmin })).body.orders[0];
+    assert.equal(back.paidAt, null);
+
+    // Paid again later: the customer already has their confirmation, so no second email.
+    const emailsBefore = emails.length;
+    const repaid = await post({ action: 'paid', refs: ['NP-1747'] });
+    assert.deepEqual(repaid.body.results, [{ ref: 'NP-1747', status: 'paid', email: 'skipped', reason: 'already sent' }]);
+    assert.equal(emails.length, emailsBefore);
+  });
+});
+
+test('orders are still marked paid when email is not configured', async () => {
+  await withFakes({ RESEND_API_KEY: undefined }, async () => {
+    // Checkout needs Resend, so save the order straight into the store instead.
+    const { openOrderStore, orderRecordFrom } = require('../server/order-store.js');
+    await openOrderStore().saveOrder(orderRecordFrom({ ref: 'NP-1747', items: [], grandTotal: 10, customer: { name: 'Sam', email: 'sam@example.com' } }));
+    const paid = await post({ action: 'paid', refs: ['NP-1747'] });
+    assert.deepEqual(paid.body.results, [{ ref: 'NP-1747', status: 'paid', email: 'skipped', reason: 'email service is not configured' }]);
+    assert.equal((await post({ action: 'send-payment-email', ref: 'NP-1747' })).statusCode, 503);
   });
 });
 
