@@ -1,5 +1,12 @@
 {
   "trailingSlash": true,
+  "crons": [
+    { "path": "/api/review-requests/", "schedule": "0 9 * * *" }
+  ],
+  "functions": {
+    "api/orders.js": { "maxDuration": 60 },
+    "api/review-requests.js": { "maxDuration": 60 }
+  },
   "redirects": [
     {
       "source": "/product.html",
@@ -61,6 +68,14 @@
       "source": "/products.json",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=3600" }
+      ]
+    },
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "no-store" },
+        { "key": "X-Frame-Options", "value": "DENY" }
       ]
     },
     {
