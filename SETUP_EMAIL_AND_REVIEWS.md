@@ -52,7 +52,13 @@ The live site must not show scores, stars, review counts or review schema until 
 
 ## 4. Saved orders, dispatch and review emails
 
-Every order is saved (encrypted) in Vercel Blob when it is placed. The owner-only page at `/admin/` lists recent orders; tick the ones you have sent and tap **Mark as dispatched**. Three working days later (Monday dispatch → Thursday, Friday → Wednesday) the customer gets one "How was your order?" email linking to `/reviews/` with their order reference filled in. Nobody is ever asked twice.
+Every order is saved (encrypted) in Vercel Blob when it is placed. The owner-only page at `/admin/` moves each order through three tabs:
+
+1. **Awaiting payment** — when the bank transfer arrives, tick the order and tap **Mark as paid**. The customer is emailed a "Payment received" confirmation straight away (amount, what happens next, order summary, delivery address to check).
+2. **To dispatch** — paid orders. Tick the ones you have sent and tap **Mark as dispatched**. Only paid orders can be dispatched.
+3. **Dispatched** — three working days after dispatch (Monday → Thursday, Friday → Wednesday) the customer gets one "How was your order?" email linking to `/reviews/` with their order reference filled in.
+
+Each email goes to a customer at most once, even if an order is marked twice or moved back with **Undo**.
 
 1. In Vercel Project Settings → Environment Variables, add three long random strings (16+ characters each, e.g. from a password generator):
 

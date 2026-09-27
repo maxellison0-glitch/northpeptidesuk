@@ -38,8 +38,8 @@
     button:disabled { opacity: .55; cursor: default; }
     .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .tabs { display: flex; gap: 6px; margin: 14px 0 6px; }
-    .tabs button { background: #fff; color: var(--ink); border-color: var(--line); }
+    .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 14px 0 6px; }
+    .tabs button { background: #fff; color: var(--ink); border-color: var(--line); padding: 9px 6px; font-size: 14px; line-height: 1.25; }
     .tabs button[aria-selected=true] { background: var(--navy); border-color: var(--navy); color: #fff; }
     .notice { border-radius: 10px; padding: 10px 12px; margin: 10px 0; font-size: 14px; }
     .notice.warn { background: var(--warn-bg); color: var(--warn); border: 1px solid #F5D2A8; }
@@ -51,14 +51,17 @@
     li.order.selected { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
     .order-body { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; padding: 12px 14px; }
     label.order-body { cursor: pointer; }
+    label.order-body > :not(input) { grid-column: 2; }
     .order-body.no-check { grid-template-columns: 1fr; }
-    .order input[type=checkbox] { width: 22px; height: 22px; margin: 2px 0 0; grid-row: span 4; }
+    .order input[type=checkbox] { width: 22px; height: 22px; margin: 2px 0 0; grid-column: 1; grid-row: 1; }
     .top { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
     .ref { font-weight: 800; }
     .muted { color: var(--muted); font-size: 14px; }
     .items { font-size: 14px; }
     .status { font-size: 14px; font-weight: 600; }
     .status.sent { color: var(--ok); }
+    .status.warn { color: var(--warn); }
+    .card-actions { padding: 0 14px 12px 48px; margin-top: 0; }
     .actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
     .actions button { padding: 6px 10px; font-size: 14px; }
     .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
@@ -94,10 +97,12 @@
       <div id="warnings"></div>
       <p id="message" class="notice" role="status" hidden></p>
       <div class="tabs" role="tablist">
-        <button type="button" role="tab" id="tab-todo" aria-selected="true">To dispatch</button>
+        <button type="button" role="tab" id="tab-pay" aria-selected="true">Awaiting payment</button>
+        <button type="button" role="tab" id="tab-todo" aria-selected="false">To dispatch</button>
         <button type="button" role="tab" id="tab-done" aria-selected="false">Dispatched</button>
       </div>
-      <p class="help" id="help-todo">Tick the orders you have sent, then tap <strong>Mark as dispatched</strong>. Each customer gets a &ldquo;How was your order?&rdquo; email three working days later. Unpaid orders are listed too, so only tick paid, packed ones.</p>
+      <p class="help" id="help-pay">When a bank transfer arrives, tick the order and tap <strong>Mark as paid</strong>. The customer is emailed a payment confirmation straight away.</p>
+      <p class="help" id="help-todo" hidden>Paid and ready to pack. Tick the orders you have sent, then tap <strong>Mark as dispatched</strong>. Each customer gets a &ldquo;How was your order?&rdquo; email three working days later.</p>
       <p class="help" id="help-done" hidden>Review emails go out on the morning of the date shown. You can undo a dispatch until its email has gone.</p>
       <ul class="orders" id="order-list" aria-live="polite"></ul>
       <p class="empty" id="empty" hidden></p>
@@ -110,7 +115,7 @@
   <div class="bar" id="dispatch-bar" hidden>
     <div class="inner">
       <span id="selected-count"></span>
-      <button type="button" id="dispatch">Mark as dispatched</button>
+      <button type="button" id="bar-action">Mark as paid</button>
     </div>
   </div>
 
@@ -123,7 +128,7 @@
       // The admin key is sent once to log in; after that an HttpOnly session
       // cookie does the work, so the key is never stored where scripts can read it.
       var API = '/api/orders/';
-      var state = { loggedIn: false, orders: [], config: null, tab: 'todo', selected: new Set(), busy: false };
+      var state = { loggedIn: false, orders: [], config: null, tab: 'pay', selected: new Set(), busy: false };
 
       function $(id) { return document.getElementById(id); }
 
@@ -160,7 +165,7 @@
 
       function setBusy(busy) {
         state.busy = busy;
-        document.querySelectorAll('#app button, #dispatch').forEach(function (button) { button.disabled = busy; });
+        document.querySelectorAll('#app button, #bar-action').forEach(function (button) { button.disabled = busy; });
       }
 
       async function request(method, body) {
@@ -208,15 +213,27 @@
         return [order.name, [order.town, order.postcode].filter(Boolean).join(' ')].filter(Boolean).join(' · ');
       }
 
-      function todoItem(order) {
+      function button(label, className, onClick) {
+        var node = el('button', className, label);
+        node.type = 'button';
+        node.addEventListener('click', onClick);
+        return node;
+      }
+
+      function unreadableItem(order) {
+        var li = el('li', 'order');
+        var body = el('div', 'order-body no-check');
+        body.appendChild(el('div', 'ref', order.ref + ' · ' + day(order.createdAt)));
+        body.appendChild(el('div', 'muted', 'This order could not be read. Check the order email instead.'));
+        li.appendChild(body);
+        return li;
+      }
+
+      // A tickable order card (Awaiting payment and To dispatch tabs). Status
+      // lines go inside the card; buttons go below it, outside the tick-box label.
+      function selectableItem(order, statusLines, actions) {
+        if (!order.readable) return unreadableItem(order);
         var li = el('li', 'order' + (state.selected.has(order.ref) ? ' selected' : ''));
-        if (!order.readable) {
-          var unreadable = el('div', 'order-body no-check');
-          unreadable.appendChild(el('div', 'ref', order.ref + ' · ' + day(order.createdAt)));
-          unreadable.appendChild(el('div', 'muted', 'This order could not be read. Check the order email instead.'));
-          li.appendChild(unreadable);
-          return li;
-        }
         var body = el('label', 'order-body');
         var box = document.createElement('input');
         box.type = 'checkbox';
@@ -235,8 +252,29 @@
         body.appendChild(el('div', 'muted', place(order)));
         body.appendChild(el('div', 'items', itemsText(order)));
         body.appendChild(el('div', 'muted', order.delivery));
+        (statusLines || []).forEach(function (line) { body.appendChild(line); });
         li.appendChild(body);
+        if (actions && actions.length) {
+          var row = el('div', 'actions card-actions');
+          actions.forEach(function (action) { row.appendChild(action); });
+          li.appendChild(row);
+        }
         return li;
+      }
+
+      function payItem(order) {
+        return selectableItem(order);
+      }
+
+      function todoItem(order) {
+        var paid = 'Paid ' + day(order.paidAt);
+        var status = order.paymentEmailedAt
+          ? el('div', 'status sent', paid + ' · Payment email sent ✓')
+          : el('div', 'status warn', paid + ' · Payment email not sent');
+        var actions = [];
+        if (!order.paymentEmailedAt) actions.push(button('Send payment email', 'secondary', function () { sendPaymentEmail(order.ref); }));
+        actions.push(button('Undo paid', 'quiet', function () { undoPaid(order.ref); }));
+        return selectableItem(order, [status], actions);
       }
 
       function doneItem(order) {
@@ -253,48 +291,50 @@
         } else {
           body.appendChild(el('div', 'status', dispatched + ' · Review email due ' + dueDay(order.reviewDueDate)));
           var actions = el('div', 'actions');
-          var sendNow = el('button', 'secondary', 'Send review email now');
-          sendNow.type = 'button';
-          sendNow.addEventListener('click', function () { sendReviewNow(order.ref); });
-          var undo = el('button', 'quiet', 'Undo dispatch');
-          undo.type = 'button';
-          undo.addEventListener('click', function () { undoDispatch(order.ref); });
-          actions.appendChild(sendNow);
-          actions.appendChild(undo);
+          actions.appendChild(button('Send review email now', 'secondary', function () { sendReviewNow(order.ref); }));
+          actions.appendChild(button('Undo dispatch', 'quiet', function () { undoDispatch(order.ref); }));
           body.appendChild(actions);
         }
         li.appendChild(body);
         return li;
       }
 
+      var TABS = {
+        pay: { label: 'Awaiting payment', action: 'Mark as paid', draw: payItem, empty: 'No orders waiting for payment.' },
+        todo: { label: 'To dispatch', action: 'Mark as dispatched', draw: todoItem, empty: 'Nothing to dispatch. Paid orders appear here.' },
+        done: { label: 'Dispatched', action: '', draw: doneItem, empty: 'No dispatched orders in the last 45 days.' }
+      };
+
       function renderBar() {
         var count = state.selected.size;
-        $('dispatch-bar').hidden = state.tab !== 'todo' || count === 0;
+        $('dispatch-bar').hidden = !TABS[state.tab].action || count === 0;
         $('selected-count').textContent = count + (count === 1 ? ' order selected' : ' orders selected');
+        $('bar-action').textContent = TABS[state.tab].action;
       }
 
       function render() {
-        var todo = state.orders.filter(function (order) { return !order.dispatchedAt; });
-        var done = state.orders
-          .filter(function (order) { return order.dispatchedAt; })
-          .sort(function (a, b) { return b.dispatchedAt.localeCompare(a.dispatchedAt); });
-        var todoRefs = new Set(todo.map(function (order) { return order.ref; }));
-        state.selected.forEach(function (ref) { if (!todoRefs.has(ref)) state.selected.delete(ref); });
+        var groups = { pay: [], todo: [], done: [] };
+        state.orders.forEach(function (order) {
+          if (order.dispatchedAt) groups.done.push(order);
+          else if (order.paidAt) groups.todo.push(order);
+          else groups.pay.push(order);
+        });
+        groups.done.sort(function (a, b) { return b.dispatchedAt.localeCompare(a.dispatchedAt); });
+        var selectable = new Set(groups[state.tab].map(function (order) { return order.ref; }));
+        state.selected.forEach(function (ref) { if (!selectable.has(ref)) state.selected.delete(ref); });
 
-        $('tab-todo').textContent = 'To dispatch (' + todo.length + ')';
-        $('tab-done').textContent = 'Dispatched (' + done.length + ')';
-        $('tab-todo').setAttribute('aria-selected', String(state.tab === 'todo'));
-        $('tab-done').setAttribute('aria-selected', String(state.tab === 'done'));
-        $('help-todo').hidden = state.tab !== 'todo';
-        $('help-done').hidden = state.tab !== 'done';
+        Object.keys(TABS).forEach(function (tab) {
+          $('tab-' + tab).textContent = TABS[tab].label + ' (' + groups[tab].length + ')';
+          $('tab-' + tab).setAttribute('aria-selected', String(state.tab === tab));
+          $('help-' + tab).hidden = state.tab !== tab;
+        });
         $('due-row').hidden = state.tab !== 'done';
 
         var list = $('order-list');
         list.textContent = '';
-        var shown = state.tab === 'todo' ? todo : done;
-        shown.forEach(function (order) { list.appendChild(state.tab === 'todo' ? todoItem(order) : doneItem(order)); });
-        $('empty').hidden = shown.length > 0;
-        $('empty').textContent = state.tab === 'todo' ? 'Nothing waiting. New orders appear here as they come in.' : 'No dispatched orders in the last 45 days.';
+        groups[state.tab].forEach(function (order) { list.appendChild(TABS[state.tab].draw(order)); });
+        $('empty').hidden = groups[state.tab].length > 0;
+        $('empty').textContent = TABS[state.tab].empty;
         renderBar();
       }
 
@@ -322,13 +362,37 @@
         setBusy(true);
         try {
           var result = await api('POST', body);
-          showMessage(describe(result.data), result.data.ok ? 'ok' : 'error');
+          var outcome = describe(result.data);
+          if (typeof outcome === 'string') showMessage(outcome, result.data.ok ? 'ok' : 'error');
+          else showMessage(outcome.text, outcome.kind);
         } catch (err) {
           if (err.message !== 'unauthorised') showMessage('That did not go through. Check your connection and try again.', 'error');
         } finally {
           setBusy(false);
         }
         if (state.loggedIn) await load();
+      }
+
+      function plural(count, word) {
+        return count + ' ' + word + (count === 1 ? '' : 's');
+      }
+
+      function markPaidSelected() {
+        var refs = Array.from(state.selected);
+        if (!refs.length || state.busy) return;
+        if (!window.confirm('Mark ' + plural(refs.length, 'order') + ' as paid (' + refs.join(', ') + ')? Each customer is emailed a payment confirmation straight away.')) return;
+        run({ action: 'paid', refs: refs }, function (data) {
+          if (!data.ok) return data.error || 'Could not mark those orders as paid.';
+          state.selected.clear();
+          var results = data.results || [];
+          var emailed = results.filter(function (item) { return item.email === 'sent'; }).length;
+          var problems = results
+            .filter(function (item) { return item.email !== 'sent' && item.reason !== 'already sent'; })
+            .map(function (item) { return item.ref + ' (' + item.reason + ')'; });
+          var text = plural(refs.length, 'order') + ' marked as paid. ' + plural(emailed, 'payment email') + ' sent.';
+          if (!problems.length) return text;
+          return { kind: 'error', text: text + ' Not emailed: ' + problems.join('; ') + '. Retry with "Send payment email" on the To dispatch tab.' };
+        });
       }
 
       function dispatchSelected() {
@@ -338,7 +402,26 @@
           if (!data.ok) return data.error || 'Could not mark those orders as dispatched.';
           state.selected.clear();
           var due = data.results && data.results[0] ? dueDay(data.results[0].reviewDueDate) : '';
-          return refs.length + (refs.length === 1 ? ' order' : ' orders') + ' marked as dispatched.' + (due ? ' Review emails are due ' + due + '.' : '');
+          return plural(refs.length, 'order') + ' marked as dispatched.' + (due ? ' Review emails are due ' + due + '.' : '');
+        });
+      }
+
+      function barAction() {
+        if (state.tab === 'pay') markPaidSelected();
+        else if (state.tab === 'todo') dispatchSelected();
+      }
+
+      function undoPaid(ref) {
+        if (state.busy || !window.confirm('Move ' + ref + ' back to Awaiting payment? A payment email that has already gone cannot be unsent.')) return;
+        run({ action: 'undo-paid', ref: ref }, function (data) {
+          return data.ok ? ref + ' moved back to Awaiting payment.' : (data.error || 'Could not undo that.');
+        });
+      }
+
+      function sendPaymentEmail(ref) {
+        if (state.busy || !window.confirm('Email the payment confirmation for ' + ref + ' to the customer now?')) return;
+        run({ action: 'send-payment-email', ref: ref }, function (data) {
+          return data.ok ? 'Payment email sent for ' + ref + '.' : (data.error || 'The payment email was not sent.');
         });
       }
 
@@ -365,7 +448,7 @@
           var problems = results.filter(function (item) { return item.status !== 'sent'; })
             .map(function (item) { return item.ref + ': ' + item.reason; });
           if (!results.length) return 'No review emails are due yet.';
-          return 'Sent ' + sent + ' review ' + (sent === 1 ? 'email' : 'emails') + '.' + (problems.length ? ' Not sent: ' + problems.join('; ') + '.' : '');
+          return 'Sent ' + plural(sent, 'review email') + '.' + (problems.length ? ' Not sent: ' + problems.join('; ') + '.' : '');
         });
       }
 
@@ -403,9 +486,14 @@
         showMessage('');
         load();
       });
-      $('tab-todo').addEventListener('click', function () { state.tab = 'todo'; render(); });
-      $('tab-done').addEventListener('click', function () { state.tab = 'done'; render(); });
-      $('dispatch').addEventListener('click', dispatchSelected);
+      Object.keys(TABS).forEach(function (tab) {
+        $('tab-' + tab).addEventListener('click', function () {
+          if (state.tab !== tab) state.selected.clear();
+          state.tab = tab;
+          render();
+        });
+      });
+      $('bar-action').addEventListener('click', barAction);
       $('send-due').addEventListener('click', sendDue);
 
       // Already logged in on this device? The first load shows the orders or the login form.
