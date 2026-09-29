@@ -6,6 +6,7 @@ const {
   compactText,
   corsHeaders
 } = require("../server/commerce-core.js");
+const { isEmailAddress } = require("../server/email.js");
 
 const ORDER_FROM_EMAIL = process.env.ORDER_FROM_EMAIL || "North Peptides UK <orders@northpeptidesuk.com>";
 
@@ -205,13 +206,6 @@ function buildCustomerEmailHtml(order) {
         <p style="text-align:right;font-size:16px;"><strong>Total to transfer: ${formatMoney(order.grandTotal)}</strong></p>
         <p style="font-size:13px;color:#6B7280;">Order reference: ${escapeHtml(order.ref)}</p>
 
-        <div style="margin:22px 0;padding:16px;background:#F8FBFF;border:1px solid #CFE0F1;border-radius:10px;">
-          <p style="margin:0 0 6px;font-weight:700;color:#10233F;">Share your order experience</p>
-          <p style="margin:0;font-size:14px;color:#4B5F75;">After your order has arrived, you can leave honest feedback about ordering, delivery, packaging or support.</p>
-          <p style="margin:12px 0 0;"><a href="https://www.feedbackplatform.com/review/northpeptidesuk.com" style="display:inline-block;background:#1F6FEB;color:#ffffff;text-decoration:none;padding:10px 14px;border-radius:7px;font-size:14px;font-weight:700;">Leave feedback</a></p>
-          <p style="margin:10px 0 0;font-size:13px;color:#4B5F75;">Or use our own moderated review form: <a href="https://www.northpeptidesuk.com/reviews/" style="color:#1F6FEB;">northpeptidesuk.com/reviews</a></p>
-        </div>
-
         <div style="margin:22px 0;padding:16px;background:#EEF7FD;border:1px solid #CFE0F1;border-radius:10px;">
           <p style="margin:0 0 6px;font-weight:700;color:#10233F;">Need help?</p>
           <p style="margin:0;font-size:14px;color:#4B5F75;">Reply to this email with your order reference and we'll help with any questions.</p>
@@ -253,10 +247,6 @@ Delivery (${order.delivery.label}): ${deliveryChargeLabel(order.delivery.charge)
 Total to transfer: ${formatMoney(order.grandTotal)}
 Order reference: ${order.ref}
 
-After your order has arrived, you can leave honest feedback about ordering, delivery, packaging or support:
-https://www.feedbackplatform.com/review/northpeptidesuk.com
-Or use our own moderated review form: https://www.northpeptidesuk.com/reviews/
-
 Questions? Reply to this email — it reaches us at orders@northpeptidesuk.com.
 
 North Peptides UK - Research use only. Not for human or animal consumption.`;
@@ -297,6 +287,7 @@ module.exports = async function handler(req, res) {
 
   if (!name) return json(res, 400, { error: "Name is required." }, origin);
   if (!email) return json(res, 400, { error: "Email is required." }, origin);
+  if (!isEmailAddress(email)) return json(res, 400, { error: "Please check your email address. We send your bank details there." }, origin);
   if (!address1) return json(res, 400, { error: "Address is required." }, origin);
   if (!city) return json(res, 400, { error: "City/town is required." }, origin);
   if (!postcode) return json(res, 400, { error: "Postcode is required." }, origin);

@@ -707,6 +707,8 @@
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .optional-label { color: var(--muted); font-size: .7rem; letter-spacing: .06em; margin-left: 4px; text-transform: none; }
     .field-hint { display: block; margin-top: 6px; font-size: .8rem; color: var(--muted); letter-spacing: 0; }
+    .email-suggest { margin: 8px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--amber-tint); border: 1px solid #F1D3AE; color: var(--amber); font-size: .85rem; line-height: 1.4; }
+    .email-suggest button { font: inherit; font-weight: 700; color: var(--action); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 
     .research-confirm {
       display: flex;
@@ -1326,6 +1328,7 @@
       <label for="co-email">Email address</label>
       <input id="co-email" type="email" name="email" required autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-describedby="co-email-hint" placeholder="you@example.com">
       <span class="field-hint" id="co-email-hint">We send your bank details, order confirmation and tracking here.</span>
+      <p class="email-suggest" id="co-email-suggest" role="status" aria-live="polite" hidden></p>
     </div>
 
     <fieldset>
@@ -2051,7 +2054,7 @@
     return lines + discount + delivery + total;
   }
 
-  function showBankTransferSuccess(data) {
+  function showBankTransferSuccess(data, customerEmail) {
     const summary = byId('success-summary-lines');
     if (summary) summary.innerHTML = successSummaryMarkup(data);
     byId('bank-name').textContent = data.bankDetails.accountName;
@@ -2065,6 +2068,15 @@
         note.textContent = 'We could not send the confirmation email — please screenshot or note down the details above before leaving this page.';
         note.style.color = '#B45309';
         note.style.fontWeight = '600';
+      }
+    } else if (customerEmail) {
+      // Show the address so a typo is obvious, and where to look if it's not in the inbox.
+      const note = byId('email-sent-note');
+      if (note) {
+        const address = document.createElement('strong');
+        address.textContent = customerEmail;
+        note.textContent = '';
+        note.append('We have also emailed these details to ', address, '. Not in your inbox within a few minutes? Check your spam or junk folder and mark it \u201cNot spam\u201d, so our payment and dispatch emails reach you too.');
       }
     }
     byId('main-checkout').style.display = 'none';
@@ -2147,6 +2159,73 @@
   }
 
   // ── BOOT ────────────────────────────────────────────────────────────────
+  // ── EMAIL TYPO CHECK ────────────────────────────────────────────────────
+  // The bank details go to this address, so "gmail.con" or "hotmial.com"
+  // silently loses the order. Suggest the likely address before submitting.
+  const EMAIL_DOMAINS = [
+    'gmail.com', 'googlemail.com', 'hotmail.com', 'hotmail.co.uk', 'outlook.com', 'live.com', 'live.co.uk',
+    'msn.com', 'yahoo.com', 'yahoo.co.uk', 'ymail.com', 'icloud.com', 'me.com', 'mac.com', 'aol.com',
+    'aol.co.uk', 'btinternet.com', 'sky.com', 'virginmedia.com', 'talktalk.net', 'ntlworld.com',
+    'blueyonder.co.uk', 'tiscali.co.uk', 'protonmail.com', 'proton.me', 'mail.com', 'email.com', 'gmx.com', 'gmx.co.uk'
+  ];
+  let emailSuggestionShownFor = null;
+
+  // Edit distance that counts swapped neighbours ("gmial") as one edit.
+  function editDistance(a, b) {
+    const d = [];
+    for (let i = 0; i <= a.length; i++) d[i] = [i];
+    for (let j = 0; j <= b.length; j++) d[0][j] = j;
+    for (let i = 1; i <= a.length; i++) {
+      for (let j = 1; j <= b.length; j++) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+      }
+    }
+    return d[a.length][b.length];
+  }
+
+  function suggestEmail(value) {
+    const email = String(value || '').trim();
+    const at = email.lastIndexOf('@');
+    if (at < 1 || at === email.length - 1) return '';
+    const local = email.slice(0, at);
+    const domain = email.slice(at + 1).toLowerCase();
+    if (EMAIL_DOMAINS.indexOf(domain) !== -1) return '';
+    if (/\.co$/.test(domain) && EMAIL_DOMAINS.indexOf(domain + '.uk') !== -1) return local + '@' + domain + '.uk';
+    let best = '';
+    let bestDistance = Infinity;
+    EMAIL_DOMAINS.forEach(known => {
+      const distance = editDistance(domain, known);
+      if (distance < bestDistance) { best = known; bestDistance = distance; }
+    });
+    if (bestDistance <= (best.length > 8 ? 2 : 1)) return local + '@' + best;
+    const fixed = domain.replace(/\.(con|cm|cmo|comm|om|coom|vom|xom)$/, '.com').replace(/\.co\.(uj|ul|ik|jk)$/, '.co.uk');
+    return fixed !== domain ? local + '@' + fixed : '';
+  }
+
+  function showEmailSuggestion(suggestion) {
+    const box = byId('co-email-suggest');
+    if (!box) return;
+    // Tapping the suggestion blurs the email field first; redrawing then would
+    // swap the button out from under the tap, so leave an unchanged one alone.
+    if (suggestion && !box.hidden && box.dataset.suggestion === suggestion) return;
+    box.dataset.suggestion = suggestion || '';
+    box.textContent = '';
+    box.hidden = !suggestion;
+    if (!suggestion) return;
+    const use = document.createElement('button');
+    use.type = 'button';
+    use.textContent = suggestion;
+    use.addEventListener('click', () => {
+      byId('co-email').value = suggestion;
+      box.dataset.suggestion = '';
+      box.hidden = true;
+      box.textContent = '';
+    });
+    box.append('Did you mean ', use, '? Your bank details are sent to this address.');
+  }
+
   let checkoutBooted = false;
   function bootCheckout() {
     if (checkoutBooted) return;
@@ -2165,6 +2244,10 @@
     const postcode = byId('co-postcode');
     if (postcode && postcode.addEventListener) {
       postcode.addEventListener('blur', () => { postcode.value = String(postcode.value || '').trim().toUpperCase(); });
+    }
+    const email = byId('co-email');
+    if (email && email.addEventListener) {
+      email.addEventListener('blur', () => showEmailSuggestion(suggestEmail(email.value)));
     }
   }
   if (document.readyState !== 'loading') bootCheckout();
@@ -2185,10 +2268,21 @@
       showCheckoutError('Your basket is empty — add at least one item before placing an order.');
       return;
     }
+    // Likely typo in the email: point it out once. Placing the order again
+    // with the same address goes ahead (it may be right).
+    const emailField = byId('co-email');
+    const emailSuggestion = suggestEmail(emailField.value);
+    if (emailSuggestion && emailSuggestionShownFor !== emailField.value) {
+      emailSuggestionShownFor = emailField.value;
+      showEmailSuggestion(emailSuggestion);
+      emailField.focus();
+      return;
+    }
 
     clearCheckoutError();
     setSubmitLabel('Placing order...');
     btn.disabled = true;
+    const customer = getCustomerPayload(e.target);
     try {
       const res = await fetch('/api/create-order', {
         method: 'POST',
@@ -2197,7 +2291,7 @@
           items: basketData,
           deliveryMethod: selectedDeliveryMethod(),
           discountCode: discountApplied ? appliedDiscountCode : '',
-          customer: getCustomerPayload(e.target),
+          customer,
           origin: window.location.origin
         })
       });
@@ -2218,7 +2312,7 @@
           currency: 'GBP'
         });
       }
-      showBankTransferSuccess(data);
+      showBankTransferSuccess(data, customer.email);
     } catch (error) {
       showCheckoutError(error.message || 'Order could not be placed. Please try again.');
       setSubmitLabel('Place order');
