@@ -46,6 +46,8 @@
 - [Alcohol Wipes](https://www.northpeptidesuk.com/products/alcohol-wipes/): Single-use alcohol wipe pack for research preparation workflows.
 
 ## Research guides
+- [Why Are Peptides Freeze-Dried? Lyophilisation Explained](https://www.northpeptidesuk.com/blog/why-are-peptides-freeze-dried.html): What lyophilisation is, why research peptides are supplied as freeze-dried powder, how the process works, and what it means for reconstitution and storage. Research use only.
+- [Peptide Solubility: Which Research Compounds Dissolve How](https://www.northpeptidesuk.com/blog/peptide-solubility.html): A practical guide to research peptide solubility — what determines how a compound dissolves, which solvents to use, compound-by-compound notes, and troubleshooting for the laboratory.
 - [How to Read a Peptide Certificate of Analysis (COA)](https://www.northpeptidesuk.com/blog/how-to-read-a-certificate-of-analysis.html): Field-by-field guide to a peptide COA - sample name, method, purity %, measured content vs label claim, error and report code - using two published reports.
 - [How Peptide Purity Is Verified: HPLC Explained](https://www.northpeptidesuk.com/blog/how-peptide-purity-is-verified-hplc.html): How reversed-phase HPLC measures peptide purity - gradient, retention time, peak-area purity - and what a 99% result does and does not tell a laboratory buyer.
 - [Are Research Peptides Legal to Buy in the UK? What the Rules Say](https://www.northpeptidesuk.com/blog/are-research-peptides-legal-uk.html): How research peptides are positioned under UK rules: research-use-only supply, not medicines or supplements, and the consumer-law basics that apply to an order.
