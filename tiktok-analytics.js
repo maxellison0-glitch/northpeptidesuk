@@ -167,7 +167,8 @@
     return {
       AddToCart: 'add_to_cart',
       InitiateCheckout: 'begin_checkout',
-      CompletePayment: 'purchase'
+      CompletePayment: 'purchase',
+      OrderSubmitted: 'order_submitted'
     }[eventName] || String(eventName || '').replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
   }
 
@@ -234,7 +235,9 @@
   function track(eventName, payload) {
     if (getConsent() !== 'accepted') return false;
     let sent = false;
-    if (pixelLoaded && window.ttq) {
+    // This custom event describes an unpaid bank-transfer order. Keep it in
+    // Google analytics only; it must not count as a TikTok payment or checkout.
+    if (pixelLoaded && window.ttq && eventName !== 'OrderSubmitted') {
       window.ttq.track(eventName, payload || {});
       sent = true;
     }

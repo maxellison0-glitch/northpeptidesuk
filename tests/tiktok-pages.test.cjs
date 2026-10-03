@@ -30,10 +30,11 @@ test('basket emits AddToCart and InitiateCheckout', () => {
   assert.match(source, /currency:\s*'GBP'/);
 });
 
-test('checkout emits add-on and InitiateCheckout events', () => {
+test('checkout records an unpaid order separately from beginning checkout or payment', () => {
   const source = read('checkout.html');
   assert.match(source, /NPUKAnalytics\.track\('AddToCart'/);
-  assert.match(source, /NPUKAnalytics\.track\('InitiateCheckout'/);
+  assert.match(source, /NPUKAnalytics\.track\('OrderSubmitted'/);
+  assert.doesNotMatch(source, /NPUKAnalytics\.track\('(InitiateCheckout|CompletePayment)'/);
 });
 
 test('successful order clears basket on bank transfer success', () => {

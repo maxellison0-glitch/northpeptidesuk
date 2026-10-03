@@ -317,6 +317,15 @@ test('unrelated storage events are ignored without reading storage', () => {
   assert.deepEqual([...new Set(app.storageReads)], ['npuk_analytics_consent']);
 });
 
+test('an unpaid order emits a Google order_submitted event without a TikTok payment', () => {
+  const app = boot('accepted', { ga4MeasurementId: 'G-TEST12345' });
+  const before = app.window.ttq.length;
+  app.window.NPUKAnalytics.track('OrderSubmitted', { value: 28.99, currency: 'GBP' });
+  assert.equal(app.window.ttq.length, before);
+  assert.equal(app.window.dataLayer.at(-1)[1], 'order_submitted');
+  assert.equal(app.window.dataLayer.at(-1)[2].value, 28.99);
+});
+
 test('failed consent writes preserve the current rejection despite an older stored acceptance', () => {
   const options = { storageWriteUnavailable: true };
   const app = boot('accepted', {}, options);

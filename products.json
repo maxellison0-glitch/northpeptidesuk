@@ -1,7 +1,7 @@
 {
   "site": "North Peptides UK",
   "baseUrl": "https://www.northpeptidesuk.com",
-  "generatedAt": "2026-09-08",
+  "generatedAt": "2026-09-29",
   "disclaimer": "Products are supplied for laboratory research use only and are not for human or animal consumption.",
   "documentationStatus": "Supplier documentation is available on request where held. Independent laboratory reports are published on the site where held.",
   "products": [
@@ -532,7 +532,7 @@
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 30,
+          "price": 24,
           "currency": "GBP"
         }
       ],
@@ -593,7 +593,7 @@
         {
           "label": "1x50mg / 3ml",
           "dose": "50mg / 3ml",
-          "price": 45,
+          "price": 39,
           "currency": "GBP"
         }
       ],
@@ -654,7 +654,7 @@
         {
           "label": "1x100mg",
           "dose": "100mg",
-          "price": 50,
+          "price": 35,
           "currency": "GBP"
         }
       ],
@@ -715,7 +715,7 @@
         {
           "label": "1x100mg / 3ml",
           "dose": "100mg / 3ml",
-          "price": 65,
+          "price": 50,
           "currency": "GBP"
         }
       ],

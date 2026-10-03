@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/np.css?v=20260915-design">
   <script src="/site-config.js" defer></script>
-  <script src="/tiktok-analytics.js?v=20260915-design" defer></script>
+  <script src="/tiktok-analytics.js?v=20261003-order-submitted" defer></script>
   <script src="/age-gate.js"></script>
   <script src="/dispatch-bar.js"></script>
   <style>
@@ -801,9 +801,9 @@
     .success-check {
       width: 64px; height: 64px;
       border-radius: 50%;
-      background: var(--verify-tint);
-      border: 1px solid rgba(14,159,110,.35);
-      color: var(--verify);
+      background: #EEF7FD;
+      border: 1px solid #CFE0F1;
+      color: var(--action-deep);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1399,15 +1399,10 @@
 <div class="checkout-wrap success-page" id="success-page">
   <div class="success-head">
     <div class="success-check" aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true"><path d="M4.5 12.5l5 5L19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <h2>Order received</h2>
-    <p class="success-lede">Thanks — your order has been placed. Complete the bank transfer below to confirm it. We will email you as soon as payment arrives.</p>
-  </div>
-
-  <div class="success-summary" id="success-summary">
-    <div class="success-summary-head"><p class="bank-card-title">Order summary</p></div>
-    <div id="success-summary-lines"></div>
+    <h2 id="payment-instructions-title">Order received — payment needed</h2>
+    <p class="success-lede" id="payment-instructions-lede">No payment has been taken. Send the amount below by bank transfer, using your order reference. We will email you when we confirm receipt.</p>
   </div>
 
   <div class="bank-card" id="bank-details-box">
@@ -1438,6 +1433,11 @@
       <p class="next-step-body"><span id="email-sent-note">We have also emailed these details to you.</span></p>
     </li>
   </ol>
+
+  <div class="success-summary" id="success-summary">
+    <div class="success-summary-head"><p class="bank-card-title">Order summary</p></div>
+    <div id="success-summary-lines"></div>
+  </div>
 
   <p class="success-help">Any questions? Email <strong>orders@northpeptidesuk.com</strong> or <a href="https://wa.me/447380398347" target="_blank" rel="noopener noreferrer">WhatsApp us &rarr;</a></p>
   <div class="success-back-row">
@@ -1470,7 +1470,7 @@
   // "Reach free delivery" candidates in the owner's priority order. Prices
   // must match server/commerce-core.js CATALOG (name|dose keys).
   const REACH_CANDIDATES = [
-    { name: 'GHK-Cu',      dose: '50mg', price: 30, img: '/ghk-cu-blue-powder-600.webp',     alt: 'GHK-Cu 50mg lyophilised research vial',      meta: 'Standard vial · lab tested, 99% HPLC' },
+    { name: 'GHK-Cu',      dose: '50mg', price: 24, img: '/ghk-cu-blue-powder-600.webp',     alt: 'GHK-Cu 50mg lyophilised research vial',      meta: 'Standard vial · lab tested, 99% HPLC' },
     { name: 'Retatrutide', dose: '10mg', price: 50, img: '/retatrutide-vial-600.webp',       alt: 'Retatrutide 10mg lyophilised research vial', meta: 'Standard vial · lab tested, 99% HPLC' },
     { name: 'BPC-157',     dose: '10mg', price: 25, img: '/bpc-157-vial-600.webp',           alt: 'BPC-157 10mg lyophilised research vial',     meta: 'Standard vial · supplier-stated purity' },
     { name: 'KLOW Stack',  dose: '80mg', price: 60, img: '/klow-stack-blue-powder-600.webp', alt: 'KLOW Stack 80mg lyophilised research vial', meta: '4-in-1 blend · supplier-stated purity' }
@@ -2062,6 +2062,7 @@
     byId('bank-acct').textContent = data.bankDetails.accountNumber;
     byId('bank-amount').textContent = '£' + Number(data.grandTotal).toFixed(2);
     byId('bank-ref').textContent = data.orderRef;
+    saveBankTransferInstructions(data);
     if (data.emails && data.emails.customer !== 'sent') {
       const note = byId('email-sent-note');
       if (note) {
@@ -2082,7 +2083,7 @@
     byId('main-checkout').style.display = 'none';
     byId('success-page').style.display = 'block';
     // Clear the basket everywhere: storage, state, sticky bar, suggestions.
-    localStorage.removeItem('npuk_basket');
+    try { localStorage.removeItem('npuk_basket'); } catch (err) { /* Payment details must remain usable when storage is blocked. */ }
     basketData = [];
     setBodyClass('has-ship-bar', false);
     const bar = byId('ship-bar');
@@ -2090,6 +2091,51 @@
     const mod = byId('reach-module');
     if (mod) mod.hidden = true;
     if (typeof window.scrollTo === 'function') window.scrollTo(0, 0);
+  }
+
+  // Keep only the merchant's payment instructions in this tab, so switching to
+  // a banking app and refreshing does not lose them. Never persist customer
+  // details or products, and never infer payment status from this snapshot.
+  const PAYMENT_INSTRUCTIONS_KEY = 'npuk_payment_instructions';
+  function saveBankTransferInstructions(data) {
+    try {
+      window.sessionStorage.setItem(PAYMENT_INSTRUCTIONS_KEY, JSON.stringify({
+        savedAt: Date.now(), orderRef: data.orderRef,
+        grandTotal: Number(data.grandTotal), bankDetails: {
+          accountName: data.bankDetails.accountName,
+          sortCode: data.bankDetails.sortCode,
+          accountNumber: data.bankDetails.accountNumber
+        }
+      }));
+    } catch (err) { /* The live instructions and email remain available. */ }
+  }
+
+  function restoreBankTransferInstructions() {
+    try {
+      const saved = JSON.parse(window.sessionStorage.getItem(PAYMENT_INSTRUCTIONS_KEY));
+      if (!saved) return false;
+      const age = Date.now() - saved.savedAt;
+      const bank = saved.bankDetails;
+      if (!Number.isFinite(age) || age < 0 || age > 24 * 60 * 60 * 1000 ||
+          !/^NP-[A-Z0-9-]{1,40}$/.test(saved.orderRef) ||
+          !Number.isFinite(saved.grandTotal) || saved.grandTotal < 0 || !bank ||
+          !['accountName', 'sortCode', 'accountNumber'].every(key => typeof bank[key] === 'string' && bank[key].length > 0 && bank[key].length <= 160)) {
+        window.sessionStorage.removeItem(PAYMENT_INSTRUCTIONS_KEY);
+        return false;
+      }
+      byId('bank-name').textContent = bank.accountName;
+      byId('bank-sort').textContent = bank.sortCode;
+      byId('bank-acct').textContent = bank.accountNumber;
+      byId('bank-amount').textContent = '£' + saved.grandTotal.toFixed(2);
+      byId('bank-ref').textContent = saved.orderRef;
+      byId('payment-instructions-title').textContent = 'Your bank transfer instructions';
+      byId('payment-instructions-lede').textContent = 'Saved instructions for order ' + saved.orderRef + '. This page cannot check whether your payment has arrived. If you have already paid, do not transfer again.';
+      byId('success-summary').hidden = true;
+      byId('email-sent-note').textContent = 'Check your order email for the full order summary. If it is missing, contact us with the reference above.';
+      byId('main-checkout').style.display = 'none';
+      byId('success-page').style.display = 'block';
+      return true;
+    } catch (err) { return false; }
   }
 
   function showCheckoutError(text) {
@@ -2237,6 +2283,7 @@
       basketData = [];
     }
     if (!Array.isArray(basketData)) basketData = [];
+    if (basketData.length === 0 && restoreBankTransferInstructions()) return;
     normaliseCoolingPackaging();
     renderOrder();
     openExtrasFromHash();
@@ -2300,7 +2347,7 @@
         throw new Error(data.error || 'Order could not be placed.');
       }
       if (window.NPUKAnalytics) {
-        window.NPUKAnalytics.track('InitiateCheckout', {
+        window.NPUKAnalytics.track('OrderSubmitted', {
           contents: basketData.map(item => ({
             content_id: item.name + ':' + item.dose,
             content_name: item.name,
