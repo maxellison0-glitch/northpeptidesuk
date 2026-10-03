@@ -87,7 +87,7 @@ function renderFooter(opts = {}) {
     <div class="np-footer-grid">
       <div class="np-footer-brand">
         <a href="${root}" class="np-footer-logo">NORTH<span>PEPTIDES</span>UK</a>
-        <p>Research peptides with purity stated on every product. UK stocked, stored frozen until dispatch, with independent lab reports published where held.</p>
+        <p>Research peptides with purity stated on every product. ${opts.penProduct ? 'UK stocked. Storage and handling details are listed on this page. Independent lab reports are published where held.' : 'UK stocked, stored frozen until dispatch, with independent lab reports published where held.'}</p>
         <p class="np-footer-pay">Payment by UK bank transfer · Royal Mail tracked delivery</p>
       </div>
       <div class="np-footer-col">

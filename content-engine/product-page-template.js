@@ -877,9 +877,9 @@ function sideCard(slug, product) {
     const from = target => `${PRODUCTS[target].variants.length > 1 ? 'from ' : ''}${formatGBP(priceFrom(target))}`;
     const isPen = formatType(product) === 'pen';
     if (isPen && PRODUCTS['pen-tips']) setup.push(link('pen-tips', 'Spare pen tips', from('pen-tips')));
-    if (PRODUCTS['bacteriostatic-water']) setup.push(link('bacteriostatic-water', 'Bacteriostatic water', from('bacteriostatic-water')));
+    if (lyophilised && PRODUCTS['bacteriostatic-water']) setup.push(link('bacteriostatic-water', 'Bacteriostatic water', from('bacteriostatic-water')));
     if (keys.includes('intranasal') && PRODUCTS['intranasal-research-kit']) setup.push(link('intranasal-research-kit', 'Intranasal research kit', from('intranasal-research-kit')));
-    if (PRODUCTS['syringe-kit']) setup.push(link('syringe-kit', 'Insulin needle pack', from('syringe-kit')));
+    if (lyophilised && PRODUCTS['syringe-kit']) setup.push(link('syringe-kit', 'Insulin needle pack', from('syringe-kit')));
     if (PRODUCTS['alcohol-wipes']) setup.push(link('alcohol-wipes', 'Alcohol wipes', from('alcohol-wipes')));
     if (!isPen && PRODUCTS['pen-tips']) setup.push(link('pen-tips', 'Spare pen tips', from('pen-tips')));
   }
@@ -898,7 +898,7 @@ function sideCard(slug, product) {
           <tr><th>Packed</th><td>Sealed, discreet, from UK stock</td></tr>
           <tr><th>Chilled packaging</th><td>Optional &middot; &pound;5 per order<br>Insulated foil pouch + gel packs. <a href="/checkout.html#chilled-packaging">Add at checkout</a>.</td></tr>
         </table>
-${setup.length ? `        <p class="eyebrow side-eyebrow">Complete your setup</p>
+${setup.length ? `        <p class="eyebrow side-eyebrow">${formatType(product) === 'pen' ? 'Optional spares — kit already included' : 'Research supplies'}</p>
         <ul class="side-links">
 ${setup.join('\n')}
         </ul>
@@ -1043,7 +1043,7 @@ ${penTipsSheet(formats)}
 
 ${configScript}
 
-${renderFooter()}
+${renderFooter({ penProduct: isPen })}
 </body>
 </html>
 `;

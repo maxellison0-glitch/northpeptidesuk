@@ -21,7 +21,7 @@ function inlineCheckoutScript() {
   return main;
 }
 
-function bootCheckout(basket, hash = '') {
+function bootCheckout(basket, hash = '', session = new Map()) {
   const elements = new Map();
   const makeClassList = () => {
     const classes = new Set();
@@ -68,6 +68,11 @@ function bootCheckout(basket, hash = '') {
   const window = {
     document,
     localStorage,
+    sessionStorage: {
+      getItem(key) { return session.get(key) || null; },
+      setItem(key, value) { session.set(key, value); },
+      removeItem(key) { session.delete(key); }
+    },
     location: { origin: 'https://northpeptidesuk.com', hash },
     addEventListener(type, fn) { (windowListeners[type] = windowListeners[type] || []).push(fn); }
   };
@@ -85,6 +90,53 @@ function bootCheckout(basket, hash = '') {
     basket() { return JSON.parse(store.get('npuk_basket') || '[]'); }
   };
 }
+
+const instructions = {
+  orderRef: 'NP-2001', grandTotal: '28.99',
+  bankDetails: { accountName: 'Test merchant', sortCode: '00-00-00', accountNumber: '00000000' }
+};
+
+test('bank details survive a refresh without claiming the order is still unpaid', () => {
+  const session = new Map();
+  const first = bootCheckout([], '', session);
+  first.call('saveBankTransferInstructions', { ...instructions, customer: { email: 'private@example.test' }, items: ['private'] });
+  const saved = JSON.parse(session.get('npuk_payment_instructions'));
+  assert.deepEqual(Object.keys(saved).sort(), ['bankDetails', 'grandTotal', 'orderRef', 'savedAt']);
+  const reloaded = bootCheckout([], '', session);
+  assert.equal(reloaded.byId('bank-ref').textContent, 'NP-2001');
+  assert.equal(reloaded.byId('bank-amount').textContent, '£28.99');
+  assert.equal(reloaded.byId('success-page').style.display, 'block');
+  assert.match(reloaded.byId('payment-instructions-lede').textContent, /already paid, do not transfer again/);
+  assert.equal(reloaded.byId('success-summary').hidden, true);
+});
+
+test('saved payment instructions never replace a new basket', () => {
+  const session = new Map();
+  bootCheckout([], '', session).call('saveBankTransferInstructions', instructions);
+  const next = bootCheckout([{ name: 'BPC-157', price: 25, dose: '10mg', qty: 1 }], '', session);
+  assert.equal(next.byId('grand-total').textContent, '£28.99');
+  assert.notEqual(next.byId('success-page').style.display, 'block');
+});
+
+test('expired, malformed and non-numeric receipts cannot restore payment instructions', () => {
+  for (const saved of [
+    '{',
+    JSON.stringify({ ...instructions, grandTotal: 28.99, savedAt: Date.now() - 25 * 60 * 60 * 1000 }),
+    JSON.stringify({ ...instructions, grandTotal: '28.99', savedAt: Date.now() }),
+    JSON.stringify({ ...instructions, grandTotal: 28.99, bankDetails: null, savedAt: Date.now() })
+  ]) {
+    const app = bootCheckout([], '', new Map([['npuk_payment_instructions', saved]]));
+    assert.notEqual(app.byId('success-page').style.display, 'block');
+  }
+});
+
+test('checkout still works if session storage is blocked', () => {
+  const blocked = { get() { throw new Error('blocked'); }, set() { throw new Error('blocked'); } };
+  const app = bootCheckout([{ name: 'BPC-157', price: 25, dose: '10mg', qty: 1 }], '', blocked);
+  assert.doesNotThrow(() => app.call('saveBankTransferInstructions', instructions));
+  assert.equal(app.call('restoreBankTransferInstructions'), false);
+  assert.equal(app.byId('grand-total').textContent, '£28.99');
+});
 
 test('checkout renders subtotal and total for a loaded basket', () => {
   const app = bootCheckout([{ name: 'Retatrutide Pen Vial', price: 100, dose: '20mg', qty: 1 }]);
@@ -168,33 +220,33 @@ test('chilled packaging adds, persists after refresh, and removes from its own c
 });
 
 test('chilled packaging is charged once across every add path and the order-summary remove stays in sync', () => {
-  const app = bootCheckout([{ name: 'GHK-Cu', dose: '50mg', price: 30, qty: 1 }]);
+  const app = bootCheckout([{ name: 'GHK-Cu', dose: '50mg', price: 24, qty: 1 }]);
   app.call('addCoolingPackaging', app.byId('cooling-toggle'));
   app.call('addCoolingPackaging', app.byId('cooling-toggle'));
   app.call('addReachItem', null, coolingItem.name, coolingItem.price, coolingItem.dose);
   app.call('addCheckoutAddon', null, coolingItem.name, coolingItem.price, coolingItem.dose);
   app.call('changeCheckoutQty', 1, 1);
   assert.deepEqual(app.basket().filter(isCoolingItem), [coolingItem]);
-  assert.equal(app.byId('subtotal').textContent, '£35');
+  assert.equal(app.byId('subtotal').textContent, '£29');
   const packagingLine = app.byId('checkout-lines').innerHTML.split('data-item-name="Thermal Cooled Packaging"')[1];
   assert.ok(packagingLine.includes('Per order'));
   assert.ok(!packagingLine.includes('Increase quantity'), 'per-order packaging must have no quantity stepper');
   app.call('removeCheckoutItem', 1);
   assert.equal(app.byId('cooling-toggle').textContent, 'Add to order');
   assert.equal(app.byId('cooling-status').hidden, true);
-  assert.equal(app.byId('subtotal').textContent, '£30');
+  assert.equal(app.byId('subtotal').textContent, '£24');
 });
 
 test('older saved baskets are repaired to one £5 packaging charge before display and submission', () => {
   const app = bootCheckout([
-    { name: 'GHK-Cu', dose: '50mg', price: 30, qty: 1 },
+    { name: 'GHK-Cu', dose: '50mg', price: 24, qty: 1 },
     { ...coolingItem, qty: 3, price: 10 },
     { ...coolingItem, qty: 2 }
   ]);
   assert.deepEqual(app.basket().filter(isCoolingItem), [coolingItem]);
-  assert.equal(app.byId('subtotal').textContent, '£35');
+  assert.equal(app.byId('subtotal').textContent, '£29');
   assert.equal(app.byId('cooling-toggle').textContent, 'Remove');
-  assert.equal(core.validateOrderItems(app.basket()).grossSubtotal, 35);
+  assert.equal(core.validateOrderItems(app.basket()).grossSubtotal, 29);
 });
 
 test('packaging totals and free delivery stay in parity with server pricing, including discounts', () => {

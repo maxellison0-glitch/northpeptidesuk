@@ -523,7 +523,7 @@ const PRODUCT_DATA = {
       "Full lab report published on site"
     ],
     variants: [
-      { label: "1x50mg", dose: "50mg", price: 30 }
+      { label: "1x50mg", dose: "50mg", price: 24 }
     ],
   },
   "ghk-cu-pen": {
@@ -575,7 +575,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 45 }
+      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 39 }
     ],
   },
   "ghk-cu-100mg": {
@@ -627,7 +627,7 @@ const PRODUCT_DATA = {
       "Stored frozen until dispatch"
     ],
     variants: [
-      { label: "1x100mg", dose: "100mg", price: 50 }
+      { label: "1x100mg", dose: "100mg", price: 35 }
     ],
   },
   "ghk-cu-100mg-pen": {
@@ -679,7 +679,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x100mg / 3ml", dose: "100mg / 3ml", price: 65 }
+      { label: "1x100mg / 3ml", dose: "100mg / 3ml", price: 50 }
     ],
   },
   kpv: {

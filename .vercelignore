@@ -5,6 +5,7 @@ docs/
 social-engine/
 content-engine/
 tests/
+internal/
 *.md
 .env.example
 netlify.toml
