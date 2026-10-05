@@ -220,7 +220,7 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x15mg", dose: "15mg", price: 39 },
-      { label: "1x30mg", dose: "30mg", price: 120 }
+      { label: "1x30mg", dose: "30mg", price: 62 }
     ],
   },
   "tirzepatide-pen": {
@@ -272,7 +272,7 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 82 },
-      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 140 }
+      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 114 }
     ],
   },
   "bpc-157": {
