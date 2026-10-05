@@ -68,8 +68,8 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "retatrutide-pen", label: "Also available as", name: "Retatrutide Pen Vial (pre-filled kit)" },
     seo: {
-      title: "Buy Retatrutide UK | 10mg, 15mg, 20mg, 50mg Vials | North Peptides UK",
-      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg & 20mg lyophilised vials, independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      title: "Buy Retatrutide UK | 10mg, 15mg, 30mg, 50mg Vials | North Peptides UK",
+      metaDescription: "Retatrutide research compound, UK stocked. 10mg, 15mg, 30mg & 50mg lyophilised vials, independently tested at 99% purity by HPLC. 24-48h dispatch after payment. Research use only — not for human consumption.",
       faq: [
         { q: "What is Retatrutide supplied as?", a: "A lyophilised powder in a sealed vial, stored frozen until dispatch. A sample from our UK stock was submitted to an independent analytical laboratory and returned 99% purity by HPLC. The full report is published on our documentation page." },
         { q: "Has this Retatrutide been independently tested?", a: "Yes. A sealed 15mg vial was sent to Analiza Białek sp. z o.o., an independent analytical laboratory in Wrocław, Poland. HPLC analysis returned 99% purity, with vial content measured at 16.49mg against a 15mg label claim. The full certificate of analysis is published on the site." },
@@ -110,10 +110,10 @@ const PRODUCT_DATA = {
       "Full lab report published on site"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 50 },
-      { label: "1x15mg", dose: "15mg", price: 70 },
-      { label: "1x20mg", dose: "20mg", price: 90 },
-      { label: "1x50mg", dose: "50mg", price: 180 }
+      { label: "1x10mg", dose: "10mg", price: 44 },
+      { label: "1x15mg", dose: "15mg", price: 69 },
+      { label: "1x30mg", dose: "30mg", price: 94 },
+      { label: "1x50mg", dose: "50mg", price: 139 }
     ],
   },
   "retatrutide-pen": {
@@ -124,21 +124,21 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial (lyophilised)" },
     seo: {
-      title: "Retatrutide Pen Vial UK | 10mg, 20mg & 50mg | North Peptides UK",
-      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 20mg & 50mg sizes. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
+      title: "Retatrutide Pen Vial UK | 10mg, 15mg, 30mg & 50mg | North Peptides UK",
+      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 15mg, 30mg & 50mg sizes. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
         { q: "How should the pen vial be stored in the laboratory?", a: "Store at 2–8°C, protected from light, and do not freeze once reconstituted." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a frozen powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
-        { q: "What sizes are available?", a: "10mg, 20mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
+        { q: "What sizes are available?", a: "10mg, 15mg, 30mg and 50mg pen vials are available. Select your size using the dropdown before adding to basket." },
         { q: "Do I need a pen separately?", a: "No. Each pen-vial order includes a pre-filled disposable research pen, sterile pen tips and alcohol wipes. No separate pen hardware or reconstitution supplies are required for laboratory handling." },
         { q: "Is this for research use only?", a: "Yes. Supplied strictly for laboratory research, not for human or animal consumption." }
       ]
     },
-    summary: "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
+    summary: "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 15mg, 30mg and 50mg.",
     longDescription: [
       "Retatrutide Pen Vial contains the same synthetic lipidated triple-agonist research compound as our standard frozen vial, supplied pre-reconstituted in a pen-compatible cartridge format.",
-      "Available in 10mg, 20mg and 50mg sizes. Supplied as a complete disposable pen kit with sterile pen tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
+      "Available in 10mg, 15mg, 30mg and 50mg sizes. Supplied as a complete disposable pen kit with sterile pen tips and alcohol wipes included. No separate pen hardware or reconstitution supplies are required for laboratory handling. Supplied strictly as a research reference material; not for human or animal consumption."
     ],
     researchAreas: [
       "Binding and signalling activity at the GLP-1, GIP and glucagon receptors, studied in vitro",
@@ -155,6 +155,7 @@ const PRODUCT_DATA = {
       ["Synonyms", "LY3437943"],
       ["Purity", "99% — independently verified by HPLC (report 100016392)"],
       ["Form", "Pre-reconstituted liquid"],
+      ["Volume", "3ml"],
       ["Storage", "2–8°C; do not freeze once reconstituted"]
     ],
     storage: "Supplied as a pre-reconstituted liquid in a sealed pen-compatible vial. Store at 2–8°C. Do not freeze once reconstituted. Protect from light.",
@@ -166,9 +167,10 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 70 },
-      { label: "1x20mg", dose: "20mg", price: 110 },
-      { label: "1x50mg", dose: "50mg", price: 200 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 84 },
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 92 },
+      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 119 },
+      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 159 }
     ],
   },
   tirzepatide: {
@@ -217,8 +219,8 @@ const PRODUCT_DATA = {
       "Supplier documentation on request"
     ],
     variants: [
-      { label: "1x15mg", dose: "15mg", price: 70 },
-      { label: "1x30mg", dose: "30mg", price: 120 }
+      { label: "1x15mg", dose: "15mg", price: 39 },
+      { label: "1x30mg", dose: "30mg", price: 62 }
     ],
   },
   "tirzepatide-pen": {
@@ -269,8 +271,8 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 90 },
-      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 140 }
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 82 },
+      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 114 }
     ],
   },
   "bpc-157": {

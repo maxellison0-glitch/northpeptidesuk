@@ -21,7 +21,7 @@ function inlineCheckoutScript() {
   return main;
 }
 
-function bootCheckout(basket, hash = '', session = new Map()) {
+function bootCheckout(basket, hash = '', session = new Map(), globals = {}) {
   const elements = new Map();
   const makeClassList = () => {
     const classes = new Set();
@@ -77,7 +77,7 @@ function bootCheckout(basket, hash = '', session = new Map()) {
     addEventListener(type, fn) { (windowListeners[type] = windowListeners[type] || []).push(fn); }
   };
 
-  const sandbox = { window, document, localStorage, console, setTimeout, clearTimeout };
+  const sandbox = { window, document, localStorage, console, setTimeout, clearTimeout, ...globals };
   vm.runInNewContext(inlineCheckoutScript(), sandbox);
   for (const fn of windowListeners.load || []) fn();
   return {
@@ -196,7 +196,7 @@ test('optional chilled packaging is available for standard, pen, and accessory-o
 });
 
 test('chilled packaging adds, persists after refresh, and removes from its own card', () => {
-  const basket = [{ name: 'Retatrutide Pen Vial', dose: '10mg', price: 70, qty: 1 }];
+  const basket = [{ name: 'TB-500 Pen Vial', dose: '10mg / 3ml', price: 70, qty: 1 }];
   let app = bootCheckout(basket);
   app.call('toggleCoolingPackaging', app.byId('cooling-toggle'));
   assert.deepEqual(app.basket(), [...basket, coolingItem]);
@@ -249,9 +249,47 @@ test('older saved baskets are repaired to one £5 packaging charge before displa
   assert.equal(core.validateOrderItems(app.basket()).grossSubtotal, 29);
 });
 
+test('saved baskets holding retired Retatrutide variants switch to the current ones', () => {
+  const app = bootCheckout([
+    { name: 'Retatrutide', dose: '20mg', price: 90, qty: 1 },
+    { name: 'Retatrutide', dose: '30mg', price: 89, qty: 2 },
+    { name: 'Retatrutide Pen Vial', dose: '10mg', price: 70, qty: 1 },
+    { name: 'Retatrutide Pen Vial', dose: '20mg', price: 110, qty: 1 },
+    { name: 'Retatrutide Pen Vial', dose: '50mg', price: 200, qty: 1 }
+  ]);
+  assert.deepEqual(app.basket().map(item => [item.name, item.dose, item.qty]), [
+    ['Retatrutide', '30mg', 3],
+    ['Retatrutide Pen Vial', '10mg / 3ml', 1],
+    ['Retatrutide Pen Vial', '30mg / 3ml', 1],
+    ['Retatrutide Pen Vial', '50mg / 3ml', 1]
+  ]);
+  assert.match(app.byId('checkout-lines').innerHTML, /30mg \/ 3ml/);
+  assert.equal(core.validateOrderItems(app.basket()).error, undefined);
+});
+
+test('saved basket prices refresh from the catalogue feed before the order is placed', async () => {
+  const feed = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
+  const requests = [];
+  const fetch = (url, options) => {
+    requests.push([url, options && options.cache]);
+    return Promise.resolve({ ok: true, json: () => Promise.resolve(feed) });
+  };
+  const app = bootCheckout([
+    { name: 'Retatrutide', dose: '10mg', price: 50, qty: 2 },
+    { ...coolingItem }
+  ], '', new Map(), { fetch });
+  assert.equal(app.byId('subtotal').textContent, '£105');
+  await new Promise(resolve => setImmediate(resolve));
+  const current = core.resolveCatalogPrice(null, 'Retatrutide', '10mg');
+  assert.deepEqual(requests, [['/products.json', 'no-cache']]);
+  assert.deepEqual(app.basket(), [{ name: 'Retatrutide', dose: '10mg', price: current, qty: 2 }, coolingItem]);
+  assert.equal(app.byId('subtotal').textContent, '£' + (2 * current + 5));
+  assert.equal(core.validateOrderItems(app.basket()).grossSubtotal, 2 * current + 5);
+});
+
 test('packaging totals and free delivery stay in parity with server pricing, including discounts', () => {
   const basket = [
-    { name: 'Retatrutide Pen Vial', dose: '10mg', price: 70, qty: 1 },
+    { name: 'TB-500 Pen Vial', dose: '10mg / 3ml', price: 70, qty: 1 },
     { name: 'BPC-157', dose: '10mg', price: 25, qty: 1 }
   ];
   const app = bootCheckout(basket);

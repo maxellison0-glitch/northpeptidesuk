@@ -12,11 +12,11 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   if (method === "tracked24" && qualifiesFree) charge = delivery.freeOrderPrice;
   return { method, label: delivery.label, charge };
 }const CATALOG = {
-  "Retatrutide|10mg": 50,
-  "Retatrutide|15mg": 70,
-  "Retatrutide|20mg": 90,
-  "Tirzepatide|15mg": 70,
-  "Tirzepatide|30mg": 120,
+  "Retatrutide|10mg": 44,
+  "Retatrutide|15mg": 69,
+  "Retatrutide|30mg": 94,
+  "Tirzepatide|15mg": 39,
+  "Tirzepatide|30mg": 62,
   "BPC-157|10mg": 25,
   "TB-500|10mg": 50,
   "GHK-Cu|50mg": 24,
@@ -42,7 +42,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Sterile Disposable Pen Tips|6mm x5": 3.99,
   "Sterile Disposable Pen Tips|6mm x10": 4.99,
   "Thermal Cooled Packaging|Insulated foil pouch + gel packs": 5,
-  "Retatrutide|50mg": 180,
+  "Retatrutide|50mg": 139,
   "NAD+|1000mg": 90,
   "SS-31|10mg": 25,
   "SLU-PP-332|50 x 5mg tablets": 55,
@@ -56,11 +56,12 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 7,
   "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 7,
   "Disposable Research Pen Kit|Kit add-on": 10,
-  "Retatrutide Pen Vial|10mg": 70,
-  "Retatrutide Pen Vial|20mg": 110,
-  "Retatrutide Pen Vial|50mg": 200,
-  "Tirzepatide Pen Vial|15mg / 3ml": 90,
-  "Tirzepatide Pen Vial|30mg / 3ml": 140,
+  "Retatrutide Pen Vial|10mg / 3ml": 84,
+  "Retatrutide Pen Vial|15mg / 3ml": 92,
+  "Retatrutide Pen Vial|30mg / 3ml": 119,
+  "Retatrutide Pen Vial|50mg / 3ml": 159,
+  "Tirzepatide Pen Vial|15mg / 3ml": 82,
+  "Tirzepatide Pen Vial|30mg / 3ml": 114,
   "BPC-157 Pen Vial|10mg / 3ml": 40,
   "BPC-157 Pen Vial|20mg / 3ml": 70,
   "TB-500 Pen Vial|10mg / 3ml": 70,
@@ -74,6 +75,21 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Epitalon Pen Vial|10mg / 3ml": 30,
   "Pinealon Pen Vial|20mg / 3ml": 45
 };
+
+// Variants retired or renamed since a basket may have been saved. An order that
+// still sends the old name|dose is recorded as the current variant and priced
+// from CATALOG, so a returning visitor is never blocked at checkout.
+// checkout.html and basket.js mirror this map (see tests/price-parity.test.cjs).
+const RETIRED_VARIANTS = {
+  "Retatrutide|20mg": "30mg",
+  "Retatrutide Pen Vial|10mg": "10mg / 3ml",
+  "Retatrutide Pen Vial|20mg": "30mg / 3ml",
+  "Retatrutide Pen Vial|50mg": "50mg / 3ml"
+};
+
+function currentDose(name, dose) {
+  return RETIRED_VARIANTS[`${name}|${dose}`] || dose;
+}
 
 function normaliseKey(value) {
   return String(value || "").replace(/\s+/g, " ").replace(/\s*\/\s*/g, "/").trim();
@@ -162,7 +178,7 @@ function validateOrderItems(items, discountPct = 0) {
   const validatedItems = [];
   for (const item of items) {
     const name = compactText(item?.name, 80);
-    const dose = compactText(item?.dose, 80);
+    const dose = currentDose(name, compactText(item?.dose, 80));
     const price = resolveCatalogPrice(item, name, dose);
     const qty = Math.max(1, Math.min(Number.parseInt(item?.qty, 10) || 1, 12));
 
@@ -207,6 +223,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
 module.exports = {
   CATALOG,
   CATALOG_NORMALISED,
+  RETIRED_VARIANTS,
   PUBLIC_DISCOUNT_CODES,
   DISCOUNT_CODES,
   FREE_DELIVERY_CODES,
