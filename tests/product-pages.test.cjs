@@ -370,21 +370,21 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   vm.runInContext(behaviourScript, context);
 
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide 10mg');
-  assert.equal(elements['config-total'].textContent, '£39');
+  assert.equal(elements['config-total'].textContent, '£44');
   assert.equal(elements['config-total-note'].textContent, 'Standard vial');
   assert.equal(elements['config-pen-kit'].hidden, true);
   assert.equal(elements['product-image'].attributes.src, '/reta-50mg.webp');
   assert.equal(elements['product-image'].attributes.alt, 'Retatrutide');
 
   context.setBacWater(true);
-  assert.equal(elements['config-total'].textContent, '£43');
+  assert.equal(elements['config-total'].textContent, '£48');
   assert.equal(elements['config-total-note'].textContent, 'Vial + BAC water');
 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg / 3ml');
-  assert.equal(elements['config-total'].textContent, '£59');
-  // The premium is anchored against the same-strength vial (£59 pen vs £39 vial).
-  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£20 vs vial');
+  assert.equal(elements['config-total'].textContent, '£84');
+  // The premium is anchored against the same-strength vial (£84 pen vs £44 vial).
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£40 vs vial');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
   assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.webp');
@@ -394,7 +394,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredVariant(2);
   context.addConfiguredToBasket();
-  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 109, dose: '30mg / 3ml' }]);
+  assert.deepEqual(basket, [{ name: 'Retatrutide Pen Vial', price: 119, dose: '30mg / 3ml' }]);
   assert.equal(basketOpened, true);
 
   basket.length = 0;
@@ -403,7 +403,7 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
   context.setBacWater(true);
   context.addConfiguredToBasket();
   assert.deepEqual(basket, [
-    { name: 'Retatrutide', price: 89, dose: '30mg' },
+    { name: 'Retatrutide', price: 94, dose: '30mg' },
     // Must stay a key the server CATALOG resolves — "10ml vial add-on" shipped
     // once and 400'd every checkout that included the builder's BAC water.
     { name: 'Bacteriostatic Water', price: 4, dose: '3ml vial' }

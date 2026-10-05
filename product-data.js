@@ -110,10 +110,10 @@ const PRODUCT_DATA = {
       "Full lab report published on site"
     ],
     variants: [
-      { label: "1x10mg", dose: "10mg", price: 39 },
-      { label: "1x15mg", dose: "15mg", price: 55 },
-      { label: "1x30mg", dose: "30mg", price: 89 },
-      { label: "1x50mg", dose: "50mg", price: 129 }
+      { label: "1x10mg", dose: "10mg", price: 44 },
+      { label: "1x15mg", dose: "15mg", price: 69 },
+      { label: "1x30mg", dose: "30mg", price: 94 },
+      { label: "1x50mg", dose: "50mg", price: 139 }
     ],
   },
   "retatrutide-pen": {
@@ -167,10 +167,10 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 59 },
-      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 75 },
-      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 109 },
-      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 149 }
+      { label: "1x10mg / 3ml", dose: "10mg / 3ml", price: 84 },
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 92 },
+      { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 119 },
+      { label: "1x50mg / 3ml", dose: "50mg / 3ml", price: 159 }
     ],
   },
   tirzepatide: {
@@ -219,7 +219,7 @@ const PRODUCT_DATA = {
       "Supplier documentation on request"
     ],
     variants: [
-      { label: "1x15mg", dose: "15mg", price: 65 },
+      { label: "1x15mg", dose: "15mg", price: 39 },
       { label: "1x30mg", dose: "30mg", price: 120 }
     ],
   },
@@ -271,7 +271,7 @@ const PRODUCT_DATA = {
       "Disposable pen, sterile pen tips and wipes included"
     ],
     variants: [
-      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 85 },
+      { label: "1x15mg / 3ml", dose: "15mg / 3ml", price: 82 },
       { label: "1x30mg / 3ml", dose: "30mg / 3ml", price: 140 }
     ],
   },

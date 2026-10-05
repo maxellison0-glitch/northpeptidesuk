@@ -18,25 +18,25 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 39,
+          "price": 44,
           "currency": "GBP"
         },
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 55,
+          "price": 69,
           "currency": "GBP"
         },
         {
           "label": "1x30mg",
           "dose": "30mg",
-          "price": 89,
+          "price": 94,
           "currency": "GBP"
         },
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 129,
+          "price": 139,
           "currency": "GBP"
         }
       ],
@@ -97,25 +97,25 @@
         {
           "label": "1x10mg / 3ml",
           "dose": "10mg / 3ml",
-          "price": 59,
+          "price": 84,
           "currency": "GBP"
         },
         {
           "label": "1x15mg / 3ml",
           "dose": "15mg / 3ml",
-          "price": 75,
+          "price": 92,
           "currency": "GBP"
         },
         {
           "label": "1x30mg / 3ml",
           "dose": "30mg / 3ml",
-          "price": 109,
+          "price": 119,
           "currency": "GBP"
         },
         {
           "label": "1x50mg / 3ml",
           "dose": "50mg / 3ml",
-          "price": 149,
+          "price": 159,
           "currency": "GBP"
         }
       ],
@@ -176,7 +176,7 @@
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 65,
+          "price": 39,
           "currency": "GBP"
         },
         {
@@ -238,7 +238,7 @@
         {
           "label": "1x15mg / 3ml",
           "dose": "15mg / 3ml",
-          "price": 85,
+          "price": 82,
           "currency": "GBP"
         },
         {
