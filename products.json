@@ -1,7 +1,7 @@
 {
   "site": "North Peptides UK",
   "baseUrl": "https://www.northpeptidesuk.com",
-  "generatedAt": "2026-09-29",
+  "generatedAt": "2026-10-05",
   "disclaimer": "Products are supplied for laboratory research use only and are not for human or animal consumption.",
   "documentationStatus": "Supplier documentation is available on request where held. Independent laboratory reports are published on the site where held.",
   "products": [
@@ -18,25 +18,25 @@
         {
           "label": "1x10mg",
           "dose": "10mg",
-          "price": 50,
+          "price": 39,
           "currency": "GBP"
         },
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 70,
+          "price": 55,
           "currency": "GBP"
         },
         {
-          "label": "1x20mg",
-          "dose": "20mg",
-          "price": 90,
+          "label": "1x30mg",
+          "dose": "30mg",
+          "price": 89,
           "currency": "GBP"
         },
         {
           "label": "1x50mg",
           "dose": "50mg",
-          "price": 180,
+          "price": 129,
           "currency": "GBP"
         }
       ],
@@ -90,26 +90,32 @@
       "category": "Metabolic research",
       "url": "https://www.northpeptidesuk.com/products/retatrutide-pen/",
       "image": "https://www.northpeptidesuk.com/reta-pen-vial.webp",
-      "summary": "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 20mg and 50mg.",
+      "summary": "Retatrutide triple-agonist research compound pre-reconstituted as a liquid in a pen-compatible vial. Available in 10mg, 15mg, 30mg and 50mg.",
       "researchUseOnly": true,
       "supply": false,
       "variants": [
         {
-          "label": "1x10mg",
-          "dose": "10mg",
-          "price": 70,
+          "label": "1x10mg / 3ml",
+          "dose": "10mg / 3ml",
+          "price": 59,
           "currency": "GBP"
         },
         {
-          "label": "1x20mg",
-          "dose": "20mg",
-          "price": 110,
+          "label": "1x15mg / 3ml",
+          "dose": "15mg / 3ml",
+          "price": 75,
           "currency": "GBP"
         },
         {
-          "label": "1x50mg",
-          "dose": "50mg",
-          "price": 200,
+          "label": "1x30mg / 3ml",
+          "dose": "30mg / 3ml",
+          "price": 109,
+          "currency": "GBP"
+        },
+        {
+          "label": "1x50mg / 3ml",
+          "dose": "50mg / 3ml",
+          "price": 149,
           "currency": "GBP"
         }
       ],
@@ -147,6 +153,10 @@
           "value": "Pre-reconstituted liquid"
         },
         {
+          "label": "Volume",
+          "value": "3ml"
+        },
+        {
           "label": "Storage",
           "value": "2–8°C; do not freeze once reconstituted"
         }
@@ -166,7 +176,7 @@
         {
           "label": "1x15mg",
           "dose": "15mg",
-          "price": 70,
+          "price": 65,
           "currency": "GBP"
         },
         {
@@ -228,7 +238,7 @@
         {
           "label": "1x15mg / 3ml",
           "dose": "15mg / 3ml",
-          "price": 90,
+          "price": 85,
           "currency": "GBP"
         },
         {

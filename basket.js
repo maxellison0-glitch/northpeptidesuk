@@ -15,7 +15,49 @@ function loadBasket() {
 function saveBasket() {
   try { localStorage.setItem('npuk_basket', JSON.stringify(basket)); } catch (e) {}
 }
+
+// Variants retired or renamed since a basket may have been saved. Mirrors
+// RETIRED_VARIANTS in server/commerce-core.js (checked by tests/price-parity.test.cjs).
+const RETIRED_VARIANTS = {
+  'Retatrutide|20mg': '30mg',
+  'Retatrutide Pen Vial|10mg': '10mg / 3ml',
+  'Retatrutide Pen Vial|20mg': '30mg / 3ml',
+  'Retatrutide Pen Vial|50mg': '50mg / 3ml'
+};
+function migrateRetiredVariants() {
+  let changed = false;
+  const merged = [];
+  basket.forEach(item => {
+    const dose = RETIRED_VARIANTS[item.name + '|' + item.dose];
+    if (dose) { item.dose = dose; changed = true; }
+    const same = merged.find(i => i.name === item.name && i.dose === item.dose);
+    if (same) { same.qty += item.qty; changed = true; } else merged.push(item);
+  });
+  if (changed) { basket = merged; saveBasket(); }
+}
+
+// A saved basket keeps the price shown when each item was added; re-read the
+// catalogue feed so the drawer matches the product pages after a price change.
+function refreshBasketPrices() {
+  if (!basket.length || typeof fetch !== 'function') return;
+  fetch('/products.json', { cache: 'no-cache', credentials: 'same-origin' })
+    .then(res => (res.ok ? res.json() : null))
+    .then(feed => {
+      if (!feed || !Array.isArray(feed.products)) return;
+      const current = {};
+      feed.products.forEach(p => (p.variants || []).forEach(v => { current[p.name + '|' + v.dose] = Number(v.price); }));
+      let changed = false;
+      basket.forEach(item => {
+        const price = current[item.name + '|' + item.dose];
+        if (Number.isFinite(price) && price !== item.price) { item.price = price; changed = true; }
+      });
+      if (changed) { saveBasket(); updateBasketUI(); }
+    })
+    .catch(() => {});
+}
+
 basket = loadBasket();
+migrateRetiredVariants();
 function trackBasketEvent(eventName, items, value) {
   if (!window.NPUKAnalytics) return;
   window.NPUKAnalytics.track(eventName, {
@@ -192,6 +234,7 @@ function addToBasketVariant(selectId, name) {
 
 document.addEventListener('DOMContentLoaded', () => {
   updateBasketUI();
+  refreshBasketPrices();
 
   const form = document.getElementById('checkout-form');
   if (form) {

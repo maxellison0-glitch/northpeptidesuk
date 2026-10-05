@@ -1471,7 +1471,7 @@
   // must match server/commerce-core.js CATALOG (name|dose keys).
   const REACH_CANDIDATES = [
     { name: 'GHK-Cu',      dose: '50mg', price: 24, img: '/ghk-cu-blue-powder-600.webp',     alt: 'GHK-Cu 50mg lyophilised research vial',      meta: 'Standard vial · lab tested, 99% HPLC' },
-    { name: 'Retatrutide', dose: '10mg', price: 50, img: '/retatrutide-vial-600.webp',       alt: 'Retatrutide 10mg lyophilised research vial', meta: 'Standard vial · lab tested, 99% HPLC' },
+    { name: 'Retatrutide', dose: '10mg', price: 39, img: '/retatrutide-vial-600.webp',       alt: 'Retatrutide 10mg lyophilised research vial', meta: 'Standard vial · lab tested, 99% HPLC' },
     { name: 'BPC-157',     dose: '10mg', price: 25, img: '/bpc-157-vial-600.webp',           alt: 'BPC-157 10mg lyophilised research vial',     meta: 'Standard vial · supplier-stated purity' },
     { name: 'KLOW Stack',  dose: '80mg', price: 60, img: '/klow-stack-blue-powder-600.webp', alt: 'KLOW Stack 80mg lyophilised research vial', meta: '4-in-1 blend · supplier-stated purity' }
   ];
@@ -1528,6 +1528,52 @@
       return true;
     });
     if (changed) saveCheckoutBasket();
+  }
+
+  // Variants retired or renamed since a basket may have been saved. Mirrors
+  // RETIRED_VARIANTS in server/commerce-core.js, which records an old line as
+  // the current variant anyway; renaming it here shows what will be sent.
+  const RETIRED_VARIANTS = {
+    'Retatrutide|20mg': '30mg',
+    'Retatrutide Pen Vial|10mg': '10mg / 3ml',
+    'Retatrutide Pen Vial|20mg': '30mg / 3ml',
+    'Retatrutide Pen Vial|50mg': '50mg / 3ml'
+  };
+
+  function migrateRetiredVariants() {
+    let changed = false;
+    const merged = [];
+    basketData.forEach(item => {
+      const dose = !item._kitFor && RETIRED_VARIANTS[item.name + '|' + item.dose];
+      if (dose) { item.dose = dose; changed = true; }
+      const same = !item._kitFor && merged.find(i => !i._kitFor && i.name === item.name && i.dose === item.dose);
+      if (same) { same.qty = (Number(same.qty) || 1) + (Number(item.qty) || 1); changed = true; }
+      else merged.push(item);
+    });
+    if (!changed) return;
+    basketData = merged;
+    saveCheckoutBasket();
+  }
+
+  // A saved basket keeps the price shown when each item was added. Re-read the
+  // catalogue feed so a price change since then shows here before the order is
+  // placed; the server charges current catalogue prices either way.
+  function refreshBasketPrices() {
+    if (!basketData.length || typeof fetch !== 'function') return;
+    fetch('/products.json', { cache: 'no-cache', credentials: 'same-origin' })
+      .then(res => (res.ok ? res.json() : null))
+      .then(feed => {
+        if (!feed || !Array.isArray(feed.products)) return;
+        const current = {};
+        feed.products.forEach(p => (p.variants || []).forEach(v => { current[p.name + '|' + v.dose] = Number(v.price); }));
+        let changed = false;
+        basketData.forEach(item => {
+          const price = current[item.name + '|' + item.dose];
+          if (!item._kitFor && Number.isFinite(price) && price !== item.price) { item.price = price; changed = true; }
+        });
+        if (changed) { saveCheckoutBasket(); renderOrder(); }
+      })
+      .catch(() => { /* Shown prices stay as saved; the order is still priced server-side. */ });
   }
 
   function getSubtotal() {
@@ -2285,7 +2331,9 @@
     if (!Array.isArray(basketData)) basketData = [];
     if (basketData.length === 0 && restoreBankTransferInstructions()) return;
     normaliseCoolingPackaging();
+    migrateRetiredVariants();
     renderOrder();
+    refreshBasketPrices();
     openExtrasFromHash();
     initWhatsAppFloat();
     const postcode = byId('co-postcode');

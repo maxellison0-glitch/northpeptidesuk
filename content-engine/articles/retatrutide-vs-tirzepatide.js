@@ -5,6 +5,14 @@
  * claims. Compliance boilerplate (RUO callout, disclaimer) is added by the
  * template automatically and is exempt from the scan.
  */
+// Sizes and from-prices are read from the catalogue so this page can never
+// quote a size or price the shop no longer sells.
+const { PRODUCTS, priceFrom, formatGBP } = require('../site.js');
+const doses = slug => PRODUCTS[slug].variants.map(v => v.dose);
+const sizeList = slug => doses(slug).slice(0, -1).join(', ') + ' and ' + doses(slug).slice(-1)[0];
+const sizeRange = slug => doses(slug)[0].replace(/mg$/, '') + '–' + doses(slug).slice(-1)[0];
+const from = slug => formatGBP(priceFrom(slug));
+
 module.exports = {
   slug: 'retatrutide-vs-tirzepatide',
   metaTitle: 'Retatrutide vs Tirzepatide | Research Compound Comparison',
@@ -14,7 +22,7 @@ module.exports = {
   keyword: 'retatrutide vs tirzepatide',
   category: 'Compound Comparison',
   datePublished: '2026-06-26',
-  dateModified: '2026-06-26',
+  dateModified: '2026-10-05',
   cardSummary: 'How two of the most-requested metabolic research compounds compare on receptor targets, supplied form, purity and UK handling.',
   intro: 'Retatrutide and Tirzepatide are two of the most frequently requested metabolic research compounds in the UK. They belong to the same broad class of receptor-agonist peptides but differ in their molecular targets, the vial sizes they are supplied in, and how researchers select between them for a given model. This guide compares them strictly as laboratory research materials.',
   relatedProducts: ['retatrutide', 'tirzepatide', 'bacteriostatic-water', 'syringe-kit'],
@@ -32,7 +40,7 @@ module.exports = {
           <tr><td>Compound class</td><td>Triple receptor agonist</td><td>Dual receptor agonist</td></tr>
           <tr><td>Receptor targets</td><td>GLP-1, GIP and glucagon receptors</td><td>GIP and GLP-1 receptors</td></tr>
           <tr><td>Supplied as</td><td>Lyophilised vial</td><td>Lyophilised vial</td></tr>
-          <tr><td>Vial sizes (UK)</td><td>10mg, 15mg, 20mg</td><td>15mg, 30mg</td></tr>
+          <tr><td>Vial sizes (UK)</td><td>${doses('retatrutide').join(', ')}</td><td>${doses('tirzepatide').join(', ')}</td></tr>
           <tr><td>Stated purity</td><td>99%+</td><td>99%+</td></tr>
           <tr><td>Reconstitution solvent</td><td>Bacteriostatic water</td><td>Bacteriostatic water</td></tr>
           <tr><td>UK availability</td><td>Stocked, 24h dispatch</td><td>Stocked, 24h dispatch</td></tr>
@@ -52,8 +60,8 @@ module.exports = {
       heading: 'How Each Is Supplied',
       html: `      <p>Both are supplied as lyophilised powder, the most stable format for transport and storage. North Peptides UK stocks the following vial sizes:</p>
       <ul>
-        <li><strong><a href="/products/retatrutide/">Retatrutide</a></strong> — 10mg, 15mg and 20mg vials, from £45. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
-        <li><strong><a href="/products/tirzepatide/">Tirzepatide</a></strong> — 15mg and 30mg vials, from £65. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/products/retatrutide/">Retatrutide</a></strong> — ${sizeList('retatrutide')} vials, from ${from('retatrutide')}. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
+        <li><strong><a href="/products/tirzepatide/">Tirzepatide</a></strong> — ${sizeList('tirzepatide')} vials, from ${from('tirzepatide')}. Supplier-stated 99%+ purity with supplier documentation available on request where held.</li>
       </ul>
       <p>Each batch is stored frozen until dispatch and shipped from the UK with tracked delivery on business days; orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch. The larger vial sizes are usually selected where a research protocol calls for a higher total quantity of material per vial.</p>`,
     },
@@ -84,7 +92,7 @@ module.exports = {
       <ul>
         <li><strong>Pathway coverage</strong> — Tirzepatide isolates the GIP and GLP-1 pathways; Retatrutide adds glucagon-receptor activity. The model's design dictates which is appropriate.</li>
         <li><strong>Reference comparability</strong> — Tirzepatide has a longer track record as a dual-agonist reference compound, which can matter when a study is being compared against existing literature.</li>
-        <li><strong>Quantity per vial</strong> — available vial sizes differ (10–20mg for Retatrutide, 15–30mg for Tirzepatide), which affects how many preparations a single vial yields.</li>
+        <li><strong>Quantity per vial</strong> — available vial sizes differ (${sizeRange('retatrutide')} for Retatrutide, ${sizeRange('tirzepatide')} for Tirzepatide), which affects how many preparations a single vial yields.</li>
         <li><strong>Availability</strong> — both are UK stocked with 24-hour dispatch, so lead time is not usually a differentiator.</li>
       </ul>
       <p>Some research programmes hold both on hand precisely so the same protocol can be run across the dual- and triple-agonist profiles for comparison.</p>`,
@@ -103,7 +111,7 @@ module.exports = {
     { q: 'Are Retatrutide and Tirzepatide available in the UK?',
       a: 'Yes. Both are UK stocked by North Peptides UK and dispatched on business days (orders placed before 12pm Mon–Fri are aimed at next-working-day dispatch), listed with supplier-stated 99%+ purity with supplier documentation available on request where held.' },
     { q: 'How are these research compounds supplied?',
-      a: 'As lyophilised (freeze-dried) powder in sealed vials, stored frozen until dispatch. Retatrutide is stocked in 10mg, 15mg and 20mg vials; Tirzepatide in 15mg and 30mg vials.' },
+      a: `As lyophilised (freeze-dried) powder in sealed vials, stored frozen until dispatch. Retatrutide is stocked in ${sizeList('retatrutide')} vials; Tirzepatide in ${sizeList('tirzepatide')} vials.` },
     { q: 'Can these research compounds be used in humans?',
       a: 'No. Both are supplied strictly for laboratory and scientific research and are not for human or animal consumption.' },
   ],

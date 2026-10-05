@@ -13,6 +13,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const ROOT = path.join(__dirname, '..');
 const PRODUCTS = require(path.join(ROOT, 'product-data.js'));
@@ -177,4 +178,54 @@ test('every builder-embedded variant and add-on resolves in the CATALOG at its s
 test('no removed "Essentials Bundle" remnants remain', () => {
   assert.ok(!/Essentials Bundle/.test(indexHtml), 'index.html still references the removed Essentials Bundle');
   assert.ok(!/Essentials Bundle/.test(commerceSource), 'server CATALOG still has the removed Essentials Bundle');
+});
+
+// checkout.html suggests extra items to "reach free delivery" from its own
+// hardcoded list; a missed price change there would show one price and charge another.
+test('checkout free-delivery suggestions resolve in the CATALOG at their shown price', () => {
+  const checkoutHtml = fs.readFileSync(path.join(ROOT, 'checkout.html'), 'utf8');
+  let checked = 0;
+  for (const list of ['REACH_CANDIDATES', 'REACH_SUPPLIES']) {
+    const block = checkoutHtml.match(new RegExp(`const ${list} = \\[([\\s\\S]*?)\\];`));
+    assert.ok(block, `checkout.html should define ${list}`);
+    for (const m of block[1].matchAll(/name: '([^']+)',\s*dose: '([^']+)',\s*price: ([\d.]+)/g)) {
+      const price = resolvePrice(m[1], m[2]);
+      assert.ok(price !== null, `Checkout suggestion "${m[1]}|${m[2]}" would 400 — not in CATALOG`);
+      assert.strictEqual(price, Number(m[3]), `Checkout suggestion "${m[1]}|${m[2]}" shows £${m[3]} but CATALOG charges £${price}`);
+      checked++;
+    }
+  }
+  assert.ok(checked >= 9, `expected every free-delivery suggestion, only saw ${checked}`);
+});
+
+// A variant that is retired or renamed must still be accepted from saved baskets,
+// and the client copies in checkout.html and basket.js must rename it the same way.
+test('retired variants map to sellable variants, identically on server, checkout and basket', () => {
+  const { RETIRED_VARIANTS } = require(path.join(ROOT, 'server', 'commerce-core.js'));
+  for (const file of ['checkout.html', 'basket.js']) {
+    const source = fs.readFileSync(path.join(ROOT, file), 'utf8');
+    const literal = source.match(/const RETIRED_VARIANTS = (\{[\s\S]*?\});/);
+    assert.ok(literal, `${file} should define RETIRED_VARIANTS`);
+    assert.deepStrictEqual({ ...vm.runInNewContext(`(${literal[1]})`) }, RETIRED_VARIANTS,
+      `${file} RETIRED_VARIANTS must mirror server/commerce-core.js`);
+  }
+  for (const [oldKey, dose] of Object.entries(RETIRED_VARIANTS)) {
+    const name = oldKey.split('|')[0];
+    assert.ok(!(oldKey in CATALOG), `"${oldKey}" is listed as retired but is still sold`);
+    assert.ok(`${name}|${dose}` in CATALOG, `"${oldKey}" maps to "${dose}", which the CATALOG does not sell`);
+  }
+});
+
+test('pen vials come in exactly the strengths of their standard vial', () => {
+  // Same compound in two formats, so the sizes should match. BPC-157 still
+  // sells a 20mg pen with no 20mg vial; drop it from here once they match.
+  const KNOWN_GAPS = new Set(['bpc-157-pen']);
+  const mg = dose => Number(String(dose).match(/^([\d.]+)mg/)?.[1]);
+  for (const [slug, pen] of Object.entries(PRODUCTS)) {
+    if (!slug.endsWith('-pen') || !pen.sisterProduct || KNOWN_GAPS.has(slug)) continue;
+    const vial = PRODUCTS[pen.sisterProduct.slug];
+    if (!vial) continue;
+    assert.deepStrictEqual(pen.variants.map(v => mg(v.dose)), vial.variants.map(v => mg(v.dose)),
+      `${pen.name} strengths should match ${vial.name}`);
+  }
 });
