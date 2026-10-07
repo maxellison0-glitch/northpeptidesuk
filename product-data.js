@@ -111,7 +111,7 @@ const PRODUCT_DATA = {
     ],
     variants: [
       { label: "1x10mg", dose: "10mg", price: 44 },
-      { label: "1x15mg", dose: "15mg", price: 69 },
+      { label: "1x15mg", dose: "15mg", price: 65 },
       { label: "1x30mg", dose: "30mg", price: 94 },
       { label: "1x50mg", dose: "50mg", price: 139 }
     ],

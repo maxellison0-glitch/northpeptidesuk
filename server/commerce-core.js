@@ -13,7 +13,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   return { method, label: delivery.label, charge };
 }const CATALOG = {
   "Retatrutide|10mg": 44,
-  "Retatrutide|15mg": 69,
+  "Retatrutide|15mg": 65,
   "Retatrutide|30mg": 94,
   "Tirzepatide|15mg": 39,
   "Tirzepatide|30mg": 62,
