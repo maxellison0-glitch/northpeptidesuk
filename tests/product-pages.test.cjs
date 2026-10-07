@@ -382,9 +382,9 @@ test('retatrutide builder updates format, size, add-on price and basket lines', 
 
   context.selectConfiguredFormat(1);
   assert.equal(elements['config-selection-name'].textContent, 'Retatrutide Pen Vial 10mg / 3ml');
-  assert.equal(elements['config-total'].textContent, '£84');
-  // The premium is anchored against the same-strength vial (£84 pen vs £44 vial).
-  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£40 vs vial');
+  assert.equal(elements['config-total'].textContent, '£70');
+  // The premium is anchored against the same-strength vial (£70 pen vs £44 vial).
+  assert.equal(elements['config-total-note'].textContent, 'Complete kit included · +£26 vs vial');
   assert.equal(elements['config-bac-control'].hidden, true);
   assert.equal(elements['config-pen-kit'].hidden, false);
   assert.equal(elements['product-image'].attributes.src, '/reta-pen-vial.webp');
