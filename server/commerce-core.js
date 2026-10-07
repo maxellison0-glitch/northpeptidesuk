@@ -56,7 +56,7 @@ function calculateDelivery(deliveryMethod, discountCode, productSubtotal) {
   "Intranasal Research Kit|10ml nasal spray + sterile saline + transfer syringe + adaptor + wipes + label": 7,
   "Intranasal Research Kit|10ml nasal spray + saline + syringe + adaptor + wipes + label": 7,
   "Disposable Research Pen Kit|Kit add-on": 10,
-  "Retatrutide Pen Vial|10mg / 3ml": 84,
+  "Retatrutide Pen Vial|10mg / 3ml": 70,
   "Retatrutide Pen Vial|15mg / 3ml": 92,
   "Retatrutide Pen Vial|30mg / 3ml": 119,
   "Retatrutide Pen Vial|50mg / 3ml": 159,
