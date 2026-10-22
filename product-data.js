@@ -124,8 +124,8 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "retatrutide", label: "Also available as", name: "Retatrutide Standard Vial (lyophilised)" },
     seo: {
-      title: "Retatrutide Pen Vial UK | 10mg, 15mg, 30mg & 50mg | North Peptides UK",
-      metaDescription: "Retatrutide pre-reconstituted liquid pen vial. 10mg, 15mg, 30mg & 50mg sizes. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
+      title: "Retatrutide Pen UK | 10mg–50mg Pre-Filled Pen Vial | North Peptides UK",
+      metaDescription: "Retatrutide pen, UK stocked: pre-reconstituted liquid pen vial in 10mg, 15mg, 30mg & 50mg. Independently tested at 99% purity by HPLC. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is the Retatrutide Pen Vial?", a: "The same Retatrutide GLP-1/GIP/glucagon triple-agonist research compound, supplied pre-reconstituted as a liquid in a pen-compatible vial." },
         { q: "How should the pen vial be stored in the laboratory?", a: "Store at 2–8°C, protected from light, and do not freeze once reconstituted." },
@@ -843,8 +843,8 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "klow-stack", label: "Also available as", name: "KLOW Stack Standard Vial (lyophilised)" },
     seo: {
-      title: "KLOW Stack Pen Vial UK | 80mg/3ml Pre-Filled | North Peptides UK",
-      metaDescription: "KLOW Stack 4-peptide research blend (GHK-Cu, TB-500, BPC-157, KPV) pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial. UK stocked, 24-48h dispatch after payment. Research use only.",
+      title: "KLOW Peptide Pen UK | KLOW Stack Pen Vial 80mg/3ml | North Peptides UK",
+      metaDescription: "KLOW peptide pen, UK stocked: the KLOW Stack 4-peptide research blend (GHK-Cu, TB-500, BPC-157, KPV) pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial. UK stocked, 24-48h dispatch after payment. Research use only.",
       faq: [
         { q: "What is in the KLOW Stack Pen Vial?", a: "The same four-compound blend — GHK-Cu 50mg, TB-500 10mg, BPC-157 10mg and KPV 10mg — pre-reconstituted as an 80mg/3ml liquid in a pen-compatible vial." },
         { q: "How is this different from the standard vial?", a: "The standard vial is supplied as a lyophilised powder. This version is pre-reconstituted into solution and supplied in a vial sized for pen-style research cartridge systems." },
