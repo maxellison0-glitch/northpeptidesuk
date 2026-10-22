@@ -294,7 +294,7 @@ function suppliesModule(supplies, hidden) {
             </div>
 ${supplies.map(s => `            <button class="supply-opt" type="button" id="supply-${s.key}" aria-pressed="false" onclick="toggleSupply('${s.key}')">
               <span class="supply-check" aria-hidden="true"></span>
-              <img src="/${escapeHtml(s.image.thumb)}" alt="" width="52" height="52" loading="lazy" decoding="async">
+              <img src="/${escapeHtml(s.image.thumb)}" alt="${escapeHtml(s.title)}" width="52" height="52" loading="lazy" decoding="async">
               <span class="supply-copy"><strong>${escapeHtml(s.title)}</strong><small>${escapeHtml(s.sub)}</small></span>
               <span class="supply-price">+${escapeHtml(formatGBP(s.price))}</span>
             </button>`).join('\n')}
@@ -393,7 +393,7 @@ function penTipsSheet(formats) {
       <span class="config-kicker">Added to basket</span>
       <h2 id="np-sheet-title">Would you like to add 10 disposable pen tips for ${escapeHtml(price)}?</h2>
       <div class="np-sheet-row">
-        <img src="/${escapeHtml(img.thumb)}" alt="" width="72" height="72" loading="lazy" decoding="async">
+        <img src="/${escapeHtml(img.thumb)}" alt="Sterile disposable 6mm pen tips" width="72" height="72" loading="lazy" decoding="async">
         <p>Your pen kit already includes sterile pen tips. This is a spare pack of 10 sterile disposable pen tips (6mm) that fit the disposable research pen supplied with your order — under 50p per tip.</p>
       </div>
       <button class="np-sheet-primary" type="button" onclick="acceptPenTips()">Add 10 tips · ${escapeHtml(price)}</button>
