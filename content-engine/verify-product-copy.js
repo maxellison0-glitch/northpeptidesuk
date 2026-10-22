@@ -36,6 +36,9 @@ function renderedText(p) {
   if (p.summary) parts.push(p.summary);
   if (Array.isArray(p.details)) parts.push(p.details.join('. '));
   if (Array.isArray(p.longDescription)) parts.push(p.longDescription.join(' '));
+  if (Array.isArray(p.contentSections)) {
+    parts.push(p.contentSections.map(s => `${s.heading}. ${s.paragraphs.join(' ')}`).join(' '));
+  }
   if (Array.isArray(p.researchAreas)) parts.push(p.researchAreas.join('. '));
   if (Array.isArray(p.storage)) parts.push(p.storage.join(' '));
   else if (typeof p.storage === 'string') parts.push(p.storage);

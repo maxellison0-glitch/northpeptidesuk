@@ -15,7 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const { lint, formatReport } = require('./compliance.js');
-const { renderArticle, renderBlogIndex } = require('./template.js');
+const { renderArticle, renderBlogIndex, readingTime } = require('./template.js');
 const { renderProductPage, renderProductIndex } = require('./product-page-template.js');
 const { SITE, STATIC_PAGES, PRODUCTS, productPriority, productUrl, productPath } = require('./site.js');
 
@@ -151,6 +151,16 @@ function updateRobots() {
   fs.writeFileSync(robotsPath, txt);
 }
 
+// Pen pages share their vial's guides; earlier relatedProducts position = more relevant.
+function guidesFor(slug, articles) {
+  const base = slug.replace(/-pen$/, '');
+  return articles
+    .map(a => ({ a, rank: a.relatedProducts.findIndex(s => s === slug || s === base) }))
+    .filter(x => x.rank !== -1)
+    .sort((x, y) => x.rank - y.rank)
+    .map(({ a }) => ({ slug: a.slug, title: a.title, category: a.category, readingTime: readingTime(a) }));
+}
+
 function productPageFile(slug) {
   return path.join(ROOT, productPath(slug), 'index.html');
 }
@@ -172,7 +182,7 @@ function main() {
     rendered.push({ a, html });
   }
   for (const [slug, product] of Object.entries(PRODUCTS)) {
-    const html = renderProductPage(slug, product);
+    const html = renderProductPage(slug, product, { guides: guidesFor(slug, articles) });
     const result = lint(html);
     console.log(formatReport(`products/${slug}/index.html`, result));
     if (!result.ok) failed++;
