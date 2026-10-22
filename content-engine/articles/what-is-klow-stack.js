@@ -11,7 +11,7 @@ module.exports = {
   dateModified: '2026-06-26',
   cardSummary: 'What the KLOW Stack contains, why the four compounds are blended, and how it is supplied and handled as a research material.',
   intro: 'The KLOW Stack is a four-compound research blend supplied in a single vial. This guide explains which compounds it contains, why they are combined, and how it is supplied and handled — strictly as a laboratory research material.',
-  relatedProducts: ['klow-stack', 'bpc-157', 'tb-500', 'ghk-cu'],
+  relatedProducts: ['klow-stack', 'bpc-157', 'tb-500', 'ghk-cu', 'kpv'],
 
   sections: [
     {

@@ -1023,6 +1023,10 @@ ${fitsLine(slug)}
           <h2>Overview</h2>
 ${lowerDescription.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n')}
         </section>
+${(product.contentSections || []).map(s => `        <section class="section-block">
+          <h2>${escapeHtml(s.heading)}</h2>
+${s.paragraphs.map(p => `          <p>${escapeHtml(p)}</p>`).join('\n')}
+        </section>`).join('\n')}
         ${guidesBlock(guides)}
         ${isPen ? penComparisonBlock(slug, product) : (Array.isArray(product.researchAreas) && product.researchAreas.length ? `<section class="section-block">
           <h2>Research areas</h2>${listItems(product.researchAreas)}

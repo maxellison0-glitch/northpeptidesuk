@@ -517,4 +517,4 @@ const INDEX_CSS = `
       .hero, .wrap, .disclaimer { padding-left: 18px; padding-right: 18px; }
     }`;
 
-module.exports = { renderArticle, renderBlogIndex, canonicalUrl, DISCLAIMER_TEXT, thumbFor, ogImageFor };
+module.exports = { renderArticle, renderBlogIndex, canonicalUrl, DISCLAIMER_TEXT, thumbFor, ogImageFor, readingTime };

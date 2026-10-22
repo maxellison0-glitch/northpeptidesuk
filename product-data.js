@@ -691,19 +691,34 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "kpv-pen", label: "Also available as", name: "KPV Pen Vial (pre-filled kit)" },
     seo: {
-      title: "Buy KPV UK | 10mg Research Peptide | North Peptides UK",
-      metaDescription: "KPV (Lys-Pro-Val) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      title: "Buy KPV Peptide UK | 10mg Lys-Pro-Val Vial | North Peptides UK",
+      metaDescription: "KPV peptide (Lys-Pro-Val), UK stocked: 10mg lyophilised vial, supplier-stated purity, tracked 24-48h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is KPV?", a: "The tripeptide lysine-proline-valine (Lys-Pro-Val), corresponding to the C-terminal fragment of the hormone alpha-MSH, supplied as a 10mg lyophilised vial for research." },
         { q: "What is KPV supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock KPV in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
-        { q: "Is KPV for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+        { q: "Is KPV for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." },
+        { q: "Is KPV the same as alpha-MSH?", a: "No. KPV is only the last three amino acids (Lys-Pro-Val) of the 13-amino-acid hormone alpha-MSH. It is studied as a compound in its own right because it is far smaller and simpler to synthesise than the full hormone." },
+        { q: "What is the difference between the KPV vial and the KPV pen vial?", a: "The vial is 10mg of lyophilised powder that you reconstitute yourself. The KPV Pen Vial holds the same tripeptide already reconstituted as a 10mg/3ml liquid in a pen-compatible vial, supplied with a disposable research pen." },
+        { q: "Where can I buy KPV peptide in the UK?", a: "North Peptides UK stocks KPV in the UK as a 10mg lyophilised vial and as a 10mg/3ml pen vial, both sent by tracked delivery within 24–48 hours of confirmed payment." }
       ]
     },
     summary: "Alpha-MSH fragment tripeptide research compound supplied as a 10mg lyophilised vial.",
     longDescription: [
       "KPV is the tripeptide lysine-proline-valine (Lys-Pro-Val), corresponding to the C-terminal fragment of the larger hormone alpha-MSH. It is supplied as a lyophilised powder for laboratory research.",
       "In research it is studied in vitro and in preclinical models for its role in inflammation-related signalling, including NF-kB pathway activity, and in antimicrobial research. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    contentSections: [
+      { heading: "KPV in published research", paragraphs: [
+        "KPV is the C-terminal tripeptide of alpha-melanocyte-stimulating hormone (alpha-MSH 11-13). Much of the interest in it comes from laboratory work suggesting that this short fragment keeps part of the inflammation-related signalling activity reported for full-length alpha-MSH, while being far smaller and simpler to make.",
+        "Published studies describe KPV being taken up into intestinal epithelial cells through the peptide transporter PepT1, where it has been reported to reduce NF-kB and MAPK pathway activation in cell and rodent colitis models. Separate in vitro work has examined its activity against Staphylococcus aureus and Candida albicans, and researchers have used KPV as a model cargo in nanoparticle and hydrogel delivery studies."
+      ] },
+      { heading: "Buying KPV in the UK", paragraphs: [
+        "North Peptides UK holds KPV in stock in the UK and sends it by tracked delivery, so there is no import wait or customs hold. Each vial contains 10mg of lyophilised KPV at supplier-stated purity, kept frozen until it leaves us, and supplier documentation is available on request where held. Bacteriostatic water and insulin needles for reconstitution can be added before checkout."
+      ] },
+      { heading: "KPV vial, KPV pen vial or KLOW Stack", paragraphs: [
+        "This listing is the standard lyophilised vial, which suits researchers who reconstitute to their own concentration. The KPV Pen Vial holds the same tripeptide pre-reconstituted as a 10mg/3ml liquid. KPV is also one of the four components of the KLOW Stack research blend, alongside GHK-Cu, TB-500 and BPC-157."
+      ] }
     ],
     researchAreas: [
       "NF-kB signalling pathway activity, characterised in inflammation research models",
@@ -991,19 +1006,34 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "ipamorelin-pen", label: "Also available as", name: "Ipamorelin Pen Vial (pre-filled kit)" },
     seo: {
-      title: "Buy Ipamorelin UK | 5mg Research Peptide | North Peptides UK",
-      metaDescription: "Ipamorelin research peptide, UK stocked. 5mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      title: "Buy Ipamorelin UK | Ipamorelin 5mg for Sale | North Peptides UK",
+      metaDescription: "Buy Ipamorelin in the UK: 5mg lyophilised vial, UK stocked with tracked 24-48h dispatch. Supplier-stated purity. Research use only — not for human consumption.",
       faq: [
         { q: "What is Ipamorelin?", a: "A synthetic pentapeptide and selective growth-hormone secretagogue acting at the ghrelin/GHS receptor, supplied as a 5mg lyophilised vial for research." },
         { q: "What is Ipamorelin supplied as?", a: "A 5mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Ipamorelin in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
-        { q: "Is Ipamorelin for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+        { q: "Is Ipamorelin for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." },
+        { q: "What is the difference between Ipamorelin and CJC-1295?", a: "They act on different receptors. Ipamorelin is a ghrelin-receptor (GHS-R1a) agonist; CJC-1295 No DAC is a GHRH analogue acting at the GHRH receptor. That is why the two often appear together in research on combined secretagogue signalling. Both are stocked here." },
+        { q: "What is the difference between the Ipamorelin vial and the Ipamorelin pen vial?", a: "The vial is 5mg of lyophilised powder that you reconstitute yourself. The Ipamorelin Pen Vial holds the same peptide already reconstituted as a 5mg/3ml liquid in a pen-compatible vial, supplied with a disposable research pen." },
+        { q: "Where can I buy Ipamorelin in the UK?", a: "North Peptides UK stocks Ipamorelin in the UK as a 5mg lyophilised vial and as a 5mg/3ml pen vial, both sent by tracked delivery within 24–48 hours of confirmed payment." }
       ]
     },
     summary: "Selective growth-hormone secretagogue research compound supplied as a 5mg lyophilised vial.",
     longDescription: [
       "Ipamorelin is a synthetic pentapeptide (Aib-His-D-2-Nal-D-Phe-Lys-NH2) and a selective growth-hormone secretagogue acting at the ghrelin/GHS receptor. It is supplied as a lyophilised powder for laboratory research.",
       "It is studied in vitro and in preclinical models for growth-hormone-release dynamics and for its receptor selectivity relative to other secretagogues such as GHRP-2 and GHRP-6. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    contentSections: [
+      { heading: "Ipamorelin in published research", paragraphs: [
+        "Ipamorelin was first described by researchers at Novo Nordisk in 1998 as the first selective growth-hormone secretagogue. In the original pig and rat studies it stimulated growth-hormone release without the marked rises in ACTH and cortisol seen with earlier secretagogues such as GHRP-6 and GHRP-2. That selectivity is the main reason it is still used as a reference compound.",
+        "It acts at the growth-hormone secretagogue receptor (GHS-R1a), the same receptor as the hormone ghrelin. Research has looked at the pulsatile pattern of the growth-hormone release it produces, how it compares with other ghrelin-receptor agonists, and how it behaves alongside GHRH analogues that act on a separate receptor."
+      ] },
+      { heading: "Ipamorelin and CJC-1295", paragraphs: [
+        "Ipamorelin is often studied alongside CJC-1295 No DAC (Mod GRF 1-29). The two act on different receptors: Ipamorelin on the ghrelin receptor and CJC-1295 on the GHRH receptor, which is why they appear together in research on combined secretagogue signalling. Both are stocked here, and the Ipamorelin vs CJC-1295 guide below compares them in more detail."
+      ] },
+      { heading: "Buying Ipamorelin in the UK", paragraphs: [
+        "North Peptides UK holds Ipamorelin in stock in the UK and sends it by tracked delivery, so there is no import wait or customs hold. Each vial contains 5mg of lyophilised Ipamorelin at supplier-stated purity, kept frozen until it leaves us, and supplier documentation is available on request where held. If you would rather not reconstitute, the Ipamorelin Pen Vial holds the same peptide as a 5mg/3ml liquid."
+      ] }
     ],
     researchAreas: [
       "Growth-hormone secretagogue (ghrelin/GHS receptor) signalling, studied in vitro",
@@ -1382,13 +1412,16 @@ const PRODUCT_DATA = {
     category: "Nootropic research",
     image: "semax.webp",
     seo: {
-      title: "Buy Semax UK | 30mg Nootropic Research Peptide | North Peptides UK",
-      metaDescription: "Semax research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
+      title: "Buy Semax UK | Semax 30mg Peptide for Sale | North Peptides UK",
+      metaDescription: "Buy Semax in the UK: 30mg lyophilised vial, UK stocked with tracked 24-48h dispatch and an optional intranasal research kit. Research use only — not for human consumption.",
       faq: [
         { q: "What is Semax?", a: "A synthetic heptapeptide derived from a fragment of ACTH (4-7) with a Pro-Gly-Pro extension that increases stability, supplied as a 30mg lyophilised vial for research." },
         { q: "What is Semax supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Semax in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
-        { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+        { q: "Is Semax for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." },
+        { q: "Is this Semax or N-Acetyl Semax?", a: "This is standard Semax (Met-Glu-His-Phe-Pro-Gly-Pro, CAS 80714-61-0). It is not N-Acetyl Semax Amidate, a modified form with an acetylated N-terminus and an amidated C-terminus." },
+        { q: "What is the difference between Semax and Selank?", a: "Both were developed at the same Russian institute and share a Pro-Gly-Pro stabilising tail, but they come from different parent peptides: Semax from ACTH(4-7), Selank from tuftsin. Semax research centres on neurotrophic signalling such as BDNF; Selank research on anxiolytic-type and immune-related endpoints." },
+        { q: "Where can I buy Semax in the UK?", a: "North Peptides UK stocks Semax in the UK as a 30mg lyophilised vial, sent by tracked delivery within 24–48 hours of confirmed payment, with bacteriostatic water and an intranasal research kit available as add-ons." }
       ]
     },
     secondaryImage: "research-intranasal-kit.webp",
@@ -1398,6 +1431,21 @@ const PRODUCT_DATA = {
     longDescription: [
       "Semax is a synthetic heptapeptide (Met-Glu-His-Phe-Pro-Gly-Pro) derived from a fragment of ACTH (4-7) with a Pro-Gly-Pro extension that increases its stability. It is supplied as a lyophilised powder for laboratory research.",
       "It is studied in vitro and in preclinical models for neurotrophic signalling, including BDNF and NGF expression, and for neuroprotection in oxidative-stress models. Cognition-related variables appear in the literature as measured research endpoints. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    contentSections: [
+      { heading: "Semax in published research", paragraphs: [
+        "Semax was developed in the 1980s at the Institute of Molecular Genetics of the Russian Academy of Sciences. It joins the ACTH(4-7) fragment (Met-Glu-His-Phe) to a Pro-Gly-Pro tail that slows breakdown by peptidases, and unlike ACTH it has no reported hormonal (corticotropic) activity in research models.",
+        "Laboratory and animal studies have looked at its effect on BDNF and its receptor TrkB in the rat hippocampus, on gene expression in rodent models of experimental ischaemia, and on dopamine and serotonin systems. Many of these studies used intranasal delivery in animal models, which is why an intranasal research kit is offered alongside it."
+      ] },
+      { heading: "Semax or N-Acetyl Semax?", paragraphs: [
+        "This listing is standard Semax (CAS 80714-61-0). It is not N-Acetyl Semax Amidate, a modified form with an acetylated N-terminus and an amidated C-terminus that is sold separately elsewhere. Check which form a protocol specifies before ordering."
+      ] },
+      { heading: "Semax vs Selank", paragraphs: [
+        "Semax and Selank come from the same institute and share the Pro-Gly-Pro stabilising tail, but they derive from different parent peptides: Semax from ACTH, Selank from tuftsin. Semax research tends to centre on neurotrophic signalling, Selank research on anxiolytic-type and immune-related endpoints. Both are stocked here, and the Semax vs Selank guide below covers the differences in more detail."
+      ] },
+      { heading: "Buying Semax in the UK", paragraphs: [
+        "North Peptides UK holds Semax in stock in the UK and sends it by tracked delivery, so there is no import wait or customs hold. Each vial contains 30mg of lyophilised Semax at supplier-stated purity, kept frozen until it leaves us, and supplier documentation is available on request where held. Bacteriostatic water and the intranasal research kit can be added before checkout."
+      ] }
     ],
     researchAreas: [
       "BDNF and NGF expression, examined in research models",
@@ -1432,13 +1480,16 @@ const PRODUCT_DATA = {
     category: "Nootropic research",
     image: "selank.webp",
     seo: {
-      title: "Buy Selank UK | 30mg Nootropic Research Peptide | North Peptides UK",
-      metaDescription: "Selank research peptide, UK stocked. 30mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Intranasal research kit available. Research use only — not for human consumption.",
+      title: "Buy Selank UK | Selank 30mg Peptide for Sale | North Peptides UK",
+      metaDescription: "Buy Selank in the UK: 30mg lyophilised vial, UK stocked with tracked 24-48h dispatch and an optional intranasal research kit. Research use only — not for human consumption.",
       faq: [
         { q: "What is Selank?", a: "A synthetic heptapeptide analogue of the immunomodulatory peptide tuftsin, supplied as a 30mg lyophilised vial for research." },
         { q: "What is Selank supplied as?", a: "A 30mg lyophilised vial with supplier-stated purity and stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Selank in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
-        { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+        { q: "Is Selank for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." },
+        { q: "Is this Selank or N-Acetyl Selank?", a: "This is standard Selank (Thr-Lys-Pro-Arg-Pro-Gly-Pro, CAS 129954-34-3). It is not N-Acetyl Selank Amidate, a modified form with an acetylated N-terminus and an amidated C-terminus." },
+        { q: "What is the difference between Selank and Semax?", a: "Both were developed at the same Russian institute and share a Pro-Gly-Pro stabilising tail, but they come from different parent peptides: Selank from tuftsin, Semax from ACTH(4-7). Selank research centres on anxiolytic-type and immune-related endpoints; Semax research on neurotrophic signalling such as BDNF." },
+        { q: "Where can I buy Selank in the UK?", a: "North Peptides UK stocks Selank in the UK as a 30mg lyophilised vial, sent by tracked delivery within 24–48 hours of confirmed payment, with bacteriostatic water and an intranasal research kit available as add-ons." }
       ]
     },
     secondaryImage: "research-intranasal-kit.webp",
@@ -1448,6 +1499,21 @@ const PRODUCT_DATA = {
     longDescription: [
       "Selank is a synthetic heptapeptide (Thr-Lys-Pro-Arg-Pro-Gly-Pro), an analogue of the immunomodulatory peptide tuftsin. It is supplied as a lyophilised powder for laboratory research.",
       "It is studied in vitro and in preclinical models for anxiolytic activity, GABAergic and monoamine signalling, BDNF expression and cytokine balance, with no tolerance reported in those models. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    contentSections: [
+      { heading: "Selank in published research", paragraphs: [
+        "Selank was developed at the Institute of Molecular Genetics of the Russian Academy of Sciences as a stabilised analogue of tuftsin (Thr-Lys-Pro-Arg), a short immunomodulatory peptide. Adding Pro-Gly-Pro to the tuftsin sequence slows its breakdown by peptidases.",
+        "In rodent studies it has been examined for anxiolytic-like behaviour, for its effect on the enzymes that break down enkephalins, and for changes in the expression of GABA-related genes. Other work has measured cytokines such as IL-6 in immunological research models. As with Semax, many of the animal studies used intranasal delivery, which is why an intranasal research kit is offered alongside it."
+      ] },
+      { heading: "Selank or N-Acetyl Selank?", paragraphs: [
+        "This listing is standard Selank (CAS 129954-34-3). It is not N-Acetyl Selank Amidate, a modified form with an acetylated N-terminus and an amidated C-terminus that is sold separately elsewhere. Check which form a protocol specifies before ordering."
+      ] },
+      { heading: "Selank vs Semax", paragraphs: [
+        "Selank and Semax come from the same institute and share the Pro-Gly-Pro stabilising tail, but they derive from different parent peptides: Selank from tuftsin, Semax from ACTH. Selank research tends to centre on anxiolytic-type and immune-related endpoints, Semax research on neurotrophic signalling. Both are stocked here, and the Semax vs Selank guide below covers the differences in more detail."
+      ] },
+      { heading: "Buying Selank in the UK", paragraphs: [
+        "North Peptides UK holds Selank in stock in the UK and sends it by tracked delivery, so there is no import wait or customs hold. Each vial contains 30mg of lyophilised Selank at supplier-stated purity, kept frozen until it leaves us, and supplier documentation is available on request where held. Bacteriostatic water and the intranasal research kit can be added before checkout."
+      ] }
     ],
     researchAreas: [
       "Anxiolytic activity documented in preclinical models",
@@ -1579,19 +1645,37 @@ const PRODUCT_DATA = {
     penAddon: true,
     sisterProduct: { slug: "epitalon-pen", label: "Also available as", name: "Epitalon Pen Vial (pre-filled kit)" },
     seo: {
-      title: "Buy Epitalon UK | 10mg Research Peptide | North Peptides UK",
-      metaDescription: "Epitalon (Epithalon, AEDG) research peptide, UK stocked. 10mg lyophilised vial. Supplier-stated purity. 24-48h dispatch after payment. Research use only — not for human consumption.",
+      title: "Buy Epitalon UK | Epitalon (Epithalon) 10mg Peptide | North Peptides UK",
+      metaDescription: "Buy Epitalon (Epithalon, AEDG) in the UK: 10mg lyophilised vial, UK stocked with tracked 24-48h dispatch. Research use only — not for human consumption.",
       faq: [
         { q: "What is Epitalon?", a: "A synthetic tetrapeptide (Ala-Glu-Asp-Gly, AEDG) modelled on a fragment of the pineal-gland peptide epithalamin, supplied as a 10mg lyophilised vial for research." },
         { q: "What is Epitalon supplied as?", a: "A 10mg lyophilised vial with supplier-stated purity, stored frozen until dispatch. Supplier documentation is available on request where held." },
         { q: "Do you stock Epitalon in the UK?", a: "Yes. It is UK stocked with dispatch within 24–48 hours of confirmed payment on business days via tracked delivery." },
-        { q: "Is Epitalon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." }
+        { q: "Is Epitalon for research use only?", a: "Yes. It is supplied strictly for laboratory research and is not for human or animal consumption." },
+        { q: "Is Epitalon the same as Epithalon?", a: "Yes. Epitalon, Epithalon, Epithalone and AEDG are all names for the same synthetic tetrapeptide, Ala-Glu-Asp-Gly (CAS 307297-39-8)." },
+        { q: "What is the difference between Epitalon and Pinealon?", a: "Both are short synthetic peptides from the same St Petersburg research group. Epitalon is the tetrapeptide AEDG, studied mainly in telomere and pineal research; Pinealon is the tripeptide Glu-Asp-Arg, studied mainly in neuronal research models. Both are stocked here." },
+        { q: "Where can I buy Epitalon in the UK?", a: "North Peptides UK stocks Epitalon in the UK as a 10mg lyophilised vial and as a 10mg/3ml pen vial, both sent by tracked delivery within 24–48 hours of confirmed payment." }
       ]
     },
     summary: "Pineal tetrapeptide research compound (AEDG) supplied as a 10mg lyophilised vial.",
     longDescription: [
       "Epitalon (also written Epithalon) is a synthetic tetrapeptide (Ala-Glu-Asp-Gly, AEDG) modelled on a fragment of the pineal-gland peptide epithalamin. It is supplied as a lyophilised powder for laboratory research.",
       "It is studied in vitro and in animal models for telomerase activity, telomere biology, and pineal and circadian research. It is supplied as a research reference material only and is not for human or animal consumption."
+    ],
+    contentSections: [
+      { heading: "Epitalon in published research", paragraphs: [
+        "Epitalon was synthesised by Professor Vladimir Khavinson's group at the St Petersburg Institute of Bioregulation and Gerontology, based on the amino-acid composition of epithalamin, a peptide extract of the bovine pineal gland.",
+        "Its best-known study, published in 2003, reported telomerase activity and telomere elongation in cultured human fibroblast cells. Other work has examined melatonin rhythms in ageing animal models and changes in gene expression in cell cultures. It remains a common reference compound in telomere and longevity research."
+      ] },
+      { heading: "Epitalon, Epithalon or AEDG?", paragraphs: [
+        "They are the same compound. Epitalon, Epithalon, Epithalone and AEDG all refer to the synthetic tetrapeptide Ala-Glu-Asp-Gly (CAS 307297-39-8). The spelling varies between papers and suppliers, which is worth knowing when searching the literature."
+      ] },
+      { heading: "Epitalon vs Pinealon", paragraphs: [
+        "Epitalon and Pinealon are both short synthetic peptides from the same research group, and they are often compared. Epitalon is a tetrapeptide studied mainly in telomere and pineal research; Pinealon is the tripeptide Glu-Asp-Arg, studied mainly in neuronal research models. Both are stocked here, and the Epitalon vs Pinealon guide below covers the differences."
+      ] },
+      { heading: "Buying Epitalon in the UK", paragraphs: [
+        "North Peptides UK holds Epitalon in stock in the UK and sends it by tracked delivery, so there is no import wait or customs hold. Each vial contains 10mg of lyophilised Epitalon at supplier-stated purity, kept frozen until it leaves us, and supplier documentation is available on request where held. If you would rather not reconstitute, the Epitalon Pen Vial holds the same peptide as a 10mg/3ml liquid."
+      ] }
     ],
     researchAreas: [
       "Telomerase enzyme activity, studied in vitro",
